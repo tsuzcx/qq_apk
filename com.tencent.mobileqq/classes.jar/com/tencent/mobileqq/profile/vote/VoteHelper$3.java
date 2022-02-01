@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.profile.vote;
 
-import azwk;
-
-public class VoteHelper$3
+class VoteHelper$3
   implements Runnable
 {
-  public VoteHelper$3(azwk paramazwk, String paramString, int paramInt, boolean paramBoolean) {}
+  VoteHelper$3(VoteHelper paramVoteHelper, String paramString, int paramInt, boolean paramBoolean) {}
   
   /* Error */
   public void run()
@@ -17,10 +15,10 @@ public class VoteHelper$3
     //   7: invokevirtual 37	java/lang/Long:longValue	()J
     //   10: lstore_2
     //   11: aload_0
-    //   12: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   15: getfield 42	azwk:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   18: invokevirtual 48	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
-    //   21: invokevirtual 54	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   12: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   15: getfield 42	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   18: invokevirtual 48	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   21: invokevirtual 54	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   24: astore 7
     //   26: aload 7
     //   28: ldc 56
@@ -68,14 +66,14 @@ public class VoteHelper$3
     //   116: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   119: invokestatic 109	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   122: aload_0
-    //   123: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   126: getfield 112	azwk:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   123: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   126: getfield 112	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   129: lload_2
     //   130: invokestatic 115	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   133: invokeinterface 121 2 0
     //   138: checkcast 123	com/tencent/util/Pair
     //   141: astore 9
-    //   143: getstatic 126	azwk:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   143: getstatic 126	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   146: astore 6
     //   148: aload 6
     //   150: monitorenter
@@ -83,14 +81,14 @@ public class VoteHelper$3
     //   152: istore_1
     //   153: iload_1
     //   154: aload_0
-    //   155: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   158: getfield 129	azwk:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
+    //   155: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   158: getfield 129	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
     //   161: getfield 135	com/tencent/mobileqq/activity/VisitorsActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   164: invokevirtual 141	java/util/ArrayList:size	()I
     //   167: if_icmpge +384 -> 551
     //   170: aload_0
-    //   171: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   174: getfield 129	azwk:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
+    //   171: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   174: getfield 129	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
     //   177: getfield 135	com/tencent/mobileqq/activity/VisitorsActivity:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   180: iload_1
     //   181: invokevirtual 144	java/util/ArrayList:get	(I)Ljava/lang/Object;
@@ -170,10 +168,10 @@ public class VoteHelper$3
     //   352: getfield 22	com/tencent/mobileqq/profile/vote/VoteHelper$3:jdField_a_of_type_Boolean	Z
     //   355: ifeq +158 -> 513
     //   358: aload_0
-    //   359: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   362: getfield 178	azwk:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   359: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   362: getfield 178	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   365: astore 5
-    //   367: getstatic 180	azwk:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
+    //   367: getstatic 180	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
     //   370: astore 6
     //   372: aload 6
     //   374: monitorenter
@@ -210,22 +208,22 @@ public class VoteHelper$3
     //   433: astore 5
     //   435: aload 5
     //   437: aload_0
-    //   438: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   441: getfield 178	azwk:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   438: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   441: getfield 178	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   444: invokeinterface 191 2 0
     //   449: pop
     //   450: aload 5
     //   452: aload_0
-    //   453: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   456: getfield 192	azwk:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   453: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   456: getfield 192	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   459: invokeinterface 191 2 0
     //   464: pop
     //   465: aload_0
-    //   466: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   469: getfield 129	azwk:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
-    //   472: getfield 195	com/tencent/mobileqq/activity/VisitorsActivity:a	Lanri;
+    //   466: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   469: getfield 129	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity	Lcom/tencent/mobileqq/activity/VisitorsActivity;
+    //   472: getfield 195	com/tencent/mobileqq/activity/VisitorsActivity:a	Lcom/tencent/mobileqq/app/CardHandler;
     //   475: aload 5
-    //   477: invokevirtual 200	anri:b	(Ljava/util/List;)V
+    //   477: invokevirtual 200	com/tencent/mobileqq/app/CardHandler:b	(Ljava/util/List;)V
     //   480: return
     //   481: iconst_0
     //   482: istore 4
@@ -246,8 +244,8 @@ public class VoteHelper$3
     //   509: pop
     //   510: goto -159 -> 351
     //   513: aload_0
-    //   514: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lazwk;
-    //   517: getfield 192	azwk:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   514: getfield 16	com/tencent/mobileqq/profile/vote/VoteHelper$3:this$0	Lcom/tencent/mobileqq/profile/vote/VoteHelper;
+    //   517: getfield 192	com/tencent/mobileqq/profile/vote/VoteHelper:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   520: astore 5
     //   522: goto -155 -> 367
     //   525: iload_1

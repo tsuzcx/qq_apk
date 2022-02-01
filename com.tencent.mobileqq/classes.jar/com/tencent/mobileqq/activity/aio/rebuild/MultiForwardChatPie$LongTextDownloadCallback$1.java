@@ -1,31 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import afqz;
-import aict;
-import aidb;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class MultiForwardChatPie$LongTextDownloadCallback$1
+class MultiForwardChatPie$LongTextDownloadCallback$1
   implements Runnable
 {
-  public MultiForwardChatPie$LongTextDownloadCallback$1(aidb paramaidb, aict paramaict, CharSequence paramCharSequence) {}
+  MultiForwardChatPie$LongTextDownloadCallback$1(MultiForwardChatPie.LongTextDownloadCallback paramLongTextDownloadCallback, MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    aict.a(this.jdField_a_of_type_Aict).setVisibility(8);
-    aict.a(this.jdField_a_of_type_Aict).setVisibility(0);
-    aict.a(this.jdField_a_of_type_Aict).setVisibility(0);
-    this.jdField_a_of_type_Aict.mTitleText.setText(this.jdField_a_of_type_Aict.c);
-    aict.a(this.jdField_a_of_type_Aict).a(aict.a(this.jdField_a_of_type_Aict), this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Aict.b();
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(8);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.e.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).a(MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie), this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.F();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.LongTextDownloadCallback.1
  * JD-Core Version:    0.7.0.1
  */

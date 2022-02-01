@@ -10,8 +10,8 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bheg;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class SectorProgressView
   extends View
@@ -33,38 +33,41 @@ public class SectorProgressView
   public SectorProgressView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
     c();
   }
   
   public SectorProgressView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     c();
   }
   
   public SectorProgressView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     c();
   }
   
   private void c()
   {
     if (jdField_b_of_type_Int == 0) {
-      jdField_b_of_type_Int = DisplayUtil.dip2px(getContext(), 26.0F);
+      jdField_b_of_type_Int = DisplayUtil.a(getContext(), 26.0F);
     }
     if (jdField_c_of_type_Int == 0) {
-      jdField_c_of_type_Int = DisplayUtil.dip2px(getContext(), 3.0F);
+      jdField_c_of_type_Int = DisplayUtil.a(getContext(), 3.0F);
     }
     if (d == 0) {
-      d = DisplayUtil.dip2px(getContext(), 18.0F);
+      d = DisplayUtil.a(getContext(), 18.0F);
     }
     if (e == 0) {
-      e = DisplayUtil.dip2px(getContext(), 8.0F);
+      e = DisplayUtil.a(getContext(), 8.0F);
     }
     if (jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      jdField_a_of_type_AndroidGraphicsBitmap = bheg.a(getResources(), 2130847413);
+      jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(getResources(), 2130847770);
       jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
     }
   }
@@ -92,7 +95,7 @@ public class SectorProgressView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
     {
@@ -141,7 +144,7 @@ public class SectorProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.SectorProgressView
  * JD-Core Version:    0.7.0.1
  */

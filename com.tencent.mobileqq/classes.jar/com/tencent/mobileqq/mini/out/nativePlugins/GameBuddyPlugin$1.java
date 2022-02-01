@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
-import avdc;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.gamecenter.gameBuddy.GameBuddyUtil;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 class GameBuddyPlugin$1
   implements EIPCResultCallback
 {
-  GameBuddyPlugin$1(GameBuddyPlugin paramGameBuddyPlugin, NativePlugin.JSContext paramJSContext, String paramString1, String paramString2) {}
+  GameBuddyPlugin$1(GameBuddyPlugin paramGameBuddyPlugin, JSContext paramJSContext, String paramString1, String paramString2) {}
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
@@ -39,7 +39,7 @@ class GameBuddyPlugin$1
           i = 1;
           localJSONObject.put("type", i);
           if ("invokeGameBuddyAio".equals(this.val$apiName)) {
-            avdc.a(this.val$jsContext.getActivity(), this.val$uin, j);
+            GameBuddyUtil.a(this.val$jsContext.getActivity(), this.val$uin, j);
           }
           this.val$jsContext.evaluateCallback(true, localJSONObject, "");
           return;

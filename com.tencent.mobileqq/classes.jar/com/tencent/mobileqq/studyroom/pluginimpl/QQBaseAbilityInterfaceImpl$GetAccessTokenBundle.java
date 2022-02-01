@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
 import android.os.Bundle;
-import avry;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.intervideo.LoginKeyHelper;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 
@@ -23,9 +23,9 @@ final class QQBaseAbilityInterfaceImpl$GetAccessTokenBundle
   {
     Bundle[] arrayOfBundle = new Bundle[1];
     AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    avry localavry = new avry();
+    LoginKeyHelper localLoginKeyHelper = new LoginKeyHelper();
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    localavry.a(localAppInterface, this.pluginAppID, BaseApplicationImpl.getContext(), this.appId, new QQBaseAbilityInterfaceImpl.GetAccessTokenBundle.1(this, localavry, arrayOfBundle, localCountDownLatch));
+    localLoginKeyHelper.a(localAppInterface, this.pluginAppID, BaseApplicationImpl.getContext(), this.appId, new QQBaseAbilityInterfaceImpl.GetAccessTokenBundle.1(this, localLoginKeyHelper, arrayOfBundle, localCountDownLatch));
     localCountDownLatch.await();
     return arrayOfBundle[0];
   }

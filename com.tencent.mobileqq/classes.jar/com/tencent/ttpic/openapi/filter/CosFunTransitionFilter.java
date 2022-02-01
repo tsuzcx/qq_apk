@@ -8,9 +8,9 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.filter.CFFaceOffFilter;
 import com.tencent.ttpic.filter.CFSkinCropFilter;
 import com.tencent.ttpic.filter.CFSkinCropFilterV2;
@@ -21,8 +21,8 @@ import com.tencent.ttpic.openapi.model.CosFunParam;
 import com.tencent.ttpic.openapi.model.CrazyFaceDataTemplate;
 import com.tencent.ttpic.openapi.model.CrazyFaceDataTemplate.ImageLayer;
 import com.tencent.ttpic.openapi.model.FaceImageLayer;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.CfTemplateParser;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.CosFunUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
@@ -311,7 +311,7 @@ public class CosFunTransitionFilter
   {
     this.copyFilter.ApplyGLSLFilter();
     BenchUtil.benchStart("[CosFunTransitionFilter] preprocess");
-    paramList = VideoMaterialUtil.copyList(paramList);
+    paramList = VideoMaterial.copyList(paramList);
     CosFunUtil.scale(paramList, 1.0D / paramDouble);
     FaceOffUtil.getFullCoords(paramList, 2.0F);
     this.srcFeature = new FaceFeatureTex();
@@ -326,7 +326,7 @@ public class CosFunTransitionFilter
       while (i < this.template.faceLayers.size())
       {
         Object localObject = (FaceImageLayer)this.template.faceLayers.get(i);
-        localObject = processUserBitmap(paramInt1, paramInt2, paramInt3, VideoMaterialUtil.copyList(paramList), (FaceImageLayer)localObject);
+        localObject = processUserBitmap(paramInt1, paramInt2, paramInt3, VideoMaterial.copyList(paramList), (FaceImageLayer)localObject);
         this.userCosFunParams.add(localObject);
         i += 1;
       }
@@ -371,7 +371,7 @@ public class CosFunTransitionFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CosFunTransitionFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.litetransfersdk;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.RouterMsgRecord;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -17,13 +17,13 @@ public class ProgressInfo
   public static final int Unknown = 0;
   public String filename;
   public String filepath;
-  private int nCount_for_timeout;
+  private int nCount_for_timeout = 0;
   public String timeDes;
   private int uint32_status = 2;
-  public long uint64_fileSize;
-  public long uint64_progress;
-  public long uint64_sessionid;
-  private long uint64_time;
+  public long uint64_fileSize = 0L;
+  public long uint64_progress = 0L;
+  public long uint64_sessionid = 0L;
+  private long uint64_time = 0L;
   
   public void GetFilePath(QQAppInterface paramQQAppInterface, long paramLong)
   {
@@ -99,7 +99,7 @@ public class ProgressInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProgressInfo
  * JD-Core Version:    0.7.0.1
  */

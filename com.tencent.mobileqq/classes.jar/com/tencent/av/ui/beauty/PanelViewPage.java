@@ -9,7 +9,7 @@ import android.view.View.MeasureSpec;
 public class PanelViewPage
   extends ViewPager
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private boolean jdField_a_of_type_Boolean = true;
   
   public PanelViewPage(Context paramContext)
@@ -64,7 +64,7 @@ public class PanelViewPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.beauty.PanelViewPage
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bhdj;
-import bodl;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tav.coremedia.CMTime;
@@ -20,6 +19,7 @@ import com.tencent.tavcut.view.TAVCutVideoView;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.util.QZLog;
+import dov.com.qq.im.aeeditor.util.TimeUtils;
 
 public class AEVideoPreviewFragment
   extends AbsAEPublishVideoProcessFragment
@@ -51,7 +51,7 @@ public class AEVideoPreviewFragment
     String str = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "UploadGiveUpVideo", "放弃上传这个视频吗？");
     try
     {
-      bhdj.a(getActivity(), 230, str, null, getResources().getString(2131690697), getResources().getString(2131691037), new AEVideoPreviewFragment.3(this), new AEVideoPreviewFragment.4(this)).show();
+      DialogUtil.a(getActivity(), 230, str, null, getResources().getString(2131690800), getResources().getString(2131691144), new AEVideoPreviewFragment.3(this), new AEVideoPreviewFragment.4(this)).show();
       return;
     }
     catch (Exception localException)
@@ -62,14 +62,14 @@ public class AEVideoPreviewFragment
   
   void bindViews(View paramView)
   {
-    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378516));
-    this.rlVideoController = ((RelativeLayout)paramView.findViewById(2131376913));
-    this.ivClose = ((ImageView)paramView.findViewById(2131369356));
-    this.ivDelete = ((ImageView)paramView.findViewById(2131369375));
-    this.ivPlayOrPause = ((ImageView)paramView.findViewById(2131369492));
-    this.seekBarVideoProgress = ((SeekBar)paramView.findViewById(2131377274));
-    this.tvTotalDuration = ((TextView)paramView.findViewById(2131380227));
-    this.tvCurrentDuration = ((TextView)paramView.findViewById(2131379863));
+    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378947));
+    this.rlVideoController = ((RelativeLayout)paramView.findViewById(2131377321));
+    this.ivClose = ((ImageView)paramView.findViewById(2131369611));
+    this.ivDelete = ((ImageView)paramView.findViewById(2131369633));
+    this.ivPlayOrPause = ((ImageView)paramView.findViewById(2131369751));
+    this.seekBarVideoProgress = ((SeekBar)paramView.findViewById(2131377695));
+    this.tvTotalDuration = ((TextView)paramView.findViewById(2131380667));
+    this.tvCurrentDuration = ((TextView)paramView.findViewById(2131380292));
     this.rlVideoController.setOnClickListener(this);
     this.ivClose.setOnClickListener(this);
     this.ivDelete.setOnClickListener(this);
@@ -83,14 +83,14 @@ public class AEVideoPreviewFragment
     if ((this.tavCutVideoSession != null) && (this.tavCutVideoSession.getDuration() != null))
     {
       this.seekBarVideoProgress.setMax((int)this.tavCutVideoSession.getDuration().getTimeUs());
-      this.tvTotalDuration.setText(bodl.a((this.tavCutVideoSession.getDuration().getTimeSeconds() * 1000.0F)));
+      this.tvTotalDuration.setText(TimeUtils.a((this.tavCutVideoSession.getDuration().getTimeSeconds() * 1000.0F)));
     }
     this.mMoviePlayer.setVideoProgressListener(new AEVideoPreviewFragment.1(this));
   }
   
   protected int getLayoutId()
   {
-    return 2131558581;
+    return 2131558605;
   }
   
   protected int getPlayerBackColor()
@@ -148,7 +148,7 @@ public class AEVideoPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

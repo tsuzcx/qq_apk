@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
-import bhrj;
-import bhrl;
 import java.util.ArrayList;
 
-public final class GLDrawableWraper$1
+final class GLDrawableWraper$1
   implements Runnable
 {
   public void run()
   {
-    if (!bhrl.a("video/avc").isEmpty()) {}
+    if (!Utils.a("video/avc").isEmpty()) {}
     for (boolean bool = true;; bool = false)
     {
-      bhrj.a(bool);
+      GLDrawableWraper.a(bool);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ public final class single_feeds_req_info
   extends JceStruct
 {
   static ArrayList<SimpleComment> cache_all_commont_list = new ArrayList();
-  public ArrayList<SimpleComment> all_commont_list;
-  public int appId;
-  public long feeds_time;
+  public ArrayList<SimpleComment> all_commont_list = null;
+  public int appId = 0;
+  public long feeds_time = 0L;
   public boolean pullAll = true;
   public String ugc_key = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

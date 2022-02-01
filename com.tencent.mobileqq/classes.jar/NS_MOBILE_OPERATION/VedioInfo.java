@@ -11,15 +11,15 @@ public final class VedioInfo
 {
   static Map<String, String> cache_ext_info = new HashMap();
   public String detailurl = "";
-  public Map<String, String> ext_info;
+  public Map<String, String> ext_info = null;
   public String img = "";
   public String playurl = "";
-  public int pub_route;
-  public int subtype;
-  public long time;
+  public int pub_route = 0;
+  public int subtype = 0;
+  public long time = 0L;
   public String title = "";
   public String video_id = "";
-  public int who;
+  public int who = 0;
   
   static
   {

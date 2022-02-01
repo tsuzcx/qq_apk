@@ -9,8 +9,8 @@ public final class GetArkTailReq
 {
   public String appid = "";
   public String qq_version = "";
-  public int scene_id;
-  public int tt;
+  public int scene_id = 0;
+  public int tt = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -34,7 +34,7 @@ public final class GetArkTailReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.protocol.GetArkTailReq
  * JD-Core Version:    0.7.0.1
  */

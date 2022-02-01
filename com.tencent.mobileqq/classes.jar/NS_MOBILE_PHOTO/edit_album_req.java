@@ -14,7 +14,7 @@ public final class edit_album_req
   public Album album;
   public Map<Integer, String> busi_param;
   public long cancelIndividual;
-  public boolean isModifyBitmap;
+  public boolean isModifyBitmap = false;
   public String itemid = "";
   public String newCoverId = "";
   

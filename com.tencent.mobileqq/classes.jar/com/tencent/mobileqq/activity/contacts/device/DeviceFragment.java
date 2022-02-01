@@ -1,14 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.device;
 
-import abgl;
-import abgm;
-import ajju;
-import ajkl;
-import ajko;
-import ajkp;
-import ajkq;
-import ajkr;
-import ajks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,62 +15,65 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import ansy;
-import anvi;
-import anyz;
-import aocp;
-import aqwg;
-import aqwh;
-import aqwi;
-import asll;
-import bkyc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.devicemgr.SmartDeviceObserver;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment.RefreshDataListener;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DataLineObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RegisterProxySvcPackObserver;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.CfgProcess;
+import com.tencent.mobileqq.config.CfgProcess.CfgParseResult;
+import com.tencent.mobileqq.config.CfgProcess.OnGetConfigListener;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DeviceFragment
   extends ContactsBaseFragment
-  implements Handler.Callback, aqwi
+  implements Handler.Callback, CfgProcess.OnGetConfigListener
 {
-  private final abgl jdField_a_of_type_Abgl = new ajks(this);
-  public ajkl a;
-  private final ansy jdField_a_of_type_Ansy = new ajkq(this);
-  private final anvi jdField_a_of_type_Anvi = new ajkr(this);
-  private final anyz jdField_a_of_type_Anyz = new ajkp(this);
-  private aocp jdField_a_of_type_Aocp = new ajko(this);
-  private bkyc jdField_a_of_type_Bkyc = new bkyc(Looper.getMainLooper(), this);
+  private final SmartDeviceObserver jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver = new DeviceFragment.7(this);
+  protected ContactsDeviceAdapter a;
+  private final DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new DeviceFragment.5(this);
+  private final FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new DeviceFragment.6(this);
+  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new DeviceFragment.4(this);
+  private RegisterProxySvcPackObserver jdField_a_of_type_ComTencentMobileqqAppRegisterProxySvcPackObserver = new DeviceFragment.1(this);
+  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
   protected XListView a;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  protected boolean f = true;
+  protected boolean d;
+  protected boolean e;
+  protected boolean f = false;
+  protected boolean g = true;
   
   private void i()
   {
-    Object localObject1 = (abgm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    if (((abgm)localObject1).a())
+    Object localObject1 = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    if (((SmartDeviceProxyMgr)localObject1).a())
     {
-      DeviceInfo[] arrayOfDeviceInfo = ((abgm)localObject1).a();
+      DeviceInfo[] arrayOfDeviceInfo = ((SmartDeviceProxyMgr)localObject1).a();
       if (arrayOfDeviceInfo != null)
       {
-        ((abgm)localObject1).notifyUI(1, true, new ArrayList(Arrays.asList(arrayOfDeviceInfo)));
+        ((SmartDeviceProxyMgr)localObject1).notifyUI(1, true, new ArrayList(Arrays.asList(arrayOfDeviceInfo)));
         ThreadManager.post(new DeviceFragment.3(this), 5, null, true);
       }
     }
     try
     {
       localObject1 = getActivity().getApplicationContext().getPackageManager().getPackageInfo(getActivity().getApplicationContext().getPackageName(), 0).packageName;
-      asll.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, 0L);
+      EquipmentLockImpl.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, 0L);
       return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -97,13 +91,13 @@ public class DeviceFragment
     if (this.jdField_a_of_type_ComTencentWidgetXListView == null)
     {
       this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setId(2131370584);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setId(2131370872);
       this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(true);
       this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
       this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(0);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setPadding(0, 0, 0, AIOUtils.dp2px(54.0F, getResources()));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setPadding(0, 0, 0, AIOUtils.a(54.0F, getResources()));
       this.jdField_a_of_type_ComTencentWidgetXListView.setClipToPadding(false);
       this.jdField_a_of_type_ComTencentWidgetXListView.setScrollBarStyle(33554432);
       this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
@@ -123,23 +117,23 @@ public class DeviceFragment
     if (QLog.isColorLevel()) {
       QLog.d("contacts.fragment.DeviceFragment", 2, "doOnDestroy");
     }
-    if (this.jdField_a_of_type_Ajkl != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter != null)
     {
-      this.jdField_a_of_type_Ajkl.a();
-      this.jdField_a_of_type_Ajkl.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.c();
     }
     e();
-    this.jdField_a_of_type_Bkyc.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeCallbacksAndMessages(null);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aqwh paramaqwh)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, CfgProcess.CfgParseResult paramCfgParseResult)
   {
-    if ((paramaqwh != null) && ("smart_devices_discovery_config".equals(paramString)))
+    if ((paramCfgParseResult != null) && ("smart_devices_discovery_config".equals(paramString)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("DeviceFragment", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramaqwh.a);
+        QLog.d("DeviceFragment", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramCfgParseResult.a);
       }
-      ThreadManager.post(new DeviceFragment.8(this, paramaqwh), 5, null, true);
+      ThreadManager.post(new DeviceFragment.8(this, paramCfgParseResult), 5, null, true);
     }
   }
   
@@ -152,36 +146,36 @@ public class DeviceFragment
       return;
     }
     d();
-    if (this.jdField_a_of_type_Ajkl == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter == null)
     {
-      this.jdField_a_of_type_Ajkl = new ajkl(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 104, true);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajkl);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter = new ContactsDeviceAdapter(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 104, true);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter);
     }
     Intent localIntent = new Intent();
     localIntent.setAction("SmartDevice_clickOnDeviceList");
     BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
     i();
     h();
-    this.jdField_a_of_type_Ajkl.notifyDataSetChanged();
-    this.jdField_a_of_type_Bkyc.postDelayed(new DeviceFragment.2(this), 500L);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new DeviceFragment.2(this), 500L);
   }
   
-  public void ah_()
+  public void ag_()
   {
-    abgm localabgm = (abgm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    if (localabgm != null)
+    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    if (localSmartDeviceProxyMgr != null)
     {
-      if (!localabgm.a()) {
+      if (!localSmartDeviceProxyMgr.a()) {
         break label35;
       }
-      this.e = true;
-      localabgm.e();
+      this.f = true;
+      localSmartDeviceProxyMgr.e();
     }
     label35:
-    while (this.jdField_a_of_type_Ajju == null) {
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$RefreshDataListener == null) {
       return;
     }
-    this.jdField_a_of_type_Ajju.a(b(), true, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$RefreshDataListener.a(b(), true, null);
   }
   
   public void b(boolean paramBoolean)
@@ -198,20 +192,20 @@ public class DeviceFragment
   {
     if ((this.b) && (this.jdField_a_of_type_ComTencentWidgetXListView != null))
     {
-      this.jdField_a_of_type_Ajkl = new ajkl(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 104, true);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajkl);
-      this.jdField_a_of_type_Ajkl.a(this.c, AppConstants.DATALINE_PC_UIN);
-      this.jdField_a_of_type_Ajkl.a(this.d, AppConstants.DATALINE_IPAD_UIN);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter = new ContactsDeviceAdapter(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 104, true);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.a(this.d, AppConstants.DATALINE_PC_UIN);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.a(this.e, AppConstants.DATALINE_IPAD_UIN);
       h();
-      this.jdField_a_of_type_Ajkl.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.notifyDataSetChanged();
       i();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkyc.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeCallbacksAndMessages(null);
       return;
-      if (this.jdField_a_of_type_Ajkl != null) {
-        this.jdField_a_of_type_Ajkl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
     }
   }
@@ -220,31 +214,31 @@ public class DeviceFragment
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.b))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anyz);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ansy);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anvi);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Abgl);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aocp);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppRegisterProxySvcPackObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConfigProcess().a("smart_devices_discovery_config", this);
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Ajkl != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter != null)
     {
-      this.jdField_a_of_type_Ajkl.a();
-      this.jdField_a_of_type_Ajkl.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.c();
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(null);
-      this.jdField_a_of_type_Ajkl = null;
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyz);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ansy);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anvi);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Abgl);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aocp);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppRegisterProxySvcPackObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConfigProcess().b("smart_devices_discovery_config", this);
     }
   }
@@ -255,9 +249,9 @@ public class DeviceFragment
     if (BaseApplication.getContext().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).getInt("smart_device_discovery_config_switch", 1) == 1) {}
     for (;;)
     {
-      this.f = bool;
-      if (this.jdField_a_of_type_Ajkl != null) {
-        this.jdField_a_of_type_Ajkl.a(this.f);
+      this.g = bool;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.a(this.g);
       }
       return;
       bool = false;
@@ -276,10 +270,10 @@ public class DeviceFragment
     {
       bool1 = true;
       label36:
-      if (bool1 == this.f) {
+      if (bool1 == this.g) {
         break label88;
       }
-      if (this.f) {
+      if (this.g) {
         break label90;
       }
     }
@@ -287,12 +281,12 @@ public class DeviceFragment
     label90:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.f = bool1;
-      if (this.jdField_a_of_type_Ajkl == null) {
+      this.g = bool1;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter == null) {
         break;
       }
-      this.jdField_a_of_type_Ajkl.a(this.f);
-      this.jdField_a_of_type_Ajkl.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.a(this.g);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter.notifyDataSetChanged();
       return false;
       bool1 = false;
       break label36;
@@ -302,7 +296,7 @@ public class DeviceFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.DeviceFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package cooperation.qzone.video;
 
-import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -9,15 +8,16 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import aqrl;
-import biwn;
-import blvy;
-import blwh;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.qzone.plugin.IQZonePluginManager;
 import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 import cooperation.qzone.plugin.QZonePluginUtils;
@@ -93,21 +93,21 @@ public class QzoneLiveVideoPluginProxyActivity
           if (!"qzone_live_video_plugin.apk".equals(localObject)) {
             break label355;
           }
-          localObject = new blwh(0);
-          ((blwh)localObject).jdField_a_of_type_JavaLangString = paramString1;
-          ((blwh)localObject).e = paramString2;
-          ((blwh)localObject).jdField_a_of_type_JavaLangClass = localClass;
-          ((blwh)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-          ((blwh)localObject).jdField_b_of_type_Int = paramInt;
-          ((blwh)localObject).c = 15000;
-          ((blwh)localObject).f = null;
-          ((blwh)localObject).jdField_b_of_type_Boolean = false;
-          ((blwh)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
-          ((blwh)localObject).d = "QZoneLiveVideo";
+          localObject = new IPluginManager.PluginParams(0);
+          ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangString = paramString1;
+          ((IPluginManager.PluginParams)localObject).f = paramString2;
+          ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangClass = localClass;
+          ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
+          ((IPluginManager.PluginParams)localObject).c = paramInt;
+          ((IPluginManager.PluginParams)localObject).d = 15000;
+          ((IPluginManager.PluginParams)localObject).g = null;
+          ((IPluginManager.PluginParams)localObject).jdField_b_of_type_Boolean = false;
+          ((IPluginManager.PluginParams)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
+          ((IPluginManager.PluginParams)localObject).e = "QZoneLiveVideo";
           if (QLog.isColorLevel()) {
             QLog.d("PluginDebug", 2, "加载原始插件");
           }
-          blvy.a(paramActivity, (blwh)localObject);
+          IPluginManager.a(paramActivity, (IPluginManager.PluginParams)localObject);
         }
       }
     }
@@ -139,8 +139,8 @@ public class QzoneLiveVideoPluginProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    biwn.a(BaseApplicationImpl.getContext(), false, 5);
-    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), false, 5);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void onDestroy()
@@ -169,7 +169,7 @@ public class QzoneLiveVideoPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

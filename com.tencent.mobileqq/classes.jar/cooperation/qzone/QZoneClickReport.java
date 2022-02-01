@@ -17,9 +17,14 @@ public class QZoneClickReport
   public static final int SUB_ACTION_TYPE_LIVE_PLUGIN_MANUL_DOWNLOAD = 129;
   public static final String SUB_ACTION_TYPE_LIVE_PLUS_CLICK = "1";
   private static String TAG = QZoneClickReport.class.getSimpleName();
-  public static boolean isShowToast;
+  public static boolean isShowToast = false;
   public static int reportAmount;
-  public static int reportRate;
+  public static int reportRate = 0;
+  
+  static
+  {
+    reportAmount = 0;
+  }
   
   private static long getLong(String paramString, long paramLong)
   {
@@ -107,7 +112,7 @@ public class QZoneClickReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneClickReport
  * JD-Core Version:    0.7.0.1
  */

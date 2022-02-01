@@ -18,17 +18,17 @@ public final class FeedQzmallDeco
   static QzoneDescription cache_stQzDescription = new QzoneDescription();
   static ReturnToPraise cache_stReturnToPraise;
   static ActYellowDiamond cache_stYellowDiamond;
-  public QzmallCustomBubbleSkin stBubbleSkin;
-  public QzmallCustomPassivePraise stCustomPassivePraise;
-  public QzmallCustomPraise stCustomPraise;
-  public QzmallCustomVip stCustomVip;
-  public QzmallFacade stFacade;
-  public FacadeDIY stFacadeDIY;
-  public QzmallFeedAvatar stFeedAvatar;
-  public QzmallFeedSkin stFeedSkin;
-  public QzoneDescription stQzDescription;
-  public ReturnToPraise stReturnToPraise;
-  public ActYellowDiamond stYellowDiamond;
+  public QzmallCustomBubbleSkin stBubbleSkin = null;
+  public QzmallCustomPassivePraise stCustomPassivePraise = null;
+  public QzmallCustomPraise stCustomPraise = null;
+  public QzmallCustomVip stCustomVip = null;
+  public QzmallFacade stFacade = null;
+  public FacadeDIY stFacadeDIY = null;
+  public QzmallFeedAvatar stFeedAvatar = null;
+  public QzmallFeedSkin stFeedSkin = null;
+  public QzoneDescription stQzDescription = null;
+  public ReturnToPraise stReturnToPraise = null;
+  public ActYellowDiamond stYellowDiamond = null;
   
   static
   {

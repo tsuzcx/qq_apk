@@ -8,8 +8,8 @@ public final class RspHotGrp
   extends JceStruct
 {
   static byte[] cache_strRspHotGrp;
-  public short shShowPos;
-  public byte[] strRspHotGrp;
+  public short shShowPos = 0;
+  public byte[] strRspHotGrp = null;
   
   public RspHotGrp() {}
   

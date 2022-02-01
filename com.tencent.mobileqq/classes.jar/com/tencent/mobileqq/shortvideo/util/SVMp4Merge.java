@@ -6,7 +6,7 @@ import java.util.List;
 public class SVMp4Merge
 {
   public static int a = 2;
-  public static int b;
+  public static int b = 0;
   
   public static int a(List<String> paramList, String paramString)
   {

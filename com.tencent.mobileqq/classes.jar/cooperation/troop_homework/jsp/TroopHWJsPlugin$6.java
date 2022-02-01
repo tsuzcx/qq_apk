@@ -1,8 +1,8 @@
 package cooperation.troop_homework.jsp;
 
 import android.text.TextUtils;
-import bifw;
-import bmjd;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import cooperation.troop_homework.TroopHomeworkHelper;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import org.json.JSONException;
@@ -21,7 +21,7 @@ class TroopHWJsPlugin$6
     localObject1 = ((TicketManager)localObject1).getSkey((String)localObject2);
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.this$0.h)))
     {
-      localObject1 = bmjd.a(this.this$0.h, this.a, (String)localObject2, (String)localObject1, 1234567L);
+      localObject1 = TroopHomeworkHelper.a(this.this$0.h, this.a, (String)localObject2, (String)localObject1, 1234567L);
       if (localObject1 == null) {}
     }
     try
@@ -50,7 +50,7 @@ class TroopHWJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qqperf.UnifiedMonitor;
 
 class LoadDex$5
   implements Runnable

@@ -8,7 +8,7 @@ public final class LikeRsp
   extends JceStruct
 {
   static CommRsp cache_errInfo = new CommRsp();
-  public CommRsp errInfo;
+  public CommRsp errInfo = null;
   
   public LikeRsp() {}
   

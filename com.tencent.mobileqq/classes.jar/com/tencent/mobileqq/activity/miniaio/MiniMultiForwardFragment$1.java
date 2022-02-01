@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import axio;
-import bben;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.replymsg.ForwardMsgManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -20,15 +20,15 @@ class MiniMultiForwardFragment$1
     ArrayList localArrayList = new ArrayList();
     if (MiniMultiForwardFragment.a(this.this$0) == 3)
     {
-      ChatMessage localChatMessage = ((bben)this.this$0.a.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(MiniMultiForwardFragment.a(this.this$0));
+      ChatMessage localChatMessage = ((ForwardMsgManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(MiniMultiForwardFragment.a(this.this$0));
       if (localChatMessage == null) {
-        break label161;
+        break label190;
       }
       localArrayList = new ArrayList(1);
       localArrayList.add(localChatMessage);
       localArrayList = MiniMultiForwardFragment.a(this.this$0, localArrayList);
     }
-    label161:
+    label190:
     for (;;)
     {
       if (localArrayList != null) {
@@ -42,7 +42,11 @@ class MiniMultiForwardFragment$1
       }
       else if (MiniMultiForwardFragment.a(this.this$0) == 1)
       {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0, axio.a().a);
+        localArrayList = MiniMultiForwardFragment.a(this.this$0, MultiMsgManager.a().a);
+      }
+      else if (MiniMultiForwardFragment.a(this.this$0) == 4)
+      {
+        localArrayList = MiniMultiForwardFragment.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatAdapter);
       }
       else
       {
@@ -53,7 +57,7 @@ class MiniMultiForwardFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMultiForwardFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import olh;
 import org.json.JSONObject;
 
 class ReadInJoyBaseFragment$1
@@ -40,7 +41,7 @@ class ReadInJoyBaseFragment$1
             localObject = ((MessageForStructing)this.a).structingMsg.reportEventFolderStatusValue;
             localJSONObject.put("inside_kd_tab_red_pnt_push_articleId", l1);
             localJSONObject.put("folder_status", localObject);
-            olh.a(null, "", "0X800952D", "0X800952D", 0, 0, localJSONObject.toString(), "", "", "", false);
+            ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800952D", "0X800952D", 0, 0, localJSONObject.toString(), "", "", "", false);
             return;
           }
         }
@@ -57,7 +58,7 @@ class ReadInJoyBaseFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

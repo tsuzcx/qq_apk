@@ -10,7 +10,7 @@ public final class cell_permission
   extends JceStruct
 {
   static Map<Integer, String> cache_map_permission_msg = new HashMap();
-  public Map<Integer, String> map_permission_msg;
+  public Map<Integer, String> map_permission_msg = null;
   public String permission_info = "";
   public int permission_mask;
   public String permission_tips = "";

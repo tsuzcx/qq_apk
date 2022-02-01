@@ -1,7 +1,7 @@
 package com.tencent.gdtad.statistics;
 
-import acho;
 import android.text.TextUtils;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class GdtReporter
@@ -15,12 +15,12 @@ public class GdtReporter
       return;
     }
     ThreadManager.post(new GdtCgiReportRunnable(paramString), 2, null, false);
-    acho.b("GDT_CGI_REPORT", paramString);
+    GdtLog.b("GDT_CGI_REPORT", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtReporter
  * JD-Core Version:    0.7.0.1
  */

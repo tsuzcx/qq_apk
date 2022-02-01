@@ -1,11 +1,7 @@
 package com.tencent.mobileqq.location.data;
 
 import android.support.annotation.Nullable;
-import awir;
-import awis;
-import awit;
-import awiz;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.api.ILocationShareService;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
@@ -18,25 +14,27 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class LocationRoom
 {
   private int jdField_a_of_type_Int = -1;
-  private awir jdField_a_of_type_Awir;
-  private volatile awis jdField_a_of_type_Awis;
-  private awit jdField_a_of_type_Awit;
+  private LocationItem jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem;
+  private volatile LocationRoom.OnNewLocationListener jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener;
+  private LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
   private LocationRoom.Venue jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue;
-  private volatile CameraPosition jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition;
-  private LinkedHashMap<String, awir> jdField_a_of_type_JavaUtilLinkedHashMap;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private volatile boolean jdField_b_of_type_Boolean;
+  private volatile CameraPosition jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition = null;
+  private LinkedHashMap<String, LocationItem> jdField_a_of_type_JavaUtilLinkedHashMap;
+  private volatile boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
+  private volatile boolean jdField_b_of_type_Boolean = false;
   
-  public LocationRoom(awit paramawit, String paramString)
+  public LocationRoom(LocationRoom.RoomKey paramRoomKey, String paramString)
   {
-    this.jdField_a_of_type_Awit = paramawit;
+    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = paramRoomKey;
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_Awir = new awir(paramString, null, 0.0D);
+    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem = new LocationItem(paramString, null, 0.0D);
   }
   
   public int a()
@@ -44,19 +42,19 @@ public class LocationRoom
     return this.jdField_a_of_type_Int;
   }
   
-  public awir a()
+  public LocationItem a()
   {
-    return this.jdField_a_of_type_Awir;
+    return this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem;
   }
   
-  public awir a(String paramString)
+  public LocationItem a(String paramString)
   {
-    return (awir)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    return (LocationItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
   }
   
-  public awit a()
+  public LocationRoom.RoomKey a()
   {
-    return this.jdField_a_of_type_Awit;
+    return this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
   }
   
   public LocationRoom.Venue a()
@@ -71,11 +69,11 @@ public class LocationRoom
   
   public List<LatLng> a()
   {
-    if ((this.jdField_a_of_type_Awir == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)) {
       return null;
     }
     ArrayList localArrayList = new ArrayList(2);
-    localArrayList.add(this.jdField_a_of_type_Awir.a());
+    localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem.a());
     localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
     return localArrayList;
   }
@@ -85,37 +83,21 @@ public class LocationRoom
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(awis paramawis)
+  public void a(LocationRoom.OnNewLocationListener paramOnNewLocationListener)
   {
-    this.jdField_a_of_type_Awis = paramawis;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, CameraPosition paramCameraPosition)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationRoom", 2, "onLeaveMapPage: invoked. lastCameraPosition: " + paramCameraPosition);
-    }
-    this.jdField_a_of_type_Awis = null;
-    a(false);
-    a(null);
-    if (awiz.a(paramQQAppInterface).b())
-    {
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition = paramCameraPosition;
-      return;
-    }
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition = null;
+    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener = paramOnNewLocationListener;
   }
   
   public void a(LocationRoom.Venue paramVenue)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LocationRoom", 2, new Object[] { "[venue]setVenue invoked. venue: ", paramVenue + " mVenue: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue + " listener: " + this.jdField_a_of_type_Awis });
+      QLog.d("LocationRoom", 2, new Object[] { "[venue]setVenue invoked. venue: ", paramVenue + " mVenue: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue + " listener: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener });
     }
     if (paramVenue != null)
     {
       if (paramVenue.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue)) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_JavaLangRefSoftReference == null) && (this.jdField_a_of_type_Awis != null)) {
-          this.jdField_a_of_type_Awis.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+        if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_JavaLangRefSoftReference == null) && (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
         }
       }
       do
@@ -130,8 +112,8 @@ public class LocationRoom
           }
         }
         this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue = paramVenue;
-      } while (this.jdField_a_of_type_Awis == null);
-      this.jdField_a_of_type_Awis.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+      } while (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener == null);
+      this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
       return;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue != null) && (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_JavaLangRefSoftReference != null))
@@ -141,78 +123,94 @@ public class LocationRoom
       if (paramVenue != null) {
         paramVenue.remove();
       }
-      if (this.jdField_a_of_type_Awis != null) {
-        this.jdField_a_of_type_Awis.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener.a();
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue = null;
   }
   
-  public void a(LatLng paramLatLng, Double paramDouble)
+  public void a(CameraPosition paramCameraPosition)
   {
-    this.jdField_a_of_type_Awir.a(paramLatLng, paramDouble);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationRoom", 2, "onLeaveMapPage: invoked. lastCameraPosition: " + paramCameraPosition);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener = null;
+    a(false);
+    a(null);
+    if (((ILocationShareService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(ILocationShareService.class, "")).isCurrentUserSharing())
+    {
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition = paramCameraPosition;
+      return;
+    }
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition = null;
   }
   
-  public void a(List<awir> paramList)
+  public void a(LatLng paramLatLng, Double paramDouble)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem.a(paramLatLng, paramDouble);
+  }
+  
+  public void a(List<LocationItem> paramList)
   {
     Object localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    awir localawir;
+    LocationItem localLocationItem;
     while (((Iterator)localObject).hasNext())
     {
-      localawir = (awir)((Map.Entry)((Iterator)localObject).next()).getValue();
-      if (!paramList.contains(localawir))
+      localLocationItem = (LocationItem)((Map.Entry)((Iterator)localObject).next()).getValue();
+      if (!paramList.contains(localLocationItem))
       {
-        if (this.jdField_a_of_type_Awis != null) {
-          this.jdField_a_of_type_Awis.a(localawir.a());
+        if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener.a(localLocationItem.a());
         }
         if (QLog.isColorLevel()) {
-          QLog.d("LocationRoom", 2, new Object[] { "updateRoomLocation invoked. remove LocationItem: ", localawir + " listener: " + this.jdField_a_of_type_Awis });
+          QLog.d("LocationRoom", 2, new Object[] { "updateRoomLocation invoked. remove LocationItem: ", localLocationItem + " listener: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$OnNewLocationListener });
         }
         ((Iterator)localObject).remove();
       }
     }
-    if ((this.jdField_a_of_type_Awit.a() == 0) && (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 1) && (paramList.size() == 2)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a() == 0) && (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 1) && (paramList.size() == 2)) {
       this.jdField_a_of_type_Boolean = true;
     }
     int i = 0;
     if (i < paramList.size())
     {
-      localObject = (awir)paramList.get(i);
+      localObject = (LocationItem)paramList.get(i);
       int j;
-      if (((awir)localObject).equals(this.jdField_a_of_type_Awir))
+      if (((LocationItem)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem))
       {
-        if (this.jdField_a_of_type_Awir.a() < 0)
+        if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem.a() < 0)
         {
-          localObject = this.jdField_a_of_type_Awir;
+          localObject = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem;
           j = this.jdField_b_of_type_Int;
           this.jdField_b_of_type_Int = (j + 1);
-          ((awir)localObject).a(j);
+          ((LocationItem)localObject).a(j);
         }
-        if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.values().contains(this.jdField_a_of_type_Awir)) {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_Awir.a(), this.jdField_a_of_type_Awir);
+        if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.values().contains(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem)) {
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationItem);
         }
       }
       for (;;)
       {
         i += 1;
         break;
-        localawir = (awir)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((awir)localObject).a());
-        if (localawir == null)
+        localLocationItem = (LocationItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((LocationItem)localObject).a());
+        if (localLocationItem == null)
         {
           j = this.jdField_b_of_type_Int;
           this.jdField_b_of_type_Int = (j + 1);
-          ((awir)localObject).a(j);
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(((awir)localObject).a(), localObject);
+          ((LocationItem)localObject).a(j);
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(((LocationItem)localObject).a(), localObject);
         }
         else
         {
-          if (localawir.a() < 0)
+          if (localLocationItem.a() < 0)
           {
             j = this.jdField_b_of_type_Int;
             this.jdField_b_of_type_Int = (j + 1);
-            localawir.a(j);
+            localLocationItem.a(j);
           }
-          localawir.a(((awir)localObject).a(), Double.valueOf(((awir)localObject).a()));
+          localLocationItem.a(((LocationItem)localObject).a(), Double.valueOf(((LocationItem)localObject).a()));
         }
       }
     }
@@ -228,9 +226,9 @@ public class LocationRoom
     return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean a(awit paramawit)
+  public boolean a(LocationRoom.RoomKey paramRoomKey)
   {
-    return this.jdField_a_of_type_Awit.equals(paramawit);
+    return this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.equals(paramRoomKey);
   }
   
   public int b()
@@ -245,7 +243,7 @@ public class LocationRoom
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
     Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
     while (localIterator.hasNext()) {
-      localArrayList.add(((awir)localIterator.next()).a());
+      localArrayList.add(((LocationItem)localIterator.next()).a());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue != null) {
       localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
@@ -263,7 +261,7 @@ public class LocationRoom
     return this.jdField_b_of_type_Boolean;
   }
   
-  public List<awir> c()
+  public List<LocationItem> c()
   {
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + 1);
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilLinkedHashMap.values());
@@ -282,7 +280,7 @@ public class LocationRoom
     if (!(paramObject instanceof LocationRoom)) {
       return false;
     }
-    return this.jdField_a_of_type_Awit.equals(((LocationRoom)paramObject).jdField_a_of_type_Awit);
+    return this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.equals(((LocationRoom)paramObject).jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
   }
 }
 

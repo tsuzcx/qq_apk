@@ -1,61 +1,60 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Bundle;
-import aoep;
-import bgth;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.service.troop.TroopNotificationConstants;
+import com.tencent.mobileqq.trooponline.data.TroopOnlineMemberManager;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
 
-public class TroopHandler$6
+class TroopHandler$6
   implements Runnable
 {
-  public TroopHandler$6(aoep paramaoep, String paramString) {}
+  TroopHandler$6(TroopHandler paramTroopHandler, String paramString) {}
   
   public void run()
   {
-    Object localObject = (bgth)this.this$0.app.getManager(QQManagerFactory.TROOP_ONLINE_MEMBER_MANAGER);
-    if ((((bgth)localObject).a(this.a) != 3) && (NetConnInfoCenter.getServerTime() < ((bgth)localObject).c(this.a)))
+    Object localObject1 = (TroopOnlineMemberManager)TroopHandler.a(this.this$0).getManager(QQManagerFactory.TROOP_ONLINE_MEMBER_MANAGER);
+    if (NetConnInfoCenter.getServerTime() < ((TroopOnlineMemberManager)localObject1).d(this.a))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("TroopHandler", 2, "getAllOnlineMemberList, too frequency");
+        QLog.i("TroopHandler", 2, "getAllGameOnlineMemberList, too frequency");
       }
-      localObject = ((bgth)localObject).b(this.a);
-      this.this$0.notifyUI(101, true, new Object[] { this.a, localObject });
+      localObject1 = ((TroopOnlineMemberManager)localObject1).c(this.a);
+      this.this$0.notifyUI(TroopNotificationConstants.aY, true, new Object[] { this.a, localObject1 });
       return;
     }
-    for (;;)
+    try
     {
-      try
+      Object localObject2 = (TroopManager)TroopHandler.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER);
+      localObject1 = new oidb_0xa2a.ReqBody();
+      ((oidb_0xa2a.ReqBody)localObject1).group_id.set(Long.valueOf(this.a).longValue());
+      ((oidb_0xa2a.ReqBody)localObject1).is_private.set(((TroopManager)localObject2).n(this.a));
+      localObject2 = ((TroopManager)localObject2).c(this.a);
+      if (localObject2 != null)
       {
-        if (((bgth)localObject).a(this.a) == 3)
-        {
-          i = 4;
-          localObject = new oidb_0xa2a.ReqBody();
-          ((oidb_0xa2a.ReqBody)localObject).group_id.set(Long.valueOf(this.a).longValue());
-          ((oidb_0xa2a.ReqBody)localObject).is_private.set(TroopInfo.isQidianPrivateTroop(this.this$0.app, this.a));
-          localObject = this.this$0.makeOIDBPkg("OidbSvc.0xa2a_1", 2602, i, ((oidb_0xa2a.ReqBody)localObject).toByteArray());
-          ((ToServiceMsg)localObject).extraData.putString("troopUin", this.a);
-          this.this$0.sendPbReq((ToServiceMsg)localObject);
-          return;
-        }
+        ((oidb_0xa2a.ReqBody)localObject1).hok_appid.set((int)((TroopInfo)localObject2).hlGuildAppid);
+        ((oidb_0xa2a.ReqBody)localObject1).hok_type.set((int)((TroopInfo)localObject2).hlGuildSubType);
       }
-      catch (Exception localException)
-      {
-        QLog.i("TroopHandler", 1, "getAllOnlineMemberList, e=" + localException.toString());
-        return;
-      }
-      int i = 1;
+      localObject1 = this.this$0.makeOIDBPkg("OidbSvc.0xa2a_6", 2602, 6, ((oidb_0xa2a.ReqBody)localObject1).toByteArray());
+      ((ToServiceMsg)localObject1).extraData.putString("troopUin", this.a);
+      this.this$0.sendPbReq((ToServiceMsg)localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.i("TroopHandler", 1, "getAllGameOnlineMemberList, e=" + localException.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopHandler.6
  * JD-Core Version:    0.7.0.1
  */

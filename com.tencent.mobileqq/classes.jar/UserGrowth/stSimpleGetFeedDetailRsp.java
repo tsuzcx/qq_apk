@@ -8,7 +8,7 @@ public final class stSimpleGetFeedDetailRsp
   extends JceStruct
 {
   static stSimpleMetaFeed cache_feed = new stSimpleMetaFeed();
-  public stSimpleMetaFeed feed;
+  public stSimpleMetaFeed feed = null;
   
   public stSimpleGetFeedDetailRsp() {}
   

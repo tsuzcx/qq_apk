@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.extendfriend.wiget;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
+final class CompletePersonalDataDialog$init$2
+  implements DialogInterface.OnCancelListener
+{
+  public static final 2 a = new 2();
+  
+  public final void onCancel(DialogInterface paramDialogInterface)
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.CompletePersonalDataDialog.init.2
+ * JD-Core Version:    0.7.0.1
+ */

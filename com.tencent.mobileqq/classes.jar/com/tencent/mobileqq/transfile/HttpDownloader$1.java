@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
 import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 
 final class HttpDownloader$1
-  implements INetEngine.INetEngineListener
+  implements INetEngineListener
 {
   long fileSize = 0L;
   
-  HttpDownloader$1(URLDrawableHandler paramURLDrawableHandler, String paramString, HttpDownloaderParams paramHttpDownloaderParams) {}
+  HttpDownloader$1(long paramLong, boolean paramBoolean, IHttpEngineService paramIHttpEngineService, URLDrawableHandler paramURLDrawableHandler, String paramString, HttpDownloaderParams paramHttpDownloaderParams) {}
   
   public void onResp(NetResp paramNetResp)
   {
@@ -54,9 +55,17 @@ final class HttpDownloader$1
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
+      QLog.i("HttpDownloader", 2, " StructPicLimit onUpdateProgeress totalLen = " + paramLong2 + " ,curOffset = " + paramLong1 + ",picMaxLen = " + this.val$picMaxLen);
     }
     this.fileSize = paramLong2;
+    if ((this.val$openSwitch) && ((this.fileSize > this.val$picMaxLen) || (paramLong1 > this.val$picMaxLen)))
+    {
+      this.val$netEngine.cancelReq(paramNetReq);
+      if (this.val$handler != null) {
+        this.val$handler.onFileDownloadFailed(17174);
+      }
+      QLog.i("HttpDownloader", 2, " StructPicLimit file too big to download, cancel the download req");
+    }
   }
 }
 

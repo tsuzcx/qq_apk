@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
-import ofk;
-import ofl;
 
 public class AdControlView
   extends RelativeLayout
@@ -39,24 +37,27 @@ public class AdControlView
   public AdControlView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
     a(paramContext);
     d();
   }
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(getContext()).inflate(2131559307, this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380842);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131381097);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131362101);
-    this.d = findViewById(2131362114);
-    this.e = findViewById(2131371553);
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = ((AdvertisementSplitedProgressBar)findViewById(2131381036));
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131718479));
-    this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131698848));
-    this.jdField_c_of_type_AndroidViewView.setContentDescription(getResources().getString(2131689506));
-    this.d.setContentDescription(getResources().getString(2131692544));
-    this.e.setContentDescription(getResources().getString(2131689506));
+    LayoutInflater.from(getContext()).inflate(2131559372, this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131381290);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131381567);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131362122);
+    this.d = findViewById(2131362134);
+    this.e = findViewById(2131371865);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = ((AdvertisementSplitedProgressBar)findViewById(2131381504));
+    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131719002));
+    this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131699166));
+    this.jdField_c_of_type_AndroidViewView.setContentDescription(getResources().getString(2131689507));
+    this.d.setContentDescription(getResources().getString(2131692678));
+    this.e.setContentDescription(getResources().getString(2131689507));
   }
   
   private void d()
@@ -64,8 +65,8 @@ public class AdControlView
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F, 1.0F }).setDuration(1000L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ofk(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new ofl(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new AdControlView.1(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new AdControlView.2(this));
   }
   
   public View a()
@@ -82,7 +83,7 @@ public class AdControlView
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841634);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841777);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_Boolean = true;
   }
@@ -196,7 +197,7 @@ public class AdControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.AdControlView
  * JD-Core Version:    0.7.0.1
  */

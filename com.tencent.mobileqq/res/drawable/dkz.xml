@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/ftr" />
-    <item android:drawable="@drawable/ftn" />
-</selector>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffffff" />
+            <corners android:radius="5.0dip" />
+        </shape>
+    </item>
+</layer-list>

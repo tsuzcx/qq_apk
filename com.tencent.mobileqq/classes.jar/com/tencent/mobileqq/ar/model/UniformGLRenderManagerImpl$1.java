@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.ar.model;
 
-import aped;
-import appa;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
 
-public class UniformGLRenderManagerImpl$1
+class UniformGLRenderManagerImpl$1
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$1(appa paramappa, aped paramaped) {}
+  UniformGLRenderManagerImpl$1(UniformGLRenderManagerImpl paramUniformGLRenderManagerImpl, ARBaseRender paramARBaseRender) {}
   
   public void run()
   {

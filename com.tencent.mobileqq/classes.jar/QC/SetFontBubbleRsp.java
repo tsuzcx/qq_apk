@@ -10,9 +10,9 @@ public final class SetFontBubbleRsp
   static BubbleRsp cache_stBubbleRsp = new BubbleRsp();
   static FontRsp cache_stFontRsp;
   static CommonRsp cache_stRet = new CommonRsp();
-  public BubbleRsp stBubbleRsp;
-  public FontRsp stFontRsp;
-  public CommonRsp stRet;
+  public BubbleRsp stBubbleRsp = null;
+  public FontRsp stFontRsp = null;
+  public CommonRsp stRet = null;
   
   static
   {

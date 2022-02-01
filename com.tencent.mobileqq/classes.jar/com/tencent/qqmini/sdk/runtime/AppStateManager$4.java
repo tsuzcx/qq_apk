@@ -12,7 +12,7 @@ class AppStateManager$4
   
   public void run()
   {
-    if ((AppStateManager.access$300()) || (this.this$0.hasFirstDomReadied)) {}
+    if ((AppStateManager.access$400()) || (this.this$0.hasFirstDomReadied)) {}
     BaseRuntime localBaseRuntime;
     do
     {
@@ -22,7 +22,7 @@ class AppStateManager$4
     QMLog.e("minisdk-start_RuntimeState", "js error! start X5 guide.");
     try
     {
-      AppStateManager.access$302(true);
+      AppStateManager.access$402(true);
       ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).startDownloadX5(localBaseRuntime);
       return;
     }
@@ -34,7 +34,7 @@ class AppStateManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppStateManager.4
  * JD-Core Version:    0.7.0.1
  */

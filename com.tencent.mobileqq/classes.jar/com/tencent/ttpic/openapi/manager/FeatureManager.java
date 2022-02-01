@@ -3,32 +3,13 @@ package com.tencent.ttpic.openapi.manager;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.openapi.PTFaceDetector;
-import com.tencent.ttpic.openapi.initializer.Ace3DEngineInitializer;
-import com.tencent.ttpic.openapi.initializer.Face3DLibInitializer;
-import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
-import com.tencent.ttpic.openapi.initializer.GpuParticleInitializer;
-import com.tencent.ttpic.openapi.initializer.MaskImagesInitializer;
-import com.tencent.ttpic.openapi.initializer.PagInitializer;
-import com.tencent.ttpic.openapi.initializer.ParticleSystemInitializer;
+import com.tencent.ttpic.openapi.initializer.LightSdkInitializer;
 import com.tencent.ttpic.openapi.initializer.PtuAlgoInitializer;
 import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
-import com.tencent.ttpic.openapi.initializer.TNNGenderSwitchInitializer;
-import com.tencent.ttpic.openapi.initializer.TNNGestureInitializer;
-import com.tencent.ttpic.openapi.initializer.TNNRGBDepthInitializer;
-import com.tencent.ttpic.openapi.initializer.TNNSegCpuInitializer;
-import com.tencent.ttpic.openapi.initializer.TNNSegGpuInitializer;
-import com.tencent.ttpic.openapi.initializer.TNNStyleChildInitializer;
-import com.tencent.ttpic.openapi.initializer.TNNTongueDetectIntializer;
-import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
-import com.tencent.ttpic.openapi.initializer.VoiceChangerInitializer;
 import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
-import com.tencent.ttpic.openapi.model.FaceStyleItem.StyleChangeType;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.io.File;
 
 public class FeatureManager
@@ -74,105 +55,11 @@ public class FeatureManager
   
   public static boolean ensureMaterialSoLoaded(VideoMaterial paramVideoMaterial)
   {
-    boolean bool1 = true;
-    if (paramVideoMaterial == null) {
+    if (paramVideoMaterial == null) {}
+    while (FeatureManager.Features.LIGHT_SDK.isFunctionReady()) {
       return true;
     }
-    if ((VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial)) && (!FeatureManager.Features.ACE_3D_ENGINE.isFunctionReady())) {}
-    for (boolean bool3 = FeatureManager.Features.ACE_3D_ENGINE.init() & true;; bool3 = true)
-    {
-      boolean bool2 = bool3;
-      if (VideoMaterialUtil.needVoiceChange(paramVideoMaterial))
-      {
-        bool2 = bool3;
-        if (!FeatureManager.Features.VOICE_CHANGDER.isFunctionReady()) {
-          bool2 = bool3 & FeatureManager.Features.VOICE_CHANGDER.init();
-        }
-      }
-      bool3 = bool2;
-      if (VideoMaterialUtil.isAudio2textMaterial(paramVideoMaterial))
-      {
-        bool3 = bool2;
-        if (!FeatureManager.Features.VOICE_TO_TEXT.isFunctionReady()) {
-          bool3 = bool2 & FeatureManager.Features.VOICE_TO_TEXT.init();
-        }
-      }
-      bool2 = bool3;
-      if (VideoMaterialUtil.isParticleMaterial(paramVideoMaterial))
-      {
-        bool2 = bool3;
-        if (!FeatureManager.Features.PARTICLE_SYSTEM.isFunctionReady()) {
-          bool2 = bool3 & FeatureManager.Features.PARTICLE_SYSTEM.init();
-        }
-      }
-      bool3 = bool2;
-      if (VideoMaterialUtil.is3DCosMaterial(paramVideoMaterial))
-      {
-        bool3 = bool2;
-        if (!FeatureManager.Features.FACE_3D_LIB.isFunctionReady()) {
-          bool3 = bool2 & FeatureManager.Features.FACE_3D_LIB.init();
-        }
-      }
-      bool2 = bool3;
-      if (VideoMaterialUtil.isAnimojiTongueMaterial(paramVideoMaterial))
-      {
-        bool2 = bool3;
-        if (!FeatureManager.Features.TNN_TONGUE_DETECT.isFunctionReady()) {
-          bool2 = bool3 & FeatureManager.Features.TNN_TONGUE_DETECT.init();
-        }
-      }
-      if (!VideoMaterialUtil.isHairSegMaterial(paramVideoMaterial))
-      {
-        bool3 = bool2;
-        if (!VideoMaterialUtil.isSkySegMaterial(paramVideoMaterial)) {}
-      }
-      else
-      {
-        if ((!FeatureManager.Features.RAPID_NET_SEG_GPU.init()) || (!FeatureManager.Features.RAPID_NET_SEG_CPU.init())) {
-          break label373;
-        }
-      }
-      for (;;)
-      {
-        bool3 = bool2 & bool1;
-        bool2 = bool3;
-        if (VideoMaterialUtil.isGestureDetectMaterial(paramVideoMaterial)) {
-          bool2 = bool3 & FeatureManager.Features.RAPID_NET_GESTURE.init();
-        }
-        bool3 = bool2;
-        if (VideoMaterialUtil.isGpuParticleMaterial(paramVideoMaterial)) {
-          bool3 = bool2 & FeatureManager.Features.GPU_PARTICLE.init();
-        }
-        bool2 = bool3;
-        if (VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.GENDER_SWITCH)) {
-          bool2 = bool3 & FeatureManager.Features.RAPID_NET_GENDER_SWITCH.init();
-        }
-        bool3 = bool2;
-        if (VideoMaterialUtil.isNeedDepthMask(paramVideoMaterial)) {
-          bool3 = bool2 & FeatureManager.Features.RAPID_NET_RGB_DEPTH.init();
-        }
-        if ((!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.CHILD_STYLE)) && (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.CARTOON_STYLE)) && (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.FACE_CHANGE)))
-        {
-          bool2 = bool3;
-          if (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.CHANGE_GENDER)) {}
-        }
-        else
-        {
-          bool2 = bool3 & FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.init();
-        }
-        bool3 = bool2;
-        if (VideoMaterialUtil.isPagMaterial(paramVideoMaterial))
-        {
-          bool3 = bool2;
-          if (!FeatureManager.Features.PAG.isFunctionReady()) {
-            bool3 = bool2 & FeatureManager.Features.PAG.init();
-          }
-        }
-        return bool3;
-        label373:
-        bool1 = false;
-      }
-    }
+    return FeatureManager.Features.LIGHT_SDK.init();
   }
   
   public static String getResourceDir()
@@ -187,12 +74,12 @@ public class FeatureManager
   
   public static boolean isBasicFeaturesFunctionReady()
   {
-    return (FeatureManager.Features.YT_COMMON.isFunctionReady()) && (FeatureManager.Features.FACE_DETECT.isFunctionReady()) && (FeatureManager.Features.PTU_TOOLS.isFunctionReady()) && (FeatureManager.Features.PTU_ALGO.isFunctionReady()) && (FeatureManager.Features.MASK_IMAGES.isFunctionReady());
+    return (FeatureManager.Features.YT_COMMON.isFunctionReady()) && (FeatureManager.Features.PTU_TOOLS.isFunctionReady()) && (FeatureManager.Features.PTU_ALGO.isFunctionReady()) && (FeatureManager.Features.LIGHT_SDK.isFunctionReady());
   }
   
   public static boolean isBasicFeaturesReadyInDir(String paramString)
   {
-    return FeatureManager.Features.YT_COMMON.isSoReadyInDirectory(paramString) & FeatureManager.Features.PTU_ALGO.isSoReadyInDirectory(paramString) & FeatureManager.Features.PTU_TOOLS.isSoReadyInDirectory(paramString) & FeatureManager.Features.FACE_DETECT.isSoReadyInDirectory(paramString) & FeatureManager.Features.MASK_IMAGES.isSoReadyInDirectory(paramString);
+    return FeatureManager.Features.YT_COMMON.isSoReadyInDirectory(paramString) & FeatureManager.Features.PTU_ALGO.isSoReadyInDirectory(paramString) & FeatureManager.Features.PTU_TOOLS.isSoReadyInDirectory(paramString) & FeatureManager.Features.LIGHT_SDK.isSoReadyInDirectory(paramString);
   }
   
   public static boolean isEnableResourceCheck()
@@ -215,16 +102,11 @@ public class FeatureManager
     if (!AEModule.isAeKitSupportVersion()) {
       return false;
     }
-    boolean bool1 = true;
+    boolean bool = true;
     if (paramBoolean) {
-      bool1 = true & FeatureManager.Features.YT_COMMON.init() & AIManager.installDetector(PTFaceDetector.class, FeatureManager.Features.FACE_DETECT.getSoDirOverrideFeatureManager(), FeatureManager.Features.FACE_DETECT.getResourceDirOverrideFeatureManager());
+      bool = true & FeatureManager.Features.YT_COMMON.init();
     }
-    boolean bool2 = bool1 & FeatureManager.Features.PTU_TOOLS.init() & FeatureManager.Features.PTU_ALGO.init();
-    bool1 = bool2;
-    if (bool2) {
-      bool1 = bool2 & FeatureManager.Features.MASK_IMAGES.init();
-    }
-    return bool1 & FeatureManager.Features.MASK_IMAGES.init();
+    return bool & FeatureManager.Features.PTU_TOOLS.init() & FeatureManager.Features.PTU_ALGO.init() & FeatureManager.Features.LIGHT_SDK.init();
   }
   
   public static void setModelDir(String paramString)
@@ -249,7 +131,7 @@ public class FeatureManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.manager.FeatureManager
  * JD-Core Version:    0.7.0.1
  */

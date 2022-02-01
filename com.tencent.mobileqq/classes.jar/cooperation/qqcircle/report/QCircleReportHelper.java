@@ -1,32 +1,34 @@
 package cooperation.qqcircle.report;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.PowerManager;
 import android.text.TextUtils;
-import bizw;
-import bjls;
-import com.tencent.biz.qcircleshadow.local.requests.QCircleGetSessionInfoRequest;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleHeartbeatSignalReportRequest;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.richframework.network.request.BaseRequest;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
+import com.tencent.mobileqq.qcircle.api.requests.QCircleGetSessionInfoRequest;
+import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
+import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
+import com.tencent.mobileqq.qroute.QRoute;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
-import cooperation.qzone.QUA;
-import cooperation.qzone.util.NetworkState;
-import cooperation.qzone.util.QZLog;
 import feedcloud.FeedCloudCommon.BytesEntry;
 import feedcloud.FeedCloudCommon.Entry;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import feedcloud.FeedCloudRead.StGetSessionInfoRsp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -34,12 +36,14 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import qqcircle.QQCircleReport.SingleDcData;
-import wyy;
 
 public class QCircleReportHelper
 {
   public static final String MAP_KEY_CIRCLE_INVITE_ID = "circle_invite";
+  public static final String MAP_KEY_COMMON_REPORT_INFO = "CommReportInfo";
   public static final String MAP_KEY_FEED_REPORT_INFO = "FeedReportInfo";
   public static final String MAP_KEY_MSG_REPORT_INFO = "MsgReportInfo";
   public static final String MAP_KEY_SESSION = "SessionID";
@@ -55,6 +59,8 @@ public class QCircleReportHelper
   public static final int SCENE_PAGE_ID_MESSAGE_PAGE = 59;
   public static final int SCENE_PAGE_ID_PAT_NAME_POLYMERIZATION_PAGE = 72;
   public static final int SCENE_PAGE_ID_PERSONAL_DETAIL_PAGE = 32;
+  public static final int SCENE_PAGE_ID_POLYMERIZE_DETAIL_ARK_PAGE = 89;
+  public static final int SCENE_PAGE_ID_POLYMERIZE_DETAIL_ARK_TOPIC_PAGE = 88;
   public static final int SCENE_PAGE_ID_POLYMERIZE_DETAIL_FRIEND_PAGE = 84;
   public static final int SCENE_PAGE_ID_POLYMERIZE_DETAIL_GROUP_PAGE = 83;
   public static final int SCENE_PAGE_ID_POLYMERIZE_DETAIL_QZONE_PAGE = 85;
@@ -64,10 +70,10 @@ public class QCircleReportHelper
   public static final int SCENE_PAGE_ID_TROOP_AGGREGATION_PAGE = 70;
   public static final String TAG = "QCircleReportHelper";
   private static volatile QCircleReportHelper sInstance;
-  private boolean mHasLaunchReport;
+  private boolean mHasLaunchReport = false;
   private volatile ConcurrentHashMap<Long, String> mInviteIdMap = new ConcurrentHashMap();
   private volatile ConcurrentHashMap<Long, String> mInviteUinMap = new ConcurrentHashMap();
-  private boolean mIsForeground;
+  private boolean mIsForeground = false;
   private long mLastActiveTimestamp;
   private String mLaunchFrom;
   private String mLaunchId;
@@ -77,13 +83,14 @@ public class QCircleReportHelper
   private volatile ConcurrentHashMap<Integer, Long> mPageLifeMap = new ConcurrentHashMap();
   private volatile Stack<Integer> mPageStack = new Stack();
   private volatile ConcurrentHashMap<Integer, byte[]> mSceneSubSessionMap = new ConcurrentHashMap();
-  private volatile byte[] mSession;
+  private HashMap<String, String> mSchemeAttrs;
+  private volatile byte[] mSession = null;
   private int mSessionLifeCircle;
   private String mToUin;
   
   private QCircleReportHelper()
   {
-    QLog.d("QCircleReportHelper", 1, "newInstance");
+    RFLog.d("QCircleReportHelper", RFLog.USR, "newInstance");
   }
   
   private void checkNeedReportHeartBeat()
@@ -103,8 +110,15 @@ public class QCircleReportHelper
     while (this.mSession == null) {
       return;
     }
-    QLog.w("QCircleReportHelper", 1, "reportLaunch launchFrom:" + this.mLaunchFrom);
-    QCircleLpReportDc05493.report(this.mToUin, this.mLaunchFrom, this.mLaunchId, this.mLaunchTimestamp, this.mLaunchScene);
+    RFLog.w("QCircleReportHelper", RFLog.USR, "reportLaunch launchFrom:" + this.mLaunchFrom);
+    String str1 = "";
+    String str2 = "";
+    if (this.mSchemeAttrs != null)
+    {
+      str1 = (String)this.mSchemeAttrs.get(QCircleReportFirstLogin.FEED_ID);
+      str2 = (String)this.mSchemeAttrs.get(QCircleReportFirstLogin.SHARE_ID);
+    }
+    QCircleLpReportDc05493.report(this.mToUin, this.mLaunchFrom, this.mLaunchId, this.mLaunchTimestamp, this.mLaunchScene, str1, str2);
     this.mHasLaunchReport = true;
   }
   
@@ -146,12 +160,17 @@ public class QCircleReportHelper
   
   public static String getNetworkType()
   {
-    int j = NetworkState.getNetworkType();
+    int j = QCircleServiceImpl.getQZoneService().getNetworkType();
     int i = j;
     if (j == 0) {
       i = 9;
     }
     return String.valueOf(i);
+  }
+  
+  public static int getQQCirclePageStackNum()
+  {
+    return getInstance().mPageStack.size();
   }
   
   private void handleReportSessionRsp(FeedCloudRead.StGetSessionInfoRsp paramStGetSessionInfoRsp, int paramInt)
@@ -178,14 +197,14 @@ public class QCircleReportHelper
           this.mLaunchTimestamp = l;
           checkNeedReportLaunch();
         } while (this.mSession == null);
-        QLog.d("QCircleReportHelper", 1, "handleReportSessionRsp scene:ENTRY_APP，Session:" + new String(this.mSession));
+        RFLog.d("QCircleReportHelper", RFLog.USR, "handleReportSessionRsp scene:ENTRY_APP，Session:" + new String(this.mSession));
         QCircleReporter.getInstance().reportCacheDataListToServerWithSession(this.mSession);
         return;
       } while (1 != paramStGetSessionInfoRsp.sessionType.get());
       this.mSession = paramStGetSessionInfoRsp.sessonID.get().toByteArray();
       this.mSessionLifeCircle = paramStGetSessionInfoRsp.expireTime.get();
       this.mLastActiveTimestamp = System.currentTimeMillis();
-      QLog.d("QCircleReportHelper", 1, "handleReportSessionRsp scene:EXPIRED，Session:" + new String(this.mSession));
+      RFLog.d("QCircleReportHelper", RFLog.USR, "handleReportSessionRsp scene:EXPIRED，Session:" + new String(this.mSession));
       return;
     } while (2 != paramStGetSessionInfoRsp.sessionType.get());
     updateSubSession(36, paramStGetSessionInfoRsp.subSessonID.get().toByteArray());
@@ -193,12 +212,12 @@ public class QCircleReportHelper
   
   private boolean isAppOnForeground()
   {
-    return wyy.a(QCircleCommonUtil.getQQAppInterface());
+    return ((IQQBaseService)QRoute.api(IQQBaseService.class)).isQQForeground();
   }
   
   private boolean isDeviceInteractive()
   {
-    PowerManager localPowerManager = (PowerManager)BaseApplicationImpl.getApplication().getSystemService("power");
+    PowerManager localPowerManager = (PowerManager)MobileQQ.sMobileQQ.getApplicationContext().getSystemService("power");
     if (Build.VERSION.SDK_INT < 20) {
       return localPowerManager.isScreenOn();
     }
@@ -269,17 +288,34 @@ public class QCircleReportHelper
   
   private void releaseQCircleMemory() {}
   
-  private void reportPageStayTime(int paramInt)
+  private void reportPageStayTime(int paramInt, boolean paramBoolean)
   {
+    Long localLong;
+    long l1;
+    long l2;
+    long l3;
+    long l4;
     if (this.mPageLifeMap != null)
     {
-      Long localLong = (Long)this.mPageLifeMap.get(Integer.valueOf(paramInt));
+      localLong = (Long)this.mPageLifeMap.get(Integer.valueOf(paramInt));
       if ((localLong != null) && (localLong.longValue() > 0L))
       {
-        QCircleLpReportDc05503.report(this.mLaunchTimestamp, System.currentTimeMillis() - localLong.longValue(), paramInt, paramInt);
-        QLog.d("QCircleReportHelper", 2, "recordPageEndShow:scene:" + paramInt + ",cost:" + (System.currentTimeMillis() - localLong.longValue()) + "ms");
-        this.mPageLifeMap.remove(Integer.valueOf(paramInt));
+        l1 = this.mLaunchTimestamp;
+        l2 = System.currentTimeMillis();
+        l3 = localLong.longValue();
+        l4 = paramInt;
+        if (!paramBoolean) {
+          break label157;
+        }
       }
+    }
+    label157:
+    for (String str = "1";; str = "0")
+    {
+      QCircleLpReportDc05503.report(l1, l2 - l3, l4, str, "", "", "", "", "", paramInt);
+      RFLog.d("QCircleReportHelper", RFLog.CLR, "recordPageEndShow:scene:" + paramInt + ",cost:" + (System.currentTimeMillis() - localLong.longValue()) + "ms");
+      this.mPageLifeMap.remove(Integer.valueOf(paramInt));
+      return;
     }
   }
   
@@ -289,17 +325,17 @@ public class QCircleReportHelper
     {
       long l = System.currentTimeMillis() - this.mLastActiveTimestamp;
       this.mLastActiveTimestamp = 0L;
-      QLog.w("QCircleReportHelper", 1, "reportQCircleActiveIntervalTime intervalTime:" + l + "ms,signalOptType:" + paramInt);
+      RFLog.w("QCircleReportHelper", RFLog.USR, "reportQCircleActiveIntervalTime intervalTime:" + l + "ms,signalOptType:" + paramInt);
       if (this.mSession == null) {}
       for (Object localObject = this.mOldSession;; localObject = this.mSession)
       {
         localObject = new QCircleHeartbeatSignalReportRequest(l, paramInt, (byte[])localObject);
-        VSNetworkHelper.getInstance().sendRequest((VSBaseRequest)localObject, new QCircleReportHelper.2(this));
+        VSNetworkHelper.getInstance().sendRequest((BaseRequest)localObject, new QCircleReportHelper.2(this));
         checkNeedReportLaunch();
         return;
       }
     }
-    QLog.d("QCircleReportHelper", 1, "reportQCircleActiveIntervalTime invalid intervalTime,direct return!");
+    RFLog.d("QCircleReportHelper", RFLog.USR, "reportQCircleActiveIntervalTime invalid intervalTime,direct return!");
   }
   
   private void requestReportSession(FeedCloudCommon.StCommonExt paramStCommonExt, int paramInt)
@@ -310,7 +346,7 @@ public class QCircleReportHelper
   
   private void retireSession()
   {
-    QLog.w("QCircleReportHelper", 1, "retireSession");
+    RFLog.w("QCircleReportHelper", RFLog.USR, "retireSession");
     this.mOldSession = this.mSession;
     this.mSession = null;
     this.mSceneSubSessionMap.clear();
@@ -335,15 +371,15 @@ public class QCircleReportHelper
       if (this.mPageStack.size() > 0)
       {
         int i = ((Integer)this.mPageStack.peek()).intValue();
-        QZLog.d("QCircleReportHelper", 4, "getPageId:" + i);
+        RFLog.d("QCircleReportHelper", RFLog.DEV, "getPageId:" + i);
         return i;
       }
-      QZLog.e("QCircleReportHelper", 1, new Object[] { "getPageId error!" });
+      RFLog.e("QCircleReportHelper", RFLog.USR, "getPageId error!");
       return 0;
     }
     catch (Exception localException)
     {
-      QLog.e("QCircleReportHelper", 1, "getPageId exception:" + localException.toString());
+      RFLog.e("QCircleReportHelper", RFLog.USR, "getPageId exception:" + localException.toString());
     }
     return -1;
   }
@@ -387,7 +423,7 @@ public class QCircleReportHelper
   
   public void initReportSession()
   {
-    QLog.w("QCircleReportHelper", 1, "initReportSession");
+    RFLog.w("QCircleReportHelper", RFLog.USR, "initReportSession");
     this.mOldSession = null;
     requestReportSession(null, 1);
   }
@@ -414,7 +450,7 @@ public class QCircleReportHelper
   public List<FeedCloudCommon.Entry> newBaseEntries()
   {
     checkNeedReportHeartBeat();
-    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { newEntry("uin", String.valueOf(bizw.a().a())), newEntry("network_type", getNetworkType()), newEntry("app_version", "8.4.10.4875"), newEntry("qua", QUA.getQUA3()), newEntry("platform", "android"), newEntry("report_from", "1"), newEntry("os_version", Build.VERSION.RELEASE), newEntry("mobile_type", Build.MODEL), newEntry("respond_type", bjls.e()), newEntry("device_info", Build.DEVICE), newEntry("imei", bjls.c()), newEntry("idfa", ""), newEntry("idfv", "") }));
+    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { newEntry("uin", String.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin())), newEntry("network_type", getNetworkType()), newEntry("app_version", ((IAppSettingApi)QRoute.api(IAppSettingApi.class)).getReportVersionName()), newEntry("qua", QCircleServiceImpl.getQZoneService().getQUA3()), newEntry("platform", "android"), newEntry("report_from", "1"), newEntry("os_version", Build.VERSION.RELEASE), newEntry("mobile_type", Build.MODEL), newEntry("respond_type", QCircleServiceImpl.getQQService().getResolution()), newEntry("device_info", Build.DEVICE), newEntry("imei", QCircleServiceImpl.getQQService().getImei()), newEntry("idfa", ""), newEntry("idfv", "") }));
   }
   
   public List<FeedCloudCommon.BytesEntry> newSessionEntries()
@@ -459,34 +495,57 @@ public class QCircleReportHelper
       if (this.mOldSession != null)
       {
         localArrayList.add(newEntry("SessionID", this.mOldSession));
-        QLog.w("QCircleReportHelper", 1, "newSessionEntries mSession retired!try use oldSession");
+        RFLog.w("QCircleReportHelper", RFLog.USR, "newSessionEntries mSession retired!try use oldSession");
       }
       else
       {
-        QLog.e("QCircleReportHelper", 1, "newSessionEntries mSession is null!");
+        RFLog.e("QCircleReportHelper", RFLog.USR, "newSessionEntries mSession is null!");
       }
     }
     return null;
   }
   
+  public List<FeedCloudCommon.BytesEntry> newSessionEntries(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  {
+    paramArrayOfByte1 = newSessionEntries(paramInt, paramArrayOfByte1, paramArrayOfByte2);
+    if (paramArrayOfByte1 != null) {
+      if (paramArrayOfByte3 != null) {
+        paramArrayOfByte1.add(newEntry("CommReportInfo", paramArrayOfByte3));
+      }
+    }
+    while (paramArrayOfByte3 == null) {
+      return paramArrayOfByte1;
+    }
+    paramArrayOfByte1 = new ArrayList();
+    paramArrayOfByte1.add(newEntry("CommReportInfo", paramArrayOfByte3));
+    return paramArrayOfByte1;
+  }
+  
   public void onEnterBackground()
   {
-    if (((!isAppOnForeground()) || (!isDeviceInteractive())) && (isQQCircleActive()) && (this.mIsForeground))
+    RFLog.d("QCircleReportHelper", 2, "onQQEnterBackground!");
+    if (isQQCircleActive())
     {
-      QLog.d("QCircleReportHelper", 2, "onQQEnterBackground!");
-      reportQCircleActiveIntervalTime(2);
-      QCircleReporter.getInstance().flush();
-      this.mIsForeground = false;
+      if (this.mIsForeground)
+      {
+        reportQCircleActiveIntervalTime(2);
+        QCircleReporter.getInstance().flush();
+        this.mIsForeground = false;
+      }
+      RFLog.d("QCircleReportHelper", 2, "onQCircleEnterBackground!");
     }
   }
   
   public void onEnterForeground()
   {
+    RFLog.d("QCircleReportHelper", RFLog.CLR, "onQQEnterForeground!");
     if (!this.mIsForeground)
     {
-      QLog.d("QCircleReportHelper", 2, "onQQEnterForeground!");
-      if (isQQCircleActive()) {
+      if (isQQCircleActive())
+      {
+        RFLog.d("QCircleReportHelper", 2, "onQCircleEnterForeground!");
         checkSessionRetired();
+        QBaseActivity.setIsUnLockSuccess(true);
       }
       this.mIsForeground = true;
     }
@@ -494,36 +553,36 @@ public class QCircleReportHelper
   
   public void popPageScene(int paramInt)
   {
-    QLog.d("QCircleReportHelper", 2, "popPageScene scene:" + paramInt);
+    RFLog.d("QCircleReportHelper", RFLog.CLR, "popPageScene scene:" + paramInt);
     if (this.mPageStack.contains(Integer.valueOf(paramInt)))
     {
       if (((Integer)this.mPageStack.peek()).intValue() != paramInt) {
-        break label110;
+        break label116;
       }
       this.mPageStack.pop();
-      QLog.d("QCircleReportHelper", 2, "popPageScene success");
+      RFLog.d("QCircleReportHelper", RFLog.CLR, "popPageScene success");
     }
     for (;;)
     {
       if (this.mPageStack.size() == 0)
       {
-        QLog.w("QCircleReportHelper", 1, "no QQCircle Page Alive,exit QQCircle");
+        RFLog.w("QCircleReportHelper", RFLog.USR, "no QQCircle Page Alive,exit QQCircle");
         retireSession();
         this.mPageLifeMap.clear();
         reportQCircleActiveIntervalTime(1);
       }
       return;
-      label110:
-      QLog.e("QCircleReportHelper", 2, "popPageScene error!mismatch scene,current Page:" + this.mPageStack);
+      label116:
+      RFLog.e("QCircleReportHelper", RFLog.CLR, "popPageScene error!mismatch scene,current Page:" + this.mPageStack);
     }
   }
   
   public void pushPageScene(int paramInt)
   {
-    QLog.d("QCircleReportHelper", 2, "pushPageScene scene:" + paramInt);
+    RFLog.d("QCircleReportHelper", RFLog.CLR, "pushPageScene scene:" + paramInt);
     if ((this.mPageStack.size() > 0) && ((paramInt == 1) || (paramInt == 3) || (paramInt == 0)) && (this.mPageStack.contains(Integer.valueOf(paramInt))))
     {
-      QLog.e("QCircleReportHelper", 1, "pushPageScene scene:" + paramInt + ",PageStack leak:" + this.mPageStack + ",force clear");
+      RFLog.e("QCircleReportHelper", RFLog.USR, "pushPageScene scene:" + paramInt + ",PageStack leak:" + this.mPageStack + ",force clear");
       this.mPageStack.clear();
       this.mPageLifeMap.clear();
       reportQCircleActiveIntervalTime(1);
@@ -531,18 +590,19 @@ public class QCircleReportHelper
     }
     this.mPageStack.push(Integer.valueOf(paramInt));
     QCircleReporter.getInstance().flush();
-    QLog.d("QCircleReportHelper", 2, "pushPageScene success");
+    RFLog.d("QCircleReportHelper", RFLog.CLR, "pushPageScene success");
   }
   
-  public void recordPageEndShow(int paramInt)
+  public void recordPageEndShow(int paramInt, boolean paramBoolean)
   {
-    reportPageStayTime(paramInt);
+    reportPageStayTime(paramInt, paramBoolean);
+    RFLog.d("QCircleReportHelper", RFLog.CLR, "recordPageEndShow:scene:" + paramInt + ",hasActiveAction:" + paramBoolean);
   }
   
   public void recordPageStartShow(int paramInt)
   {
     this.mPageLifeMap.put(Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()));
-    QLog.d("QCircleReportHelper", 2, "recordPageStartShow:scene:" + paramInt);
+    RFLog.d("QCircleReportHelper", RFLog.CLR, "recordPageStartShow:scene:" + paramInt);
   }
   
   public void setInviteId(String paramString)
@@ -574,18 +634,19 @@ public class QCircleReportHelper
       this.mLaunchId = paramLaunchParam.launchId;
       this.mToUin = paramLaunchParam.toUin;
       this.mLaunchScene = paramLaunchParam.launchScene;
+      this.mSchemeAttrs = paramLaunchParam.schemeAttrs;
       if (TextUtils.isEmpty(this.mLaunchFrom)) {
-        QLog.e("QCircleReportHelper", 1, "setLaunchParms invalid launchfrom params");
+        RFLog.e("QCircleReportHelper", RFLog.USR, "setLaunchParms invalid launchfrom params");
       }
       initReportSession();
-      QLog.w("QCircleReportHelper", 1, "launchPageScene:" + this.mLaunchScene);
+      RFLog.w("QCircleReportHelper", RFLog.USR, "launchPageScene:" + this.mLaunchScene);
       checkNeedReportLaunch();
     }
   }
   
   public void updateReportSessionWhenExpired()
   {
-    QLog.d("QCircleReportHelper", 2, "updateReportSessionWhenExpired");
+    RFLog.d("QCircleReportHelper", RFLog.CLR, "updateReportSessionWhenExpired");
     requestReportSession(null, 2);
   }
   
@@ -596,7 +657,7 @@ public class QCircleReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReportHelper
  * JD-Core Version:    0.7.0.1
  */

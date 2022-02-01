@@ -10,9 +10,9 @@ public final class stGetFeedCommentListV2Req
   public String attach_info = "";
   public String commentId = "";
   public String feed_id = "";
-  public int getRepyListByPage;
+  public int getRepyListByPage = 0;
   public String replyId = "";
-  public int reqFrom;
+  public int reqFrom = 0;
   
   public stGetFeedCommentListV2Req() {}
   

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import bisf;
+import com.tencent.mobileqq.widget.QQBlur.BackgroundViewDirtyListener;
 
 class MiniAppDesktopLayout$4
-  implements bisf
+  implements QQBlur.BackgroundViewDirtyListener
 {
   MiniAppDesktopLayout$4(MiniAppDesktopLayout paramMiniAppDesktopLayout) {}
   

@@ -1,20 +1,61 @@
 package com.tencent.avgame.ui;
 
-import nin;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl;
+import com.tencent.avgame.gamelogic.data.EngineData;
+import com.tencent.qphone.base.util.QLog;
 
 class AVGameActivity$8
-  implements Runnable
+  extends BroadcastReceiver
 {
   AVGameActivity$8(AVGameActivity paramAVGameActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    nin.b(AVGameActivity.a(this.this$0));
+    try
+    {
+      QLog.d("AVGameActivity", 1, "mShareResultReceiver onReceive");
+      if (paramIntent == null) {
+        return;
+      }
+      paramContext = paramIntent.getAction();
+      if (paramContext == null) {
+        return;
+      }
+      if (!"com.tencent.mobileqq.app.avgameshare.avgameshareutil".equals(paramContext)) {
+        return;
+      }
+      if (paramIntent.getBooleanExtra("avgame_share_result_success", false))
+      {
+        QLog.i("AVGameActivity", 1, "mShareResultReceiver onReceive success");
+        if (paramIntent.getIntExtra("avgame_share_result_type", 0) == 0) {
+          this.a.e();
+        }
+        if (AVGameActivity.a(this.a) == null) {
+          return;
+        }
+        paramContext = GameEngine.a().a();
+        if (paramContext == null) {
+          return;
+        }
+        GameActivityCenterCtrl.a().a(this.a, paramContext.b());
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("AVGameActivity", 1, "onReceive error: " + paramContext.getMessage());
+      return;
+    }
+    QLog.i("AVGameActivity", 1, "mShareResultReceiver onReceive fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class stRedDotMenu
   static stSchema cache_schema = new stSchema();
   public String imageUrl = "";
   public String menuKey = "";
-  public stSchema schema;
+  public stSchema schema = null;
   public String text = "";
   
   public stRedDotMenu() {}

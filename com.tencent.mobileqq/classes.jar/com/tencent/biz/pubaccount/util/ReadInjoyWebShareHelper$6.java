@@ -5,23 +5,22 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.text.TextUtils;
+import com.tencent.biz.common.util.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nwh;
-import uvh;
 
-public class ReadInjoyWebShareHelper$6
+class ReadInjoyWebShareHelper$6
   implements Runnable
 {
-  public ReadInjoyWebShareHelper$6(uvh paramuvh, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
+  ReadInjoyWebShareHelper$6(ReadInjoyWebShareHelper paramReadInjoyWebShareHelper, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("WebShareHelper", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    String str = nwh.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
     if (QLog.isColorLevel()) {
       QLog.d("WebShareHelper", 2, "shareMsgToSina path:" + str);
     }
@@ -42,7 +41,7 @@ public class ReadInjoyWebShareHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

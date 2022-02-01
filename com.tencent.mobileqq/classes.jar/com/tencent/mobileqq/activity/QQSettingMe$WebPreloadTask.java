@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import aesk;
-import com.tencent.mobileqq.apollo.SettingMeApolloViewController;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.api.ISettingMeApolloViewController;
+import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-public class QQSettingMe$WebPreloadTask
+class QQSettingMe$WebPreloadTask
   implements Runnable
 {
   private WeakReference<QQSettingMe> a;
@@ -33,14 +32,14 @@ public class QQSettingMe$WebPreloadTask
         if ((localQQSettingMe == null) || (localQQSettingMe.a == null)) {
           break;
         }
-        WebProcessManager localWebProcessManager = (WebProcessManager)localQQSettingMe.a.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
-        if (localWebProcessManager == null) {
+        IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)localQQSettingMe.a.getRuntimeService(IWebProcessManagerService.class, "");
+        if (localIWebProcessManagerService == null) {
           break;
         }
-        if (ApolloUtil.a(localQQSettingMe.a, QQSettingMe.a(localQQSettingMe).a))
+        if (((IApolloUtil)QRoute.api(IApolloUtil.class)).checkPreloadOnSettingMe(localQQSettingMe.a, QQSettingMe.a(localQQSettingMe).getView()))
         {
           i = 100;
-          localWebProcessManager.a(i, new aesk(this, localQQSettingMe));
+          localIWebProcessManagerService.startWebProcess(i, new QQSettingMe.WebPreloadTask.1(this, localQQSettingMe));
           return;
         }
       }
@@ -55,7 +54,7 @@ public class QQSettingMe$WebPreloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask
  * JD-Core Version:    0.7.0.1
  */

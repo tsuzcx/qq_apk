@@ -1,6 +1,7 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,7 +10,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.Arrays;
-import ykq;
 
 @TargetApi(14)
 class Util
@@ -42,7 +42,7 @@ class Util
     }
     catch (IOException paramInputStream)
     {
-      ykq.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
+      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
       return null;
     }
     return paramInputStream;
@@ -92,7 +92,7 @@ class Util
       if (!paramFFmpegExecuteAsyncTask.isCancelled()) {
         paramFFmpegExecuteAsyncTask.cancel(true);
       }
-      ykq.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramFFmpegExecuteAsyncTask.cmd) });
+      SLog.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramFFmpegExecuteAsyncTask.cmd) });
     }
   }
   
@@ -117,7 +117,7 @@ class Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.Util
  * JD-Core Version:    0.7.0.1
  */

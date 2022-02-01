@@ -25,8 +25,8 @@ class GdtVideoCommonView$6
     GdtVideoCommonView.c(this.this$0).setVisibility(0);
     if (GdtVideoCommonView.b(this.this$0) > 0L)
     {
-      String str = FileUtils.getFileSize(GdtVideoCommonView.b(this.this$0));
-      str = String.format(GdtVideoCommonView.a(this.this$0).getString(2131689548), new Object[] { str });
+      String str = FileUtils.a(GdtVideoCommonView.b(this.this$0));
+      str = String.format(GdtVideoCommonView.a(this.this$0).getString(2131689555), new Object[] { str });
       GdtVideoCommonView.b(this.this$0).setText(str);
       GdtVideoCommonView.b(this.this$0).setVisibility(0);
       GdtVideoCommonView.b(this.this$0).setVisibility(8);
@@ -38,7 +38,7 @@ class GdtVideoCommonView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.6
  * JD-Core Version:    0.7.0.1
  */

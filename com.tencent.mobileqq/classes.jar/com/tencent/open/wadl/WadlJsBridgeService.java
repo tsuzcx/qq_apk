@@ -7,10 +7,10 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import bjqp;
-import bmqk;
-import bmql;
-import cooperation.wadl.ipc.WadlParams;
+import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
+import com.tencent.gamecenter.wadl.util.WLog;
+import cooperation.wadl.ipc.WadlProxyServiceUtil;
+import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import mqq.app.AppService;
 
 public class WadlJsBridgeService
@@ -24,56 +24,33 @@ public class WadlJsBridgeService
   
   public WadlJsBridgeService()
   {
-    bjqp.c(jdField_a_of_type_JavaLangString, "WadlJsBridgeService new instance");
-  }
-  
-  private int a(String paramString)
-  {
-    
-    if ("start".equals(paramString)) {
-      return 0;
-    }
-    if ("complete".equals(paramString)) {
-      return 1;
-    }
-    if ("open".equals(paramString)) {
-      return 2;
-    }
-    if ("restart".equals(paramString)) {
-      return 4;
-    }
-    if ("pause".equals(paramString)) {
-      return 5;
-    }
-    return -1;
+    WLog.c(jdField_a_of_type_JavaLangString, "WadlJsBridgeService new instance");
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     String str = (String)paramMessage.obj;
-    bjqp.c(jdField_a_of_type_JavaLangString, "handleMessage what=" + paramMessage.what + "," + paramMessage.obj);
+    WLog.c(jdField_a_of_type_JavaLangString, "handleMessage what=" + paramMessage.what + "," + paramMessage.obj);
     switch (paramMessage.what)
     {
-    case 2: 
-    case 3: 
-    default: 
-    case 0: 
-    case 4: 
-      for (;;)
-      {
-        stopSelf(paramMessage.arg1);
-        return false;
-        bmqk.a().b(4, str);
-      }
-    case 5: 
-      bmqk.a().a(4, str);
-      return false;
     }
-    paramMessage = new WadlParams(str, "");
-    paramMessage.d = 4;
-    paramMessage.p = "biz_src_zf_games";
-    bmqk.a().b(paramMessage);
-    return false;
+    for (;;)
+    {
+      stopSelf(paramMessage.arg1);
+      return false;
+      WadlProxyServiceUtil.a().b(4, str);
+      continue;
+      WadlProxyServiceUtil.a().a(4, str);
+      return false;
+      paramMessage = new WadlParams(str, "");
+      paramMessage.d = 4;
+      paramMessage.p = "biz_src_zf_games";
+      WadlProxyServiceUtil.a().c(paramMessage);
+      return false;
+      WadlProxyServiceUtil.a().c(str);
+      continue;
+      WadlProxyServiceUtil.a().b(str);
+    }
   }
   
   public IBinder onBind(Intent paramIntent)
@@ -84,7 +61,7 @@ public class WadlJsBridgeService
   public void onCreate()
   {
     super.onCreate();
-    bjqp.c(jdField_a_of_type_JavaLangString, "onCreate...");
+    WLog.c(jdField_a_of_type_JavaLangString, "onCreate...");
     HandlerThread localHandlerThread = new HandlerThread(this.b, 10);
     localHandlerThread.start();
     this.jdField_a_of_type_AndroidOsLooper = localHandlerThread.getLooper();
@@ -94,19 +71,19 @@ public class WadlJsBridgeService
   public void onDestroy()
   {
     super.onDestroy();
-    bjqp.c(jdField_a_of_type_JavaLangString, "Service is Destroyed");
+    WLog.c(jdField_a_of_type_JavaLangString, "Service is Destroyed");
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    bjqp.c(jdField_a_of_type_JavaLangString, "onStartCommand flags=," + paramInt1 + ",startId=" + paramInt2 + ",intent=" + paramIntent);
+    WLog.c(jdField_a_of_type_JavaLangString, "onStartCommand flags=," + paramInt1 + ",startId=" + paramInt2 + ",intent=" + paramIntent);
     if (paramIntent != null)
     {
-      String str = paramIntent.getStringExtra("ACTIONNAME");
-      paramIntent = paramIntent.getStringExtra("appid");
-      bjqp.c(jdField_a_of_type_JavaLangString, "onStartCommand actionName= " + str + ",appId=" + paramIntent);
+      paramInt1 = paramIntent.getIntExtra("ACTIONNAME", 0);
+      paramIntent = paramIntent.getStringExtra("id");
+      WLog.c(jdField_a_of_type_JavaLangString, "onStartCommand action= " + paramInt1 + ",id=" + paramIntent);
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = a(str);
+      localMessage.what = paramInt1;
       localMessage.obj = paramIntent;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
     }
@@ -115,7 +92,7 @@ public class WadlJsBridgeService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.wadl.WadlJsBridgeService
  * JD-Core Version:    0.7.0.1
  */

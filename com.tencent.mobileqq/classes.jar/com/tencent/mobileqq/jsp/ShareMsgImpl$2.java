@@ -6,31 +6,30 @@ import android.content.pm.ApplicationInfo;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.text.TextUtils;
-import awam;
-import bicv;
+import com.tencent.biz.common.util.ImageUtil;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import com.tencent.mobileqq.wbapi.WBShareHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nwh;
 
-public class ShareMsgImpl$2
+class ShareMsgImpl$2
   implements Runnable
 {
-  public ShareMsgImpl$2(awam paramawam, String paramString1, Activity paramActivity, String paramString2, String paramString3, String paramString4, ApplicationInfo paramApplicationInfo) {}
+  ShareMsgImpl$2(ShareMsgImpl paramShareMsgImpl, String paramString1, Activity paramActivity, String paramString2, String paramString3, String paramString4, ApplicationInfo paramApplicationInfo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ShareMsgImpl", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    String str = nwh.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
     if (QLog.isColorLevel()) {
       QLog.d("ShareMsgImpl", 2, "shareMsgToSina path:" + str);
     }
-    if (bicv.a(this.jdField_a_of_type_AndroidAppActivity))
+    if (WBShareHelper.a(this.jdField_a_of_type_AndroidAppActivity))
     {
-      bicv.a(2).a((Activity)this.this$0.a, this.b, this.c, this.d, "text", BitmapFactory.decodeFile(str));
+      WBShareHelper.a(2).a((Activity)this.this$0.a, this.b, this.c, this.d, "text", BitmapFactory.decodeFile(str));
       QLog.d("ShareMsgImpl", 1, "shareMsgToSina use weibo sdk!");
     }
     for (;;)

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.phone;
 
-import Override;
-import ajcr;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,14 +8,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import anvx;
-import azis;
-import bdla;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.contact.phonecontact.permission.PermissionChecker;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.phonecontact.PermissionPageUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +28,7 @@ public class GuideBindPhoneActivity
   implements View.OnClickListener
 {
   protected int a;
-  protected azis a;
+  protected PermissionPageUtil a;
   protected int b = 0;
   
   public GuideBindPhoneActivity()
@@ -49,13 +48,13 @@ public class GuideBindPhoneActivity
   
   public void b()
   {
-    if ((VersionUtils.isM()) && (ajcr.a("android.permission.WRITE_CONTACTS")))
+    if ((VersionUtils.k()) && (PermissionChecker.a("android.permission.WRITE_CONTACTS")))
     {
       String str1 = getIntent().getStringExtra("key_contact_name");
       String str2 = getIntent().getStringExtra("key_contact_phone");
       PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER);
       if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (localPhoneContactManagerImp.b(str1, str2))) {
-        QQToast.a(getApplicationContext(), 2, anvx.a(2131704900), 0).a();
+        QQToast.a(getApplicationContext(), 2, HardCodeUtil.a(2131705443), 0).a();
       }
       finish();
     }
@@ -123,27 +122,27 @@ public class GuideBindPhoneActivity
     {
       paramBundle = new GuideBindPhoneActivity.1(this);
       GuideBindPhoneActivity.2 local2 = new GuideBindPhoneActivity.2(this);
-      ajcr.a(this, this.app, paramBundle, local2);
+      PermissionChecker.a(this, this.app, paramBundle, local2);
     }
-    setContentView(2131559298);
-    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131365097));
-    paramBundle = findViewById(2131369788);
+    setContentView(2131559339);
+    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131365233));
+    paramBundle = findViewById(2131370057);
     if ((paramBundle != null) && ("1000".equals(ThemeUtil.curThemeId))) {
-      paramBundle.setBackgroundResource(2130839458);
+      paramBundle.setBackgroundResource(2130839537);
     }
     for (;;)
     {
-      setTitle(null, getString(2131694594));
-      setLeftViewName(2131690499);
-      this.jdField_a_of_type_Azis = new azis(this, getPackageName());
-      findViewById(2131365096).setOnClickListener(this);
-      bdla.b(this.app, "dc00898", "", "", "0X8009F1B", "0X8009F1B", 0, 0, "", "", "", "");
+      setTitle(null, getString(2131694829));
+      setLeftViewName(2131690601);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactPermissionPageUtil = new PermissionPageUtil(this, getPackageName());
+      findViewById(2131365232).setOnClickListener(this);
+      ReportController.b(this.app, "dc00898", "", "", "0X8009F1B", "0X8009F1B", 0, 0, "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.i("GuideBindPhoneActivity", 2, String.format("init [%s, %s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
       }
       return true;
       if (paramBundle != null) {
-        paramBundle.setBackgroundResource(2130838911);
+        paramBundle.setBackgroundResource(2130838979);
       }
     }
   }
@@ -155,12 +154,12 @@ public class GuideBindPhoneActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365096)
+    if (paramView.getId() == 2131365232)
     {
       if (QLog.isColorLevel()) {
         QLog.i("GuideBindPhoneActivity", 2, "jump permission page");
       }
-      if (!VersionUtils.isM()) {
+      if (!VersionUtils.k()) {
         break label123;
       }
       if ((this.b == 2) || (this.b == 1)) {
@@ -171,19 +170,19 @@ public class GuideBindPhoneActivity
     {
       try
       {
-        this.jdField_a_of_type_Azis.a();
-        bdla.b(this.app, "dc00898", "", "", "0X8009F1C", "0X8009F1C", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqPhonecontactPermissionPageUtil.a();
+        ReportController.b(this.app, "dc00898", "", "", "0X8009F1C", "0X8009F1C", 0, 0, "", "", "", "");
         EventCollector.getInstance().onViewClicked(paramView);
         return;
       }
       catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
-        this.jdField_a_of_type_Azis.b();
+        this.jdField_a_of_type_ComTencentMobileqqPhonecontactPermissionPageUtil.b();
         continue;
       }
       label123:
-      this.jdField_a_of_type_Azis.b();
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactPermissionPageUtil.b();
     }
   }
   
@@ -196,7 +195,7 @@ public class GuideBindPhoneActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity
  * JD-Core Version:    0.7.0.1
  */

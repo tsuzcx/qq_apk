@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetCustomOnlineStatusRsp
   extends JceStruct
 {
-  public int iRet;
+  public int iRet = 0;
   public String sBuffer = "";
   public String sMsg = "";
   

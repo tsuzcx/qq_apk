@@ -4,15 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bkqb;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 
-public class NavigationJsPlugin$6
+class NavigationJsPlugin$6
   extends ResultReceiver
 {
-  public NavigationJsPlugin$6(bkqb parambkqb, Handler paramHandler, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
+  NavigationJsPlugin$6(NavigationJsPlugin paramNavigationJsPlugin, Handler paramHandler, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
     super(paramHandler);
   }
@@ -25,10 +24,10 @@ public class NavigationJsPlugin$6
       if (this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener != null) {
         this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener.onLaunchResult(true, null);
       }
-      if ((bkqb.a(this.jdField_a_of_type_Bkqb).getAttachedActivity() != null) && (!bkqb.b(this.jdField_a_of_type_Bkqb).getAttachedActivity().isFinishing()))
+      if ((NavigationJsPlugin.a(this.jdField_a_of_type_ComTencentQqminiProxyimplNavigationJsPlugin).getAttachedActivity() != null) && (!NavigationJsPlugin.b(this.jdField_a_of_type_ComTencentQqminiProxyimplNavigationJsPlugin).getAttachedActivity().isFinishing()))
       {
         QLog.d("NavigationJsPlugin", 1, "navigateBackMiniApp ok, finish current.");
-        bkqb.c(this.jdField_a_of_type_Bkqb).getAttachedActivity().finish();
+        NavigationJsPlugin.c(this.jdField_a_of_type_ComTencentQqminiProxyimplNavigationJsPlugin).getAttachedActivity().finish();
       }
     }
     do

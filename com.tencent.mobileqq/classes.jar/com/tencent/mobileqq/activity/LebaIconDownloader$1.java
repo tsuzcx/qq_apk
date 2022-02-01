@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Context;
-import asid;
-import bhee;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.DownloadInfo;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public final class LebaIconDownloader$1
+final class LebaIconDownloader$1
   implements Runnable
 {
-  public LebaIconDownloader$1(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, bhee parambhee) {}
+  LebaIconDownloader$1(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, HttpDownloadUtil.HttpDownloadListener paramHttpDownloadListener) {}
   
   public void run()
   {
@@ -19,8 +19,8 @@ public final class LebaIconDownloader$1
     try
     {
       Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      localObject = new asid(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
-      if (HttpDownloadUtil.downloadData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (asid)localObject, this.jdField_a_of_type_Bhee) == 0) {
+      localObject = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
+      if (HttpDownloadUtil.downloadData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
         bool = true;
       }
       if (bool)
@@ -45,7 +45,7 @@ public final class LebaIconDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LebaIconDownloader.1
  * JD-Core Version:    0.7.0.1
  */

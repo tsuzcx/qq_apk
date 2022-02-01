@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfVipqqInfoRes
   extends JceStruct
 {
-  public short wLevel;
+  public short wLevel = 0;
   
   public ProfVipqqInfoRes() {}
   

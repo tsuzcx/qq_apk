@@ -37,7 +37,7 @@ public class Emoticon
   public int height;
   public String ipsiteName;
   public String ipsiteUrl;
-  public boolean isAPNG;
+  public boolean isAPNG = false;
   public boolean isSound;
   public int jobType;
   public String keyword;
@@ -148,7 +148,7 @@ public class Emoticon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Emoticon
  * JD-Core Version:    0.7.0.1
  */

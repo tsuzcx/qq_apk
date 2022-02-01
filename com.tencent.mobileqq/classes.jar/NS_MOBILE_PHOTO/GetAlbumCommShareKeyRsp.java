@@ -11,8 +11,8 @@ public final class GetAlbumCommShareKeyRsp
 {
   static Map<String, String> cache_outs = new HashMap();
   public String msg = "";
-  public Map<String, String> outs;
-  public int ret;
+  public Map<String, String> outs = null;
+  public int ret = 0;
   
   static
   {

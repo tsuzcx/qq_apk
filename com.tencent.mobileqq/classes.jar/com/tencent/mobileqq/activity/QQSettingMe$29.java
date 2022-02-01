@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import bbvn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
 class QQSettingMe$29
   implements Runnable
@@ -17,7 +17,7 @@ class QQSettingMe$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.29
  * JD-Core Version:    0.7.0.1
  */

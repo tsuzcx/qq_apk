@@ -3,6 +3,7 @@ package com.tencent.thumbplayer.core.downloadproxy.apiinner;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
+import com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadListener;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPOfflineDownloadListener;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPreLoadListener;
@@ -14,7 +15,10 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class TPListenerManager
 {
+  private static final int DLTASK_CALLBACK_MSG_QUIC_DOWNLOAD_STATUS = 20;
   private static final String FILE_NAME = "TPListenerManager";
+  private static final int MSG_CALLBACK_MSG_REPORT = 30001;
+  private static final int MSG_CALLBACK_MSG_REPORT_QUIC_QUALITY = 30002;
   private static final int MSG_CURRENT_CDN_URL = 5;
   private static final int MSG_CURRENT_CDN_URL_INFO = 6;
   private static final int MSG_DOWNLOAD_PROTOCOL = 9;
@@ -28,11 +32,18 @@ public class TPListenerManager
   private static final int MSG_PLAY_VIDEO_NOT_FOUND = 101;
   private static final int MSG_PREPARE_FINISH = 50;
   private static final int MSG_PROGRESS = 2;
+  private static final int MSG_PROXY_CANCEL_READ_DATA = 202;
+  private static final int MSG_PROXY_GET_CONTENT_TYPE = 205;
+  private static final int MSG_PROXY_GET_DATA_FILE_PATH = 204;
+  private static final int MSG_PROXY_GET_DATA_TOTAL_SIZE = 203;
+  private static final int MSG_PROXY_READ_DATA = 201;
+  private static final int MSG_PROXY_START_READ_DATA = 200;
   private static final int MSG_URL_EXPIRED = 7;
   private static final Object OFFLINE_LISTENER_MAP_MUTEX = new Object();
   private static final Object PLAY_LISTENER_MAP_MUTEX = new Object();
   private static final Object PRELOAD_LISTENER_MAP_MUTEX = new Object();
   private static final String THREAD_NAME = "TVKDL-Listener";
+  private ITPDownloadListener mITPDownloadListener = null;
   private Handler mMsgHandler;
   private HandlerThread mMsgHandlerThread;
   private Map<Integer, ITPOfflineDownloadListener> mOfflineDownloadListenerMap = new HashMap();
@@ -56,8 +67,23 @@ public class TPListenerManager
         return;
       }
       localObject = getOfflineDownloadListener(paramInt2);
-    } while (localObject == null);
-    dispatchOfflineDownloadMessage((ITPOfflineDownloadListener)localObject, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
+      if (localObject != null)
+      {
+        dispatchOfflineDownloadMessage((ITPOfflineDownloadListener)localObject, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
+        return;
+      }
+    } while (this.mITPDownloadListener == null);
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 30001: 
+      paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
+      this.mITPDownloadListener.onDownloadInfoReportUpdate(paramObject1);
+      return;
+    }
+    paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
+    this.mITPDownloadListener.onQuicQualityReportUpdate(paramObject1);
   }
   
   private void dispatchOfflineDownloadMessage(ITPOfflineDownloadListener paramITPOfflineDownloadListener, int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
@@ -163,8 +189,11 @@ public class TPListenerManager
     case 2006: 
       paramITPPlayListener.onPlayCallback(3, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
       return;
+    case 2007: 
+      paramITPPlayListener.onPlayCallback(4, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
+      return;
     }
-    paramITPPlayListener.onPlayCallback(4, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
+    paramITPPlayListener.onQuicDownloadStatusUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
   }
   
   private void dispatchPreLoadMessage(ITPPreLoadListener paramITPPreLoadListener, int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
@@ -232,6 +261,54 @@ public class TPListenerManager
     }
   }
   
+  public int handleIntCallbackMessage(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
+  {
+    int j = 0;
+    paramObject4 = getPlaylistener(paramInt2);
+    int i = j;
+    if (paramObject4 != null)
+    {
+      if (paramInt1 != 200) {
+        break label63;
+      }
+      i = paramObject4.onStartReadData(paramInt2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.objectToLong(paramObject2, 0L), TPDLProxyUtils.objectToLong(paramObject3, -1L));
+    }
+    label63:
+    do
+    {
+      return i;
+      if (paramInt1 == 202) {
+        return paramObject4.onStopReadData(paramInt2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.objectToInt(paramObject2, 0));
+      }
+      i = j;
+    } while (paramInt1 != 201);
+    return paramObject4.onReadData(paramInt2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.objectToLong(paramObject2, 0L), TPDLProxyUtils.objectToInt(paramObject3, 0));
+  }
+  
+  public String handleStringCallbackMessage(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
+  {
+    paramObject3 = "";
+    paramObject4 = getPlaylistener(paramInt2);
+    paramObject2 = paramObject3;
+    if (paramObject4 != null)
+    {
+      if (paramInt1 != 205) {
+        break label51;
+      }
+      paramObject2 = paramObject4.getContentType(paramInt2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
+    }
+    label51:
+    do
+    {
+      return paramObject2;
+      if (paramInt1 == 203) {
+        return String.valueOf(paramObject4.getDataTotalSize(paramInt2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1)));
+      }
+      paramObject2 = paramObject3;
+    } while (paramInt1 != 204);
+    return paramObject4.getDataFilePath(paramInt2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
+  }
+  
   public void initHandler()
   {
     if (this.mMsgHandlerThread == null)
@@ -294,6 +371,11 @@ public class TPListenerManager
     }
   }
   
+  public void setDownloadListener(ITPDownloadListener paramITPDownloadListener)
+  {
+    this.mITPDownloadListener = paramITPDownloadListener;
+  }
+  
   public void setOfflineDownloadListener(int paramInt, ITPOfflineDownloadListener paramITPOfflineDownloadListener)
   {
     if ((paramInt > 0) && (paramITPOfflineDownloadListener != null)) {
@@ -329,7 +411,7 @@ public class TPListenerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager
  * JD-Core Version:    0.7.0.1
  */

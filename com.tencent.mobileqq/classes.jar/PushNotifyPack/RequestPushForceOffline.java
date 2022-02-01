@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RequestPushForceOffline
   extends JceStruct
 {
-  public byte bSameDevice;
-  public long lUin;
+  public byte bSameDevice = 0;
+  public long lUin = 0L;
   public String strTips = "";
   public String strTitle = "";
   

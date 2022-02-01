@@ -9,12 +9,12 @@ public final class stRegionData
 {
   static stPoints cache_leftTopP = new stPoints();
   static stPoints cache_rightBottomP = new stPoints();
-  public int actionType;
+  public int actionType = 0;
   public String actionUrl = "";
   public String backgroundImg = "";
-  public stPoints leftTopP;
-  public stPoints rightBottomP;
-  public int urlShowType;
+  public stPoints leftTopP = null;
+  public stPoints rightBottomP = null;
+  public int urlShowType = 0;
   
   public stRegionData() {}
   

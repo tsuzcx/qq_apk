@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class RespCheckChangePwdAuth
   extends JceStruct
 {
-  public int retCode;
+  public int retCode = 0;
   public String retMsg = "";
   
   public RespCheckChangePwdAuth() {}

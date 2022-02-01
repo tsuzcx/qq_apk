@@ -20,18 +20,21 @@ public abstract class MySurfaceView
   public MySurfaceView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Long = 0L;
     a(paramContext);
   }
   
   public MySurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Long = 0L;
     a(paramContext);
   }
   
   public MySurfaceView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Long = 0L;
     a(paramContext);
   }
   
@@ -167,7 +170,7 @@ public abstract class MySurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.doodle.MySurfaceView
  * JD-Core Version:    0.7.0.1
  */

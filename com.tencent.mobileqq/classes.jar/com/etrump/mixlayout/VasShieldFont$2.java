@@ -5,30 +5,29 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import gm;
 import java.util.TimerTask;
 
-public final class VasShieldFont$2
+final class VasShieldFont$2
   extends TimerTask
 {
-  public VasShieldFont$2(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  VasShieldFont$2(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VasShieldFont", 2, "schedule: userfontid=" + gm.c);
+      QLog.d("VasShieldFont", 2, "schedule: userfontid=" + VasShieldFont.c);
     }
-    if ((gm.c == 0) && (gm.b()))
+    if ((VasShieldFont.c == 0) && (VasShieldFont.b()))
     {
-      gm.a(false);
-      gm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+      VasShieldFont.a(false);
+      VasShieldFont.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("keySysFontGrayTip", false).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.VasShieldFont.2
  * JD-Core Version:    0.7.0.1
  */

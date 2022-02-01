@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
 import android.content.Intent;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
 import mqq.app.Packet;
 
@@ -23,7 +24,7 @@ public class ProtoServlet
     if (("LongConn.OffPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
       QLog.d("Q.richmedia.ProtoReqManager", 1, "onRecieve." + paramFromServiceMsg.getStringForLog());
     }
-    ((AppInterface)getAppRuntime()).getProtoReqManager().onReceive(paramIntent, paramFromServiceMsg);
+    ((IProtoReqManager)getAppRuntime().getRuntimeService(IProtoReqManager.class, "")).onReceive(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import bheg;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class ScanningSurfaceView$3
@@ -21,7 +21,7 @@ class ScanningSurfaceView$3
           localURLDrawable.startDownload();
           return;
         }
-        this.a.b = bheg.a(localURLDrawable);
+        this.a.b = ImageUtil.a(localURLDrawable);
         return;
       }
     }

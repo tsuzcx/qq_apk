@@ -38,13 +38,13 @@ public class IndexBarTipsLayout
   {
     this.a.setText(paramString);
     paramString = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
-    paramString.topMargin = ((int)(paramFloat - getWidth() / 2.0D + DisplayUtil.dip2px(getContext(), 20.0F)));
+    paramString.topMargin = ((int)(paramFloat - getWidth() / 2.0D + DisplayUtil.a(getContext(), 20.0F)));
     this.a.setLayoutParams(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.IndexBarTipsLayout
  * JD-Core Version:    0.7.0.1
  */

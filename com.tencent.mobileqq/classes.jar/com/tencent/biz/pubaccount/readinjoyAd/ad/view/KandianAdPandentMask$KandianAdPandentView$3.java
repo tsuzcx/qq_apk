@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 
-import ujg;
-import umk;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskReportMgr;
 
-public class KandianAdPandentMask$KandianAdPandentView$3
+class KandianAdPandentMask$KandianAdPandentView$3
   implements Runnable
 {
-  public KandianAdPandentMask$KandianAdPandentView$3(umk paramumk) {}
+  KandianAdPandentMask$KandianAdPandentView$3(KandianAdPandentMask.KandianAdPandentView paramKandianAdPandentView) {}
   
   public void run()
   {
-    ujg.a.a();
+    SuperMaskReportMgr.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianAdPandentMask.KandianAdPandentView.3
  * JD-Core Version:    0.7.0.1
  */

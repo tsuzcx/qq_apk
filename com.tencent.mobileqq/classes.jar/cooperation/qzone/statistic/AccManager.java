@@ -1,14 +1,13 @@
 package cooperation.qzone.statistic;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import common.config.service.QZoneConfigHelper;
-import cooperation.qzone.QUA;
 import cooperation.qzone.statistic.access.WnsKeys;
 import cooperation.qzone.statistic.access.concept.Statistic;
-import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.QZLog;
 import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class AccManager
 {
@@ -43,35 +42,26 @@ public class AccManager
   
   private static void createStatistic(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, int paramInt4, String paramString3)
   {
-    if (BaseApplicationImpl.getApplication() == null) {}
+    long l = 0L;
+    if (MobileQQ.sMobileQQ == null) {}
     StatisticCollector localStatisticCollector;
     do
     {
       return;
-      long l2 = 0L;
-      long l1 = l2;
-      if (BaseApplicationImpl.getApplication() != null)
-      {
-        l1 = l2;
-        if (BaseApplicationImpl.getApplication().isRuntimeReady())
-        {
-          l1 = l2;
-          if (BaseApplicationImpl.getApplication().getRuntime() != null) {
-            l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-          }
-        }
+      if (((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin() != 0L) {
+        l = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
       }
       localStatisticCollector = StatisticCollector.getInstance();
       Statistic localStatistic = localStatisticCollector.getStatistic();
       localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
       localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
       localStatistic.setValue(WnsKeys.CommandId, paramString1);
-      localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
+      localStatistic.setValue(WnsKeys.APN, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAPN());
       localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(getNextSeq()));
       localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
-      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
-      localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-      localStatistic.setValue(WnsKeys.Build, "4875");
+      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l));
+      localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+      localStatistic.setValue(WnsKeys.Build, "5105");
       localStatistic.setValue(WnsKeys.TimeCost, Integer.valueOf(paramInt2));
       if (paramString2 != null) {
         localStatistic.setValue(WnsKeys.Detail, paramString2);
@@ -96,35 +86,26 @@ public class AccManager
   
   private static void createStatistic(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3)
   {
-    if (BaseApplicationImpl.getApplication() == null) {}
+    long l = 0L;
+    if (MobileQQ.sMobileQQ == null) {}
     StatisticCollector localStatisticCollector;
     do
     {
       return;
-      long l2 = 0L;
-      long l1 = l2;
-      if (BaseApplicationImpl.getApplication() != null)
-      {
-        l1 = l2;
-        if (BaseApplicationImpl.getApplication().isRuntimeReady())
-        {
-          l1 = l2;
-          if (BaseApplicationImpl.getApplication().getRuntime() != null) {
-            l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-          }
-        }
+      if (((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin() != 0L) {
+        l = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
       }
       localStatisticCollector = StatisticCollector.getInstance();
       Statistic localStatistic = localStatisticCollector.getStatistic();
       localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
       localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
       localStatistic.setValue(WnsKeys.CommandId, paramString1);
-      localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
+      localStatistic.setValue(WnsKeys.APN, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAPN());
       localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(getNextSeq()));
       localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
-      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
-      localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-      localStatistic.setValue(WnsKeys.Build, "4875");
+      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l));
+      localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+      localStatistic.setValue(WnsKeys.Build, "5105");
       if (paramString2 != null) {
         localStatistic.setValue(WnsKeys.Detail, paramString2);
       }
@@ -276,7 +257,7 @@ public class AccManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.statistic.AccManager
  * JD-Core Version:    0.7.0.1
  */

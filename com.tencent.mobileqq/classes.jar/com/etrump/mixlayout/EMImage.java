@@ -13,8 +13,8 @@ public class EMImage
   public static final int IMAGE_FORMAT_JPG = 3;
   public static final int IMAGE_FORMAT_PNG = 2;
   public static final int IMAGE_FORMAT_RAW = 0;
-  private Bitmap mBitmap;
-  private byte[] mRawData;
+  private Bitmap mBitmap = null;
+  private byte[] mRawData = null;
   private int mType = 0;
   
   public static void callbackDrawText(int paramInt1, Canvas paramCanvas, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt2, boolean paramBoolean1, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean2, int paramInt7, int paramInt8)
@@ -74,7 +74,7 @@ public class EMImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.etrump.mixlayout.EMImage
  * JD-Core Version:    0.7.0.1
  */

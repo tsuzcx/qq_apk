@@ -4,7 +4,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
-public final class ArMapUtil$3
+final class ArMapUtil$3
   implements Runnable
 {
   public void run()

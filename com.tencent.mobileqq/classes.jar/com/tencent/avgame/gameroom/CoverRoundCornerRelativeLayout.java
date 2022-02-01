@@ -37,6 +37,7 @@ public class CoverRoundCornerRelativeLayout
   public CoverRoundCornerRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
@@ -48,7 +49,7 @@ public class CoverRoundCornerRelativeLayout
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_AndroidGraphicsPath == null) || (this.jdField_b_of_type_AndroidGraphicsPath == null) || (this.c != getMeasuredWidth()) || (this.d != getMeasuredHeight()))
     {
@@ -98,7 +99,7 @@ public class CoverRoundCornerRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.CoverRoundCornerRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.x;
+import com.tencent.mobileqq.msf.core.q;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.msf.service.protocol.security.CustomSigContent;
@@ -42,7 +42,7 @@ public class d
   public d(b paramb)
   {
     this.e = paramb;
-    n = x.b();
+    n = q.b();
     if (!TextUtils.isEmpty(MsfStore.getNativeConfigStore().getConfig("_new_version_never_change_token"))) {}
     for (boolean bool = true;; bool = false)
     {
@@ -235,7 +235,7 @@ public class d
   void a(String paramString)
   {
     if (this.e.g(paramString)) {
-      x.b().postAtFrontOfQueue(new i(this, paramString));
+      q.b().postAtFrontOfQueue(new i(this, paramString));
     }
   }
   

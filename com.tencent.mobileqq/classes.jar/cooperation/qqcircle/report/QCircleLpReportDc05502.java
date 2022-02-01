@@ -1,7 +1,7 @@
 package cooperation.qqcircle.report;
 
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 
 public class QCircleLpReportDc05502
 {
@@ -44,18 +44,18 @@ public class QCircleLpReportDc05502
   {
     if (paramDataBuilder == null)
     {
-      QLog.e("QCircleReportBean_QCircleLpReportDc05502", 1, "report invalid builder is null!");
+      RFLog.e("QCircleReportBean_QCircleLpReportDc05502", RFLog.USR, "report invalid builder is null!");
       return;
     }
     if (QCircleLpReportDc05502.DataBuilder.access$000(paramDataBuilder) <= 0) {
-      QLog.e("QCircleReportBean_QCircleLpReportDc05502", 1, "report invalid pageId," + QCircleLpReportDc05502.DataBuilder.access$000(paramDataBuilder) + ",fpageId:" + QCircleLpReportDc05502.DataBuilder.access$100(paramDataBuilder));
+      RFLog.e("QCircleReportBean_QCircleLpReportDc05502", RFLog.USR, "report invalid pageId," + QCircleLpReportDc05502.DataBuilder.access$000(paramDataBuilder) + ",fpageId:" + QCircleLpReportDc05502.DataBuilder.access$100(paramDataBuilder));
     }
     QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05502.1(paramDataBuilder));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05502
  * JD-Core Version:    0.7.0.1
  */

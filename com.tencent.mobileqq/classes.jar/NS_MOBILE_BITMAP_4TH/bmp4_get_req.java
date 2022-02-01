@@ -11,8 +11,8 @@ public final class bmp4_get_req
   static ArrayList<String> cache_vec_keys;
   static ArrayList<Long> cache_vec_uins = new ArrayList();
   public int bitmap_id = 4;
-  public ArrayList<String> vec_keys;
-  public ArrayList<Long> vec_uins;
+  public ArrayList<String> vec_keys = null;
+  public ArrayList<Long> vec_uins = null;
   
   static
   {

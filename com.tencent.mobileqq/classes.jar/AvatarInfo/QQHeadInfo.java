@@ -1,6 +1,5 @@
 package AvatarInfo;
 
-import a;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -15,20 +14,20 @@ public final class QQHeadInfo
   extends JceStruct
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QQHeadInfo> CREATOR = new a();
-  public byte cHeadType;
+  public static final Parcelable.Creator<QQHeadInfo> CREATOR = new QQHeadInfo.1();
+  public byte cHeadType = 0;
   public String downLoadUrl = "";
-  public byte dstUsrType;
-  public byte dwFaceFlgas;
-  public long dwTimestamp;
-  public byte headLevel;
+  public byte dstUsrType = 0;
+  public byte dwFaceFlgas = 0;
+  public long dwTimestamp = 0L;
+  public byte headLevel = 0;
   public String headVerify = "";
   public int idType;
-  public int originUsrType;
+  public int originUsrType = 0;
   public String phoneNum = "";
-  public int sizeType;
-  public short systemHeadID;
-  public long uin;
+  public int sizeType = 0;
+  public short systemHeadID = 0;
+  public long uin = 0L;
   
   public QQHeadInfo() {}
   

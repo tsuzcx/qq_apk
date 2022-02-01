@@ -3,12 +3,11 @@ package com.tencent.mobileqq.webview.webso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import biju;
 
 public class WebSoService$WebSoState$WebSo3
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebSo3> CREATOR = new biju();
+  public static final Parcelable.Creator<WebSo3> CREATOR = new WebSoService.WebSoState.WebSo3.1();
   public String a;
   public boolean a;
   public String b;
@@ -17,22 +16,24 @@ public class WebSoService$WebSoState$WebSo3
   public String e = "";
   public String f = "0";
   
-  public WebSoService$WebSoState$WebSo3() {}
-  
-  public WebSoService$WebSoState$WebSo3(Parcel paramParcel)
+  public WebSoService$WebSoState$WebSo3()
   {
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.b = paramParcel.readString();
-      this.c = paramParcel.readString();
-      this.d = paramParcel.readString();
-      this.e = paramParcel.readString();
-      this.f = paramParcel.readString();
-      return;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected WebSoService$WebSoState$WebSo3(Parcel paramParcel)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readString();
+    this.f = paramParcel.readString();
   }
   
   public String a()
@@ -79,7 +80,7 @@ public class WebSoService$WebSoState$WebSo3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3
  * JD-Core Version:    0.7.0.1
  */

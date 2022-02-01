@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import axcm;
-
-public class MsgBackupTransportProcessor$5
+class MsgBackupTransportProcessor$5
   implements Runnable
 {
-  public MsgBackupTransportProcessor$5(axcm paramaxcm) {}
+  MsgBackupTransportProcessor$5(MsgBackupTransportProcessor paramMsgBackupTransportProcessor) {}
   
   public void run()
   {
-    axcm.a(this.this$0);
+    MsgBackupTransportProcessor.a(this.this$0);
   }
 }
 

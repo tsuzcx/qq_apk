@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.filemanageraux.fileviewer.FileView;
 
 import android.os.Bundle;
-import aujg;
-import aujh;
 import com.tencent.qphone.base.util.QLog;
 
-public class LocalTdsViewManager$OpenCallbackImpl$1
+class LocalTdsViewManager$OpenCallbackImpl$1
   implements Runnable
 {
-  public LocalTdsViewManager$OpenCallbackImpl$1(aujh paramaujh, Integer paramInteger, Object paramObject, Bundle paramBundle) {}
+  LocalTdsViewManager$OpenCallbackImpl$1(LocalTdsViewManager.OpenCallbackImpl paramOpenCallbackImpl, Integer paramInteger, Object paramObject, Bundle paramBundle) {}
   
   public void run()
   {
@@ -21,8 +19,8 @@ public class LocalTdsViewManager$OpenCallbackImpl$1
       {
         return;
         QLog.w("TdsReaderView_LocalTdsViewManager", 1, "showErrorCode:" + this.jdField_a_of_type_JavaLangObject);
-      } while (aujh.a(this.this$0) == null);
-      aujh.a(this.this$0).a(false);
+      } while (LocalTdsViewManager.OpenCallbackImpl.a(this.this$0) == null);
+      LocalTdsViewManager.OpenCallbackImpl.a(this.this$0).a(false);
       return;
     }
     boolean bool1;
@@ -35,7 +33,7 @@ public class LocalTdsViewManager$OpenCallbackImpl$1
     }
     for (;;)
     {
-      aujh.a(this.this$0).a(bool1, bool2);
+      LocalTdsViewManager.OpenCallbackImpl.a(this.this$0).a(bool1, bool2);
       return;
       bool1 = false;
       break;
@@ -46,7 +44,7 @@ public class LocalTdsViewManager$OpenCallbackImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.LocalTdsViewManager.OpenCallbackImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,26 +4,24 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import apae;
-import apaf;
-import blge;
-import blgf;
-import blgg;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.VerticalGallery.OnEndFlingListener;
+import com.tencent.widget.VerticalGallery.OnEndMovementListener;
+import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 import java.util.List;
 
 public class NumberWheelView
   extends WheelView
-  implements blge, blgf, blgg, AdapterView.OnItemSelectedListener
+  implements AdapterView.OnItemSelectedListener, VerticalGallery.OnEndFlingListener, VerticalGallery.OnEndMovementListener, VerticalGallery.OnSelectViewDataUpdateListener
 {
   public int a;
   private Context jdField_a_of_type_AndroidContentContext;
-  private apae jdField_a_of_type_Apae;
-  private apaf jdField_a_of_type_Apaf;
+  private NumberWheelView.NumberAdapter jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter;
+  private NumberWheelView.ScrollStateListener jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener;
   private final int h = 0;
   private final int i = 36;
   private final int j = 18;
@@ -88,10 +86,10 @@ public class NumberWheelView
   public int a()
   {
     int i1 = getSelectedItemPosition();
-    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_Apae.a.size())) {
+    if ((i1 < 0) || (i1 >= this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter.a.size())) {
       return 0;
     }
-    return ((Integer)this.jdField_a_of_type_Apae.a.get(i1)).intValue();
+    return ((Integer)this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter.a.get(i1)).intValue();
   }
   
   public void a(View paramView, int paramInt)
@@ -102,16 +100,16 @@ public class NumberWheelView
   public void a(VerticalGallery paramVerticalGallery)
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Apaf != null) {
-      this.jdField_a_of_type_Apaf.a(this, paramVerticalGallery);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener.a(this, paramVerticalGallery);
     }
   }
   
   public void b(VerticalGallery paramVerticalGallery)
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_Apaf != null) {
-      this.jdField_a_of_type_Apaf.a(this, paramVerticalGallery);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener.a(this, paramVerticalGallery);
     }
   }
   
@@ -126,7 +124,7 @@ public class NumberWheelView
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i1 = this.jdField_a_of_type_Apae.getCount();
+    int i1 = this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter.getCount();
     paramInt = 0;
     while (paramInt < i1)
     {
@@ -154,20 +152,20 @@ public class NumberWheelView
       this.p = paramInt2;
       this.q = paramInt1;
     }
-    while (this.jdField_a_of_type_Apae == null)
+    while (this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter == null)
     {
-      this.jdField_a_of_type_Apae = new apae(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
-      setAdapter(this.jdField_a_of_type_Apae);
+      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter = new NumberWheelView.NumberAdapter(this, this.jdField_a_of_type_AndroidContentContext, 36, this.p, this.q);
+      setAdapter(this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter);
       return;
       this.q = paramInt2;
       this.p = paramInt1;
     }
-    this.jdField_a_of_type_Apae.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$NumberAdapter.a(paramInt1, paramInt2);
   }
   
-  public void setScrollStateListener(apaf paramapaf)
+  public void setScrollStateListener(NumberWheelView.ScrollStateListener paramScrollStateListener)
   {
-    this.jdField_a_of_type_Apaf = paramapaf;
+    this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView$ScrollStateListener = paramScrollStateListener;
   }
   
   public void setValue(int paramInt)
@@ -180,7 +178,7 @@ public class NumberWheelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.NumberWheelView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,27 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
+import com.tencent.tavcut.bean.TextEditorData;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextPart.AEEditorTextDialogListener;
 
 class AEEditorVideoEditFragment$18
-  implements Runnable
+  implements AEEditorTextPart.AEEditorTextDialogListener
 {
   AEEditorVideoEditFragment$18(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void run()
+  public void a()
   {
-    this.this$0.a.b(false);
-    this.this$0.a.a(1);
+    this.a.g(true);
+  }
+  
+  public void a(TextEditorData paramTextEditorData)
+  {
+    this.a.b(true);
+    this.a.a = paramTextEditorData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.18
  * JD-Core Version:    0.7.0.1
  */

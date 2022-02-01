@@ -1,20 +1,18 @@
 package com.tencent.av;
 
-import lda;
-
-public class VideoRecoveryMonitor$1
+class VideoRecoveryMonitor$1
   implements Runnable
 {
-  public VideoRecoveryMonitor$1(lda paramlda) {}
+  VideoRecoveryMonitor$1(VideoRecoveryMonitor paramVideoRecoveryMonitor) {}
   
   public void run()
   {
-    lda.a(this.this$0);
+    VideoRecoveryMonitor.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.VideoRecoveryMonitor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,22 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import anvx;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.mobileqq.widget.QQToast;
 
 final class ApolloGameUtil$20
   implements Runnable
 {
-  ApolloGameUtil$20(int paramInt) {}
+  ApolloGameUtil$20(Context paramContext, int paramInt, String paramString) {}
   
   public void run()
   {
-    switch (this.a)
-    {
-    default: 
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, anvx.a(2131699868), 0).a();
-    case 1: 
-      return;
-    case 0: 
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, anvx.a(2131699844), 0).a();
-      return;
-    case 2: 
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, anvx.a(2131699856), 0).a();
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 2, anvx.a(2131699860), 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299166));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.20
  * JD-Core Version:    0.7.0.1
  */

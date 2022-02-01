@@ -7,7 +7,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import bnfp;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class AEGridView
@@ -38,21 +37,21 @@ public class AEGridView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    int i = AIOUtils.dp2px(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = AIOUtils.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
     this.jdField_a_of_type_Int = ((m - k) / (i + k));
     setPadding((m - this.jdField_a_of_type_Int * i) / (this.jdField_a_of_type_Int + 1), 0, 0, j * 4);
     setClipToPadding(false);
     setLayoutManager(new GridLayoutManager(getContext(), this.jdField_a_of_type_Int));
-    addItemDecoration(new bnfp(this, this.jdField_a_of_type_Int, k));
+    addItemDecoration(new AEGridView.SpacingItemDecoration(this, this.jdField_a_of_type_Int, k));
     this.b = i;
   }
   
   public void a(int paramInt)
   {
-    int i = AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     paramInt /= this.jdField_a_of_type_Int;
     i = (i + this.b) * (paramInt - 1);
     paramInt = i;
@@ -64,7 +63,7 @@ public class AEGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.panel.AEGridView
  * JD-Core Version:    0.7.0.1
  */

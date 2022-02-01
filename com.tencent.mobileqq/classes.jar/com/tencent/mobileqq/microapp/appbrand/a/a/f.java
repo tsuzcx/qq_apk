@@ -141,7 +141,7 @@ public final class f
       if (localBaseActivity != null)
       {
         str = com.tencent.mobileqq.microapp.app.a.d(paramString1, paramString2);
-        if (StringUtil.isEmpty(str)) {
+        if (StringUtil.a(str)) {
           break label228;
         }
         if (localBaseActivity.checkSelfPermission(str) != 0) {

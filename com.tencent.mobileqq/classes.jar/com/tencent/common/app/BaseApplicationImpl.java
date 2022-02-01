@@ -1,10 +1,5 @@
 package com.tencent.common.app;
 
-import aauo;
-import aaup;
-import aaus;
-import aauu;
-import aauv;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -16,47 +11,54 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.text.format.Time;
 import android.util.Log;
-import anxv;
-import aorm;
-import aqxd;
-import ardt;
-import avic;
-import baiw;
-import baix;
-import bdgy;
-import bdla;
-import bdlh;
 import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.soload.SoLoadCore;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.app.LocaleManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.multilanguage.MultiLanguageEngine;
+import com.tencent.mobileqq.config.QConfigLocalLoader;
+import com.tencent.mobileqq.config.business.QConfLogBean;
+import com.tencent.mobileqq.haoliyou.IATHandler;
+import com.tencent.mobileqq.intervideo.IVLoggerFactory;
+import com.tencent.mobileqq.pushnotice.PushNoticeUtil;
+import com.tencent.mobileqq.pushnotice.ThirdPushSupportImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.QRouteConfigBuilder;
+import com.tencent.mobileqq.qroute.remote.IQRemoteProxy;
+import com.tencent.mobileqq.qroute.route.ILogger;
+import com.tencent.mobileqq.qroute.utils.IProcessCheck;
+import com.tencent.mobileqq.qshadow.core.QShadow;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.statistics.UEC;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.MSFInterfaceAdapter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.sp.SPStatInspector;
+import com.tencent.shadow.core.common.LoggerFactory;
+import cooperation.plugin.PluginQRoutePluginFactoryImpl;
 import cooperation.qzone.util.PerfTracer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -69,20 +71,6 @@ public class BaseApplicationImpl
 {
   public static String ASanEscapedMsg;
   public static boolean IS_SUPPORT_THEME = false;
-  public static final int PROCESS_AV_GAME = 12;
-  public static final int PROCESS_LOLA = 6;
-  public static final int PROCESS_MINI = 11;
-  public static final int PROCESS_MSF = 4;
-  public static final int PROCESS_NEARBY = 5;
-  public static final int PROCESS_OTHER = -1;
-  public static final int PROCESS_PEAK = 9;
-  public static final int PROCESS_QQ = 1;
-  public static final int PROCESS_TOOL = 7;
-  public static final int PROCESS_VIDEO = 10;
-  @Deprecated
-  public static final int PROCESS_WEB = 3;
-  public static final int PROCESS_ZONE = 2;
-  public static final int PROCESS_ZONE_LIVE = 8;
   private static final String TAG = "BaseApplicationImpl";
   public static final String[] TOOL_PROCS = { ":tool", ":peak", ":qzone" };
   public static boolean appMainActivityHasLanuch = false;
@@ -90,56 +78,59 @@ public class BaseApplicationImpl
   public static final String bootBroadcastName = "com.tencent.mobileqq.broadcast.qq";
   public static boolean isCurrentVersionFirstLaunch;
   public static boolean isFirstLaunchNew;
-  public static boolean isFirstLogin;
-  private static volatile aauo sAppRuntimeFactory;
+  public static boolean isInActionS;
+  private static volatile AppRuntimeFactory sAppRuntimeFactory;
   public static BaseApplicationImpl sApplication;
-  public static bdgy sDirector;
+  public static StartupDirector sDirector;
   public static String sFoo2Version;
   public static String sFooVersion;
   private static boolean sHasStoragePermission;
-  public static MQLruCache<String, Object> sImageCache;
-  public static int sImageCacheSize;
-  public static ConcurrentHashMap<String, Bitmap> sImageHashMap;
-  public static String sImmersiveUtilsEscapedMsg;
   public static boolean sIsBgStartup;
   public static long sLaunchTime;
   public static String sNativeMonitorEscapedMsg;
-  public static int sProcessId;
-  public static String sPublicFragmentEscapedMsg;
   public static String sQQAppInterfaceEscapedMsg = "";
   public static long sShowTime;
   public static String sSplashActivityEscapedMsg = "";
   public static long sToolShowTime;
   public static MqqHandler sUiHandler;
   private MSFInterfaceAdapter mMSFInterfaceAdapter;
-  private Intent pcActiveNoticeIntent;
-  private String pcactiveContent;
-  private String pcactiveLButton;
-  private String pcactiveRButton;
-  private String pcactiveUin;
+  private final ILogger mQRouteLogger = new BaseApplicationImpl.1(this);
+  private final IQRemoteProxy mQRouteRemoteProxy = new BaseApplicationImpl.3(this);
+  private final IProcessCheck mQRouterProcessCheck = new BaseApplicationImpl.2(this);
+  private Intent pcActiveNoticeIntent = null;
+  private String pcactiveContent = null;
+  private String pcactiveLButton = null;
+  private String pcactiveRButton = null;
+  private String pcactiveUin = null;
   
   static
   {
-    sImmersiveUtilsEscapedMsg = "";
-    sPublicFragmentEscapedMsg = "";
     sFooVersion = "";
     sFoo2Version = "";
     IS_SUPPORT_THEME = true;
-    sAppRuntimeFactory = new aaup();
-    sProcessId = -1;
+    sLaunchTime = 0L;
+    sShowTime = 0L;
+    sIsBgStartup = false;
+    appStartTime = 0L;
+    isFirstLaunchNew = false;
+    isCurrentVersionFirstLaunch = false;
+    appMainActivityHasLanuch = false;
+    sToolShowTime = 0L;
+    isInActionS = true;
+    sAppRuntimeFactory = new AppRuntimeFactoryImpl();
   }
   
   public BaseApplicationImpl()
   {
-    buildNum = "4875";
-    reportVersionName = "8.4.10.4875";
+    buildNum = "5105";
+    reportVersionName = "8.5.5.5105";
   }
   
   private void attachThreadContext()
   {
     com.tencent.mobileqq.app.ThreadSetting.isPublicVersion = true;
     com.tencent.mobileqq.app.ThreadSetting.isGrayVersion = false;
-    com.tencent.mobileqq.app.ThreadSetting.revision = "b8c39faf";
+    com.tencent.mobileqq.app.ThreadSetting.revision = "de12fadd";
     com.tencent.mobileqq.app.ThreadSetting.sProcessId = sProcessId;
     com.tencent.mobileqq.app.ThreadSetting.PROCESS_QQ = 1;
     com.tencent.mobileqq.app.ThreadSetting.CLR = 2;
@@ -190,6 +181,51 @@ public class BaseApplicationImpl
     return Environment.getExternalStorageDirectory().getPath();
   }
   
+  private void initQLog()
+  {
+    long l = 3000L;
+    try
+    {
+      if (sProcessId == 1)
+      {
+        QConfLogBean localQConfLogBean = QConfigLocalLoader.a(this);
+        Object localObject = new File(getLogExternalPath(context) + "/tencent/msflogs/" + getPackageName().replace(".", "/") + "/" + "QLogConfig_C");
+        Log.d("init_log", "base=" + localQConfLogBean.toString() + " logConfigPath=" + ((File)localObject).getAbsolutePath());
+        if ((!localQConfLogBean.a()) && (!((File)localObject).exists())) {
+          ((File)localObject).createNewFile();
+        }
+        for (;;)
+        {
+          QLog.init("com.tencent.mobileqq", BaseApplication.processName, AppSetting.a, 3000L);
+          return;
+          if ((localQConfLogBean.a()) && (((File)localObject).exists())) {
+            ((File)localObject).delete();
+          }
+        }
+        String str;
+        QLog.init("com.tencent.mobileqq", str, (String)localObject, l);
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      str = BaseApplication.processName;
+      localObject = AppSetting.a;
+      if (sProcessId != 1) {}
+    }
+    for (;;)
+    {
+      return;
+      QLog.init("com.tencent.mobileqq", BaseApplication.processName, AppSetting.a, 0L);
+      return;
+      l = 0L;
+    }
+  }
+  
+  private void initQRoute()
+  {
+    QRoute.init(new QRouteConfigBuilder(getProcessSuffix(BaseApplication.processName, "com.tencent.mobileqq")).setForceCheck(false).setLogger(this.mQRouteLogger).setProcessCheck(this.mQRouterProcessCheck).setRemoteProxy(this.mQRouteRemoteProxy).setPluginFactory(new PluginQRoutePluginFactoryImpl()).create());
+  }
+  
   public static boolean isHasStoragePermission(Context paramContext)
   {
     boolean bool2 = sHasStoragePermission;
@@ -216,9 +252,16 @@ public class BaseApplicationImpl
     return sHasStoragePermission;
   }
   
-  public static void setAppRuntimeFactory(aauo paramaauo)
+  public static void setAppRuntimeFactory(AppRuntimeFactory paramAppRuntimeFactory)
   {
-    sAppRuntimeFactory = paramaauo;
+    sAppRuntimeFactory = paramAppRuntimeFactory;
+  }
+  
+  private void setupAppSettings()
+  {
+    AppSetting.b(false);
+    AppSetting.a(false);
+    AppSetting.c(false);
   }
   
   public static boolean useQIPCStart(String paramString)
@@ -256,128 +299,40 @@ public class BaseApplicationImpl
   
   public void attachBaseContext(Context paramContext)
   {
-    l = 3000L;
     super.attachBaseContext(paramContext);
-    str1 = getQQProcessName();
-    if ("com.tencent.mobileqq".equals(str1))
-    {
-      sProcessId = 1;
-      com.tencent.qphone.base.util.BaseApplication.processName = str1;
-      attachThreadContext();
+    if (sProcessId == 7) {
+      sToolShowTime = SystemClock.uptimeMillis();
     }
+    attachThreadContext();
+    setupAppSettings();
+    QLog.setAppContext(this);
+    initQLog();
+    initQRoute();
+    if ((!new File(QLog.getLogPath() + "QLogConfig_B").exists()) && (!new File(QLog.getLogPath() + "QLogConfig_C").exists())) {}
+    QLog.setFullEncryptedLogMode(false);
+    QLog.setDebugMode(false);
+    int j = TOOL_PROCS.length;
+    int i = 0;
     for (;;)
     {
-      try
-      {
-        if (sProcessId != 1) {
-          continue;
-        }
-        localardt = aqxd.a(this);
-        localFile = new File(getLogExternalPath(context) + "/tencent/msflogs/" + getPackageName().replace(".", "/") + "/" + "QLogConfig_C");
-        Log.d("init_log", "base=" + localardt.toString() + " logConfigPath=" + localFile.getAbsolutePath());
-        if ((localardt.a()) || (localFile.exists())) {
-          continue;
-        }
-        localFile.createNewFile();
-        QLog.init("com.tencent.mobileqq", str1, AppSetting.a, 3000L);
-      }
-      catch (Throwable localThrowable)
-      {
-        ardt localardt;
-        File localFile;
-        int j;
-        int i;
-        String str2 = AppSetting.a;
-        if (sProcessId != 1) {
-          continue;
-        }
-        QLog.init("com.tencent.mobileqq", str1, str2, l);
-        continue;
-        QLog.init("com.tencent.mobileqq", str1, AppSetting.a, 0L);
-        continue;
-        l = 0L;
-        continue;
-        i += 1;
-        continue;
-      }
-      j = TOOL_PROCS.length;
-      i = 0;
       if (i < j)
       {
-        if ((processName == null) || (!processName.endsWith(TOOL_PROCS[i]))) {
-          continue;
+        if ((processName != null) && (processName.endsWith(TOOL_PROCS[i]))) {
+          MobileQQ.sIsToolProc = true;
         }
-        MobileQQ.sIsToolProc = true;
       }
-      anxv.a(this);
-      aorm.a().a(paramContext);
-      FontSettingManager.resetFontIfNeeded(this, false, true);
-      SharedPreferencesProxyManager.getInstance().init(paramContext, new BaseApplicationImpl.4(this));
-      if (bdlh.a) {
-        SharedPreferencesProxyManager.setLogCallback(bdlh.a());
-      }
-      return;
-      if (str1.endsWith("MSF"))
+      else
       {
-        sProcessId = 4;
-        break;
+        LocaleManager.a(this);
+        MultiLanguageEngine.a().a(paramContext);
+        FontSettingManager.resetFontIfNeeded(this, false, true);
+        SharedPreferencesProxyManager.getInstance().init(paramContext, new BaseApplicationImpl.7(this));
+        if (SPStatInspector.a) {
+          SharedPreferencesProxyManager.setLogCallback(SPStatInspector.a());
+        }
+        return;
       }
-      if (str1.endsWith("qzone"))
-      {
-        sProcessId = 2;
-        break;
-      }
-      if (str1.endsWith("web"))
-      {
-        sProcessId = 3;
-        break;
-      }
-      if (str1.endsWith("nearby"))
-      {
-        sProcessId = 5;
-        break;
-      }
-      if (str1.endsWith("lola"))
-      {
-        sProcessId = 6;
-        break;
-      }
-      if (str1.endsWith("tool"))
-      {
-        sProcessId = 7;
-        sToolShowTime = SystemClock.uptimeMillis();
-        break;
-      }
-      if (str1.endsWith("qzonelive"))
-      {
-        sProcessId = 8;
-        break;
-      }
-      if (str1.endsWith("peak"))
-      {
-        sProcessId = 9;
-        break;
-      }
-      if (str1.endsWith("video"))
-      {
-        sProcessId = 10;
-        break;
-      }
-      if (str1.endsWith("miniapp"))
-      {
-        sProcessId = 11;
-        break;
-      }
-      if (str1.endsWith("avgame"))
-      {
-        sProcessId = 12;
-        break;
-      }
-      sProcessId = -1;
-      break;
-      if ((localardt.a()) && (localFile.exists())) {
-        localFile.delete();
-      }
+      i += 1;
     }
   }
   
@@ -396,7 +351,7 @@ public class BaseApplicationImpl
         ((QQAppInterface)localAppRuntime).startInspect();
       }
     }
-    return AppInterfaceFactory.getAppRuntime(this, paramString);
+    return AppInterfaceFactory.a(this, paramString);
   }
   
   public void doSendBroadcast(Intent paramIntent)
@@ -457,7 +412,7 @@ public class BaseApplicationImpl
     try
     {
       if (this.mMSFInterfaceAdapter == null) {
-        this.mMSFInterfaceAdapter = new aaus();
+        this.mMSFInterfaceAdapter = new MSFInterfaceAdapterImpl();
       }
       return this.mMSFInterfaceAdapter;
     }
@@ -504,14 +459,19 @@ public class BaseApplicationImpl
     localArrayList.add(new TunnelInfo("0AND07OPTZ3OVEUJ"));
     localArrayList.add(new TunnelInfo("0AND0Y11VZ3PFHQD"));
     localArrayList.add(new TunnelInfo("0AND0FB8I14UU93I"));
+    localArrayList.add(new TunnelInfo("JS0B558T33E4YJ"));
+    localArrayList.add(new TunnelInfo("00000MEVUX3CBYO1"));
+    localArrayList.add(new TunnelInfo("0AND0LEA234R7SB8"));
+    localArrayList.add(new TunnelInfo("0AND0NYZC34FOQCF"));
+    localArrayList.add(new TunnelInfo("0AND08QT664PZRTU"));
     return localArrayList;
   }
   
   public AppRuntime getRuntime()
   {
-    aauo localaauo = sAppRuntimeFactory;
-    if (localaauo != null) {
-      return localaauo.a(this);
+    AppRuntimeFactory localAppRuntimeFactory = sAppRuntimeFactory;
+    if (localAppRuntimeFactory != null) {
+      return localAppRuntimeFactory.a(this);
     }
     return null;
   }
@@ -531,7 +491,7 @@ public class BaseApplicationImpl
   
   public int getThirdPushType()
   {
-    return baiw.a();
+    return PushNoticeUtil.a();
   }
   
   public boolean isNeedMSF(String paramString)
@@ -543,14 +503,14 @@ public class BaseApplicationImpl
   {
     if ((paramObject instanceof Activity))
     {
-      aorm.a().a((Activity)paramObject);
-      anxv.b((Activity)paramObject);
+      MultiLanguageEngine.a().a((Activity)paramObject);
+      LocaleManager.b((Activity)paramObject);
     }
     if ((Build.VERSION.SDK_INT >= 24) && ((paramObject instanceof Activity))) {
       FontSettingManager.resetFontIfNeeded((Activity)paramObject, true, false);
     }
     if (sProcessId == 1) {
-      aauu.a(context, paramObject);
+      SafeModeUtil.a(context, paramObject);
     }
     if (sDirector != null)
     {
@@ -593,9 +553,9 @@ public class BaseApplicationImpl
         localStringBuilder.append("\n").append("sMobileQQ#Locale pre:");
         localStringBuilder.append(sMobileQQ.getResources().getConfiguration().locale.toString());
       }
-      anxv.a(localStringBuilder.toString());
+      LocaleManager.a(localStringBuilder.toString());
       super.onConfigurationChanged(paramConfiguration);
-      anxv.a(this, anxv.a());
+      LocaleManager.a(this, LocaleManager.a());
       FontSettingManager.initFontSetting(this, true, true);
       if (QLog.isColorLevel())
       {
@@ -612,7 +572,7 @@ public class BaseApplicationImpl
           paramConfiguration.append(sMobileQQ.getResources().getConfiguration().locale.toString());
         }
         if (!TextUtils.isEmpty(paramConfiguration.toString())) {
-          anxv.a(paramConfiguration.toString());
+          LocaleManager.a(paramConfiguration.toString());
         }
       }
       return;
@@ -633,18 +593,20 @@ public class BaseApplicationImpl
     SoLoadCore.setIsCpu64Bit(false);
     if (sProcessId == 2)
     {
-      bdgy.b = true;
+      StartupDirector.b = true;
       PerfTracer.traceStart("App_onCreate");
     }
-    sDirector = bdgy.a();
+    LoggerFactory.setILoggerFactory(IVLoggerFactory.a());
+    QShadow.getInstance().init(this);
+    sDirector = StartupDirector.a();
     if ((Build.VERSION.SDK_INT >= 15) && ("Success".equals(sInjectResult))) {
       registerActivityLifecycleCallbacks(UEC.a());
     }
-    if (bdgy.b) {
+    if (StartupDirector.b) {
       PerfTracer.traceEnd("App_onCreate");
     }
-    ThirdAppReportHelper.sThirdAppReporter = new aauv();
-    mqq.app.ThirdPushSupportHelper.sThirdPushSupport = new baix();
+    ThirdAppReportHelper.sThirdAppReporter = new ThirdAppReportImpl();
+    mqq.app.ThirdPushSupportHelper.sThirdPushSupport = new ThirdPushSupportImpl();
     setupMultiLanguage();
   }
   
@@ -676,8 +638,8 @@ public class BaseApplicationImpl
     localHashMap.put("param_retryIndex", Integer.toString(paramInt));
     localHashMap.put("param_uin", paramString);
     StatisticCollector.getInstance(getApplication()).collectPerformance(paramString, "PcActiveSucc", true, 0L, 0L, localHashMap, "", true);
-    sUiHandler.postDelayed(new BaseApplicationImpl.3(this, paramInt, paramString), 10000L);
-    bdla.b(null, "CliOper", "", "", "0X8004974", "0X8004974", 0, 0, "", "", "", "");
+    sUiHandler.postDelayed(new BaseApplicationImpl.6(this, paramInt, paramString), 10000L);
+    ReportController.b(null, "CliOper", "", "", "0X8004974", "0X8004974", 0, 0, "", "", "", "");
   }
   
   public void sendBroadcast(Intent paramIntent)
@@ -704,7 +666,7 @@ public class BaseApplicationImpl
         else
         {
           i = 1;
-          ThreadManager.getSubThreadHandler().post(new BaseApplicationImpl.5(this, paramIntent));
+          ThreadManager.getSubThreadHandler().post(new BaseApplicationImpl.8(this, paramIntent));
         }
       }
     }
@@ -720,7 +682,7 @@ public class BaseApplicationImpl
   
   protected void setupMultiLanguage()
   {
-    aorm.a().b(this);
+    MultiLanguageEngine.a().b(this);
   }
   
   public void startActivity(Intent paramIntent)
@@ -729,10 +691,10 @@ public class BaseApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      JumpActivity.g(paramIntent);
+      JumpActivity.f(paramIntent);
       try
       {
-        avic.a(this, paramIntent, new BaseApplicationImpl.1(this, paramIntent));
+        IATHandler.a(this, paramIntent, new BaseApplicationImpl.4(this, paramIntent));
         return;
       }
       catch (Throwable paramIntent)
@@ -751,10 +713,10 @@ public class BaseApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      JumpActivity.g(paramIntent);
+      JumpActivity.f(paramIntent);
       try
       {
-        avic.a(this, paramIntent, new BaseApplicationImpl.2(this, paramIntent, paramBundle));
+        IATHandler.a(this, paramIntent, new BaseApplicationImpl.5(this, paramIntent, paramBundle));
         return;
       }
       catch (Throwable paramIntent)

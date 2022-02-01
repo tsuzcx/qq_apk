@@ -103,9 +103,6 @@ public class QZLog
   
   public static int getNewLevel(int paramInt)
   {
-    if (isForceOpenColor()) {
-      paramInt = 1;
-    }
     return paramInt;
   }
   
@@ -161,20 +158,12 @@ public class QZLog
   
   public static boolean isColorLevel()
   {
-    if (isForceOpenColor()) {
-      return true;
-    }
     return QLog.isColorLevel();
   }
   
   public static final boolean isDevelopLevel()
   {
     return QLog.isDevelopLevel();
-  }
-  
-  public static boolean isForceOpenColor()
-  {
-    return false;
   }
   
   private static boolean needPrintLog(int paramInt)

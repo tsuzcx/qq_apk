@@ -8,22 +8,24 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import ascz;
-import asdd;
-import asdi;
-import bhdj;
-import bifw;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
@@ -34,9 +36,15 @@ public class ThemeAndBubbleCommonJsPlugin
 {
   public static final String BUSINESS_NAME = "common";
   private static final int SAVEIMG = 1;
+  public static final List<ThemeAndBubbleCommonJsPlugin.HYDIYFontJsHandler> SJS_PLUGINS = new ArrayList();
   public static final String TAG = "CommonJsHandler";
   public Handler handler = new ThemeAndBubbleCommonJsPlugin.7(this);
   String saveCallbackId;
+  
+  static
+  {
+    SJS_PLUGINS.add(new ThemeAndBubbleCommonJsPlugin.HYDIYFontJsHandler());
+  }
   
   public ThemeAndBubbleCommonJsPlugin()
   {
@@ -58,7 +66,7 @@ public class ThemeAndBubbleCommonJsPlugin
   
   public void getNetwork(JSONObject paramJSONObject, String paramString)
   {
-    int i = NetworkUtil.getSystemNetwork(this.mRuntime.a());
+    int i = NetworkUtil.a(this.mRuntime.a());
     try
     {
       paramJSONObject = new JSONObject();
@@ -76,84 +84,91 @@ public class ThemeAndBubbleCommonJsPlugin
     }
   }
   
+  public long getWebViewSchemaByNameSpace(String paramString)
+  {
+    return 32L;
+  }
+  
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = true;
     if (QLog.isColorLevel()) {
       QLog.d("CommonJsHandler", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
     }
-    if ((paramString1 == null) || (!"common".equals(paramString2)) || (paramString3 == null)) {
-      bool = false;
-    }
+    if ((paramString1 == null) || (!"common".equals(paramString2)) || (paramString3 == null)) {}
     do
     {
-      return bool;
+      return false;
       paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-    } while (paramJsBridgeListener == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonJsHandler", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
-    }
-    paramString1 = paramJsBridgeListener.optString("callback");
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QLog.e("CommonJsHandler", 1, "callback id is null, so return");
-      return true;
-    }
-    if ("getNetwork".equals(paramString3))
-    {
-      getNetwork(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("showMsgBox".equals(paramString3))
-    {
-      showMsgBox(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("closePage".equals(paramString3))
-    {
-      closePage(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("openPage".equals(paramString3))
-    {
-      openPage(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("openWebView".equals(paramString3))
-    {
-      openWebView(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("saveImage".equals(paramString3))
-    {
-      saveImage(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("showMyImage".equals(paramString3))
-    {
-      showMyEmotion(paramString1);
-      return true;
-    }
-    if ("popup".equals(paramString3))
-    {
-      this.mRuntime.a().finish();
-      return true;
-    }
-    if ("openSettings".equals(paramString3))
-    {
-      paramString2 = new Bundle();
-      paramString2.putString("jumpTo", paramJsBridgeListener.optString("jumpto"));
-      super.sendRemoteReq(asdd.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
-      return true;
-    }
-    if ("isWhiteName".equals(paramString3))
-    {
-      isWhiteName(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("CommonJsHandler", 2, "NOT support method " + paramString3 + " yet!!");
-    }
+      if (paramJsBridgeListener == null) {
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonJsHandler", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
+      }
+      paramString1 = paramJsBridgeListener.optString("callback");
+      if (TextUtils.isEmpty(paramString1))
+      {
+        QLog.e("CommonJsHandler", 1, "callback id is null, so return");
+        return true;
+      }
+      int i = 0;
+      while (i < SJS_PLUGINS.size())
+      {
+        if (((ThemeAndBubbleCommonJsPlugin.HYDIYFontJsHandler)SJS_PLUGINS.get(i)).handler(paramString3, paramJsBridgeListener, paramString1, this)) {
+          return true;
+        }
+        i += 1;
+      }
+      if ("getNetwork".equals(paramString3)) {
+        getNetwork(paramJsBridgeListener, paramString1);
+      }
+      for (;;)
+      {
+        return true;
+        if ("showMsgBox".equals(paramString3))
+        {
+          showMsgBox(paramJsBridgeListener, paramString1);
+        }
+        else if ("closePage".equals(paramString3))
+        {
+          closePage(paramJsBridgeListener, paramString1);
+        }
+        else if ("openPage".equals(paramString3))
+        {
+          openPage(paramJsBridgeListener, paramString1);
+        }
+        else if ("openWebView".equals(paramString3))
+        {
+          openWebView(paramJsBridgeListener, paramString1);
+        }
+        else if ("saveImage".equals(paramString3))
+        {
+          saveImage(paramJsBridgeListener, paramString1);
+        }
+        else if ("showMyImage".equals(paramString3))
+        {
+          showMyEmotion(paramString1);
+        }
+        else if ("popup".equals(paramString3))
+        {
+          this.mRuntime.a().finish();
+        }
+        else if ("openSettings".equals(paramString3))
+        {
+          paramString2 = new Bundle();
+          paramString2.putString("jumpTo", paramJsBridgeListener.optString("jumpto"));
+          super.sendRemoteReq(DataFactory.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
+        }
+        else
+        {
+          if (!"isWhiteName".equals(paramString3)) {
+            break;
+          }
+          isWhiteName(paramJsBridgeListener, paramString1);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("CommonJsHandler", 2, "NOT support method " + paramString3 + " yet!!");
     return false;
   }
   
@@ -243,11 +258,11 @@ public class ThemeAndBubbleCommonJsPlugin
       paramString = new StringBuilder();
       paramString.append(paramJSONObject);
       paramString.append("?client=androidQQ");
-      paramString.append("&version=8.4.10.4875");
+      paramString.append("&version=8.5.5.5105");
       paramString.append("&system=" + Build.VERSION.RELEASE);
       paramString.append("&device=" + Build.DEVICE);
       paramString.append("&uin=" + ((AppActivity)this.mRuntime.a()).getAppRuntime().getAccount());
-      paramJSONObject = asdi.a("VIP_xingying", paramString.toString());
+      paramJSONObject = EmosmUtils.a("VIP_xingying", paramString.toString());
       if (QLog.isColorLevel()) {
         QLog.i("CommonJsHandler", 2, "CommonJsHandler saveImage imageUrl=" + paramJSONObject);
       }
@@ -274,15 +289,15 @@ public class ThemeAndBubbleCommonJsPlugin
       }
       if (paramJSONObject.length >= 1)
       {
-        localObject = bhdj.a(this.mRuntime.a(), 230);
-        ((QQCustomDialogThreeBtns)localObject).setTitle(str2);
-        ((QQCustomDialogThreeBtns)localObject).setMessage(str1);
-        ((QQCustomDialogThreeBtns)localObject).setLeftButton(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
+        localObject = DialogUtil.a(this.mRuntime.a(), 230);
+        ((QQCustomDialogThreeBtns)localObject).a(str2);
+        ((QQCustomDialogThreeBtns)localObject).b(str1);
+        ((QQCustomDialogThreeBtns)localObject).a(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
         if (paramJSONObject.length >= 2) {
-          ((QQCustomDialogThreeBtns)localObject).setMiddleButton(paramJSONObject[1], new ThemeAndBubbleCommonJsPlugin.2(this, paramString));
+          ((QQCustomDialogThreeBtns)localObject).b(paramJSONObject[1], new ThemeAndBubbleCommonJsPlugin.2(this, paramString));
         }
         if (paramJSONObject.length >= 3) {
-          ((QQCustomDialogThreeBtns)localObject).setRightButton(paramJSONObject[2], new ThemeAndBubbleCommonJsPlugin.3(this, paramString));
+          ((QQCustomDialogThreeBtns)localObject).c(paramJSONObject[2], new ThemeAndBubbleCommonJsPlugin.3(this, paramString));
         }
         ((QQCustomDialogThreeBtns)localObject).setCanceledOnTouchOutside(false);
         ((QQCustomDialogThreeBtns)localObject).setOnKeyListener(new ThemeAndBubbleCommonJsPlugin.4(this, (QQCustomDialogThreeBtns)localObject, paramString));
@@ -317,7 +332,7 @@ public class ThemeAndBubbleCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeAndBubbleCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

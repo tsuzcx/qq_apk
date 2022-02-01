@@ -1,15 +1,15 @@
 package com.tencent.biz.subscribe;
 
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import cooperation.qzone.util.QZLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import ykq;
 
-public final class SubscribeUtils$2
+final class SubscribeUtils$2
   implements Runnable
 {
-  public SubscribeUtils$2(String paramString) {}
+  SubscribeUtils$2(String paramString) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public final class SubscribeUtils$2
       {
         URL localURL;
         int i;
-        ykq.c("SubscribeUtils", "report exception" + localException.toString());
+        SLog.c("SubscribeUtils", "report exception" + localException.toString());
         if (!QZLog.isColorLevel()) {
           break;
         }
@@ -47,13 +47,13 @@ public final class SubscribeUtils$2
         boolean bool = false;
       }
     }
-    ykq.c("SubscribeUtils", "report rspCode " + i + "， request thirdparty" + bool + " url =" + localURL);
+    SLog.c("SubscribeUtils", "report rspCode " + i + "， request thirdparty" + bool + " url =" + localURL);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeUtils.2
  * JD-Core Version:    0.7.0.1
  */

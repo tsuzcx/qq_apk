@@ -120,7 +120,7 @@ public class IcsLinearLayout
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
   }
   
-  protected void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = indexOfChild(paramView);
     int j = getOrientation();
@@ -153,7 +153,7 @@ public class IcsLinearLayout
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {

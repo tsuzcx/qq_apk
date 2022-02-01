@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.apollo.player.manager;
 
-import amqs;
-import amvr;
-import anch;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.api.IApolloCmdChannel;
+import com.tencent.mobileqq.apollo.api.render.IRenderRunner;
+import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloUtilImpl;
+import com.tencent.mobileqq.apollo.player.CMSHelper;
+import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import kotlin.Metadata;
@@ -12,30 +13,33 @@ import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
-public final class CMSBornPlayer$recordAction$render$1
+final class CMSBornPlayer$recordAction$render$1
   extends Lambda
   implements Function0<Unit>
 {
-  public CMSBornPlayer$recordAction$render$1(QQAppInterface paramQQAppInterface, amvr paramamvr)
+  CMSBornPlayer$recordAction$render$1(CMSBornPlayer.CMSActionContext paramCMSActionContext)
   {
     super(0);
   }
   
   public final void invoke()
   {
-    Object localObject = this.$app;
+    Object localObject = CMSHelper.a.a();
     if (localObject != null) {
       ((QQAppInterface)localObject).removeObserver((BusinessObserver)this.$actionContext.a());
     }
     this.$actionContext.a().onDestroy();
-    localObject = ApolloCmdChannel.getChannel(this.$app);
-    ((ApolloCmdChannel)localObject).removeRenderRunner((amqs)this.$actionContext.a());
-    ((ApolloCmdChannel)localObject).removeCmdHandler(this.$actionContext.a());
+    localObject = ApolloUtilImpl.getCmdChannel();
+    if (localObject != null)
+    {
+      ((IApolloCmdChannel)localObject).removeRenderRunner((IRenderRunner)this.$actionContext.a());
+      ((IApolloCmdChannel)localObject).removeCmdHandler(this.$actionContext.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.manager.CMSBornPlayer.recordAction.render.1
  * JD-Core Version:    0.7.0.1
  */

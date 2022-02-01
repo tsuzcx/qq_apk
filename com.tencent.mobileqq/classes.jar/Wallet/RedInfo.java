@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class RedInfo
   extends JceStruct
 {
-  public int isShow;
+  public int isShow = 0;
   public String path = "";
-  public long taskId;
+  public long taskId = 0L;
   
   public RedInfo() {}
   

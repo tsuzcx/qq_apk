@@ -1,0 +1,20 @@
+package com.tencent.qqperf.repoter;
+
+import com.tencent.qqperf.MagnifierSDK;
+
+final class ReporterMachine$1
+  implements IReporter.ReportResultCallback
+{
+  public void a(int paramInt)
+  {
+    if (MagnifierSDK.a != null) {
+      MagnifierSDK.a.a("result_objects", paramInt, 2);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.qqperf.repoter.ReporterMachine.1
+ * JD-Core Version:    0.7.0.1
+ */

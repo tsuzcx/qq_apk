@@ -1,11 +1,9 @@
 package com.tencent.av.ui.redbag;
 
-import mqb;
-
-public class AVRedBagMgr$6
+class AVRedBagMgr$6
   implements Runnable
 {
-  public AVRedBagMgr$6(mqb parammqb) {}
+  AVRedBagMgr$6(AVRedBagMgr paramAVRedBagMgr) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AVRedBagMgr$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.redbag.AVRedBagMgr.6
  * JD-Core Version:    0.7.0.1
  */

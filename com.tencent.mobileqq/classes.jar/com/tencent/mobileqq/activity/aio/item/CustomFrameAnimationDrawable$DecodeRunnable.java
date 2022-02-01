@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agrf;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
-import bhdb;
-import bheg;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.mobileqq.utils.CommonImageCacheHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -40,7 +39,7 @@ class CustomFrameAnimationDrawable$DecodeRunnable
     if (CustomFrameAnimationDrawable.a(this.this$0)) {
       str = CustomFrameAnimationDrawable.a(this.this$0).a(CustomFrameAnimationDrawable.a(this.this$0), CustomFrameAnimationDrawable.b(this.this$0), this.jdField_a_of_type_Int);
     }
-    for (Object localObject1 = bhdb.a(str);; localObject1 = null)
+    for (Object localObject1 = CommonImageCacheHelper.a(str);; localObject1 = null)
     {
       if (localObject1 == null)
       {
@@ -62,7 +61,7 @@ class CustomFrameAnimationDrawable$DecodeRunnable
         {
           try
           {
-            localBitmap1 = bheg.a(this.jdField_a_of_type_AndroidContentResResources, this.b);
+            localBitmap1 = BaseImageUtil.a(this.jdField_a_of_type_AndroidContentResResources, this.b);
             localObject1 = localBitmap1;
           }
           catch (OutOfMemoryError localOutOfMemoryError1)
@@ -76,7 +75,7 @@ class CustomFrameAnimationDrawable$DecodeRunnable
           if (localObject1 != null)
           {
             if (CustomFrameAnimationDrawable.a(this.this$0)) {
-              bhdb.a(str, (Bitmap)localObject1);
+              CommonImageCacheHelper.a(str, (Bitmap)localObject1);
             }
             this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
           }
@@ -85,7 +84,7 @@ class CustomFrameAnimationDrawable$DecodeRunnable
           if (this.jdField_a_of_type_JavaLangString != null) {
             try
             {
-              Bitmap localBitmap2 = bheg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+              Bitmap localBitmap2 = BaseImageUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
               localObject1 = localBitmap2;
             }
             catch (OutOfMemoryError localOutOfMemoryError2)
@@ -103,7 +102,7 @@ class CustomFrameAnimationDrawable$DecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.av.ui;
 
-import mgc;
-
-public class MultiVideoCtrlLayerUI4Discussion$6$1
+class MultiVideoCtrlLayerUI4Discussion$6$1
   implements Runnable
 {
-  public MultiVideoCtrlLayerUI4Discussion$6$1(mgc parammgc) {}
+  MultiVideoCtrlLayerUI4Discussion$6$1(MultiVideoCtrlLayerUI4Discussion.6 param6) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class MultiVideoCtrlLayerUI4Discussion$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion.6.1
  * JD-Core Version:    0.7.0.1
  */

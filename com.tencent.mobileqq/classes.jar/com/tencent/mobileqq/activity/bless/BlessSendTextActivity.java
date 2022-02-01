@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.bless;
 
-import Override;
-import aipw;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -16,26 +14,27 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import bdla;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class BlessSendTextActivity
   extends BaseActivity
   implements TextWatcher, View.OnClickListener
 {
   int jdField_a_of_type_Int = 0;
-  private aipw jdField_a_of_type_Aipw;
   View jdField_a_of_type_AndroidViewView;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   protected RelativeLayout a;
+  private BlessManager jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager;
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   private void a(IBinder paramIBinder)
   {
@@ -46,20 +45,20 @@ public class BlessSendTextActivity
   
   private void b()
   {
-    ((ImmersiveTitleBar2)findViewById(2131379099)).setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379001);
+    ((ImmersiveTitleBar2)findViewById(2131379533)).setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379432);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131165389));
-    findViewById(2131369262).setOnClickListener(this);
-    findViewById(2131364452).setOnClickListener(this);
-    findViewById(2131364032).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366009));
+    findViewById(2131369518).setOnClickListener(this);
+    findViewById(2131364560).setOnClickListener(this);
+    findViewById(2131364132).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366174));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363320));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363399));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
   }
   
@@ -69,15 +68,15 @@ public class BlessSendTextActivity
     {
       String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       this.jdField_a_of_type_JavaUtilArrayList.set(this.jdField_a_of_type_Int, str);
-      this.jdField_a_of_type_Aipw.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaUtilArrayList.size());
+      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaUtilArrayList.size());
     }
   }
   
   public void a()
   {
-    bdla.b(this.app, "CliOper", "", "", "0X8006195", "0X8006195", 0, 0, String.valueOf(1), "", "", "");
+    ReportController.b(this.app, "CliOper", "", "", "0X8006195", "0X8006195", 0, 0, String.valueOf(1), "", "", "");
     finish();
-    overridePendingTransition(2130771997, 2130772001);
+    overridePendingTransition(2130771999, 2130772003);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -100,9 +99,9 @@ public class BlessSendTextActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558777);
-    this.jdField_a_of_type_Aipw = ((aipw)this.app.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER));
-    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Aipw.b();
+    super.setContentView(2131558817);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager = ((BlessManager)this.app.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER));
+    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.b();
     b();
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("fromoutweb", false);
     return true;
@@ -135,7 +134,7 @@ public class BlessSendTextActivity
         Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
         if (((String)localObject).equals(""))
         {
-          QQToast.a(this, 2131690632, 1).a();
+          QQToast.a(this, 2131690734, 1).a();
         }
         else
         {
@@ -145,18 +144,18 @@ public class BlessSendTextActivity
           localIntent.putExtra("param_entrance", 15);
           localIntent.putExtra("param_only_friends", true);
           localIntent.putExtra("param_donot_need_contacts", true);
-          localIntent.putExtra("param_title", getString(2131690638));
-          localIntent.putExtra("param_done_button_wording", getString(2131691037));
+          localIntent.putExtra("param_title", getString(2131690740));
+          localIntent.putExtra("param_done_button_wording", getString(2131691144));
           localIntent.putExtra("param_exit_animation", 1);
           localIntent.putExtra("param_blesstype", 1);
           localIntent.putExtra("param_blessword_content", (String)localObject);
           startActivity(localIntent);
-          overridePendingTransition(2130771992, 2130771993);
+          overridePendingTransition(2130771994, 2130771995);
           localObject = this.app;
           if (this.jdField_a_of_type_Boolean) {}
           for (;;)
           {
-            bdla.b((QQAppInterface)localObject, "CliOper", "", "", "0X800618C", "0X800618C", i, 0, "", "", "", "");
+            ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X800618C", "0X800618C", i, 0, "", "", "", "");
             break;
             i = 0;
           }
@@ -189,7 +188,7 @@ public class BlessSendTextActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessSendTextActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ public final class RspGetPositionApi
   static GPS cache_stUsrLoc;
   static ArrayList<Cell> cache_vCells;
   static ArrayList<Long> cache_vMacs;
-  public int iDistrictCode;
+  public int iDistrictCode = 0;
   public int iRange = -1;
-  public GPS stUsrLoc;
+  public GPS stUsrLoc = null;
   public String strCity = "";
   public String strDistrict = "";
   public String strPremises = "";
   public String strProvince = "";
   public String strRoad = "";
   public String strTown = "";
-  public ArrayList<Cell> vCells;
-  public ArrayList<Long> vMacs;
+  public ArrayList<Cell> vCells = null;
+  public ArrayList<Long> vMacs = null;
   
   public RspGetPositionApi() {}
   

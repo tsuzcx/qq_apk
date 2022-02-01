@@ -6,9 +6,9 @@ import com.tencent.aekit.openrender.UniformParam.Float2sParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.util.List;
 
 public class SnakeFaceFilter
@@ -58,8 +58,8 @@ public class SnakeFaceFilter
   
   private void initCoordinates()
   {
-    this.mFullscreenVertices = VideoMaterialUtil.genFullScreenVertices(24, 32, -1.0F, 1.0F, -1.0F, 1.0F);
-    this.mInitTextureCoordinates = VideoMaterialUtil.genFullScreenVertices(24, 32, 0.0F, 1.0F, 0.0F, 1.0F);
+    this.mFullscreenVertices = VideoMaterial.genFullScreenVertices(24, 32, -1.0F, 1.0F, -1.0F, 1.0F);
+    this.mInitTextureCoordinates = VideoMaterial.genFullScreenVertices(24, 32, 0.0F, 1.0F, 0.0F, 1.0F);
   }
   
   private void refineSnakeEyePoint(PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2)
@@ -107,15 +107,15 @@ public class SnakeFaceFilter
   private void updateGLParams(int paramInt)
   {
     addParam(new UniformParam.IntParam(SnakeFaceFilter.SHADER_FIELD.NPOINT.name, paramInt));
-    addParam(new UniformParam.Float2sParam(SnakeFaceFilter.SHADER_FIELD.FSRC.name, VideoMaterialUtil.toFlatArray(this.srcPoints)));
-    addParam(new UniformParam.Float2sParam(SnakeFaceFilter.SHADER_FIELD.FDST.name, VideoMaterialUtil.toFlatArray(this.dstPoints)));
+    addParam(new UniformParam.Float2sParam(SnakeFaceFilter.SHADER_FIELD.FSRC.name, VideoMaterial.toFlatArray(this.srcPoints)));
+    addParam(new UniformParam.Float2sParam(SnakeFaceFilter.SHADER_FIELD.FDST.name, VideoMaterial.toFlatArray(this.dstPoints)));
   }
   
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    setPositions(VideoMaterialUtil.toFlatArray((PointF[])this.mFullscreenVertices.toArray(new PointF[0])));
-    setTexCords(VideoMaterialUtil.toFlatArray((PointF[])this.mInitTextureCoordinates.toArray(new PointF[0])));
+    setPositions(VideoMaterial.toFlatArray((PointF[])this.mFullscreenVertices.toArray(new PointF[0])));
+    setTexCords(VideoMaterial.toFlatArray((PointF[])this.mInitTextureCoordinates.toArray(new PointF[0])));
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP);
     setCoordNum(1561);
   }
@@ -132,7 +132,7 @@ public class SnakeFaceFilter
     int j = 0;
     if ((paramObject instanceof PTDetectInfo))
     {
-      paramObject = VideoMaterialUtil.copyList(((PTDetectInfo)paramObject).facePoints);
+      paramObject = VideoMaterial.copyList(((PTDetectInfo)paramObject).facePoints);
       if ((paramObject != null) && (paramObject.size() >= 90)) {
         break label68;
       }
@@ -145,7 +145,7 @@ public class SnakeFaceFilter
       updateGLParams(i);
       return;
       label68:
-      VideoMaterialUtil.flipYPoints(paramObject, (int)(this.height * this.mFaceDetScale));
+      VideoMaterial.flipYPoints(paramObject, (int)(this.height * this.mFaceDetScale));
       i = 0;
       while (i < 90)
       {
@@ -214,7 +214,7 @@ public class SnakeFaceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.SnakeFaceFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.QZoneHelper.QZoneCoverConstants;
 
@@ -25,7 +25,7 @@ class QZoneCoverStoreJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

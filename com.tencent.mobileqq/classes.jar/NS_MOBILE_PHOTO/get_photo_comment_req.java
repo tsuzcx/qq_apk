@@ -12,13 +12,13 @@ public final class get_photo_comment_req
   static Map<String, String> cache_extent_info = new HashMap();
   public String albumid = "";
   public String attach_info = "";
-  public int commenttype;
-  public Map<String, String> extent_info;
-  public int order;
+  public int commenttype = 0;
+  public Map<String, String> extent_info = null;
+  public int order = 0;
   public String photoid = "";
   public int refresh_type = 8;
   public String topicid = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

@@ -20,7 +20,6 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
-import blfz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
@@ -44,7 +43,7 @@ public abstract class AdapterView<T extends Adapter>
   private boolean mDesiredFocusableState;
   private View mEmptyView;
   @ViewDebug.ExportedProperty(category="scrolling")
-  public int mFirstPosition;
+  public int mFirstPosition = 0;
   boolean mInLayout = false;
   @ViewDebug.ExportedProperty(category="list")
   protected int mItemCount;
@@ -149,7 +148,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public static void traceBegin(String paramString)
   {
-    blfz.a(paramString);
+    TraceUtils.traceBegin(paramString);
   }
   
   public static void traceEnd() {}
@@ -201,7 +200,7 @@ public abstract class AdapterView<T extends Adapter>
     throw new UnsupportedOperationException("addView(View, LayoutParams) is not supported in AdapterView");
   }
   
-  protected boolean canAnimate()
+  public boolean canAnimate()
   {
     return (super.canAnimate()) && (this.mItemCount > 0);
   }
@@ -274,12 +273,12 @@ public abstract class AdapterView<T extends Adapter>
     return (localView != null) && (localView.getVisibility() == 0) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent));
   }
   
-  protected void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
+  public void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchThawSelfOnly(paramSparseArray);
   }
   
-  protected void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
+  public void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchFreezeSelfOnly(paramSparseArray);
   }
@@ -474,7 +473,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public abstract View getSelectedView();
   
-  protected float getVerticalScrollFactor()
+  public float getVerticalScrollFactor()
   {
     if (this.mVerticalScrollFactor == 0.0F)
     {
@@ -571,7 +570,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((VersionUtils.isHoneycomb()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
+    if ((VersionUtils.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
       ((View)getParent()).invalidate();
     }
   }
@@ -584,7 +583,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(14)
   public boolean isInScrollingContainer()
   {
-    if (VersionUtils.isIceScreamSandwich()) {
+    if (VersionUtils.d()) {
       for (ViewParent localViewParent = getParent(); (localViewParent != null) && ((localViewParent instanceof ViewGroup)); localViewParent = localViewParent.getParent()) {
         if (((ViewGroup)localViewParent).shouldDelayChildPressedState()) {
           return true;
@@ -599,7 +598,7 @@ public abstract class AdapterView<T extends Adapter>
     return paramInt;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     removeCallbacks(this.mSelectionNotifier);
@@ -642,7 +641,7 @@ public abstract class AdapterView<T extends Adapter>
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.mLayoutHeight = getHeight();
   }

@@ -2,22 +2,21 @@ package com.tencent.biz.pubaccount.troopbarassit;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bmhv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import uqx;
 
-public class TroopBarAssistantManager$2
+class TroopBarAssistantManager$2
   implements Runnable
 {
-  public TroopBarAssistantManager$2(uqx paramuqx, QQAppInterface paramQQAppInterface) {}
+  TroopBarAssistantManager$2(TroopBarAssistantManager paramTroopBarAssistantManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -40,7 +39,7 @@ public class TroopBarAssistantManager$2
       }
     }
     localObject1 = ((JSONArray)localObject1).toString();
-    if (bmhv.b()) {
+    if (ReadInJoyHelper.b()) {
       QLog.i("TroopBarAssistantManager", 2, "saveNewMsgSet, save newMsgStr into sp:" + (String)localObject1);
     }
     localObject2 = this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit();
@@ -50,7 +49,7 @@ public class TroopBarAssistantManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.2
  * JD-Core Version:    0.7.0.1
  */

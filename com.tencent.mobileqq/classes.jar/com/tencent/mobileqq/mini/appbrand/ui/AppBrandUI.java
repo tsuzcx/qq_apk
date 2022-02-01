@@ -1,29 +1,25 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import Override;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.widget.Toast;
-import anvx;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.fake.FakeSdkBrandUI;
 import com.tencent.mobileqq.mini.fake.IFakeBrandUI;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import common.config.service.QzoneConfig;
 import mqq.os.MqqHandler;
 
 public class AppBrandUI
-  extends BaseActivity
+  extends MiniBaseActivity
 {
   public static final String TAG = "miniapp-start_AppBrandUI";
   private boolean enableMemoryDetect = true;
@@ -88,19 +84,19 @@ public class AppBrandUI
       int i = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_alert_mode", 0);
       if (i == 0)
       {
-        Toast.makeText(this, 2131693993, 0).show();
+        Toast.makeText(this, 2131694195, 0).show();
         return;
       }
       if (i == 1)
       {
         if (this.mRestartDialog == null)
         {
-          this.mRestartDialog = new QQCustomDialog(this, 2131755829);
-          this.mRestartDialog.setContentView(2131559019);
-          this.mRestartDialog.setTitle(2131693954);
-          this.mRestartDialog.setMessage(2131693993);
-          this.mRestartDialog.setPositiveButton(anvx.a(2131705368), new AppBrandUI.6(this));
-          this.mRestartDialog.setNegativeButton(anvx.a(2131705365), new AppBrandUI.7(this));
+          this.mRestartDialog = new QQCustomDialog(this, 2131755842);
+          this.mRestartDialog.setContentView(2131559060);
+          this.mRestartDialog.setTitle(2131694156);
+          this.mRestartDialog.setMessage(2131694195);
+          this.mRestartDialog.setPositiveButton(HardCodeUtil.a(2131705911), new AppBrandUI.6(this));
+          this.mRestartDialog.setNegativeButton(HardCodeUtil.a(2131705908), new AppBrandUI.7(this));
           this.mRestartDialog.setCanceledOnTouchOutside(true);
         }
         if (!this.mRestartDialog.isShowing())
@@ -115,15 +111,6 @@ public class AppBrandUI
     {
       QLog.e("miniapp-start_AppBrandUI", 1, "", localThrowable);
     }
-  }
-  
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
   }
   
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -211,7 +198,7 @@ public class AppBrandUI
     enableDetectMemory(false);
   }
   
-  public void doRefreshMiniBadge(Bundle paramBundle)
+  protected void doRefreshMiniBadge(Bundle paramBundle)
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doRefreshMiniBadge");
     super.doRefreshMiniBadge(paramBundle);
@@ -256,7 +243,6 @@ public class AppBrandUI
   {
     super.onConfigurationChanged(paramConfiguration);
     QLog.d("miniapp-start_AppBrandUI", 1, "onConfigurationChanged");
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onProcessBackground(Bundle paramBundle)

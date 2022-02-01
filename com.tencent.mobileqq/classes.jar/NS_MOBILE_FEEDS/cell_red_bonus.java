@@ -10,12 +10,12 @@ public final class cell_red_bonus
 {
   static ArrayList<s_redbonus_man> cache_payMans = new ArrayList();
   public String actionUrl = "";
-  public int isPayed;
-  public ArrayList<s_redbonus_man> payMans;
-  public long payMenNum;
-  public long payMoney;
-  public long payNum;
-  public long payTotalAccount;
+  public int isPayed = 0;
+  public ArrayList<s_redbonus_man> payMans = null;
+  public long payMenNum = 0L;
+  public long payMoney = 0L;
+  public long payNum = 0L;
+  public long payTotalAccount = 0L;
   
   static
   {

@@ -13,7 +13,6 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import apdi;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -22,14 +21,14 @@ public class ARVideoRecordButtonView
 {
   private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 2;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = null;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = null;
   private float jdField_b_of_type_Float = 0.0F;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Bitmap c;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap = null;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint = null;
+  private Bitmap c = null;
   
   public ARVideoRecordButtonView(Context paramContext)
   {
@@ -82,15 +81,15 @@ public class ARVideoRecordButtonView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838691);
-    this.c = a(2130838692);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838759);
+    this.c = a(2130838760);
   }
   
   private void a(float paramFloat1, float paramFloat2)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
     localValueAnimator.setDuration(1000L);
-    localValueAnimator.addUpdateListener(new apdi(this));
+    localValueAnimator.addUpdateListener(new ARVideoRecordButtonView.3(this));
     localValueAnimator.start();
   }
   
@@ -146,7 +145,7 @@ public class ARVideoRecordButtonView
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F - (1.0F - f1) * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
   }
@@ -181,7 +180,7 @@ public class ARVideoRecordButtonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView
  * JD-Core Version:    0.7.0.1
  */

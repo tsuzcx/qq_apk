@@ -6,10 +6,11 @@ public abstract class TroopFileTransferManager$Task
   public int a;
   public TroopFileTransferManager.Item a;
   public boolean a;
-  public boolean b;
+  public boolean b = false;
   
   protected TroopFileTransferManager$Task(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem, int paramInt)
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
     this.jdField_a_of_type_Int = paramInt;
   }

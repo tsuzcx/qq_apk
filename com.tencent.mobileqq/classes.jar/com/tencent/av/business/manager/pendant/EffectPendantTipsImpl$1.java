@@ -1,20 +1,19 @@
 package com.tencent.av.business.manager.pendant;
 
 import android.text.TextUtils;
-import lic;
-import mbf;
+import com.tencent.av.tips.TipsUtil;
 
-public class EffectPendantTipsImpl$1
+class EffectPendantTipsImpl$1
   implements Runnable
 {
-  public EffectPendantTipsImpl$1(lic paramlic, String paramString) {}
+  EffectPendantTipsImpl$1(EffectPendantTipsImpl paramEffectPendantTipsImpl, String paramString) {}
   
   public void run()
   {
     try
     {
       if (!TextUtils.isEmpty(this.a)) {
-        mbf.a(lic.a(this.this$0), 1016, this.a);
+        TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016, this.a);
       }
       return;
     }
@@ -26,7 +25,7 @@ public class EffectPendantTipsImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.1
  * JD-Core Version:    0.7.0.1
  */

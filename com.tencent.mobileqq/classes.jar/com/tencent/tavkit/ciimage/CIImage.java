@@ -4,9 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.graphics.Paint;
 import android.graphics.PointF;
 import android.opengl.EGL14;
 import android.opengl.EGLContext;
@@ -20,13 +18,13 @@ import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.DecoderUtils;
 import com.tencent.tav.decoder.RenderContext;
+import com.tencent.tav.decoder.TAVImageFactory;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
 import com.tencent.tavkit.utils.MathUtils;
 import com.tencent.tavkit.utils.TAVBitmapUtils;
 import com.tencent.tavkit.utils.Utils;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -39,8 +37,8 @@ public class CIImage
   private float alpha = 1.0F;
   @Nullable
   private Bitmap bitmap;
+  @Nullable
   private CGRect frame;
-  private GaosiBlurFilter gaosiBlurFilter;
   private boolean isHardMode = false;
   @NonNull
   private final List<CIImage> overlayImages = new ArrayList();
@@ -48,7 +46,6 @@ public class CIImage
   private int rotation;
   @NonNull
   private final CGSize size;
-  private String tag;
   private String textureCacheKey;
   @Nullable
   private TextureInfo textureInfo;
@@ -58,7 +55,7 @@ public class CIImage
   public CIImage(Bitmap paramBitmap)
   {
     Logger.v(this.TAG, "CIImage() called with: bitmap = [" + paramBitmap + "]");
-    this.bitmap = checkBitmapConfig(paramBitmap);
+    this.bitmap = TAVImageFactory.fixSupportImageConfig(paramBitmap);
     this.size = new CGSize(paramBitmap.getWidth(), paramBitmap.getHeight());
   }
   
@@ -85,7 +82,7 @@ public class CIImage
     long l = System.currentTimeMillis();
     this.preferRotation = TAVBitmapUtils.readImagePreferRotation(paramString);
     this.bitmap = decodeBitmap(paramString, paramCGSize);
-    this.bitmap = checkBitmapConfig(this.bitmap);
+    this.bitmap = TAVImageFactory.fixSupportImageConfig(this.bitmap);
     if (this.bitmap != null)
     {
       this.size = new CGSize(this.bitmap.getWidth(), this.bitmap.getHeight());
@@ -104,15 +101,6 @@ public class CIImage
       return;
     }
     finally {}
-  }
-  
-  private Bitmap checkBitmapConfig(Bitmap paramBitmap)
-  {
-    Bitmap localBitmap = paramBitmap;
-    if (Arrays.binarySearch(SUPPORT_CONFIGS, paramBitmap.getConfig()) < 0) {
-      localBitmap = transcodeBitmap(paramBitmap);
-    }
-    return localBitmap;
   }
   
   private Bitmap decodeBitmap(String paramString, CGSize paramCGSize)
@@ -136,17 +124,6 @@ public class CIImage
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F });
     return localMatrix;
-  }
-  
-  private Bitmap transcodeBitmap(Bitmap paramBitmap)
-  {
-    Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    localPaint.setAntiAlias(true);
-    localPaint.setDither(true);
-    localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, localPaint);
-    return localBitmap;
   }
   
   public void applyFillInFrame(CGRect paramCGRect, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
@@ -241,20 +218,6 @@ public class CIImage
     }
   }
   
-  public void applyGaussianBlur()
-  {
-    TextureInfo localTextureInfo = getDrawTextureInfo();
-    if (localTextureInfo != null)
-    {
-      this.gaosiBlurFilter = new GaosiBlurFilter(false, 20);
-      this.gaosiBlurFilter.setRendererWidth(localTextureInfo.width);
-      this.gaosiBlurFilter.setRendererHeight(localTextureInfo.height);
-      this.gaosiBlurFilter.setRadius(20);
-      Logger.v(this.TAG, "draw: with drawTexture = " + localTextureInfo + ", filter = " + this.gaosiBlurFilter);
-      this.textureInfo = this.gaosiBlurFilter.applyFilter(localTextureInfo);
-    }
-  }
-  
   public void applyPreferRotation()
   {
     applyPreferRotation(0);
@@ -319,7 +282,7 @@ public class CIImage
       paramTextureFilter.applyFilter((TextureInfo)localObject, this.transform, ((TextureInfo)localObject).getTextureMatrix(), this.alpha, this.frame);
     }
     if (this.overlayImages.isEmpty()) {}
-    do
+    for (;;)
     {
       return;
       Logger.v(this.TAG, "draw: with: draw overlayImages = " + this.overlayImages + ", filter = " + paramTextureFilter);
@@ -327,14 +290,19 @@ public class CIImage
       while (((Iterator)localObject).hasNext()) {
         ((CIImage)((Iterator)localObject).next()).draw(paramTextureFilter);
       }
-    } while (this.gaosiBlurFilter == null);
-    this.gaosiBlurFilter.release();
+    }
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   public float getAlpha()
   {
     return this.alpha;
+  }
+  
+  @Nullable
+  public Bitmap getBitmap()
+  {
+    return this.bitmap;
   }
   
   @Nullable
@@ -398,11 +366,6 @@ public class CIImage
     return this.size;
   }
   
-  public String getTag()
-  {
-    return this.tag;
-  }
-  
   @Nullable
   public Matrix getTransform()
   {
@@ -460,6 +423,11 @@ public class CIImage
     return (this.bitmap == null) && (this.textureInfo == null);
   }
   
+  public boolean isOriginal()
+  {
+    return (this.preferRotation == 0) && (this.transform == null) && (this.frame == null) && (this.overlayImages.isEmpty()) && (this.rotation == 0) && (this.alpha == 1.0F);
+  }
+  
   public void release()
   {
     try
@@ -470,16 +438,11 @@ public class CIImage
         this.bitmap.recycle();
         this.bitmap = null;
       }
-      Object localObject1 = ThreadLocalTextureCache.getInstance().getTextureInfo(this.textureCacheKey);
-      if (localObject1 != null)
+      releaseCacheTexture();
+      Iterator localIterator = this.overlayImages.iterator();
+      while (localIterator.hasNext())
       {
-        ((TextureInfo)localObject1).release();
-        ThreadLocalTextureCache.getInstance().remove(this.textureCacheKey);
-      }
-      localObject1 = this.overlayImages.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        CIImage localCIImage = (CIImage)((Iterator)localObject1).next();
+        CIImage localCIImage = (CIImage)localIterator.next();
         if (localCIImage != null) {
           localCIImage.release();
         }
@@ -488,6 +451,16 @@ public class CIImage
     }
     finally {}
     Logger.d(this.TAG, "release() end");
+  }
+  
+  public void releaseCacheTexture()
+  {
+    TextureInfo localTextureInfo = ThreadLocalTextureCache.getInstance().getTextureInfo(this.textureCacheKey);
+    if (localTextureInfo != null)
+    {
+      localTextureInfo.release();
+      ThreadLocalTextureCache.getInstance().remove(this.textureCacheKey);
+    }
   }
   
   public void reset()
@@ -530,11 +503,6 @@ public class CIImage
     this.isHardMode = paramBoolean;
   }
   
-  public void setTag(String paramString)
-  {
-    this.tag = paramString;
-  }
-  
   public CIImage simpleClone()
   {
     CIImage localCIImage = new CIImage(this.size.clone());
@@ -552,7 +520,7 @@ public class CIImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.CIImage
  * JD-Core Version:    0.7.0.1
  */

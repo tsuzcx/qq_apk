@@ -9,12 +9,12 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.TextureView;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tavcut.player.MoviePlayer;
-import com.tencent.tavcut.view.TAVCutVideoView;
+import com.tencent.tavkit.composition.TAVComposition;
 
 public class CoverPreviewBar
   extends FrameLayout
@@ -59,11 +59,22 @@ public class CoverPreviewBar
   private void extractBitmapFromPlayer(MoviePlayer paramMoviePlayer)
   {
     Bitmap localBitmap = paramMoviePlayer.getTextureView().getBitmap();
-    if (paramMoviePlayer.getPlayerLayout().getStickerContainer() != null)
+    if (paramMoviePlayer.getTavComposition() != null)
     {
-      int i = paramMoviePlayer.getPlayerLayout().getStickerContainer().getWidth();
-      int j = paramMoviePlayer.getPlayerLayout().getStickerContainer().getHeight();
-      paramMoviePlayer = Bitmap.createBitmap(localBitmap, (paramMoviePlayer.getPlayerLayout().getWidth() - i) / 2, (paramMoviePlayer.getPlayerLayout().getHeight() - j) / 2, i, j);
+      paramMoviePlayer = paramMoviePlayer.getTavComposition().getRenderSize();
+      float f = paramMoviePlayer.height / paramMoviePlayer.width;
+      if (f > localBitmap.getHeight() / localBitmap.getWidth())
+      {
+        i = (int)(localBitmap.getHeight() / f);
+        j = localBitmap.getHeight();
+        paramMoviePlayer = Bitmap.createBitmap(localBitmap, (localBitmap.getWidth() - i) / 2, 0, i, j);
+        this.currCover = paramMoviePlayer;
+        setImageBitmap(paramMoviePlayer);
+        return;
+      }
+      int i = (int)(f * localBitmap.getWidth());
+      int j = localBitmap.getWidth();
+      paramMoviePlayer = Bitmap.createBitmap(localBitmap, 0, (localBitmap.getHeight() - i) / 2, j, i);
       this.currCover = paramMoviePlayer;
       setImageBitmap(paramMoviePlayer);
       return;
@@ -202,7 +213,7 @@ public class CoverPreviewBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.timeline.CoverPreviewBar
  * JD-Core Version:    0.7.0.1
  */

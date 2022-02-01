@@ -14,7 +14,7 @@ public class ImageViewCatchRecycle
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -30,7 +30,7 @@ public class ImageViewCatchRecycle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageViewCatchRecycle
  * JD-Core Version:    0.7.0.1
  */

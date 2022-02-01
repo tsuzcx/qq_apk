@@ -16,21 +16,24 @@ public class PicProgressView
   private BaseTransProcessor jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
   public String a;
   public boolean a;
-  private boolean b;
+  private boolean b = false;
   
   public PicProgressView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public PicProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public PicProgressView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -107,7 +110,7 @@ public class PicProgressView
     super.a(paramCanvas);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable);
     super.onDetachedFromWindow();
@@ -159,7 +162,7 @@ public class PicProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.PicProgressView
  * JD-Core Version:    0.7.0.1
  */

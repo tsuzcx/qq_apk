@@ -1,31 +1,30 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import Override;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bpti;
-import bptj;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.mobileqq.activity.photo.DragGallery;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
 import com.tencent.mobileqq.widget.NumberCheckBox;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils;
+import dov.com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils.MetaData;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,15 +36,12 @@ public abstract class AbstractPhotoPreviewActivity
   public static final String TAG = "PhotoPreviewActivity";
   public BasePreviewAdapter adapter;
   public TextView backToPhotoListBtn;
-  public RelativeLayout bottomBar;
-  public RelativeLayout bottom_blackLH;
+  RelativeLayout bottomBar;
   public TextView cancelTv;
   public CheckBox flashPicCb;
   public TextView flashTv;
   public DragGallery gallery;
-  ImageView mCenterVideoPlayBtn;
-  public boolean mEnableLiuHai = false;
-  public PhotoPreviewBaseData mPhotoPreviewData;
+  PhotoPreviewBaseData mPhotoPreviewData;
   PhotoPreviewLogic<? extends AbstractPhotoPreviewActivity, ? extends OtherCommonData> mPhotoPreviewLogic;
   public SurfaceView mSurfaceView;
   public Button magicStickBtn;
@@ -61,7 +57,29 @@ public abstract class AbstractPhotoPreviewActivity
   float smallTextSize = 9.0F;
   public TextView titleView;
   public View topBar;
-  public LinearLayout top_blackLH;
+  
+  private void updateMediaInfo(String paramString, LocalMediaInfo paramLocalMediaInfo)
+  {
+    if ((paramLocalMediaInfo != null) && ((paramLocalMediaInfo.mediaWidth == 0) || (paramLocalMediaInfo.mediaHeight == 0)))
+    {
+      Object localObject = new MediaMetadataUtils.MetaData();
+      MediaMetadataUtils.a(paramString, (MediaMetadataUtils.MetaData)localObject);
+      paramLocalMediaInfo.mediaWidth = localObject.a[0];
+      paramLocalMediaInfo.mediaHeight = localObject.a[1];
+      paramLocalMediaInfo.rotation = localObject.a[2];
+      localObject = null;
+      HashMap localHashMap = this.mPhotoPreviewLogic.mPhotoCommonData.allMediaInfoHashMap;
+      if (localHashMap != null) {
+        localObject = (LocalMediaInfo)localHashMap.get(paramString);
+      }
+      if ((localObject != null) && ((((LocalMediaInfo)localObject).mediaWidth == 0) || (((LocalMediaInfo)localObject).mediaHeight == 0)))
+      {
+        ((LocalMediaInfo)localObject).mediaWidth = paramLocalMediaInfo.mediaWidth;
+        ((LocalMediaInfo)localObject).mediaHeight = paramLocalMediaInfo.mediaHeight;
+        ((LocalMediaInfo)localObject).rotation = paramLocalMediaInfo.rotation;
+      }
+    }
+  }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -86,45 +104,25 @@ public abstract class AbstractPhotoPreviewActivity
   
   public String getExceedMaxSelectNumStr()
   {
-    return getResources().getString(2131694632, new Object[] { Integer.valueOf(this.mPhotoPreviewLogic.mPhotoCommonData.maxSelectNum) });
+    return getResources().getString(2131694869, new Object[] { Integer.valueOf(this.mPhotoPreviewLogic.mPhotoCommonData.maxSelectNum) });
   }
   
   public LocalMediaInfo getMediaInfo(String paramString)
   {
-    if (this.mPhotoPreviewLogic.mPhotoCommonData.selectedMediaInfoHashMap != null) {}
-    for (LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.mPhotoPreviewLogic.mPhotoCommonData.selectedMediaInfoHashMap.get(paramString);; localLocalMediaInfo = null)
+    LocalMediaInfo localLocalMediaInfo1 = null;
+    if (this.mPhotoPreviewLogic.mPhotoCommonData.selectedMediaInfoHashMap != null) {
+      localLocalMediaInfo1 = (LocalMediaInfo)this.mPhotoPreviewLogic.mPhotoCommonData.selectedMediaInfoHashMap.get(paramString);
+    }
+    LocalMediaInfo localLocalMediaInfo2 = localLocalMediaInfo1;
+    if (localLocalMediaInfo1 == null)
     {
-      if ((localLocalMediaInfo == null) && (this.mPhotoPreviewLogic.mPhotoCommonData.allMediaInfoHashMap != null)) {
-        localLocalMediaInfo = (LocalMediaInfo)this.mPhotoPreviewLogic.mPhotoCommonData.allMediaInfoHashMap.get(paramString);
-      }
-      for (;;)
-      {
-        Object localObject;
-        if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
-        {
-          localObject = new bptj();
-          bpti.a(paramString, (bptj)localObject);
-          localLocalMediaInfo.mediaWidth = localObject.a[0];
-          localLocalMediaInfo.mediaHeight = localObject.a[1];
-          localLocalMediaInfo.rotation = localObject.a[2];
-          localObject = this.mPhotoPreviewLogic.mPhotoCommonData.allMediaInfoHashMap;
-          if (localObject == null) {
-            break label196;
-          }
-        }
-        label196:
-        for (paramString = (LocalMediaInfo)((HashMap)localObject).get(paramString);; paramString = null)
-        {
-          if ((paramString != null) && ((paramString.mediaWidth == 0) || (paramString.mediaHeight == 0)))
-          {
-            paramString.mediaWidth = localLocalMediaInfo.mediaWidth;
-            paramString.mediaHeight = localLocalMediaInfo.mediaHeight;
-            paramString.rotation = localLocalMediaInfo.rotation;
-          }
-          return localLocalMediaInfo;
-        }
+      localLocalMediaInfo2 = localLocalMediaInfo1;
+      if (this.mPhotoPreviewLogic.mPhotoCommonData.allMediaInfoHashMap != null) {
+        localLocalMediaInfo2 = (LocalMediaInfo)this.mPhotoPreviewLogic.mPhotoCommonData.allMediaInfoHashMap.get(paramString);
       }
     }
+    updateMediaInfo(paramString, localLocalMediaInfo2);
+    return localLocalMediaInfo2;
   }
   
   public LocalMediaInfo getMediaInfoTemp(String paramString)
@@ -174,7 +172,7 @@ public abstract class AbstractPhotoPreviewActivity
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);
     this.gallery.setOnItemSelectedListener(this.adapter);
-    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297147));
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297168));
     this.gallery.setOnItemClickListener(this.adapter);
   }
   
@@ -194,7 +192,7 @@ public abstract class AbstractPhotoPreviewActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int i = paramCompoundButton.getId();
-    if (i == 2131374832) {
+    if (i == 2131375209) {
       this.mPhotoPreviewLogic.onQualityBtnClick(paramCompoundButton, paramBoolean);
     }
     for (;;)
@@ -206,7 +204,7 @@ public abstract class AbstractPhotoPreviewActivity
       }
       EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      if (i == 2131366932) {
+      if (i == 2131367122) {
         this.mPhotoPreviewLogic.mOnCheckedChangedCallback.flashPicCheckedChanged(paramBoolean);
       }
     }
@@ -222,24 +220,29 @@ public abstract class AbstractPhotoPreviewActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559606);
-    this.mSurfaceView = ((SurfaceView)findViewById(2131367499));
+    super.setContentView(2131559682);
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      int i = getWindow().getDecorView().getSystemUiVisibility();
+      getWindow().getDecorView().setSystemUiVisibility(i & 0xFFFFFFEF);
+    }
+    this.mSurfaceView = ((SurfaceView)findViewById(2131367686));
     this.mSurfaceView.setVisibility(8);
-    this.rootLayout = ((RelativeLayout)findViewById(2131376948));
-    this.topBar = findViewById(2131379218);
-    this.bottomBar = ((RelativeLayout)findViewById(2131363692));
-    this.magicStickBtn = ((Button)findViewById(2131370688));
-    this.flashPicCb = ((CheckBox)findViewById(2131366932));
-    this.flashTv = ((TextView)findViewById(2131366933));
-    this.qualityCheckBox = ((CheckBox)findViewById(2131374832));
-    this.qualityTv = ((TextView)findViewById(2131374838));
-    this.cancelTv = ((TextView)findViewById(2131372738));
-    this.sendBtn = ((Button)findViewById(2131377349));
-    this.selectedBox = ((NumberCheckBox)findViewById(2131377326));
-    this.selectLayout = findViewById(2131377303);
-    this.titleView = ((TextView)findViewById(2131379001));
-    this.backToPhotoListBtn = ((TextView)findViewById(2131363336));
-    this.gallery = ((DragGallery)findViewById(2131367490));
+    this.rootLayout = ((RelativeLayout)findViewById(2131377357));
+    this.topBar = findViewById(2131379652);
+    this.bottomBar = ((RelativeLayout)findViewById(2131363785));
+    this.magicStickBtn = ((Button)findViewById(2131370969));
+    this.flashPicCb = ((CheckBox)findViewById(2131367122));
+    this.flashTv = ((TextView)findViewById(2131367123));
+    this.qualityCheckBox = ((CheckBox)findViewById(2131375209));
+    this.qualityTv = ((TextView)findViewById(2131375215));
+    this.cancelTv = ((TextView)findViewById(2131373064));
+    this.sendBtn = ((Button)findViewById(2131377769));
+    this.selectedBox = ((NumberCheckBox)findViewById(2131377747));
+    this.selectLayout = findViewById(2131377723);
+    this.titleView = ((TextView)findViewById(2131379432));
+    this.backToPhotoListBtn = ((TextView)findViewById(2131363416));
+    this.gallery = ((DragGallery)findViewById(2131367677));
     this.flashPicCb.setVisibility(8);
     this.flashTv.setVisibility(8);
     this.qualityCheckBox.setVisibility(8);
@@ -320,7 +323,7 @@ public abstract class AbstractPhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractPhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

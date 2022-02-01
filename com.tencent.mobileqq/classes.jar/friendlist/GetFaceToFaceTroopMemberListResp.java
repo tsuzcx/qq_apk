@@ -9,12 +9,12 @@ public final class GetFaceToFaceTroopMemberListResp
 {
   static int cache_eNetworkType;
   static int cache_result;
-  public long dwStatus;
+  public long dwStatus = 0L;
   public int eNetworkType = 0;
-  public short errorCode;
-  public long iTermType;
-  public int result;
-  public long uAbiFlag;
+  public short errorCode = 0;
+  public long iTermType = 0L;
+  public int result = 0;
+  public long uAbiFlag = 0L;
   
   public GetFaceToFaceTroopMemberListResp() {}
   
@@ -50,7 +50,7 @@ public final class GetFaceToFaceTroopMemberListResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetFaceToFaceTroopMemberListResp
  * JD-Core Version:    0.7.0.1
  */

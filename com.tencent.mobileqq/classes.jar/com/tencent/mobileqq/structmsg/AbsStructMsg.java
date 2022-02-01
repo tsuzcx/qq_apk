@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.structmsg;
 
-import aftk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -12,13 +11,11 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import bdod;
-import bdpl;
-import bdpo;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -27,71 +24,71 @@ import java.io.UnsupportedEncodingException;
 import org.json.JSONObject;
 
 public abstract class AbsStructMsg
-  implements bdod, Externalizable
+  implements StructMsgConstants, Externalizable
 {
-  public static final String DEFAULT_MSG_BRIEF = anvx.a(2131699225);
-  public static final String PA_DEFAULT_MSG_BRIEF = anvx.a(2131699224);
+  public static final String DEFAULT_MSG_BRIEF = HardCodeUtil.a(2131699803);
+  public static final String PA_DEFAULT_MSG_BRIEF = HardCodeUtil.a(2131699802);
   public static int SOURCE_ACCOUNT_TYPE_PA = 7;
   public String adverKey;
   public int adverSign;
   public String currentAccountUin;
   public int dynamicMsgMergeIndex = -1;
   public String dynamicMsgMergeKey = "";
-  public boolean forceDoNotCompress = AppSetting.d();
+  public boolean forceDoNotCompress = AppSetting.f();
   public int forwardID;
-  public int fwFlag;
+  public int fwFlag = 0;
   public String index;
   public String index_name;
   public String index_type;
-  public String mAlgorithmIds;
-  public String mArticleIds;
-  public String mCommentText;
-  public String mCommonData;
+  public String mAlgorithmIds = null;
+  public String mArticleIds = null;
+  public String mCommentText = null;
+  public String mCommonData = null;
   public String mCompatibleText = "";
-  public String mCreateTime;
-  public boolean mEmptyMsgBriefModified;
-  public String mExtraData;
-  public String mFileName;
-  public long mFileSize;
-  public int mFlag;
-  public String mInnerUniqIds;
-  public String mMergeSeq;
+  public String mCreateTime = null;
+  public boolean mEmptyMsgBriefModified = false;
+  public String mExtraData = null;
+  public String mFileName = null;
+  public long mFileSize = 0L;
+  int mFlag;
+  public String mInnerUniqIds = null;
+  public String mMergeSeq = null;
   public String mMsgAction = "web";
-  public String mMsgActionData;
-  public String mMsgBrief;
-  public String mMsgOldText;
+  public String mMsgActionData = null;
+  public String mMsgBrief = null;
+  public String mMsgOldText = null;
   public int mMsgServiceID = -1;
   public int mMsgTemplateID = -1;
-  public String mMsgUrl;
-  public String mMsg_A_ActionData;
-  public String mMsg_I_ActionData;
-  public String mNeedRound;
-  public String mOrangeWord;
+  public String mMsgUrl = null;
+  public String mMsg_A_ActionData = null;
+  public String mMsg_I_ActionData = null;
+  public String mNeedRound = null;
+  public String mOrangeWord = null;
   public int mPromotionMenuDestructiveIndex = -1;
   public String mPromotionMenus = "";
   public String mPromotionMsg = "";
-  public int mPromotionType;
-  public String mQQStoryExtra;
-  public String mQidianBulkTaskId;
-  public String mQzoneExtraMsg;
-  public String mResid;
-  public String mSType;
-  public long mSortKey;
-  public String mSourceThirdName;
-  public String mStrategyIds;
-  public int mTSum;
-  public String mTagName;
-  public String mTribeShortVideoExtra;
-  public int mVersion = 1;
+  public int mPromotionType = 0;
+  public String mQQStoryExtra = null;
+  public String mQidianBulkTaskId = null;
+  public String mQzoneExtraMsg = null;
+  public String mResid = null;
+  public String mSType = null;
+  public long mSortKey = 0L;
+  public String mSourceThirdName = null;
+  public String mStrategyIds = null;
+  public int mTSum = 0;
+  public String mTagName = null;
+  public String mTribeShortVideoExtra = null;
+  int mVersion = 1;
   public MessageRecord message;
   public int messageVersion;
-  public long msgId;
-  public int multiMsgFlag;
+  public long msgId = 0L;
+  public int multiMsgFlag = 0;
   public long parentUniseq;
   public String readInjoy = "QQ看点";
-  public String reportEventFolderStatusValue;
-  public String rijAlbumActionData;
-  public int sourceAccoutType;
+  public String reportEventFolderStatusValue = null;
+  public String rijAlbumActionData = null;
+  public int sourceAccoutType = 0;
   public String source_puin = "";
   public String templateIDForPortal = "";
   public String uin;
@@ -128,19 +125,19 @@ public abstract class AbsStructMsg
     catch (Exception paramBundle) {}
   }
   
-  AbsStructMsg(bdpl parambdpl)
+  AbsStructMsg(StructMsgNode paramStructMsgNode)
   {
-    parseMsgAttrubutes(parambdpl);
+    parseMsgAttrubutes(paramStructMsgNode);
   }
   
-  public static View getExceptionView(Context paramContext, View paramView, aftk paramaftk, Bundle paramBundle, int paramInt)
+  public static View getExceptionView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle, int paramInt)
   {
-    return getExceptionView(paramContext, paramView, paramaftk, paramBundle, paramContext.getResources().getString(paramInt));
+    return getExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle, paramContext.getResources().getString(paramInt));
   }
   
-  public static View getExceptionView(Context paramContext, View paramView, aftk paramaftk, Bundle paramBundle, String paramString)
+  public static View getExceptionView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle, String paramString)
   {
-    paramaftk = paramContext.getResources();
+    paramOnLongClickAndTouchListener = paramContext.getResources();
     if ((paramView != null) && ((paramView instanceof RelativeLayout))) {
       ((RelativeLayout)paramView).removeAllViews();
     }
@@ -152,16 +149,16 @@ public abstract class AbsStructMsg
       paramBundle.setText(paramString);
       paramBundle.setTextSize(2, 14.0F);
       paramBundle.setTextColor(Color.parseColor("#777777"));
-      int i = AIOUtils.dp2px(15.0F, paramaftk);
-      int j = AIOUtils.dp2px(7.5F, paramaftk);
+      int i = AIOUtils.a(15.0F, paramOnLongClickAndTouchListener);
+      int j = AIOUtils.a(7.5F, paramOnLongClickAndTouchListener);
       paramContext = new RelativeLayout(paramContext);
-      paramContext.setBackgroundResource(2130838348);
+      paramContext.setBackgroundResource(2130838417);
       paramContext.setPadding(i, j, i, j);
       paramContext.addView(paramBundle);
-      paramContext.setId(2131378139);
-      paramaftk = new RelativeLayout.LayoutParams(-2, -2);
-      paramaftk.addRule(13);
-      paramView.addView(paramContext, paramaftk);
+      paramContext.setId(2131378560);
+      paramOnLongClickAndTouchListener = new RelativeLayout.LayoutParams(-2, -2);
+      paramOnLongClickAndTouchListener.addRule(13);
+      paramView.addView(paramContext, paramOnLongClickAndTouchListener);
       return paramView;
       paramView = new RelativeLayout(paramContext);
     }
@@ -181,7 +178,7 @@ public abstract class AbsStructMsg
       paramContext.setTextColor(Color.parseColor("#000000"));
       int i = BaseChatItemLayout.o;
       int j = BaseChatItemLayout.p;
-      paramView.setBackgroundResource(2130838348);
+      paramView.setBackgroundResource(2130838417);
       paramContext.setPadding(i, BaseChatItemLayout.m, j, BaseChatItemLayout.n);
       paramView.addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
       return paramView;
@@ -189,9 +186,9 @@ public abstract class AbsStructMsg
     }
   }
   
-  public static View getVersionExceptionView(Context paramContext, View paramView, aftk paramaftk, Bundle paramBundle)
+  public static View getVersionExceptionView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle)
   {
-    return getExceptionView(paramContext, paramView, paramaftk, paramBundle, 2131698256);
+    return getExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle, 2131698533);
   }
   
   public boolean LayoutEquals(Object paramObject)
@@ -215,14 +212,14 @@ public abstract class AbsStructMsg
   
   public abstract View getSourceView(Context paramContext, View paramView);
   
-  public View getView(Context paramContext, View paramView, aftk paramaftk, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle)
   {
-    paramaftk = paramView;
+    paramOnLongClickAndTouchListener = paramView;
     if (paramView == null)
     {
-      paramaftk = new LinearLayout(paramContext);
-      paramaftk.setOrientation(1);
-      paramContext = paramaftk.getLayoutParams();
+      paramOnLongClickAndTouchListener = new LinearLayout(paramContext);
+      paramOnLongClickAndTouchListener.setOrientation(1);
+      paramContext = paramOnLongClickAndTouchListener.getLayoutParams();
       if (paramContext != null) {
         break label49;
       }
@@ -230,8 +227,8 @@ public abstract class AbsStructMsg
     }
     for (;;)
     {
-      paramaftk.setLayoutParams(paramContext);
-      return paramaftk;
+      paramOnLongClickAndTouchListener.setLayoutParams(paramContext);
+      return paramOnLongClickAndTouchListener;
       label49:
       paramContext.width = BaseChatItemLayout.B;
       paramContext.height = -2;
@@ -269,7 +266,7 @@ public abstract class AbsStructMsg
         if (j == 0) {
           break label170;
         }
-        localObject = bdpo.b(localByteArrayOutputStream.toByteArray());
+        localObject = StructMsgUtils.b(localByteArrayOutputStream.toByteArray());
         if (j == 0) {
           break label179;
         }
@@ -320,56 +317,56 @@ public abstract class AbsStructMsg
     return false;
   }
   
-  protected void parseMsgAttrubutes(bdpl parambdpl)
+  protected void parseMsgAttrubutes(StructMsgNode paramStructMsgNode)
   {
-    if (parambdpl == null) {}
+    if (paramStructMsgNode == null) {}
     for (;;)
     {
       return;
-      String str1 = parambdpl.a("templateID");
+      String str1 = paramStructMsgNode.a("templateID");
       if (!TextUtils.isEmpty(str1)) {
         this.mMsgTemplateID = Integer.parseInt(str1);
       }
-      this.mMsgUrl = parambdpl.a("url");
-      this.mMsgAction = parambdpl.a("action");
-      this.mMsgActionData = parambdpl.a("actionData");
-      this.mMsg_A_ActionData = parambdpl.a("a_actionData");
-      this.mMsg_I_ActionData = parambdpl.a("i_actionData");
-      this.rijAlbumActionData = parambdpl.a("rijAlbumActionData");
-      this.mQzoneExtraMsg = parambdpl.a("qzFloatExtra");
-      str1 = parambdpl.a("fwflag");
+      this.mMsgUrl = paramStructMsgNode.a("url");
+      this.mMsgAction = paramStructMsgNode.a("action");
+      this.mMsgActionData = paramStructMsgNode.a("actionData");
+      this.mMsg_A_ActionData = paramStructMsgNode.a("a_actionData");
+      this.mMsg_I_ActionData = paramStructMsgNode.a("i_actionData");
+      this.rijAlbumActionData = paramStructMsgNode.a("rijAlbumActionData");
+      this.mQzoneExtraMsg = paramStructMsgNode.a("qzFloatExtra");
+      str1 = paramStructMsgNode.a("fwflag");
       if (!TextUtils.isEmpty(str1)) {}
       try
       {
         this.fwFlag = Integer.parseInt(str1);
         label128:
-        str1 = parambdpl.a("flag");
+        str1 = paramStructMsgNode.a("flag");
         if (!TextUtils.isEmpty(str1)) {}
         try
         {
           this.mFlag = Integer.parseInt(str1);
           label151:
-          str1 = parambdpl.a("serviceID");
+          str1 = paramStructMsgNode.a("serviceID");
           if (!TextUtils.isEmpty(str1)) {
             this.mMsgServiceID = Integer.parseInt(str1);
           }
-          this.mMsgBrief = parambdpl.a("brief");
-          this.mResid = parambdpl.a("m_resid");
-          this.mFileName = parambdpl.a("m_fileName");
-          str1 = parambdpl.a("tSum");
+          this.mMsgBrief = paramStructMsgNode.a("brief");
+          this.mResid = paramStructMsgNode.a("m_resid");
+          this.mFileName = paramStructMsgNode.a("m_fileName");
+          str1 = paramStructMsgNode.a("tSum");
           if (!TextUtils.isEmpty(str1)) {
             this.mTSum = Integer.parseInt(str1);
           }
-          str1 = parambdpl.a("m_fileSize");
+          str1 = paramStructMsgNode.a("m_fileSize");
           if (!TextUtils.isEmpty(str1)) {}
           try
           {
             this.mFileSize = Long.parseLong(str1);
             label253:
-            str1 = parambdpl.a("promotionType");
-            this.mPromotionMsg = parambdpl.a("promotionMsg");
-            this.mPromotionMenus = parambdpl.a("promotionMenus");
-            String str2 = parambdpl.a("promotionMenuDestructiveIndex");
+            str1 = paramStructMsgNode.a("promotionType");
+            this.mPromotionMsg = paramStructMsgNode.a("promotionMsg");
+            this.mPromotionMenus = paramStructMsgNode.a("promotionMenus");
+            String str2 = paramStructMsgNode.a("promotionMenuDestructiveIndex");
             label392:
             label426:
             try
@@ -387,57 +384,57 @@ public abstract class AbsStructMsg
               label449:
               break label321;
             }
-            this.source_puin = parambdpl.a("sourcePublicUin");
+            this.source_puin = paramStructMsgNode.a("sourcePublicUin");
             if (this.source_puin == null) {
               this.source_puin = "";
             }
-            this.mSourceThirdName = parambdpl.a("sourceName");
+            this.mSourceThirdName = paramStructMsgNode.a("sourceName");
             if (this.mSourceThirdName == null) {
               this.mSourceThirdName = "";
             }
-            str1 = parambdpl.a("sourceMsgId");
+            str1 = paramStructMsgNode.a("sourceMsgId");
             try
             {
               if (!TextUtils.isEmpty(str1)) {
                 this.msgId = Long.parseLong(str1);
               }
-              this.mSType = parambdpl.a("sType");
-              str1 = parambdpl.a("accostType");
+              this.mSType = paramStructMsgNode.a("sType");
+              str1 = paramStructMsgNode.a("accostType");
               try
               {
                 if (!TextUtils.isEmpty(str1)) {
                   this.sourceAccoutType = Integer.parseInt(str1);
                 }
-                str1 = parambdpl.a("adverSign");
+                str1 = paramStructMsgNode.a("adverSign");
                 try
                 {
                   if (!TextUtils.isEmpty(str1)) {
                     this.adverSign = Integer.parseInt(str1);
                   }
-                  this.adverKey = parambdpl.a("adverKey");
-                  this.index = parambdpl.a("index");
-                  this.index_name = parambdpl.a("index_name");
-                  this.index_type = parambdpl.a("index_type");
-                  this.mExtraData = parambdpl.a("extraData");
-                  this.mCreateTime = parambdpl.a("createTime");
-                  this.mTagName = parambdpl.a("tagName");
-                  this.mArticleIds = parambdpl.a("articleIds");
-                  this.mOrangeWord = parambdpl.a("orangeWord");
-                  this.mAlgorithmIds = parambdpl.a("algorithmIds");
-                  this.mStrategyIds = parambdpl.a("strategyIds");
-                  this.reportEventFolderStatusValue = parambdpl.a("reportEventFolderStatusValue");
-                  this.mQidianBulkTaskId = parambdpl.a("qf_task_id");
-                  this.mInnerUniqIds = parambdpl.a("uuids");
-                  this.mQQStoryExtra = parambdpl.a("qqstoryExtra");
-                  this.mTribeShortVideoExtra = parambdpl.a("qqtribeVideoInfoExtra");
-                  this.mNeedRound = parambdpl.a("needRoundView");
-                  this.mCommonData = parambdpl.a("msgCommonData");
-                  this.mMergeSeq = parambdpl.a("mergeSeq");
-                  parambdpl = parambdpl.a("sortKey");
+                  this.adverKey = paramStructMsgNode.a("adverKey");
+                  this.index = paramStructMsgNode.a("index");
+                  this.index_name = paramStructMsgNode.a("index_name");
+                  this.index_type = paramStructMsgNode.a("index_type");
+                  this.mExtraData = paramStructMsgNode.a("extraData");
+                  this.mCreateTime = paramStructMsgNode.a("createTime");
+                  this.mTagName = paramStructMsgNode.a("tagName");
+                  this.mArticleIds = paramStructMsgNode.a("articleIds");
+                  this.mOrangeWord = paramStructMsgNode.a("orangeWord");
+                  this.mAlgorithmIds = paramStructMsgNode.a("algorithmIds");
+                  this.mStrategyIds = paramStructMsgNode.a("strategyIds");
+                  this.reportEventFolderStatusValue = paramStructMsgNode.a("reportEventFolderStatusValue");
+                  this.mQidianBulkTaskId = paramStructMsgNode.a("qf_task_id");
+                  this.mInnerUniqIds = paramStructMsgNode.a("uuids");
+                  this.mQQStoryExtra = paramStructMsgNode.a("qqstoryExtra");
+                  this.mTribeShortVideoExtra = paramStructMsgNode.a("qqtribeVideoInfoExtra");
+                  this.mNeedRound = paramStructMsgNode.a("needRoundView");
+                  this.mCommonData = paramStructMsgNode.a("msgCommonData");
+                  this.mMergeSeq = paramStructMsgNode.a("mergeSeq");
+                  paramStructMsgNode = paramStructMsgNode.a("sortKey");
                   try
                   {
-                    if (!TextUtils.isEmpty(parambdpl)) {
-                      this.mSortKey = Long.parseLong(parambdpl);
+                    if (!TextUtils.isEmpty(paramStructMsgNode)) {
+                      this.mSortKey = Long.parseLong(paramStructMsgNode);
                     }
                     if (((this.mMsgServiceID != 142) && (this.mMsgServiceID != 500)) || (!TextUtils.isEmpty(this.mExtraData)) || (TextUtils.isEmpty(this.mMsgActionData))) {
                       continue;
@@ -447,17 +444,17 @@ public abstract class AbsStructMsg
                       this.mExtraData = new JSONObject(this.mMsgActionData).getString("push_ext_data");
                       return;
                     }
-                    catch (Exception parambdpl)
+                    catch (Exception paramStructMsgNode)
                     {
-                      parambdpl.getStackTrace();
+                      paramStructMsgNode.getStackTrace();
                       return;
                     }
                   }
-                  catch (NumberFormatException parambdpl)
+                  catch (NumberFormatException paramStructMsgNode)
                   {
                     for (;;)
                     {
-                      parambdpl.printStackTrace();
+                      paramStructMsgNode.printStackTrace();
                     }
                   }
                 }

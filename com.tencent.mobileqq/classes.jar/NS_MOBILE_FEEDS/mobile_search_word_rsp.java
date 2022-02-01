@@ -10,9 +10,9 @@ public final class mobile_search_word_rsp
 {
   static ArrayList<s_search_word> cache_vec_hotword;
   static ArrayList<s_search_word> cache_vec_tab = new ArrayList();
-  public int iRetCode;
-  public ArrayList<s_search_word> vec_hotword;
-  public ArrayList<s_search_word> vec_tab;
+  public int iRetCode = 0;
+  public ArrayList<s_search_word> vec_hotword = null;
+  public ArrayList<s_search_word> vec_tab = null;
   
   static
   {

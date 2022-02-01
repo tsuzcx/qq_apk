@@ -1,23 +1,21 @@
 package dov.com.qq.im.ae.data;
 
-import bnkb;
-import bnke;
-import bnkq;
 import com.tencent.common.app.AppInterface;
+import dov.com.qq.im.ae.download.AEMaterialDownloader.MaterialDownloadListener;
 
-public class AEMaterialManager$3
+class AEMaterialManager$3
   implements Runnable
 {
-  public AEMaterialManager$3(bnkb parambnkb, AppInterface paramAppInterface, String paramString, bnke parambnke, bnkq parambnkq) {}
+  AEMaterialManager$3(AEMaterialManager paramAEMaterialManager, AppInterface paramAppInterface, String paramString, AEMaterialMetaData paramAEMaterialMetaData, AEMaterialDownloader.MaterialDownloadListener paramMaterialDownloadListener) {}
   
   public void run()
   {
-    bnkb.a(this.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bnke, this.jdField_a_of_type_Bnkq);
+    AEMaterialManager.a(this.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMetaData, this.jdField_a_of_type_DovComQqImAeDownloadAEMaterialDownloader$MaterialDownloadListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.data.AEMaterialManager.3
  * JD-Core Version:    0.7.0.1
  */

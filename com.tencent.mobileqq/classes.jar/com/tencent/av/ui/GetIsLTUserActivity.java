@@ -1,6 +1,5 @@
 package com.tencent.av.ui;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -38,7 +37,7 @@ public class GetIsLTUserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.GetIsLTUserActivity
  * JD-Core Version:    0.7.0.1
  */

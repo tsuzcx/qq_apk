@@ -3,14 +3,14 @@ package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 import android.content.Context;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import aodf;
-import bcmz;
-import bcnc;
-import bkyp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SearchWordHistoryManager;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
+import com.tencent.mobileqq.search.util.SearchConfigUtils;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
+import com.tencent.util.URLUtil;
 
 class OpenUrlMethod
   extends SearchNativeMethodBase
@@ -98,13 +98,13 @@ class OpenUrlMethod
     if (!TextUtils.isEmpty(str1))
     {
       paramHippyMap = str1;
-      if (bkyp.a(str1)) {}
+      if (URLUtil.a(str1)) {}
     }
     else
     {
-      paramHippyMap = bcmz.a(str2, 5, bcmz.b(10));
+      paramHippyMap = SearchConfigUtils.a(str2, 5, SearchConfigUtils.b(10));
     }
-    bcnc.a(this.app, this.context, paramHippyMap);
+    SearchUtils.a(this.app, this.context, paramHippyMap);
   }
   
   private void saveHistory(@NonNull HippyMap paramHippyMap)
@@ -124,7 +124,7 @@ class OpenUrlMethod
     paramHippyMap.setJsonStr(str2);
     paramHippyMap.setId(getId(str1, str5));
     paramHippyMap.setLabel(str4);
-    aodf.a().a(paramHippyMap);
+    SearchWordHistoryManager.a().a(paramHippyMap);
   }
   
   private boolean shouldSaveHistory(@NonNull HippyMap paramHippyMap)
@@ -154,7 +154,7 @@ class OpenUrlMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.OpenUrlMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -9,17 +9,16 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bcsc;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.helper.PressedSpan;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.service.message.EmotionCodecUtils;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qvo;
-import qwj;
 
 public class NativeUsersCommentsView
   extends LinearLayout
@@ -64,8 +63,8 @@ public class NativeUsersCommentsView
     TextView localTextView = a(paramInt);
     localTextView.setMaxLines(3);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
-    paramString1 = bcsc.b(paramString1);
-    paramString2 = bcsc.b(paramString2);
+    paramString1 = EmotionCodecUtils.b(paramString1);
+    paramString2 = EmotionCodecUtils.b(paramString2);
     paramInt = paramString1.length();
     paramString1 = new QQText(paramString1 + ": " + paramString2, 7, 16);
     paramString2 = new ForegroundColorSpan(Color.parseColor("#D9000000"));
@@ -75,7 +74,7 @@ public class NativeUsersCommentsView
     paramString1.setSpan(new ForegroundColorSpan(Color.parseColor("#D9000000")), paramInt, paramString1.length(), 33);
     localTextView.setTextSize(0, Utils.dp2px(14.0D));
     localTextView.setText(paramString1);
-    localTextView.setPadding(0, 0, 0, ViewUtils.dip2px(2.0F));
+    localTextView.setPadding(0, 0, 0, ViewUtils.a(2.0F));
     localTextView.setMaxLines(3);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
   }
@@ -134,16 +133,16 @@ public class NativeUsersCommentsView
           ((ReadInJoyYAFolderTextView)localObject1).setTextColor(Color.parseColor("#FF4D7CAF"));
           ((ReadInJoyYAFolderTextView)localObject1).setTextSize(0, Utils.dp2px(14.0D));
           if (i != 0) {
-            ((ReadInJoyYAFolderTextView)localObject1).setPadding(0, ViewUtils.dip2px(5.0F), 0, 0);
+            ((ReadInJoyYAFolderTextView)localObject1).setPadding(0, ViewUtils.a(5.0F), 0, 0);
           }
           localObject2 = new SpannableStringBuilder(this.jdField_a_of_type_JavaLangString);
-          qvo localqvo = new qvo(-15504151, 16777215, 860716207);
-          localqvo.a(new qwj(this));
-          ((SpannableStringBuilder)localObject2).setSpan(localqvo, 0, ((SpannableStringBuilder)localObject2).length(), 33);
+          PressedSpan localPressedSpan = new PressedSpan(-15504151, 16777215, 860716207);
+          localPressedSpan.a(new NativeUsersCommentsView.1(this));
+          ((SpannableStringBuilder)localObject2).setSpan(localPressedSpan, 0, ((SpannableStringBuilder)localObject2).length(), 33);
           ((ReadInJoyYAFolderTextView)localObject1).setText((CharSequence)localObject2);
           ((ReadInJoyYAFolderTextView)localObject1).setFocusable(false);
         }
-        setPadding(ViewUtils.dip2px(12.0F), 0, ViewUtils.dip2px(12.0F), ViewUtils.dip2px(12.0F));
+        setPadding(ViewUtils.a(12.0F), 0, ViewUtils.a(12.0F), ViewUtils.a(12.0F));
         return;
       }
       catch (Exception localException)
@@ -201,7 +200,7 @@ public class NativeUsersCommentsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView
  * JD-Core Version:    0.7.0.1
  */

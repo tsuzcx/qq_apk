@@ -2,11 +2,11 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.biz.common.offline.AsyncCallBack;
 import com.tencent.qphone.base.util.QLog;
-import nux;
 
 class IVOfflinePluginImpl$4
-  implements nux
+  implements AsyncCallBack
 {
   IVOfflinePluginImpl$4(IVOfflinePluginImpl paramIVOfflinePluginImpl, long paramLong) {}
   
@@ -27,7 +27,7 @@ class IVOfflinePluginImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVOfflinePluginImpl.4
  * JD-Core Version:    0.7.0.1
  */

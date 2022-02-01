@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview.relateemo;
 
-import bdla;
 import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 class RelatedEmotionPanel$1
@@ -15,7 +15,7 @@ class RelatedEmotionPanel$1
       QLog.d("RelatedEmotionPanel", 4, "dismiss type: " + paramInt);
     }
     if (paramInt > -1) {
-      bdla.b(RelatedEmotionPanel.access$100(this.this$0), "dc00898", "", this.this$0.mCurFriendUin, "0X800B11A", "0X800B11A", paramInt, 0, "", "", "", "");
+      ReportController.b(RelatedEmotionPanel.access$100(this.this$0), "dc00898", "", this.this$0.mCurFriendUin, "0X800B11A", "0X800B11A", paramInt, 0, "", "", "", "");
     }
     this.this$0.dismissEmotionSearchWinow();
     if (paramInt == 2) {
@@ -36,7 +36,7 @@ class RelatedEmotionPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel.1
  * JD-Core Version:    0.7.0.1
  */

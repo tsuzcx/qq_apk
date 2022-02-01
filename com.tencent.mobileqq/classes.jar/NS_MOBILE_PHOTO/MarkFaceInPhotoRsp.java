@@ -9,9 +9,9 @@ public final class MarkFaceInPhotoRsp
   extends JceStruct
 {
   static stFaceItem cache_faceitem = new stFaceItem();
-  public stFaceItem faceitem;
+  public stFaceItem faceitem = null;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public MarkFaceInPhotoRsp() {}
   

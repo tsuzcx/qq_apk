@@ -399,7 +399,7 @@ public class DiniFlyAnimationView
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((this.autoPlay) && (this.wasAnimatingWhenDetached)) {
@@ -408,7 +408,7 @@ public class DiniFlyAnimationView
     DiniFlyLog.i("DiniFlyAnimationView", 1, "onAttachedToWindow playAnimation" + getContext().toString(), null);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     if (isAnimating())
     {
@@ -419,7 +419,7 @@ public class DiniFlyAnimationView
     DiniFlyLog.i("DiniFlyAnimationView", 1, "onDetachedFromWindow cancelAnimation" + getContext().toString(), null);
   }
   
-  protected void onRestoreInstanceState(Parcelable paramParcelable)
+  public void onRestoreInstanceState(Parcelable paramParcelable)
   {
     if (!(paramParcelable instanceof DiniFlyAnimationView.SavedState))
     {
@@ -445,7 +445,7 @@ public class DiniFlyAnimationView
     setRepeatCount(paramParcelable.repeatCount);
   }
   
-  protected Parcelable onSaveInstanceState()
+  public Parcelable onSaveInstanceState()
   {
     DiniFlyAnimationView.SavedState localSavedState = new DiniFlyAnimationView.SavedState(super.onSaveInstanceState());
     localSavedState.animationName = this.animationName;
@@ -458,7 +458,7 @@ public class DiniFlyAnimationView
     return localSavedState;
   }
   
-  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     if (this.lottieDrawable == null) {}
     do
@@ -751,7 +751,7 @@ public class DiniFlyAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.DiniFlyAnimationView
  * JD-Core Version:    0.7.0.1
  */

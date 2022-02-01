@@ -1,33 +1,31 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import bhdj;
-import bkrb;
-import bkrc;
 import com.tencent.mobileqq.mini.share.MiniProgramShareUtils.OnShareListener;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqmini.sdk.launcher.model.InnerShareData;
 
-public class ShareProxyImpl$2$1
+class ShareProxyImpl$2$1
   implements Runnable
 {
-  public ShareProxyImpl$2$1(bkrb parambkrb, boolean paramBoolean, Boolean paramBoolean1, long paramLong, String paramString) {}
+  ShareProxyImpl$2$1(ShareProxyImpl.2 param2, boolean paramBoolean, Boolean paramBoolean1, long paramLong, String paramString) {}
   
   public void run()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bkrb.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener != null)) {
-      this.jdField_a_of_type_Bkrb.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener.onShared(this.jdField_a_of_type_JavaLangBoolean.booleanValue(), false);
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$2.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener != null)) {
+      this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$2.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener.onShared(this.jdField_a_of_type_JavaLangBoolean.booleanValue(), false);
     }
     if (this.jdField_a_of_type_Long == -100070004L)
     {
-      if (this.jdField_a_of_type_Bkrb.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener != null) {
-        this.jdField_a_of_type_Bkrb.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener.onShared(this.jdField_a_of_type_JavaLangBoolean.booleanValue(), false);
+      if (this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$2.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener != null) {
+        this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$2.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener.onShared(this.jdField_a_of_type_JavaLangBoolean.booleanValue(), false);
       }
-      bhdj.a(this.jdField_a_of_type_Bkrb.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity, 233, this.jdField_a_of_type_Bkrb.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity.getString(2131718769), this.jdField_a_of_type_JavaLangString, new bkrc(this), null).show();
+      DialogUtil.a(this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$2.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity, 233, this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$2.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity.getString(2131719294), this.jdField_a_of_type_JavaLangString, new ShareProxyImpl.2.1.1(this), null).show();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Bkrb.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity, 1, 2131718769, 0).a();
+    QQToast.a(this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$2.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity, 1, 2131719294, 0).a();
   }
 }
 

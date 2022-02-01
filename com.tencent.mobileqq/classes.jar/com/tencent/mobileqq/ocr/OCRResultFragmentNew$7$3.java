@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.ocr;
 
-import anvx;
-import aysr;
-import ayvn;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.ocr.view.TDProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class OCRResultFragmentNew$7$3
+class OCRResultFragmentNew$7$3
   implements Runnable
 {
-  public OCRResultFragmentNew$7$3(aysr paramaysr) {}
+  OCRResultFragmentNew$7$3(OCRResultFragmentNew.7 param7) {}
   
   public void run()
   {
     OCRResultFragmentNew.a(this.a.a, false);
     OCRResultFragmentNew.a(this.a.a).dismiss();
     OCRResultFragmentNew.a(this.a.a).a(0);
-    QQToast.a(OCRResultFragmentNew.a(this.a.a), 1, anvx.a(2131707273), 0).a();
+    QQToast.a(OCRResultFragmentNew.a(this.a.a), 1, HardCodeUtil.a(2131707798), 0).a();
   }
 }
 

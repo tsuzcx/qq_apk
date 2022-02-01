@@ -8,8 +8,8 @@ public final class MarketFaceInfo
   extends JceStruct
 {
   static byte[] cache_marketFaceBuff;
-  public long insertIdx;
-  public byte[] marketFaceBuff;
+  public long insertIdx = 0L;
+  public byte[] marketFaceBuff = null;
   
   public MarketFaceInfo() {}
   

@@ -312,6 +312,51 @@ public class AppLaunchStrategy
     this.lastKillingProcessor = null;
   }
   
+  private AppLaunchStrategy.MiniAppSubProcessorInfo createProcessorInfo(@NotNull String paramString, @NotNull MiniAppBaseInfo paramMiniAppBaseInfo, AppLaunchStrategy.MiniAppSubProcessorInfo paramMiniAppSubProcessorInfo)
+  {
+    Class localClass3 = null;
+    Class localClass1;
+    Class localClass2;
+    label23:
+    int i;
+    if (paramMiniAppSubProcessorInfo != null)
+    {
+      localClass1 = paramMiniAppSubProcessorInfo.uiClass;
+      if (paramMiniAppSubProcessorInfo == null) {
+        break label96;
+      }
+      localClass2 = paramMiniAppSubProcessorInfo.internalUIClass;
+      if (paramMiniAppSubProcessorInfo != null) {
+        localClass3 = paramMiniAppSubProcessorInfo.appPreLoadClass;
+      }
+      if (paramMiniAppSubProcessorInfo == null) {
+        break label102;
+      }
+      i = paramMiniAppSubProcessorInfo.supportRuntimeType;
+      label43:
+      paramMiniAppSubProcessorInfo = new AppLaunchStrategy.MiniAppSubProcessorInfo(this, paramString, localClass1, localClass2, localClass3, i);
+      if ((paramMiniAppSubProcessorInfo.preloadType == null) && (paramMiniAppBaseInfo != null)) {
+        if (!paramMiniAppBaseInfo.isEngineTypeMiniApp()) {
+          break label108;
+        }
+      }
+    }
+    label96:
+    label102:
+    label108:
+    for (paramString = "preload_app";; paramString = "preload_game")
+    {
+      paramMiniAppSubProcessorInfo.preloadType = paramString;
+      return paramMiniAppSubProcessorInfo;
+      localClass1 = null;
+      break;
+      localClass2 = null;
+      break label23;
+      i = 0;
+      break label43;
+    }
+  }
+  
   private void doPreLaunchMiniApp(MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
   {
     if ((paramMiniAppInfo == null) || (!paramMiniAppInfo.isEngineTypeMiniApp())) {
@@ -690,6 +735,30 @@ public class AppLaunchStrategy
     this.mContext.sendBroadcast(localIntent);
   }
   
+  private String getAppName(@NotNull MiniAppBaseInfo paramMiniAppBaseInfo)
+  {
+    if (paramMiniAppBaseInfo != null) {
+      return paramMiniAppBaseInfo.name;
+    }
+    return null;
+  }
+  
+  private String getAppid(@NotNull MiniAppBaseInfo paramMiniAppBaseInfo)
+  {
+    if (paramMiniAppBaseInfo != null) {
+      return paramMiniAppBaseInfo.appId;
+    }
+    return null;
+  }
+  
+  private int getEngineType(@NotNull MiniAppBaseInfo paramMiniAppBaseInfo)
+  {
+    if (paramMiniAppBaseInfo != null) {
+      return paramMiniAppBaseInfo.getEngineType();
+    }
+    return -1;
+  }
+  
   @android.support.annotation.Nullable
   private AppLaunchStrategy.MiniAppSubProcessorInfo getLowestPriorityProcess()
   {
@@ -778,6 +847,91 @@ public class AppLaunchStrategy
       }
       return null;
     }
+  }
+  
+  private AppLaunchStrategy.MiniAppSubProcessorInfo getMiniAppSubProcessorInfo(@NotNull String paramString, @NotNull MiniAppBaseInfo paramMiniAppBaseInfo, @NotNull Bundle paramBundle)
+  {
+    Object localObject2 = (AppLaunchStrategy.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
+    Object localObject1 = localObject2;
+    label58:
+    Class localClass;
+    label70:
+    int i;
+    if (localObject2 == null)
+    {
+      AppLaunchStrategy.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = (AppLaunchStrategy.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString);
+      if (localMiniAppSubProcessorInfo == null) {
+        break label163;
+      }
+      localObject1 = localMiniAppSubProcessorInfo.uiClass;
+      if (localMiniAppSubProcessorInfo == null) {
+        break label169;
+      }
+      localObject2 = localMiniAppSubProcessorInfo.internalUIClass;
+      if (localMiniAppSubProcessorInfo == null) {
+        break label175;
+      }
+      localClass = localMiniAppSubProcessorInfo.appPreLoadClass;
+      if (localMiniAppSubProcessorInfo == null) {
+        break label181;
+      }
+      i = localMiniAppSubProcessorInfo.supportRuntimeType;
+      label82:
+      localObject1 = new AppLaunchStrategy.MiniAppSubProcessorInfo(this, paramString, (Class)localObject1, (Class)localObject2, localClass, i);
+      if (paramBundle == null) {
+        break label187;
+      }
+      paramBundle = paramBundle.getString("mini_key_preload_type", null);
+      label114:
+      ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).preloadType = paramBundle;
+      if ((((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).preloadType == null) && (paramMiniAppBaseInfo != null)) {
+        if (!paramMiniAppBaseInfo.isEngineTypeMiniApp()) {
+          break label192;
+        }
+      }
+    }
+    label163:
+    label169:
+    label175:
+    label181:
+    label187:
+    label192:
+    for (paramMiniAppBaseInfo = "preload_app";; paramMiniAppBaseInfo = "preload_game")
+    {
+      ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).preloadType = paramMiniAppBaseInfo;
+      this.mProcessStack.put(paramString, localObject1);
+      return localObject1;
+      localObject1 = null;
+      break;
+      localObject2 = null;
+      break label58;
+      localClass = null;
+      break label70;
+      i = 0;
+      break label82;
+      paramBundle = null;
+      break label114;
+    }
+  }
+  
+  private int getPid(@NotNull Bundle paramBundle)
+  {
+    if (paramBundle != null) {
+      return paramBundle.getInt("PID");
+    }
+    return 0;
+  }
+  
+  private ProcessState getProcessState(AppLaunchStrategy.MiniAppSubProcessorInfo paramMiniAppSubProcessorInfo)
+  {
+    ProcessState localProcessState = ProcessState.EMPTY;
+    if ((paramMiniAppSubProcessorInfo.pid > 0) && (paramMiniAppSubProcessorInfo.allMiniAppInfo.isEmpty())) {
+      localProcessState = ProcessState.PRELOADED;
+    }
+    while (paramMiniAppSubProcessorInfo.pid <= 0) {
+      return localProcessState;
+    }
+    return ProcessState.REUSE;
   }
   
   private boolean hasPreloadProcess(String paramString)
@@ -1198,58 +1352,36 @@ public class AppLaunchStrategy
     if (paramBundle != null) {
       paramBundle.setClassLoader(LaunchManagerService.ServiceBinder.class.getClassLoader());
     }
-    if (paramMiniAppBaseInfo != null)
-    {
-      localObject1 = paramMiniAppBaseInfo.appId;
-      if (paramMiniAppBaseInfo == null) {
-        break label129;
-      }
-      localObject2 = paramMiniAppBaseInfo.name;
-      label37:
-      if (paramMiniAppBaseInfo == null) {
-        break label135;
-      }
-    }
-    label129:
-    label135:
-    for (int i = paramMiniAppBaseInfo.getEngineType();; i = -1)
-    {
-      QMLog.i("minisdk-start_LaunchManagerService", "onAppBackground process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + i + " reportType=" + -1);
-      if (!TextUtils.isEmpty(paramString)) {
-        break label141;
-      }
+    Object localObject1 = getAppid(paramMiniAppBaseInfo);
+    Object localObject2 = getAppName(paramMiniAppBaseInfo);
+    int i = getEngineType(paramMiniAppBaseInfo);
+    QMLog.i("minisdk-start_LaunchManagerService", "onAppBackground process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + i + " reportType=" + -1);
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label37;
     }
-    label141:
-    Object localObject2 = (AppLaunchStrategy.MiniAppSubProcessorInfo)this.mProcessStack.snapshot().get(paramString);
-    Object localObject1 = localObject2;
+    localObject2 = (AppLaunchStrategy.MiniAppSubProcessorInfo)this.mProcessStack.snapshot().get(paramString);
+    localObject1 = localObject2;
     AppLaunchStrategy.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo;
     if (localObject2 == null)
     {
       localMiniAppSubProcessorInfo = (AppLaunchStrategy.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString);
       if (localMiniAppSubProcessorInfo == null) {
-        break label276;
+        break label249;
       }
       localObject1 = localMiniAppSubProcessorInfo.uiClass;
       if (localMiniAppSubProcessorInfo == null) {
-        break label282;
+        break label255;
       }
       localObject2 = localMiniAppSubProcessorInfo.internalUIClass;
-      label204:
+      label177:
       if (localMiniAppSubProcessorInfo != null) {
         localClass = localMiniAppSubProcessorInfo.appPreLoadClass;
       }
       if (localMiniAppSubProcessorInfo == null) {
-        break label288;
+        break label261;
       }
     }
-    label276:
-    label282:
-    label288:
+    label261:
     for (i = localMiniAppSubProcessorInfo.supportRuntimeType;; i = 0)
     {
       localObject1 = new AppLaunchStrategy.MiniAppSubProcessorInfo(this, paramString, (Class)localObject1, (Class)localObject2, localClass, i);
@@ -1258,10 +1390,12 @@ public class AppLaunchStrategy
       ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).onEnterBackground();
       printProcessStack();
       return;
+      label249:
       localObject1 = null;
       break;
+      label255:
       localObject2 = null;
-      break label204;
+      break label177;
     }
   }
   
@@ -1270,103 +1404,30 @@ public class AppLaunchStrategy
     if (paramBundle != null) {
       paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
     }
-    label34:
-    int j;
-    if (paramMiniAppBaseInfo != null)
-    {
-      localObject1 = paramMiniAppBaseInfo.appId;
-      if (paramMiniAppBaseInfo == null) {
-        break label139;
-      }
-      localObject2 = paramMiniAppBaseInfo.name;
-      if (paramMiniAppBaseInfo == null) {
-        break label145;
-      }
-      j = paramMiniAppBaseInfo.getEngineType();
-      label44:
-      if (paramBundle == null) {
-        break label151;
-      }
-    }
-    label139:
-    label145:
-    label151:
-    for (int i = paramBundle.getInt("PID");; i = 0)
-    {
-      QMLog.i("minisdk-start_LaunchManagerService", "onAppForeground process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + j + " reportType=" + -1);
-      if (!TextUtils.isEmpty(paramString)) {
-        break label157;
-      }
+    Object localObject1 = getAppid(paramMiniAppBaseInfo);
+    Object localObject2 = getAppName(paramMiniAppBaseInfo);
+    int i = getEngineType(paramMiniAppBaseInfo);
+    int j = getPid(paramBundle);
+    QMLog.i("minisdk-start_LaunchManagerService", "onAppForeground process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + i + " reportType=" + -1);
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label34;
-      j = -1;
-      break label44;
     }
-    label157:
-    Object localObject2 = (AppLaunchStrategy.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
-    Object localObject1 = localObject2;
-    label215:
-    Class localClass;
+    localObject2 = (AppLaunchStrategy.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
+    localObject1 = localObject2;
     if (localObject2 == null)
     {
-      AppLaunchStrategy.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = (AppLaunchStrategy.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString);
-      if (localMiniAppSubProcessorInfo == null) {
-        break label357;
-      }
-      localObject1 = localMiniAppSubProcessorInfo.uiClass;
-      if (localMiniAppSubProcessorInfo == null) {
-        break label363;
-      }
-      localObject2 = localMiniAppSubProcessorInfo.internalUIClass;
-      if (localMiniAppSubProcessorInfo == null) {
-        break label369;
-      }
-      localClass = localMiniAppSubProcessorInfo.appPreLoadClass;
-      label227:
-      if (localMiniAppSubProcessorInfo == null) {
-        break label375;
-      }
-      j = localMiniAppSubProcessorInfo.supportRuntimeType;
-      label239:
-      localObject2 = new AppLaunchStrategy.MiniAppSubProcessorInfo(this, paramString, (Class)localObject1, (Class)localObject2, localClass, j);
-      if ((((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject2).preloadType == null) && (paramMiniAppBaseInfo != null)) {
-        if (!paramMiniAppBaseInfo.isEngineTypeMiniApp()) {
-          break label381;
-        }
-      }
+      localObject1 = createProcessorInfo(paramString, paramMiniAppBaseInfo, (AppLaunchStrategy.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString));
+      this.mProcessStack.put(paramString, localObject1);
     }
-    label357:
-    label363:
-    label369:
-    label375:
-    label381:
-    for (localObject1 = "preload_app";; localObject1 = "preload_game")
-    {
-      ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject2).preloadType = ((String)localObject1);
-      this.mProcessStack.put(paramString, localObject2);
-      localObject1 = localObject2;
-      updateAllMiniAppInfoForProcess(paramMiniAppBaseInfo, paramBundle, (AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1);
-      if ((this.mStartingMiniAppConfig != null) && (this.mStartingMiniAppConfig.equals(paramMiniAppBaseInfo))) {
-        this.mStartingMiniAppConfig = null;
-      }
-      if (i > 0) {
-        ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).pid = i;
-      }
-      ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).onEnterForeground();
-      printProcessStack();
-      return;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label215;
-      localClass = null;
-      break label227;
-      j = 0;
-      break label239;
+    updateAllMiniAppInfoForProcess(paramMiniAppBaseInfo, paramBundle, (AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1);
+    if ((this.mStartingMiniAppConfig != null) && (this.mStartingMiniAppConfig.equals(paramMiniAppBaseInfo))) {
+      this.mStartingMiniAppConfig = null;
     }
+    if (j > 0) {
+      ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).pid = j;
+    }
+    ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).onEnterForeground();
+    printProcessStack();
   }
   
   public void onAppStart(@NotNull String paramString, @NotNull MiniAppBaseInfo paramMiniAppBaseInfo, @NotNull Bundle paramBundle)
@@ -1374,109 +1435,21 @@ public class AppLaunchStrategy
     if (paramBundle != null) {
       paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
     }
-    label34:
-    int j;
-    if (paramMiniAppBaseInfo != null)
-    {
-      localObject1 = paramMiniAppBaseInfo.appId;
-      if (paramMiniAppBaseInfo == null) {
-        break label139;
-      }
-      localObject2 = paramMiniAppBaseInfo.name;
-      if (paramMiniAppBaseInfo == null) {
-        break label145;
-      }
-      j = paramMiniAppBaseInfo.getEngineType();
-      label44:
-      if (paramBundle == null) {
-        break label151;
-      }
-    }
-    label139:
-    label145:
-    label151:
-    for (int i = paramBundle.getInt("PID");; i = 0)
-    {
-      QMLog.i("minisdk-start_LaunchManagerService", "onAppStart process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + j + " reportType=" + -1);
-      if (!TextUtils.isEmpty(paramString)) {
-        break label157;
-      }
+    Object localObject = getAppid(paramMiniAppBaseInfo);
+    String str = getAppName(paramMiniAppBaseInfo);
+    int i = getEngineType(paramMiniAppBaseInfo);
+    int j = getPid(paramBundle);
+    QMLog.i("minisdk-start_LaunchManagerService", "onAppStart process=" + paramString + " appId=" + (String)localObject + " appName=" + str + " engineType=" + i + " reportType=" + -1);
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label34;
-      j = -1;
-      break label44;
     }
-    label157:
-    Object localObject2 = (AppLaunchStrategy.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
-    Object localObject1 = localObject2;
-    label215:
-    Class localClass;
-    if (localObject2 == null)
-    {
-      AppLaunchStrategy.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = (AppLaunchStrategy.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString);
-      if (localMiniAppSubProcessorInfo == null) {
-        break label387;
-      }
-      localObject1 = localMiniAppSubProcessorInfo.uiClass;
-      if (localMiniAppSubProcessorInfo == null) {
-        break label393;
-      }
-      localObject2 = localMiniAppSubProcessorInfo.internalUIClass;
-      if (localMiniAppSubProcessorInfo == null) {
-        break label399;
-      }
-      localClass = localMiniAppSubProcessorInfo.appPreLoadClass;
-      label227:
-      if (localMiniAppSubProcessorInfo == null) {
-        break label405;
-      }
-      j = localMiniAppSubProcessorInfo.supportRuntimeType;
-      label239:
-      localObject2 = new AppLaunchStrategy.MiniAppSubProcessorInfo(this, paramString, (Class)localObject1, (Class)localObject2, localClass, j);
-      if (paramBundle == null) {
-        break label411;
-      }
-      localObject1 = paramBundle.getString("mini_key_preload_type", null);
-      label272:
-      ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject2).preloadType = ((String)localObject1);
-      if ((((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject2).preloadType == null) && (paramMiniAppBaseInfo != null)) {
-        if (!paramMiniAppBaseInfo.isEngineTypeMiniApp()) {
-          break label417;
-        }
-      }
-    }
-    label387:
-    label393:
-    label399:
-    label405:
-    label411:
-    label417:
-    for (localObject1 = "preload_app";; localObject1 = "preload_game")
-    {
-      ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject2).preloadType = ((String)localObject1);
-      this.mProcessStack.put(paramString, localObject2);
-      localObject1 = localObject2;
-      updateAllMiniAppInfoForProcess(paramMiniAppBaseInfo, paramBundle, (AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1);
-      ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject1).pid = i;
-      this.mPreloadingTask.remove(paramString);
-      printProcessStack();
-      paramString = ProcessUtil.getCurrentProcessName(this.mContext);
-      QMLog.i("minisdk-start_LaunchManagerService", "updateBaseLib onAppStart " + paramString);
-      return;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label215;
-      localClass = null;
-      break label227;
-      j = 0;
-      break label239;
-      localObject1 = null;
-      break label272;
-    }
+    localObject = getMiniAppSubProcessorInfo(paramString, paramMiniAppBaseInfo, paramBundle);
+    updateAllMiniAppInfoForProcess(paramMiniAppBaseInfo, paramBundle, (AppLaunchStrategy.MiniAppSubProcessorInfo)localObject);
+    ((AppLaunchStrategy.MiniAppSubProcessorInfo)localObject).pid = j;
+    this.mPreloadingTask.remove(paramString);
+    printProcessStack();
+    paramString = ProcessUtil.getCurrentProcessName(this.mContext);
+    QMLog.i("minisdk-start_LaunchManagerService", "updateBaseLib onAppStart " + paramString);
   }
   
   public void onAppStop(@NotNull String paramString, @NotNull MiniAppBaseInfo paramMiniAppBaseInfo, @org.jetbrains.annotations.Nullable Bundle paramBundle)
@@ -1484,50 +1457,27 @@ public class AppLaunchStrategy
     if (paramBundle != null) {
       paramBundle.setClassLoader(LaunchManagerService.ServiceBinder.class.getClassLoader());
     }
-    String str;
-    Object localObject;
+    String str = getAppid(paramMiniAppBaseInfo);
+    Object localObject = getAppName(paramMiniAppBaseInfo);
+    int i = getEngineType(paramMiniAppBaseInfo);
+    getPid(paramBundle);
+    QMLog.i("minisdk-start_LaunchManagerService", "onAppStop process=" + paramString + " appId=" + str + " appName=" + (String)localObject + " engineType=" + i + " reportType=" + -1);
+    paramMiniAppBaseInfo = (AppLaunchStrategy.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
     if (paramMiniAppBaseInfo != null)
     {
-      str = paramMiniAppBaseInfo.appId;
-      if (paramMiniAppBaseInfo == null) {
-        break label218;
-      }
-      localObject = paramMiniAppBaseInfo.name;
-      label34:
-      if (paramMiniAppBaseInfo == null) {
-        break label224;
-      }
-    }
-    label218:
-    label224:
-    for (int i = paramMiniAppBaseInfo.getEngineType();; i = -1)
-    {
-      if (paramBundle != null) {
-        paramBundle.getInt("PID");
-      }
-      QMLog.i("minisdk-start_LaunchManagerService", "onAppStop process=" + paramString + " appId=" + str + " appName=" + (String)localObject + " engineType=" + i + " reportType=" + -1);
-      paramMiniAppBaseInfo = (AppLaunchStrategy.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
-      if (paramMiniAppBaseInfo != null)
+      paramBundle = paramMiniAppBaseInfo.allMiniAppInfo.iterator();
+      while (paramBundle.hasNext())
       {
-        paramBundle = paramMiniAppBaseInfo.allMiniAppInfo.iterator();
-        while (paramBundle.hasNext())
-        {
-          localObject = (MiniAppBaseInfo)paramBundle.next();
-          if (TextUtils.equals(((MiniAppBaseInfo)localObject).appId, str)) {
-            paramMiniAppBaseInfo.allMiniAppInfo.remove(localObject);
-          }
-        }
-        if (paramMiniAppBaseInfo.isIdleProcess()) {
-          cleanProcess(paramString);
+        localObject = (MiniAppBaseInfo)paramBundle.next();
+        if (TextUtils.equals(((MiniAppBaseInfo)localObject).appId, str)) {
+          paramMiniAppBaseInfo.allMiniAppInfo.remove(localObject);
         }
       }
-      printProcessStack();
-      return;
-      str = null;
-      break;
-      localObject = null;
-      break label34;
+      if (paramMiniAppBaseInfo.isIdleProcess()) {
+        cleanProcess(paramString);
+      }
     }
+    printProcessStack();
   }
   
   public void onPreloaded(@NotNull String paramString, @NotNull Bundle paramBundle) {}
@@ -1713,33 +1663,18 @@ public class AppLaunchStrategy
     boolean bool = localMiniAppSubProcessorInfo.containsAppConfig(paramMiniAppInfo);
     QMLog.i("minisdk-start_LaunchManagerService", "doStartMiniApp appId=" + paramMiniAppInfo.appId + " appName=" + paramMiniAppInfo.name + " isInternal:" + paramMiniAppInfo.isInternalApp() + " engineType=" + paramMiniAppInfo.getEngineType() + " reportType=" + -1 + " targetProcess=" + localMiniAppSubProcessorInfo.processName + " alreadyStarted=" + bool);
     Context localContext = this.mContext;
-    Object localObject;
-    if ((paramMiniAppInfo.isInternalApp()) && (localMiniAppSubProcessorInfo.internalUIClass != null))
+    if ((paramMiniAppInfo.isInternalApp()) && (localMiniAppSubProcessorInfo.internalUIClass != null)) {}
+    for (Object localObject = localMiniAppSubProcessorInfo.internalUIClass;; localObject = localMiniAppSubProcessorInfo.uiClass)
     {
-      localObject = localMiniAppSubProcessorInfo.internalUIClass;
       localObject = new Intent(localContext, (Class)localObject);
       setIntentFlags((Intent)localObject, paramMiniAppInfo);
-      paramMiniAppInfo = ProcessState.EMPTY;
-      if ((localMiniAppSubProcessorInfo.pid <= 0) || (!localMiniAppSubProcessorInfo.allMiniAppInfo.isEmpty())) {
-        break label337;
-      }
-      paramMiniAppInfo = ProcessState.PRELOADED;
-    }
-    for (;;)
-    {
-      return new LaunchStrategy.LaunchData((Intent)localObject, paramMiniAppInfo);
-      localObject = localMiniAppSubProcessorInfo.uiClass;
-      break;
-      label337:
-      if (localMiniAppSubProcessorInfo.pid > 0) {
-        paramMiniAppInfo = ProcessState.REUSE;
-      }
+      return new LaunchStrategy.LaunchData((Intent)localObject, getProcessState(localMiniAppSubProcessorInfo));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.AppLaunchStrategy
  * JD-Core Version:    0.7.0.1
  */

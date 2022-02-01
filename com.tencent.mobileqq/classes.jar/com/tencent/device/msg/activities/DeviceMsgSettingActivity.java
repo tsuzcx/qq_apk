@@ -1,12 +1,5 @@
 package com.tencent.device.msg.activities;
 
-import Override;
-import abkf;
-import abkg;
-import abkh;
-import abki;
-import absy;
-import absz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -18,12 +11,14 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bisl;
-import bjko;
 import com.tencent.common.app.AppInterface;
+import com.tencent.device.utils.SmartDeviceReport;
+import com.tencent.device.utils.SmartDeviceUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.utils.PermissionUtils;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.base.LogUtility;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
@@ -37,21 +32,15 @@ public class DeviceMsgSettingActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  public Handler a;
-  public CompoundButton a;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  CompoundButton jdField_a_of_type_AndroidWidgetCompoundButton;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public bisl a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<abki> a;
-  public String b;
-  public String c;
-  
-  public DeviceMsgSettingActivity()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-  }
+  ArrayList<DeviceMsgSettingActivity.DeviceMsgSetting> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  String b;
+  String c;
   
   private void a(String paramString)
   {
@@ -75,7 +64,7 @@ public class DeviceMsgSettingActivity
         paramString = "set_device_property";
       }
     }
-    absz.a(paramString, localBundle, i, null, this.app, new abkh(this));
+    SmartDeviceUtil.a(paramString, localBundle, i, null, this.app, new DeviceMsgSettingActivity.3(this));
   }
   
   private void b()
@@ -85,14 +74,14 @@ public class DeviceMsgSettingActivity
     this.c = localIntent.getStringExtra("din");
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)super.getAppRuntime());
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Bisl = new bisl(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377493));
-    this.jdField_a_of_type_Bisl.c(2131692816);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bisl.isShowing())) {
-      this.jdField_a_of_type_Bisl.show();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377908));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131692960);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
     c();
-    absy.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
+    SmartDeviceReport.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
   }
   
   private void c()
@@ -116,12 +105,12 @@ public class DeviceMsgSettingActivity
         str1 = "get_device_property";
       }
     }
-    absz.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new abkg(this));
+    SmartDeviceUtil.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new DeviceMsgSettingActivity.2(this));
   }
   
   private void d()
   {
-    Object localObject = (TextView)super.findViewById(2131377501);
+    Object localObject = (TextView)super.findViewById(2131377916);
     if (localObject != null)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
@@ -130,7 +119,7 @@ public class DeviceMsgSettingActivity
     }
     else
     {
-      localObject = super.findViewById(2131377495);
+      localObject = super.findViewById(2131377910);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
@@ -141,14 +130,14 @@ public class DeviceMsgSettingActivity
     }
     for (;;)
     {
-      localObject = super.findViewById(2131377496);
+      localObject = super.findViewById(2131377911);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
           break label107;
         }
         ((View)localObject).setVisibility(0);
-        bjko.c("DeviceMsgSettingActivity", "show none background");
+        LogUtility.c("DeviceMsgSettingActivity", "show none background");
       }
       return;
       ((TextView)localObject).setVisibility(0);
@@ -157,7 +146,7 @@ public class DeviceMsgSettingActivity
       ((View)localObject).setVisibility(0);
     }
     label107:
-    bjko.c("DeviceMsgSettingActivity", "hide none background");
+    LogUtility.c("DeviceMsgSettingActivity", "hide none background");
     ((View)localObject).setVisibility(8);
   }
   
@@ -168,10 +157,10 @@ public class DeviceMsgSettingActivity
     int i = 0;
     if (i < j)
     {
-      abki localabki = (abki)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      DeviceMsgSettingActivity.DeviceMsgSetting localDeviceMsgSetting = (DeviceMsgSettingActivity.DeviceMsgSetting)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       FormSwitchItem localFormSwitchItem = new FormSwitchItem(this, null);
       localFormSwitchItem.setBgType(0);
-      localFormSwitchItem.setText(localabki.jdField_a_of_type_JavaLangString);
+      localFormSwitchItem.setText(localDeviceMsgSetting.jdField_a_of_type_JavaLangString);
       localFormSwitchItem.setFocusable(true);
       label76:
       Switch localSwitch;
@@ -179,8 +168,8 @@ public class DeviceMsgSettingActivity
       {
         localFormSwitchItem.setBgType(0);
         localSwitch = localFormSwitchItem.a();
-        localSwitch.setTag(Integer.valueOf(localabki.jdField_a_of_type_Int));
-        if (localabki.b != 1) {
+        localSwitch.setTag(Integer.valueOf(localDeviceMsgSetting.jdField_a_of_type_Int));
+        if (localDeviceMsgSetting.b != 1) {
           break label173;
         }
       }
@@ -220,11 +209,11 @@ public class DeviceMsgSettingActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559109);
-    super.setTitle(2131691530);
+    super.setContentView(2131559151);
+    super.setTitle(2131691643);
     if (Build.VERSION.SDK_INT >= 23) {
       if (!PermissionUtils.isStorePermissionEnable(this)) {
-        PermissionUtils.requestStorePermission(this, 3, new abkf(this));
+        PermissionUtils.requestStorePermission(this, 3, new DeviceMsgSettingActivity.1(this));
       }
     }
     for (;;)
@@ -239,9 +228,9 @@ public class DeviceMsgSettingActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int j = ((Integer)paramCompoundButton.getTag()).intValue();
-    this.jdField_a_of_type_Bisl.c(2131718565);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bisl.isShowing())) {
-      this.jdField_a_of_type_Bisl.show();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131719088);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
     Object localObject1 = new JSONArray();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -251,10 +240,10 @@ public class DeviceMsgSettingActivity
     {
       if (localIterator.hasNext())
       {
-        localObject2 = (abki)localIterator.next();
-        if (((abki)localObject2).jdField_a_of_type_Int == j)
+        localObject2 = (DeviceMsgSettingActivity.DeviceMsgSetting)localIterator.next();
+        if (((DeviceMsgSettingActivity.DeviceMsgSetting)localObject2).jdField_a_of_type_Int == j)
         {
-          int k = ((abki)localObject2).b;
+          int k = ((DeviceMsgSettingActivity.DeviceMsgSetting)localObject2).b;
           if (paramBoolean)
           {
             i = 1;
@@ -269,7 +258,7 @@ public class DeviceMsgSettingActivity
             }
             i = 1;
             label136:
-            absy.a((AppRuntime)localObject1, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
+            SmartDeviceReport.a((AppRuntime)localObject1, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
           }
         }
       }
@@ -288,7 +277,7 @@ public class DeviceMsgSettingActivity
         try
         {
           label174:
-          localObject2 = new JSONObject().put("id", ((abki)localObject2).jdField_a_of_type_Int);
+          localObject2 = new JSONObject().put("id", ((DeviceMsgSettingActivity.DeviceMsgSetting)localObject2).jdField_a_of_type_Int);
           if (!paramBoolean) {
             break label228;
           }
@@ -317,7 +306,7 @@ public class DeviceMsgSettingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceMsgSettingActivity
  * JD-Core Version:    0.7.0.1
  */

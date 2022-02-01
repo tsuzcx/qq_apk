@@ -3,7 +3,8 @@ package com.tencent.mobileqq.msf.service;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -42,7 +43,7 @@ class a
   public static a.a r;
   public static volatile boolean s = true;
   public static final long t = 39600000L;
-  private static com.tencent.mobileqq.msf.core.c.k u;
+  private static j u;
   private static String v = "k_begin_time";
   private static String w = "k_end_time";
   private static String x = "k_boot_time";
@@ -70,11 +71,11 @@ class a
     a("initSavedData");
   }
   
-  static void a(com.tencent.mobileqq.msf.core.c.k paramk)
+  static void a(j paramj)
   {
     if (r == null)
     {
-      u = paramk;
+      u = paramj;
       r = new a.a();
       r.start();
     }
@@ -102,7 +103,7 @@ class a
     p = false;
   }
   
-  public static void b(com.tencent.mobileqq.msf.core.c.k paramk)
+  public static void b(j paramj)
   {
     boolean bool = true;
     a("reportAndClear");
@@ -122,12 +123,12 @@ class a
     localHashMap.put("lastAliveOf", "" + p);
     localHashMap.put("jobschedulerAB", "" + k.g);
     if ((d > 0L) && (b > 0L) && (c > 0L) && (e >= 0L) && (m >= 0L) && (c > b)) {
-      if (paramk != null)
+      if (paramj != null)
       {
         if (c - b <= 0L) {
           break label565;
         }
-        paramk.a("msfAliveTime_new", bool, f, e, localHashMap, false, false);
+        paramj.a("msfAliveTime_new", bool, f, e, localHashMap, false, false);
       }
     }
     for (;;)
@@ -142,9 +143,9 @@ class a
         label565:
         bool = false;
       }
-      catch (Exception paramk)
+      catch (Exception paramj)
       {
-        paramk.printStackTrace();
+        paramj.printStackTrace();
         continue;
       }
       if (QLog.isColorLevel()) {

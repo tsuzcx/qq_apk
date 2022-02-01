@@ -9,10 +9,10 @@ public final class get_daily_config_req
 {
   static int cache_confid = 0;
   static daily_recommend_status cache_recommend_status = new daily_recommend_status();
-  public int confid;
-  public daily_recommend_status recommend_status;
-  public boolean remind_upload_on;
-  public long uin;
+  public int confid = 0;
+  public daily_recommend_status recommend_status = null;
+  public boolean remind_upload_on = false;
+  public long uin = 0L;
   
   public get_daily_config_req() {}
   

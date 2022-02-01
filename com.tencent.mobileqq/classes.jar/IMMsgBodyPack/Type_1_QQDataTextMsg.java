@@ -9,7 +9,7 @@ public final class Type_1_QQDataTextMsg
   extends JceStruct
 {
   static ArrayList<MsgType0x210SubMsgType0x13_MsgItem> cache_msg_item;
-  public ArrayList<MsgType0x210SubMsgType0x13_MsgItem> msg_item;
+  public ArrayList<MsgType0x210SubMsgType0x13_MsgItem> msg_item = null;
   
   public Type_1_QQDataTextMsg() {}
   

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.util.DisplayUtil;
 public class RadiusLinerLayout
   extends LinearLayout
 {
-  public static final int a = DisplayUtil.dip2px(BaseApplicationImpl.context, 8.0F);
+  public static final int a = DisplayUtil.a(BaseApplicationImpl.context, 8.0F);
   private int b = a;
   
   public RadiusLinerLayout(Context paramContext)
@@ -34,14 +34,14 @@ public class RadiusLinerLayout
     setWillNotDraw(false);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.RadiusLinerLayout
  * JD-Core Version:    0.7.0.1
  */

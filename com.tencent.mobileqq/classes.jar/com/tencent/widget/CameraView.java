@@ -107,7 +107,7 @@ public class CameraView
     this.jdField_a_of_type_AndroidViewSurfaceHolder.setType(3);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     View localView;
     if ((paramBoolean) && (getChildCount() > 0))
@@ -135,7 +135,7 @@ public class CameraView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = resolveSize(getSuggestedMinimumWidth(), paramInt1);
     paramInt2 = resolveSize(getSuggestedMinimumHeight(), paramInt2);
@@ -200,7 +200,7 @@ public class CameraView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.CameraView
  * JD-Core Version:    0.7.0.1
  */

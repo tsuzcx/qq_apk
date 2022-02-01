@@ -10,7 +10,7 @@ public final class stSchema
   public String H5Url = "";
   public String miniAppSchema = "";
   public String schema = "";
-  public int type;
+  public int type = 0;
   
   public stSchema() {}
   

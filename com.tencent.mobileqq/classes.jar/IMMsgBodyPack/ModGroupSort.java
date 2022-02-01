@@ -9,7 +9,7 @@ public final class ModGroupSort
   extends JceStruct
 {
   static ArrayList<GroupSort> cache_vMsgGroupSort;
-  public ArrayList<GroupSort> vMsgGroupSort;
+  public ArrayList<GroupSort> vMsgGroupSort = null;
   
   public ModGroupSort() {}
   

@@ -1,14 +1,10 @@
 package com.tencent.qqmini.sdk.runtime;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.view.View;
 import android.view.Window;
-import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.report.MiniReportManager;
 import com.tencent.qqmini.sdk.utils.ScreenShotUtil;
 
 class AppStateManager$1
@@ -20,47 +16,24 @@ class AppStateManager$1
   {
     try
     {
-      Object localObject = AppStateManager.access$000(this.this$0).getRuntime().getAttachedActivity();
-      if (localObject != null)
+      Activity localActivity = AppStateManager.access$000(this.this$0).getRuntime().getAttachedActivity();
+      if (localActivity != null)
       {
-        localObject = ((Activity)localObject).getWindow().getDecorView();
+        localActivity.getWindow().getDecorView();
         ScreenShotUtil.setRuntime(AppStateManager.access$000(this.this$0).getRuntime());
-        localObject = ScreenShotUtil.captureView((View)localObject);
-        String str;
-        if (ScreenShotUtil.checkIfWhiteScreen((Bitmap)localObject))
-        {
-          str = ScreenShotUtil.bitmapTobase64((Bitmap)localObject, WnsConfig.getConfig("qqminiapp", "mini_app_white_screen_shot_max_width", 500), WnsConfig.getConfig("qqminiapp", "mini_app_white_screen_shot_max_height", 500));
-          if (str.length() >= 5120) {
-            break label183;
-          }
-          QMLog.i("minisdk-start_RuntimeState", "--- report white_screen appid:" + this.val$miniAppInfo.appId + " img:" + str);
-        }
-        for (;;)
-        {
-          MiniReportManager.reportEventType(this.val$miniAppInfo, 150, MiniReportManager.getAppType(this.val$miniAppInfo), "dom_ready", String.valueOf(str.length()), "", "");
-          if (WnsConfig.getConfig("qqminiapp", "mini_app_enable_show_clean_detect_whitescreen", 0) > 0) {
-            AppStateManager.access$100(this.this$0, 2);
-          }
-          if (localObject == null) {
-            break;
-          }
-          ((Bitmap)localObject).recycle();
-          return;
-          label183:
-          QMLog.i("minisdk-start_RuntimeState", "--- report white_screen appid:" + this.val$miniAppInfo.appId + " base64 length:" + str.length());
-        }
+        AppStateManager.access$000(this.this$0).getRuntime().captureImage(new AppStateManager.1.1(this));
       }
       return;
     }
     catch (Exception localException)
     {
-      QMLog.e("minisdk-start_RuntimeState", "---check white screen failed", localException);
+      QMLog.e("minisdk-start_RuntimeState", "---getScreenshot failed", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppStateManager.1
  * JD-Core Version:    0.7.0.1
  */

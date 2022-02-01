@@ -5,10 +5,10 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 
-public final class SafeModeUtil$6
+final class SafeModeUtil$6
   implements Runnable
 {
-  public SafeModeUtil$6(SharedPreferences paramSharedPreferences) {}
+  SafeModeUtil$6(SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {

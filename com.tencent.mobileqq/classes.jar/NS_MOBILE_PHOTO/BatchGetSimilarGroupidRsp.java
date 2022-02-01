@@ -13,11 +13,11 @@ public final class BatchGetSimilarGroupidRsp
   static Map<String, Integer> cache_fails;
   static Map<String, String> cache_new_groupids;
   static Map<String, ArrayList<cluster_search_result>> cache_results = new HashMap();
-  public Map<String, Integer> fails;
+  public Map<String, Integer> fails = null;
   public String msg = "";
-  public Map<String, String> new_groupids;
-  public Map<String, ArrayList<cluster_search_result>> results;
-  public int ret;
+  public Map<String, String> new_groupids = null;
+  public Map<String, ArrayList<cluster_search_result>> results = null;
+  public int ret = 0;
   
   static
   {

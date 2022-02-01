@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
-import auev;
-import auew;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 
 class FilePreviewActivity$13
   implements Runnable
@@ -16,22 +16,22 @@ class FilePreviewActivity$13
       return;
     }
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
-    if (this.this$0.jdField_a_of_type_Auev == null) {
-      this.this$0.jdField_a_of_type_Auev = new auev(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
     }
-    auew localauew = new auew();
-    localauew.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localauew.jdField_a_of_type_Boolean = true;
-    localauew.jdField_a_of_type_Int = auev.b;
-    localauew.b = 250;
-    this.this$0.jdField_a_of_type_Auev.a(localauew);
-    this.this$0.jdField_a_of_type_Auev.a();
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
+    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.b;
+    localFilePreviewAnim.b = 250;
+    this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
     this.this$0.e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.13
  * JD-Core Version:    0.7.0.1
  */

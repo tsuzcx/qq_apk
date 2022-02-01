@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.redtouch;
 
-import bbbq;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class RedTouchManager$6
+class RedTouchManager$6
   implements Runnable
 {
-  public RedTouchManager$6(bbbq parambbbq, int paramInt1, int paramInt2) {}
+  RedTouchManager$6(RedTouchManager paramRedTouchManager, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -31,7 +30,7 @@ public class RedTouchManager$6
       localObject = new JSONObject();
       ((JSONObject)localObject).put("level", 0);
       this.this$0.a(localAppInfo, null, this.b, ((JSONObject)localObject).toString());
-      bbbq.a("level zero report appSet:" + this.a + " reportType:" + this.b + "appId:" + localAppInfo.uiAppId.get());
+      RedTouchManager.a("level zero report appSet:" + this.a + " reportType:" + this.b + "appId:" + localAppInfo.uiAppId.get());
       return;
     }
     catch (JSONException localJSONException)
@@ -42,7 +41,7 @@ public class RedTouchManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,13 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
-import bgyb;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSmartCropUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.RefreshUserInfoCallBack;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSImageUtil;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.FastBlurDecoder;
 import com.tencent.pts.core.PTSAppInstance;
 import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.PTSNodeStyle;
@@ -16,9 +19,6 @@ import com.tencent.pts.utils.PTSLog;
 import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.pts.utils.PTSValueConvertUtil;
 import com.tencent.qphone.base.util.QLog;
-import pre;
-import qhl;
-import raa;
 
 public class PTSNodeImage
   extends PTSNodeVirtual<PTSImageView>
@@ -28,7 +28,7 @@ public class PTSNodeImage
   private String imageUrl;
   private Drawable normalDrawable;
   private Drawable pressedDrawable;
-  private qhl refreshUserInfoCallBack;
+  private ReadInJoyUserInfoModule.RefreshUserInfoCallBack refreshUserInfoCallBack;
   private long uin;
   
   private PTSNodeImage(PTSAppInstance paramPTSAppInstance)
@@ -45,7 +45,7 @@ public class PTSNodeImage
     {
       str = paramString;
       if (j > 0) {
-        str = pre.a(paramString, i, j);
+        str = RIJSmartCropUtils.a(paramString, i, j);
       }
     }
     return str;
@@ -89,9 +89,9 @@ public class PTSNodeImage
   private void setImageSrc(String paramString)
   {
     PTSTimeCostUtil.start("image-" + paramString);
-    ((PTSImageView)getView()).setImageDrawable(((PTSImageView)getView()).getResources().getDrawable(2130841740));
+    ((PTSImageView)getView()).setImageDrawable(((PTSImageView)getView()).getResources().getDrawable(2130841881));
     if (!TextUtils.isEmpty(paramString)) {
-      if (raa.a(paramString)) {
+      if (PTSImageUtil.a(paramString)) {
         setNetWorkImage(paramString);
       }
     }
@@ -100,9 +100,9 @@ public class PTSNodeImage
       QLog.i("PTSNodeImage", 1, "[setImageSrc], imageUrl = " + paramString);
       PTSTimeCostUtil.end("image-" + paramString);
       return;
-      if (raa.b(paramString))
+      if (PTSImageUtil.b(paramString))
       {
-        raa.a((PTSImageView)getView(), paramString);
+        PTSImageUtil.a((PTSImageView)getView(), paramString);
       }
       else
       {
@@ -120,11 +120,11 @@ public class PTSNodeImage
     if (this.blurRadius > 0.0F)
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = ((PTSImageView)getView()).getResources().getDrawable(2130841740);
+      Drawable localDrawable = ((PTSImageView)getView()).getResources().getDrawable(2130841881);
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      paramString.setDecodeHandler(new bgyb((int)this.blurRadius));
+      paramString.setDecodeHandler(new URLDrawableDecodeHandler.FastBlurDecoder((int)this.blurRadius));
       ((PTSImageView)getView()).setImageDrawable(paramString);
       return;
     }
@@ -140,8 +140,8 @@ public class PTSNodeImage
       return;
       QLog.i("PTSNodeImage", 1, "[updatePtsOnPressedSrc], imageUrl = " + this.imageUrl + ", onPressedSrc = " + paramString + ", blurRadius = " + this.blurRadius);
       localStateListDrawable = new StateListDrawable();
-      this.normalDrawable = raa.a(getContext(), addSmartCrop(this.imageUrl), (int)this.blurRadius);
-      this.pressedDrawable = raa.a(getContext(), addSmartCrop(paramString), (int)this.blurRadius);
+      this.normalDrawable = PTSImageUtil.a(getContext(), addSmartCrop(this.imageUrl), (int)this.blurRadius);
+      this.pressedDrawable = PTSImageUtil.a(getContext(), addSmartCrop(paramString), (int)this.blurRadius);
     } while ((this.normalDrawable == null) || (this.pressedDrawable == null));
     paramString = this.pressedDrawable;
     localStateListDrawable.addState(new int[] { 16842919 }, paramString);
@@ -179,7 +179,7 @@ public class PTSNodeImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeImage
  * JD-Core Version:    0.7.0.1
  */

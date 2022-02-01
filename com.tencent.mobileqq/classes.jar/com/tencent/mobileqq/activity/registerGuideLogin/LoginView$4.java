@@ -1,33 +1,28 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import alns;
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class LoginView$4
+class LoginView$4
   implements Runnable
 {
-  LoginView$4(LoginView paramLoginView) {}
+  LoginView$4(LoginView paramLoginView, List paramList) {}
   
   public void run()
   {
-    this.this$0.c.setVisibility(0);
-    this.this$0.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.clearFocus();
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation.setDuration(500L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new alns(this));
-    this.this$0.c.startAnimation(localTranslateAnimation);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = ((SimpleAccount)localIterator.next()).getUin();
+      LoginView.a(this.this$0).put(str, this.this$0.a(str, true));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4
  * JD-Core Version:    0.7.0.1
  */

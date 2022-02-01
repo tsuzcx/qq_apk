@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import bolh;
 import com.tencent.ttpic.openapi.PTFaceAttr;
+import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
 import java.util.LinkedList;
 import java.util.List;
 
 final class FaceChangeUtils$4
   implements Runnable
 {
-  FaceChangeUtils$4(PTFaceAttr[] paramArrayOfPTFaceAttr, Bitmap paramBitmap, bolh parambolh) {}
+  FaceChangeUtils$4(PTFaceAttr[] paramArrayOfPTFaceAttr, Bitmap paramBitmap, DynamicTextItem.Pair paramPair) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ final class FaceChangeUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.FaceChangeUtils.4
  * JD-Core Version:    0.7.0.1
  */

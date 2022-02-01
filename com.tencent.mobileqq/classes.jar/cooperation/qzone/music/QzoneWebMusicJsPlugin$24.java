@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bifw;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;
 
@@ -17,7 +17,7 @@ class QzoneWebMusicJsPlugin$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.24
  * JD-Core Version:    0.7.0.1
  */

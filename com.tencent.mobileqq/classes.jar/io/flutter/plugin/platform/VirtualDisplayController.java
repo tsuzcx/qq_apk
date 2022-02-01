@@ -7,10 +7,12 @@ import android.graphics.SurfaceTexture;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
 import io.flutter.view.TextureRegistry.SurfaceTextureEntry;
 
 @TargetApi(20)
@@ -20,7 +22,8 @@ class VirtualDisplayController
   private final Context context;
   private final int densityDpi;
   private final View.OnFocusChangeListener focusChangeListener;
-  private SingleViewPresentation presentation;
+  @VisibleForTesting
+  SingleViewPresentation presentation;
   private Surface surface;
   private final TextureRegistry.SurfaceTextureEntry textureEntry;
   private VirtualDisplay virtualDisplay;
@@ -47,6 +50,14 @@ class VirtualDisplayController
       return null;
     }
     return new VirtualDisplayController(paramContext, paramAccessibilityEventsDelegate, localVirtualDisplay, paramPlatformViewFactory, localSurface, paramSurfaceTextureEntry, paramOnFocusChangeListener, paramInt3, paramObject);
+  }
+  
+  public void dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.presentation == null) {
+      return;
+    }
+    this.presentation.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void dispose()
@@ -109,13 +120,15 @@ class VirtualDisplayController
     this.virtualDisplay = ((DisplayManager)this.context.getSystemService("display")).createVirtualDisplay("flutter-vd", paramInt1, paramInt2, this.densityDpi, this.surface, 0);
     View localView = getView();
     localView.addOnAttachStateChangeListener(new VirtualDisplayController.1(this, localView, paramRunnable));
-    this.presentation = new SingleViewPresentation(this.context, this.virtualDisplay.getDisplay(), this.accessibilityEventsDelegate, localPresentationState, this.focusChangeListener, bool);
-    this.presentation.show();
+    paramRunnable = new SingleViewPresentation(this.context, this.virtualDisplay.getDisplay(), this.accessibilityEventsDelegate, localPresentationState, this.focusChangeListener, bool);
+    paramRunnable.show();
+    this.presentation.cancel();
+    this.presentation = paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.plugin.platform.VirtualDisplayController
  * JD-Core Version:    0.7.0.1
  */

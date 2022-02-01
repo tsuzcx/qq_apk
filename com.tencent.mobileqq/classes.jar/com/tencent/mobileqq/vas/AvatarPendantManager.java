@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.vas;
 
 import android.content.Context;
-import bhlj;
-import bhll;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -18,18 +16,25 @@ public class AvatarPendantManager
   implements Manager
 {
   public static int a;
+  public static volatile long b;
   public static volatile boolean b;
   public static volatile boolean c;
   public long a;
   protected AppInterface a;
   protected AvatarPendantManager.PendantInfoLruCache a;
-  List<bhll> a;
+  List<AvatarPendantShopSeriesInfo> a;
   public boolean a;
-  List<bhlj> b;
+  List<AvatarInPendantHeadportraitInfo> b;
+  
+  static
+  {
+    jdField_b_of_type_Long = 0L;
+  }
   
   public AvatarPendantManager(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache = null;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache = new AvatarPendantManager.PendantInfoLruCache(this, 10);
@@ -66,7 +71,7 @@ public class AvatarPendantManager
     return localFile;
   }
   
-  public List<bhll> a()
+  public List<AvatarPendantShopSeriesInfo> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -83,9 +88,9 @@ public class AvatarPendantManager
     }
   }
   
-  public void a(List<bhlj> paramList)
+  public void a(List<AvatarInPendantHeadportraitInfo> paramList)
   {
-    this.b = paramList;
+    this.jdField_b_of_type_JavaUtilList = paramList;
   }
   
   public boolean a(long paramLong)
@@ -102,9 +107,9 @@ public class AvatarPendantManager
     return localFile;
   }
   
-  public List<bhlj> b()
+  public List<AvatarInPendantHeadportraitInfo> b()
   {
-    return this.b;
+    return this.jdField_b_of_type_JavaUtilList;
   }
   
   public void b()

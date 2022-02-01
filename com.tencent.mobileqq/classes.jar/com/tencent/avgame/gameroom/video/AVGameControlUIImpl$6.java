@@ -1,6 +1,6 @@
 package com.tencent.avgame.gameroom.video;
 
-import nnm;
+import com.tencent.avgame.qav.AVGameBusinessCtrl;
 
 class AVGameControlUIImpl$6
   implements Runnable
@@ -10,7 +10,7 @@ class AVGameControlUIImpl$6
   public void run()
   {
     if (this.this$0.a()) {}
-    while (nnm.b().a() != 1) {
+    while (AVGameBusinessCtrl.b().a() != 1) {
       return;
     }
     AVGameControlUIImpl.b(this.this$0, 7);
@@ -18,7 +18,7 @@ class AVGameControlUIImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.6
  * JD-Core Version:    0.7.0.1
  */

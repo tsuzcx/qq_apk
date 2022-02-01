@@ -33,12 +33,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import bhdj;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQUIDelegate;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.ListView;
 import java.util.List;
@@ -61,7 +58,7 @@ public class QQCustomDialog
   public ImageView framePreviewImage;
   LayoutInflater inflater;
   String[] items;
-  public TextView lBtn;
+  protected TextView lBtn;
   ListView list;
   private QQCustomDialog.BrandColorManager mBrandColorManager = new QQCustomDialog.BrandColorManager(null);
   FormSwitchItem mSwitch;
@@ -72,17 +69,17 @@ public class QQCustomDialog
   ImageView operateImage;
   TextView previewImage;
   ProgressBar progressBar;
-  public TextView rBtn;
+  protected TextView rBtn;
   ViewGroup rootView;
   Object tag;
   protected TextView text;
-  public TextView title;
+  protected TextView title;
   
   @TargetApi(14)
   public QQCustomDialog(Context paramContext)
   {
     super(paramContext);
-    super.getWindow().setWindowAnimations(2131755130);
+    super.getWindow().setWindowAnimations(2131755132);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -92,7 +89,7 @@ public class QQCustomDialog
   public QQCustomDialog(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    super.getWindow().setWindowAnimations(2131755130);
+    super.getWindow().setWindowAnimations(2131755132);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -102,7 +99,7 @@ public class QQCustomDialog
   protected QQCustomDialog(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     super(paramContext, paramBoolean, paramOnCancelListener);
-    super.getWindow().setWindowAnimations(2131755130);
+    super.getWindow().setWindowAnimations(2131755132);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -121,7 +118,13 @@ public class QQCustomDialog
   
   public static void showPermissionSettingDialog(Activity paramActivity, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(paramActivity, 230);
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(paramActivity, 2131755842);
+    localQQCustomDialog.setContentView(2131559084);
+    localQQCustomDialog.setTitle(paramString1);
+    localQQCustomDialog.setMessage(paramString2);
+    localQQCustomDialog.setNegativeButton(2131690800, paramOnClickListener1);
+    localQQCustomDialog.setPositiveButton(2131694615, paramOnClickListener2);
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
     if (paramString1 != null)
     {
       paramActivity = paramString1;
@@ -129,7 +132,7 @@ public class QQCustomDialog
     }
     else
     {
-      paramActivity = anvx.a(2131709662);
+      paramActivity = QQUIDelegate.a(2131710178);
     }
     localQQCustomDialog.setTitle(paramActivity);
     if (paramString2 != null)
@@ -139,11 +142,11 @@ public class QQCustomDialog
     }
     else
     {
-      paramActivity = anvx.a(2131709654);
+      paramActivity = QQUIDelegate.a(2131710170);
     }
     localQQCustomDialog.setMessage(paramActivity);
-    localQQCustomDialog.setNegativeButton(anvx.a(2131709661), paramOnClickListener1);
-    localQQCustomDialog.setPositiveButton(anvx.a(2131709646), paramOnClickListener2);
+    localQQCustomDialog.setNegativeButton(QQUIDelegate.a(2131710177), paramOnClickListener1);
+    localQQCustomDialog.setPositiveButton(QQUIDelegate.a(2131710162), paramOnClickListener2);
     localQQCustomDialog.setOnCancelListener(paramOnCancelListener);
     localQQCustomDialog.show();
   }
@@ -199,7 +202,7 @@ public class QQCustomDialog
     if (this.bodyLayout != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      localLayoutParams.bottomMargin = ScreenUtil.dip2px(paramFloat);
+      localLayoutParams.bottomMargin = QQUIDelegate.a(getContext(), paramFloat);
       this.bodyLayout.setLayoutParams(localLayoutParams);
     }
   }
@@ -224,8 +227,8 @@ public class QQCustomDialog
     if (this.bodyLayout != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-      localLayoutParams.bottomMargin = ScreenUtil.dip2px(paramFloat2);
-      localLayoutParams.topMargin = ScreenUtil.dip2px(paramFloat1);
+      localLayoutParams.bottomMargin = QQUIDelegate.a(getContext(), paramFloat2);
+      localLayoutParams.topMargin = QQUIDelegate.a(getContext(), paramFloat1);
       this.bodyLayout.setLayoutParams(localLayoutParams);
     }
   }
@@ -245,17 +248,17 @@ public class QQCustomDialog
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 268	android/app/Dialog:dismiss	()V
+    //   1: invokespecial 280	android/app/Dialog:dismiss	()V
     //   4: aload_0
-    //   5: invokestatic 273	acxo:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 285	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_1
     //   10: aload_0
-    //   11: invokestatic 273	acxo:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 285	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_1
     //   16: aload_0
-    //   17: invokestatic 273	acxo:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 285	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   20: aload_1
     //   21: athrow
     // Local variable table:
@@ -279,7 +282,7 @@ public class QQCustomDialog
   public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
     if (paramAccessibilityEvent.getEventType() == 32) {
-      paramAccessibilityEvent.getText().add(getContext().getString(2131691090));
+      paramAccessibilityEvent.getText().add(getContext().getString(2131691197));
     }
     super.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(Dialog.class.getName());
@@ -306,7 +309,7 @@ public class QQCustomDialog
   
   protected int getDialogListItemLayout()
   {
-    return 2131559031;
+    return 2131559072;
   }
   
   public String getEditString()
@@ -342,7 +345,7 @@ public class QQCustomDialog
   
   public TextView getMessageTextView_Plain_Text()
   {
-    return (TextView)findViewById(2131365646);
+    return (TextView)findViewById(2131365809);
   }
   
   public int getRootViewHeight()
@@ -449,7 +452,7 @@ public class QQCustomDialog
   
   public QQCustomDialog setCheckBox(String paramString, boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener)
   {
-    findViewById(2131369820).setVisibility(0);
+    findViewById(2131370089).setVisibility(0);
     this.checkTxt.setText(paramString);
     if (this.checkBox != null)
     {
@@ -463,34 +466,34 @@ public class QQCustomDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131365648));
-    this.text = ((TextView)findViewById(2131365644));
-    this.dialogEdit = ((EditText)findViewById(2131365628));
-    this.countText = ((TextView)findViewById(2131365621));
-    this.dummyFirstPreviewImage = ((TextView)findViewById(2131365913));
-    this.previewImage = ((TextView)findViewById(2131373129));
-    this.operateImage = ((ImageView)findViewById(2131372255));
-    this.framePreviewImage = ((ImageView)findViewById(2131367272));
-    this.framePreview = findViewById(2131367271);
-    this.mVideoIcon = ((ImageView)findViewById(2131380934));
-    this.mVideoSize = ((TextView)findViewById(2131370563));
-    this.mVideoTime = ((TextView)findViewById(2131370564));
-    this.lBtn = ((TextView)findViewById(2131365633));
-    this.rBtn = ((TextView)findViewById(2131365639));
-    this.editPicTag = ((TextView)findViewById(2131365629));
-    this.progressBar = ((ProgressBar)findViewById(2131365672));
+    this.title = ((TextView)findViewById(2131365811));
+    this.text = ((TextView)findViewById(2131365807));
+    this.dialogEdit = ((EditText)findViewById(2131365791));
+    this.countText = ((TextView)findViewById(2131365784));
+    this.dummyFirstPreviewImage = ((TextView)findViewById(2131366077));
+    this.previewImage = ((TextView)findViewById(2131373455));
+    this.operateImage = ((ImageView)findViewById(2131372559));
+    this.framePreviewImage = ((ImageView)findViewById(2131367459));
+    this.framePreview = findViewById(2131367458);
+    this.mVideoIcon = ((ImageView)findViewById(2131381391));
+    this.mVideoSize = ((TextView)findViewById(2131370848));
+    this.mVideoTime = ((TextView)findViewById(2131370849));
+    this.lBtn = ((TextView)findViewById(2131365796));
+    this.rBtn = ((TextView)findViewById(2131365802));
+    this.editPicTag = ((TextView)findViewById(2131365792));
+    this.progressBar = ((ProgressBar)findViewById(2131365835));
     this.lBtn.setVisibility(8);
     this.rBtn.setVisibility(8);
-    this.bodyLayout = ((LinearLayout)findViewById(2131363664));
-    this.checkBox = ((CheckBox)findViewById(2131379297));
-    this.mSwitch = ((FormSwitchItem)findViewById(2131379299));
-    this.checkTxt = ((TextView)findViewById(2131380306));
-    this.list = ((ListView)findViewById(2131370180));
-    this.rootView = ((ViewGroup)findViewById(2131365640));
+    this.bodyLayout = ((LinearLayout)findViewById(2131363757));
+    this.checkBox = ((CheckBox)findViewById(2131379720));
+    this.mSwitch = ((FormSwitchItem)findViewById(2131379722));
+    this.checkTxt = ((TextView)findViewById(2131380749));
+    this.list = ((ListView)findViewById(2131370452));
+    this.rootView = ((ViewGroup)findViewById(2131365803));
     if ((this.list != null) && (Build.VERSION.SDK_INT >= 9)) {
       this.list.setOverScrollMode(2);
     }
-    this.mBrandColorManager.setDialogBrandColorView(findViewById(2131365606));
+    this.mBrandColorManager.a(findViewById(2131365767));
   }
   
   public void setEditLint(String paramString)
@@ -644,7 +647,7 @@ public class QQCustomDialog
       this.text.setMovementMethod(LinkMovementMethod.getInstance());
       this.text.setText(paramString);
       this.text.setContentDescription(paramString);
-      this.text.setLinkTextColor(getContext().getResources().getColor(2131165802));
+      this.text.setLinkTextColor(getContext().getResources().getColor(2131165804));
       this.text.setVisibility(0);
       return this;
     }
@@ -666,12 +669,12 @@ public class QQCustomDialog
     return this;
   }
   
-  public QQCustomDialog setMsgMaxLineWithEnd(String paramString, int paramInt)
+  public QQCustomDialog setMsgMaxLineWithEnd(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (this.text != null)
     {
       this.text.setMaxLines(paramInt);
-      this.text.getViewTreeObserver().addOnGlobalLayoutListener(new QQCustomDialog.2(this, paramInt, paramString));
+      this.text.getViewTreeObserver().addOnGlobalLayoutListener(new QQCustomDialog.2(this, paramInt, paramString, paramBoolean1, paramBoolean2));
     }
     return this;
   }
@@ -684,7 +687,7 @@ public class QQCustomDialog
       return this;
     }
     this.lBtn.setText(paramInt);
-    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691087));
+    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691194));
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new QQCustomDialog.8(this, paramOnClickListener));
     setSeperatorState();
@@ -710,7 +713,7 @@ public class QQCustomDialog
       return this;
     }
     this.lBtn.setText(paramString);
-    this.lBtn.setContentDescription(paramString + getContext().getString(2131691087));
+    this.lBtn.setContentDescription(paramString + getContext().getString(2131691194));
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new QQCustomDialog.5(this, paramOnClickListener));
     setSeperatorState();
@@ -768,7 +771,7 @@ public class QQCustomDialog
       return this;
     }
     this.rBtn.setText(paramInt);
-    this.rBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691087));
+    this.rBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691194));
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new QQCustomDialog.7(this, paramOnClickListener, paramBoolean));
     setSeperatorState();
@@ -794,7 +797,7 @@ public class QQCustomDialog
       return this;
     }
     this.rBtn.setText(paramString);
-    this.rBtn.setContentDescription(paramString + getContext().getString(2131691087));
+    this.rBtn.setContentDescription(paramString + getContext().getString(2131691194));
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new QQCustomDialog.6(this, paramOnClickListener));
     setSeperatorState();
@@ -811,7 +814,7 @@ public class QQCustomDialog
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.framePreview.getLayoutParams();
     localMarginLayoutParams.width = paramInt1;
     localMarginLayoutParams.height = paramInt2;
-    localMarginLayoutParams.topMargin = AIOUtils.dp2px(12.0F, this.framePreview.getResources());
+    localMarginLayoutParams.topMargin = QQUIDelegate.a(getContext(), 12.0F);
     this.framePreviewImage.getLayoutParams().width = paramInt1;
     this.framePreviewImage.getLayoutParams().height = paramInt2;
     return this;
@@ -855,10 +858,10 @@ public class QQCustomDialog
       }
       if (paramInt == 2)
       {
-        this.framePreview.setBackgroundResource(2130840200);
+        this.framePreview.setBackgroundResource(2130840291);
         return this;
       }
-      this.framePreview.setBackgroundResource(2130840201);
+      this.framePreview.setBackgroundResource(2130840292);
       return this;
     }
     this.framePreview.setVisibility(8);

@@ -14,7 +14,7 @@ class QvipSpecialSoundManager$MoveConfig
   
   public void run()
   {
-    FileUtils.moveFile(this.a + "https://i.gtimg.cn/club/moblie/special_sound/new_config.json", this.a + "pddata/vas/special_remind/new_config.json");
+    FileUtils.b(this.a + "https://i.gtimg.cn/club/moblie/special_sound/new_config.json", this.a + "pddata/vas/special_remind/new_config.json");
   }
 }
 

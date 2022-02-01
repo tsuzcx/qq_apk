@@ -1,20 +1,19 @@
 package dov.com.qq.im.ae;
 
 import android.widget.ImageView;
-import bmxa;
 import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
-public class AEPituCameraUnit$27
+class AEPituCameraUnit$27
   implements Runnable
 {
-  public AEPituCameraUnit$27(bmxa parambmxa) {}
+  AEPituCameraUnit$27(AEPituCameraUnit paramAEPituCameraUnit) {}
   
   public void run()
   {
-    bmxa.a(this.this$0).setVisibility(8);
-    if (bmxa.a(this.this$0).getDrawable() != null)
+    AEPituCameraUnit.a(this.this$0).setVisibility(8);
+    if (AEPituCameraUnit.a(this.this$0).getDrawable() != null)
     {
-      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)bmxa.a(this.this$0).getDrawable();
+      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)AEPituCameraUnit.a(this.this$0).getDrawable();
       localLazyLoadAnimationDrawable.stop();
       localLazyLoadAnimationDrawable.clear();
     }
@@ -22,7 +21,7 @@ public class AEPituCameraUnit$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.27
  * JD-Core Version:    0.7.0.1
  */

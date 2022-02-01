@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import adkn;
-import amlc;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,9 +13,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import asll;
+import com.tencent.mobileqq.antiphing.DeviceLockItemInfo;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -28,12 +26,12 @@ public class AuthDevEnableCompleteActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<amlc> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int = 0;
+  private Button jdField_a_of_type_AndroidWidgetButton = null;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  private String jdField_a_of_type_JavaLangString = null;
+  private ArrayList<DeviceLockItemInfo> jdField_a_of_type_JavaUtilArrayList = null;
+  private boolean jdField_a_of_type_Boolean = false;
   
   private View a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
@@ -44,7 +42,7 @@ public class AuthDevEnableCompleteActivity
       }
       return null;
     }
-    View localView = getLayoutInflater().inflate(2131561103, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    View localView = getLayoutInflater().inflate(2131561191, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
     if ((localView == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null))
     {
       if (QLog.isColorLevel()) {
@@ -52,11 +50,11 @@ public class AuthDevEnableCompleteActivity
       }
       return null;
     }
-    localView.setOnClickListener(new adkn(this));
-    ImageView localImageView = (ImageView)localView.findViewById(2131364591);
-    TextView localTextView1 = (TextView)localView.findViewById(2131371803);
-    TextView localTextView2 = (TextView)localView.findViewById(2131378872);
-    TextView localTextView3 = (TextView)localView.findViewById(2131368819);
+    localView.setOnClickListener(new AuthDevEnableCompleteActivity.1(this));
+    ImageView localImageView = (ImageView)localView.findViewById(2131364705);
+    TextView localTextView1 = (TextView)localView.findViewById(2131372115);
+    TextView localTextView2 = (TextView)localView.findViewById(2131379303);
+    TextView localTextView3 = (TextView)localView.findViewById(2131369051);
     if ((localImageView == null) || (localTextView1 == null) || (localTextView2 == null) || (localTextView3 == null))
     {
       if (QLog.isColorLevel()) {
@@ -66,17 +64,17 @@ public class AuthDevEnableCompleteActivity
     }
     localImageView.setVisibility(0);
     localTextView1.setText(paramString1);
-    localTextView2.setText(getString(2131691953));
+    localTextView2.setText(getString(2131692081));
     localTextView3.setText(paramString2);
     return localView;
   }
   
   private void a()
   {
-    super.setContentView(2131561097);
-    setTitle(2131691971);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363901));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377453));
+    super.setContentView(2131561185);
+    setTitle(2131692099);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363999));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377871));
     if ((this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null))
     {
       if (QLog.isColorLevel()) {
@@ -84,12 +82,12 @@ public class AuthDevEnableCompleteActivity
       }
       return;
     }
-    Object localObject1 = (TextView)findViewById(2131369231);
+    Object localObject1 = (TextView)findViewById(2131369487);
     if (localObject1 != null) {
       ((TextView)localObject1).setVisibility(8);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_JavaUtilArrayList = asll.a().a();
+    this.jdField_a_of_type_JavaUtilArrayList = EquipmentLockImpl.a().a();
     int k = this.jdField_a_of_type_JavaUtilArrayList.size();
     int j = 0;
     int i = 0;
@@ -101,18 +99,18 @@ public class AuthDevEnableCompleteActivity
     {
       if (j < k)
       {
-        localObject2 = (amlc)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        localObject2 = (DeviceLockItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j);
         if (localObject2 == null)
         {
           j += 1;
         }
-        else if ((((amlc)localObject2).c == 1) || (((amlc)localObject2).c == 2))
+        else if ((((DeviceLockItemInfo)localObject2).c == 1) || (((DeviceLockItemInfo)localObject2).c == 2))
         {
           bool1 = true;
-          if (((((amlc)localObject2).jdField_a_of_type_ArrayOfByte == null) || (!((amlc)localObject2).jdField_a_of_type_ArrayOfByte.equals(NetConnInfoCenter.GUID))) && (((amlc)localObject2).c != 1)) {
+          if (((((DeviceLockItemInfo)localObject2).jdField_a_of_type_ArrayOfByte == null) || (!((DeviceLockItemInfo)localObject2).jdField_a_of_type_ArrayOfByte.equals(NetConnInfoCenter.GUID))) && (((DeviceLockItemInfo)localObject2).c != 1)) {
             break label361;
           }
-          ((amlc)localObject2).jdField_a_of_type_Boolean = true;
+          ((DeviceLockItemInfo)localObject2).jdField_a_of_type_Boolean = true;
           bool2 = false;
           bool1 = true;
         }
@@ -120,14 +118,14 @@ public class AuthDevEnableCompleteActivity
     }
     for (;;)
     {
-      localObject1 = a(((amlc)localObject2).jdField_a_of_type_JavaLangString, ((amlc)localObject2).b, bool1, bool2, ((amlc)localObject2).jdField_a_of_type_Boolean);
+      localObject1 = a(((DeviceLockItemInfo)localObject2).jdField_a_of_type_JavaLangString, ((DeviceLockItemInfo)localObject2).b, bool1, bool2, ((DeviceLockItemInfo)localObject2).jdField_a_of_type_Boolean);
       if (localObject1 != null)
       {
-        ((amlc)localObject2).d = i;
+        ((DeviceLockItemInfo)localObject2).d = i;
         i += 1;
-        localObject2 = (RelativeLayout)((View)localObject1).findViewById(2131369110);
+        localObject2 = (RelativeLayout)((View)localObject1).findViewById(2131369361);
         if (k == 1) {
-          ((RelativeLayout)localObject2).setBackgroundResource(2130839496);
+          ((RelativeLayout)localObject2).setBackgroundResource(2130839575);
         }
         for (;;)
         {
@@ -136,16 +134,16 @@ public class AuthDevEnableCompleteActivity
           bool1 = false;
           break label171;
           if (i == 1) {
-            ((RelativeLayout)localObject2).setBackgroundResource(2130839512);
+            ((RelativeLayout)localObject2).setBackgroundResource(2130839591);
           } else if (j == k - 1) {
-            ((RelativeLayout)localObject2).setBackgroundResource(2130839503);
+            ((RelativeLayout)localObject2).setBackgroundResource(2130839582);
           } else {
-            ((RelativeLayout)localObject2).setBackgroundResource(2130839506);
+            ((RelativeLayout)localObject2).setBackgroundResource(2130839585);
           }
         }
         try
         {
-          asll.a().a(null, this.app.getCurrentAccountUin(), 10);
+          EquipmentLockImpl.a().a(null, this.app.getCurrentAccountUin(), 10);
           return;
         }
         catch (Exception localException)
@@ -197,7 +195,7 @@ public class AuthDevEnableCompleteActivity
       }
       try
       {
-        asll.a().a(null, this.app.getCurrentAccountUin(), 11);
+        EquipmentLockImpl.a().a(null, this.app.getCurrentAccountUin(), 11);
         label70:
         if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null))
         {
@@ -205,8 +203,8 @@ public class AuthDevEnableCompleteActivity
           int i = 0;
           if (i < k)
           {
-            localObject = (amlc)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-            int j = ((amlc)localObject).d;
+            localObject = (DeviceLockItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+            int j = ((DeviceLockItemInfo)localObject).d;
             View localView;
             if (j >= 0)
             {
@@ -219,25 +217,25 @@ public class AuthDevEnableCompleteActivity
             {
               i += 1;
               break;
-              if (((ImageView)localView.findViewById(2131364591)).getVisibility() == 0) {}
+              if (((ImageView)localView.findViewById(2131364705)).getVisibility() == 0) {}
               for (j = 1;; j = 0)
               {
                 if (j == 0) {
                   break label190;
                 }
-                if (((amlc)localObject).c != 0) {
+                if (((DeviceLockItemInfo)localObject).c != 0) {
                   break;
                 }
-                ((amlc)localObject).c = 3;
+                ((DeviceLockItemInfo)localObject).c = 3;
                 break;
               }
-              ((amlc)localObject).c = 0;
+              ((DeviceLockItemInfo)localObject).c = 0;
             }
           }
         }
         label146:
         label190:
-        asll.a().a(this.app, this.jdField_a_of_type_JavaUtilArrayList);
+        EquipmentLockImpl.a().a(this.app, this.jdField_a_of_type_JavaUtilArrayList);
         Object localObject = new Intent(this, AuthDevActivity.class);
         ((Intent)localObject).putExtra("auth_dev_open", true);
         if (this.jdField_a_of_type_JavaLangString != null)
@@ -246,15 +244,15 @@ public class AuthDevEnableCompleteActivity
           ((Intent)localObject).putExtra("phone_num", this.jdField_a_of_type_JavaLangString);
         }
         startActivity((Intent)localObject);
-        overridePendingTransition(0, 2130772001);
-        asll.a().c();
+        overridePendingTransition(0, 2130772003);
+        EquipmentLockImpl.a().c();
         finish();
         continue;
         if (QLog.isColorLevel()) {
           QLog.d("devlock.AuthDevEnableCompleteActivity", 2, "onClick right cancel button! ");
         }
         finish();
-        overridePendingTransition(0, 2130772001);
+        overridePendingTransition(0, 2130772003);
       }
       catch (Exception localException)
       {
@@ -298,7 +296,7 @@ public class AuthDevEnableCompleteActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity
  * JD-Core Version:    0.7.0.1
  */

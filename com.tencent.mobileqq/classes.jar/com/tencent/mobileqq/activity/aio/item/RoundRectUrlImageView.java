@@ -10,15 +10,15 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bivv;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectHelper;
 
 public class RoundRectUrlImageView
   extends URLImageView
 {
   private int jdField_a_of_type_Int;
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private int b;
   private int c;
   private int d;
@@ -78,7 +78,7 @@ public class RoundRectUrlImageView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     Integer localInteger = null;
     if (this.jdField_a_of_type_AndroidGraphicsPath != null)
@@ -92,7 +92,7 @@ public class RoundRectUrlImageView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     b();
     Integer localInteger = null;
@@ -108,7 +108,7 @@ public class RoundRectUrlImageView
   }
   
   @SuppressLint({"DrawAllocation"})
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getWidth();
@@ -133,10 +133,10 @@ public class RoundRectUrlImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bivv.a(this);
+      PressEffectHelper.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bivv.b(this);
+      PressEffectHelper.b(this);
     }
   }
   
@@ -161,7 +161,7 @@ public class RoundRectUrlImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView
  * JD-Core Version:    0.7.0.1
  */

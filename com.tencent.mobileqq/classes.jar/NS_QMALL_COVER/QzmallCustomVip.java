@@ -8,7 +8,7 @@ public final class QzmallCustomVip
   extends JceStruct
 {
   static int cache_eCustomVipType = 0;
-  public int eCustomVipType;
+  public int eCustomVipType = 0;
   public int iItemId = -1;
   public String strGuestJumpUrl = "";
   public String strMasterJumpUrl = "";

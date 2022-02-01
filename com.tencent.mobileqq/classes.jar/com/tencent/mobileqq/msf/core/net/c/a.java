@@ -3,9 +3,10 @@ package com.tencent.mobileqq.msf.core.net.c;
 import android.os.Handler;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.q;
 import com.tencent.mobileqq.msf.core.quicksend.b;
-import com.tencent.mobileqq.msf.core.x;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Hashtable;
@@ -28,9 +29,9 @@ public final class a
   {
     if (MsfCore.sCore != null)
     {
-      k localk = MsfCore.sCore.getStatReporter();
-      if (localk != null) {
-        localk.d(paramBoolean);
+      j localj = MsfCore.sCore.getStatReporter();
+      if (localj != null) {
+        localj.d(paramBoolean);
       }
     }
   }
@@ -40,7 +41,7 @@ public final class a
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.DeepSleepDetector", 2, "onAppForeground");
     }
-    x.f().removeCallbacks(this.c);
+    q.f().removeCallbacks(this.c);
     boolean bool = a.a.a(this.c, true);
     if (bool)
     {
@@ -52,6 +53,9 @@ public final class a
     a.a.a(this.c);
     if (MsfService.core.quicksender != null) {
       MsfService.core.quicksender.a(bool);
+    }
+    if (MsfService.core.sender != null) {
+      MsfService.core.sender.h();
     }
   }
   
@@ -65,6 +69,9 @@ public final class a
     this.d.post(this.c);
     if (MsfService.core.quicksender != null) {
       MsfService.core.quicksender.c();
+    }
+    if (MsfService.core.sender != null) {
+      MsfService.core.sender.i();
     }
   }
   

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.text.TextUtils;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,12 +14,12 @@ public class WeiyunDownloadFilePlugin
   private static final String ACTION_CREATE_DOWNLOAD_TASK = "createDownloadTask";
   private static final String ACTION_PAUSE_DOWNLOAD_TASK = "pauseDownloadTask";
   public static final String TAG = "[mini] WeiyunDownloadFilePlugin";
-  private NativePlugin.JSContext mJSContext;
+  private JSContext mJSContext;
   private WeiyunNativeBusiness.WeiyunDownloadBussiness mWeiyunDownloadBussiness;
   
   public void onDestroy() {}
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     JSONObject localJSONObject;
     try

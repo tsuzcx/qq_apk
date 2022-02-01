@@ -2,13 +2,11 @@ package com.tencent.av.camera;
 
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import ljp;
-import lkb;
 
 class CameraUtils$NoPreviewRunnable
   implements Runnable
 {
-  public long a;
+  public long a = 0L;
   
   CameraUtils$NoPreviewRunnable(CameraUtils paramCameraUtils) {}
   
@@ -18,7 +16,7 @@ class CameraUtils$NoPreviewRunnable
     if (CameraUtils.a(this.this$0) != null) {
       bool = CameraUtils.a(this.this$0).d();
     }
-    if (AudioHelper.f()) {
+    if (AudioHelper.e()) {
       QLog.w("CameraUtils", 1, "NoPreviewRunnable.run, seq[" + this.a + "], isCameraOpened[" + bool + "], seq[" + this.a + "]");
     }
     if (CameraUtils.a(this.this$0) != null) {
@@ -28,7 +26,7 @@ class CameraUtils$NoPreviewRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.camera.CameraUtils.NoPreviewRunnable
  * JD-Core Version:    0.7.0.1
  */

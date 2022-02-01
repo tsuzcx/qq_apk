@@ -11,31 +11,31 @@ class GameRuntime$6
   public void onDebuggerBreakPointPaused()
   {
     QMLog.e("GameRuntime DebugSocket", "launchGame debugger BreakPointPaused");
-    GameRuntime.access$100(this.this$0).updateDebuggerStatus("断点中", null, true);
+    GameRuntime.access$200(this.this$0).updateDebuggerStatus("断点中", null, true);
   }
   
   public void onDebuggerConnectedNormal()
   {
     QMLog.e("GameRuntime DebugSocket", "launchGame debugger connected ");
-    GameRuntime.access$100(this.this$0).updateDebuggerStatus("已连接", null, false);
+    GameRuntime.access$200(this.this$0).updateDebuggerStatus("已连接", null, false);
     this.this$0.launchGame();
   }
   
   public void onDebuggerDisconnect(String paramString)
   {
     QMLog.e("GameRuntime DebugSocket", "launchGame debugger Disconnect");
-    GameRuntime.access$100(this.this$0).updateDebuggerStatus("连接断开", "关闭调试连接", false);
+    GameRuntime.access$200(this.this$0).updateDebuggerStatus("连接断开", "关闭调试连接", false);
   }
   
   public void onDebuggerReconnecting(String paramString)
   {
     QMLog.e("GameRuntime DebugSocket", "launchGame debugger Reconnecting");
-    GameRuntime.access$100(this.this$0).updateDebuggerStatus("连接断开", "重新建立调试连接...", false);
+    GameRuntime.access$200(this.this$0).updateDebuggerStatus("连接断开", "重新建立调试连接...", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameRuntime.6
  * JD-Core Version:    0.7.0.1
  */

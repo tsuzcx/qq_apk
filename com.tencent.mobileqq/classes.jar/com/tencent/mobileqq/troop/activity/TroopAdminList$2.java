@@ -1,39 +1,20 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class TroopAdminList$2
-  implements Runnable
+  extends FriendListObserver
 {
   TroopAdminList$2(TroopAdminList paramTroopAdminList) {}
   
-  public void run()
+  public void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
   {
-    int i = 0;
-    int j = this.this$0.jdField_a_of_type_ArrayOfJavaLangString.length;
-    while (i < j)
-    {
-      String str = this.this$0.jdField_a_of_type_ArrayOfJavaLangString[i];
-      if (!TextUtils.isEmpty(str))
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("uin", str);
-        localHashMap.put("nick", ContactUtils.getFriendDisplayName(this.this$0.app, str));
-        this.this$0.jdField_a_of_type_JavaUtilList.add(localHashMap);
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
-    this.this$0.addObserver(this.this$0.jdField_a_of_type_Anvi);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendsInfo(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
-    this.this$0.runOnUiThread(new TroopAdminList.2.1(this));
+    this.a.c();
   }
 }
 

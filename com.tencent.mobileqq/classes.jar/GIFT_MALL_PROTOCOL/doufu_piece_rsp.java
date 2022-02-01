@@ -12,8 +12,8 @@ public final class doufu_piece_rsp
 {
   static ArrayList<DouFuInfo> cache_doufu = new ArrayList();
   static Map<String, String> cache_mapExt;
-  public ArrayList<DouFuInfo> doufu;
-  public Map<String, String> mapExt;
+  public ArrayList<DouFuInfo> doufu = null;
+  public Map<String, String> mapExt = null;
   
   static
   {

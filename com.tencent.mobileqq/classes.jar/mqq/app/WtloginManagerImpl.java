@@ -323,6 +323,17 @@ public class WtloginManagerImpl
   
   public void onDestroy() {}
   
+  public int quickLoginByGateway(byte[] paramArrayOfByte, WtloginObserver paramWtloginObserver)
+  {
+    NewIntent localNewIntent = new NewIntent(this.app.getApplication(), WtloginServlet.class);
+    localNewIntent.putExtra("action", 2215);
+    localNewIntent.putExtra("phoneToken", paramArrayOfByte);
+    localNewIntent.withouLogin = true;
+    localNewIntent.setObserver(paramWtloginObserver);
+    this.app.startServlet(localNewIntent);
+    return 0;
+  }
+  
   public void refreLocalHelper(Context paramContext)
   {
     this.localWtloginHelper = new WtloginHelper(paramContext, true);

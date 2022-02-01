@@ -1,40 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ChatSettingForTroop$52
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  ChatSettingForTroop$52(ChatSettingForTroop paramChatSettingForTroop, Intent paramIntent) {}
+  ChatSettingForTroop$52(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      ArrayList localArrayList = this.a.getExtras().getStringArrayList("param_admins");
-      this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.coverAdministrators(this.this$0.app, localArrayList);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.post(new ChatSettingForTroop.52.1(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.chatopttroop", 2, localException, new Object[0]);
-        }
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.52
  * JD-Core Version:    0.7.0.1
  */

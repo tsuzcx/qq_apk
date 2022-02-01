@@ -4,41 +4,40 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import blbx;
 import java.util.ArrayList;
 
 public class ExpandableListView$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new blbx();
-  private Parcelable jdField_a_of_type_AndroidOsParcelable;
-  ArrayList<ExpandableListConnector.GroupMetadata> jdField_a_of_type_JavaUtilArrayList;
+  public static final Parcelable.Creator<SavedState> CREATOR = new ExpandableListView.SavedState.1();
+  ArrayList<ExpandableListConnector.GroupMetadata> expandedGroupMetadataList;
+  private Parcelable superState;
   
   private ExpandableListView$SavedState(Parcel paramParcel)
   {
     super(paramParcel);
-    this.jdField_a_of_type_AndroidOsParcelable = paramParcel.readParcelable(getClass().getClassLoader());
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    paramParcel.readList(this.jdField_a_of_type_JavaUtilArrayList, ExpandableListConnector.class.getClassLoader());
+    this.superState = paramParcel.readParcelable(getClass().getClassLoader());
+    this.expandedGroupMetadataList = new ArrayList();
+    paramParcel.readList(this.expandedGroupMetadataList, ExpandableListConnector.class.getClassLoader());
   }
   
   ExpandableListView$SavedState(Parcelable paramParcelable, ArrayList<ExpandableListConnector.GroupMetadata> paramArrayList)
   {
     super(EMPTY_STATE);
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_AndroidOsParcelable = paramParcelable;
+    this.expandedGroupMetadataList = paramArrayList;
+    this.superState = paramParcelable;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.jdField_a_of_type_AndroidOsParcelable, paramInt);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
+    paramParcel.writeParcelable(this.superState, paramInt);
+    paramParcel.writeList(this.expandedGroupMetadataList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ExpandableListView.SavedState
  * JD-Core Version:    0.7.0.1
  */

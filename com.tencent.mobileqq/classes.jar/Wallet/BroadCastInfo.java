@@ -12,10 +12,10 @@ public final class BroadCastInfo
   public String hbIdiom = "";
   public String hbIdiomLastPY = "";
   public String hbPoemRule = "";
-  public int idiomSeq;
-  public long idiomUin;
-  public int isFinished;
-  public int subchannel;
+  public int idiomSeq = 0;
+  public long idiomUin = 0L;
+  public int isFinished = 0;
+  public int subchannel = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import albi;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.widget.LinearLayout;
-import avfh;
-import avft;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qroute.QRoute;
+import common.config.service.QzoneConfig;
 import eipc.EIPCResult;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 class MiniGamePublicAccountWebFragment$1$1
@@ -36,35 +32,20 @@ class MiniGamePublicAccountWebFragment$1$1
     int i = MiniGamePublicAccountWebFragment.access$000(this.this$1.this$0).size();
     if (i > 0)
     {
-      localObject = MiniGamePublicAccountWebFragment.access$000(this.this$1.this$0).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        QQGameMsgInfo localQQGameMsgInfo = (QQGameMsgInfo)((Iterator)localObject).next();
-        avfh localavfh = avft.a(localQQGameMsgInfo, this.this$1.this$0.getActivity());
-        this.this$1.this$0.mHeaderRecords.add(localavfh);
-        if (!TextUtils.isEmpty(localQQGameMsgInfo.arkAppName))
-        {
-          albi.a().a(localQQGameMsgInfo.arkAppName);
-          MiniGamePublicAccountWebFragment.access$100(this.this$1.this$0).add(localQQGameMsgInfo.arkAppName);
-        }
-      }
-      albi.a().a(MiniGamePublicAccountWebFragment.access$100(this.this$1.this$0));
-      if ((this.this$1.this$0.mHeaderRecords != null) && (this.this$1.this$0.mHeaderRecords.size() < 0)) {
-        MiniGamePublicAccountWebFragment.access$202(this.this$1.this$0, (avfh)this.this$1.this$0.mHeaderRecords.get(0));
-      }
-      MiniGamePublicAccountWebFragment.access$300(this.this$1.this$0).setVisibility(8);
-      MiniGamePublicAccountWebFragment.access$400(this.this$1.this$0).setVisibility(0);
-      this.this$1.this$0.notifyWebHeaderHeight(MiniGamePublicAccountWebFragment.access$500(this.this$1.this$0));
-      MiniProgramLpReportDC04239.reportAsync("minigamechengzaiye", "top_news_more", "expo", null);
-      MiniGamePublicAccountWebFragment.access$602(this.this$1.this$0, new ArrayList(Collections.nCopies(i, Boolean.valueOf(false))));
-      MiniGamePublicAccountWebFragment.access$702(this.this$1.this$0, new ArrayList(Collections.nCopies(i, Boolean.valueOf(false))));
-      MiniGamePublicAccountWebFragment.access$800(this.this$1.this$0, 0);
-      MiniGamePublicAccountWebFragment.access$900(this.this$1.this$0, 0, false);
+      this.this$1.this$0.emptyLayout.setVisibility(8);
+      this.this$1.this$0.pagerContainer.setVisibility(0);
+      this.this$1.this$0.notifyWebHeaderHeight(MiniGamePublicAccountWebFragment.access$100(this.this$1.this$0));
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async("minigamechengzaiye", "top_news_more", "expo", null, null, null);
+      MiniGamePublicAccountWebFragment.access$202(this.this$1.this$0, new ArrayList(Collections.nCopies(i, Boolean.valueOf(false))));
+      MiniGamePublicAccountWebFragment.access$300(this.this$1.this$0, 0);
+      localObject = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePublicAccountWebUrl", "https://h5.qzone.qq.com/miniapp/act/gamePublic");
+      this.this$1.this$0.webView.loadUrl((String)localObject);
+      MiniGamePublicAccountWebFragment.access$400(this.this$1.this$0, 0, false);
       return;
     }
-    MiniGamePublicAccountWebFragment.access$400(this.this$1.this$0).setVisibility(8);
-    MiniGamePublicAccountWebFragment.access$300(this.this$1.this$0).setVisibility(0);
-    this.this$1.this$0.notifyWebHeaderHeight(MiniGamePublicAccountWebFragment.access$500(this.this$1.this$0));
+    this.this$1.this$0.pagerContainer.setVisibility(8);
+    this.this$1.this$0.emptyLayout.setVisibility(0);
+    this.this$1.this$0.notifyWebHeaderHeight(MiniGamePublicAccountWebFragment.access$100(this.this$1.this$0));
   }
 }
 

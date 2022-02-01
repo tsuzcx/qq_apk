@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgio;
-import bgmn;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class TroopAvatarManger$1
+class TroopAvatarManger$1
   implements Runnable
 {
-  public TroopAvatarManger$1(bgio parambgio, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, bgmn parambgmn, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
+  TroopAvatarManger$1(TroopAvatarManger paramTroopAvatarManger, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, UploadingTask paramUploadingTask, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
   
   public void run()
   {
     List localList = this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0", "0", this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    this.jdField_a_of_type_Bgmn.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, localList);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsUploadingTask.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, localList);
   }
 }
 

@@ -51,7 +51,7 @@ public class EmoticonImageView
     return this.mNewIconVisible;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((sDisableNewIcon) || (!this.mNewIconVisible)) {}
@@ -61,7 +61,7 @@ public class EmoticonImageView
       if (sNewIcon == null) {}
       try
       {
-        sNewIcon = BitmapFactory.decodeResource(super.getResources(), 2130838518);
+        sNewIcon = BitmapFactory.decodeResource(super.getResources(), 2130850949);
         label37:
         if (sNewIcon == null) {
           continue;
@@ -97,7 +97,7 @@ public class EmoticonImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonImageView
  * JD-Core Version:    0.7.0.1
  */

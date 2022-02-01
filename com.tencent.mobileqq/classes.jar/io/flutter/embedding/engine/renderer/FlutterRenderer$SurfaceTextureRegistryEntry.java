@@ -45,7 +45,7 @@ final class FlutterRenderer$SurfaceTextureRegistryEntry
     localStringBuilder.append(").");
     Log.v("FlutterRenderer", localStringBuilder.toString());
     this.surfaceTexture.release();
-    FlutterRenderer.access$400(this.this$0, this.id);
+    FlutterRenderer.access$500(this.this$0, this.id);
     this.released = true;
   }
   
@@ -57,7 +57,7 @@ final class FlutterRenderer$SurfaceTextureRegistryEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.renderer.FlutterRenderer.SurfaceTextureRegistryEntry
  * JD-Core Version:    0.7.0.1
  */

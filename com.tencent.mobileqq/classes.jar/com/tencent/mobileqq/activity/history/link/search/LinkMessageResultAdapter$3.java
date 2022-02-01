@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.activity.history.link.search;
 
-import ajws;
-import akcy;
 import android.os.Message;
-import bkyc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.messagesearch.MessageItem;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-public class LinkMessageResultAdapter$3
+class LinkMessageResultAdapter$3
   implements Runnable
 {
   public void run()
   {
     int j = 0;
-    Object localObject = this.this$0.a(ajws.f(this.this$0), this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.this$0.a(LinkMessageResultAdapter.f(this.this$0), this.jdField_a_of_type_JavaLangString);
     int i;
     MessageRecord localMessageRecord;
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
@@ -29,9 +28,9 @@ public class LinkMessageResultAdapter$3
       while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
       {
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-        if (ajws.c(this.this$0, localMessageRecord))
+        if (LinkMessageResultAdapter.c(this.this$0, localMessageRecord))
         {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new akcy(ajws.e(this.this$0), localMessageRecord));
+          this.this$0.jdField_a_of_type_JavaUtilList.add(new MessageItem(LinkMessageResultAdapter.e(this.this$0), localMessageRecord));
           this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
         }
         i += 1;
@@ -39,16 +38,16 @@ public class LinkMessageResultAdapter$3
     }
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
     {
-      localObject = ajws.f(this.this$0).getMessageFacade().queryMsgListByID(ajws.g(this.this$0).curFriendUin, ajws.h(this.this$0).curType, ((ChatHistorySearchData)localObject).mSearchData2);
+      localObject = LinkMessageResultAdapter.f(this.this$0).getMessageFacade().a(LinkMessageResultAdapter.g(this.this$0).jdField_a_of_type_JavaLangString, LinkMessageResultAdapter.h(this.this$0).jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
       if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
       {
         i = j;
         while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
         {
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-          if (ajws.d(this.this$0, localMessageRecord))
+          if (LinkMessageResultAdapter.d(this.this$0, localMessageRecord))
           {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new akcy(ajws.g(this.this$0), localMessageRecord));
+            this.this$0.jdField_a_of_type_JavaUtilList.add(new MessageItem(LinkMessageResultAdapter.g(this.this$0), localMessageRecord));
             this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
           }
           i += 1;
@@ -61,12 +60,12 @@ public class LinkMessageResultAdapter$3
     localObject = new HashMap();
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
     ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    ajws.d(this.this$0).obtainMessage(8, localObject).sendToTarget();
+    LinkMessageResultAdapter.d(this.this$0).obtainMessage(8, localObject).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter.3
  * JD-Core Version:    0.7.0.1
  */

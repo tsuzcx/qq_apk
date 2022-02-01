@@ -12,9 +12,9 @@ class AbsListView$2
       AbsListView localAbsListView = this.this$0;
       this.this$0.mCachingActive = false;
       localAbsListView.mCachingStarted = false;
-      AbsListView.access$3100(this.this$0, false);
-      if ((AbsListView.access$3200(this.this$0) & 0x2) == 0) {
-        AbsListView.access$3300(this.this$0, false);
+      AbsListView.access$3200(this.this$0, false);
+      if ((AbsListView.access$3300(this.this$0) & 0x2) == 0) {
+        AbsListView.access$3400(this.this$0, false);
       }
       if (!this.this$0.isAlwaysDrawnWithCacheEnabled()) {
         this.this$0.invalidate();

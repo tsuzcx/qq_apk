@@ -3,13 +3,11 @@ package com.tencent.av.business.manager.report;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import lik;
-import lim;
 
-public class VideoNodeReporter$3
+class VideoNodeReporter$3
   implements Runnable
 {
-  public VideoNodeReporter$3(lik paramlik, int paramInt, long paramLong) {}
+  VideoNodeReporter$3(VideoNodeReporter paramVideoNodeReporter, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -19,8 +17,8 @@ public class VideoNodeReporter$3
       Iterator localIterator = this.this$0.a.iterator();
       while (localIterator.hasNext())
       {
-        lim locallim = (lim)localIterator.next();
-        this.this$0.a(locallim.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+        VideoNodeReporter.SeesionRecord localSeesionRecord = (VideoNodeReporter.SeesionRecord)localIterator.next();
+        this.this$0.a(localSeesionRecord.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
       }
     }
     QLog.d("VideoNodeReporter", 1, " report ,node = " + this.jdField_a_of_type_Int + ",value = " + this.jdField_a_of_type_Long + ",seesionRecordList is empty");
@@ -28,7 +26,7 @@ public class VideoNodeReporter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.report.VideoNodeReporter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,13 @@ public final class cell_decorate
   static ArrayList<s_PolyPraise> cache_pokePraise;
   static s_PolyPraise cache_polyPraise = new s_PolyPraise();
   static s_PrdData cache_sprdData;
-  public stcustomPraise customPraise;
-  public s_HighFive highFive;
-  public ArrayList<s_KapuPraise> kapuPraise;
-  public Map<String, byte[]> mapInfoData;
-  public ArrayList<s_PolyPraise> pokePraise;
-  public s_PolyPraise polyPraise;
-  public s_PrdData sprdData;
+  public stcustomPraise customPraise = null;
+  public s_HighFive highFive = null;
+  public ArrayList<s_KapuPraise> kapuPraise = null;
+  public Map<String, byte[]> mapInfoData = null;
+  public ArrayList<s_PolyPraise> pokePraise = null;
+  public s_PolyPraise polyPraise = null;
+  public s_PrdData sprdData = null;
   
   static
   {

@@ -1,6 +1,5 @@
 package com.tencent.open.agent;
 
-import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -14,15 +13,14 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bjey;
-import bjfa;
-import bjhg;
-import bjhh;
-import bjmq;
-import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.open.agent.util.AuthReporter;
+import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.open.data.SharedPrefs;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
@@ -54,7 +52,7 @@ public class OpenSdkIMBlockFragment
   
   private void a()
   {
-    bjmq.d(this.jdField_a_of_type_JavaLangString);
+    SharedPrefs.d(this.jdField_a_of_type_JavaLangString);
     FragmentActivity localFragmentActivity = getActivity();
     if (localFragmentActivity == null)
     {
@@ -64,17 +62,16 @@ public class OpenSdkIMBlockFragment
     if ((localFragmentActivity.getIntent() != null) && (!localFragmentActivity.getIntent().getBooleanExtra("is_from_login", false)))
     {
       Intent localIntent = new Intent();
-      localIntent.setClass(localFragmentActivity, LoginActivity.class);
       localIntent.putExtra("logout_intent", true);
-      localIntent.putExtra("tab_index", MainFragment.b);
-      localFragmentActivity.startActivity(localIntent);
+      localIntent.putExtra("tab_index", FrameControllerUtil.a);
+      RouteUtils.a(localFragmentActivity, localIntent, "/base/login");
     }
     localFragmentActivity.finish();
   }
   
   public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    QLog.d("IMBlockOpenSDKFragment", 1, new Object[] { "-->startFragment--uin=", bjhh.a(paramString), ", isFromLogin=", Boolean.valueOf(paramBoolean) });
+    QLog.d("IMBlockOpenSDKFragment", 1, new Object[] { "-->startFragment--uin=", AuthorityUtil.a(paramString), ", isFromLogin=", Boolean.valueOf(paramBoolean) });
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
@@ -86,7 +83,7 @@ public class OpenSdkIMBlockFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("uin", paramString);
     localIntent.putExtra("is_from_login", paramBoolean);
-    aeow.a(paramActivity, localIntent, PublicFragmentActivity.class, OpenSdkIMBlockFragment.class, 0);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicFragmentActivity.class, OpenSdkIMBlockFragment.class, 0);
   }
   
   private void a(View paramView)
@@ -99,7 +96,7 @@ public class OpenSdkIMBlockFragment
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((View)localObject).getLayoutParams();
     localLayoutParams.topMargin = ((int)(0.2608237F * f2));
     ((View)localObject).setLayoutParams(localLayoutParams);
-    paramView = paramView.findViewById(2131372243);
+    paramView = paramView.findViewById(2131372546);
     localObject = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     ((LinearLayout.LayoutParams)localObject).topMargin = ((int)(f2 * 0.2914467F));
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
@@ -116,12 +113,12 @@ public class OpenSdkIMBlockFragment
   {
     QLog.d("IMBlockOpenSDKFragment", 1, "-->onCreateView--");
     this.jdField_a_of_type_JavaLangString = a();
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559710, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131368380).setOnClickListener(new bjey(this));
-    ((TextView)paramLayoutInflater.findViewById(2131371977)).setText(this.jdField_a_of_type_JavaLangString);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559786, paramViewGroup, false);
+    paramLayoutInflater.findViewById(2131368602).setOnClickListener(new OpenSdkIMBlockFragment.1(this));
+    ((TextView)paramLayoutInflater.findViewById(2131372284)).setText(this.jdField_a_of_type_JavaLangString);
     a(paramLayoutInflater);
-    paramLayoutInflater.findViewById(2131372243).setOnClickListener(new bjfa(this));
-    bjhg.a(this.jdField_a_of_type_JavaLangString, "0X800B659");
+    paramLayoutInflater.findViewById(2131372546).setOnClickListener(new OpenSdkIMBlockFragment.2(this));
+    AuthReporter.a(this.jdField_a_of_type_JavaLangString, "0X800B659");
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -138,7 +135,7 @@ public class OpenSdkIMBlockFragment
     super.onResume();
     if (!this.jdField_a_of_type_Boolean)
     {
-      bjhh.a(getActivity());
+      AuthorityUtil.a(getActivity());
       this.jdField_a_of_type_Boolean = true;
     }
   }
@@ -151,7 +148,7 @@ public class OpenSdkIMBlockFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkIMBlockFragment
  * JD-Core Version:    0.7.0.1
  */

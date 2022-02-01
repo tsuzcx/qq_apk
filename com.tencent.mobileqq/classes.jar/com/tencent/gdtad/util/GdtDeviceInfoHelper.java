@@ -1,10 +1,5 @@
 package com.tencent.gdtad.util;
 
-import acho;
-import achr;
-import achs;
-import acim;
-import acin;
 import android.content.Context;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -14,6 +9,9 @@ import com.tencent.ad.tangram.device.AdDeviceInfo.Params;
 import com.tencent.ad.tangram.device.AdDeviceInfo.Result;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.common.config.AppSetting;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.qqproxy.GdtLocationUtil;
+import com.tencent.gdtad.qqproxy.GdtVersionUtil;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -26,49 +24,48 @@ import java.util.Map;
 
 public class GdtDeviceInfoHelper
 {
-  private static final long ANALYSIS_INTERVAL = 60000L;
-  private static String TAG = "GdtDeviceInfoHelper";
-  private static volatile boolean initialized;
-  private static volatile Map<String, Long> mapTimeMillis = new HashMap();
+  private static String jdField_a_of_type_JavaLangString = "GdtDeviceInfoHelper";
+  private static volatile Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static volatile boolean jdField_a_of_type_Boolean = false;
   
-  public static GdtDeviceInfoHelper.Result create(Context paramContext, GdtDeviceInfoHelper.Params paramParams)
+  public static GdtDeviceInfoHelper.Result a(Context paramContext, GdtDeviceInfoHelper.Params paramParams)
   {
     if ((paramContext == null) || (paramParams == null) || (Looper.myLooper() == Looper.getMainLooper()))
     {
-      localObject = TAG;
+      localObject = jdField_a_of_type_JavaLangString;
       if (paramParams != null) {}
-      for (paramContext = paramParams.businessIdForAidTicketAndTaidTicket;; paramContext = null)
+      for (paramContext = paramParams.jdField_a_of_type_JavaLangString;; paramContext = null)
       {
-        acho.d((String)localObject, String.format("create businessId:%s error", new Object[] { paramContext }));
+        GdtLog.d((String)localObject, String.format("create businessId:%s error", new Object[] { paramContext }));
         return null;
       }
     }
-    acho.b(TAG, String.format("create businessId:%s", new Object[] { paramParams.businessIdForAidTicketAndTaidTicket }));
+    GdtLog.b(jdField_a_of_type_JavaLangString, String.format("create businessId:%s", new Object[] { paramParams.jdField_a_of_type_JavaLangString }));
     long l = System.currentTimeMillis();
-    acim.a().a(paramContext, new acin());
+    GdtManager.a().a(paramContext, new GdtManager.Params());
     Object localObject = new GdtDeviceInfoHelper.Result();
-    ((GdtDeviceInfoHelper.Result)localObject).deviceInfo = new tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo();
-    fillDeviceInfo(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
-    fillDeviceInfoWithOthers(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
-    ((GdtDeviceInfoHelper.Result)localObject).eventsForAnalysis.add(AdReporterForAnalysis.createEventForDeviceInfoEnd(paramContext, String.valueOf(paramParams.businessIdForAidTicketAndTaidTicket), System.currentTimeMillis() - l));
-    reportForAnalysis(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
+    ((GdtDeviceInfoHelper.Result)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo = new tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo();
+    a(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
+    b(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
+    ((GdtDeviceInfoHelper.Result)localObject).jdField_a_of_type_JavaUtilList.add(AdReporterForAnalysis.createEventForDeviceInfoEnd(paramContext, String.valueOf(paramParams.jdField_a_of_type_JavaLangString), System.currentTimeMillis() - l));
+    c(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
     return localObject;
   }
   
   @Deprecated
-  public static tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo create(Context paramContext)
+  public static tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo a(Context paramContext)
   {
     if (paramContext == null)
     {
-      acho.d(TAG, "create error");
+      GdtLog.d(jdField_a_of_type_JavaLangString, "create error");
       return null;
     }
-    acim.a().a(paramContext, new acin());
+    GdtManager.a().a(paramContext, new GdtManager.Params());
     Object localObject = AdDeviceInfo.INSTANCE.create(paramContext, null);
     if (localObject != null) {}
     for (localObject = ((AdDeviceInfo.Result)localObject).deviceInfo; localObject == null; localObject = null)
     {
-      acho.d(TAG, "create error");
+      GdtLog.d(jdField_a_of_type_JavaLangString, "create error");
       return null;
     }
     tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo localDeviceInfo = new tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo();
@@ -97,11 +94,11 @@ public class GdtDeviceInfoHelper
     if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).client_ipv4)) {
       localDeviceInfo.client_ipv4.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).client_ipv4);
     }
-    if (!TextUtils.isEmpty(achs.a())) {
-      localDeviceInfo.qq_ver.set(achs.a());
+    if (!TextUtils.isEmpty(GdtVersionUtil.a())) {
+      localDeviceInfo.qq_ver.set(GdtVersionUtil.a());
     }
     localDeviceInfo.app_version_id.set(AppSetting.a());
-    paramContext = achr.a(paramContext);
+    paramContext = GdtLocationUtil.a(paramContext);
     if ((paramContext != null) && (paramContext.length == 2))
     {
       localObject = new tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location();
@@ -114,21 +111,38 @@ public class GdtDeviceInfoHelper
     return localDeviceInfo;
   }
   
-  private static void fillDeviceInfo(Context paramContext, GdtDeviceInfoHelper.Params paramParams, GdtDeviceInfoHelper.Result paramResult)
+  static void a(Context paramContext)
+  {
+    GdtLog.b(jdField_a_of_type_JavaLangString, String.format("init %b", new Object[] { Boolean.valueOf(jdField_a_of_type_Boolean) }));
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      if (jdField_a_of_type_Boolean) {
+        return;
+      }
+    }
+    finally {}
+    jdField_a_of_type_Boolean = true;
+    AdDeviceInfo.INSTANCE.init(paramContext);
+  }
+  
+  private static void a(Context paramContext, GdtDeviceInfoHelper.Params paramParams, GdtDeviceInfoHelper.Result paramResult)
   {
     Object localObject2 = null;
     Object localObject3 = new AdDeviceInfo.Params();
     Object localObject1;
     if (paramParams != null)
     {
-      localObject1 = paramParams.businessIdForAidTicketAndTaidTicket;
+      localObject1 = paramParams.jdField_a_of_type_JavaLangString;
       ((AdDeviceInfo.Params)localObject3).businessIdForAidTicketAndTaidTicket = ((String)localObject1);
       localObject3 = AdDeviceInfo.INSTANCE.create(paramContext, (AdDeviceInfo.Params)localObject3);
       localObject1 = localObject2;
       if (localObject3 != null) {
         localObject1 = ((AdDeviceInfo.Result)localObject3).deviceInfo;
       }
-      if ((paramContext != null) && (paramParams != null) && (paramResult != null) && (paramResult.deviceInfo != null) && (localObject1 != null)) {
+      if ((paramContext != null) && (paramParams != null) && (paramResult != null) && (paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo != null) && (localObject1 != null)) {
         break label81;
       }
     }
@@ -138,104 +152,87 @@ public class GdtDeviceInfoHelper
       return;
       localObject1 = null;
       break;
-      paramResult.eventsForAnalysis.addAll(((AdDeviceInfo.Result)localObject3).eventsForAnalysis);
+      paramResult.jdField_a_of_type_JavaUtilList.addAll(((AdDeviceInfo.Result)localObject3).eventsForAnalysis);
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid)) {
-        paramResult.deviceInfo.muid.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.muid.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid);
       }
-      paramResult.deviceInfo.muid_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type);
-      paramResult.deviceInfo.conn.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn);
-      paramResult.deviceInfo.carrier_code.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).carrier_code);
+      paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.muid_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type);
+      paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.conn.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn);
+      paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.carrier_code.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).carrier_code);
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_ver)) {
-        paramResult.deviceInfo.os_ver.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_ver);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.os_ver.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_ver);
       }
-      paramResult.deviceInfo.os_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_type);
+      paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.os_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_type);
       if (((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location != null)
       {
-        paramResult.deviceInfo.location.coordinates_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.coordinates_type);
-        paramResult.deviceInfo.location.latitude.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.latitude);
-        paramResult.deviceInfo.location.longitude.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.longitude);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.location.coordinates_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.coordinates_type);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.location.latitude.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.latitude);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.location.longitude.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.longitude);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer)) {
-        paramResult.deviceInfo.manufacturer.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.manufacturer.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model)) {
-        paramResult.deviceInfo.device_brand_and_model.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.device_brand_and_model.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac)) {
-        paramResult.deviceInfo.md5_mac.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.md5_mac.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id)) {
-        paramResult.deviceInfo.md5_android_id.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.md5_android_id.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4)) {
-        paramResult.deviceInfo.client_ipv4.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.client_ipv4.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket)) {
-        paramResult.deviceInfo.aid_ticket.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.aid_ticket.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket)) {
-        paramResult.deviceInfo.taid_ticket.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.taid_ticket.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket);
       }
-      paramResult.deviceInfo.origin_network_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).origin_network_type);
+      paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.origin_network_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).origin_network_type);
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).brand)) {
-        paramResult.deviceInfo.brand.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).brand);
+        paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.brand.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).brand);
       }
     } while (TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_ext));
-    paramResult.deviceInfo.device_ext.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_ext);
+    paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.device_ext.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_ext);
   }
   
-  private static void fillDeviceInfoWithOthers(Context paramContext, GdtDeviceInfoHelper.Params paramParams, GdtDeviceInfoHelper.Result paramResult)
+  private static void b(Context paramContext, GdtDeviceInfoHelper.Params paramParams, GdtDeviceInfoHelper.Result paramResult)
   {
-    if ((paramContext == null) || (paramParams == null) || (paramResult == null) || (paramResult.deviceInfo == null)) {
+    if ((paramContext == null) || (paramParams == null) || (paramResult == null) || (paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo == null)) {
       return;
     }
-    if (!TextUtils.isEmpty(achs.a())) {
-      paramResult.deviceInfo.qq_ver.set(achs.a());
+    if (!TextUtils.isEmpty(GdtVersionUtil.a())) {
+      paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.qq_ver.set(GdtVersionUtil.a());
     }
-    paramResult.deviceInfo.app_version_id.set(AppSetting.a());
-    paramResult.deviceInfo.is_googleplay_version.set(false);
+    paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.app_version_id.set(AppSetting.a());
+    paramResult.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo.is_googleplay_version.set(false);
   }
   
-  public static void init(Context paramContext)
+  private static void c(Context paramContext, GdtDeviceInfoHelper.Params paramParams, GdtDeviceInfoHelper.Result paramResult)
   {
-    acho.b(TAG, String.format("init %b", new Object[] { Boolean.valueOf(initialized) }));
-    if (initialized) {
-      return;
-    }
-    try
-    {
-      if (initialized) {
-        return;
-      }
-    }
-    finally {}
-    initialized = true;
-    AdDeviceInfo.INSTANCE.init(paramContext);
-  }
-  
-  private static void reportForAnalysis(Context paramContext, GdtDeviceInfoHelper.Params paramParams, GdtDeviceInfoHelper.Result paramResult)
-  {
-    if ((paramParams != null) && (!TextUtils.isEmpty(paramParams.businessIdForAidTicketAndTaidTicket))) {}
-    for (String str = paramParams.businessIdForAidTicketAndTaidTicket; (paramParams == null) || (paramResult == null) || (paramResult.eventsForAnalysis == null) || (paramResult.eventsForAnalysis.isEmpty()); str = "null") {
+    if ((paramParams != null) && (!TextUtils.isEmpty(paramParams.jdField_a_of_type_JavaLangString))) {}
+    for (String str = paramParams.jdField_a_of_type_JavaLangString; (paramParams == null) || (paramResult == null) || (paramResult.jdField_a_of_type_JavaUtilList == null) || (paramResult.jdField_a_of_type_JavaUtilList.isEmpty()); str = "null") {
       return;
     }
     long l = System.currentTimeMillis();
     try
     {
-      paramParams = (Long)mapTimeMillis.get(str);
+      paramParams = (Long)jdField_a_of_type_JavaUtilMap.get(str);
       if ((paramParams != null) && (l - paramParams.longValue() < 60000L)) {
         return;
       }
     }
     finally {}
-    mapTimeMillis.put(str, Long.valueOf(l));
-    acho.b(TAG, String.format("reportForAnalysis businessId:%s", new Object[] { str }));
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), paramResult.eventsForAnalysis);
+    jdField_a_of_type_JavaUtilMap.put(str, Long.valueOf(l));
+    GdtLog.b(jdField_a_of_type_JavaLangString, String.format("reportForAnalysis businessId:%s", new Object[] { str }));
+    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), paramResult.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtDeviceInfoHelper
  * JD-Core Version:    0.7.0.1
  */

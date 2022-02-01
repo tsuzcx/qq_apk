@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.gamecenter.web;
 
 import android.os.SystemClock;
-import aveq;
-import avgw;
-import bkyp;
+import com.tencent.mobileqq.gamecenter.util.QQGameConfigUtil;
 import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.core.utils.URLUtil;
 
 class QQGameFeedWebFragment$17
   implements Runnable
@@ -16,8 +15,8 @@ class QQGameFeedWebFragment$17
   {
     if (QQGameFeedWebFragment.a(this.this$0) != null)
     {
-      String str = aveq.a();
-      if (bkyp.a(str))
+      String str = QQGameConfigUtil.a();
+      if (URLUtil.isValidUrl(str))
       {
         str = QQGameFeedWebFragment.a(this.this$0, str, QQGameFeedWebFragment.a(this.this$0), this.a);
         if (QLog.isColorLevel()) {
@@ -33,7 +32,7 @@ class QQGameFeedWebFragment$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.17
  * JD-Core Version:    0.7.0.1
  */

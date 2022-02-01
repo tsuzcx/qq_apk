@@ -11,8 +11,8 @@ public final class PhotoSearchBoxItemElem
   static int cache_type = 0;
   public String categoryid = "";
   public String desc = "";
-  public face_show_info face_show;
-  public int type;
+  public face_show_info face_show = null;
+  public int type = 0;
   public String url = "";
   
   public PhotoSearchBoxItemElem() {}

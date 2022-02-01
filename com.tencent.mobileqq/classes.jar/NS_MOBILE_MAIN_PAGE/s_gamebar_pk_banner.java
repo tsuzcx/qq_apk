@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_gamebar_pk_banner
   extends JceStruct
 {
-  public int banner_state;
+  public int banner_state = 0;
   public String jump_url = "";
   public String pic_url = "";
   public String trace_info = "";

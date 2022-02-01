@@ -9,9 +9,9 @@ public final class AddMusicReq
 {
   static MusicInfo cache_stMusic = new MusicInfo();
   static SourceInfo cache_stSource = new SourceInfo();
-  public long iUin;
-  public MusicInfo stMusic;
-  public SourceInfo stSource;
+  public long iUin = 0L;
+  public MusicInfo stMusic = null;
+  public SourceInfo stSource = null;
   
   public AddMusicReq() {}
   

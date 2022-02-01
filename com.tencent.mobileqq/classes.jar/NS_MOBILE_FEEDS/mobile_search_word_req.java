@@ -8,8 +8,8 @@ public final class mobile_search_word_req
   extends JceStruct
 {
   public String keyword = "";
-  public int type;
-  public long uHostUin;
+  public int type = 0;
+  public long uHostUin = 0L;
   
   public mobile_search_word_req() {}
   

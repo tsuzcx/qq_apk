@@ -1,20 +1,43 @@
 package dov.com.qq.im.ae.camera.core;
 
-import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
+import com.tencent.ttpic.openapi.filter.LightNode.ILightNodeTipsListener;
 
 class AECameraGLSurfaceView$7
-  implements Runnable
+  implements LightNode.ILightNodeTipsListener
 {
-  AECameraGLSurfaceView$7(AECameraGLSurfaceView paramAECameraGLSurfaceView, AEVideoCaptureResult paramAEVideoCaptureResult) {}
+  AECameraGLSurfaceView$7(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
-  public void run()
+  public void onHideNormalTip()
   {
-    this.this$0.captureListener.onVideoCaptured(this.val$videoCaptureResult);
+    if (this.this$0.effectListener != null) {
+      this.this$0.effectListener.onHideNormalTip();
+    }
+  }
+  
+  public void onHidePagTip()
+  {
+    if (this.this$0.effectListener != null) {
+      this.this$0.effectListener.onHidePagTip();
+    }
+  }
+  
+  public void onShowNormalTip(String paramString1, String paramString2, int paramInt)
+  {
+    if (this.this$0.effectListener != null) {
+      this.this$0.effectListener.onShowNormalTip(paramString1, paramString2, paramInt);
+    }
+  }
+  
+  public void onShowPagTip(String paramString, int paramInt)
+  {
+    if (this.this$0.effectListener != null) {
+      this.this$0.effectListener.onShowPagTip(paramString, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.7
  * JD-Core Version:    0.7.0.1
  */

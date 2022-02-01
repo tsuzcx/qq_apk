@@ -4,7 +4,7 @@ import android.widget.TextView;
 
 class QQCustomDialogThreeBtns$Holder
 {
-  TextView text;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
   private QQCustomDialogThreeBtns$Holder(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns) {}
 }

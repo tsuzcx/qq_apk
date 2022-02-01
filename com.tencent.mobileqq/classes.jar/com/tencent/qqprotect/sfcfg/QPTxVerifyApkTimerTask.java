@@ -7,9 +7,6 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bkvo;
-import bkvp;
-import bkxn;
 import com.tencent.common.config.AppSetting;
 import com.tencent.ims.SecVerifyApk.ReportDetectResultPacket;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,13 +19,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.usq.u;
 import java.util.TimerTask;
 import mqq.app.MobileQQ;
 
 public class QPTxVerifyApkTimerTask
   extends TimerTask
 {
-  private static int jdField_a_of_type_Int;
+  private static int jdField_a_of_type_Int = 0;
   private static String jdField_a_of_type_JavaLangString = "00000000000000000000000000000000";
   private static boolean jdField_a_of_type_Boolean;
   private static String jdField_b_of_type_JavaLangString = "00000000000000000000000000000000";
@@ -37,6 +35,13 @@ public class QPTxVerifyApkTimerTask
   private static boolean jdField_c_of_type_Boolean;
   private static String d = "00000000000000000000000000000000";
   private static String e = "SecVAcfg";
+  
+  static
+  {
+    jdField_a_of_type_Boolean = false;
+    jdField_b_of_type_Boolean = false;
+    jdField_c_of_type_Boolean = false;
+  }
   
   public QPTxVerifyApkTimerTask(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
@@ -59,12 +64,12 @@ public class QPTxVerifyApkTimerTask
     //   1: astore 5
     //   3: aload_1
     //   4: aload_2
-    //   5: invokevirtual 49	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   5: invokevirtual 51	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   8: astore_2
     //   9: aload_2
     //   10: astore_1
-    //   11: ldc 51
-    //   13: invokestatic 57	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   11: ldc 53
+    //   13: invokestatic 59	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   16: astore 4
     //   18: aload_2
     //   19: astore_1
@@ -75,7 +80,7 @@ public class QPTxVerifyApkTimerTask
     //   28: astore_1
     //   29: aload_2
     //   30: aload 6
-    //   32: invokevirtual 63	java/io/InputStream:read	([B)I
+    //   32: invokevirtual 65	java/io/InputStream:read	([B)I
     //   35: istore_3
     //   36: iload_3
     //   37: iconst_m1
@@ -86,19 +91,19 @@ public class QPTxVerifyApkTimerTask
     //   45: aload 6
     //   47: iconst_0
     //   48: iload_3
-    //   49: invokevirtual 67	java/security/MessageDigest:update	([BII)V
+    //   49: invokevirtual 69	java/security/MessageDigest:update	([BII)V
     //   52: goto -25 -> 27
     //   55: astore 4
     //   57: aload_2
     //   58: astore_1
     //   59: aload 4
-    //   61: invokevirtual 70	java/lang/Exception:printStackTrace	()V
+    //   61: invokevirtual 72	java/lang/Exception:printStackTrace	()V
     //   64: aload 5
     //   66: astore_1
     //   67: aload_2
     //   68: ifnull +10 -> 78
     //   71: aload_2
-    //   72: invokevirtual 73	java/io/InputStream:close	()V
+    //   72: invokevirtual 75	java/io/InputStream:close	()V
     //   75: aload 5
     //   77: astore_1
     //   78: aload_1
@@ -106,25 +111,25 @@ public class QPTxVerifyApkTimerTask
     //   80: aload_2
     //   81: astore_1
     //   82: aload 4
-    //   84: invokevirtual 77	java/security/MessageDigest:digest	()[B
-    //   87: invokestatic 82	bkvo:a	([B)Ljava/lang/String;
+    //   84: invokevirtual 79	java/security/MessageDigest:digest	()[B
+    //   87: invokestatic 84	com/tencent/qqprotect/sfcfg/TXSafeCheckUtil:a	([B)Ljava/lang/String;
     //   90: astore 4
     //   92: aload 4
     //   94: astore_1
     //   95: aload_2
     //   96: ifnull -18 -> 78
     //   99: aload_2
-    //   100: invokevirtual 73	java/io/InputStream:close	()V
+    //   100: invokevirtual 75	java/io/InputStream:close	()V
     //   103: aload 4
     //   105: areturn
     //   106: astore_1
     //   107: aload_1
-    //   108: invokevirtual 70	java/lang/Exception:printStackTrace	()V
+    //   108: invokevirtual 72	java/lang/Exception:printStackTrace	()V
     //   111: aload 4
     //   113: areturn
     //   114: astore_1
     //   115: aload_1
-    //   116: invokevirtual 70	java/lang/Exception:printStackTrace	()V
+    //   116: invokevirtual 72	java/lang/Exception:printStackTrace	()V
     //   119: aconst_null
     //   120: areturn
     //   121: astore_2
@@ -133,12 +138,12 @@ public class QPTxVerifyApkTimerTask
     //   124: aload_1
     //   125: ifnull +7 -> 132
     //   128: aload_1
-    //   129: invokevirtual 73	java/io/InputStream:close	()V
+    //   129: invokevirtual 75	java/io/InputStream:close	()V
     //   132: aload_2
     //   133: athrow
     //   134: astore_1
     //   135: aload_1
-    //   136: invokevirtual 70	java/lang/Exception:printStackTrace	()V
+    //   136: invokevirtual 72	java/lang/Exception:printStackTrace	()V
     //   139: goto -7 -> 132
     //   142: astore_2
     //   143: goto -19 -> 124
@@ -182,60 +187,60 @@ public class QPTxVerifyApkTimerTask
   private String a(String paramString)
   {
     // Byte code:
-    //   0: new 45	com/tencent/commonsdk/zip/QZipFile
+    //   0: new 47	com/tencent/commonsdk/zip/QZipFile
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 90	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 92	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   8: astore_2
     //   9: aload_2
     //   10: astore_1
     //   11: aload_2
-    //   12: invokevirtual 94	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
+    //   12: invokevirtual 96	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   15: astore_3
     //   16: aload_2
     //   17: astore_1
     //   18: aload_3
-    //   19: invokeinterface 100 1 0
+    //   19: invokeinterface 102 1 0
     //   24: ifeq +112 -> 136
     //   27: aload_2
     //   28: astore_1
     //   29: aload_3
-    //   30: invokeinterface 104 1 0
-    //   35: checkcast 106	java/util/zip/ZipEntry
+    //   30: invokeinterface 106 1 0
+    //   35: checkcast 108	java/util/zip/ZipEntry
     //   38: astore 4
     //   40: aload_2
     //   41: astore_1
     //   42: aload 4
-    //   44: invokevirtual 109	java/util/zip/ZipEntry:isDirectory	()Z
+    //   44: invokevirtual 111	java/util/zip/ZipEntry:isDirectory	()Z
     //   47: ifne -31 -> 16
     //   50: aload_2
     //   51: astore_1
     //   52: aload 4
-    //   54: invokevirtual 113	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   54: invokevirtual 115	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   57: astore 5
     //   59: aload_2
     //   60: astore_1
     //   61: aload 5
-    //   63: ldc 115
-    //   65: invokevirtual 121	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   63: ldc 117
+    //   65: invokevirtual 123	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   68: ifne -52 -> 16
     //   71: aload_2
     //   72: astore_1
     //   73: aload 5
-    //   75: ldc 123
-    //   77: invokevirtual 127	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   75: ldc 125
+    //   77: invokevirtual 129	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   80: ifeq -64 -> 16
     //   83: aload_2
     //   84: astore_1
     //   85: aload 5
-    //   87: ldc 129
-    //   89: invokevirtual 132	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   87: ldc 131
+    //   89: invokevirtual 134	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   92: ifeq -76 -> 16
     //   95: aload_2
     //   96: astore_1
     //   97: aload 5
     //   99: bipush 47
-    //   101: invokevirtual 136	java/lang/String:lastIndexOf	(I)I
+    //   101: invokevirtual 138	java/lang/String:lastIndexOf	(I)I
     //   104: bipush 8
     //   106: if_icmpne -90 -> 16
     //   109: aload_2
@@ -243,28 +248,28 @@ public class QPTxVerifyApkTimerTask
     //   111: aload_0
     //   112: aload_2
     //   113: aload 4
-    //   115: invokespecial 138	com/tencent/qqprotect/sfcfg/QPTxVerifyApkTimerTask:a	(Lcom/tencent/commonsdk/zip/QZipFile;Ljava/util/zip/ZipEntry;)Ljava/lang/String;
+    //   115: invokespecial 140	com/tencent/qqprotect/sfcfg/QPTxVerifyApkTimerTask:a	(Lcom/tencent/commonsdk/zip/QZipFile;Ljava/util/zip/ZipEntry;)Ljava/lang/String;
     //   118: astore_3
     //   119: aload_2
     //   120: ifnull +7 -> 127
     //   123: aload_2
-    //   124: invokevirtual 139	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   124: invokevirtual 141	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   127: aload_3
     //   128: areturn
     //   129: astore_1
     //   130: aload_1
-    //   131: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   131: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   134: aload_3
     //   135: areturn
     //   136: aload_2
     //   137: ifnull +7 -> 144
     //   140: aload_2
-    //   141: invokevirtual 139	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   141: invokevirtual 141	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   144: aconst_null
     //   145: areturn
     //   146: astore_1
     //   147: aload_1
-    //   148: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   148: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   151: goto -7 -> 144
     //   154: astore_3
     //   155: aconst_null
@@ -272,15 +277,15 @@ public class QPTxVerifyApkTimerTask
     //   157: aload_2
     //   158: astore_1
     //   159: aload_3
-    //   160: invokevirtual 70	java/lang/Exception:printStackTrace	()V
+    //   160: invokevirtual 72	java/lang/Exception:printStackTrace	()V
     //   163: aload_2
     //   164: ifnull -20 -> 144
     //   167: aload_2
-    //   168: invokevirtual 139	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   168: invokevirtual 141	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   171: goto -27 -> 144
     //   174: astore_1
     //   175: aload_1
-    //   176: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   176: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   179: goto -35 -> 144
     //   182: astore_3
     //   183: aconst_null
@@ -288,15 +293,15 @@ public class QPTxVerifyApkTimerTask
     //   185: aload_2
     //   186: astore_1
     //   187: aload_3
-    //   188: invokevirtual 141	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   188: invokevirtual 143	java/lang/OutOfMemoryError:printStackTrace	()V
     //   191: aload_2
     //   192: ifnull -48 -> 144
     //   195: aload_2
-    //   196: invokevirtual 139	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   196: invokevirtual 141	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   199: goto -55 -> 144
     //   202: astore_1
     //   203: aload_1
-    //   204: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   204: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   207: goto -63 -> 144
     //   210: astore_2
     //   211: aconst_null
@@ -304,12 +309,12 @@ public class QPTxVerifyApkTimerTask
     //   213: aload_1
     //   214: ifnull +7 -> 221
     //   217: aload_1
-    //   218: invokevirtual 139	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   218: invokevirtual 141	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   221: aload_2
     //   222: athrow
     //   223: astore_1
     //   224: aload_1
-    //   225: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   225: invokevirtual 142	java/io/IOException:printStackTrace	()V
     //   228: goto -7 -> 221
     //   231: astore_2
     //   232: goto -19 -> 213
@@ -423,7 +428,7 @@ public class QPTxVerifyApkTimerTask
             if (str4 != null) {
               jdField_b_of_type_JavaLangString = str4;
             }
-            if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("8.4.10.4875"))) {
+            if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("8.5.5.5105"))) {
               break label455;
             }
             if (localObject2 != null) {
@@ -440,7 +445,7 @@ public class QPTxVerifyApkTimerTask
           localReportDetectResultPacket.str_apkmd5.set(jdField_a_of_type_JavaLangString);
           localReportDetectResultPacket.str_rsamd5.set(jdField_b_of_type_JavaLangString);
           localReportDetectResultPacket.str_txsfcfgkmd5.set(jdField_c_of_type_JavaLangString);
-          localReportDetectResultPacket.str_apkversion.set("8.4.10.4875");
+          localReportDetectResultPacket.str_apkversion.set("8.5.5.5105");
           localReportDetectResultPacket.str_channelid.set(AppSetting.c());
           localReportDetectResultPacket.str_uin.set(localQQAppInterface.getCurrentAccountUin());
           localReportDetectResultPacket.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
@@ -472,13 +477,13 @@ public class QPTxVerifyApkTimerTask
       localReportDetectResultPacket.uint32_cmd.set(1);
       continue;
       label455:
-      d = bkxn.a(BaseApplication.getContext());
-      jdField_a_of_type_JavaLangString = bkxn.a(localException);
+      d = u.a(BaseApplication.getContext());
+      jdField_a_of_type_JavaLangString = u.a(localException);
       Object localObject2 = new byte[16];
       if (localObject2 != null)
       {
-        bkvo.a(localException, "txsfcfg.dat", (byte[])localObject2);
-        jdField_c_of_type_JavaLangString = bkxn.a((byte[])localObject2);
+        TXSafeCheckUtil.a(localException, "txsfcfg.dat", (byte[])localObject2);
+        jdField_c_of_type_JavaLangString = u.a((byte[])localObject2);
       }
       jdField_b_of_type_Boolean = true;
     }
@@ -494,7 +499,7 @@ public class QPTxVerifyApkTimerTask
       localEditor.putString("SecHisTxs", jdField_c_of_type_JavaLangString);
       localEditor.putString("SecHisRa", jdField_b_of_type_JavaLangString);
       localEditor.putString("SecHisAk", jdField_a_of_type_JavaLangString);
-      localEditor.putString("SecVer", "8.4.10.4875");
+      localEditor.putString("SecVer", "8.5.5.5105");
       localEditor.commit();
       return;
     }
@@ -523,9 +528,9 @@ public class QPTxVerifyApkTimerTask
           localObject = ((QQAppInterface)localObject).getApplication().getApplicationInfo().sourceDir;
           if (localObject != null)
           {
-            jdField_a_of_type_Int = bkvp.a((String)localObject, "txsfcfg.dat");
+            jdField_a_of_type_Int = TXVerifyAPKUtil.a((String)localObject, "txsfcfg.dat");
             if ((jdField_a_of_type_Int != 0) && (jdField_a_of_type_Int != 143)) {
-              jdField_a_of_type_Int = bkvp.a((String)localObject, "txsfcfg.dat");
+              jdField_a_of_type_Int = TXVerifyAPKUtil.a((String)localObject, "txsfcfg.dat");
             }
             jdField_a_of_type_Boolean = true;
           }
@@ -555,7 +560,7 @@ public class QPTxVerifyApkTimerTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask
  * JD-Core Version:    0.7.0.1
  */

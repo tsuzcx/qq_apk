@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class RedInfoSyncRsp
   extends JceStruct
 {
-  public int result;
+  public int result = 0;
   
   public RedInfoSyncRsp() {}
   

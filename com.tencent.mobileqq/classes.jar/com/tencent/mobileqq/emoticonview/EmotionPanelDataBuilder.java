@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import ased;
-import asen;
-import asfi;
-import asfk;
-import awyr;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoConstant;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
+import com.tencent.mobileqq.emoticon.IEmotionPanelDataCallback;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmotionRoamingDBManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingDBManagerProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,90 +33,93 @@ public class EmotionPanelDataBuilder
     finally {}
   }
   
-  public void AsyncGetEmotionPanelData(QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, EmotionPanelDataBuilder.EmotionPanelDataCallback paramEmotionPanelDataCallback)
+  public void asyncGetEmotionPanelData(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, IEmotionPanelDataCallback paramIEmotionPanelDataCallback)
   {
-    if (paramEmotionPanelDataCallback == null) {
+    if (paramIEmotionPanelDataCallback == null) {
       return;
     }
-    ThreadManager.post(new EmotionPanelDataBuilder.1(this, paramQQAppInterface, paramInt1, paramEmoticonPackage, paramInt2, paramInt3, paramBoolean, paramEmotionPanelDataCallback), 5, null, true);
+    ThreadManager.post(new EmotionPanelDataBuilder.1(this, paramIEmoticonMainPanelApp, paramInt1, paramEmoticonPackage, paramInt2, paramInt3, paramBoolean, paramIEmotionPanelDataCallback), 5, null, true);
   }
   
-  public List<EmotionPanelData> syncGetEmotionPanelData(QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean)
+  public List<EmotionPanelData> syncGetEmotionPanelData(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    if (paramQQAppInterface == null) {
+    if (paramIEmoticonMainPanelApp == null) {
       return null;
     }
     if (QLog.isColorLevel()) {
       QLog.d("EmotionPanelDataBuilder", 2, "getEmotionPanelData panelType = " + paramInt1);
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = (awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER);
+    Object localObject1 = (EmoticonManagerProxy)paramIEmoticonMainPanelApp.getManager(QQManagerFactory.EMOTICON_MANAGER);
     switch (paramInt1)
     {
     }
     Emoticon localEmoticon;
-    label603:
+    label624:
     for (;;)
     {
       return localArrayList;
-      return SystemAndEmojiEmoticonInfo.getEmoticonList(paramQQAppInterface, paramInt3);
+      return SystemAndEmojiEmoticonInfo.getEmoticonList(paramIEmoticonMainPanelApp, paramInt3);
       localArrayList.add(new EmotionPanelData());
       return localArrayList;
-      paramQQAppInterface = ((asfk)paramQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).b();
-      paramEmoticonPackage = new EmoticonInfo();
-      paramEmoticonPackage.action = "favEdit";
-      localArrayList.add(paramEmoticonPackage);
-      if (paramInt2 != 1024)
+      paramEmoticonPackage = ((FavroamingDBManagerProxy)paramIEmoticonMainPanelApp.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).syncGetCustomEmotionInfoShowedInPanel();
+      if (paramIEmoticonMainPanelApp.getQQAppInterface() != null)
       {
-        paramEmoticonPackage = new EmoticonInfo();
-        paramEmoticonPackage.action = "funny_pic";
-        localArrayList.add(paramEmoticonPackage);
-      }
-      if (paramQQAppInterface != null)
-      {
-        if (paramQQAppInterface.size() > asfi.a)
+        paramIEmoticonMainPanelApp = new EmoticonInfo();
+        paramIEmoticonMainPanelApp.action = "favEdit";
+        localArrayList.add(paramIEmoticonMainPanelApp);
+        if (paramInt2 != 1024)
         {
-          localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, asfi.a)));
+          paramIEmoticonMainPanelApp = new EmoticonInfo();
+          paramIEmoticonMainPanelApp.action = "funny_pic";
+          localArrayList.add(paramIEmoticonMainPanelApp);
+        }
+      }
+      if (paramEmoticonPackage != null)
+      {
+        if (paramEmoticonPackage.size() > FavEmoConstant.a)
+        {
+          localArrayList.addAll(new ArrayList(paramEmoticonPackage.subList(0, FavEmoConstant.a)));
           return localArrayList;
         }
-        localArrayList.addAll(paramQQAppInterface);
+        localArrayList.addAll(paramEmoticonPackage);
         return localArrayList;
-        paramQQAppInterface = ((asen)paramQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).b();
+        paramIEmoticonMainPanelApp = ((CameraEmotionRoamingDBManagerProxy)paramIEmoticonMainPanelApp.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).syncGetCustomEmotionInfoShowedInPanel();
         paramEmoticonPackage = new CameraEmoticonInfo();
         paramEmoticonPackage.action = "cameraEdit";
         localArrayList.add(paramEmoticonPackage);
         paramEmoticonPackage = new CameraEmoticonInfo();
         paramEmoticonPackage.action = "cameraJump";
         localArrayList.add(paramEmoticonPackage);
-        if (paramQQAppInterface != null)
+        if (paramIEmoticonMainPanelApp != null)
         {
-          if (paramQQAppInterface.size() > ased.a)
+          if (paramIEmoticonMainPanelApp.size() > CameraEmoConstant.a)
           {
-            localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, ased.a)));
+            localArrayList.addAll(new ArrayList(paramIEmoticonMainPanelApp.subList(0, CameraEmoConstant.a)));
             return localArrayList;
           }
-          localArrayList.addAll(paramQQAppInterface);
+          localArrayList.addAll(paramIEmoticonMainPanelApp);
           return localArrayList;
-          paramQQAppInterface = new PicEmoticonInfo(paramQQAppInterface.getCurrentAccountUin());
-          paramQQAppInterface.action = "push";
-          paramEmoticonPackage = ((awyr)localObject1).b(0);
-          localArrayList.add(paramQQAppInterface);
+          paramIEmoticonMainPanelApp = new PicEmoticonInfo(paramIEmoticonMainPanelApp.getCurrentAccountUin());
+          paramIEmoticonMainPanelApp.action = "push";
+          paramEmoticonPackage = ((EmoticonManagerProxy)localObject1).getMagicEmoticonInfoList(0);
+          localArrayList.add(paramIEmoticonMainPanelApp);
           localArrayList.addAll(paramEmoticonPackage);
           return localArrayList;
-          paramQQAppInterface = ((awyr)localObject1).a(true, paramInt3, paramBoolean);
-          if (paramQQAppInterface != null)
+          paramIEmoticonMainPanelApp = ((EmoticonManagerProxy)localObject1).getProEmoticonPkgs(true, paramInt3, paramBoolean);
+          if (paramIEmoticonMainPanelApp != null)
           {
-            localArrayList.addAll(paramQQAppInterface);
+            localArrayList.addAll(paramIEmoticonMainPanelApp);
             return localArrayList;
             if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {
               return null;
             }
-            localObject1 = ((awyr)localObject1).a(paramEmoticonPackage.epId, true);
+            localObject1 = ((EmoticonManagerProxy)localObject1).syncGetSubEmoticonsByPackageId(paramEmoticonPackage.epId, true);
             if (paramEmoticonPackage.jobType == 4) {}
             for (paramInt1 = 1;; paramInt1 = 0)
             {
               if (localObject1 == null) {
-                break label603;
+                break label624;
               }
               paramInt3 = ((List)localObject1).size();
               paramInt2 = 0;
@@ -124,9 +127,9 @@ public class EmotionPanelDataBuilder
               {
                 localEmoticon = (Emoticon)((List)localObject1).get(paramInt2);
                 if (paramInt1 == 0) {
-                  break label605;
+                  break label626;
                 }
-                localObject2 = new SmallEmoticonInfo(paramQQAppInterface.getCurrentAccountUin());
+                localObject2 = new SmallEmoticonInfo(paramIEmoticonMainPanelApp.getCurrentAccountUin());
                 ((SmallEmoticonInfo)localObject2).type = 10;
                 ((SmallEmoticonInfo)localObject2).imageType = paramEmoticonPackage.type;
                 ((SmallEmoticonInfo)localObject2).emoticon = localEmoticon;
@@ -139,8 +142,8 @@ public class EmotionPanelDataBuilder
         }
       }
     }
-    label605:
-    Object localObject2 = new PicEmoticonInfo(paramQQAppInterface.getCurrentAccountUin());
+    label626:
+    Object localObject2 = new PicEmoticonInfo(paramIEmoticonMainPanelApp.getCurrentAccountUin());
     ((PicEmoticonInfo)localObject2).type = 6;
     ((PicEmoticonInfo)localObject2).imageType = paramEmoticonPackage.type;
     ((PicEmoticonInfo)localObject2).emoticon = localEmoticon;
@@ -155,7 +158,7 @@ public class EmotionPanelDataBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder
  * JD-Core Version:    0.7.0.1
  */

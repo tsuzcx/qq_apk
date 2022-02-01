@@ -3,11 +3,12 @@ package com.tencent.mobileqq.videoplatform;
 import android.content.Context;
 import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
 import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
+import com.tencent.superplayer.api.SuperPlayerSdkOption;
 
 class VideoPlaySDKManager$1
   implements LoadSoCallback
 {
-  VideoPlaySDKManager$1(VideoPlaySDKManager paramVideoPlaySDKManager, Context paramContext) {}
+  VideoPlaySDKManager$1(VideoPlaySDKManager paramVideoPlaySDKManager, Context paramContext, SuperPlayerSdkOption paramSuperPlayerSdkOption) {}
   
   public void onLoad(boolean paramBoolean)
   {
@@ -17,7 +18,7 @@ class VideoPlaySDKManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlaySDKManager.1
  * JD-Core Version:    0.7.0.1
  */

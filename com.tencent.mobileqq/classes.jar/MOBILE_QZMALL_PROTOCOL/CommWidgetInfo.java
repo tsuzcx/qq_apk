@@ -12,19 +12,19 @@ public final class CommWidgetInfo
   static NumberInfo cache_stNumberInfo = new NumberInfo();
   static WidgetMargin cache_stWidgetMargin;
   static int cache_type = 0;
-  public boolean bShow;
-  public ArrowInfo stArrowInfo;
-  public DescInfo stDescInfo;
-  public NumberInfo stNumberInfo;
-  public WidgetMargin stWidgetMargin;
+  public boolean bShow = false;
+  public ArrowInfo stArrowInfo = null;
+  public DescInfo stDescInfo = null;
+  public NumberInfo stNumberInfo = null;
+  public WidgetMargin stWidgetMargin = null;
   public String strDownloadAppPackageName = "";
   public String strJumpUrl = "";
   public String strTraceInfo = "";
   public String strWidgetUrl = "";
-  public int type;
-  public long uiFrameIntervalMs;
-  public long uiLevel;
-  public long uiLoopIntervalMs;
+  public int type = 0;
+  public long uiFrameIntervalMs = 0L;
+  public long uiLevel = 0L;
+  public long uiLoopIntervalMs = 0L;
   
   static
   {

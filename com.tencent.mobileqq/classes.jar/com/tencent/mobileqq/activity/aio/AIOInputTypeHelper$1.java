@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afod;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class AIOInputTypeHelper$1
+final class AIOInputTypeHelper$1
   implements Runnable
 {
-  public AIOInputTypeHelper$1(QQAppInterface paramQQAppInterface) {}
+  AIOInputTypeHelper$1(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    afod.a(this.a).edit().putBoolean("ptt_guide_have_show", false).commit();
+    AIOInputTypeHelper.a(this.a).edit().putBoolean("ptt_guide_have_show", false).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOInputTypeHelper.1
  * JD-Core Version:    0.7.0.1
  */

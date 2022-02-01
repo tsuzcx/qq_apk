@@ -1,15 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import admh;
-import ahxh;
-import akqd;
-import akqe;
-import akse;
-import aksf;
-import aksg;
-import aksj;
-import aksk;
-import albw;
 import android.animation.ObjectAnimator;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -30,12 +20,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anvx;
-import bdla;
-import bgcz;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.qwallet.QQWalletHbItemUtils;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -48,6 +39,8 @@ import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -64,10 +57,10 @@ public class RedPacketKuaKuaFragment
   extends PublicBaseFragment
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 1L;
   private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aksg(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new RedPacketKuaKuaFragment.4(this);
   private View jdField_a_of_type_AndroidViewView;
   private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -80,16 +73,16 @@ public class RedPacketKuaKuaFragment
   private String jdField_a_of_type_JavaLangString;
   private JSONArray jdField_a_of_type_OrgJsonJSONArray;
   private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  private long jdField_b_of_type_Long = 0L;
   private View jdField_b_of_type_AndroidViewView;
   private Button jdField_b_of_type_AndroidWidgetButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
-  private long jdField_c_of_type_Long;
+  private long jdField_c_of_type_Long = 0L;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   private String jdField_c_of_type_JavaLangString = "";
   private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private String jdField_d_of_type_JavaLangString;
+  private String jdField_d_of_type_JavaLangString = null;
   
   private String a()
   {
@@ -99,25 +92,25 @@ public class RedPacketKuaKuaFragment
   private void b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    akqd localakqd;
+    PasswdRedBagInfo localPasswdRedBagInfo;
     do
     {
       return;
       Object localObject = new StringBuilder(50);
       ((StringBuilder)localObject).append("msgType=19").append("&isOffline=").append(false);
       long l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.sendByEmoji", ((StringBuilder)localObject).toString(), 0, null, SystemClock.uptimeMillis());
-      localObject = (akqe)getActivity().app.getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER);
-      localakqd = ((akqe)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
-      ((akqe)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop);
-      albw.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+      localObject = (PasswdRedBagManager)getActivity().app.getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER);
+      localPasswdRedBagInfo = ((PasswdRedBagManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
+      ((PasswdRedBagManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop);
+      QWalletTools.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
       Bundle localBundle = new Bundle();
       localBundle.putString("wishing", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title);
       localBundle.putString("answer", paramString);
       localBundle.putInt("channel", 1000002);
       localBundle.putString("matchToken", this.jdField_c_of_type_JavaLangString);
-      ((akqe)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localakqd, l, 1000002, "", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.fromHBList, localBundle);
+      ((PasswdRedBagManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localPasswdRedBagInfo, l, 1000002, "", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.fromHBList, localBundle);
     } while (!QLog.isColorLevel());
-    QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + localakqd.a + ",isPasswdRedBagFinish=" + localakqd.b + ",isPasswdRedBagOverDue=" + localakqd.c);
+    QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + localPasswdRedBagInfo.a + ",isPasswdRedBagFinish=" + localPasswdRedBagInfo.b + ",isPasswdRedBagOverDue=" + localPasswdRedBagInfo.c);
   }
   
   private void f()
@@ -127,8 +120,8 @@ public class RedPacketKuaKuaFragment
       Object localObject;
       try
       {
-        localObject = ContactUtils.getBuddyNickName(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, true);
-        str1 = ContactUtils.getMemberDisplaynameByIstroop(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
+        localObject = ContactUtils.d(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, true);
+        str1 = ContactUtils.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
         if (TextUtils.isEmpty(str1))
         {
           localArrayList = new ArrayList();
@@ -136,10 +129,10 @@ public class RedPacketKuaKuaFragment
           {
             this.jdField_d_of_type_JavaLangString = (QQSysFaceUtil.getFaceString(36) + (String)localObject + "，");
             str1 = this.jdField_d_of_type_JavaLangString + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 3000))
+            if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))
             {
-              admh.a(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, str1, localArrayList);
-              bdla.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.open", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title, "", "", "");
+              ChatActivityFacade.a(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, str1, localArrayList);
+              ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.open", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title, "", "", "");
               e();
             }
           }
@@ -205,7 +198,7 @@ public class RedPacketKuaKuaFragment
         str1 = "@%s";
         if (!TextUtils.isEmpty(str1))
         {
-          str4 = bgcz.a(bgcz.a(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, (String)localObject, false, true, str4), localArrayList);
+          str4 = AtTroopMemberSpan.a(AtTroopMemberSpan.a(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, (String)localObject, false, true, str4), localArrayList);
           localStringBuilder = new StringBuilder(this.jdField_d_of_type_JavaLangString);
           localStringBuilder.replace(0, this.jdField_d_of_type_JavaLangString.lastIndexOf(str1) + str1.length(), str4);
           this.jdField_d_of_type_JavaLangString = localStringBuilder.toString();
@@ -217,7 +210,7 @@ public class RedPacketKuaKuaFragment
         str4 = this.jdField_d_of_type_JavaLangString.substring(0, this.jdField_d_of_type_JavaLangString.lastIndexOf("＠%s"));
         str2 = "＠%s";
         continue;
-        admh.a(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, str2, null);
+        ChatActivityFacade.a(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, str2, null);
       }
       else
       {
@@ -237,7 +230,7 @@ public class RedPacketKuaKuaFragment
       return paramString1;
       localTopicMatchRequest = new kua_kua_hb_srv.TopicMatchRequest();
       localTopicMatchRequest.clientAttr.osType.set(0L);
-      localTopicMatchRequest.clientAttr.qqVer.set("8.4.10");
+      localTopicMatchRequest.clientAttr.qqVer.set("8.5.5");
       localTopicMatchRequest.clientAttr.skeyType.set(2L);
       if (!TextUtils.isEmpty(paramString1)) {
         localTopicMatchRequest.clientAttr.skey.set(paramString1);
@@ -271,93 +264,93 @@ public class RedPacketKuaKuaFragment
     //   0: iconst_0
     //   1: istore_1
     //   2: aload_0
-    //   3: getfield 74	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg	Lcom/tencent/mobileqq/data/MessageForQQWalletMsg;
-    //   6: getfield 153	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
-    //   9: getfield 432	com/tencent/mobileqq/data/QQWalletRedPacketMsg:body	Lcom/tencent/mobileqq/data/QQWalletAioBodyReserve;
-    //   12: getfield 437	com/tencent/mobileqq/data/QQWalletAioBodyReserve:makeHbExtend	Ljava/lang/String;
+    //   3: getfield 80	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg	Lcom/tencent/mobileqq/data/MessageForQQWalletMsg;
+    //   6: getfield 157	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
+    //   9: getfield 429	com/tencent/mobileqq/data/QQWalletRedPacketMsg:body	Lcom/tencent/mobileqq/data/QQWalletAioBodyReserve;
+    //   12: getfield 434	com/tencent/mobileqq/data/QQWalletAioBodyReserve:makeHbExtend	Ljava/lang/String;
     //   15: astore 4
-    //   17: ldc 33
+    //   17: ldc 39
     //   19: astore_3
     //   20: aload_3
     //   21: astore_2
     //   22: aload 4
-    //   24: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   24: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   27: ifne +30 -> 57
-    //   30: new 439	org/json/JSONObject
+    //   30: new 436	org/json/JSONObject
     //   33: dup
     //   34: aload 4
-    //   36: invokespecial 440	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   36: invokespecial 437	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   39: astore 4
     //   41: aload_3
     //   42: astore_2
     //   43: aload 4
     //   45: ifnull +12 -> 57
     //   48: aload 4
-    //   50: ldc_w 442
-    //   53: invokevirtual 446	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   50: ldc_w 439
+    //   53: invokevirtual 443	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   56: astore_2
     //   57: bipush 15
-    //   59: invokestatic 452	com/tencent/mobileqq/activity/qwallet/fragment/BaseHbFragment:getHbPannelConfig	(I)Lorg/json/JSONObject;
+    //   59: invokestatic 449	com/tencent/mobileqq/activity/qwallet/fragment/BaseHbFragment:getHbPannelConfig	(I)Lorg/json/JSONObject;
     //   62: astore_3
     //   63: aload_3
     //   64: ifnull +292 -> 356
     //   67: aload_0
     //   68: aload_3
-    //   69: ldc_w 454
-    //   72: invokevirtual 458	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   75: putfield 460	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   69: ldc_w 451
+    //   72: invokevirtual 455	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   75: putfield 457	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
     //   78: iload_1
     //   79: aload_0
-    //   80: getfield 460	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   83: invokevirtual 463	org/json/JSONArray:length	()I
+    //   80: getfield 457	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   83: invokevirtual 460	org/json/JSONArray:length	()I
     //   86: if_icmpge +125 -> 211
     //   89: aload_0
-    //   90: getfield 460	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
+    //   90: getfield 457	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
     //   93: iload_1
-    //   94: invokevirtual 466	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   94: invokevirtual 463	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   97: astore 4
     //   99: aload 4
-    //   101: ldc_w 468
-    //   104: invokevirtual 446	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   101: ldc_w 465
+    //   104: invokevirtual 443	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   107: astore 5
     //   109: aload 5
-    //   111: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   111: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   114: ifne +85 -> 199
     //   117: aload_2
-    //   118: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   118: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   121: ifne +78 -> 199
     //   124: aload 5
     //   126: aload_2
-    //   127: invokevirtual 472	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   127: invokevirtual 469	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   130: ifeq +69 -> 199
     //   133: aload_0
     //   134: aload 4
-    //   136: ldc_w 474
-    //   139: invokevirtual 446	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   142: putfield 476	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   136: ldc_w 471
+    //   139: invokevirtual 443	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   142: putfield 472	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   145: aload_0
-    //   146: getfield 476	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   149: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   146: getfield 472	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   149: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   152: ifne +14 -> 166
     //   155: aload_0
-    //   156: getfield 478	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   156: getfield 474	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   159: aload_0
-    //   160: getfield 476	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   163: invokevirtual 484	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   160: getfield 472	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   163: invokevirtual 480	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   166: aload_0
     //   167: aload 4
-    //   169: ldc_w 486
-    //   172: invokevirtual 446	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   175: putfield 488	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   169: ldc_w 482
+    //   172: invokevirtual 443	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   175: putfield 484	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   178: aload_0
-    //   179: getfield 488	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   182: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   179: getfield 484	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   182: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   185: ifne +14 -> 199
     //   188: aload_0
-    //   189: getfield 65	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
+    //   189: getfield 71	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
     //   192: aload_0
-    //   193: getfield 488	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   196: invokevirtual 491	android/widget/EditText:setHint	(Ljava/lang/CharSequence;)V
+    //   193: getfield 484	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   196: invokevirtual 487	android/widget/EditText:setHint	(Ljava/lang/CharSequence;)V
     //   199: iload_1
     //   200: iconst_1
     //   201: iadd
@@ -365,75 +358,75 @@ public class RedPacketKuaKuaFragment
     //   203: goto -125 -> 78
     //   206: astore_2
     //   207: aload_2
-    //   208: invokevirtual 342	java/lang/Throwable:printStackTrace	()V
+    //   208: invokevirtual 339	java/lang/Throwable:printStackTrace	()V
     //   211: aload_0
     //   212: aload_3
-    //   213: ldc_w 493
-    //   216: invokevirtual 496	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   219: putfield 51	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_Int	I
+    //   213: ldc_w 489
+    //   216: invokevirtual 492	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   219: putfield 59	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_Int	I
     //   222: aload_0
-    //   223: getfield 51	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_Int	I
+    //   223: getfield 59	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_Int	I
     //   226: ifle +113 -> 339
     //   229: aload_0
-    //   230: getfield 68	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   233: new 90	java/lang/StringBuilder
+    //   230: getfield 74	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   233: new 94	java/lang/StringBuilder
     //   236: dup
-    //   237: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   240: ldc_w 498
-    //   243: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   240: ldc_w 494
+    //   243: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: aload_0
-    //   247: getfield 51	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_Int	I
-    //   250: invokevirtual 501	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   253: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   256: invokevirtual 484	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   247: getfield 59	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_Int	I
+    //   250: invokevirtual 497	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   256: invokevirtual 480	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   259: aload_0
-    //   260: getfield 68	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   260: getfield 74	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   263: iconst_0
-    //   264: invokevirtual 504	android/widget/TextView:setVisibility	(I)V
+    //   264: invokevirtual 500	android/widget/TextView:setVisibility	(I)V
     //   267: aload_0
-    //   268: getfield 65	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
+    //   268: getfield 71	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
     //   271: iconst_1
-    //   272: anewarray 506	android/text/InputFilter
+    //   272: anewarray 502	android/text/InputFilter
     //   275: dup
     //   276: iconst_0
-    //   277: new 508	android/text/InputFilter$LengthFilter
+    //   277: new 504	android/text/InputFilter$LengthFilter
     //   280: dup
     //   281: aload_0
-    //   282: getfield 51	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_Int	I
-    //   285: invokespecial 509	android/text/InputFilter$LengthFilter:<init>	(I)V
+    //   282: getfield 59	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_b_of_type_Int	I
+    //   285: invokespecial 505	android/text/InputFilter$LengthFilter:<init>	(I)V
     //   288: aastore
-    //   289: invokevirtual 513	android/widget/EditText:setFilters	([Landroid/text/InputFilter;)V
+    //   289: invokevirtual 509	android/widget/EditText:setFilters	([Landroid/text/InputFilter;)V
     //   292: aload_0
     //   293: aload_3
-    //   294: ldc_w 515
-    //   297: invokevirtual 519	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   300: putfield 31	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_Long	J
+    //   294: ldc_w 511
+    //   297: invokevirtual 515	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   300: putfield 33	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_Long	J
     //   303: aload_0
-    //   304: getfield 31	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_Long	J
+    //   304: getfield 33	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_Long	J
     //   307: lconst_0
     //   308: lcmp
     //   309: ifgt +8 -> 317
     //   312: aload_0
     //   313: lconst_1
-    //   314: putfield 31	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_Long	J
+    //   314: putfield 33	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_a_of_type_Long	J
     //   317: aload_3
-    //   318: ldc_w 521
-    //   321: invokevirtual 525	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   318: ldc_w 517
+    //   321: invokevirtual 521	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   324: ifeq +32 -> 356
     //   327: aload_0
     //   328: aload_3
-    //   329: ldc_w 521
-    //   332: invokevirtual 446	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   335: putfield 269	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   329: ldc_w 517
+    //   332: invokevirtual 443	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   335: putfield 43	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   338: return
     //   339: aload_0
-    //   340: getfield 68	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   340: getfield 74	com/tencent/mobileqq/activity/qwallet/RedPacketKuaKuaFragment:jdField_c_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   343: bipush 8
-    //   345: invokevirtual 504	android/widget/TextView:setVisibility	(I)V
+    //   345: invokevirtual 500	android/widget/TextView:setVisibility	(I)V
     //   348: goto -56 -> 292
     //   351: astore_2
     //   352: aload_2
-    //   353: invokevirtual 526	java/lang/Exception:printStackTrace	()V
+    //   353: invokevirtual 522	java/lang/Exception:printStackTrace	()V
     //   356: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -465,21 +458,21 @@ public class RedPacketKuaKuaFragment
   
   protected void a(View paramView)
   {
-    ((LinearLayout)getActivity().findViewById(2131367063)).setOnClickListener(new akse(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131380348));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131380347));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getActivity().findViewById(2131380300));
+    ((LinearLayout)getActivity().findViewById(2131367255)).setOnClickListener(new RedPacketKuaKuaFragment.1(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131380791));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131380790));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getActivity().findViewById(2131380743));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131380301));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131380340));
-    this.jdField_b_of_type_AndroidViewView = getActivity().findViewById(2131368721);
-    this.jdField_a_of_type_AndroidViewView = getActivity().findViewById(2131363950);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131380744));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131380783));
+    this.jdField_b_of_type_AndroidViewView = getActivity().findViewById(2131368952);
+    this.jdField_a_of_type_AndroidViewView = getActivity().findViewById(2131364047);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)getActivity().findViewById(2131368716));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)getActivity().findViewById(2131376578));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)getActivity().findViewById(2131368947));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)getActivity().findViewById(2131376972));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363866));
-    albw.a(this.jdField_a_of_type_AndroidWidgetButton, 0.3F);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363963));
+    QWalletTools.a(this.jdField_a_of_type_AndroidWidgetButton, 0.3F);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -489,7 +482,7 @@ public class RedPacketKuaKuaFragment
     try
     {
       if ((!TextUtils.isEmpty(str)) && (paramImageView != null)) {
-        LottieComposition.Factory.fromJsonString(str, new aksj(this, paramImageView));
+        LottieComposition.Factory.fromJsonString(str, new RedPacketKuaKuaFragment.5(this, paramImageView));
       }
       return;
     }
@@ -501,9 +494,9 @@ public class RedPacketKuaKuaFragment
   
   public void a(String paramString)
   {
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166608));
+    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166611));
     this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130847296);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130847653);
     this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
     this.jdField_b_of_type_AndroidViewView.setAlpha(0.5F);
     b(this.jdField_a_of_type_AndroidWidgetImageView);
@@ -524,7 +517,7 @@ public class RedPacketKuaKuaFragment
         if (this.jdField_a_of_type_Int == 1)
         {
           localObject = ((Bundle)localObject).getString("redPacketId");
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)ahxh.a.get(localObject));
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)QQWalletHbItemUtils.a.get(localObject));
           if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg == null)) {
             break;
           }
@@ -534,7 +527,7 @@ public class RedPacketKuaKuaFragment
         }
         else
         {
-          localObject = getActivity().app.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, l);
+          localObject = getActivity().app.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
           if (!(localObject instanceof MessageForQQWalletMsg)) {
             continue;
           }
@@ -550,16 +543,16 @@ public class RedPacketKuaKuaFragment
         return true;
       }
       a();
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aksf(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new RedPacketKuaKuaFragment.2(this));
     }
     return false;
   }
   
   public void b()
   {
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166610));
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(anvx.a(2131705448));
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130847291);
+    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166613));
+    this.jdField_d_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131705991));
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130847648);
     this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
     this.jdField_b_of_type_AndroidViewView.setAlpha(1.0F);
     a(this.jdField_a_of_type_AndroidWidgetImageView);
@@ -591,17 +584,17 @@ public class RedPacketKuaKuaFragment
     if (this.jdField_b_of_type_AndroidViewView == null) {
       return;
     }
-    int i = DisplayUtil.dip2px(getActivity(), 75.0F);
-    int j = DisplayUtil.dip2px(getActivity(), 75.0F);
+    int i = DisplayUtil.a(getActivity(), 75.0F);
+    int j = DisplayUtil.a(getActivity(), 75.0F);
     this.jdField_b_of_type_AndroidViewView.setPivotX(i / 2);
-    this.jdField_b_of_type_AndroidViewView.setPivotY(j / 2 + DisplayUtil.dip2px(getActivity(), 15.0F));
+    this.jdField_b_of_type_AndroidViewView.setPivotY(j / 2 + DisplayUtil.a(getActivity(), 15.0F));
     this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "rotation", new float[] { -5.0F, 20.0F });
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(200L);
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatMode(2);
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new aksk(this));
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new RedPacketKuaKuaFragment.6(this));
   }
   
   protected void d()
@@ -640,7 +633,7 @@ public class RedPacketKuaKuaFragment
       e();
       continue;
       this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-      bdla.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.cancel", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title, "", "", "");
+      ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.cancel", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title, "", "", "");
       continue;
       if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()))) {
         if (b())
@@ -663,7 +656,7 @@ public class RedPacketKuaKuaFragment
     paramBundle = null;
     try
     {
-      paramLayoutInflater = paramLayoutInflater.inflate(2131562005, paramViewGroup, false);
+      paramLayoutInflater = paramLayoutInflater.inflate(2131562142, paramViewGroup, false);
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
     }
@@ -717,7 +710,7 @@ public class RedPacketKuaKuaFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment
  * JD-Core Version:    0.7.0.1
  */

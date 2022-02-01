@@ -3,12 +3,11 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axwi;
 
 public class LocalMediaInfo
   implements Parcelable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new axwi();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new LocalMediaInfo.1();
   public int a;
   public long a;
   public Integer a;
@@ -27,7 +26,7 @@ public class LocalMediaInfo
   public String e;
   public int f;
   public String f;
-  public int g;
+  public int g = 0;
   public int h;
   public int i;
   public int j;
@@ -36,6 +35,8 @@ public class LocalMediaInfo
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = 2;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(-1);
     this.jdField_d_of_type_JavaLangString = "";
     this.jdField_e_of_type_JavaLangString = "";

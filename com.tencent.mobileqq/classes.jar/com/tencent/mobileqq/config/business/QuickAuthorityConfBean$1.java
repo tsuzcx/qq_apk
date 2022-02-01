@@ -4,10 +4,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import oicq.wlogin_sdk.tools.util;
 
-public final class QuickAuthorityConfBean$1
+final class QuickAuthorityConfBean$1
   implements Runnable
 {
-  public QuickAuthorityConfBean$1(boolean paramBoolean) {}
+  QuickAuthorityConfBean$1(boolean paramBoolean) {}
   
   public void run()
   {

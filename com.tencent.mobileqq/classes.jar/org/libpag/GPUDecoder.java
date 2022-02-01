@@ -461,7 +461,7 @@ public class GPUDecoder
     this.surfaceTexture.getTransformMatrix(arrayOfFloat);
     float f = Math.abs(arrayOfFloat[5]);
     if (f > 0.0F) {
-      return this.targetHeight / f;
+      return this.targetHeight / ((arrayOfFloat[13] - f) * 2.0F + f);
     }
     return this.targetHeight;
   }
@@ -472,7 +472,7 @@ public class GPUDecoder
     this.surfaceTexture.getTransformMatrix(arrayOfFloat);
     float f = Math.abs(arrayOfFloat[0]);
     if (f > 0.0F) {
-      return this.targetWidth / f;
+      return this.targetWidth / (arrayOfFloat[12] * 2.0F + f);
     }
     return this.targetWidth;
   }
@@ -494,7 +494,7 @@ public class GPUDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     org.libpag.GPUDecoder
  * JD-Core Version:    0.7.0.1
  */

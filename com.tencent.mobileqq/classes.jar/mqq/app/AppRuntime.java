@@ -1,6 +1,7 @@
 package mqq.app;
 
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -8,24 +9,39 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.app.asyncdb.BaseCacheManager;
+import com.tencent.mobileqq.app.proxy.BaseProxyManager;
+import com.tencent.mobileqq.app.proxy.ManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManagerFactoryImpl;
+import com.tencent.mobileqq.data.QQEntityManagerFactory.Builder;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.mobileqq.msf.sdk.RdmReq;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.annotation.ConfigInject;
+import com.tencent.mobileqq.qroute.annotation.Service;
+import com.tencent.mobileqq.qroute.remote.RemoteProxyUtil;
+import com.tencent.mobileqq.qroute.utils.ProcessChecker;
+import com.tencent.mobileqq.qroute.utils.QRouteUtil;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.DBBuildUtil;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.Reference;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,6 +51,8 @@ import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.api.IRuntimeService;
+import mqq.app.remote.ServiceRemoteProxy;
 import mqq.manager.Manager;
 import mqq.observer.AccountObserver;
 import mqq.observer.BusinessObserver;
@@ -64,8 +82,11 @@ public abstract class AppRuntime
   public static final int VERIFYCODE_MANAGER = 6;
   public static final int VERIFYDEVLOCK_MANAGER = 7;
   public static final int WTLOGIN_MANAGER = 1;
+  @ConfigInject(configPath="Mqq/resources/Inject_MqqCustomizedConfig.yml", version=1)
+  public static ArrayList<Class<? extends ManagerFactory>> sProxyManagerFactory = new ArrayList();
   private int batteryCapacity = 0;
   private ConcurrentHashMap<String, String> businessRootFilePaths = new ConcurrentHashMap();
+  private BaseCacheManager cacheManager;
   private CountDownLatch countDownLatch;
   public boolean isBackgroundPause = false;
   public boolean isBackgroundStop = false;
@@ -76,8 +97,11 @@ public abstract class AppRuntime
   private SimpleAccount mAccount;
   private MobileQQ mContext;
   private Intent mDevLockIntent = null;
+  private EntityManagerFactory mEntityManagerFactory;
   private Handler mHandler;
   private Intent mKickIntent = null;
+  protected String mProcessName;
+  private final ThreadLocal<ArrayList<String>> mRuntimeServiceCycleCheck = new ThreadLocal();
   private MainService mService;
   public final ServletContainer mServletContainer = new ServletContainer(this);
   private IAppStateChangeListener mStateChangeListener;
@@ -89,9 +113,17 @@ public abstract class AppRuntime
   private AppRuntime.Status onlineStatus = AppRuntime.Status.offline;
   public AppRuntime parentRuntime = null;
   private int powerConnect = -1;
+  private BaseProxyManager proxyManager;
+  private ConcurrentHashMap<Class<?>, IRuntimeService> runtimeServices = new ConcurrentHashMap(512);
+  private ConcurrentHashMap<Class<?>, Object> serviceLocks = new ConcurrentHashMap();
   ConcurrentHashMap<String, AppRuntime> subRuntimeMap = new ConcurrentHashMap();
   private long uExtOnlineStatus = -1L;
   byte[] uinSign = null;
+  
+  static
+  {
+    sProxyManagerFactory.add(ProxyManagerFactoryImpl.class);
+  }
   
   @Nullable
   private String callMainProcessForSecurityFileResult(@Nullable ISecurityFileHelper paramISecurityFileHelper)
@@ -129,6 +161,173 @@ public abstract class AppRuntime
           QLog.d("SecurityFileFrameworkManagerImpl", 1, "result null ");
         }
       }
+    }
+  }
+  
+  private boolean checkNeedAccount(Class<?> paramClass)
+  {
+    if (paramClass.isAnnotationPresent(Service.class))
+    {
+      paramClass = (Service)paramClass.getAnnotation(Service.class);
+      if (paramClass != null) {
+        return paramClass.needUin();
+      }
+    }
+    return true;
+  }
+  
+  private void cycleCheckBegin(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.mRuntimeServiceCycleCheck.get() == null)
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(paramString);
+        this.mRuntimeServiceCycleCheck.set(localArrayList);
+      }
+    }
+    else {
+      return;
+    }
+    if (((ArrayList)this.mRuntimeServiceCycleCheck.get()).contains(paramString))
+    {
+      paramString = "find cycle init from:" + paramString;
+      QLog.e("mqq", 2, paramString, new Throwable());
+      this.mRuntimeServiceCycleCheck.remove();
+      throw new IllegalStateException(paramString);
+    }
+    ((ArrayList)this.mRuntimeServiceCycleCheck.get()).add(paramString);
+  }
+  
+  private void cycleCheckEnd(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.mRuntimeServiceCycleCheck.get() != null) && (!((ArrayList)this.mRuntimeServiceCycleCheck.get()).isEmpty()) && (paramString.compareTo((String)((ArrayList)this.mRuntimeServiceCycleCheck.get()).get(0)) == 0)) {
+      this.mRuntimeServiceCycleCheck.remove();
+    }
+  }
+  
+  private EntityManagerFactory getEntityManagerFactoryInner(String paramString)
+  {
+    if (this.mEntityManagerFactory == null) {}
+    try
+    {
+      if (this.mEntityManagerFactory == null) {
+        this.mEntityManagerFactory = DBBuildUtil.getDefaultEntityManagerFactoryBuilder(paramString).build();
+      }
+      return this.mEntityManagerFactory;
+    }
+    finally {}
+  }
+  
+  @Nullable
+  private <T extends IRuntimeService> T getInstance(Class<T> paramClass, String paramString)
+  {
+    runtimeServiceCheck(paramClass, false, true);
+    ??? = (IRuntimeService)this.runtimeServices.get(paramClass);
+    ??? = ???;
+    if (??? == null)
+    {
+      if ((TextUtils.isEmpty(getAccount())) && (checkNeedAccount(paramClass)))
+      {
+        paramClass = paramClass.getName() + " need uin or should add @Service{needUin=false}";
+        QLog.e("mqq", 2, paramClass);
+        throw new IllegalStateException(paramClass);
+      }
+      if (this.serviceLocks.get(paramClass) == null) {
+        synchronized (this.serviceLocks)
+        {
+          if (this.serviceLocks.get(paramClass) == null) {
+            this.serviceLocks.put(paramClass, new Object());
+          }
+        }
+      }
+    }
+    synchronized (this.serviceLocks.get(paramClass))
+    {
+      ??? = (IRuntimeService)this.runtimeServices.get(paramClass);
+      if (??? != null)
+      {
+        return ???;
+        paramClass = finally;
+        throw paramClass;
+      }
+      ??? = Class.forName(paramString);
+      cycleCheckBegin(paramString, false);
+      ??? = (IRuntimeService)((Class)???).newInstance();
+      if (??? != null)
+      {
+        ((IRuntimeService)???).onCreate(this);
+        this.runtimeServices.put(paramClass, ???);
+      }
+      cycleCheckEnd(paramString, false);
+      return ???;
+    }
+  }
+  
+  private <T extends IRuntimeService> T getRuntimeServiceIPCSyncInner(Class<T> paramClass)
+  {
+    String str = QRouteUtil.convertApiToImplClass(paramClass);
+    if (TextUtils.isEmpty(str)) {
+      throw new IllegalStateException("api or impl service name fatal! class=" + paramClass.getName());
+    }
+    runtimeServiceCheck(paramClass, false, false);
+    try
+    {
+      Object localObject = ServiceRemoteProxy.getProxy(paramClass, Class.forName(str));
+      if ((localObject instanceof IRuntimeService)) {
+        return (IRuntimeService)localObject;
+      }
+      localObject = "getServiceRemoteProxy null, class=" + paramClass;
+      QLog.e("mqq", 1, (String)localObject);
+      throw new IllegalStateException((String)localObject);
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      paramClass = "ClassNotFoundException error, class= " + paramClass.getName() + "target Class= " + str;
+      QLog.e("mqq", 1, paramClass);
+      throw new IllegalStateException(paramClass, localClassNotFoundException);
+    }
+  }
+  
+  @androidx.annotation.NonNull
+  private <T extends IRuntimeService> T getRuntimeServiceInner(@androidx.annotation.NonNull Class<T> paramClass)
+  {
+    Object localObject = QRouteUtil.convertApiToImplClass(paramClass);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      throw new IllegalStateException("api or impl service name fatal! class=" + paramClass.getName());
+    }
+    try
+    {
+      localObject = getInstance(paramClass, (String)localObject);
+      if (localObject == null) {
+        throw new IllegalStateException("runtimeService is null, api:" + paramClass.getSimpleName());
+      }
+    }
+    catch (Exception localException)
+    {
+      paramClass = "build AppRuntime service fatal api:" + paramClass.getSimpleName();
+      this.mRuntimeServiceCycleCheck.remove();
+      QLog.e("mqq", 2, paramClass, localException);
+      throw new IllegalStateException(paramClass, localException);
+    }
+    return localException;
+  }
+  
+  private <T extends IRuntimeService> void runtimeServiceCheck(Class<T> paramClass, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (!paramClass.isAnnotationPresent(Service.class)) {
+        throw new IllegalStateException("IRuntimeService should have Service Annotation, class=" + paramClass.getName());
+      }
+      if ((paramBoolean2) && (!ProcessChecker.check(paramClass, this.mProcessName, paramBoolean1)))
+      {
+        paramClass = "service: " + paramClass.getName() + " can not run on this process: " + this.mProcessName + "，请联系Service开发者沟通处理。\n";
+        QLog.e("mqq", 2, paramClass);
+        throw new IllegalStateException(paramClass);
+      }
+      RemoteProxyUtil.verifyClass(paramClass);
     }
   }
   
@@ -195,6 +394,10 @@ public abstract class AppRuntime
     }
   }
   
+  public void cancelSyncOnlineFriend(long paramLong) {}
+  
+  public void exit(boolean paramBoolean) {}
+  
   public void exitToolProc()
   {
     onDestroy();
@@ -211,6 +414,8 @@ public abstract class AppRuntime
     }
     return this.mAccount.getUin();
   }
+  
+  public abstract BaseApplication getApp();
   
   public AppRuntime getAppRuntime(String paramString)
   {
@@ -251,6 +456,11 @@ public abstract class AppRuntime
     return MobileQQ.sMobileQQ;
   }
   
+  public Context getApplicationContext()
+  {
+    return MobileQQ.sMobileQQ.getApplicationContext();
+  }
+  
   public int getBatteryCapacity()
   {
     if (this.parentRuntime != null) {
@@ -259,12 +469,50 @@ public abstract class AppRuntime
     return this.batteryCapacity;
   }
   
+  public BaseCacheManager getCacheManagerInner()
+  {
+    if (this.cacheManager == null) {}
+    try
+    {
+      this.cacheManager = ((ManagerFactory)((Class)sProxyManagerFactory.get(0)).newInstance()).getCacheManager(this);
+      return this.cacheManager;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("mqq", 1, localThrowable, new Object[0]);
+      }
+    }
+  }
+  
+  public abstract String getCurrentAccountUin();
+  
+  public String getCurrentUin()
+  {
+    String str = "";
+    if (!"0".equals(getCurrentAccountUin())) {
+      str = getCurrentAccountUin();
+    }
+    return str;
+  }
+  
   public Intent getDevLockIntent()
   {
     if (this.parentRuntime != null) {
       return this.parentRuntime.getDevLockIntent();
     }
     return this.mDevLockIntent;
+  }
+  
+  public EntityManagerFactory getEntityManagerFactory()
+  {
+    return getEntityManagerFactoryInner(getAccount());
+  }
+  
+  public EntityManagerFactory getEntityManagerFactory(String paramString)
+  {
+    return getEntityManagerFactoryInner(paramString);
   }
   
   public long getExtOnlineStatus()
@@ -361,6 +609,11 @@ public abstract class AppRuntime
     return null;
   }
   
+  public <T> T getMsgCache()
+  {
+    return null;
+  }
+  
   public AppRuntime.Status getOnlineStatus()
   {
     if (this.parentRuntime != null) {
@@ -395,6 +648,41 @@ public abstract class AppRuntime
     return getApplication().getSharedPreferences(str1, 0);
   }
   
+  public BaseProxyManager getProxyManagerInner()
+  {
+    if (this.proxyManager == null) {}
+    try
+    {
+      this.proxyManager = ((ManagerFactory)((Class)sProxyManagerFactory.get(0)).newInstance()).getProxyManager(this);
+      return this.proxyManager;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("mqq", 1, localThrowable, new Object[0]);
+      }
+    }
+  }
+  
+  public SQLiteDatabase getReadableDatabase()
+  {
+    SQLiteOpenHelper localSQLiteOpenHelper = getSQLiteOpenHelper();
+    if (localSQLiteOpenHelper != null) {
+      return localSQLiteOpenHelper.getReadableDatabase();
+    }
+    return null;
+  }
+  
+  public SQLiteDatabase getReadableDatabase(String paramString)
+  {
+    paramString = getSQLiteOpenHelper(paramString);
+    if (paramString != null) {
+      return paramString.getReadableDatabase();
+    }
+    return null;
+  }
+  
   public int getRunningModuleSize()
   {
     if (this.parentRuntime != null) {
@@ -403,8 +691,44 @@ public abstract class AppRuntime
     return this.subRuntimeMap.size();
   }
   
+  protected MainService getRuntimeService()
+  {
+    if (this.parentRuntime != null) {
+      return this.parentRuntime.getRuntimeService();
+    }
+    return this.mService;
+  }
+  
+  @androidx.annotation.NonNull
+  public <T extends IRuntimeService> T getRuntimeService(@androidx.annotation.NonNull Class<T> paramClass, String paramString)
+  {
+    return getRuntimeServiceInner(paramClass);
+  }
+  
+  @androidx.annotation.NonNull
+  public <T extends IRuntimeService> T getRuntimeServiceIPCSync(@androidx.annotation.NonNull Class<T> paramClass, String paramString)
+  {
+    if ((paramString.compareTo("") == 0) || (TextUtils.isEmpty(this.mProcessName))) {
+      getRuntimeService(paramClass, paramString);
+    }
+    return getRuntimeServiceIPCSyncInner(paramClass);
+  }
+  
+  protected SQLiteOpenHelper getSQLiteOpenHelper()
+  {
+    if (!getCurrentAccountUin().equals("0")) {
+      return getEntityManagerFactory().build(getCurrentAccountUin());
+    }
+    return null;
+  }
+  
+  protected SQLiteOpenHelper getSQLiteOpenHelper(String paramString)
+  {
+    return getEntityManagerFactory(paramString).build(paramString);
+  }
+  
   @Nullable
-  public File getSecurityBusinessRootFile(@NonNull ISecurityFileHelper paramISecurityFileHelper)
+  public File getSecurityBusinessRootFile(@android.support.annotation.NonNull ISecurityFileHelper paramISecurityFileHelper)
   {
     if (this.businessRootFilePaths.containsKey(paramISecurityFileHelper.declareBusinessFileName())) {
       localObject = new File((String)this.businessRootFilePaths.get(paramISecurityFileHelper.declareBusinessFileName()));
@@ -455,14 +779,6 @@ public abstract class AppRuntime
     return new File((String)localObject);
   }
   
-  protected MainService getService()
-  {
-    if (this.parentRuntime != null) {
-      return this.parentRuntime.getService();
-    }
-    return this.mService;
-  }
-  
   protected ServletContainer getServletContainer()
   {
     return this.mServletContainer;
@@ -507,6 +823,24 @@ public abstract class AppRuntime
     }
   }
   
+  public SQLiteDatabase getWritableDatabase()
+  {
+    SQLiteOpenHelper localSQLiteOpenHelper = getSQLiteOpenHelper();
+    if (localSQLiteOpenHelper != null) {
+      return localSQLiteOpenHelper.getWritableDatabase();
+    }
+    return null;
+  }
+  
+  public SQLiteDatabase getWritableDatabase(String paramString)
+  {
+    paramString = getSQLiteOpenHelper(paramString);
+    if (paramString != null) {
+      return paramString.getWritableDatabase();
+    }
+    return null;
+  }
+  
   void init(MobileQQ paramMobileQQ, MainService paramMainService, SimpleAccount paramSimpleAccount)
   {
     this.mService = paramMainService;
@@ -541,7 +875,7 @@ public abstract class AppRuntime
   
   public void kick(AppRuntime.KickParams paramKickParams)
   {
-    MainService localMainService = getService();
+    MainService localMainService = getRuntimeService();
     if (localMainService != null) {
       localMainService.kick(paramKickParams);
     }
@@ -592,6 +926,20 @@ public abstract class AppRuntime
     getServletContainer().forward(this, localNewIntent);
   }
   
+  public void login(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, String paramString, byte[] paramArrayOfByte3, AccountObserver paramAccountObserver)
+  {
+    getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+    NewIntent localNewIntent = new NewIntent(getApplication(), BuiltInServlet.class);
+    localNewIntent.putExtra("to_login_uin_encrypt", paramArrayOfByte1);
+    localNewIntent.putExtra("sigSession", paramArrayOfByte2);
+    localNewIntent.putExtra("businessType", paramInt);
+    localNewIntent.putExtra("account", paramString);
+    localNewIntent.putExtra("password", paramArrayOfByte3);
+    localNewIntent.putExtra("action", 1001);
+    localNewIntent.setObserver(paramAccountObserver);
+    getServletContainer().forward(this, localNewIntent);
+  }
+  
   public void loginSubAccount(String paramString1, String paramString2, String paramString3, SubAccountObserver paramSubAccountObserver)
   {
     getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
@@ -634,7 +982,7 @@ public abstract class AppRuntime
     logout(Constants.LogoutReason.user, paramBoolean);
   }
   
-  void notifyObserver(BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void notifyObserver(BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     runOnUiThread(new AppRuntime.3(this, paramBusinessObserver, paramInt, paramBoolean, paramBundle));
   }
@@ -750,6 +1098,14 @@ public abstract class AppRuntime
   public boolean onReceiveUnhandledKickedMsg(String paramString, Intent paramIntent)
   {
     return false;
+  }
+  
+  public void onRelease()
+  {
+    Iterator localIterator = this.runtimeServices.values().iterator();
+    while (localIterator.hasNext()) {
+      ((IRuntimeService)localIterator.next()).onDestroy();
+    }
   }
   
   protected void onRunningBackground()
@@ -962,7 +1318,7 @@ public abstract class AppRuntime
   
   public void setInterceptKickListener(AppRuntime.InterceptKickListener paramInterceptKickListener)
   {
-    MainService localMainService = getService();
+    MainService localMainService = getRuntimeService();
     if (localMainService != null) {
       localMainService.setInterceptKickListener(paramInterceptKickListener);
     }
@@ -1000,6 +1356,11 @@ public abstract class AppRuntime
       this.parentRuntime.setPowerConnect(paramInt);
     }
     this.powerConnect = paramInt;
+  }
+  
+  public void setProcessName(String paramString)
+  {
+    this.mProcessName = paramString;
   }
   
   public void setProxy(AppRuntime paramAppRuntime)

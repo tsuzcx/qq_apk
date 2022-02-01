@@ -10,7 +10,7 @@ public final class QzmallFeedDecoGetRsp
   extends JceStruct
 {
   static Map<Long, byte[]> cache_mapRsp = new HashMap();
-  public Map<Long, byte[]> mapRsp;
+  public Map<Long, byte[]> mapRsp = null;
   
   static
   {

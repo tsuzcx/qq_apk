@@ -1,13 +1,9 @@
 package com.tencent.mqp.app.sec;
 
-import bhce;
-import biys;
-import biyy;
-import biyz;
-import bizb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.util.HashMap;
@@ -15,8 +11,8 @@ import java.util.HashMap;
 public class ScConfigManager
 {
   private static final ScConfigManager jdField_a_of_type_ComTencentMqpAppSecScConfigManager = new ScConfigManager();
-  private static final biyy[] jdField_a_of_type_ArrayOfBiyy = { new biyy("SecCenterConfig", new bizb()) };
-  private HashMap<String, biyz> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final ScConfigManager.ConfigParserMapItem[] jdField_a_of_type_ArrayOfComTencentMqpAppSecScConfigManager$ConfigParserMapItem = { new ScConfigManager.ConfigParserMapItem("SecCenterConfig", new SecCenterConfigParser()) };
+  private HashMap<String, SecBaseConfig> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private HashMap<String, String> b = new HashMap();
   
   private ScConfigManager()
@@ -24,38 +20,38 @@ public class ScConfigManager
     this.b.put("SecCenterConfig", "qq_security_sccfg");
   }
   
-  public static biys a(String paramString)
+  public static IConfigParser a(String paramString)
   {
-    biyy[] arrayOfbiyy = jdField_a_of_type_ArrayOfBiyy;
-    int j = arrayOfbiyy.length;
+    ScConfigManager.ConfigParserMapItem[] arrayOfConfigParserMapItem = jdField_a_of_type_ArrayOfComTencentMqpAppSecScConfigManager$ConfigParserMapItem;
+    int j = arrayOfConfigParserMapItem.length;
     int i = 0;
     while (i < j)
     {
-      biyy localbiyy = arrayOfbiyy[i];
-      if (localbiyy.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localbiyy.jdField_a_of_type_Biys;
+      ScConfigManager.ConfigParserMapItem localConfigParserMapItem = arrayOfConfigParserMapItem[i];
+      if (localConfigParserMapItem.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localConfigParserMapItem.jdField_a_of_type_ComTencentMqpAppSecIConfigParser;
       }
       i += 1;
     }
     return null;
   }
   
-  private biyz a(String paramString)
+  public static ScConfigManager a()
+  {
+    return jdField_a_of_type_ComTencentMqpAppSecScConfigManager;
+  }
+  
+  private SecBaseConfig a(String paramString)
   {
     synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
       {
-        paramString = (biyz)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        paramString = (SecBaseConfig)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
         return paramString;
       }
       return null;
     }
-  }
-  
-  public static ScConfigManager a()
-  {
-    return jdField_a_of_type_ComTencentMqpAppSecScConfigManager;
   }
   
   private String a(String paramString)
@@ -241,7 +237,7 @@ public class ScConfigManager
   
   private boolean b(String paramString)
   {
-    return !FileUtil.isFileExists(paramString);
+    return !FileUtil.a(paramString);
   }
   
   private String c(String paramString)
@@ -256,7 +252,7 @@ public class ScConfigManager
     Object localObject2 = a(str);
     if (localObject2 != null)
     {
-      localObject2 = ((biys)localObject2).a(???);
+      localObject2 = ((IConfigParser)localObject2).a(???);
       if (localObject2 != null) {
         synchronized (this.jdField_a_of_type_JavaUtilHashMap)
         {
@@ -271,25 +267,25 @@ public class ScConfigManager
     return true;
   }
   
-  public biyz a(String paramString, boolean paramBoolean)
+  public SecBaseConfig a(String paramString, boolean paramBoolean)
   {
-    biyz localbiyz2 = a(paramString);
-    biyz localbiyz1 = localbiyz2;
-    if (localbiyz2 == null)
+    SecBaseConfig localSecBaseConfig2 = a(paramString);
+    SecBaseConfig localSecBaseConfig1 = localSecBaseConfig2;
+    if (localSecBaseConfig2 == null)
     {
-      localbiyz1 = localbiyz2;
+      localSecBaseConfig1 = localSecBaseConfig2;
       if (paramBoolean)
       {
         a(paramString);
-        localbiyz1 = a(paramString);
+        localSecBaseConfig1 = a(paramString);
       }
     }
-    return localbiyz1;
+    return localSecBaseConfig1;
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    bhce.a().a(paramQQAppInterface, paramString);
+    AntiFraudConfigFileUtil.a().a(paramQQAppInterface, paramString);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
@@ -306,7 +302,7 @@ public class ScConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mqp.app.sec.ScConfigManager
  * JD-Core Version:    0.7.0.1
  */

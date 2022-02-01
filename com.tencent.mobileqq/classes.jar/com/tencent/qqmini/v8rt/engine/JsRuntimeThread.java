@@ -11,15 +11,15 @@ public class JsRuntimeThread
   private static final String HANDLER_THREAD_NAME = "JsRuntimeThread";
   public static final int MSG_EXEC = 2;
   public static final int MSG_RELEASE = 3;
-  public final String LOG_TAG;
   private boolean isRelease = false;
   private Handler mHandler;
   private HandlerThread mHandlerThread = new HandlerThread("JsRuntimeThread");
+  private final String sTAG;
   
   public JsRuntimeThread(int paramInt)
   {
     this.mHandlerThread.start();
-    this.LOG_TAG = ("JsRT-" + paramInt);
+    this.sTAG = ("JsRT-" + paramInt);
     this.mHandler = new Handler(this.mHandlerThread.getLooper(), this);
   }
   
@@ -48,7 +48,7 @@ public class JsRuntimeThread
   
   public void release()
   {
-    Logger.i(this.LOG_TAG, "release");
+    Logger.i(this.sTAG, "release");
     this.isRelease = true;
     this.mHandler.sendEmptyMessage(3);
   }
@@ -60,7 +60,7 @@ public class JsRuntimeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.JsRuntimeThread
  * JD-Core Version:    0.7.0.1
  */

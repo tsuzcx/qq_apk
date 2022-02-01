@@ -13,10 +13,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.util.DisplayUtil;
-import ykq;
-import zcb;
 
 public class RangeSelectBar
   extends View
@@ -25,13 +24,13 @@ public class RangeSelectBar
   private float jdField_a_of_type_Float;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private zcb jdField_a_of_type_Zcb;
-  private boolean jdField_a_of_type_Boolean;
+  private RangeSelectBar.RangeChangeListener jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener;
+  private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int c;
   private int d;
   private int e;
@@ -69,8 +68,8 @@ public class RangeSelectBar
   
   private void a()
   {
-    this.l = DisplayUtil.dip2px(getContext(), ScrollFrameSelectBar.jdField_a_of_type_Int);
-    this.g = UIUtils.getWindowScreenWidth(getContext());
+    this.l = DisplayUtil.a(getContext(), ScrollFrameSelectBar.jdField_a_of_type_Int);
+    this.g = UIUtils.a(getContext());
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.m);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -95,7 +94,7 @@ public class RangeSelectBar
     return this.l;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.h > this.l * 2) {
       paramCanvas.drawRect(this.l, 0.0F, this.h, this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
@@ -109,7 +108,7 @@ public class RangeSelectBar
     paramCanvas.drawRect(this.h, this.d - jdField_a_of_type_Int, this.i, this.d, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     this.jdField_b_of_type_Int = View.MeasureSpec.getSize(paramInt1);
     this.c = View.MeasureSpec.getSize(paramInt2);
@@ -127,7 +126,7 @@ public class RangeSelectBar
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       this.jdField_b_of_type_Float = f1;
-      ykq.a("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_DOWN x=%s,y=%s,mstart=%s,end=%s", Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(this.h), Integer.valueOf(this.i));
+      SLog.a("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_DOWN x=%s,y=%s,mstart=%s,end=%s", Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(this.h), Integer.valueOf(this.i));
       if ((f1 > this.h - this.l / 2 - 40) && (f1 < this.h - this.l / 2 + 40))
       {
         this.jdField_a_of_type_Boolean = true;
@@ -138,27 +137,27 @@ public class RangeSelectBar
         this.jdField_b_of_type_Boolean = true;
         return true;
       }
-      ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "没有触摸到");
+      SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "没有触摸到");
       continue;
       paramMotionEvent.getX();
       f1 = this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_Boolean) {
         if (this.i - (int)paramMotionEvent.getX() < this.f)
         {
-          ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "mStartIndex不能再截取小于1s的视频");
+          SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "mStartIndex不能再截取小于1s的视频");
           this.h = (this.i - this.f);
           invalidate();
         }
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Zcb != null) {
-          this.jdField_a_of_type_Zcb.a();
+        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener != null) {
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener.a();
         }
         return true;
         if (paramMotionEvent.getX() <= this.j)
         {
-          ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "向左边边滑动");
+          SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "向左边边滑动");
           this.h = this.j;
           invalidate();
         }
@@ -170,14 +169,14 @@ public class RangeSelectBar
           if (this.jdField_b_of_type_Boolean) {
             if ((int)paramMotionEvent.getX() - this.h < this.f)
             {
-              ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "mEndIndex不能再截取小于1s的视频");
+              SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "mEndIndex不能再截取小于1s的视频");
               this.i = (this.h + this.f);
               invalidate();
             }
             else if (paramMotionEvent.getX() >= this.k)
             {
               this.i = this.k;
-              ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "向右边边滑动");
+              SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "向右边边滑动");
               invalidate();
             }
             else
@@ -188,20 +187,20 @@ public class RangeSelectBar
           }
         }
       }
-      ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_UP");
+      SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_UP");
       if ((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean))
       {
         this.jdField_a_of_type_Boolean = false;
         this.jdField_b_of_type_Boolean = false;
-        if (this.jdField_a_of_type_Zcb != null) {
-          this.jdField_a_of_type_Zcb.a(this.h - 20, this.i - 20);
+        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener != null) {
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener.a(this.h - 20, this.i - 20);
         }
         return true;
       }
       this.jdField_a_of_type_Boolean = false;
       this.jdField_b_of_type_Boolean = false;
       continue;
-      ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_CANCEL");
+      SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_CANCEL");
       if ((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean))
       {
         this.jdField_a_of_type_Boolean = false;
@@ -217,14 +216,14 @@ public class RangeSelectBar
   {
     if (paramInt - this.h < this.f)
     {
-      ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "mEndIndex不能再截取小于1s的视频");
+      SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "mEndIndex不能再截取小于1s的视频");
       this.i = (this.h + this.f);
       return;
     }
     if (paramInt >= this.k)
     {
       this.i = this.k;
-      ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "向右边边滑动");
+      SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "向右边边滑动");
       return;
     }
     this.i = paramInt;
@@ -239,12 +238,12 @@ public class RangeSelectBar
       this.d = paramInt1;
       this.e = paramInt2;
       this.f = ((int)(paramInt2 / (paramInt3 / paramFloat2)));
-      Bitmap localBitmap1 = UIUtils.getBitmapFromResource(getContext().getResources(), 2130849162, this.l / 2, paramInt1 / 2);
-      Bitmap localBitmap2 = UIUtils.getBitmapFromResource(getContext().getResources(), 2130849164, this.l / 2, paramInt1 / 2);
+      Bitmap localBitmap1 = UIUtils.a(getContext().getResources(), 2130849542, this.l / 2, paramInt1 / 2);
+      Bitmap localBitmap2 = UIUtils.a(getContext().getResources(), 2130849544, this.l / 2, paramInt1 / 2);
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(this.m);
       localGradientDrawable.setCornerRadii(new float[] { 5.0F, 5.0F, 0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 5.0F });
-      localGradientDrawable.setStroke(DisplayUtil.dip2px(getContext(), 3.0F), this.m);
+      localGradientDrawable.setStroke(DisplayUtil.a(getContext(), 3.0F), this.m);
       localGradientDrawable.setBounds(0, 0, this.l, paramInt1);
       this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.l, paramInt1, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
@@ -270,22 +269,22 @@ public class RangeSelectBar
     }
   }
   
-  public void setRangeChangeListener(zcb paramzcb)
+  public void setRangeChangeListener(RangeSelectBar.RangeChangeListener paramRangeChangeListener)
   {
-    this.jdField_a_of_type_Zcb = paramzcb;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener = paramRangeChangeListener;
   }
   
   public void setStartIndex(int paramInt)
   {
     if (this.i - paramInt < this.f)
     {
-      ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "mStartIndex不能再截取小于1s的视频");
+      SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "mStartIndex不能再截取小于1s的视频");
       this.h = (this.i - this.f);
       return;
     }
     if (paramInt <= this.j)
     {
-      ykq.b("Q.qqstory.frameWidget.RangeSelectBar", "向左边边滑动");
+      SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "向左边边滑动");
       this.h = this.j;
       return;
     }
@@ -294,7 +293,7 @@ public class RangeSelectBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.RangeSelectBar
  * JD-Core Version:    0.7.0.1
  */

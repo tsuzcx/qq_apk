@@ -13,6 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.av.AVLog;
 import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -20,7 +21,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lbd;
 
 public class EffectFilterTextPager$FilterTextAdapter
   extends PagerAdapter
@@ -52,7 +52,7 @@ public class EffectFilterTextPager$FilterTextAdapter
     }
   }
   
-  public FilterItem a(int paramInt)
+  FilterItem a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
       return (FilterItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
@@ -88,15 +88,15 @@ public class EffectFilterTextPager$FilterTextAdapter
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559829, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131373499);
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559905, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131373813);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       if (localObject != null) {}
       for (localObject = ((FilterItem)localObject).getIconurl();; localObject = null)
       {
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          lbd.f("EffectFilterTextPager", "decodeFile url is null.");
+          AVLog.printColorLog("EffectFilterTextPager", "decodeFile url is null.");
           localImageView.setImageDrawable(null);
         }
         for (;;)
@@ -104,7 +104,7 @@ public class EffectFilterTextPager$FilterTextAdapter
           if (this.jdField_a_of_type_Boolean)
           {
             localObject = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
-            float f = localContext.getResources().getDimension(2131297706);
+            float f = localContext.getResources().getDimension(2131297773);
             ((LinearLayout.LayoutParams)localObject).setMargins(((LinearLayout.LayoutParams)localObject).leftMargin, (int)f, ((LinearLayout.LayoutParams)localObject).rightMargin, ((LinearLayout.LayoutParams)localObject).bottomMargin);
             localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
             localImageView.setScaleX(0.6F);
@@ -115,8 +115,8 @@ public class EffectFilterTextPager$FilterTextAdapter
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
           localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-          localURLDrawableOptions.mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297711);
-          localURLDrawableOptions.mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297710);
+          localURLDrawableOptions.mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297778);
+          localURLDrawableOptions.mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297777);
           localImageView.setImageDrawable(URLDrawable.getDrawable((String)localObject, localURLDrawableOptions));
         }
       }
@@ -131,7 +131,7 @@ public class EffectFilterTextPager$FilterTextAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter
  * JD-Core Version:    0.7.0.1
  */

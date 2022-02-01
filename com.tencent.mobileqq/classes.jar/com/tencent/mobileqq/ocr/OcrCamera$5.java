@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.ocr;
 
-import aysx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
-public class OcrCamera$5
+class OcrCamera$5
   implements Runnable
 {
-  public OcrCamera$5(aysx paramaysx, long paramLong) {}
+  OcrCamera$5(OcrCamera paramOcrCamera, long paramLong) {}
   
   public void run()
   {

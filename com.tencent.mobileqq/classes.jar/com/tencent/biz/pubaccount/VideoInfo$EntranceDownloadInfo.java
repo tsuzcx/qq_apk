@@ -5,13 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import omg;
-import tso;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.IEntranceButtonDataSource;
 
 public class VideoInfo$EntranceDownloadInfo
-  implements Parcelable, tso
+  implements Parcelable, IEntranceButtonDataSource
 {
-  public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new omg();
+  public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new VideoInfo.EntranceDownloadInfo.1();
   public UrlJumpInfo a;
   public String a;
   public boolean a;
@@ -20,7 +19,7 @@ public class VideoInfo$EntranceDownloadInfo
   
   public VideoInfo$EntranceDownloadInfo() {}
   
-  public VideoInfo$EntranceDownloadInfo(Parcel paramParcel)
+  protected VideoInfo$EntranceDownloadInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -95,7 +94,7 @@ public class VideoInfo$EntranceDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

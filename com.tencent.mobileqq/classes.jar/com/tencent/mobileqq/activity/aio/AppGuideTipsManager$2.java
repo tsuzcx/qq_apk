@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afpn;
-import bhfn;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.PackageUtil;
 
-public class AppGuideTipsManager$2
+class AppGuideTipsManager$2
   implements Runnable
 {
-  public AppGuideTipsManager$2(afpn paramafpn) {}
+  AppGuideTipsManager$2(AppGuideTipsManager paramAppGuideTipsManager) {}
   
   public void run()
   {
-    afpn.b(this.this$0, bhfn.a(afpn.a(this.this$0).getApp(), "com.tencent.tim"));
+    AppGuideTipsManager.b(this.this$0, PackageUtil.a(AppGuideTipsManager.a(this.this$0).getApp(), "com.tencent.tim"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager.2
  * JD-Core Version:    0.7.0.1
  */

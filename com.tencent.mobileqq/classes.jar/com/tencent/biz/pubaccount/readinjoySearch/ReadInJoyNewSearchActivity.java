@@ -1,8 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoySearch;
 
-import Override;
-import aitk;
-import aitl;
 import android.annotation.TargetApi;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -25,14 +22,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import arfg;
-import arfh;
-import bhdj;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
+import com.tencent.mobileqq.activity.contact.addcontact.ReadInJoySearchHistoryAdapter;
+import com.tencent.mobileqq.activity.contact.addcontact.ReadInJoySearchHistoryAdapter.OnItemClickObserver;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.business.ReadInjoySearchJumpurlConfBean;
+import com.tencent.mobileqq.config.business.ReadInjoySearchJumpurlConfProcessor;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -41,30 +43,24 @@ import com.tencent.widget.XListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.List;
-import olh;
-import ptj;
-import uoc;
-import uod;
-import uoe;
-import uof;
 
 public class ReadInJoyNewSearchActivity
   extends FragmentActivity
-  implements aitl, View.OnClickListener
+  implements View.OnClickListener, ReadInJoySearchHistoryAdapter.OnItemClickObserver
 {
-  private aitk jdField_a_of_type_Aitk;
   protected Handler a;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new uod(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ReadInJoyNewSearchActivity.2(this);
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
+  private ReadInJoySearchHistoryAdapter jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private View b;
   
   public ReadInJoyNewSearchActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new uoc(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ReadInJoyNewSearchActivity.1(this);
   }
   
   private void a(List<ReadInJoySearchHistoryEntity> paramList)
@@ -74,7 +70,7 @@ public class ReadInJoyNewSearchActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aitk.a(paramList);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter.a(paramList);
       return;
       this.b.setVisibility(0);
       this.b.setFocusable(false);
@@ -86,19 +82,19 @@ public class ReadInJoyNewSearchActivity
   @TargetApi(14)
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131376947);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131377356);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363845));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363942));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368378));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368600));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366280));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366452));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new uof(this, null));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new ReadInJoyNewSearchActivity.EditTextKeyListener(this, null));
   }
   
   private void b(String paramString)
@@ -106,7 +102,7 @@ public class ReadInJoyNewSearchActivity
     try
     {
       String str = Uri.encode(paramString.trim());
-      Object localObject = arfh.a().d;
+      Object localObject = ReadInjoySearchJumpurlConfProcessor.a().d;
       if (localObject != null)
       {
         paramString = (String)localObject;
@@ -117,7 +113,7 @@ public class ReadInJoyNewSearchActivity
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyNewSearchActivity", 2, "jumpToHotWord(). jumpUrl=" + paramString);
         }
-        localObject = new Intent(this, PublicAccountBrowser.class);
+        localObject = new Intent(this, PublicAccountBrowserImpl.class);
         ((Intent)localObject).putExtra("url", paramString);
         startActivity((Intent)localObject);
         localObject = Uri.decode(str);
@@ -125,7 +121,7 @@ public class ReadInJoyNewSearchActivity
         if (((String)localObject).contains("|")) {
           paramString = ((String)localObject).replaceAll("\\|", " ");
         }
-        olh.a(null, null, "0X80067C4", "0X80067C4", 0, 0, "", "", paramString, "", false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X80067C4", "0X80067C4", 0, 0, "", "", paramString, "", false);
         return;
       }
       return;
@@ -143,7 +139,7 @@ public class ReadInJoyNewSearchActivity
     if (this.mSystemBarComp == null) {
       this.mSystemBarComp = new SystemBarCompact(this, true, -1);
     }
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
     {
       getWindow().getDecorView().setSystemUiVisibility(9216);
       this.mSystemBarComp.init();
@@ -151,7 +147,7 @@ public class ReadInJoyNewSearchActivity
       return;
     }
     this.mSystemBarComp.init();
-    if (!SystemUtil.isFlyme())
+    if (!SystemUtil.d())
     {
       this.mSystemBarComp.setStatusBarColor(-2368549);
       return;
@@ -162,10 +158,10 @@ public class ReadInJoyNewSearchActivity
   
   private void d()
   {
-    this.jdField_a_of_type_Aitk = new aitk(this, null, this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131377198));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aitk);
-    this.b = super.findViewById(2131377200);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter = new ReadInJoySearchHistoryAdapter(this, null, this);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131377618));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter);
+    this.b = super.findViewById(2131377620);
     e();
   }
   
@@ -176,12 +172,12 @@ public class ReadInJoyNewSearchActivity
   
   public void a()
   {
-    QQCustomDialog localQQCustomDialog = bhdj.a(this, 230);
-    Object localObject = new uoe(this);
-    localQQCustomDialog.setPositiveButton(2131695760, (DialogInterface.OnClickListener)localObject);
-    localQQCustomDialog.setNegativeButton(2131695759, (DialogInterface.OnClickListener)localObject);
-    localObject = getString(2131695761);
-    localQQCustomDialog.setTitle(2131696992);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
+    Object localObject = new ReadInJoyNewSearchActivity.5(this);
+    localQQCustomDialog.setPositiveButton(2131696007, (DialogInterface.OnClickListener)localObject);
+    localQQCustomDialog.setNegativeButton(2131696006, (DialogInterface.OnClickListener)localObject);
+    localObject = getString(2131696008);
+    localQQCustomDialog.setTitle(2131697246);
     TextView localTextView = new TextView(this);
     localTextView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     localTextView.setTextSize(14.0F);
@@ -205,7 +201,7 @@ public class ReadInJoyNewSearchActivity
     if (str.contains("|")) {
       paramReadInJoySearchHistoryEntity = str.replaceAll("\\|", " ");
     }
-    olh.a(null, null, "0X8006819", "0X8006819", 0, 0, paramReadInJoySearchHistoryEntity, "", "", "", false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8006819", "0X8006819", 0, 0, paramReadInJoySearchHistoryEntity, "", "", "", false);
   }
   
   public void a(String paramString)
@@ -225,12 +221,12 @@ public class ReadInJoyNewSearchActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560308);
+    super.setContentView(2131560380);
     c();
     b();
     d();
-    ptj.a.a(getActivity());
-    if (VersionUtils.isIceScreamSandwich()) {
+    RIJDtReportHelper.a.a(getActivity());
+    if (VersionUtils.d()) {
       getWindow().setFlags(16777216, 16777216);
     }
     return true;
@@ -282,7 +278,7 @@ public class ReadInJoyNewSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity
  * JD-Core Version:    0.7.0.1
  */

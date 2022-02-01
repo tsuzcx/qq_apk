@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amyv;
 import android.app.Activity;
-import annk;
+import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
 import java.lang.ref.WeakReference;
 
-public final class ApolloGameWrapper$1
+final class ApolloGameWrapper$1
   implements Runnable
 {
-  public ApolloGameWrapper$1(String paramString, Activity paramActivity, annk paramannk) {}
+  ApolloGameWrapper$1(String paramString, Activity paramActivity, ApolloGameWrapper.CheckGameListener paramCheckGameListener) {}
   
   public void run()
   {
-    amyv localamyv = amyv.a(this.jdField_a_of_type_JavaLangString);
-    if ((localamyv == null) || (localamyv.a == null) || (localamyv.a.get() != this.jdField_a_of_type_AndroidAppActivity))
+    CmGameMainManager localCmGameMainManager = CmGameMainManager.a(this.jdField_a_of_type_JavaLangString);
+    if ((localCmGameMainManager == null) || (localCmGameMainManager.a == null) || (localCmGameMainManager.a.get() != this.jdField_a_of_type_AndroidAppActivity))
     {
-      this.jdField_a_of_type_Annk.a(false, localamyv);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameWrapper$CheckGameListener.a(false, localCmGameMainManager);
       return;
     }
-    this.jdField_a_of_type_Annk.a(true, localamyv);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameWrapper$CheckGameListener.a(true, localCmGameMainManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1
  * JD-Core Version:    0.7.0.1
  */

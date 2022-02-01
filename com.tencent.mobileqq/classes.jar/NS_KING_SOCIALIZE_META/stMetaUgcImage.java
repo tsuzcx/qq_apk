@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class stMetaUgcImage
   extends JceStruct
 {
-  public int height;
-  public int sprite_height;
-  public int sprite_span;
-  public int sprite_width;
-  public int type;
+  public int height = 0;
+  public int sprite_height = 0;
+  public int sprite_span = 0;
+  public int sprite_width = 0;
+  public int type = 0;
   public String url = "";
-  public int width;
+  public int width = 0;
   
   public stMetaUgcImage() {}
   

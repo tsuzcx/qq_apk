@@ -1,12 +1,12 @@
 package com.tencent.mqp.app.sec;
 
-import acxm;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.common.config.AppSetting;
 import com.tencent.ims.ClientInfoA.EnvParamPacket;
 import com.tencent.ims.ClientInfoA.ReportDetectResultPacket;
+import com.tencent.mdm.m;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -44,7 +44,7 @@ class SecClientInfoTask$1
         localObject3 = new ClientInfoA.EnvParamPacket();
         ((ClientInfoA.EnvParamPacket)localObject3).u32_platform.set(1);
         ((ClientInfoA.EnvParamPacket)localObject3).str_sysversion.set(Build.VERSION.RELEASE);
-        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("8.4.10.4875");
+        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("8.5.5.5105");
         ((ClientInfoA.EnvParamPacket)localObject3).u32_appid.set(AppSetting.a());
         ((ClientInfoA.EnvParamPacket)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
         ((ClientInfoA.EnvParamPacket)localObject3).str_uin.set(str);
@@ -76,7 +76,7 @@ class SecClientInfoTask$1
       {
         if (!SecClientInfoTask.a())
         {
-          SecClientInfoTask.a(acxm.a(localQQAppInterface.getApplication().getApplicationInfo().sourceDir));
+          SecClientInfoTask.a(m.a(localQQAppInterface.getApplication().getApplicationInfo().sourceDir));
           SecClientInfoTask.a(true);
         }
         if ((SecClientInfoTask.a() != null) && (SecClientInfoTask.a().length() > 0)) {
@@ -97,7 +97,7 @@ class SecClientInfoTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecClientInfoTask.1
  * JD-Core Version:    0.7.0.1
  */

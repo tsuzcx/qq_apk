@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import albp;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import com.tencent.mobileqq.activity.qwallet.utils.FlymeOSStatusBarFontUtils;
 import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.reflect.Field;
@@ -153,7 +153,7 @@ public class ImmersionBar
           setMIUIStatusBarDarkFont(this.mWindow, paramBoolean);
         }
         if (OSUtils.isFlymeOS4More()) {
-          albp.a(this.mActivity, paramBoolean);
+          FlymeOSStatusBarFontUtils.a(this.mActivity, paramBoolean);
         }
       }
       return;
@@ -166,7 +166,7 @@ public class ImmersionBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar
  * JD-Core Version:    0.7.0.1
  */

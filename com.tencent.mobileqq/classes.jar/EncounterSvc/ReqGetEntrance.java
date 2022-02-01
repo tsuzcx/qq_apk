@@ -8,8 +8,8 @@ public final class ReqGetEntrance
   extends JceStruct
 {
   static ReqUserInfo cache_stUserInfo = new ReqUserInfo();
-  public ReqUserInfo stUserInfo;
-  public int support_entrace_type;
+  public ReqUserInfo stUserInfo = null;
+  public int support_entrace_type = 0;
   
   public ReqGetEntrance() {}
   

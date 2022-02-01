@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.precover;
 
-import azod;
-
-public class PrecoverManager$1
+class PrecoverManager$1
   implements Runnable
 {
-  public PrecoverManager$1(azod paramazod) {}
+  PrecoverManager$1(PrecoverManager paramPrecoverManager) {}
   
   public void run()
   {
-    azod.a(this.this$0);
+    PrecoverManager.a(this.this$0);
   }
 }
 

@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Scroller;
-import bnuf;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
 import java.util.ArrayList;
@@ -124,7 +123,7 @@ public class LyricViewInternalSingleLine
     super.computeScroll();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     View localView = (View)((View)getParent()).getParent();
     int j = localView.getMeasuredWidth();
@@ -194,7 +193,7 @@ public class LyricViewInternalSingleLine
         {
           if (this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mType == 2)
           {
-            a(bnuf.a(this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric), null);
+            a(LyricViewHelper.a(this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric), null);
             this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.generateUiLyricLineList(this.jdField_b_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPaint, paramInt1);
           }
           this.f = true;
@@ -224,7 +223,7 @@ public class LyricViewInternalSingleLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalSingleLine
  * JD-Core Version:    0.7.0.1
  */

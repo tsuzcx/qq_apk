@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.main;
 
-import akam;
 import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -19,7 +18,7 @@ class MainAssistObserver$17$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.17.1
  * JD-Core Version:    0.7.0.1
  */

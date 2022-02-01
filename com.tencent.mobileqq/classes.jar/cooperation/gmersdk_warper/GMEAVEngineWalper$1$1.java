@@ -1,22 +1,18 @@
 package cooperation.gmersdk_warper;
 
-import blsw;
-import blsx;
-import bltd;
-
-public class GMEAVEngineWalper$1$1
+class GMEAVEngineWalper$1$1
   implements Runnable
 {
-  public GMEAVEngineWalper$1$1(blsx paramblsx) {}
+  GMEAVEngineWalper$1$1(GMEAVEngineWalper.1 param1) {}
   
   public void run()
   {
-    bltd.a(this.a.a.a).a(blsw.a(this.a.a));
+    GMEAVManager.a(this.a.a.a).a(GMEAVEngineWalper.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVEngineWalper.1.1
  * JD-Core Version:    0.7.0.1
  */

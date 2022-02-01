@@ -156,7 +156,7 @@ class Offset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     me.weishu.epic.art.method.Offset
  * JD-Core Version:    0.7.0.1
  */

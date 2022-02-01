@@ -2,15 +2,14 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.SerializationPB.CommentLikeFeed;
+import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
+import com.tencent.biz.qqstory.model.item.IFeedOwner;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import wkv;
-import wkw;
-import ydz;
 
-public abstract class CommentLikeFeedItem<T extends ydz, E extends wkw>
+public abstract class CommentLikeFeedItem<T extends StoryHomeFeed, E extends IFeedOwner>
   extends FeedItem<T, E>
 {
   public static final int COMMENT_LIKE_TYPE_FANS = 1;
@@ -44,18 +43,18 @@ public abstract class CommentLikeFeedItem<T extends ydz, E extends wkw>
     return 0;
   }
   
-  public void convertFromFeedFeature(wkv paramwkv)
+  public void convertFromFeedFeature(FeedFeatureItem paramFeedFeatureItem)
   {
     int j = 1;
-    this.feedId = paramwkv.jdField_a_of_type_JavaLangString;
-    this.mLikeCount = paramwkv.jdField_a_of_type_Int;
-    this.mCommentCount = paramwkv.jdField_b_of_type_Int;
-    this.mViewTotalTime = paramwkv.c;
-    if (paramwkv.jdField_a_of_type_Boolean)
+    this.feedId = paramFeedFeatureItem.jdField_a_of_type_JavaLangString;
+    this.mLikeCount = paramFeedFeatureItem.jdField_a_of_type_Int;
+    this.mCommentCount = paramFeedFeatureItem.jdField_b_of_type_Int;
+    this.mViewTotalTime = paramFeedFeatureItem.c;
+    if (paramFeedFeatureItem.jdField_a_of_type_Boolean)
     {
       i = 1;
       this.mDenyComment = i;
-      if (!paramwkv.jdField_b_of_type_Boolean) {
+      if (!paramFeedFeatureItem.jdField_b_of_type_Boolean) {
         break label69;
       }
     }
@@ -165,7 +164,7 @@ public abstract class CommentLikeFeedItem<T extends ydz, E extends wkw>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem
  * JD-Core Version:    0.7.0.1
  */

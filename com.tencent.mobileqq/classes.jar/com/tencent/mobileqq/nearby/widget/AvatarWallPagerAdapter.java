@@ -17,12 +17,13 @@ public abstract class AvatarWallPagerAdapter<T>
   
   public AvatarWallPagerAdapter(AvatarWallViewPager paramAvatarWallViewPager)
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager = paramAvatarWallViewPager;
     this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter$InnerPagerAdapter = new AvatarWallPagerAdapter.InnerPagerAdapter(this);
   }
   
-  public int a()
+  protected int a()
   {
     return this.jdField_a_of_type_JavaUtilList.size();
   }

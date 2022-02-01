@@ -10,23 +10,22 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bkyc;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import obi;
 
 public class AccountDetailBannerViewPager
   extends ViewPager
   implements Handler.Callback
 {
   private final int jdField_a_of_type_Int = 2000;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new obi(this);
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new AccountDetailBannerViewPager.1(this);
   private AccountDetailBannerIndicator jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailBannerIndicator;
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkyc(Looper.getMainLooper(), this, true);
-  private boolean jdField_a_of_type_Boolean;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private boolean jdField_a_of_type_Boolean = false;
   private int b = 0;
   private final int c = 1;
   
@@ -137,7 +136,7 @@ public class AccountDetailBannerViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager
  * JD-Core Version:    0.7.0.1
  */

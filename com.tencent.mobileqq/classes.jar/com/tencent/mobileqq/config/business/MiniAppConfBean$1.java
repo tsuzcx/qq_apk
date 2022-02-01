@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.config.business;
 
-import arbv;
 import java.util.ArrayList;
 
-public class MiniAppConfBean$1
+class MiniAppConfBean$1
   extends ArrayList<Integer>
 {
-  public MiniAppConfBean$1(arbv paramarbv)
+  MiniAppConfBean$1(MiniAppConfBean paramMiniAppConfBean)
   {
     add(Integer.valueOf(1044));
     add(Integer.valueOf(1007));

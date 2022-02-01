@@ -4,12 +4,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
-import nsi;
 
-public class PoiMapActivity$4$1
+class PoiMapActivity$4$1
   implements Runnable
 {
-  public PoiMapActivity$4$1(nsi paramnsi) {}
+  PoiMapActivity$4$1(PoiMapActivity.4 param4) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class PoiMapActivity$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

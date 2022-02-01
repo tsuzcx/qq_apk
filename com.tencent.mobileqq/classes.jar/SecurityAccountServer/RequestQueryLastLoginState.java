@@ -8,8 +8,8 @@ public final class RequestQueryLastLoginState
   extends JceStruct
 {
   public String MobileUniqueNo = "";
-  public long nextFlag;
-  public long timeStamp;
+  public long nextFlag = 0L;
+  public long timeStamp = 0L;
   
   public RequestQueryLastLoginState() {}
   

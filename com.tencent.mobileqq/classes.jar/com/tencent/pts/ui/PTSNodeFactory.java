@@ -354,6 +354,35 @@ public class PTSNodeFactory
     return null;
   }
   
+  public static float[] getRichTextMeasuredSize(float[] paramArrayOfFloat, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    float[] arrayOfFloat = new float[2];
+    String str = getKey("rich-text", "");
+    Object localObject = (Constructor)sNodeConstructors.get(str);
+    if (localObject != null) {
+      try
+      {
+        localObject = (PTSNodeVirtual)((Constructor)localObject).newInstance(new Object[] { null });
+        paramArrayOfFloat = (float[])localObject.getClass().getMethod("getRichTextMeasuredSize", new Class[] { [F.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class }).invoke(localObject, new Object[] { paramArrayOfFloat, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7 });
+        if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 2))
+        {
+          arrayOfFloat[0] = paramArrayOfFloat[0];
+          arrayOfFloat[1] = paramArrayOfFloat[1];
+          return arrayOfFloat;
+        }
+        PTSLog.e("PTSNodeFactory", "[getRichTextMeasuredSize] failed, measuredSize is not valid, key = " + str);
+        return arrayOfFloat;
+      }
+      catch (Exception paramArrayOfFloat)
+      {
+        PTSLog.e("PTSNodeFactory", "[getRichTextMeasuredSize] error, key = " + str + ", e = " + paramArrayOfFloat);
+        return arrayOfFloat;
+      }
+    }
+    PTSLog.e("PTSNodeFactory", "[getRichTextMeasuredSize] error, the node type constructor does not exist, key = " + str);
+    return arrayOfFloat;
+  }
+  
   public static float[] getTextMeasuredSize(float[] paramArrayOfFloat, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     return getTextMeasuredSize(paramArrayOfFloat, paramString1, paramString2, paramString3, paramString4, "normal");
@@ -611,7 +640,7 @@ public class PTSNodeFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pts.ui.PTSNodeFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import qez;
 
-public class ChannelCoverInfoModule$3
+class ChannelCoverInfoModule$3
   implements Runnable
 {
-  public ChannelCoverInfoModule$3(qez paramqez, ChannelCoverInfo paramChannelCoverInfo) {}
+  ChannelCoverInfoModule$3(ChannelCoverInfoModule paramChannelCoverInfoModule, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class ChannelCoverInfoModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.3
  * JD-Core Version:    0.7.0.1
  */

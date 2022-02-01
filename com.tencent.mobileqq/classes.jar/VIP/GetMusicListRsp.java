@@ -9,11 +9,11 @@ public final class GetMusicListRsp
 {
   static CommRsp cache_errInfo = new CommRsp();
   static MusicListInfo cache_stMusicList = new MusicListInfo();
-  public CommRsp errInfo;
-  public long iTotal;
+  public CommRsp errInfo = null;
+  public long iTotal = 0L;
   public boolean isEnd = true;
   public String sCookie = "";
-  public MusicListInfo stMusicList;
+  public MusicListInfo stMusicList = null;
   
   public GetMusicListRsp() {}
   

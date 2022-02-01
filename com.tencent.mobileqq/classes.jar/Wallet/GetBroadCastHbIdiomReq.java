@@ -9,10 +9,10 @@ public final class GetBroadCastHbIdiomReq
   extends JceStruct
 {
   static ArrayList<String> cache_billnos = new ArrayList();
-  public long appid;
-  public ArrayList<String> billnos;
-  public int fromType;
-  public int platform;
+  public long appid = 0L;
+  public ArrayList<String> billnos = null;
+  public int fromType = 0;
+  public int platform = 0;
   public String qqVersion = "";
   public String sKey = "";
   

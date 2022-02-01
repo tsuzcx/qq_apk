@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.bigbrother;
 
-import aqgm;
-import bdla;
+import com.tencent.mobileqq.haoliyou.JefsClass.IdSetter;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 
 public class WeakOuterRefRunnable
-  implements Runnable
+  implements JefsClass.IdSetter, Runnable
 {
   private int jdField_a_of_type_Int;
   private Runnable jdField_a_of_type_JavaLangRunnable;
@@ -113,7 +113,7 @@ public class WeakOuterRefRunnable
     if ((this.jdField_a_of_type_JavaLangRunnable != null) && (a()))
     {
       this.jdField_a_of_type_JavaLangRunnable.run();
-      aqgm.a().a(this.jdField_a_of_type_Int, this.b);
+      TeleScreen.a().a(this.jdField_a_of_type_Int, this.b);
       i = 1;
       if (this.jdField_a_of_type_Boolean)
       {
@@ -136,9 +136,9 @@ public class WeakOuterRefRunnable
     label123:
     for (String str3 = "";; str3 = this.jdField_a_of_type_JavaLangString)
     {
-      bdla.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, str1, str2, str3, "");
+      ReportController.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, str1, str2, str3, "");
       return;
-      aqgm.a().a(this.jdField_a_of_type_Int, -3);
+      TeleScreen.a().a(this.jdField_a_of_type_Int, -3);
       i = 0;
       break;
       str1 = "";

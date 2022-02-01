@@ -37,15 +37,15 @@ public class TabItemView
   {
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(1);
-    LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-1, DisplayUtil.dip2px(paramContext, 54.0F));
+    LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-1, DisplayUtil.a(paramContext, 54.0F));
     this.jdField_a_of_type_AndroidViewView = new View(paramContext);
-    LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-1, DisplayUtil.dip2px(paramContext, 1.0F));
+    LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-1, DisplayUtil.a(paramContext, 1.0F));
     localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams2);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    int i = DisplayUtil.dip2px(paramContext, 25.0F);
+    int i = DisplayUtil.a(paramContext, 25.0F);
     localLayoutParams2 = new LinearLayout.LayoutParams(i, i);
     localLayoutParams2.gravity = 17;
-    localLayoutParams2.setMargins(0, DisplayUtil.dip2px(paramContext, 5.0F), 0, DisplayUtil.dip2px(paramContext, 2.0F));
+    localLayoutParams2.setMargins(0, DisplayUtil.a(paramContext, 5.0F), 0, DisplayUtil.a(paramContext, 2.0F));
     localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams2);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 11.0F);
@@ -58,7 +58,7 @@ public class TabItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.view.TabItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class CustomGuideView
   extends View
@@ -35,21 +35,21 @@ public class CustomGuideView
   public CustomGuideView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = anvx.a(2131702192);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702740);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangString = anvx.a(2131702192);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702740);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = anvx.a(2131702192);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702740);
     a();
   }
   
@@ -131,7 +131,7 @@ public class CustomGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.ui.CustomGuideView
  * JD-Core Version:    0.7.0.1
  */

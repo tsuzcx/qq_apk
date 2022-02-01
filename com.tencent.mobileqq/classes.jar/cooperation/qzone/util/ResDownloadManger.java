@@ -8,13 +8,14 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
+import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.memory.MemoryManager;
 import cooperation.qzone.QzonePreDownloadManager;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
@@ -24,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import nwp;
 
 public class ResDownloadManger
 {
@@ -46,10 +46,10 @@ public class ResDownloadManger
   public static final int THEME_ALBUM_RESZIP = 1;
   public static final int YELLOW_DIAMOND_RESZIP = 0;
   private static String ZipPath;
-  private static ResDownloadManger mInstance;
+  private static ResDownloadManger mInstance = null;
   private Context context = BaseApplicationImpl.getContext();
   private Downloader.DownloadListener mDownloadListener = new ResDownloadManger.2(this);
-  private QzonePreDownloadManager mImageDownloader;
+  private QzonePreDownloadManager mImageDownloader = null;
   private LruCache<String, Bitmap> mMemoryCache;
   private final MultiHashMap<String, ResEntry> mPendingRequests = new MultiHashMap();
   
@@ -57,7 +57,7 @@ public class ResDownloadManger
   {
     ZipPath = getStorePath("qzonereszip");
     ResPath = getStorePath("qzoneres");
-    this.mMemoryCache = new LruCache((int)(MemoryManager.getAvailClassSize() / 8L));
+    this.mMemoryCache = new LruCache((int)(MemoryManager.a() / 8L));
   }
   
   private boolean addPendingRequest(String paramString, ResEntry paramResEntry)
@@ -137,28 +137,28 @@ public class ResDownloadManger
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 251	java/io/FileInputStream
+    //   2: new 255	java/io/FileInputStream
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 253	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   7: invokespecial 257	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   10: astore_2
     //   11: aload_2
     //   12: astore_0
-    //   13: new 255	java/io/BufferedInputStream
+    //   13: new 259	java/io/BufferedInputStream
     //   16: dup
     //   17: aload_2
     //   18: sipush 8192
-    //   21: invokespecial 258	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   21: invokespecial 262	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   24: aconst_null
     //   25: aload_1
-    //   26: invokestatic 264	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   26: invokestatic 268	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   29: astore_1
     //   30: aload_1
     //   31: astore_0
     //   32: aload_2
     //   33: ifnull +9 -> 42
     //   36: aload_2
-    //   37: invokevirtual 269	java/io/InputStream:close	()V
+    //   37: invokevirtual 273	java/io/InputStream:close	()V
     //   40: aload_1
     //   41: astore_0
     //   42: aload_0
@@ -168,21 +168,21 @@ public class ResDownloadManger
     //   46: astore_2
     //   47: aload_2
     //   48: astore_0
-    //   49: invokestatic 274	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   49: invokestatic 278	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   52: ifeq +15 -> 67
     //   55: aload_2
     //   56: astore_0
     //   57: ldc 37
     //   59: iconst_2
-    //   60: ldc_w 276
+    //   60: ldc_w 280
     //   63: aload_1
-    //   64: invokestatic 280	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   64: invokestatic 284	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   67: aload_3
     //   68: astore_0
     //   69: aload_2
     //   70: ifnull -28 -> 42
     //   73: aload_2
-    //   74: invokevirtual 269	java/io/InputStream:close	()V
+    //   74: invokevirtual 273	java/io/InputStream:close	()V
     //   77: aconst_null
     //   78: areturn
     //   79: astore_0
@@ -193,21 +193,21 @@ public class ResDownloadManger
     //   84: astore_2
     //   85: aload_2
     //   86: astore_0
-    //   87: invokestatic 274	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   87: invokestatic 278	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   90: ifeq +15 -> 105
     //   93: aload_2
     //   94: astore_0
     //   95: ldc 37
     //   97: iconst_2
-    //   98: ldc_w 276
+    //   98: ldc_w 280
     //   101: aload_1
-    //   102: invokestatic 280	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   102: invokestatic 284	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   105: aload_3
     //   106: astore_0
     //   107: aload_2
     //   108: ifnull -66 -> 42
     //   111: aload_2
-    //   112: invokevirtual 269	java/io/InputStream:close	()V
+    //   112: invokevirtual 273	java/io/InputStream:close	()V
     //   115: aconst_null
     //   116: areturn
     //   117: astore_0
@@ -219,7 +219,7 @@ public class ResDownloadManger
     //   123: aload_0
     //   124: ifnull +7 -> 131
     //   127: aload_0
-    //   128: invokevirtual 269	java/io/InputStream:close	()V
+    //   128: invokevirtual 273	java/io/InputStream:close	()V
     //   131: aload_1
     //   132: athrow
     //   133: astore_0
@@ -274,20 +274,20 @@ public class ResDownloadManger
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 308	cooperation/qzone/util/ResDownloadManger:mImageDownloader	Lcooperation/qzone/QzonePreDownloadManager;
+    //   3: getfield 98	cooperation/qzone/util/ResDownloadManger:mImageDownloader	Lcooperation/qzone/QzonePreDownloadManager;
     //   6: ifnull +12 -> 18
     //   9: aload_0
-    //   10: getfield 308	cooperation/qzone/util/ResDownloadManger:mImageDownloader	Lcooperation/qzone/QzonePreDownloadManager;
+    //   10: getfield 98	cooperation/qzone/util/ResDownloadManger:mImageDownloader	Lcooperation/qzone/QzonePreDownloadManager;
     //   13: astore_1
     //   14: aload_0
     //   15: monitorexit
     //   16: aload_1
     //   17: areturn
     //   18: aload_0
-    //   19: invokestatic 313	cooperation/qzone/QzonePreDownloadManager:getInstance	()Lcooperation/qzone/QzonePreDownloadManager;
-    //   22: putfield 308	cooperation/qzone/util/ResDownloadManger:mImageDownloader	Lcooperation/qzone/QzonePreDownloadManager;
+    //   19: invokestatic 315	cooperation/qzone/QzonePreDownloadManager:getInstance	()Lcooperation/qzone/QzonePreDownloadManager;
+    //   22: putfield 98	cooperation/qzone/util/ResDownloadManger:mImageDownloader	Lcooperation/qzone/QzonePreDownloadManager;
     //   25: aload_0
-    //   26: getfield 308	cooperation/qzone/util/ResDownloadManger:mImageDownloader	Lcooperation/qzone/QzonePreDownloadManager;
+    //   26: getfield 98	cooperation/qzone/util/ResDownloadManger:mImageDownloader	Lcooperation/qzone/QzonePreDownloadManager;
     //   29: astore_1
     //   30: goto -16 -> 14
     //   33: astore_1
@@ -388,7 +388,7 @@ public class ResDownloadManger
   {
     String str = ResPath + paramString.substring(paramString.lastIndexOf("/") + 1, paramString.length() - 4);
     createAndClearFile(new File(str));
-    nwp.a(paramString, str);
+    ZipUtils.unZipFolder(paramString, str);
   }
   
   public Drawable getDrawable(int paramInt, String paramString, ResDownloadManger.ResLoadListener paramResLoadListener)
@@ -398,7 +398,7 @@ public class ResDownloadManger
     {
       paramString.setDensity(320);
       paramString = new BitmapDrawable(paramString);
-      paramString.setTargetDensity((int)ViewUtils.getDensityDpi());
+      paramString.setTargetDensity((int)ViewUtils.c());
       return paramString;
     }
     return null;
@@ -412,7 +412,7 @@ public class ResDownloadManger
     {
       paramString.setDensity(320);
       paramString = new BitmapDrawable(paramString);
-      paramString.setTargetDensity((int)ViewUtils.getDensityDpi());
+      paramString.setTargetDensity((int)ViewUtils.c());
     }
     do
     {
@@ -430,7 +430,7 @@ public class ResDownloadManger
     {
       paramString.setDensity(320);
       paramString = new BitmapDrawable(paramString);
-      paramString.setTargetDensity((int)ViewUtils.getDensityDpi());
+      paramString.setTargetDensity((int)ViewUtils.c());
       return paramString;
     }
     return null;
@@ -442,7 +442,7 @@ public class ResDownloadManger
     {
       paramBitmap.setDensity(320);
       paramBitmap = new BitmapDrawable(paramBitmap);
-      paramBitmap.setTargetDensity((int)ViewUtils.getDensityDpi());
+      paramBitmap.setTargetDensity((int)ViewUtils.c());
       return paramBitmap;
     }
     return null;
@@ -455,22 +455,22 @@ public class ResDownloadManger
     //   0: aconst_null
     //   1: astore 5
     //   3: aload_2
-    //   4: invokestatic 319	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: invokestatic 321	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifeq +6 -> 13
     //   10: aload 5
     //   12: areturn
     //   13: aload_0
-    //   14: getfield 141	cooperation/qzone/util/ResDownloadManger:mMemoryCache	Landroid/support/v4/util/LruCache;
-    //   17: new 321	java/lang/StringBuilder
+    //   14: getfield 145	cooperation/qzone/util/ResDownloadManger:mMemoryCache	Landroid/support/v4/util/LruCache;
+    //   17: new 323	java/lang/StringBuilder
     //   20: dup
-    //   21: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   21: invokespecial 324	java/lang/StringBuilder:<init>	()V
     //   24: iload_1
     //   25: invokevirtual 450	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   28: ldc_w 452
-    //   31: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: aload_2
-    //   35: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 349	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 351	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   41: invokevirtual 453	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   44: checkcast 414	android/graphics/Bitmap
     //   47: astore 4
@@ -478,33 +478,33 @@ public class ResDownloadManger
     //   51: astore 5
     //   53: aload 4
     //   55: ifnonnull -45 -> 10
-    //   58: getstatic 90	cooperation/qzone/util/ResDownloadManger:RESURL	[Ljava/lang/String;
+    //   58: getstatic 92	cooperation/qzone/util/ResDownloadManger:RESURL	[Ljava/lang/String;
     //   61: iload_1
     //   62: aaload
     //   63: astore 7
     //   65: aload 7
     //   67: aload_2
-    //   68: invokestatic 148	cooperation/qzone/util/ResDownloadManger:getFile	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   68: invokestatic 152	cooperation/qzone/util/ResDownloadManger:getFile	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   71: astore 8
     //   73: aload 8
-    //   75: invokestatic 153	cooperation/qzone/util/ResDownloadManger:isFileValid	(Ljava/io/File;)Z
+    //   75: invokestatic 157	cooperation/qzone/util/ResDownloadManger:isFileValid	(Ljava/io/File;)Z
     //   78: ifeq +184 -> 262
     //   81: aload_0
     //   82: monitorenter
     //   83: aload 4
     //   85: astore 5
     //   87: aload_0
-    //   88: getfield 141	cooperation/qzone/util/ResDownloadManger:mMemoryCache	Landroid/support/v4/util/LruCache;
-    //   91: new 321	java/lang/StringBuilder
+    //   88: getfield 145	cooperation/qzone/util/ResDownloadManger:mMemoryCache	Landroid/support/v4/util/LruCache;
+    //   91: new 323	java/lang/StringBuilder
     //   94: dup
-    //   95: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   95: invokespecial 324	java/lang/StringBuilder:<init>	()V
     //   98: iload_1
     //   99: invokevirtual 450	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   102: ldc_w 452
-    //   105: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: aload_2
-    //   109: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 349	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   109: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 351	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   115: invokevirtual 453	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   118: checkcast 414	android/graphics/Bitmap
     //   121: astore 6
@@ -532,7 +532,7 @@ public class ResDownloadManger
     //   159: aload 6
     //   161: astore 4
     //   163: aload 8
-    //   165: invokevirtual 365	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   165: invokevirtual 367	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   168: aconst_null
     //   169: invokestatic 460	cooperation/qzone/util/ResDownloadManger:decodeFileWithBuffer	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   172: astore 6
@@ -545,17 +545,17 @@ public class ResDownloadManger
     //   184: aload 4
     //   186: ifnull +89 -> 275
     //   189: aload_0
-    //   190: getfield 141	cooperation/qzone/util/ResDownloadManger:mMemoryCache	Landroid/support/v4/util/LruCache;
-    //   193: new 321	java/lang/StringBuilder
+    //   190: getfield 145	cooperation/qzone/util/ResDownloadManger:mMemoryCache	Landroid/support/v4/util/LruCache;
+    //   193: new 323	java/lang/StringBuilder
     //   196: dup
-    //   197: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   197: invokespecial 324	java/lang/StringBuilder:<init>	()V
     //   200: iload_1
     //   201: invokevirtual 450	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   204: ldc_w 452
-    //   207: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   210: aload_2
-    //   211: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   214: invokevirtual 349	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   211: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: invokevirtual 351	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   217: aload 4
     //   219: invokevirtual 464	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   222: pop
@@ -588,18 +588,18 @@ public class ResDownloadManger
     //   278: iload_1
     //   279: aload_2
     //   280: aload_3
-    //   281: invokespecial 161	cooperation/qzone/util/ResDownloadManger:generateEntry	(Ljava/lang/String;ILjava/lang/String;Lcooperation/qzone/util/ResDownloadManger$ResLoadListener;)Lcooperation/qzone/util/ResEntry;
+    //   281: invokespecial 165	cooperation/qzone/util/ResDownloadManger:generateEntry	(Ljava/lang/String;ILjava/lang/String;Lcooperation/qzone/util/ResDownloadManger$ResLoadListener;)Lcooperation/qzone/util/ResEntry;
     //   284: astore_2
     //   285: aload 6
     //   287: astore 5
     //   289: aload_0
     //   290: aload 7
     //   292: aload_2
-    //   293: invokespecial 167	cooperation/qzone/util/ResDownloadManger:addPendingRequest	(Ljava/lang/String;Lcooperation/qzone/util/ResEntry;)Z
+    //   293: invokespecial 171	cooperation/qzone/util/ResDownloadManger:addPendingRequest	(Ljava/lang/String;Lcooperation/qzone/util/ResEntry;)Z
     //   296: ifeq -286 -> 10
     //   299: aload_0
     //   300: aload_2
-    //   301: invokespecial 173	cooperation/qzone/util/ResDownloadManger:starDownLoad	(Lcooperation/qzone/util/ResEntry;)V
+    //   301: invokespecial 177	cooperation/qzone/util/ResDownloadManger:starDownLoad	(Lcooperation/qzone/util/ResEntry;)V
     //   304: aload 6
     //   306: areturn
     // Local variable table:
@@ -674,7 +674,7 @@ public class ResDownloadManger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.ResDownloadManger
  * JD-Core Version:    0.7.0.1
  */

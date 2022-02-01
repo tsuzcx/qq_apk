@@ -7,7 +7,7 @@ import java.util.Locale;
 public class GifEncoder
 {
   private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private int b;
   private int c;
   
@@ -54,7 +54,7 @@ public class GifEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.GifEncoder
  * JD-Core Version:    0.7.0.1
  */

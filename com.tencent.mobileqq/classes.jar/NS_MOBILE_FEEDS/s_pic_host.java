@@ -8,7 +8,7 @@ public final class s_pic_host
   extends JceStruct
 {
   public String nick = "";
-  public long uin;
+  public long uin = 0L;
   
   public s_pic_host() {}
   

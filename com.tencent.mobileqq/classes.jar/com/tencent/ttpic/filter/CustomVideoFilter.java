@@ -19,7 +19,7 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.filter.RenderItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.io.File;
 import java.util.List;
 import java.util.Set;
@@ -138,9 +138,9 @@ public class CustomVideoFilter
       float[] arrayOfFloat;
       if (paramObject.facePoints != null)
       {
-        arrayOfFloat = VideoMaterialUtil.toFlatArray(paramObject.facePoints);
+        arrayOfFloat = VideoMaterial.toFlatArray(paramObject.facePoints);
         if (arrayOfFloat != null) {
-          addParam(new UniformParam.Float1sParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FACE_POINT), VideoMaterialUtil.flipYPoints(arrayOfFloat, (int)(this.height * this.mFaceDetScale))));
+          addParam(new UniformParam.Float1sParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FACE_POINT), VideoMaterial.flipYPoints(arrayOfFloat, (int)(this.height * this.mFaceDetScale))));
         }
       }
       for (;;)
@@ -177,7 +177,7 @@ public class CustomVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.CustomVideoFilter
  * JD-Core Version:    0.7.0.1
  */

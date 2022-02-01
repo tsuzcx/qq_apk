@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aikq;
-import ailq;
-import ailr;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -10,28 +7,28 @@ import android.text.TextUtils;
 import android.text.format.Time;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
-import anvx;
-import bcrg;
-import bcsa;
-import bdla;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.os.MqqHandler;
 
 public class SougouInputGrayTips
-  implements aikq, Runnable
+  implements GrayTipsTask, Runnable
 {
-  private ailr jdField_a_of_type_Ailr;
   private Context jdField_a_of_type_AndroidContentContext;
   private Time jdField_a_of_type_AndroidTextFormatTime;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   private boolean jdField_a_of_type_Boolean;
@@ -76,7 +73,7 @@ public class SougouInputGrayTips
   {
     long l1 = System.currentTimeMillis();
     paramContext = a(paramContext);
-    if ((paramContext.contains(anvx.a(2131713669))) || (paramContext.contains("QQ输入法"))) {}
+    if ((paramContext.contains(HardCodeUtil.a(2131714165))) || (paramContext.contains("QQ输入法"))) {}
     for (boolean bool = true;; bool = false)
     {
       long l2 = System.currentTimeMillis();
@@ -89,10 +86,10 @@ public class SougouInputGrayTips
   
   public MessageRecord a(Object... paramVarArgs)
   {
-    paramVarArgs = bcsa.a(-1014);
-    long l = bcrg.a();
+    paramVarArgs = MessageRecordFactory.a(-1014);
+    long l = MessageCache.a();
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, str, "", l, -1043, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, l);
+    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -1043, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
     paramVarArgs.isread = true;
     return paramVarArgs;
   }
@@ -113,7 +110,7 @@ public class SougouInputGrayTips
   
   public int[] a()
   {
-    return ailq.a;
+    return TipsConstants.a;
   }
   
   public int b()
@@ -143,7 +140,7 @@ public class SougouInputGrayTips
     {
       return;
       l1 = System.currentTimeMillis();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("SougouInputGrayTips", 2, "getAIOList cost:" + (l2 - l1) + " ms");
@@ -202,7 +199,7 @@ public class SougouInputGrayTips
       }
       i = 0;
       label482:
-      l1 = bcrg.a() * 1000L;
+      l1 = MessageCache.a() * 1000L;
       if (!TextUtils.isEmpty(str1))
       {
         if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
@@ -238,11 +235,11 @@ public class SougouInputGrayTips
         QLog.d("SougouInputGrayTips", 2, "has never shown sougouInput Gray Tips");
       }
       label781:
-      if (!this.jdField_a_of_type_Ailr.a(this, new Object[0])) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0])) {
         break;
       }
       localSharedPreferences.edit().putString((String)localObject1, String.valueOf(l1)).putString((String)localObject2, String.valueOf(i + 1)).commit();
-      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80047CE", "0X80047CE", 0, 0, "", "", "", "");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80047CE", "0X80047CE", 0, 0, "", "", "", "");
       return;
       bool = false;
     }
@@ -250,7 +247,7 @@ public class SougouInputGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.SougouInputGrayTips
  * JD-Core Version:    0.7.0.1
  */

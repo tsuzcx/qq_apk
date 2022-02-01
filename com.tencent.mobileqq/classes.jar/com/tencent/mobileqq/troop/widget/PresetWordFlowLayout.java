@@ -9,8 +9,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bgnt;
-import blfz;
+import com.tencent.widget.TraceUtils;
 
 public class PresetWordFlowLayout
   extends RelativeLayout
@@ -18,26 +17,29 @@ public class PresetWordFlowLayout
   public int a;
   private DataSetObserver a;
   protected BaseAdapter a;
-  public int b;
-  public int c;
-  public int d;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
   
   public PresetWordFlowLayout(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Int = 0;
   }
   
   public PresetWordFlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 0;
   }
   
   public PresetWordFlowLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a()
+  protected void a()
   {
     int j = getChildCount();
     int i = 0;
@@ -68,9 +70,9 @@ public class PresetWordFlowLayout
     return (RelativeLayout.LayoutParams)new ViewGroup.MarginLayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    blfz.a("PresetWordFlowLayout.onLayout");
+    TraceUtils.traceBegin("PresetWordFlowLayout.onLayout");
     int j = getWidth();
     int k = getChildCount();
     paramInt2 = 0;
@@ -102,12 +104,12 @@ public class PresetWordFlowLayout
         paramInt3 = i + (this.jdField_a_of_type_Int + m + this.b);
       }
     }
-    blfz.a();
+    TraceUtils.traceEnd();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
-    blfz.a("PresetWordFlowLayout.onMeasure");
+    TraceUtils.traceBegin("PresetWordFlowLayout.onMeasure");
     int i6 = View.MeasureSpec.getSize(paramInt1);
     int i5 = View.MeasureSpec.getSize(paramInt2);
     int i8 = View.MeasureSpec.getMode(paramInt1);
@@ -175,7 +177,7 @@ public class PresetWordFlowLayout
       i = i5;
     }
     setMeasuredDimension(j, i);
-    blfz.a();
+    TraceUtils.traceEnd();
   }
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
@@ -187,7 +189,7 @@ public class PresetWordFlowLayout
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
     if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null)
     {
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new bgnt(this);
+      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new PresetWordFlowLayout.AdapterDataSetObserver(this);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
     }

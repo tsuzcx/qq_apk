@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +8,7 @@ import android.view.MotionEvent;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
+@Deprecated
 public class PublicTransFragmentActivity
   extends PublicFragmentActivity
 {
@@ -52,7 +52,7 @@ public class PublicTransFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicTransFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

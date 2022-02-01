@@ -1,12 +1,11 @@
 package com.tencent.open.business.cgireport;
 
 import android.os.Bundle;
-import bjmb;
 
-public class ReportManager$1
+class ReportManager$1
   implements Runnable
 {
-  public ReportManager$1(bjmb parambjmb, String paramString, Bundle paramBundle) {}
+  ReportManager$1(ReportManager paramReportManager, String paramString, Bundle paramBundle) {}
   
   /* Error */
   public void run()
@@ -22,7 +21,7 @@ public class ReportManager$1
     //   15: getfield 17	com/tencent/open/business/cgireport/ReportManager$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   18: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokestatic 53	bjko:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   24: invokestatic 53	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: ldc 34
     //   29: new 36	java/lang/StringBuilder
     //   32: dup
@@ -33,28 +32,28 @@ public class ReportManager$1
     //   42: getfield 19	com/tencent/open/business/cgireport/ReportManager$1:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
     //   45: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   48: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 53	bjko:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   51: invokestatic 53	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   54: aload_0
-    //   55: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lbjmb;
-    //   58: invokestatic 63	bizw:a	()Lbizw;
-    //   61: invokevirtual 66	bizw:a	()Landroid/content/Context;
+    //   55: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lcom/tencent/open/business/cgireport/ReportManager;
+    //   58: invokestatic 63	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
+    //   61: invokevirtual 66	com/tencent/open/adapter/CommonDataAdapter:a	()Landroid/content/Context;
     //   64: aconst_null
-    //   65: invokestatic 71	bjlt:a	(Landroid/content/Context;Ljava/lang/String;)Lbjlt;
+    //   65: invokestatic 71	com/tencent/open/business/base/OpenConfig:a	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/open/business/base/OpenConfig;
     //   68: ldc 73
-    //   70: invokevirtual 76	bjlt:a	(Ljava/lang/String;)I
-    //   73: putfield 81	bjmb:jdField_a_of_type_Int	I
+    //   70: invokevirtual 76	com/tencent/open/business/base/OpenConfig:a	(Ljava/lang/String;)I
+    //   73: putfield 81	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
     //   76: aload_0
-    //   77: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lbjmb;
+    //   77: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lcom/tencent/open/business/cgireport/ReportManager;
     //   80: astore 5
     //   82: aload_0
-    //   83: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lbjmb;
-    //   86: getfield 81	bjmb:jdField_a_of_type_Int	I
+    //   83: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lcom/tencent/open/business/cgireport/ReportManager;
+    //   86: getfield 81	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
     //   89: ifne +193 -> 282
     //   92: iconst_3
     //   93: istore_1
     //   94: aload 5
     //   96: iload_1
-    //   97: putfield 81	bjmb:jdField_a_of_type_Int	I
+    //   97: putfield 81	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
     //   100: iconst_0
     //   101: istore_1
     //   102: iconst_0
@@ -72,7 +71,7 @@ public class ReportManager$1
     //   123: iload 4
     //   125: invokevirtual 86	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   128: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: invokestatic 53	bjko:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   131: invokestatic 53	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   134: aconst_null
     //   135: aload_0
     //   136: getfield 17	com/tencent/open/business/cgireport/ReportManager$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -112,11 +111,11 @@ public class ReportManager$1
     //   224: if_icmpeq +69 -> 293
     //   227: ldc 34
     //   229: ldc 156
-    //   231: invokestatic 159	bjko:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   231: invokestatic 159	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   234: aload_0
-    //   235: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lbjmb;
+    //   235: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lcom/tencent/open/business/cgireport/ReportManager;
     //   238: iconst_0
-    //   239: putfield 162	bjmb:jdField_a_of_type_Boolean	Z
+    //   239: putfield 162	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Boolean	Z
     //   242: ldc 34
     //   244: new 36	java/lang/StringBuilder
     //   247: dup
@@ -127,30 +126,30 @@ public class ReportManager$1
     //   257: getfield 17	com/tencent/open/business/cgireport/ReportManager$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   260: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   263: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   266: invokestatic 53	bjko:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   266: invokestatic 53	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   269: iload_1
     //   270: iconst_1
     //   271: if_icmpne +101 -> 372
     //   274: ldc 34
     //   276: ldc 166
-    //   278: invokestatic 53	bjko:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   278: invokestatic 53	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   281: return
     //   282: aload_0
-    //   283: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lbjmb;
-    //   286: getfield 81	bjmb:jdField_a_of_type_Int	I
+    //   283: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lcom/tencent/open/business/cgireport/ReportManager;
+    //   286: getfield 81	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
     //   289: istore_1
     //   290: goto -196 -> 94
     //   293: ldc 34
     //   295: ldc 168
-    //   297: invokestatic 53	bjko:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   297: invokestatic 53	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   300: iconst_1
     //   301: istore_1
     //   302: goto -68 -> 234
     //   305: astore 5
-    //   307: getstatic 169	bjmb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   307: getstatic 169	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   310: ldc 171
     //   312: aload 5
-    //   314: invokestatic 175	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   314: invokestatic 175	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   317: iload_1
     //   318: istore_2
     //   319: iload_2
@@ -159,17 +158,17 @@ public class ReportManager$1
     //   323: istore_3
     //   324: iload 4
     //   326: aload_0
-    //   327: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lbjmb;
-    //   330: getfield 81	bjmb:jdField_a_of_type_Int	I
+    //   327: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lcom/tencent/open/business/cgireport/ReportManager;
+    //   330: getfield 81	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
     //   333: if_icmplt -229 -> 104
     //   336: iload_2
     //   337: istore_1
     //   338: goto -104 -> 234
     //   341: astore 5
-    //   343: getstatic 169	bjmb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   343: getstatic 169	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   346: ldc 177
     //   348: aload 5
-    //   350: invokestatic 175	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   350: invokestatic 175	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   353: iload_1
     //   354: istore_2
     //   355: goto -36 -> 319
@@ -177,18 +176,18 @@ public class ReportManager$1
     //   360: ldc 34
     //   362: ldc 179
     //   364: aload 5
-    //   366: invokestatic 175	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   366: invokestatic 175	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   369: goto -135 -> 234
     //   372: ldc 34
     //   374: ldc 181
-    //   376: invokestatic 159	bjko:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   376: invokestatic 159	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   379: aload_0
-    //   380: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lbjmb;
-    //   383: getfield 184	bjmb:jdField_a_of_type_Bjlz	Lbjlz;
+    //   380: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lcom/tencent/open/business/cgireport/ReportManager;
+    //   383: getfield 184	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal	Lcom/tencent/open/business/cgireport/ReportDataModal;
     //   386: aload_0
-    //   387: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lbjmb;
-    //   390: getfield 187	bjmb:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   393: invokevirtual 192	bjlz:a	(Ljava/util/ArrayList;)I
+    //   387: getfield 15	com/tencent/open/business/cgireport/ReportManager$1:this$0	Lcom/tencent/open/business/cgireport/ReportManager;
+    //   390: getfield 187	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   393: invokevirtual 192	com/tencent/open/business/cgireport/ReportDataModal:a	(Ljava/util/ArrayList;)I
     //   396: pop
     //   397: return
     //   398: astore 5
@@ -240,7 +239,7 @@ public class ReportManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.business.cgireport.ReportManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ public final class UniBusiExtraInfo
 {
   public String faceHashId = "";
   public String headurl = "";
-  public int isOnShelf;
-  public int isShow;
-  public int limitFree;
+  public int isOnShelf = 0;
+  public int isShow = 0;
+  public int limitFree = 0;
   public String mallname = "";
   public String mallurl = "";
-  public int price;
+  public int price = 0;
   public String productIcon = "";
   public String productName = "";
-  public long sourceId;
+  public long sourceId = 0L;
   public String strxyjson = "";
-  public int svipLevel;
-  public int svipMonth;
-  public int validDay;
+  public int svipLevel = 0;
+  public int svipMonth = 0;
+  public int validDay = 0;
   
   public UniBusiExtraInfo() {}
   

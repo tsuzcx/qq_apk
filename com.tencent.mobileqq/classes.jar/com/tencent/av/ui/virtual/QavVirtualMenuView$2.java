@@ -1,11 +1,9 @@
 package com.tencent.av.ui.virtual;
 
 import android.os.SystemClock;
-import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.av.opengl.effects.AEFilterSupport;
+import com.tencent.av.opengl.effects.EffectsRenderController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
-import lph;
 
 class QavVirtualMenuView$2
   implements Runnable
@@ -14,26 +12,16 @@ class QavVirtualMenuView$2
   
   public void run()
   {
-    long l;
-    if ((lph.b()) && (AEFilterSupport.a() > 3)) {
-      l = SystemClock.elapsedRealtime();
-    }
-    try
+    if ((EffectsRenderController.b()) && (AEFilterSupport.a() > 3))
     {
-      AIManager.installDetector(PTHumanSegmenter.class);
-      label23:
+      long l = SystemClock.elapsedRealtime();
       QLog.i(QavVirtualMenuView.a(this.this$0), 1, "preload PTHumanSegmenter, cost[" + (SystemClock.elapsedRealtime() - l) + "]");
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      break label23;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.virtual.QavVirtualMenuView.2
  * JD-Core Version:    0.7.0.1
  */

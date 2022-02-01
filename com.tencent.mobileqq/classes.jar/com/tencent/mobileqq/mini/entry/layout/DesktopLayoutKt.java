@@ -19,11 +19,10 @@ import android.widget.TextView;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
-import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"buildDesktopEntryLayout", "Landroid/view/View;", "context", "Landroid/content/Context;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"buildDesktopEntryLayout", "Landroid/view/View;", "context", "Landroid/content/Context;", "qqmini_impl_release"}, k=2, mv={1, 1, 16})
 public final class DesktopLayoutKt
 {
   @NotNull
@@ -37,187 +36,178 @@ public final class DesktopLayoutKt
     label62:
     label85:
     label108:
-    label247:
-    label376:
+    label242:
     Object localObject7;
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
       if (paramContext.getLayoutParams() == null) {
-        break label852;
+        break label827;
       }
       paramContext.getLayoutParams().width = -1;
       paramContext.getLayoutParams().height = i;
       paramContext = (View)localFrameLayout;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label871;
+        break label846;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
       if (paramContext.getLayoutParams() == null) {
-        break label876;
+        break label851;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -1;
       paramContext = (ViewGroup)localFrameLayout;
       localObject1 = new ImageView(paramContext.getContext());
       ((ImageView)localObject1).setTag(paramContext);
-      localObject2 = Unit.INSTANCE;
-      ((ImageView)localObject1).setId(2131371201);
+      ((ImageView)localObject1).setId(2131371480);
+      localObject2 = (View)localObject1;
+      localObject3 = ((View)localObject2).getLayoutParams();
+      if (localObject3 == null) {
+        break label870;
+      }
+      i = ((ViewGroup.LayoutParams)localObject3).height;
+      label165:
+      if (((View)localObject2).getLayoutParams() == null) {
+        break label875;
+      }
+      ((View)localObject2).getLayoutParams().width = -1;
+      ((View)localObject2).getLayoutParams().height = i;
+      label191:
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 == null) {
         break label895;
       }
-      i = ((ViewGroup.LayoutParams)localObject3).height;
-      label170:
+      i = ((ViewGroup.LayoutParams)localObject3).width;
+      label216:
       if (((View)localObject2).getLayoutParams() == null) {
         break label900;
-      }
-      ((View)localObject2).getLayoutParams().width = -1;
-      ((View)localObject2).getLayoutParams().height = i;
-      label196:
-      localObject2 = (View)localObject1;
-      localObject3 = ((View)localObject2).getLayoutParams();
-      if (localObject3 == null) {
-        break label920;
-      }
-      i = ((ViewGroup.LayoutParams)localObject3).width;
-      label221:
-      if (((View)localObject2).getLayoutParams() == null) {
-        break label925;
       }
       ((View)localObject2).getLayoutParams().width = i;
       ((View)localObject2).getLayoutParams().height = -1;
       ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
       paramContext.addView((View)localObject1);
-      paramContext = Unit.INSTANCE;
       localObject2 = (ViewGroup)localFrameLayout;
       localObject3 = new LinearLayout(((ViewGroup)localObject2).getContext());
       ((LinearLayout)localObject3).setTag(localObject2);
-      paramContext = Unit.INSTANCE;
-      ((LinearLayout)localObject3).setId(2131371242);
+      ((LinearLayout)localObject3).setId(2131371521);
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label945;
+        break label920;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label330:
+      label317:
       if (paramContext.getLayoutParams() == null) {
-        break label950;
+        break label925;
       }
       paramContext.getLayoutParams().width = -1;
       paramContext.getLayoutParams().height = i;
-      label353:
+      label340:
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label969;
+        break label944;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
+      label363:
       if (paramContext.getLayoutParams() == null) {
-        break label974;
+        break label949;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -1;
-      label399:
+      label386:
       localObject1 = ((View)localObject3).getLayoutParams();
       paramContext = (Context)localObject1;
       if (!(localObject1 instanceof ViewGroup.MarginLayoutParams)) {
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.bottomMargin = LayoutAttrsKt.getDp(65);
-        paramContext = Unit.INSTANCE;
       }
       ((LinearLayout)localObject3).setOrientation(1);
       localObject4 = (ViewGroup)localObject3;
       localObject5 = new RelativeLayout(((ViewGroup)localObject4).getContext());
       ((RelativeLayout)localObject5).setTag(localObject4);
-      paramContext = Unit.INSTANCE;
-      ((RelativeLayout)localObject5).setId(2131370930);
+      ((RelativeLayout)localObject5).setId(2131371208);
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label993;
+        break label968;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label512:
+      label491:
       if (paramContext.getLayoutParams() == null) {
-        break label998;
+        break label973;
       }
       paramContext.getLayoutParams().width = -1;
       paramContext.getLayoutParams().height = i;
-      label535:
+      label514:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label1017;
+        break label992;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label558:
+      label537:
       j = LayoutAttrsKt.getDp(45);
       if (paramContext.getLayoutParams() == null) {
-        break label1022;
+        break label997;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label587:
+      label566:
       ((ViewGroup)localObject5).setClipChildren(false);
       localObject6 = (ViewGroup)localObject5;
       localObject7 = new TextView(((ViewGroup)localObject6).getContext());
       ((TextView)localObject7).setTag(localObject6);
-      paramContext = Unit.INSTANCE;
-      ((TextView)localObject7).setId(2131371195);
+      ((TextView)localObject7).setId(2131371474);
+      paramContext = (View)localObject7;
+      localObject1 = paramContext.getLayoutParams();
+      if (localObject1 == null) {
+        break label1016;
+      }
+      i = ((ViewGroup.LayoutParams)localObject1).height;
+      label633:
+      if (paramContext.getLayoutParams() == null) {
+        break label1021;
+      }
+      paramContext.getLayoutParams().width = -2;
+      paramContext.getLayoutParams().height = i;
+      label657:
       paramContext = (View)localObject7;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
         break label1041;
       }
-      i = ((ViewGroup.LayoutParams)localObject1).height;
-      label658:
+      i = ((ViewGroup.LayoutParams)localObject1).width;
+      label680:
       if (paramContext.getLayoutParams() == null) {
         break label1046;
       }
-      paramContext.getLayoutParams().width = -2;
-      paramContext.getLayoutParams().height = i;
-      label682:
-      paramContext = (View)localObject7;
-      localObject1 = paramContext.getLayoutParams();
-      if (localObject1 == null) {
-        break label1066;
-      }
-      i = ((ViewGroup.LayoutParams)localObject1).width;
-      label705:
-      if (paramContext.getLayoutParams() == null) {
-        break label1071;
-      }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
-      label729:
+      label704:
       localObject8 = (View)localObject7;
       paramContext = ((View)localObject8).getLayoutParams();
       if (paramContext == null) {
-        break label1091;
+        break label1066;
       }
       i = paramContext.width;
-      label751:
+      label726:
       paramContext = ((View)localObject8).getLayoutParams();
       if (paramContext == null) {
-        break label1100;
+        break label1075;
       }
     }
     int k;
     label900:
     label920:
     label925:
-    label945:
-    label950:
-    label969:
-    label1100:
+    label944:
+    label1075:
     for (int j = paramContext.height;; j = ((View)localObject8).getHeight())
     {
       localObject9 = new RelativeLayout.LayoutParams(i, j);
@@ -228,11 +218,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label1113;
+        break label1084;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label1113;
+        break label1084;
       }
       i = 0;
       k = paramContext.length;
@@ -245,124 +235,122 @@ public final class DesktopLayoutKt
       }
       i = 0;
       break;
-      label852:
+      label827:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
       break label62;
-      label871:
+      label846:
       i = 0;
       break label85;
-      label876:
+      label851:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
       break label108;
+      label870:
+      i = 0;
+      break label165;
+      label875:
+      ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
+      break label191;
       label895:
       i = 0;
-      break label170;
-      ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
-      break label196;
-      i = 0;
-      break label221;
+      break label216;
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
-      break label247;
+      break label242;
       i = 0;
-      break label330;
+      break label317;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
-      break label353;
+      break label340;
       i = 0;
-      break label376;
-      label974:
+      break label363;
+      label949:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
-      break label399;
-      label993:
+      break label386;
+      label968:
       i = 0;
-      break label512;
-      label998:
+      break label491;
+      label973:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
-      break label535;
-      label1017:
+      break label514;
+      label992:
       i = 0;
-      break label558;
-      label1022:
+      break label537;
+      label997:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label587;
+      break label566;
+      label1016:
       i = 0;
-      break label658;
+      break label633;
+      label1021:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label682;
+      break label657;
       i = 0;
-      break label705;
+      break label680;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
-      break label729;
+      break label704;
       i = ((View)localObject8).getWidth();
-      break label751;
+      break label726;
     }
     label1041:
     label1046:
     label1066:
-    label1071:
-    label1091:
-    paramContext = Unit.INSTANCE;
-    label1113:
+    label1084:
     ((RelativeLayout.LayoutParams)localObject9).addRule(13, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject8).setLayoutParams((ViewGroup.LayoutParams)localObject9);
     if (("QQ小程序" instanceof Integer))
     {
       ((TextView)localObject7).setText(((Number)"QQ小程序").intValue());
-      ((TextView)localObject7).setTextColor(((TextView)localObject7).getResources().getColor(2131167033));
+      ((TextView)localObject7).setTextColor(((TextView)localObject7).getResources().getColor(2131167040));
       ((TextView)localObject7).setTextSize(17.0F);
       ((ViewGroup)localObject6).addView((View)localObject7);
-      paramContext = Unit.INSTANCE;
       localObject6 = (ViewGroup)localObject5;
       localObject7 = new RelativeLayout(((ViewGroup)localObject6).getContext());
       ((RelativeLayout)localObject7).setTag(localObject6);
-      paramContext = Unit.INSTANCE;
-      ((RelativeLayout)localObject7).setId(2131371148);
+      ((RelativeLayout)localObject7).setId(2131371427);
       paramContext = (View)localObject7;
       j = LayoutAttrsKt.getDp(80);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label1466;
+        break label1425;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label1260:
+      label1219:
       if (paramContext.getLayoutParams() == null) {
-        break label1471;
+        break label1430;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label1283:
+      label1242:
       paramContext = (View)localObject7;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label1490;
+        break label1449;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label1306:
+      label1265:
       j = LayoutAttrsKt.getDp(30);
       if (paramContext.getLayoutParams() == null) {
-        break label1495;
+        break label1454;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label1335:
+      label1294:
       localObject8 = (View)localObject7;
       paramContext = ((View)localObject8).getLayoutParams();
       if (paramContext == null) {
-        break label1514;
+        break label1473;
       }
       i = paramContext.width;
-      label1357:
+      label1316:
       paramContext = ((View)localObject8).getLayoutParams();
       if (paramContext == null) {
-        break label1523;
+        break label1482;
       }
     }
-    label1466:
-    label1471:
-    label1490:
-    label1495:
-    label1514:
-    label1523:
+    label1425:
+    label1430:
+    label1449:
+    label1454:
+    label1473:
+    label1482:
     for (j = paramContext.height;; j = ((View)localObject8).getHeight())
     {
       localObject9 = new RelativeLayout.LayoutParams(i, j);
@@ -373,11 +361,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label1536;
+        break label1491;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label1536;
+        break label1491;
       }
       i = 0;
       k = paramContext.length;
@@ -391,20 +379,18 @@ public final class DesktopLayoutKt
       ((TextView)localObject7).setText((CharSequence)"QQ小程序");
       break;
       i = 0;
-      break label1260;
+      break label1219;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label1283;
+      break label1242;
       i = 0;
-      break label1306;
+      break label1265;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label1335;
+      break label1294;
       i = ((View)localObject8).getWidth();
-      break label1357;
+      break label1316;
     }
-    paramContext = Unit.INSTANCE;
-    label1536:
+    label1491:
     ((RelativeLayout.LayoutParams)localObject9).addRule(11, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject8).setLayoutParams((ViewGroup.LayoutParams)localObject9);
     Object localObject8 = (View)localObject7;
     paramContext = ((View)localObject8).getLayoutParams();
@@ -413,10 +399,10 @@ public final class DesktopLayoutKt
       i = paramContext.width;
       paramContext = ((View)localObject8).getLayoutParams();
       if (paramContext == null) {
-        break label1685;
+        break label1636;
       }
     }
-    label1685:
+    label1636:
     for (j = paramContext.height;; j = ((View)localObject8).getHeight())
     {
       localObject9 = new RelativeLayout.LayoutParams(i, j);
@@ -427,11 +413,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label1698;
+        break label1645;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label1698;
+        break label1645;
       }
       i = 0;
       k = paramContext.length;
@@ -445,10 +431,8 @@ public final class DesktopLayoutKt
       i = ((View)localObject8).getWidth();
       break;
     }
-    paramContext = Unit.INSTANCE;
-    label1698:
+    label1645:
     ((RelativeLayout.LayoutParams)localObject9).addRule(13, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject8).setLayoutParams((ViewGroup.LayoutParams)localObject9);
     localObject1 = ((View)localObject7).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -456,13 +440,11 @@ public final class DesktopLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(10);
-      paramContext = Unit.INSTANCE;
     }
     paramContext = (View)localObject7;
-    localObject1 = Integer.valueOf(2130850268);
+    localObject1 = Integer.valueOf(2130850666);
     if ((localObject1 instanceof String))
     {
       paramContext.setBackgroundColor(Color.parseColor((String)localObject1));
@@ -471,54 +453,51 @@ public final class DesktopLayoutKt
       localObject8 = (ViewGroup)localObject7;
       localObject9 = new RelativeLayout(((ViewGroup)localObject8).getContext());
       ((RelativeLayout)localObject9).setTag(localObject8);
-      paramContext = Unit.INSTANCE;
-      ((RelativeLayout)localObject9).setId(2131371183);
+      ((RelativeLayout)localObject9).setId(2131371462);
       paramContext = (View)localObject9;
       j = LayoutAttrsKt.getDp(22);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label2090;
+        break label2025;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label1882:
+      label1817:
       if (paramContext.getLayoutParams() == null) {
-        break label2095;
+        break label2030;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label1905:
+      label1840:
       paramContext = (View)localObject9;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label2114;
+        break label2049;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label1928:
+      label1863:
       j = LayoutAttrsKt.getDp(22);
       if (paramContext.getLayoutParams() == null) {
-        break label2119;
+        break label2054;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label1957:
+      label1892:
       localObject10 = (View)localObject9;
       paramContext = ((View)localObject10).getLayoutParams();
       if (paramContext == null) {
-        break label2138;
+        break label2073;
       }
       i = paramContext.width;
-      label1979:
+      label1914:
       paramContext = ((View)localObject10).getLayoutParams();
       if (paramContext == null) {
-        break label2147;
+        break label2082;
       }
     }
-    label2090:
-    label2095:
-    label2114:
-    label2119:
-    label2138:
-    label2147:
+    label2049:
+    label2054:
+    label2073:
+    label2082:
     for (j = paramContext.height;; j = ((View)localObject10).getHeight())
     {
       localObject11 = new RelativeLayout.LayoutParams(i, j);
@@ -529,11 +508,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label2160;
+        break label2091;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label2160;
+        break label2091;
       }
       i = 0;
       k = paramContext.length;
@@ -546,21 +525,21 @@ public final class DesktopLayoutKt
       }
       paramContext.setBackgroundResource(((Number)localObject1).intValue());
       break;
+      label2025:
       i = 0;
-      break label1882;
+      break label1817;
+      label2030:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label1905;
+      break label1840;
       i = 0;
-      break label1928;
+      break label1863;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label1957;
+      break label1892;
       i = ((View)localObject10).getWidth();
-      break label1979;
+      break label1914;
     }
-    paramContext = Unit.INSTANCE;
-    label2160:
+    label2091:
     ((RelativeLayout.LayoutParams)localObject11).addRule(9, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject10).setLayoutParams((ViewGroup.LayoutParams)localObject11);
     Object localObject10 = (View)localObject9;
     paramContext = ((View)localObject10).getLayoutParams();
@@ -569,10 +548,10 @@ public final class DesktopLayoutKt
       i = paramContext.width;
       paramContext = ((View)localObject10).getLayoutParams();
       if (paramContext == null) {
-        break label2309;
+        break label2236;
       }
     }
-    label2309:
+    label2236:
     for (j = paramContext.height;; j = ((View)localObject10).getHeight())
     {
       localObject11 = new RelativeLayout.LayoutParams(i, j);
@@ -583,11 +562,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label2322;
+        break label2245;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label2322;
+        break label2245;
       }
       i = 0;
       k = paramContext.length;
@@ -601,10 +580,8 @@ public final class DesktopLayoutKt
       i = ((View)localObject10).getWidth();
       break;
     }
-    paramContext = Unit.INSTANCE;
-    label2322:
+    label2245:
     ((RelativeLayout.LayoutParams)localObject11).addRule(13, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject10).setLayoutParams((ViewGroup.LayoutParams)localObject11);
     localObject1 = ((View)localObject9).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -612,17 +589,14 @@ public final class DesktopLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.leftMargin = LayoutAttrsKt.getDp(10);
-      paramContext = Unit.INSTANCE;
     }
     ((ViewGroup)localObject9).setClipChildren(false);
     paramContext = (ViewGroup)localObject9;
     localObject1 = new ImageView(paramContext.getContext());
     ((ImageView)localObject1).setTag(paramContext);
-    localObject10 = Unit.INSTANCE;
-    ((ImageView)localObject1).setId(2131371182);
+    ((ImageView)localObject1).setId(2131371461);
     localObject10 = (View)localObject1;
     j = LayoutAttrsKt.getDp(22);
     Object localObject11 = ((View)localObject10).getLayoutParams();
@@ -630,52 +604,46 @@ public final class DesktopLayoutKt
     {
       i = ((ViewGroup.LayoutParams)localObject11).height;
       if (((View)localObject10).getLayoutParams() == null) {
-        break label2737;
+        break label2639;
       }
       ((View)localObject10).getLayoutParams().width = j;
       ((View)localObject10).getLayoutParams().height = i;
-      label2492:
+      label2402:
       localObject10 = (View)localObject1;
       localObject11 = ((View)localObject10).getLayoutParams();
       if (localObject11 == null) {
-        break label2757;
+        break label2659;
       }
       i = ((ViewGroup.LayoutParams)localObject11).width;
-      label2517:
+      label2427:
       j = LayoutAttrsKt.getDp(22);
       if (((View)localObject10).getLayoutParams() == null) {
-        break label2762;
+        break label2664;
       }
       ((View)localObject10).getLayoutParams().width = i;
       ((View)localObject10).getLayoutParams().height = j;
-      label2549:
-      ((ImageView)localObject1).setImageResource(2130841017);
+      label2459:
+      ((ImageView)localObject1).setImageResource(2130841149);
       ((ImageView)localObject1).setVisibility(0);
       paramContext.addView((View)localObject1);
-      paramContext = Unit.INSTANCE;
       localObject10 = (ViewGroup)localObject9;
       localObject11 = new TextView(((ViewGroup)localObject10).getContext());
       ((TextView)localObject11).setTag(localObject10);
-      paramContext = Unit.INSTANCE;
-      ((TextView)localObject11).setId(2131371184);
+      ((TextView)localObject11).setId(2131371463);
       localView = (View)localObject11;
       paramContext = localView.getLayoutParams();
       if (paramContext == null) {
-        break label2782;
+        break label2684;
       }
       i = paramContext.width;
-      label2636:
+      label2538:
       paramContext = localView.getLayoutParams();
       if (paramContext == null) {
-        break label2791;
+        break label2693;
       }
     }
     RelativeLayout.LayoutParams localLayoutParams;
-    label2737:
-    label2757:
-    label2762:
-    label2782:
-    label2791:
+    label2693:
     for (j = paramContext.height;; j = localView.getHeight())
     {
       localLayoutParams = new RelativeLayout.LayoutParams(i, j);
@@ -686,11 +654,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label2804;
+        break label2702;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label2804;
+        break label2702;
       }
       i = 0;
       k = paramContext.length;
@@ -703,19 +671,21 @@ public final class DesktopLayoutKt
       }
       i = 0;
       break;
+      label2639:
       ((View)localObject10).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label2492;
+      break label2402;
+      label2659:
       i = 0;
-      break label2517;
+      break label2427;
+      label2664:
       ((View)localObject10).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label2549;
+      break label2459;
+      label2684:
       i = localView.getWidth();
-      break label2636;
+      break label2538;
     }
-    paramContext = Unit.INSTANCE;
-    label2804:
+    label2702:
     localLayoutParams.addRule(9, -1);
-    paramContext = Unit.INSTANCE;
     localView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
     View localView = (View)localObject11;
     paramContext = localView.getLayoutParams();
@@ -724,10 +694,10 @@ public final class DesktopLayoutKt
       i = paramContext.width;
       paramContext = localView.getLayoutParams();
       if (paramContext == null) {
-        break label2953;
+        break label2847;
       }
     }
-    label2953:
+    label2847:
     for (j = paramContext.height;; j = localView.getHeight())
     {
       localLayoutParams = new RelativeLayout.LayoutParams(i, j);
@@ -738,11 +708,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label2966;
+        break label2856;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label2966;
+        break label2856;
       }
       i = 0;
       k = paramContext.length;
@@ -756,10 +726,8 @@ public final class DesktopLayoutKt
       i = localView.getWidth();
       break;
     }
-    paramContext = Unit.INSTANCE;
-    label2966:
+    label2856:
     localLayoutParams.addRule(11, -1);
-    paramContext = Unit.INSTANCE;
     localView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
     localObject1 = ((View)localObject11).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -767,10 +735,8 @@ public final class DesktopLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(-10);
-      paramContext = Unit.INSTANCE;
     }
     localObject1 = ((View)localObject11).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -778,21 +744,16 @@ public final class DesktopLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(-8);
-      paramContext = Unit.INSTANCE;
     }
     ((TextView)localObject11).setVisibility(0);
     ((ViewGroup)localObject10).addView((View)localObject11);
-    paramContext = Unit.INSTANCE;
     ((ViewGroup)localObject8).addView((View)localObject9);
-    paramContext = Unit.INSTANCE;
     localObject8 = (ViewGroup)localObject7;
     Object localObject9 = new ImageView(((ViewGroup)localObject8).getContext());
     ((ImageView)localObject9).setTag(localObject8);
-    paramContext = Unit.INSTANCE;
-    ((ImageView)localObject9).setId(2131371179);
+    ((ImageView)localObject9).setId(2131371458);
     paramContext = (View)localObject9;
     j = LayoutAttrsKt.getDp(22);
     localObject1 = paramContext.getLayoutParams();
@@ -800,42 +761,42 @@ public final class DesktopLayoutKt
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
       if (paramContext.getLayoutParams() == null) {
-        break label3378;
+        break label3244;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label3203:
+      label3069:
       paramContext = (View)localObject9;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label3397;
+        break label3263;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label3226:
+      label3092:
       j = LayoutAttrsKt.getDp(22);
       if (paramContext.getLayoutParams() == null) {
-        break label3402;
+        break label3268;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label3255:
+      label3121:
       localObject10 = (View)localObject9;
       paramContext = ((View)localObject10).getLayoutParams();
       if (paramContext == null) {
-        break label3421;
+        break label3287;
       }
       i = paramContext.width;
-      label3277:
+      label3143:
       paramContext = ((View)localObject10).getLayoutParams();
       if (paramContext == null) {
-        break label3430;
+        break label3296;
       }
     }
-    label3378:
-    label3397:
-    label3402:
-    label3421:
-    label3430:
+    label3244:
+    label3263:
+    label3268:
+    label3287:
+    label3296:
     for (j = paramContext.height;; j = ((View)localObject10).getHeight())
     {
       localObject11 = new RelativeLayout.LayoutParams(i, j);
@@ -846,11 +807,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label3443;
+        break label3305;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label3443;
+        break label3305;
       }
       i = 0;
       k = paramContext.length;
@@ -864,18 +825,16 @@ public final class DesktopLayoutKt
       i = 0;
       break;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label3203;
+      break label3069;
       i = 0;
-      break label3226;
+      break label3092;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label3255;
+      break label3121;
       i = ((View)localObject10).getWidth();
-      break label3277;
+      break label3143;
     }
-    paramContext = Unit.INSTANCE;
-    label3443:
+    label3305:
     ((RelativeLayout.LayoutParams)localObject11).addRule(11, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject10).setLayoutParams((ViewGroup.LayoutParams)localObject11);
     localObject10 = (View)localObject9;
     paramContext = ((View)localObject10).getLayoutParams();
@@ -884,10 +843,10 @@ public final class DesktopLayoutKt
       i = paramContext.width;
       paramContext = ((View)localObject10).getLayoutParams();
       if (paramContext == null) {
-        break label3592;
+        break label3450;
       }
     }
-    label3592:
+    label3450:
     for (j = paramContext.height;; j = ((View)localObject10).getHeight())
     {
       localObject11 = new RelativeLayout.LayoutParams(i, j);
@@ -898,11 +857,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label3605;
+        break label3459;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label3605;
+        break label3459;
       }
       i = 0;
       k = paramContext.length;
@@ -916,10 +875,8 @@ public final class DesktopLayoutKt
       i = ((View)localObject10).getWidth();
       break;
     }
-    paramContext = Unit.INSTANCE;
-    label3605:
+    label3459:
     ((RelativeLayout.LayoutParams)localObject11).addRule(13, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject10).setLayoutParams((ViewGroup.LayoutParams)localObject11);
     localObject1 = ((View)localObject9).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -927,47 +884,41 @@ public final class DesktopLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(10);
-      paramContext = Unit.INSTANCE;
     }
-    ((ImageView)localObject9).setImageResource(2130840999);
+    ((ImageView)localObject9).setImageResource(2130841131);
     ((ViewGroup)localObject8).addView((View)localObject9);
-    paramContext = Unit.INSTANCE;
     ((ViewGroup)localObject6).addView((View)localObject7);
-    paramContext = Unit.INSTANCE;
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     paramContext = (ViewGroup)localObject3;
     localObject1 = new DragRecyclerView(paramContext.getContext());
     ((DragRecyclerView)localObject1).setTag(paramContext);
-    Object localObject4 = Unit.INSTANCE;
-    ((DragRecyclerView)localObject1).setId(2131370931);
-    localObject4 = (View)localObject1;
+    ((DragRecyclerView)localObject1).setId(2131371209);
+    Object localObject4 = (View)localObject1;
     Object localObject5 = ((View)localObject4).getLayoutParams();
     if (localObject5 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject5).height;
       if (((View)localObject4).getLayoutParams() == null) {
-        break label4171;
+        break label3986;
       }
       ((View)localObject4).getLayoutParams().width = -1;
       ((View)localObject4).getLayoutParams().height = i;
-      label3809:
+      label3638:
       localObject4 = (View)localObject1;
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 == null) {
-        break label4191;
+        break label4006;
       }
       i = ((ViewGroup.LayoutParams)localObject5).width;
-      label3834:
+      label3663:
       if (((View)localObject4).getLayoutParams() == null) {
-        break label4196;
+        break label4011;
       }
       ((View)localObject4).getLayoutParams().width = i;
       ((View)localObject4).getLayoutParams().height = -1;
-      label3860:
+      label3689:
       ((ViewGroup)localObject1).setClipChildren(false);
       ((ViewGroup)localObject1).setClipToPadding(false);
       ((DragRecyclerView)localObject1).setOverScrollMode(2);
@@ -976,37 +927,34 @@ public final class DesktopLayoutKt
       localObject4 = (View)localObject1;
       ((View)localObject4).setPadding(((View)localObject4).getPaddingLeft(), ((View)localObject4).getPaddingTop(), LayoutAttrsKt.getDp(20), ((View)localObject4).getPaddingBottom());
       paramContext.addView((View)localObject1);
-      paramContext = Unit.INSTANCE;
       ((ViewGroup)localObject2).addView((View)localObject3);
-      paramContext = Unit.INSTANCE;
       paramContext = (ViewGroup)localFrameLayout;
       localObject1 = new LinearLayout(paramContext.getContext());
       ((LinearLayout)localObject1).setTag(paramContext);
-      localObject2 = Unit.INSTANCE;
-      ((LinearLayout)localObject1).setId(2131371239);
+      ((LinearLayout)localObject1).setId(2131371518);
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 == null) {
-        break label4216;
+        break label4031;
       }
       i = ((ViewGroup.LayoutParams)localObject3).height;
-      label4038:
+      label3853:
       if (((View)localObject2).getLayoutParams() == null) {
-        break label4221;
+        break label4036;
       }
       ((View)localObject2).getLayoutParams().width = -1;
       ((View)localObject2).getLayoutParams().height = i;
-      label4064:
+      label3879:
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 == null) {
-        break label4241;
+        break label4056;
       }
       i = ((ViewGroup.LayoutParams)localObject3).width;
-      label4089:
+      label3904:
       j = LayoutAttrsKt.getDp(65);
       if (((View)localObject2).getLayoutParams() == null) {
-        break label4246;
+        break label4061;
       }
       ((View)localObject2).getLayoutParams().width = i;
       ((View)localObject2).getLayoutParams().height = j;
@@ -1016,112 +964,107 @@ public final class DesktopLayoutKt
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getTag();
       if (!(localObject3 instanceof FrameLayout)) {
-        break label4716;
+        break label4507;
       }
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 != null) {
-        break label4266;
+        break label4081;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
       i = 0;
       break;
-      label4171:
+      label3986:
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
-      break label3809;
-      label4191:
+      break label3638;
+      label4006:
       i = 0;
-      break label3834;
-      label4196:
+      break label3663;
+      label4011:
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
-      break label3860;
-      label4216:
+      break label3689;
+      label4031:
       i = 0;
-      break label4038;
-      label4221:
+      break label3853;
+      label4036:
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
-      break label4064;
-      label4241:
+      break label3879;
+      label4056:
       i = 0;
-      break label4089;
-      label4246:
+      break label3904;
+      label4061:
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    label4266:
+    label4081:
     Object localObject3 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject3);
     ((FrameLayout.LayoutParams)localObject3).gravity = 80;
-    localObject4 = Unit.INSTANCE;
     ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
     Object localObject2 = (View)localObject1;
-    localObject3 = Integer.valueOf(2130838912);
+    localObject3 = Integer.valueOf(2130838980);
     if ((localObject3 instanceof String))
     {
       ((View)localObject2).setBackgroundColor(Color.parseColor((String)localObject3));
-      label4338:
+      label4148:
       ((LinearLayout)localObject1).setGravity(17);
       localObject2 = (ViewGroup)localObject1;
       localObject3 = new ImageView(((ViewGroup)localObject2).getContext());
       ((ImageView)localObject3).setTag(localObject2);
-      localObject4 = Unit.INSTANCE;
-      ((ImageView)localObject3).setId(2131371240);
+      ((ImageView)localObject3).setId(2131371519);
       localObject4 = (View)localObject3;
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 == null) {
-        break label4802;
+        break label4588;
       }
       i = ((ViewGroup.LayoutParams)localObject5).height;
-      label4411:
+      label4216:
       if (((View)localObject4).getLayoutParams() == null) {
-        break label4807;
+        break label4593;
       }
       ((View)localObject4).getLayoutParams().width = -2;
       ((View)localObject4).getLayoutParams().height = i;
-      label4438:
+      label4243:
       localObject4 = (View)localObject3;
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 == null) {
-        break label4828;
+        break label4614;
       }
       i = ((ViewGroup.LayoutParams)localObject5).width;
-      label4463:
+      label4268:
       if (((View)localObject4).getLayoutParams() == null) {
-        break label4833;
+        break label4619;
       }
       ((View)localObject4).getLayoutParams().width = i;
       ((View)localObject4).getLayoutParams().height = -1;
-      label4489:
-      ((ImageView)localObject3).setImageResource(2130841000);
+      label4294:
+      ((ImageView)localObject3).setImageResource(2130841132);
       ((ViewGroup)localObject2).addView((View)localObject3);
-      localObject2 = Unit.INSTANCE;
       paramContext.addView((View)localObject1);
-      paramContext = Unit.INSTANCE;
       paramContext = (ViewGroup)localFrameLayout;
       localObject1 = new LinearLayout(paramContext.getContext());
       ((LinearLayout)localObject1).setTag(paramContext);
-      localObject2 = Unit.INSTANCE;
-      ((LinearLayout)localObject1).setId(2131365499);
+      ((LinearLayout)localObject1).setId(2131365660);
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 == null) {
-        break label4853;
+        break label4639;
       }
       i = ((ViewGroup.LayoutParams)localObject3).height;
-      label4588:
+      label4379:
       if (((View)localObject2).getLayoutParams() == null) {
-        break label4858;
+        break label4644;
       }
       ((View)localObject2).getLayoutParams().width = -1;
       ((View)localObject2).getLayoutParams().height = i;
-      label4614:
+      label4405:
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 == null) {
-        break label4878;
+        break label4664;
       }
       i = ((ViewGroup.LayoutParams)localObject3).width;
-      label4639:
+      label4430:
       j = LayoutAttrsKt.getDp(65);
       if (((View)localObject2).getLayoutParams() == null) {
-        break label4883;
+        break label4669;
       }
       ((View)localObject2).getLayoutParams().width = i;
       ((View)localObject2).getLayoutParams().height = j;
@@ -1131,14 +1074,14 @@ public final class DesktopLayoutKt
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getTag();
       if (!(localObject3 instanceof FrameLayout)) {
-        break label5689;
+        break label5444;
       }
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 != null) {
-        break label4903;
+        break label4689;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label4716:
+      label4507:
       if (!(localObject3 instanceof LinearLayout)) {
         break;
       }
@@ -1148,183 +1091,178 @@ public final class DesktopLayoutKt
       }
       localObject3 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject3);
       ((LinearLayout.LayoutParams)localObject3).gravity = 80;
-      localObject4 = Unit.INSTANCE;
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
       break;
       ((View)localObject2).setBackgroundResource(((Number)localObject3).intValue());
-      break label4338;
-      label4802:
+      break label4148;
+      label4588:
       i = 0;
-      break label4411;
-      label4807:
+      break label4216;
+      label4593:
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label4438;
-      label4828:
+      break label4243;
+      label4614:
       i = 0;
-      break label4463;
-      label4833:
+      break label4268;
+      label4619:
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
-      break label4489;
-      label4853:
+      break label4294;
+      label4639:
       i = 0;
-      break label4588;
-      label4858:
+      break label4379;
+      label4644:
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
-      break label4614;
-      label4878:
+      break label4405;
+      label4664:
       i = 0;
-      break label4639;
-      label4883:
+      break label4430;
+      label4669:
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    label4903:
+    label4689:
     localObject3 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject3);
     ((FrameLayout.LayoutParams)localObject3).gravity = 80;
-    localObject4 = Unit.INSTANCE;
     ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
     localObject2 = (View)localObject1;
-    localObject3 = Integer.valueOf(2130841002);
+    localObject3 = Integer.valueOf(2130841134);
     if ((localObject3 instanceof String))
     {
       ((View)localObject2).setBackgroundColor(Color.parseColor((String)localObject3));
-      label4975:
+      label4756:
       ((LinearLayout)localObject1).setGravity(17);
       ((LinearLayout)localObject1).setVisibility(8);
       localObject2 = (ViewGroup)localObject1;
       localObject3 = new TextView(((ViewGroup)localObject2).getContext());
       ((TextView)localObject3).setTag(localObject2);
-      localObject4 = Unit.INSTANCE;
-      ((TextView)localObject3).setId(2131365492);
+      ((TextView)localObject3).setId(2131365653);
       localObject4 = (View)localObject3;
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 == null) {
-        break label5775;
+        break label5525;
       }
       i = ((ViewGroup.LayoutParams)localObject5).height;
-      label5055:
+      label4831:
       if (((View)localObject4).getLayoutParams() == null) {
-        break label5780;
+        break label5530;
       }
       ((View)localObject4).getLayoutParams().width = -2;
       ((View)localObject4).getLayoutParams().height = i;
-      label5082:
+      label4858:
       localObject4 = (View)localObject3;
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 == null) {
-        break label5801;
+        break label5551;
       }
       i = ((ViewGroup.LayoutParams)localObject5).width;
-      label5107:
+      label4883:
       if (((View)localObject4).getLayoutParams() == null) {
-        break label5806;
+        break label5556;
       }
       ((View)localObject4).getLayoutParams().width = i;
       ((View)localObject4).getLayoutParams().height = -2;
-      label5134:
+      label4910:
       ((TextView)localObject3).setGravity(17);
-      ((TextView)localObject3).setText(2131711460);
-      ((TextView)localObject3).setCompoundDrawables(((TextView)localObject3).getContext().getDrawable(2130841004), null, null, null);
+      ((TextView)localObject3).setText(2131711975);
+      ((TextView)localObject3).setCompoundDrawables(((TextView)localObject3).getContext().getDrawable(2130841136), null, null, null);
       ((TextView)localObject3).setCompoundDrawablePadding(LayoutAttrsKt.getDp(12));
       if (!("#FFFFFF" instanceof Integer)) {
-        break label5827;
+        break label5577;
       }
       ((TextView)localObject3).setTextColor(((TextView)localObject3).getResources().getColor(((Number)"#FFFFFF").intValue()));
-      label5209:
+      label4985:
       ((ViewGroup)localObject2).addView((View)localObject3);
-      localObject2 = Unit.INSTANCE;
       paramContext.addView((View)localObject1);
-      paramContext = Unit.INSTANCE;
       localObject2 = (ViewGroup)localFrameLayout;
       localObject3 = new RelativeLayout(((ViewGroup)localObject2).getContext());
       ((RelativeLayout)localObject3).setTag(localObject2);
-      paramContext = Unit.INSTANCE;
-      ((RelativeLayout)localObject3).setId(2131371197);
+      ((RelativeLayout)localObject3).setId(2131371476);
       paramContext = (View)localObject3;
       j = LayoutAttrsKt.getDp(66);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label5841;
+        break label5591;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label5306:
+      label5069:
       if (paramContext.getLayoutParams() == null) {
-        break label5846;
+        break label5596;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label5329:
+      label5092:
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label5865;
+        break label5615;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label5352:
+      label5115:
       if (paramContext.getLayoutParams() == null) {
-        break label5870;
+        break label5620;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
-      label5376:
+      label5139:
       ((RelativeLayout)localObject3).setVisibility(4);
       localObject4 = (ViewGroup)localObject3;
       localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
       ((ImageView)localObject5).setTag(localObject4);
-      paramContext = Unit.INSTANCE;
-      ((ImageView)localObject5).setId(2131371196);
+      ((ImageView)localObject5).setId(2131371475);
       paramContext = (View)localObject5;
       j = LayoutAttrsKt.getDp(48);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label5890;
+        break label5640;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label5451:
+      label5210:
       if (paramContext.getLayoutParams() == null) {
-        break label5895;
+        break label5645;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label5474:
+      label5233:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label5914;
+        break label5664;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label5497:
+      label5256:
       j = LayoutAttrsKt.getDp(48);
       if (paramContext.getLayoutParams() == null) {
-        break label5919;
+        break label5669;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label5526:
+      label5285:
       localObject1 = ((View)localObject5).getLayoutParams();
       paramContext = (Context)localObject1;
       if (!(localObject1 instanceof ViewGroup.MarginLayoutParams)) {
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.topMargin = LayoutAttrsKt.getDp(8);
-        paramContext = Unit.INSTANCE;
       }
       localObject6 = (View)localObject5;
       paramContext = ((View)localObject6).getLayoutParams();
       if (paramContext == null) {
-        break label5938;
+        break label5688;
       }
       i = paramContext.width;
-      label5593:
+      label5348:
       paramContext = ((View)localObject6).getLayoutParams();
       if (paramContext == null) {
-        break label5947;
+        break label5697;
       }
     }
-    label5689:
-    label5947:
+    label5525:
+    label5530:
+    label5551:
+    label5556:
+    label5688:
+    label5697:
     for (j = paramContext.height;; j = ((View)localObject6).getHeight())
     {
       localObject7 = new RelativeLayout.LayoutParams(i, j);
@@ -1335,11 +1273,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label5960;
+        break label5706;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label5960;
+        break label5706;
       }
       i = 0;
       k = paramContext.length;
@@ -1350,6 +1288,7 @@ public final class DesktopLayoutKt
         j += 1;
         i += 1;
       }
+      label5444:
       if (!(localObject3 instanceof LinearLayout)) {
         break;
       }
@@ -1359,67 +1298,57 @@ public final class DesktopLayoutKt
       }
       localObject3 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject3);
       ((LinearLayout.LayoutParams)localObject3).gravity = 80;
-      localObject4 = Unit.INSTANCE;
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
       break;
       ((View)localObject2).setBackgroundResource(((Number)localObject3).intValue());
-      break label4975;
+      break label4756;
       i = 0;
-      break label5055;
+      break label4831;
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label5082;
+      break label4858;
       i = 0;
-      break label5107;
+      break label4883;
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
-      break label5134;
-      label5827:
+      break label4910;
+      label5577:
       ((TextView)localObject3).setTextColor(Color.parseColor("#FFFFFF"));
-      break label5209;
-      label5841:
+      break label4985;
+      label5591:
       i = 0;
-      break label5306;
-      label5846:
+      break label5069;
+      label5596:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label5329;
-      label5865:
+      break label5092;
+      label5615:
       i = 0;
-      break label5352;
-      label5870:
+      break label5115;
+      label5620:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
-      break label5376;
+      break label5139;
       i = 0;
-      break label5451;
+      break label5210;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label5474;
+      break label5233;
       i = 0;
-      break label5497;
+      break label5256;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label5526;
+      break label5285;
       i = ((View)localObject6).getWidth();
-      break label5593;
+      break label5348;
     }
-    label5775:
-    label5780:
-    label5801:
-    label5806:
-    label5938:
-    paramContext = Unit.INSTANCE;
-    label5890:
-    label5895:
-    label5914:
-    label5919:
-    label5960:
+    label5640:
+    label5645:
+    label5664:
+    label5669:
+    label5706:
     ((RelativeLayout.LayoutParams)localObject7).addRule(14, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject6).setLayoutParams((ViewGroup.LayoutParams)localObject7);
-    ((ImageView)localObject5).setImageResource(2130848417);
+    ((ImageView)localObject5).setImageResource(2130848774);
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     localObject4 = (ViewGroup)localObject3;
     localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
     ((ImageView)localObject5).setTag(localObject4);
-    paramContext = Unit.INSTANCE;
-    ((ImageView)localObject5).setId(2131371198);
+    ((ImageView)localObject5).setId(2131371477);
     paramContext = (View)localObject5;
     j = LayoutAttrsKt.getDp(15);
     localObject1 = paramContext.getLayoutParams();
@@ -1427,41 +1356,41 @@ public final class DesktopLayoutKt
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
       if (paramContext.getLayoutParams() == null) {
-        break label6271;
+        break label6005;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label6096:
+      label5830:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label6290;
+        break label6024;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label6119:
+      label5853:
       j = LayoutAttrsKt.getDp(15);
       if (paramContext.getLayoutParams() == null) {
-        break label6295;
+        break label6029;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label6148:
+      label5882:
       localObject6 = (View)localObject5;
       paramContext = ((View)localObject6).getLayoutParams();
       if (paramContext == null) {
-        break label6314;
+        break label6048;
       }
       i = paramContext.width;
-      label6170:
+      label5904:
       paramContext = ((View)localObject6).getLayoutParams();
       if (paramContext == null) {
-        break label6323;
+        break label6057;
       }
     }
-    label6290:
-    label6295:
-    label6314:
-    label6323:
+    label6024:
+    label6029:
+    label6048:
+    label6057:
     for (j = paramContext.height;; j = ((View)localObject6).getHeight())
     {
       localObject7 = new RelativeLayout.LayoutParams(i, j);
@@ -1472,11 +1401,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label6336;
+        break label6066;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label6336;
+        break label6066;
       }
       i = 0;
       k = paramContext.length;
@@ -1489,20 +1418,18 @@ public final class DesktopLayoutKt
       }
       i = 0;
       break;
-      label6271:
+      label6005:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label6096;
+      break label5830;
       i = 0;
-      break label6119;
+      break label5853;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label6148;
+      break label5882;
       i = ((View)localObject6).getWidth();
-      break label6170;
+      break label5904;
     }
-    paramContext = Unit.INSTANCE;
-    label6336:
+    label6066:
     ((RelativeLayout.LayoutParams)localObject7).addRule(9, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject6).setLayoutParams((ViewGroup.LayoutParams)localObject7);
     Object localObject6 = (View)localObject5;
     paramContext = ((View)localObject6).getLayoutParams();
@@ -1511,10 +1438,10 @@ public final class DesktopLayoutKt
       i = paramContext.width;
       paramContext = ((View)localObject6).getLayoutParams();
       if (paramContext == null) {
-        break label6485;
+        break label6211;
       }
     }
-    label6485:
+    label6211:
     for (j = paramContext.height;; j = ((View)localObject6).getHeight())
     {
       localObject7 = new RelativeLayout.LayoutParams(i, j);
@@ -1525,11 +1452,11 @@ public final class DesktopLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label6498;
+        break label6220;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label6498;
+        break label6220;
       }
       i = 0;
       k = paramContext.length;
@@ -1543,10 +1470,8 @@ public final class DesktopLayoutKt
       i = ((View)localObject6).getWidth();
       break;
     }
-    paramContext = Unit.INSTANCE;
-    label6498:
+    label6220:
     ((RelativeLayout.LayoutParams)localObject7).addRule(11, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject6).setLayoutParams((ViewGroup.LayoutParams)localObject7);
     localObject1 = ((View)localObject5).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -1554,10 +1479,8 @@ public final class DesktopLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(4);
-      paramContext = Unit.INSTANCE;
     }
     localObject1 = ((View)localObject5).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -1565,16 +1488,12 @@ public final class DesktopLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(4);
-      paramContext = Unit.INSTANCE;
     }
-    ((ImageView)localObject5).setImageResource(2130841007);
+    ((ImageView)localObject5).setImageResource(2130841139);
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     ((ViewGroup)localObject2).addView((View)localObject3);
-    paramContext = Unit.INSTANCE;
     return (View)localFrameLayout;
   }
 }

@@ -1,25 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import bmhv;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinParseUtils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import pku;
 
 public class KandianReportDataConfigHandler
-  implements AladdinConfigHandler
+  extends SimpleConfigHandler
 {
   private static final String TAG = "kandianreport.KandianReportDataConfigHandler";
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
     QLog.d("kandianreport.KandianReportDataConfigHandler", 2, "[onReceiveConfig] " + paramInt1 + " " + paramString);
-    Map localMap = pku.a(paramString);
+    Map localMap = AladdinParseUtils.a(paramString);
     Iterator localIterator = localMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -31,7 +32,7 @@ public class KandianReportDataConfigHandler
         if (TextUtils.equals(str2, "1")) {}
         for (paramInt2 = 1;; paramInt2 = 0)
         {
-          bmhv.a("kandianreport_ON", Integer.valueOf(paramInt2));
+          ReadInJoyHelper.a("kandianreport_ON", Integer.valueOf(paramInt2));
           Aladdin.getConfig(paramInt1).update(paramString);
           break;
         }
@@ -42,13 +43,14 @@ public class KandianReportDataConfigHandler
   
   public void onWipeConfig(int paramInt)
   {
+    super.onWipeConfig(paramInt);
     QLog.d("kandianreport.KandianReportDataConfigHandler", 2, "wipeConfig: " + paramInt);
-    bmhv.a("kandianreport_ON", Integer.valueOf(-1));
+    ReadInJoyHelper.a("kandianreport_ON", Integer.valueOf(-1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.KandianReportDataConfigHandler
  * JD-Core Version:    0.7.0.1
  */

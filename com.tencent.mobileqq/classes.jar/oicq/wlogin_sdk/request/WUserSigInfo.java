@@ -26,6 +26,7 @@ public class WUserSigInfo
   public long _seqence = 0L;
   public int _source_type = 0;
   public List<Ticket> _tickets = new ArrayList();
+  public int businessType = 0;
   public HashMap<Integer, tlv_t> extraLoginTLVMap = new HashMap();
   public HashMap<Integer, RegTLV> extraRegTLVMap = new HashMap();
   public HashMap<Integer, tlv_t> loginResultTLVMap = new HashMap();
@@ -95,18 +96,27 @@ public class WUserSigInfo
     this._domains = paramParcel.readArrayList(List.class.getClassLoader());
     paramParcel.readTypedList(this._tickets, Ticket.CREATOR);
     this._device_token = paramParcel.createByteArray();
-    paramParcel = paramParcel.readBundle();
-    if (paramParcel != null)
+    Bundle localBundle = paramParcel.readBundle();
+    if (localBundle != null)
     {
-      this.regTLVMap = ((HashMap)paramParcel.getSerializable("regTLVMap"));
-      this.extraLoginTLVMap = ((HashMap)paramParcel.getSerializable("extraLoginTLVMap"));
-      this.extraRegTLVMap = ((HashMap)paramParcel.getSerializable("extraRegTLVMap"));
-      HashMap localHashMap = (HashMap)paramParcel.getSerializable("loginTLVMap");
+      this.regTLVMap = ((HashMap)localBundle.getSerializable("regTLVMap"));
+      this.extraLoginTLVMap = ((HashMap)localBundle.getSerializable("extraLoginTLVMap"));
+      this.extraRegTLVMap = ((HashMap)localBundle.getSerializable("extraRegTLVMap"));
+      HashMap localHashMap = (HashMap)localBundle.getSerializable("loginTLVMap");
       if (localHashMap != null) {
         this.loginTLVMap = localHashMap;
       }
-      this._loginExtraProductTLVMap = ((HashMap)paramParcel.getSerializable("loginExtraProductTLVMap"));
-      this.loginResultTLVMap = ((HashMap)paramParcel.getSerializable("loginResultTLVMap"));
+      this._loginExtraProductTLVMap = ((HashMap)localBundle.getSerializable("loginExtraProductTLVMap"));
+      this.loginResultTLVMap = ((HashMap)localBundle.getSerializable("loginResultTLVMap"));
+    }
+    try
+    {
+      this.businessType = paramParcel.readInt();
+      return;
+    }
+    catch (Exception paramParcel)
+    {
+      util.LOGI("WUserSigInfo::readFromParcel businessType " + paramParcel.getMessage());
     }
   }
   
@@ -128,6 +138,7 @@ public class WUserSigInfo
     localBundle.putSerializable("loginExtraProductTLVMap", this._loginExtraProductTLVMap);
     localBundle.putSerializable("loginResultTLVMap", this.loginResultTLVMap);
     paramParcel.writeBundle(localBundle);
+    paramParcel.writeInt(this.businessType);
   }
 }
 

@@ -5,7 +5,7 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.FloatsParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +18,8 @@ public class ReshapeLipsFilter
   public static final String VERTEX_SHADER_VTF = "precision highp float;\n//uniform mat4 projection;\n//uniform mat4 faceFrame;\n//uniform mat4 stableToImage;\nuniform vec2 lipsPlainSize;\nuniform vec3 lipsCenter;\nuniform vec2 nosePlainSize;\nuniform vec3 noseCenter;\nuniform float lipsSize;\nuniform float lipsWidth;\nuniform float lipsHeight;\nuniform float lipsYPosition;\n//uniform sampler2D teethRegionMask;\nattribute vec4 position;\n//attribute float faceIndex;\n//attribute float depthValue;\nvarying vec2 textureCoordinate;\nuniform vec3 angles; // angles.x: pitch, angles.y: yaw, angles.z: roll\nuniform vec2 size;\n\nuniform sampler2D inputImageTexture;\n\nfloat my_smoothstep(float edge0, float edge1, float x) {\n    float t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);\n    return t * t * (3.0 - 2.0 * t);\n}\n\nfloat getEllipseMask(in vec2 sigmaScaling, in vec2 point,in vec2 center, in vec2 boundingSize, float a1, float a2) {\n    // un-normalization\n    boundingSize = boundingSize * size;\n    point = point * size;\n    center = center * size;\n\n    float cos_t = cos(angles.z);\n    float sin_t = sin(angles.z);\n    vec2 translate = (point - center);\n    // rotate and scale\n    vec2 v = vec2(dot(translate, vec2(cos_t, sin_t)), dot(translate, vec2(-sin_t, cos_t))) * sigmaScaling;\n\n    float d2 = sqrt(dot(v / boundingSize, v / boundingSize));\n\n    return 1.0 - my_smoothstep(a1, a2, d2);\n}\n\nfloat getLipsMask() {\n    const vec2 sigmaScaling = vec2(1.6, 1.5);\n    const float upDirectionBias = 0.15;\n    // vec2 lipsCenterBiased = lipsCenter.xy - sign(stableToImage[1][1]) * lipsPlainSize.y * upDirectionBias;\n    vec2 lipsCenterBiased = lipsCenter.xy;\n    // vec2 lipsPlaineSizeBiased = vec2(0.9, 1.0 - upDirectionBias) * lipsPlainSize;\n    vec2 lipsPlaineSizeBiased = lipsPlainSize;\n    return getEllipseMask(sigmaScaling, position.xy, lipsCenterBiased, lipsPlaineSizeBiased, 0.8, 1.0);\n}\nfloat getLipsMask2() {\n    const vec2 sigmaScaling = vec2(1.5, 1.0);\n    const float upDirectionBias = 0.15;\n    // vec2 lipsCenterBiased = lipsCenter.xy - sign(stableToImage[1][1]) * lipsPlainSize.y * upDirectionBias;\n    vec2 lipsCenterBiased = lipsCenter.xy;\n    // vec2 lipsPlaineSizeBiased = vec2(0.9, 1.0 - upDirectionBias) * lipsPlainSize;\n    vec2 lipsPlaineSizeBiased = lipsPlainSize;\n    return getEllipseMask(sigmaScaling, position.xy, lipsCenterBiased, lipsPlaineSizeBiased, 1.0, 1.2);\n}\nfloat getNoseMask() {\n    const vec2 sigmaScaling = vec2(1.2, 1.5);\n    return getEllipseMask(sigmaScaling, position.xy, noseCenter.xy, nosePlainSize, 0.8, 1.0);\n}\nvec3 getScaledLipsPoint(in vec3 originalPoint, in vec3 scalingFactors,\n    in float scalingCoefficient, in float lipsMask) {\n    if (scalingCoefficient == 0.0) {\n        return originalPoint;\n    }\n    vec3 lipsScaledPoint = lipsCenter + scalingFactors * (originalPoint - lipsCenter);\n    return mix(originalPoint, lipsScaledPoint, scalingCoefficient * lipsMask);\n}\n\nvec3 getScaledLipsPoint2(vec3 originalPoint, vec3 center, float theta, float scale) {\n    float sin_t = sin(theta);\n    float cos_t = cos(theta);\n    vec2 v = (originalPoint - center).xy;\n    float d = dot(v, vec2(cos_t, sin_t));\n    d = d * scale;\n    vec2 dv = d * vec2(cos_t, sin_t);\n\n    return vec3(originalPoint.xy+dv, originalPoint.z);\n}\n\nvec2 getTransformYFactors() {\n    const float kDistanceYRatio = 0.1;\n    return kDistanceYRatio * (noseCenter.xy - lipsCenter.xy) / 2.0;\n}\n\nvoid main() {\n    const float pi = 3.1415926;\n    const float kScalingFactor = 1.3;\n    vec2 originalPosition = position.xy;\n    vec2 faceFrameCoords = originalPosition;\n    // float teethRegionWeight = texture2D(teethRegionMask, faceFrameCoords).r;\n    float teethRegionWeight = 0.0;\n    float noseMask = getNoseMask();\n    float lipsMask = getLipsMask() * (1.0 - teethRegionWeight) * (1.0 - noseMask);\n    float lipsMask2 = getLipsMask2() * (1.0 - teethRegionWeight) * (1.0 - noseMask);\n    vec3 displacedLipsPoint = position.xyz;\n    const vec3 kLipsWidthFactors = vec3(kScalingFactor, 1.0, 1.0);\n    displacedLipsPoint = mix(displacedLipsPoint, getScaledLipsPoint2(displacedLipsPoint, lipsCenter, angles.z, 0.3), lipsWidth * lipsMask);\n\n    const vec3 kLipsHeightFactors = vec3(1.0, kScalingFactor, 1.0);\n    displacedLipsPoint = mix(displacedLipsPoint, getScaledLipsPoint2(displacedLipsPoint, lipsCenter, pi/2.0 + angles.z, 0.3), lipsHeight * lipsMask);\n\n    const vec3 kLipsSizeFactors = vec3(kScalingFactor, kScalingFactor, 1.0);\n    displacedLipsPoint = getScaledLipsPoint(displacedLipsPoint, kLipsSizeFactors, lipsSize, lipsMask);\n\n    vec2 lipsYFactors = getTransformYFactors();\n    vec3 lipsTransformYPoint = vec3(displacedLipsPoint.xy + lipsYFactors, displacedLipsPoint.z);\n    displacedLipsPoint = mix(displacedLipsPoint, lipsTransformYPoint, lipsYPosition * lipsMask2);\n\n    vec2 displacedPosition = displacedLipsPoint.xy;\n    vec4 color = texture2D(inputImageTexture, position.xy);\n    vec2 offset = (color.xy * 255.0 + color.zw) / 127.5 - 1.0;\n    textureCoordinate = offset + displacedPosition - originalPosition;\n\n    gl_Position = vec4(originalPosition.x*2.0-1.0, originalPosition.y*2.0-1.0, 0.0, 1.0);\n    //if(getNoseMask() > 0.0) {\n    //    textureCoordinate = vec2(1.0, 0.0);\n    //} else {\n    //    textureCoordinate = vec2(0.0, 0.0);\n    //}\n}";
   private static final int XCOORD_NUM = 128;
   private static final int YCOORD_NUM = 128;
-  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterialUtil.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
-  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterialUtil.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
+  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterial.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
+  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterial.genFullScreenVertices(128, 128, 0.0F, 1.0F, 0.0F, 1.0F);
   private float[] angles = { 0.0F, 0.0F, 0.0F };
   private float[] lipsCenter = { 0.0F, 0.0F, 0.0F };
   private float lipsHeight = 0.0F;
@@ -54,8 +54,8 @@ public class ReshapeLipsFilter
   
   public void initAttribParams()
   {
-    setPositions(VideoMaterialUtil.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
-    setTexCords(VideoMaterialUtil.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
+    setPositions(VideoMaterial.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
+    setTexCords(VideoMaterial.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
     setCoordNum(32897);
   }
   
@@ -115,7 +115,7 @@ public class ReshapeLipsFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ReshapeLipsFilter
  * JD-Core Version:    0.7.0.1
  */

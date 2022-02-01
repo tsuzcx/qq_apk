@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import bfut;
-import bmjg;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
 
 class HWReciteItem$2
   implements Runnable
 {
-  HWReciteItem$2(HWReciteItem paramHWReciteItem, bfut parambfut) {}
+  HWReciteItem$2(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo) {}
   
   public void run()
   {

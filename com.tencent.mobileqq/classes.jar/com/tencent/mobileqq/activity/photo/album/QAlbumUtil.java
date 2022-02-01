@@ -24,7 +24,7 @@ public class QAlbumUtil
   public static final String ALBUM_KEY_NAME = "album_key_name";
   public static final int MEDIA_TYPE_CAMERA = 2;
   public static final int MEDIA_TYPE_IMAGE = 0;
-  public static final HashMap<String, Integer> MEDIA_TYPE_MAPS;
+  public static final HashMap<String, Integer> MEDIA_TYPE_MAPS = new HashMap();
   public static final int MEDIA_TYPE_NONE = -1;
   public static final int MEDIA_TYPE_VIDEO = 1;
   public static final long PHOTO_SLOT_TIME = 60000L;
@@ -34,41 +34,23 @@ public class QAlbumUtil
   public static SimpleDateFormat sDateFormatForMinute = new SimpleDateFormat("yyyy年MM月dd HH点mm分");
   public static String sLastAlbumId;
   public static String sLastAlbumName;
-  public static String sLastAlbumPath = "";
+  public static String sLastAlbumPath;
   public static HashMap<String, Integer> sLastAlbumPhotoCountMap;
   public static long sLastAlbumRecordTime;
-  public static HashMap<String, Pair<String, String>> sSelectItemAlbum = new HashMap();
-  public static HashMap<String, LinkedHashMap<String, Integer>> sSelectItemPosMap = new HashMap();
+  public static HashMap<String, Pair<String, String>> sSelectItemAlbum;
+  public static HashMap<String, LinkedHashMap<String, Integer>> sSelectItemPosMap;
   
   static
   {
     sDateFormatForHour = new SimpleDateFormat("yyyy年MM月dd HH点");
-    MEDIA_TYPE_MAPS = new HashMap();
+    sLastAlbumRecordTime = 0L;
+    sLastAlbumPhotoCountMap = new HashMap();
+    sLastAlbumPath = "";
+    sSelectItemAlbum = new HashMap();
+    sSelectItemPosMap = new HashMap();
     MEDIA_TYPE_MAPS.put("image", Integer.valueOf(0));
     MEDIA_TYPE_MAPS.put("video", Integer.valueOf(1));
     MEDIA_TYPE_MAPS.put("mobileqq", Integer.valueOf(2));
-    sLastAlbumRecordTime = 0L;
-    sLastAlbumPhotoCountMap = new HashMap();
-  }
-  
-  private static void XInAnim(Activity paramActivity)
-  {
-    paramActivity.overridePendingTransition(2130771992, 2130771993);
-  }
-  
-  private static void XOutAnim(Activity paramActivity)
-  {
-    paramActivity.overridePendingTransition(2130771988, 2130771989);
-  }
-  
-  private static void YInAnim(Activity paramActivity)
-  {
-    paramActivity.overridePendingTransition(2130771979, 2130771980);
-  }
-  
-  private static void YOutAnim(Activity paramActivity)
-  {
-    paramActivity.overridePendingTransition(2130771977, 2130771978);
   }
   
   public static void anim(Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2)
@@ -77,18 +59,18 @@ public class QAlbumUtil
     {
       if (paramBoolean2)
       {
-        XInAnim(paramActivity);
+        xInAnim(paramActivity);
         return;
       }
-      XOutAnim(paramActivity);
+      xOutAnim(paramActivity);
       return;
     }
     if (paramBoolean2)
     {
-      YInAnim(paramActivity);
+      yInAnim(paramActivity);
       return;
     }
-    YOutAnim(paramActivity);
+    yOutAnim(paramActivity);
   }
   
   public static void clearSelectItemInfo()
@@ -220,10 +202,30 @@ public class QAlbumUtil
     paramContext.putString("album_key_name", sLastAlbumName);
     paramContext.commit();
   }
+  
+  private static void xInAnim(Activity paramActivity)
+  {
+    paramActivity.overridePendingTransition(2130771994, 2130771995);
+  }
+  
+  private static void xOutAnim(Activity paramActivity)
+  {
+    paramActivity.overridePendingTransition(2130771990, 2130771991);
+  }
+  
+  private static void yInAnim(Activity paramActivity)
+  {
+    paramActivity.overridePendingTransition(2130771981, 2130771982);
+  }
+  
+  private static void yOutAnim(Activity paramActivity)
+  {
+    paramActivity.overridePendingTransition(2130771979, 2130771980);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.QAlbumUtil
  * JD-Core Version:    0.7.0.1
  */

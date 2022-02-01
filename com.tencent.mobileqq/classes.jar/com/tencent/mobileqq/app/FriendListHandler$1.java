@@ -1,30 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import android.os.Looper;
-import android.os.Message;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contacts.friend.OnlineStatusIconHelper;
 
 class FriendListHandler$1
-  extends MqqHandler
+  implements Runnable
 {
-  FriendListHandler$1(FriendListHandler paramFriendListHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  FriendListHandler$1(FriendListHandler paramFriendListHandler) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FriendListHandler.access$000(this.this$0);
+    OnlineStatusIconHelper.a();
+    this.this$0.getShowPcOnlineIconConfig();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendListHandler.1
  * JD-Core Version:    0.7.0.1
  */

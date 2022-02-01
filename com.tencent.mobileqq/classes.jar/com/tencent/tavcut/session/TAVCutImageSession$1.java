@@ -36,7 +36,8 @@ class TAVCutImageSession$1
         Object localObject2 = new VideoResourceModel();
         ((VideoResourceModel)localObject2).setPath((String)localObject3);
         ((VideoResourceModel)localObject2).setType(4);
-        ((VideoResourceModel)localObject2).setSourceTimeDuration(1000L);
+        ((VideoResourceModel)localObject2).setSourceTimeDurationUs(1000000L);
+        ((VideoResourceModel)localObject2).setSelectTimeDurationUs(1000000L);
         localObject3 = BitmapUtil.getImageSize((String)localObject3, false);
         Object localObject4;
         int k;
@@ -45,10 +46,10 @@ class TAVCutImageSession$1
           localObject4 = Util.constrainMaxSize((Size)localObject3, this.this$0.sessionConfig.getMaxImageDecodeSize());
           k = ((Size)localObject3).getWidth() / ((Size)localObject4).getWidth();
           if (((Size)localObject3).getWidth() % ((Size)localObject4).getWidth() != 0) {
-            break label451;
+            break label459;
           }
         }
-        label451:
+        label459:
         for (int j = 0;; j = 1)
         {
           k = j + k;
@@ -89,7 +90,7 @@ class TAVCutImageSession$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.1
  * JD-Core Version:    0.7.0.1
  */

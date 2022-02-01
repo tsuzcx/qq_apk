@@ -10,7 +10,7 @@ public final class stAlbumInfo
   public String strMid = "";
   public String strName = "";
   public String strPic = "";
-  public long uiId;
+  public long uiId = 0L;
   
   public stAlbumInfo() {}
   

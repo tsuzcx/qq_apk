@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
 import java.util.LinkedList;
-import ovw;
 
-public class Automator$3
+class Automator$3
   implements Runnable
 {
-  public Automator$3(ovw paramovw) {}
+  Automator$3(Automator paramAutomator) {}
   
   public void run()
   {
-    ovw.a(this.this$0).clear();
-    ovw.a(this.this$0).addAll(ovw.a(this.this$0));
-    ovw.a(this.this$0);
+    Automator.a(this.this$0).clear();
+    Automator.a(this.this$0).addAll(Automator.a(this.this$0));
+    Automator.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.automator.Automator.3
  * JD-Core Version:    0.7.0.1
  */

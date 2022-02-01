@@ -2,12 +2,10 @@ package com.tencent.mobileqq.qipc;
 
 import android.content.Context;
 import android.text.TextUtils;
-import blpx;
-import blwj;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.PluginAdapterImpl;
 import eipc.EIPCClient;
 import eipc.EIPCServer;
 import java.util.ArrayList;
@@ -15,20 +13,20 @@ import mqq.app.MobileQQ;
 
 public class QIPCEnvironmentInit
 {
-  public static final blpx sCallbac = new blpx();
-  
   static void initEnvironment()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QIPCEnvironmentInit", 2, "initEnvironment");
     }
-    IPluginAdapterProxy.setProxy(new blwj());
-    try
+    IPluginAdapterProxy.setProxy(new PluginAdapterImpl());
+    for (;;)
     {
-      QIPCClientHelper.setupThreadEngine(new QIPCEnvironmentInit.1());
-      if (TextUtils.equals(MobileQQ.processName, BaseApplicationImpl.sApplication.getApplicationContext().getPackageName()))
+      try
       {
-        QIPCServerHelper.getInstance().getServer().setModuleFactory(new QIPCEnvironmentInit.2());
+        if (!TextUtils.equals(MobileQQ.processName, BaseApplicationImpl.sApplication.getApplicationContext().getPackageName())) {
+          continue;
+        }
+        QIPCServerHelper.getInstance().getServer().setModuleFactory(new QIPCEnvironmentInit.1());
         if (BaseApplicationImpl.useQIPCStart(MobileQQ.processName))
         {
           if (QLog.isColorLevel()) {
@@ -36,34 +34,20 @@ public class QIPCEnvironmentInit
           }
           QIPCClientHelper.getInstance().getClient().connect(null);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("QIPCEnvironmentInit", 2, "registerNFCEventCallback");
+      }
+      catch (Exception localException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.d("QIPCEnvironmentInit", 2, "initEnvironment", localException);
+        continue;
       }
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        do
-        {
-          for (;;)
-          {
-            if ((!TextUtils.isEmpty(BaseApplicationImpl.processName)) && (!BaseApplicationImpl.processName.endsWith(":buscard"))) {
-              ActivityLifecycle.registerNFCEventCallback(sCallbac);
-            }
-            return;
-            QIPCClientHelper.getInstance().getClient().guardServerProcList.add(MobileQQ.sMobileQQ.getPackageName());
-          }
-          localException1 = localException1;
-        } while (!QLog.isColorLevel());
-        QLog.d("QIPCEnvironmentInit", 2, "initEnvironment", localException1);
+      if (QLog.isColorLevel()) {
+        QLog.d("QIPCEnvironmentInit", 2, "registerNFCEventCallback");
       }
-      catch (Exception localException2)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("QIPCEnvironmentInit", 2, "registerNFCEventCallback failed", localException2);
-      }
+      return;
+      QIPCClientHelper.getInstance().getClient().guardServerProcList.add(MobileQQ.sMobileQQ.getPackageName());
     }
   }
 }

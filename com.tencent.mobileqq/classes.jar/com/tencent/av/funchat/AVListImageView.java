@@ -11,18 +11,18 @@ import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import com.tencent.av.utils.TintStateDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import mux;
 
 public class AVListImageView
   extends ImageView
 {
   private int jdField_a_of_type_Int = 3;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_a_of_type_Boolean;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 3;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int c = -15550475;
   
   public AVListImageView(Context paramContext)
@@ -40,10 +40,10 @@ public class AVListImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    int m = AIOUtils.dp2px(this.jdField_a_of_type_Int, getResources()) - 2;
-    int n = AIOUtils.dp2px(this.jdField_b_of_type_Int, getResources());
+    int m = AIOUtils.a(this.jdField_a_of_type_Int, getResources()) - 2;
+    int n = AIOUtils.a(this.jdField_b_of_type_Int, getResources());
     int i = Math.min(getWidth(), getHeight()) / 2;
     int j = getWidth() / 2;
     int k = getHeight() / 2;
@@ -53,7 +53,7 @@ public class AVListImageView
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        if (!(localDrawable instanceof mux)) {
+        if (!(localDrawable instanceof TintStateDrawable)) {
           localDrawable.setColorFilter(-10591367, PorterDuff.Mode.MULTIPLY);
         }
         localDrawable.setBounds(m, m, getWidth() - m, getHeight() - m);
@@ -83,7 +83,7 @@ public class AVListImageView
         localDrawable.setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
         break;
       }
-      if ((localDrawable instanceof mux)) {
+      if ((localDrawable instanceof TintStateDrawable)) {
         break;
       }
       localDrawable.clearColorFilter();
@@ -123,7 +123,7 @@ public class AVListImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.funchat.AVListImageView
  * JD-Core Version:    0.7.0.1
  */

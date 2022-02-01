@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_sub_addfriend_type_req
   extends JceStruct
 {
-  public long fuin;
+  public long fuin = 0L;
   
   public mobile_sub_addfriend_type_req() {}
   

@@ -34,7 +34,7 @@ public class LebaTableLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = getChildCount();
     if ((j <= 0) || (this.h == 0)) {}
@@ -63,7 +63,7 @@ public class LebaTableLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int j = 0;
     super.onMeasure(paramInt1, paramInt2);

@@ -20,9 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
-import bbes;
-import bbfc;
-import bbfd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -34,8 +31,8 @@ public class ResourceGrabView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new bbfd(this);
+  private long jdField_a_of_type_Long = 0L;
+  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new ResourceGrabView.2(this);
   private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -43,7 +40,7 @@ public class ResourceGrabView
   private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
   boolean jdField_a_of_type_Boolean = false;
   private Button jdField_b_of_type_AndroidWidgetButton;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private Button c;
   private Button d;
   
@@ -60,7 +57,7 @@ public class ResourceGrabView
   public ResourceGrabView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131558968, this, true);
+    LayoutInflater.from(paramContext).inflate(2131559009, this, true);
     c();
   }
   
@@ -90,15 +87,15 @@ public class ResourceGrabView
   {
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getContext().getSystemService("window"));
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(ViewUtils.dpToPx(6.0F));
+    localGradientDrawable.setCornerRadius(ViewUtils.b(6.0F));
     localGradientDrawable.setColor(-1);
-    localGradientDrawable.setStroke(ViewUtils.dpToPx(1.5F), getResources().getColor(2131167134));
+    localGradientDrawable.setStroke(ViewUtils.b(1.5F), getResources().getColor(2131167141));
     setBackgroundDrawable(localGradientDrawable);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364056));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364036));
-    this.c = ((Button)findViewById(2131363866));
-    this.d = ((Button)findViewById(2131363858));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380130));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364157));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364137));
+    this.c = ((Button)findViewById(2131363963));
+    this.d = ((Button)findViewById(2131363955));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380569));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -108,7 +105,7 @@ public class ResourceGrabView
   
   private void d()
   {
-    setOnTouchListener(new bbfc(this));
+    setOnTouchListener(new ResourceGrabView.1(this));
   }
   
   private void e()
@@ -133,12 +130,12 @@ public class ResourceGrabView
     }
   }
   
-  public void a()
+  void a()
   {
     try
     {
       this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
-      bbes.a().a = null;
+      ResourceGrabHelper.a().a = null;
       a(false);
       BaseApplicationImpl.getApplication().unregisterActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
       return;
@@ -149,7 +146,7 @@ public class ResourceGrabView
     }
   }
   
-  public void a(boolean paramBoolean)
+  void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ResourceGrabView", 2, "enableGrabResourceName on: " + paramBoolean);
@@ -247,7 +244,7 @@ public class ResourceGrabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabView
  * JD-Core Version:    0.7.0.1
  */

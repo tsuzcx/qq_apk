@@ -3,20 +3,19 @@ package com.tencent.mobileqq.msgbackup.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axaq;
 import java.util.List;
 
 public class MsgBackupUserData
   implements Parcelable
 {
-  public static final Parcelable.Creator<MsgBackupUserData> CREATOR = new axaq();
+  public static final Parcelable.Creator<MsgBackupUserData> CREATOR = new MsgBackupUserData.1();
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
   private List<Integer> jdField_a_of_type_JavaUtilList;
   private String b;
   private String c;
   
-  public MsgBackupUserData(Parcel paramParcel)
+  protected MsgBackupUserData(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     paramParcel.readList(this.jdField_a_of_type_JavaUtilList, getClass().getClassLoader());

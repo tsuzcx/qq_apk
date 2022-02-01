@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Process;
 import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ final class q
           if (j < i) {
             bool = true;
           }
-          ((com.tencent.mobileqq.msf.core.c.k)localObject1).a("msfstartway", bool, 0L, 0L, localHashMap, false, false);
+          ((j)localObject1).a("msfstartway", bool, 0L, 0L, localHashMap, false, false);
           if (!QLog.isColorLevel()) {
             break label406;
           }

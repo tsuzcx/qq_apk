@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import atpt;
-import bedu;
-import bedx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuddyFileAIOMsgTips$1
+class BuddyFileAIOMsgTips$1
   implements Runnable
 {
-  public BuddyFileAIOMsgTips$1(bedx parambedx, bedu parambedu) {}
+  BuddyFileAIOMsgTips$1(BuddyFileAIOMsgTips paramBuddyFileAIOMsgTips, BaseTimAIOTipsProcessor.ListResult paramListResult) {}
   
   public void run()
   {

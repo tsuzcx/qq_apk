@@ -10,11 +10,11 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bdla;
 import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
@@ -60,7 +60,7 @@ public class StickyNotePublishEntranceView
         if (localCard.shGender != 0) {
           break label52;
         }
-        localObject = ((Resources)localObject).getString(2131693022);
+        localObject = ((Resources)localObject).getString(2131693168);
       }
     }
     for (;;)
@@ -69,16 +69,16 @@ public class StickyNotePublishEntranceView
       return localObject;
       label52:
       if (localCard.shGender == 1) {
-        localObject = ((Resources)localObject).getString(2131718801);
+        localObject = ((Resources)localObject).getString(2131719326);
       } else {
-        localObject = ((Resources)localObject).getString(2131719157);
+        localObject = ((Resources)localObject).getString(2131719714);
       }
     }
   }
   
   public void a()
   {
-    Object localObject = (String)VSConfigManager.getInstance().getValue("sticky_note_publish_entrance_config", "");
+    Object localObject = (String)VSConfigManager.a().a("sticky_note_publish_entrance_config", "");
     int i;
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -90,7 +90,7 @@ public class StickyNotePublishEntranceView
       this.jdField_a_of_type_Int = i;
       if (this.jdField_a_of_type_Boolean)
       {
-        bdla.b(null, "dc00898", "", "", "0X800AB1D", "0X800AB1D", i, 0, "0", "0", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800AB1D", "0X800AB1D", i, 0, "0", "0", "", "");
         return;
       }
       for (;;)
@@ -177,7 +177,7 @@ public class StickyNotePublishEntranceView
           i = 1;
         }
         break;
-        bdla.b(null, "dc00898", "", "", "0X800AB1E", "0X800AB1E", i, 0, "0", "0", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800AB1E", "0X800AB1E", i, 0, "0", "0", "", "");
         return;
         label421:
         i = 1;
@@ -188,16 +188,16 @@ public class StickyNotePublishEntranceView
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131561437, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365174));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369991));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131363340));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378300));
+    inflate(paramContext, 2131561544, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365312));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131370261));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131363420));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378726));
     paramContext = paramContext.getResources();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166468));
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166469));
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131691167);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131691166);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166471));
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166472));
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131691274);
+    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131691273);
     a();
   }
   
@@ -256,7 +256,7 @@ public class StickyNotePublishEntranceView
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130845854);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130846175);
     if (this.jdField_a_of_type_Boolean) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
     {
@@ -284,11 +284,11 @@ public class StickyNotePublishEntranceView
       this.jdField_a_of_type_AndroidViewViewGroup.setAlpha(1.0F);
       if (this.jdField_a_of_type_Boolean)
       {
-        bdla.b(null, "dc00898", "", "", "0X800AB1F", "0X800AB1F", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800AB1F", "0X800AB1F", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
       }
       else
       {
-        bdla.b(null, "dc00898", "", "", "0X800AB20", "0X800AB20", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800AB20", "0X800AB20", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
         continue;
         this.jdField_a_of_type_AndroidViewViewGroup.setAlpha(1.0F);
       }

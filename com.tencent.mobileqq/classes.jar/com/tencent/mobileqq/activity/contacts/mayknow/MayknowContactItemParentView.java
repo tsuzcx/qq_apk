@@ -44,9 +44,9 @@ public class MayknowContactItemParentView
   {
     try
     {
-      this.d = getResources().getColor(2131167086);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839554);
-      this.jdField_a_of_type_Int = AIOUtils.dp2px(6.0F, getResources());
+      this.d = getResources().getColor(2131167093);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839633);
+      this.jdField_a_of_type_Int = AIOUtils.a(6.0F, getResources());
       return;
     }
     catch (Throwable paramContext)
@@ -59,7 +59,7 @@ public class MayknowContactItemParentView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     for (;;)
     {
@@ -108,7 +108,7 @@ public class MayknowContactItemParentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.MayknowContactItemParentView
  * JD-Core Version:    0.7.0.1
  */

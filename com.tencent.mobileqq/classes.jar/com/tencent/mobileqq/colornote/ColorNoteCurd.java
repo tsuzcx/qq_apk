@@ -1,0 +1,215 @@
+package com.tencent.mobileqq.colornote;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.data.ColorNoteProxy;
+import com.tencent.mobileqq.colornote.ipc.ColorNoteQIPCModule;
+import com.tencent.util.Pair;
+
+public class ColorNoteCurd
+{
+  private Handler jdField_a_of_type_AndroidOsHandler = new ColorNoteCurd.ColorNoteHandler(this);
+  private ColorNoteCurd.OnColorNoteCurdListener jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd$OnColorNoteCurdListener;
+  private ColorNoteHelper jdField_a_of_type_ComTencentMobileqqColornoteColorNoteHelper = new ColorNoteHelper();
+  
+  public ColorNoteCurd()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    if ((localObject instanceof QQAppInterface))
+    {
+      localQQAppInterface = (QQAppInterface)localObject;
+      if (localQQAppInterface != null) {
+        break label74;
+      }
+      localObject = null;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteHelper.a(localQQAppInterface);
+      this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteHelper.a((ColorNoteProxy)localObject);
+      return;
+      localQQAppInterface = null;
+      break;
+      label74:
+      if (localQQAppInterface.getProxyManager() == null) {
+        localObject = null;
+      } else {
+        localObject = localQQAppInterface.getProxyManager().a();
+      }
+    }
+  }
+  
+  private boolean c()
+  {
+    return Looper.getMainLooper() == Looper.myLooper();
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, 0);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.2(this, paramInt1, paramString, paramInt2), 32, null, true);
+      return;
+    }
+    b(paramInt1, paramString, paramInt2);
+  }
+  
+  public void a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.3(this, paramInt, paramString, paramBoolean), 32, null, true);
+      return;
+    }
+    b(paramInt, paramString, paramBoolean);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.1(this, paramBundle), 32, null, true);
+      return;
+    }
+    b(paramBundle);
+  }
+  
+  public void a(ColorNoteCurd.OnColorNoteCurdListener paramOnColorNoteCurdListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd$OnColorNoteCurdListener = paramOnColorNoteCurdListener;
+  }
+  
+  public void a(ColorNote paramColorNote)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.4(this, paramColorNote), 32, null, true);
+      return;
+    }
+    b(paramColorNote);
+  }
+  
+  public boolean a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1) {
+      return this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteHelper.c();
+    }
+    return ColorNoteQIPCModule.a().c();
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return ColorNoteQIPCModule.a().a(paramInt, paramString);
+  }
+  
+  void b(int paramInt1, String paramString, int paramInt2)
+  {
+    boolean bool = ColorNoteHelper.b(paramInt1, paramString, paramInt2);
+    Message localMessage = Message.obtain();
+    localMessage.obj = new Pair(Integer.valueOf(paramInt1), paramString);
+    if (bool) {}
+    for (localMessage.what = 5;; localMessage.what = 6)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  void b(int paramInt, String paramString, boolean paramBoolean)
+  {
+    Bundle localBundle = ColorNoteHelper.a(paramInt, paramString, paramBoolean);
+    if (localBundle == null) {
+      return;
+    }
+    localBundle.putInt("key_service_type", paramInt);
+    localBundle.putString("key_sub_type", paramString);
+    paramString = Message.obtain();
+    paramString.what = 9;
+    paramString.obj = localBundle;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+  }
+  
+  void b(Bundle paramBundle)
+  {
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteHelper.a(paramBundle);
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramBundle;
+    if (bool) {}
+    for (localMessage.what = 3;; localMessage.what = 4)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  void b(ColorNote paramColorNote)
+  {
+    if (paramColorNote == null) {
+      return;
+    }
+    Object localObject = paramColorNote.getUniKey();
+    if (paramColorNote.mMainTitle != null) {}
+    for (boolean bool2 = ColorNoteHelper.a((String)localObject, "mMainTitle", paramColorNote.mMainTitle);; bool2 = true)
+    {
+      boolean bool1 = bool2;
+      if (paramColorNote.mSubTitle != null) {
+        bool1 = bool2 & ColorNoteHelper.a((String)localObject, "mSubTitle", paramColorNote.mSubTitle);
+      }
+      bool2 = bool1;
+      if (paramColorNote.mPicUrl != null) {
+        bool2 = bool1 & ColorNoteHelper.a((String)localObject, "mPicUrl", paramColorNote.mPicUrl);
+      }
+      bool1 = bool2;
+      if (paramColorNote.mReserve != null) {
+        bool1 = bool2 & ColorNoteHelper.a((String)localObject, "mReserve", paramColorNote.mReserve, 1);
+      }
+      localObject = Message.obtain();
+      if (bool1) {}
+      for (((Message)localObject).what = 10;; ((Message)localObject).what = 11)
+      {
+        ((Message)localObject).obj = paramColorNote;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+        return;
+      }
+    }
+  }
+  
+  public boolean b()
+  {
+    return ColorNoteQIPCModule.a().b();
+  }
+  
+  public void c(ColorNote paramColorNote)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.5(this, paramColorNote), 32, null, true);
+      return;
+    }
+    d(paramColorNote);
+  }
+  
+  void d(ColorNote paramColorNote)
+  {
+    ColorNoteHelper.a(paramColorNote);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.colornote.ColorNoteCurd
+ * JD-Core Version:    0.7.0.1
+ */

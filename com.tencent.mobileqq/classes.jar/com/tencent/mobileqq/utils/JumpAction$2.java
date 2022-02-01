@@ -1,25 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import android.text.TextUtils;
-import bheh;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-
-public class JumpAction$2
-  implements Runnable
+class JumpAction$2
+  implements JumpAction.AsyncShareCallback
 {
-  public JumpAction$2(bheh parambheh) {}
+  JumpAction$2(JumpAction paramJumpAction) {}
   
-  public void run()
+  public boolean a()
   {
-    if (this.this$0.a == null) {}
-    String str;
-    do
-    {
-      return;
-      str = this.this$0.a.getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.a(str, System.currentTimeMillis());
+    return JumpAction.a(this.a);
   }
 }
 

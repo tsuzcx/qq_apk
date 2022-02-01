@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.businessCard;
 
-import aqjm;
 import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class BusinessCardManager$1
+class BusinessCardManager$1
   implements Runnable
 {
-  public BusinessCardManager$1(aqjm paramaqjm) {}
+  BusinessCardManager$1(BusinessCardManager paramBusinessCardManager) {}
   
   public void run()
   {

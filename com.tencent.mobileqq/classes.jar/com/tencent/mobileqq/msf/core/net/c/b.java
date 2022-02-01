@@ -4,7 +4,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.w;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -39,12 +40,12 @@ public class b
         localHashMap.put("domain", paramString1);
         localHashMap.put("nat64Prefix", paramString2);
         localHashMap.put("apn", NetConnInfoCenter.getCurrentAPN());
-        localHashMap.put("imsi", w.e());
+        localHashMap.put("imsi", o.e());
         localHashMap.put("osVersion", String.valueOf(Build.VERSION.SDK_INT));
         localHashMap.put("deviceBrand", Build.BRAND);
         localHashMap.put("deviceModel", Build.MODEL);
         if (QLog.isDebugVersion()) {
-          QLog.d("QualityIpv6TestReport", 4, "reportQualityTest result=" + paramInt1 + ", clientIpFamily=" + paramInt2 + ", clientNetType=" + paramInt3 + ", serverIpFamily=" + paramInt4 + ", testType=" + paramb + ", domain=" + paramString1 + ", nat64Prefix=" + paramString2 + ", apn=" + NetConnInfoCenter.getCurrentAPN() + ", imsi=" + w.e() + ", os=" + Build.VERSION.SDK_INT + ", brand=" + Build.BRAND + ", model=" + Build.MODEL);
+          QLog.d("QualityIpv6TestReport", 4, "reportQualityTest result=" + paramInt1 + ", clientIpFamily=" + paramInt2 + ", clientNetType=" + paramInt3 + ", serverIpFamily=" + paramInt4 + ", testType=" + paramb + ", domain=" + paramString1 + ", nat64Prefix=" + paramString2 + ", apn=" + NetConnInfoCenter.getCurrentAPN() + ", imsi=" + o.e() + ", os=" + Build.VERSION.SDK_INT + ", brand=" + Build.BRAND + ", model=" + Build.MODEL);
         }
         k.d.getStatReporter().a("EvtIpv6QualityReport", true, 0L, 0L, localHashMap, false, false);
       }

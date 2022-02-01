@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import com.tencent.ttpic.openapi.model.WMElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,17 +52,12 @@ public class WatermarkListView
     return 0;
   }
   
-  public RecyclerView.Adapter<RecyclerView.ViewHolder> a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  }
-  
   public RecyclerView.ViewHolder a(int paramInt)
   {
     return (RecyclerView.ViewHolder)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public void setAdapter(RecyclerView.Adapter<RecyclerView.ViewHolder> paramAdapter, List<WMElement> paramList)
+  public void setAdapter(RecyclerView.Adapter<RecyclerView.ViewHolder> paramAdapter)
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -71,18 +65,18 @@ public class WatermarkListView
     int i = 0;
     while (i < paramAdapter.getItemCount())
     {
-      paramList = paramAdapter.onCreateViewHolder(this.jdField_a_of_type_AndroidWidgetLinearLayout, 0);
-      paramAdapter.onBindViewHolder(paramList, i);
+      RecyclerView.ViewHolder localViewHolder = paramAdapter.onCreateViewHolder(this.jdField_a_of_type_AndroidWidgetLinearLayout, 0);
+      paramAdapter.onBindViewHolder(localViewHolder, i);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramList.itemView, localLayoutParams);
-      this.jdField_a_of_type_JavaUtilList.add(paramList);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localViewHolder.itemView, localLayoutParams);
+      this.jdField_a_of_type_JavaUtilList.add(localViewHolder);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.watermark.WatermarkListView
  * JD-Core Version:    0.7.0.1
  */

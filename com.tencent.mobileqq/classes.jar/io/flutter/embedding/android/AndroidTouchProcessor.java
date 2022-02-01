@@ -1,5 +1,6 @@
 package io.flutter.embedding.android;
 
+import android.graphics.Matrix;
 import android.os.Build.VERSION;
 import android.view.InputDevice;
 import android.view.InputDevice.MotionRange;
@@ -12,44 +13,62 @@ import java.nio.ByteOrder;
 public class AndroidTouchProcessor
 {
   private static final int BYTES_PER_FIELD = 8;
-  private static final int POINTER_DATA_FIELD_COUNT = 28;
+  private static final Matrix IDENTITY_TRANSFORM = new Matrix();
+  private static final int POINTER_DATA_FIELD_COUNT = 29;
   private static final int POINTER_DATA_FLAG_BATCHED = 1;
   private static final int _POINTER_BUTTON_PRIMARY = 1;
   @NonNull
+  private final MotionEventTracker motionEventTracker;
+  @NonNull
   private final FlutterRenderer renderer;
+  private final boolean trackMotionEvents;
   
-  public AndroidTouchProcessor(@NonNull FlutterRenderer paramFlutterRenderer)
+  public AndroidTouchProcessor(@NonNull FlutterRenderer paramFlutterRenderer, boolean paramBoolean)
   {
     this.renderer = paramFlutterRenderer;
+    this.motionEventTracker = MotionEventTracker.getInstance();
+    this.trackMotionEvents = paramBoolean;
   }
   
-  private void addPointerForIndex(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
+  private void addPointerForIndex(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, int paramInt3, Matrix paramMatrix, ByteBuffer paramByteBuffer)
   {
     if (paramInt2 == -1) {
       return;
     }
-    int j = getPointerDeviceTypeForToolType(paramMotionEvent.getToolType(paramInt1));
-    int i;
     long l1;
-    label184:
+    int j;
+    int i;
+    label49:
+    label244:
     double d1;
-    if (paramMotionEvent.getActionMasked() == 8)
+    if (this.trackMotionEvents)
     {
+      l1 = this.motionEventTracker.track(paramMotionEvent).getId();
+      j = getPointerDeviceTypeForToolType(paramMotionEvent.getToolType(paramInt1));
+      if (paramMotionEvent.getActionMasked() != 8) {
+        break label496;
+      }
       i = 1;
-      paramByteBuffer.putLong(paramMotionEvent.getEventTime() * 1000L);
+      long l2 = paramMotionEvent.getEventTime();
+      paramByteBuffer.putLong(l1);
+      paramByteBuffer.putLong(1000L * l2);
       paramByteBuffer.putLong(paramInt2);
       paramByteBuffer.putLong(j);
       paramByteBuffer.putLong(i);
       paramByteBuffer.putLong(paramMotionEvent.getPointerId(paramInt1));
       paramByteBuffer.putLong(0L);
-      paramByteBuffer.putDouble(paramMotionEvent.getX(paramInt1));
-      paramByteBuffer.putDouble(paramMotionEvent.getY(paramInt1));
+      float[] arrayOfFloat = new float[2];
+      arrayOfFloat[0] = paramMotionEvent.getX(paramInt1);
+      arrayOfFloat[1] = paramMotionEvent.getY(paramInt1);
+      paramMatrix.mapPoints(arrayOfFloat);
+      paramByteBuffer.putDouble(arrayOfFloat[0]);
+      paramByteBuffer.putDouble(arrayOfFloat[1]);
       paramByteBuffer.putDouble(0.0D);
       paramByteBuffer.putDouble(0.0D);
       if (j != 1) {
-        break label436;
+        break label502;
       }
-      long l2 = paramMotionEvent.getButtonState() & 0x1F;
+      l2 = paramMotionEvent.getButtonState() & 0x1F;
       l1 = l2;
       if (l2 == 0L)
       {
@@ -72,23 +91,23 @@ public class AndroidTouchProcessor
       paramByteBuffer.putDouble(paramMotionEvent.getPressure(paramInt1));
       double d2 = 1.0D;
       if (paramMotionEvent.getDevice() == null) {
-        break label463;
+        break label529;
       }
-      InputDevice.MotionRange localMotionRange = paramMotionEvent.getDevice().getMotionRange(2);
-      if (localMotionRange == null) {
-        break label463;
+      paramMatrix = paramMotionEvent.getDevice().getMotionRange(2);
+      if (paramMatrix == null) {
+        break label529;
       }
-      d1 = localMotionRange.getMin();
-      d2 = localMotionRange.getMax();
-      label259:
+      d1 = paramMatrix.getMin();
+      d2 = paramMatrix.getMax();
+      label319:
       paramByteBuffer.putDouble(d1);
       paramByteBuffer.putDouble(d2);
       if (j != 2) {
-        break label469;
+        break label535;
       }
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(24, paramInt1));
       paramByteBuffer.putDouble(0.0D);
-      label302:
+      label362:
       paramByteBuffer.putDouble(paramMotionEvent.getSize(paramInt1));
       paramByteBuffer.putDouble(paramMotionEvent.getToolMajor(paramInt1));
       paramByteBuffer.putDouble(paramMotionEvent.getToolMinor(paramInt1));
@@ -96,7 +115,7 @@ public class AndroidTouchProcessor
       paramByteBuffer.putDouble(0.0D);
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(8, paramInt1));
       if (j != 2) {
-        break label486;
+        break label552;
       }
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(25, paramInt1));
     }
@@ -104,32 +123,35 @@ public class AndroidTouchProcessor
     {
       paramByteBuffer.putLong(paramInt3);
       if (i != 1) {
-        break label496;
+        break label562;
       }
       paramByteBuffer.putDouble(-paramMotionEvent.getAxisValue(10));
       paramByteBuffer.putDouble(-paramMotionEvent.getAxisValue(9));
       return;
-      i = 0;
+      l1 = 0L;
       break;
-      label436:
+      label496:
+      i = 0;
+      break label49;
+      label502:
       if (j == 2)
       {
         l1 = paramMotionEvent.getButtonState() >> 4 & 0xF;
-        break label184;
+        break label244;
       }
       l1 = 0L;
-      break label184;
-      label463:
+      break label244;
+      label529:
       d1 = 0.0D;
-      break label259;
-      label469:
+      break label319;
+      label535:
       paramByteBuffer.putDouble(0.0D);
       paramByteBuffer.putDouble(0.0D);
-      break label302;
-      label486:
+      break label362;
+      label552:
       paramByteBuffer.putDouble(0.0D);
     }
-    label496:
+    label562:
     paramByteBuffer.putDouble(0.0D);
     paramByteBuffer.putDouble(0.0D);
   }
@@ -201,10 +223,10 @@ public class AndroidTouchProcessor
     }
     label58:
     int i = getPointerChangeForAction(paramMotionEvent.getActionMasked());
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 28 * 8);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 29 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    addPointerForIndex(paramMotionEvent, paramMotionEvent.getActionIndex(), i, 0, localByteBuffer);
-    if (localByteBuffer.position() % 224 == 0)
+    addPointerForIndex(paramMotionEvent, paramMotionEvent.getActionIndex(), i, 0, IDENTITY_TRANSFORM, localByteBuffer);
+    if (localByteBuffer.position() % 232 == 0)
     {
       this.renderer.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
       return true;
@@ -214,8 +236,13 @@ public class AndroidTouchProcessor
   
   public boolean onTouchEvent(@NonNull MotionEvent paramMotionEvent)
   {
+    return onTouchEvent(paramMotionEvent, IDENTITY_TRANSFORM);
+  }
+  
+  public boolean onTouchEvent(@NonNull MotionEvent paramMotionEvent, Matrix paramMatrix)
+  {
     int k = paramMotionEvent.getPointerCount();
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 28 * 8);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 29 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     int j = paramMotionEvent.getActionMasked();
     int m = getPointerChangeForAction(paramMotionEvent.getActionMasked());
@@ -224,57 +251,57 @@ public class AndroidTouchProcessor
     {
       i = 1;
       if ((i != 0) || ((j != 1) && (j != 6))) {
-        break label122;
+        break label129;
       }
       j = 1;
-      label71:
+      label77:
       if (i == 0) {
-        break label127;
+        break label135;
       }
-      addPointerForIndex(paramMotionEvent, paramMotionEvent.getActionIndex(), m, 0, localByteBuffer);
+      addPointerForIndex(paramMotionEvent, paramMotionEvent.getActionIndex(), m, 0, paramMatrix, localByteBuffer);
     }
     for (;;)
     {
-      if (localByteBuffer.position() % 224 != 0) {
-        break label216;
+      if (localByteBuffer.position() % 232 != 0) {
+        break label228;
       }
       this.renderer.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
       return true;
       i = 0;
       break;
-      label122:
+      label129:
       j = 0;
-      break label71;
-      label127:
+      break label77;
+      label135:
       if (j != 0)
       {
         i = 0;
         while (i < k)
         {
           if ((i != paramMotionEvent.getActionIndex()) && (paramMotionEvent.getToolType(i) == 1)) {
-            addPointerForIndex(paramMotionEvent, i, 5, 1, localByteBuffer);
+            addPointerForIndex(paramMotionEvent, i, 5, 1, paramMatrix, localByteBuffer);
           }
           i += 1;
         }
-        addPointerForIndex(paramMotionEvent, paramMotionEvent.getActionIndex(), m, 0, localByteBuffer);
+        addPointerForIndex(paramMotionEvent, paramMotionEvent.getActionIndex(), m, 0, paramMatrix, localByteBuffer);
       }
       else
       {
         i = 0;
         while (i < k)
         {
-          addPointerForIndex(paramMotionEvent, i, m, 0, localByteBuffer);
+          addPointerForIndex(paramMotionEvent, i, m, 0, paramMatrix, localByteBuffer);
           i += 1;
         }
       }
     }
-    label216:
+    label228:
     throw new AssertionError("Packet position is not on field boundary");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.AndroidTouchProcessor
  * JD-Core Version:    0.7.0.1
  */

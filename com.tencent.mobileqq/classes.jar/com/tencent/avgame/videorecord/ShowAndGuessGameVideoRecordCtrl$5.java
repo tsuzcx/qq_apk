@@ -2,12 +2,11 @@ package com.tencent.avgame.videorecord;
 
 import android.graphics.Bitmap;
 import android.view.View;
-import nrk;
 
-public class ShowAndGuessGameVideoRecordCtrl$5
+class ShowAndGuessGameVideoRecordCtrl$5
   implements Runnable
 {
-  public ShowAndGuessGameVideoRecordCtrl$5(nrk paramnrk, View paramView) {}
+  ShowAndGuessGameVideoRecordCtrl$5(ShowAndGuessGameVideoRecordCtrl paramShowAndGuessGameVideoRecordCtrl, View paramView) {}
   
   public void run()
   {
@@ -23,7 +22,7 @@ public class ShowAndGuessGameVideoRecordCtrl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.videorecord.ShowAndGuessGameVideoRecordCtrl.5
  * JD-Core Version:    0.7.0.1
  */

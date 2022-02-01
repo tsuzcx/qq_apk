@@ -10,9 +10,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.SystemClock;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.IThreadManager;
+import com.tencent.image.api.ITool;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -22,20 +23,20 @@ import java.util.concurrent.RejectedExecutionException;
 public class NativeGifImage
   extends AbstractGifImage
 {
-  protected static int CURRENT_FRAMEINDEX_INDEX = 5;
-  protected static int CURRENT_LOOP_INDEX = 6;
-  public static final Bitmap.Config DEFAULT_CONFIG;
+  protected static int CURRENT_FRAMEINDEX_INDEX = 0;
+  protected static int CURRENT_LOOP_INDEX = 0;
+  public static final Bitmap.Config DEFAULT_CONFIG = Bitmap.Config.ARGB_8888;
   protected static int ERRCODE_INDEX = 0;
   protected static int FRAME_COUNT_INDEX = 0;
   public static int GIF_DEFAULT_DELAY = 0;
   protected static int HEIGHT_INDEX = 0;
   private static int IMAGE_SIZE_DISABLE_DOUBLE_BUFFER = 262144;
   protected static int POST_INVALIDATION_TIME_INDEX = 0;
-  public static int QZONE_DELAY = 0;
+  public static int QZONE_DELAY = -1;
   public static final String TAG = "NativeGifImage";
   protected static int WIDTH_INDEX;
-  private static boolean mIsGIFEngineAvaliable = false;
-  private static boolean mIsLibLoaded = false;
+  private static boolean mIsGIFEngineAvaliable;
+  private static boolean mIsLibLoaded;
   private static int[] sequence;
   protected Bitmap.Config mCurrentConfig = DEFAULT_CONFIG;
   protected Bitmap mCurrentFrameBitmap;
@@ -53,14 +54,16 @@ public class NativeGifImage
   
   static
   {
-    DEFAULT_CONFIG = Bitmap.Config.ARGB_8888;
-    QZONE_DELAY = -1;
     GIF_DEFAULT_DELAY = -1;
     WIDTH_INDEX = 0;
     HEIGHT_INDEX = 1;
     FRAME_COUNT_INDEX = 2;
     ERRCODE_INDEX = 3;
     POST_INVALIDATION_TIME_INDEX = 4;
+    CURRENT_FRAMEINDEX_INDEX = 5;
+    CURRENT_LOOP_INDEX = 6;
+    mIsGIFEngineAvaliable = false;
+    mIsLibLoaded = false;
   }
   
   public NativeGifImage(File paramFile, boolean paramBoolean)
@@ -75,8 +78,8 @@ public class NativeGifImage
     }
     this.mSrcGifFile = paramFile.getAbsolutePath();
     this.mIsEmosmFile = paramBoolean2;
-    if ((!paramFile.exists()) && (QLog.isColorLevel())) {
-      QLog.e("NativeGifImage", 2, this.mSrcGifFile + " doesn't exist");
+    if ((!paramFile.exists()) && (URLDrawable.depImp.mLog.isColorLevel())) {
+      URLDrawable.depImp.mLog.e("NativeGifImage", 2, this.mSrcGifFile + " doesn't exist");
     }
     Rect localRect = getImageSize(paramFile, paramBoolean2);
     int m = localRect.width();
@@ -94,7 +97,7 @@ public class NativeGifImage
         f1 = paramInt1 / m;
         f2 = paramInt2 / k;
         if (f1 >= f2) {
-          break label257;
+          break label273;
         }
         j = k;
         i = m;
@@ -116,7 +119,7 @@ public class NativeGifImage
       this.mDefaultRoundCorner = paramFloat;
       init(paramBoolean1);
       return;
-      label257:
+      label273:
       f1 = f2;
       break;
       this.mMetaData[WIDTH_INDEX] = localRect.width();
@@ -214,15 +217,15 @@ public class NativeGifImage
     try
     {
       Utils.beginPile();
-      mIsGIFEngineAvaliable = SoLoadUtilNew.loadSoByName(URLDrawable.mApplicationContext, "GIFEngine");
+      mIsGIFEngineAvaliable = URLDrawable.depImp.mTool.loadSoByName(URLDrawable.mApplicationContext, "GIFEngine");
       i = Color.argb(255, 0, 1, 2);
       localObject = DEFAULT_CONFIG;
       sequence = nativeTestColor(Bitmap.createBitmap(new int[] { i }, 1, 1, (Bitmap.Config)localObject));
       if (sequence == null) {
-        break label279;
+        break label334;
       }
       if (sequence.length == 4) {
-        break label153;
+        break label176;
       }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -232,8 +235,8 @@ public class NativeGifImage
         Object localObject;
         int m;
         int j;
-        if (QLog.isColorLevel()) {
-          QLog.e("NativeGifImage", 2, "loadLibrary(): " + localUnsatisfiedLinkError.getMessage());
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.e("NativeGifImage", 2, "loadLibrary(): " + localUnsatisfiedLinkError.getMessage());
         }
       }
     }
@@ -242,9 +245,9 @@ public class NativeGifImage
       for (;;)
       {
         int i;
-        if (QLog.isColorLevel())
+        if (URLDrawable.depImp.mLog.isColorLevel())
         {
-          QLog.e("NativeGifImage", 2, "loadLibrary(): " + localException.getMessage());
+          URLDrawable.depImp.mLog.e("NativeGifImage", 2, "loadLibrary(): " + localException.getMessage());
           continue;
           i = 1;
         }
@@ -255,11 +258,11 @@ public class NativeGifImage
     }
     mIsLibLoaded = true;
     Utils.endPile("NativeGifImage", "Load libGIFEngine");
-    if (QLog.isColorLevel()) {
-      QLog.i("NativeGifImage", 2, "libGIFEngine.so loaded " + mIsLibLoaded);
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.i("NativeGifImage", 2, "libGIFEngine.so loaded " + mIsLibLoaded);
     }
     return;
-    label153:
+    label176:
     localObject = sequence;
     m = localObject.length;
     j = 0;
@@ -303,171 +306,171 @@ public class NativeGifImage
     //   3: monitorenter
     //   4: aload_0
     //   5: aload_0
-    //   6: getfield 88	com/tencent/image/NativeGifImage:mMetaData	[I
-    //   9: getstatic 71	com/tencent/image/NativeGifImage:CURRENT_FRAMEINDEX_INDEX	I
+    //   6: getfield 86	com/tencent/image/NativeGifImage:mMetaData	[I
+    //   9: getstatic 67	com/tencent/image/NativeGifImage:CURRENT_FRAMEINDEX_INDEX	I
     //   12: iaload
-    //   13: putfield 300	com/tencent/image/NativeGifImage:mCurrentFrameIndex	I
+    //   13: putfield 314	com/tencent/image/NativeGifImage:mCurrentFrameIndex	I
     //   16: aload_0
     //   17: aload_0
-    //   18: getfield 88	com/tencent/image/NativeGifImage:mMetaData	[I
-    //   21: getstatic 73	com/tencent/image/NativeGifImage:CURRENT_LOOP_INDEX	I
+    //   18: getfield 86	com/tencent/image/NativeGifImage:mMetaData	[I
+    //   21: getstatic 69	com/tencent/image/NativeGifImage:CURRENT_LOOP_INDEX	I
     //   24: iaload
-    //   25: putfield 302	com/tencent/image/NativeGifImage:mCurrentLoop	I
+    //   25: putfield 316	com/tencent/image/NativeGifImage:mCurrentLoop	I
     //   28: aload_0
-    //   29: getfield 302	com/tencent/image/NativeGifImage:mCurrentLoop	I
+    //   29: getfield 316	com/tencent/image/NativeGifImage:mCurrentLoop	I
     //   32: iconst_1
     //   33: if_icmpne +54 -> 87
     //   36: aload_0
-    //   37: getfield 300	com/tencent/image/NativeGifImage:mCurrentFrameIndex	I
+    //   37: getfield 314	com/tencent/image/NativeGifImage:mCurrentFrameIndex	I
     //   40: ifne +47 -> 87
     //   43: aload_0
-    //   44: getfield 306	com/tencent/image/NativeGifImage:mPlayOnceListener	Ljava/lang/ref/WeakReference;
+    //   44: getfield 320	com/tencent/image/NativeGifImage:mPlayOnceListener	Ljava/lang/ref/WeakReference;
     //   47: ifnull +24 -> 71
     //   50: aload_0
-    //   51: getfield 306	com/tencent/image/NativeGifImage:mPlayOnceListener	Ljava/lang/ref/WeakReference;
-    //   54: invokevirtual 312	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   57: checkcast 314	com/tencent/image/GifDrawable$OnGIFPlayOnceListener
+    //   51: getfield 320	com/tencent/image/NativeGifImage:mPlayOnceListener	Ljava/lang/ref/WeakReference;
+    //   54: invokevirtual 326	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   57: checkcast 328	com/tencent/image/GifDrawable$OnGIFPlayOnceListener
     //   60: astore_3
     //   61: aload_3
     //   62: ifnull +9 -> 71
     //   65: aload_3
-    //   66: invokeinterface 317 1 0
+    //   66: invokeinterface 331 1 0
     //   71: aload_0
-    //   72: getfield 321	com/tencent/image/NativeGifImage:mStrongPlayOnceListener	Lcom/tencent/image/GifDrawable$OnGIFPlayOnceListener;
+    //   72: getfield 335	com/tencent/image/NativeGifImage:mStrongPlayOnceListener	Lcom/tencent/image/GifDrawable$OnGIFPlayOnceListener;
     //   75: ifnull +12 -> 87
     //   78: aload_0
-    //   79: getfield 321	com/tencent/image/NativeGifImage:mStrongPlayOnceListener	Lcom/tencent/image/GifDrawable$OnGIFPlayOnceListener;
-    //   82: invokeinterface 317 1 0
+    //   79: getfield 335	com/tencent/image/NativeGifImage:mStrongPlayOnceListener	Lcom/tencent/image/GifDrawable$OnGIFPlayOnceListener;
+    //   82: invokeinterface 331 1 0
     //   87: aload_0
-    //   88: getfield 226	com/tencent/image/NativeGifImage:mCurrentFrameBitmapBuffer	Landroid/graphics/Bitmap;
+    //   88: getfield 238	com/tencent/image/NativeGifImage:mCurrentFrameBitmapBuffer	Landroid/graphics/Bitmap;
     //   91: ifnull +112 -> 203
-    //   94: new 323	android/graphics/Canvas
+    //   94: new 337	android/graphics/Canvas
     //   97: dup
     //   98: aload_0
-    //   99: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   102: invokespecial 326	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   99: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   102: invokespecial 340	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   105: astore_3
     //   106: aload_0
-    //   107: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   107: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   110: iconst_0
-    //   111: invokevirtual 330	android/graphics/Bitmap:eraseColor	(I)V
+    //   111: invokevirtual 344	android/graphics/Bitmap:eraseColor	(I)V
     //   114: aload_0
-    //   115: getfield 167	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
+    //   115: getfield 179	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
     //   118: fconst_0
     //   119: fcmpl
     //   120: ifle +69 -> 189
-    //   123: new 332	android/graphics/Paint
+    //   123: new 346	android/graphics/Paint
     //   126: dup
-    //   127: invokespecial 333	android/graphics/Paint:<init>	()V
+    //   127: invokespecial 347	android/graphics/Paint:<init>	()V
     //   130: astore_2
     //   131: aload_2
     //   132: iconst_1
-    //   133: invokevirtual 336	android/graphics/Paint:setAntiAlias	(Z)V
+    //   133: invokevirtual 350	android/graphics/Paint:setAntiAlias	(Z)V
     //   136: aload_3
-    //   137: new 338	android/graphics/RectF
+    //   137: new 352	android/graphics/RectF
     //   140: dup
     //   141: fconst_0
     //   142: fconst_0
     //   143: aload_0
-    //   144: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   147: invokevirtual 341	android/graphics/Bitmap:getWidth	()I
+    //   144: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   147: invokevirtual 355	android/graphics/Bitmap:getWidth	()I
     //   150: i2f
     //   151: aload_0
-    //   152: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   155: invokevirtual 344	android/graphics/Bitmap:getHeight	()I
+    //   152: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   155: invokevirtual 358	android/graphics/Bitmap:getHeight	()I
     //   158: i2f
-    //   159: invokespecial 347	android/graphics/RectF:<init>	(FFFF)V
+    //   159: invokespecial 361	android/graphics/RectF:<init>	(FFFF)V
     //   162: aload_0
-    //   163: getfield 167	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
+    //   163: getfield 179	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
     //   166: aload_0
-    //   167: getfield 167	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
+    //   167: getfield 179	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
     //   170: aload_2
-    //   171: invokevirtual 351	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
+    //   171: invokevirtual 365	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
     //   174: aload_2
-    //   175: new 353	android/graphics/PorterDuffXfermode
+    //   175: new 367	android/graphics/PorterDuffXfermode
     //   178: dup
-    //   179: getstatic 359	android/graphics/PorterDuff$Mode:SRC_IN	Landroid/graphics/PorterDuff$Mode;
-    //   182: invokespecial 362	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
-    //   185: invokevirtual 366	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
+    //   179: getstatic 373	android/graphics/PorterDuff$Mode:SRC_IN	Landroid/graphics/PorterDuff$Mode;
+    //   182: invokespecial 376	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
+    //   185: invokevirtual 380	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
     //   188: pop
     //   189: aload_3
     //   190: aload_0
-    //   191: getfield 226	com/tencent/image/NativeGifImage:mCurrentFrameBitmapBuffer	Landroid/graphics/Bitmap;
+    //   191: getfield 238	com/tencent/image/NativeGifImage:mCurrentFrameBitmapBuffer	Landroid/graphics/Bitmap;
     //   194: fconst_0
     //   195: fconst_0
     //   196: aload_2
-    //   197: invokevirtual 370	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+    //   197: invokevirtual 384	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
     //   200: aload_0
     //   201: monitorexit
     //   202: return
     //   203: aload_0
-    //   204: getfield 167	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
+    //   204: getfield 179	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
     //   207: fstore_1
     //   208: fload_1
     //   209: fconst_0
     //   210: fcmpl
     //   211: ifle -11 -> 200
     //   214: aload_0
-    //   215: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   218: invokevirtual 341	android/graphics/Bitmap:getWidth	()I
+    //   215: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   218: invokevirtual 355	android/graphics/Bitmap:getWidth	()I
     //   221: aload_0
-    //   222: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   225: invokevirtual 344	android/graphics/Bitmap:getHeight	()I
+    //   222: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   225: invokevirtual 358	android/graphics/Bitmap:getHeight	()I
     //   228: aload_0
-    //   229: getfield 92	com/tencent/image/NativeGifImage:mCurrentConfig	Landroid/graphics/Bitmap$Config;
-    //   232: invokestatic 224	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   229: getfield 90	com/tencent/image/NativeGifImage:mCurrentConfig	Landroid/graphics/Bitmap$Config;
+    //   232: invokestatic 236	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   235: astore_2
     //   236: aload_2
     //   237: ifnull -37 -> 200
-    //   240: new 323	android/graphics/Canvas
+    //   240: new 337	android/graphics/Canvas
     //   243: dup
     //   244: aload_2
-    //   245: invokespecial 326	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   245: invokespecial 340	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   248: astore_3
-    //   249: new 332	android/graphics/Paint
+    //   249: new 346	android/graphics/Paint
     //   252: dup
-    //   253: invokespecial 333	android/graphics/Paint:<init>	()V
+    //   253: invokespecial 347	android/graphics/Paint:<init>	()V
     //   256: astore 4
     //   258: aload 4
     //   260: iconst_1
-    //   261: invokevirtual 336	android/graphics/Paint:setAntiAlias	(Z)V
+    //   261: invokevirtual 350	android/graphics/Paint:setAntiAlias	(Z)V
     //   264: aload_3
-    //   265: new 338	android/graphics/RectF
+    //   265: new 352	android/graphics/RectF
     //   268: dup
     //   269: fconst_0
     //   270: fconst_0
     //   271: aload_0
-    //   272: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   275: invokevirtual 341	android/graphics/Bitmap:getWidth	()I
+    //   272: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   275: invokevirtual 355	android/graphics/Bitmap:getWidth	()I
     //   278: i2f
     //   279: aload_0
-    //   280: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   283: invokevirtual 344	android/graphics/Bitmap:getHeight	()I
+    //   280: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   283: invokevirtual 358	android/graphics/Bitmap:getHeight	()I
     //   286: i2f
-    //   287: invokespecial 347	android/graphics/RectF:<init>	(FFFF)V
+    //   287: invokespecial 361	android/graphics/RectF:<init>	(FFFF)V
     //   290: aload_0
-    //   291: getfield 167	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
+    //   291: getfield 179	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
     //   294: aload_0
-    //   295: getfield 167	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
+    //   295: getfield 179	com/tencent/image/NativeGifImage:mDefaultRoundCorner	F
     //   298: aload 4
-    //   300: invokevirtual 351	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
+    //   300: invokevirtual 365	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
     //   303: aload 4
-    //   305: new 353	android/graphics/PorterDuffXfermode
+    //   305: new 367	android/graphics/PorterDuffXfermode
     //   308: dup
-    //   309: getstatic 359	android/graphics/PorterDuff$Mode:SRC_IN	Landroid/graphics/PorterDuff$Mode;
-    //   312: invokespecial 362	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
-    //   315: invokevirtual 366	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
+    //   309: getstatic 373	android/graphics/PorterDuff$Mode:SRC_IN	Landroid/graphics/PorterDuff$Mode;
+    //   312: invokespecial 376	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
+    //   315: invokevirtual 380	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
     //   318: pop
     //   319: aload_3
     //   320: aload_0
-    //   321: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   321: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   324: fconst_0
     //   325: fconst_0
     //   326: aload 4
-    //   328: invokevirtual 370	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+    //   328: invokevirtual 384	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
     //   331: aload_0
     //   332: aload_2
-    //   333: putfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   333: putfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   336: goto -136 -> 200
     //   339: astore_2
     //   340: aload_0
@@ -476,43 +479,47 @@ public class NativeGifImage
     //   343: athrow
     //   344: astore_2
     //   345: aload_0
-    //   346: getfield 92	com/tencent/image/NativeGifImage:mCurrentConfig	Landroid/graphics/Bitmap$Config;
+    //   346: getfield 90	com/tencent/image/NativeGifImage:mCurrentConfig	Landroid/graphics/Bitmap$Config;
     //   349: astore_2
-    //   350: getstatic 53	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   350: getstatic 49	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
     //   353: astore_3
     //   354: aload_2
     //   355: aload_3
-    //   356: if_acmpne +43 -> 399
+    //   356: if_acmpne +59 -> 415
     //   359: aload_0
-    //   360: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   363: invokevirtual 341	android/graphics/Bitmap:getWidth	()I
+    //   360: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   363: invokevirtual 355	android/graphics/Bitmap:getWidth	()I
     //   366: aload_0
-    //   367: getfield 159	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   370: invokevirtual 344	android/graphics/Bitmap:getHeight	()I
-    //   373: getstatic 229	android/graphics/Bitmap$Config:ARGB_4444	Landroid/graphics/Bitmap$Config;
-    //   376: invokestatic 224	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   367: getfield 171	com/tencent/image/NativeGifImage:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   370: invokevirtual 358	android/graphics/Bitmap:getHeight	()I
+    //   373: getstatic 241	android/graphics/Bitmap$Config:ARGB_4444	Landroid/graphics/Bitmap$Config;
+    //   376: invokestatic 236	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   379: astore_2
     //   380: goto -144 -> 236
     //   383: astore_2
-    //   384: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   387: ifeq +12 -> 399
-    //   390: ldc 21
-    //   392: iconst_2
-    //   393: ldc_w 372
-    //   396: invokestatic 375	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   399: aconst_null
-    //   400: astore_2
-    //   401: goto -165 -> 236
+    //   384: getstatic 119	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   387: getfield 125	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   390: invokeinterface 130 1 0
+    //   395: ifeq +20 -> 415
+    //   398: getstatic 119	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   401: getfield 125	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   404: ldc 21
+    //   406: iconst_2
+    //   407: ldc_w 386
+    //   410: invokeinterface 389 4 0
+    //   415: aconst_null
+    //   416: astore_2
+    //   417: goto -181 -> 236
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	404	0	this	NativeGifImage
+    //   0	420	0	this	NativeGifImage
     //   207	2	1	f	float
     //   1	332	2	localObject1	Object
     //   339	4	2	localObject2	Object
     //   344	1	2	localOutOfMemoryError1	OutOfMemoryError
     //   349	31	2	localObject3	Object
     //   383	1	2	localOutOfMemoryError2	OutOfMemoryError
-    //   400	1	2	localObject4	Object
+    //   416	1	2	localObject4	Object
     //   60	296	3	localObject5	Object
     //   256	71	4	localPaint	Paint
     // Exception table:
@@ -528,7 +535,7 @@ public class NativeGifImage
     //   240	336	339	finally
     //   345	354	339	finally
     //   359	380	339	finally
-    //   384	399	339	finally
+    //   384	415	339	finally
     //   214	236	344	java/lang/OutOfMemoryError
     //   359	380	383	java/lang/OutOfMemoryError
   }
@@ -579,7 +586,7 @@ public class NativeGifImage
       this.mDecodeNextFrameEnd = false;
       GIF_DEFAULT_DELAY = this.mMetaData[POST_INVALIDATION_TIME_INDEX];
       if (QZONE_DELAY != -1) {
-        break label61;
+        break label67;
       }
       l = SystemClock.uptimeMillis() + this.mMetaData[POST_INVALIDATION_TIME_INDEX];
     }
@@ -587,16 +594,16 @@ public class NativeGifImage
     {
       for (;;)
       {
-        ThreadManagerV2.excute(new NativeGifImage.NativeDecodeFrameTask(this, l), 64, null, true);
+        URLDrawable.depImp.mThreadManager.executeOnFileThreadExcutor(new NativeGifImage.NativeDecodeFrameTask(this, l), null, true);
         return;
-        label61:
+        label67:
         l = SystemClock.uptimeMillis() + QZONE_DELAY;
       }
     }
     catch (RejectedExecutionException localRejectedExecutionException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("URLDrawable_", 2, "executeNewTask()", localRejectedExecutionException);
+      while (!URLDrawable.depImp.mLog.isColorLevel()) {}
+      URLDrawable.depImp.mLog.e("URLDrawable_", 2, "executeNewTask()", localRejectedExecutionException);
     }
   }
   
@@ -626,9 +633,9 @@ public class NativeGifImage
       for (;;)
       {
         l1 = l2;
-        if (QLog.isColorLevel())
+        if (URLDrawable.depImp.mLog.isColorLevel())
         {
-          QLog.e("NativeGifImage", 2, "getByteSize(): " + localUnsatisfiedLinkError.getMessage());
+          URLDrawable.depImp.mLog.e("NativeGifImage", 2, "getByteSize(): " + localUnsatisfiedLinkError.getMessage());
           l1 = l2;
         }
       }

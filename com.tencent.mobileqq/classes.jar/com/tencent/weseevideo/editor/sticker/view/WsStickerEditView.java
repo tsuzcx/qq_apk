@@ -143,7 +143,7 @@ public class WsStickerEditView
     return this.editBtnRect.contains(paramFloat1, paramFloat2);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if (paramCanvas != null)
@@ -241,13 +241,13 @@ public class WsStickerEditView
     return StickerDrawingOperationMask.isDrawGuideLine(this.drawMask);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.operationMode = TAVStickerOperationMode.OP_NONE;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.isStickerSelected = false;
@@ -325,7 +325,7 @@ public class WsStickerEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.view.WsStickerEditView
  * JD-Core Version:    0.7.0.1
  */

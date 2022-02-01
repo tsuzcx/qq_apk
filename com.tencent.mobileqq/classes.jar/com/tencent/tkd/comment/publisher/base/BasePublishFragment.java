@@ -1,13 +1,11 @@
 package com.tencent.tkd.comment.publisher.base;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,26 +17,28 @@ import com.tencent.tkd.comment.util.CommonUtil;
 public abstract class BasePublishFragment
   extends ReportDialogFragment
 {
-  protected static final int STATUS_HIDE_HOLDER = 0;
-  protected static final int STATUS_SHOW_EXPRESSION = 1;
-  protected static final int STATUS_SHOW_GIF = 2;
-  protected static final int STATUS_SHOW_KEYBOARD = 3;
-  protected int emotionViewHeight;
+  public static final int STATUS_HIDE_HOLDER = 0;
+  public static final int STATUS_SHOW_EXPRESSION = 1;
+  public static final int STATUS_SHOW_GIF = 2;
+  public static final int STATUS_SHOW_KEYBOARD = 3;
   private int gravityCache;
   private View vRoot;
   
   protected abstract int getContentLayoutId();
   
-  protected void lockCurrentHeight(Context paramContext)
+  public void lockCurrentHeight(Context paramContext)
   {
-    Object localObject = new int[2];
-    this.vRoot.getLocationOnScreen((int[])localObject);
-    int i = localObject[1];
-    localObject = getDialog();
-    ((Dialog)localObject).getWindow().setGravity(176);
-    WindowManager.LayoutParams localLayoutParams = ((Dialog)localObject).getWindow().getAttributes();
-    localLayoutParams.y = (i - CommonUtil.getStatusBarHeight(paramContext));
-    ((Dialog)localObject).getWindow().setAttributes(localLayoutParams);
+    if ((getDialog() != null) && (getDialog().getWindow() != null))
+    {
+      Object localObject = new int[2];
+      this.vRoot.getLocationOnScreen((int[])localObject);
+      int i = localObject[1];
+      localObject = getDialog();
+      ((Dialog)localObject).getWindow().setGravity(176);
+      WindowManager.LayoutParams localLayoutParams = ((Dialog)localObject).getWindow().getAttributes();
+      localLayoutParams.y = (i - CommonUtil.getStatusBarHeight(paramContext));
+      ((Dialog)localObject).getWindow().setAttributes(localLayoutParams);
+    }
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -51,20 +51,21 @@ public abstract class BasePublishFragment
   {
     super.onCreate(paramBundle);
     setShowsDialog(true);
-    this.emotionViewHeight = getActivity().getResources().getDimensionPixelOffset(2131299091);
   }
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    paramBundle = new BasePublishFragment.1(this, getActivity(), 2131756028);
+    paramBundle = new BasePublishFragment.1(this, getActivity(), 2131756043);
     this.vRoot = LayoutInflater.from(getActivity()).inflate(getContentLayoutId(), null);
     paramBundle.setContentView(this.vRoot);
     paramBundle.getWindow().setLayout(-1, -2);
     paramBundle.getWindow().setGravity(80);
-    paramBundle.getWindow().setWindowAnimations(2131756027);
+    paramBundle.getWindow().setWindowAnimations(2131756042);
     this.gravityCache = paramBundle.getWindow().getAttributes().gravity;
     return paramBundle;
   }
+  
+  protected void onDialogCancel() {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
@@ -87,14 +88,14 @@ public abstract class BasePublishFragment
     }
   }
   
-  protected void unLockCurrentHeight()
+  public void unLockCurrentHeight()
   {
     this.vRoot.postDelayed(new BasePublishFragment.2(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.base.BasePublishFragment
  * JD-Core Version:    0.7.0.1
  */

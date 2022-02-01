@@ -2,10 +2,6 @@ package common.config.service;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import awzb;
-import blpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.QZLog;
@@ -81,25 +77,6 @@ public class QZoneConfigHelper
   public static boolean enableExtendFeedsLive()
   {
     return (QzoneConfig.getInstance().getConfig("K_QZKuolieEnterance", "SK_QZKuoliePartyEnteranceConfig", 0) == 1) && (Build.VERSION.SDK_INT > 20);
-  }
-  
-  public static long enableQZoneContentBoxMiniProgram()
-  {
-    return blpl.a().a("contentboxlaunch", "gocontentboxminiprogram", 0);
-  }
-  
-  public static boolean enableQZoneContextBox(QQAppInterface paramQQAppInterface)
-  {
-    try
-    {
-      boolean bool = ((awzb)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER)).b();
-      return bool;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      QZLog.e("QZoneMsgManager.enableQZoneContextBox", 2, paramQQAppInterface, new Object[0]);
-    }
-    return false;
   }
   
   public static int getAccReportCount()
@@ -717,7 +694,7 @@ public class QZoneConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     common.config.service.QZoneConfigHelper
  * JD-Core Version:    0.7.0.1
  */

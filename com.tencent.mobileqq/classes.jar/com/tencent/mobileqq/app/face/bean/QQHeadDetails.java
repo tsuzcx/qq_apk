@@ -4,12 +4,11 @@ import AvatarInfo.DestQQHeadInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aokq;
 
 public class QQHeadDetails
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new aokq();
+  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new QQHeadDetails.1();
   public byte a;
   public int a;
   public long a;
@@ -68,7 +67,7 @@ public class QQHeadDetails
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.bean.QQHeadDetails
  * JD-Core Version:    0.7.0.1
  */

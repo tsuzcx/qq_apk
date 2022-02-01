@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.view.View;
-import bgyi;
+import com.tencent.mobileqq.util.AccessibilityUtil.ViewOnClickListener;
 
 class BaseChatPie$4
-  implements bgyi
+  implements AccessibilityUtil.ViewOnClickListener
 {
   BaseChatPie$4(BaseChatPie paramBaseChatPie) {}
   
   public void onClick(View paramView)
   {
-    this.this$0.onClick(this.this$0.mIconButtonInInputRight);
+    this.a.onClick(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.4
  * JD-Core Version:    0.7.0.1
  */

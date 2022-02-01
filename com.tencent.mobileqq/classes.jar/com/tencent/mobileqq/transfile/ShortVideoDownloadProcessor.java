@@ -1,30 +1,32 @@
 package com.tencent.mobileqq.transfile;
 
-import acnh;
 import android.text.TextUtils;
-import anvx;
-import ares;
-import aret;
-import azjj;
-import azjk;
-import bcwz;
-import bhhr;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.imcore.message.UinTypeUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.config.business.QQShortVideoQuicNetProcessor;
+import com.tencent.mobileqq.config.business.QQShortVideoQuicNetProcessor.ShortVideoQuicNetConfBean;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.ShortVideoDownReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.ShortVideoDownResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
 import com.tencent.mobileqq.transfile.quic.QuicNetResMgr;
-import com.tencent.mobileqq.transfile.quic.open.QuicDownloader;
-import com.tencent.mobileqq.transfile.quic.open.QuicDownloader.Builder;
-import com.tencent.mobileqq.transfile.quic.open.QuicNetFactory;
+import com.tencent.mobileqq.transfile.quic.open.IQuicEngine;
+import com.tencent.mobileqq.transfile.quic.open.QuicEngineFactory;
+import com.tencent.mobileqq.transfile.quic.open.QuicReq.Builder;
 import com.tencent.mobileqq.transfile.quic.report.QuicNetReport;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -41,7 +43,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ShortVideoDownloadProcessor
   extends BaseDownloadProcessor
-  implements INetEngine.NetFailedListener
+  implements NetFailedListener
 {
   public static final String TAG = "ShortVideoDownloadProcessor";
   static HashSet<String> runningTasks = new HashSet();
@@ -61,17 +63,17 @@ public class ShortVideoDownloadProcessor
   
   public ShortVideoDownloadProcessor() {}
   
-  public ShortVideoDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public ShortVideoDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
-    paramTransFileController = paramTransferRequest.mLocalPath;
-    if (paramTransFileController != null)
+    super(paramTransFileControllerImpl, paramTransferRequest);
+    paramTransFileControllerImpl = paramTransferRequest.mLocalPath;
+    if (paramTransFileControllerImpl != null)
     {
-      String[] arrayOfString = paramTransFileController.split("QQ_&_MoblieQQ_&_QQ");
+      String[] arrayOfString = paramTransFileControllerImpl.split("QQ_&_MoblieQQ_&_QQ");
       if (arrayOfString.length < 3)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoDownloadProcessor", 2, "path was not set correctlly------path = " + paramTransFileController);
+          QLog.d("ShortVideoDownloadProcessor", 2, "path was not set correctlly------path = " + paramTransFileControllerImpl);
         }
         throw new IllegalArgumentException("path was not set correctlly.");
       }
@@ -109,18 +111,18 @@ public class ShortVideoDownloadProcessor
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoDownloadProcessor", 2, "onBusiProtoResp()---- 视频文件过期errCode=" + this.errCode);
         }
-        setError(this.errCode, anvx.a(2131713522));
+        setError(this.errCode, HardCodeUtil.a(2131714018));
       }
       else if (-5100528 == this.errCode)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoDownloadProcessor", 2, "onBusiProtoResp()---- 后台不允许自动下载, errCode = " + this.errCode);
         }
-        setError(-5100528, anvx.a(2131713527));
+        setError(-5100528, HardCodeUtil.a(2131714023));
       }
       else
       {
-        setError(9045, anvx.a(2131713529));
+        setError(9045, HardCodeUtil.a(2131714025));
       }
     }
   }
@@ -148,32 +150,23 @@ public class ShortVideoDownloadProcessor
   
   private void setBusiType(RichProto.RichProtoReq.ShortVideoDownReq paramShortVideoDownReq)
   {
-    if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForShortVideo)))
-    {
+    if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForShortVideo))) {
       paramShortVideoDownReq.busiType = ((MessageForShortVideo)this.mUiRequest.mRec).busiType;
+    }
+    for (;;)
+    {
       this.mReportBusiType = paramShortVideoDownReq.busiType;
       paramShortVideoDownReq.subBusiType = 0;
-      if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForShortVideo)))
-      {
-        if (!(this.mUiRequest.mRec instanceof MessageForLightVideo)) {
-          break label127;
-        }
-        paramShortVideoDownReq.subBusiType = 3;
+      if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForShortVideo)) && (((MessageForShortVideo)this.mUiRequest.mRec).subBusiType == 1)) {
+        paramShortVideoDownReq.subBusiType = 1;
       }
-    }
-    label127:
-    while (((MessageForShortVideo)this.mUiRequest.mRec).subBusiType != 1)
-    {
       return;
-      if (1008 == paramShortVideoDownReq.uinType)
-      {
+      if (1008 == paramShortVideoDownReq.uinType) {
         paramShortVideoDownReq.busiType = this.mUiRequest.mBusiType;
-        break;
+      } else {
+        paramShortVideoDownReq.busiType = 0;
       }
-      paramShortVideoDownReq.busiType = 0;
-      break;
     }
-    paramShortVideoDownReq.subBusiType = 1;
   }
   
   private void setChatType(RichProto.RichProtoReq.ShortVideoDownReq paramShortVideoDownReq)
@@ -235,7 +228,7 @@ public class ShortVideoDownloadProcessor
   {
     if ((this.mUiRequest == null) || (this.mUiRequest.mOutFilePath == null))
     {
-      setError(9302, anvx.a(2131713499));
+      setError(9302, HardCodeUtil.a(2131713995));
       onError();
       return -1;
     }
@@ -256,7 +249,7 @@ public class ShortVideoDownloadProcessor
     //   6: getfield 156	com/tencent/mobileqq/transfile/TransferRequest:mMd5	Ljava/lang/String;
     //   9: astore 5
     //   11: aload 5
-    //   13: invokestatic 334	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   13: invokestatic 332	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   16: ifne +359 -> 375
     //   19: aload_0
     //   20: getfield 136	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
@@ -264,16 +257,16 @@ public class ShortVideoDownloadProcessor
     //   26: astore 4
     //   28: aconst_null
     //   29: astore 6
-    //   31: new 336	java/io/FileInputStream
+    //   31: new 334	java/io/FileInputStream
     //   34: dup
     //   35: aload 4
-    //   37: invokespecial 337	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   37: invokespecial 335	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   40: astore 4
     //   42: aload 4
     //   44: aload 4
-    //   46: invokevirtual 340	java/io/FileInputStream:available	()I
+    //   46: invokevirtual 338	java/io/FileInputStream:available	()I
     //   49: i2l
-    //   50: invokestatic 346	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   50: invokestatic 344	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   53: astore 6
     //   55: aload 6
     //   57: ifnull +313 -> 370
@@ -310,17 +303,17 @@ public class ShortVideoDownloadProcessor
     //   128: new 76	java/lang/StringBuilder
     //   131: dup
     //   132: invokespecial 77	java/lang/StringBuilder:<init>	()V
-    //   135: ldc_w 348
+    //   135: ldc_w 346
     //   138: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: aload 5
     //   143: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: ldc_w 350
+    //   146: ldc_w 348
     //   149: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   152: aload_0
     //   153: getfield 46	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor:fileMd5	Ljava/lang/String;
     //   156: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 353	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   162: invokestatic 351	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   165: iconst_0
     //   166: istore_1
     //   167: iload_1
@@ -328,21 +321,21 @@ public class ShortVideoDownloadProcessor
     //   169: aload 4
     //   171: ifnull +10 -> 181
     //   174: aload 4
-    //   176: invokevirtual 356	java/io/FileInputStream:close	()V
+    //   176: invokevirtual 354	java/io/FileInputStream:close	()V
     //   179: iload_1
     //   180: istore_2
     //   181: aload_0
-    //   182: getfield 360	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor:mReportInfo	Ljava/util/HashMap;
+    //   182: getfield 358	com/tencent/mobileqq/transfile/ShortVideoDownloadProcessor:mReportInfo	Ljava/util/HashMap;
     //   185: astore 4
     //   187: iload_2
     //   188: ifeq +153 -> 341
     //   191: iload_3
     //   192: istore_1
     //   193: aload 4
-    //   195: ldc_w 362
+    //   195: ldc_w 360
     //   198: iload_1
-    //   199: invokestatic 364	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   202: invokevirtual 370	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   199: invokestatic 362	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   202: invokevirtual 368	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   205: pop
     //   206: return
     //   207: astore 4
@@ -352,9 +345,9 @@ public class ShortVideoDownloadProcessor
     //   214: ifeq -33 -> 181
     //   217: ldc 10
     //   219: iconst_2
-    //   220: ldc_w 372
+    //   220: ldc_w 370
     //   223: aload 4
-    //   225: invokestatic 375	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   225: invokestatic 373	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   228: iload_1
     //   229: istore_2
     //   230: goto -49 -> 181
@@ -367,15 +360,15 @@ public class ShortVideoDownloadProcessor
     //   244: ifeq +14 -> 258
     //   247: ldc 10
     //   249: iconst_2
-    //   250: ldc_w 372
+    //   250: ldc_w 370
     //   253: aload 5
-    //   255: invokestatic 375	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   255: invokestatic 373	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   258: iload_1
     //   259: istore_2
     //   260: aload 4
     //   262: ifnull -81 -> 181
     //   265: aload 4
-    //   267: invokevirtual 356	java/io/FileInputStream:close	()V
+    //   267: invokevirtual 354	java/io/FileInputStream:close	()V
     //   270: iload_1
     //   271: istore_2
     //   272: goto -91 -> 181
@@ -386,9 +379,9 @@ public class ShortVideoDownloadProcessor
     //   282: ifeq -101 -> 181
     //   285: ldc 10
     //   287: iconst_2
-    //   288: ldc_w 372
+    //   288: ldc_w 370
     //   291: aload 4
-    //   293: invokestatic 375	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   293: invokestatic 373	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   296: iload_1
     //   297: istore_2
     //   298: goto -117 -> 181
@@ -398,7 +391,7 @@ public class ShortVideoDownloadProcessor
     //   306: aload 4
     //   308: ifnull +8 -> 316
     //   311: aload 4
-    //   313: invokevirtual 356	java/io/FileInputStream:close	()V
+    //   313: invokevirtual 354	java/io/FileInputStream:close	()V
     //   316: aload 5
     //   318: athrow
     //   319: astore 4
@@ -406,9 +399,9 @@ public class ShortVideoDownloadProcessor
     //   324: ifeq -8 -> 316
     //   327: ldc 10
     //   329: iconst_2
-    //   330: ldc_w 372
+    //   330: ldc_w 370
     //   333: aload 4
-    //   335: invokestatic 375	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   335: invokestatic 373	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   338: goto -22 -> 316
     //   341: iconst_0
     //   342: istore_1
@@ -614,9 +607,9 @@ public class ShortVideoDownloadProcessor
     }
   }
   
-  protected QuicDownloader getQuicDownloader()
+  protected IQuicEngine getQuicEngine()
   {
-    return QuicNetFactory.getInstance().createQuicDownloader();
+    return QuicEngineFactory.createEngine();
   }
   
   protected String getReportTAG()
@@ -743,12 +736,12 @@ public class ShortVideoDownloadProcessor
       localObject = this.mDownCallBacks.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        azjj localazjj = (azjj)((Iterator)localObject).next();
-        azjk localazjk = new azjk();
-        localazjk.jdField_a_of_type_Int = -1;
-        localazjk.jdField_b_of_type_Int = this.errCode;
-        localazjk.jdField_a_of_type_JavaLangString = this.errDesc;
-        localazjj.a(localazjk);
+        DownCallBack localDownCallBack = (DownCallBack)((Iterator)localObject).next();
+        DownCallBack.DownResult localDownResult = new DownCallBack.DownResult();
+        localDownResult.jdField_a_of_type_Int = -1;
+        localDownResult.jdField_b_of_type_Int = this.errCode;
+        localDownResult.jdField_a_of_type_JavaLangString = this.errDesc;
+        localDownCallBack.a(localDownResult);
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideo.TAG", 2, "onError ");
         }
@@ -841,13 +834,13 @@ public class ShortVideoDownloadProcessor
     localObject = this.mDownCallBacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      azjj localazjj = (azjj)((Iterator)localObject).next();
-      azjk localazjk = new azjk();
-      localazjk.jdField_a_of_type_Int = 0;
-      localazjk.jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
-      localazjk.c = this.mUiRequest.mMd5;
-      localazjk.d = this.mUiRequest.mDownMode;
-      localazjj.a(localazjk);
+      DownCallBack localDownCallBack = (DownCallBack)((Iterator)localObject).next();
+      DownCallBack.DownResult localDownResult = new DownCallBack.DownResult();
+      localDownResult.jdField_a_of_type_Int = 0;
+      localDownResult.jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
+      localDownResult.c = this.mUiRequest.mMd5;
+      localDownResult.d = this.mUiRequest.mDownMode;
+      localDownCallBack.a(localDownResult);
     }
   }
   
@@ -867,7 +860,7 @@ public class ShortVideoDownloadProcessor
       int i = (int)(10000L * paramLong1 / paramLong2);
       paramNetReq = this.mDownCallBacks.iterator();
       while (paramNetReq.hasNext()) {
-        ((azjj)paramNetReq.next()).a(i, false);
+        ((DownCallBack)paramNetReq.next()).a(i, false);
       }
     }
   }
@@ -930,7 +923,7 @@ public class ShortVideoDownloadProcessor
     this.mStepTrans.logStartTime();
     String str = getConnUrl(paramBoolean);
     Object localObject1 = new HttpNetReq();
-    if (!StringUtil.isEmpty(this.mDownDomain)) {
+    if (!StringUtil.a(this.mDownDomain)) {
       ((HttpNetReq)localObject1).mReqProperties.put("host", this.mDownDomain);
     }
     ((HttpNetReq)localObject1).mCallback = this;
@@ -948,7 +941,7 @@ public class ShortVideoDownloadProcessor
     Object localObject2;
     if ((this.mUiRequest.mFileType == 6) || (this.mUiRequest.mFileType == 9) || (this.mUiRequest.mFileType == 17))
     {
-      localObject2 = bhhr.f(BaseApplication.getContext());
+      localObject2 = SharedPreUtils.f(BaseApplication.getContext());
       if ((localObject2 != null) && (((String)localObject2).length() > 0))
       {
         localObject2 = ((String)localObject2).split("\\|");
@@ -960,7 +953,7 @@ public class ShortVideoDownloadProcessor
     ((HttpNetReq)localObject1).mStartDownOffset = 0L;
     ((HttpNetReq)localObject1).mIsNetChgAsError = true;
     ((HttpNetReq)localObject1).mReqProperties.put("Accept-Encoding", "identity");
-    ((HttpNetReq)localObject1).mBreakDownFix = mPicBreakDownFixForOldHttpEngine;
+    ((HttpNetReq)localObject1).mSupportBreakResume = true;
     ((HttpNetReq)localObject1).mTempPath = (this.mUiRequest.mOutFilePath + "." + MD5.toMD5(this.mFileId) + ".tmp");
     logRichMediaEvent("httpDown", "url:" + str + ",downOffset:" + ((HttpNetReq)localObject1).mStartDownOffset);
     if (!canDoNextStep())
@@ -994,7 +987,7 @@ public class ShortVideoDownloadProcessor
             localStringBuffer.append(((ServerAddr)localObject2).port);
           }
           localStringBuffer.append("/");
-          localObject1[i] = RichMediaUtil.replaceIp(str, localStringBuffer.toString());
+          localObject1[i] = TransFileUtil.replaceIp(str, localStringBuffer.toString());
           i += 1;
           break;
           localStringBuffer.append("http://");
@@ -1060,7 +1053,7 @@ public class ShortVideoDownloadProcessor
     if ((this.mIsPause) && (2004 != paramInt)) {
       return;
     }
-    bcwz.a(this.app, this.file, this.mUiRequest);
+    ShortVideoBusiManager.a(this.app, this.file, this.mUiRequest);
   }
   
   void sendRequest()
@@ -1092,7 +1085,7 @@ public class ShortVideoDownloadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "short_video_dw";
     localRichProtoReq.reqs.add(localShortVideoDownReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);
@@ -1114,7 +1107,7 @@ public class ShortVideoDownloadProcessor
     String str;
     if ((this.mNetReq != null) && ((this.mNetReq instanceof HttpNetReq)))
     {
-      if (!acnh.d(this.mUiRequest.mUinType)) {
+      if (!UinTypeUtil.b(this.mUiRequest.mUinType)) {
         break label59;
       }
       str = "videoCd";
@@ -1162,11 +1155,11 @@ public class ShortVideoDownloadProcessor
   
   protected void tryUseQuicDownload(HttpNetReq paramHttpNetReq)
   {
-    aret localaret = ares.a();
-    if ((localaret != null) && (localaret.a()) && (this.mSupportQuic) && (!this.mIpListEmptyResp) && (!this.mIpList.isEmpty()))
+    QQShortVideoQuicNetProcessor.ShortVideoQuicNetConfBean localShortVideoQuicNetConfBean = QQShortVideoQuicNetProcessor.a();
+    if ((localShortVideoQuicNetConfBean != null) && (localShortVideoQuicNetConfBean.a()) && (this.mSupportQuic) && (!this.mIpListEmptyResp) && (!this.mIpList.isEmpty()))
     {
-      QuicDownloader localQuicDownloader = getQuicDownloader();
-      if (localQuicDownloader == null)
+      IQuicEngine localIQuicEngine = getQuicEngine();
+      if (localIQuicEngine == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoDownloadProcessor", 2, "current support quic, but quic can not be used.");
@@ -1175,13 +1168,13 @@ public class ShortVideoDownloadProcessor
         this.mQuicNetReport.failReason = 7;
         this.mQuicNetReport.isHttpRetryed = true;
         this.mNetEngine.sendReq(paramHttpNetReq);
-        QuicNetResMgr.getInstance().downloadQuicRes(localaret);
+        QuicNetResMgr.getInstance().downloadQuicRes(localShortVideoQuicNetConfBean);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoDownloadProcessor", 2, "current support quic, use quic. ");
       }
-      useQuicDownload(paramHttpNetReq, localQuicDownloader);
+      useQuicDownload(paramHttpNetReq, localIQuicEngine);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -1190,17 +1183,17 @@ public class ShortVideoDownloadProcessor
     this.mNetEngine.sendReq(paramHttpNetReq);
   }
   
-  protected void useQuicDownload(HttpNetReq paramHttpNetReq, QuicDownloader paramQuicDownloader)
+  protected void useQuicDownload(HttpNetReq paramHttpNetReq, IQuicEngine paramIQuicEngine)
   {
     ServerAddr localServerAddr = (ServerAddr)this.mIpList.get(0);
-    String str2 = localServerAddr.mIp;
+    String str = localServerAddr.mIp;
     int i = localServerAddr.port;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    Object localObject = str;
+    if (str == null) {
+      localObject = "";
     }
-    if ((str1.startsWith("[")) && (str1.endsWith("]"))) {
-      str1 = str1.substring(1, str1.length() - 1);
+    if ((((String)localObject).startsWith("[")) && (((String)localObject).endsWith("]"))) {
+      localObject = ((String)localObject).substring(1, ((String)localObject).length() - 1);
     }
     for (;;)
     {
@@ -1209,12 +1202,12 @@ public class ShortVideoDownloadProcessor
       }
       for (;;)
       {
-        paramQuicDownloader = paramQuicDownloader.build(str1, i, "/" + this.mRespUrl, paramHttpNetReq.mOutPath);
-        if (!StringUtil.isEmpty(this.mDownDomain)) {
-          paramQuicDownloader.addHeader("host", this.mDownDomain);
+        localObject = new QuicReq.Builder((String)localObject, i, "/" + this.mRespUrl, paramHttpNetReq.mOutPath);
+        if (!StringUtil.a(this.mDownDomain)) {
+          ((QuicReq.Builder)localObject).addHeader("host", this.mDownDomain);
         }
         this.mQuicDownloadListener = new ShortVideoDownloadProcessor.QuicDownloadListener(this);
-        paramQuicDownloader.addHeader("Accept-Encoding", "identity").isQuicEncryption(this.mIsQuicEncryption).fec(this.mQuicFec).tempPath(paramHttpNetReq.mTempPath).timeOut(new RichMediaStrategy.OldEngineDPCProfile.TimeoutParam().getReadTimeout(NetworkCenter.getInstance().getNetType())).businessId(1).isIpv6(localServerAddr.isIpv6).rttHost("sns.cdn.qq.com").listener(this.mQuicDownloadListener).start();
+        paramIQuicEngine.execute(((QuicReq.Builder)localObject).addHeader("Accept-Encoding", "identity").isQuicEncryption(this.mIsQuicEncryption).fec(this.mQuicFec).tempPath(paramHttpNetReq.mTempPath).timeOut(new TimeoutParam().getReadTimeout(NetworkCenter.getInstance().getNetType())).businessId(1).isIpv6(localServerAddr.isIpv6).rttHost("sns.cdn.qq.com").listener(this.mQuicDownloadListener).build());
         return;
       }
     }

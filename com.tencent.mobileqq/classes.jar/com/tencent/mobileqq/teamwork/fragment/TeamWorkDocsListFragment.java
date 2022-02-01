@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork.fragment;
 
-import aasr;
 import android.app.Activity;
 import android.content.Intent;
-import beco;
-import becr;
-import bigl;
-import biho;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 
 public class TeamWorkDocsListFragment
@@ -15,16 +15,16 @@ public class TeamWorkDocsListFragment
 {
   public void showActionSheet()
   {
-    biho localbiho = (biho)this.mComponentsProvider.a(4);
-    if (localbiho != null)
+    SwiftBrowserShareMenuHandler localSwiftBrowserShareMenuHandler = (SwiftBrowserShareMenuHandler)this.mComponentsProvider.a(4);
+    if (localSwiftBrowserShareMenuHandler != null)
     {
-      aasr localaasr = ensureShare();
-      if ((localaasr != null) && (becr.a(localaasr.a())))
+      Share localShare = ensureShare();
+      if ((localShare != null) && (TeamWorkUtils.a(localShare.a())))
       {
         getHostActivity().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
-        localbiho.a = new beco(getHostActivity());
+        localSwiftBrowserShareMenuHandler.a = new TeamWorkShareActionSheetBuilder(getHostActivity());
       }
-      localbiho.a(localaasr, this.mUIStyle.mRulesFromUrl);
+      localSwiftBrowserShareMenuHandler.a(localShare, this.mUIStyle.a);
     }
   }
 }

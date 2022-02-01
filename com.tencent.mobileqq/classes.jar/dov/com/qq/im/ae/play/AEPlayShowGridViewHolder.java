@@ -10,14 +10,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bmws;
-import bnke;
-import bnrh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener2;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.vas.VasApngUtil;
+import dov.com.qq.im.ae.AEPath.PLAY.CACHE;
+import dov.com.qq.im.ae.data.AEMaterialMetaData;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -31,14 +31,14 @@ public class AEPlayShowGridViewHolder
   private static final String APNG_BASE_PATH;
   private static final Map<String, WeakReference<URLDrawable>> APNG_CACHE;
   private static final String APNG_DIR_NAME = "play_show_apng";
-  private static final Drawable APNG_LOADING_DRAWABLE = getAppContext().getResources().getDrawable(2130837685);
+  private static final Drawable APNG_LOADING_DRAWABLE = getAppContext().getResources().getDrawable(2130837690);
   private final String TAG = "AEPlayShowGridViewHolder";
   private int layoutType;
   private URLDrawable mApngUrlDrawable;
   private String mId = "";
   private AEPlayShowGridViewHolder.ItemClickCallback mItemClickCallback;
   private String mPlayImageUrl = "";
-  bnke mPlayMaterial;
+  AEMaterialMetaData mPlayMaterial;
   private View mPlayShowBottomShadow;
   private ImageView mPlayShowImage;
   private View mPlayShowInfoContainer;
@@ -50,7 +50,7 @@ public class AEPlayShowGridViewHolder
   static
   {
     APNG_CACHE = new HashMap();
-    File localFile = new File(bmws.a, "play_show_apng");
+    File localFile = new File(AEPath.PLAY.CACHE.a, "play_show_apng");
     APNG_BASE_PATH = localFile.getPath();
     if (!localFile.exists()) {
       localFile.mkdirs();
@@ -65,11 +65,11 @@ public class AEPlayShowGridViewHolder
       paramView.post(new AEPlayShowGridViewHolder.1(this, paramView));
     }
     this.mItemClickCallback = paramItemClickCallback;
-    this.mPlayShowImage = ((ImageView)paramView.findViewById(2131362287));
-    this.mPlayShowInfoContainer = paramView.findViewById(2131362288);
-    this.mPlayShowText = ((TextView)paramView.findViewById(2131362291));
-    this.mPlayShowProgressBar = ((ProgressBar)paramView.findViewById(2131362290));
-    this.mPlayShowBottomShadow = paramView.findViewById(2131362289);
+    this.mPlayShowImage = ((ImageView)paramView.findViewById(2131362313));
+    this.mPlayShowInfoContainer = paramView.findViewById(2131362314);
+    this.mPlayShowText = ((TextView)paramView.findViewById(2131362317));
+    this.mPlayShowProgressBar = ((ProgressBar)paramView.findViewById(2131362316));
+    this.mPlayShowBottomShadow = paramView.findViewById(2131362315);
     paramItemClickCallback = paramView.getLayoutParams();
     paramItemClickCallback.width = paramSizeInfo.itemWidth;
     paramItemClickCallback.height = paramSizeInfo.itemHeight;
@@ -77,17 +77,17 @@ public class AEPlayShowGridViewHolder
     paramView.setOnClickListener(new AEPlayShowGridViewHolder.2(this));
   }
   
-  private void bindContent(@NonNull bnke parambnke)
+  private void bindContent(@NonNull AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.mId = parambnke.a;
-    if (TextUtils.isEmpty(parambnke.m)) {}
-    for (String str = "";; str = parambnke.m)
+    this.mId = paramAEMaterialMetaData.a;
+    if (TextUtils.isEmpty(paramAEMaterialMetaData.p)) {}
+    for (String str = "";; str = paramAEMaterialMetaData.p)
     {
       this.mPlayText = str;
-      this.mPlayImageUrl = parambnke.l;
-      parambnke = APNG_BASE_PATH + File.separator + this.mPlayImageUrl.hashCode() + "_" + this.mId.hashCode() + ".png";
+      this.mPlayImageUrl = paramAEMaterialMetaData.o;
+      paramAEMaterialMetaData = APNG_BASE_PATH + File.separator + this.mPlayImageUrl.hashCode() + "_" + this.mId.hashCode() + ".png";
       showTemplateInfoViews();
-      this.mApngUrlDrawable = getApngDrawable(parambnke, this.mPlayImageUrl);
+      this.mApngUrlDrawable = getApngDrawable(paramAEMaterialMetaData, this.mPlayImageUrl);
       if (this.mApngUrlDrawable != null)
       {
         this.mApngUrlDrawable.setURLDrawableListener(this);
@@ -121,14 +121,14 @@ public class AEPlayShowGridViewHolder
     this.mPlayShowText.setText(this.mPlayText);
   }
   
-  public void bind(@NonNull bnke parambnke, int paramInt)
+  public void bind(@NonNull AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
   {
-    this.mPlayMaterial = parambnke;
+    this.mPlayMaterial = paramAEMaterialMetaData;
     this.mPosition = paramInt;
     if (this.mApngUrlDrawable != null) {
       this.mApngUrlDrawable.setURLDrawableListener(null);
     }
-    bindContent(parambnke);
+    bindContent(paramAEMaterialMetaData);
     this.mPlayShowProgressBar.setVisibility(8);
   }
   
@@ -137,8 +137,8 @@ public class AEPlayShowGridViewHolder
     if ((paramString == null) || (!paramString.equals(this.mPlayMaterial.a))) {
       return;
     }
-    bnrh.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish id:" + paramString);
-    bnrh.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish isSuccess:" + paramBoolean);
+    AEQLog.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish id:" + paramString);
+    AEQLog.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish isSuccess:" + paramBoolean);
     ThreadManager.getUIHandler().post(new AEPlayShowGridViewHolder.4(this, paramBoolean));
   }
   
@@ -176,7 +176,7 @@ public class AEPlayShowGridViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowGridViewHolder
  * JD-Core Version:    0.7.0.1
  */

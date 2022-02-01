@@ -2,10 +2,9 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
-import awcn;
-import bhwu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.jsp.WebSSOAgentServlet;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBDoubleField;
 import com.tencent.mobileqq.pb.PBFixed32Field;
@@ -24,7 +23,7 @@ import tencent.im.pb.qqsport.QQSportsOrbit.OrbitPacePoint;
 import tencent.im.pb.qqsport.QQSportsOrbit.OrbitPoint;
 import tencent.im.pb.qqsport.QQSportsOrbit.OrbitReq;
 
-public class PathTraceManager$DataUploadTask
+class PathTraceManager$DataUploadTask
   implements Runnable
 {
   private final int jdField_a_of_type_Int = 3000;
@@ -155,13 +154,13 @@ public class PathTraceManager$DataUploadTask
           localJSONObject.put("message", "gzip failed");
           return;
         }
-        localObject2 = new NewIntent(BaseApplicationImpl.sApplication.getApplicationContext(), awcn.class);
+        localObject2 = new NewIntent(BaseApplicationImpl.sApplication.getApplicationContext(), WebSSOAgentServlet.class);
         ((NewIntent)localObject2).putExtra("extra_cmd", this.b);
         localOrbitReq.num.set(0);
         ((NewIntent)localObject2).putExtra("extra_data", (byte[])localObject1);
         localOrbitReq.tracePath.clear();
         ((NewIntent)localObject2).putExtra("extra_timeout", 15000);
-        ((NewIntent)localObject2).setObserver(new bhwu(this, localJSONObject, localList, localThrowable, localSharedPreferences, localOrbitReq));
+        ((NewIntent)localObject2).setObserver(new PathTraceManager.DataUploadTask.1(this, localJSONObject, localList, localThrowable, localSharedPreferences, localOrbitReq));
         BaseApplicationImpl.sApplication.getRuntime().startServlet((NewIntent)localObject2);
         return;
         label965:
@@ -178,7 +177,7 @@ public class PathTraceManager$DataUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceManager.DataUploadTask
  * JD-Core Version:    0.7.0.1
  */

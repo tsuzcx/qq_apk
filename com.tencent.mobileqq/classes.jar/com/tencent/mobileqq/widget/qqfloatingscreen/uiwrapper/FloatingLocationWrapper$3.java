@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
-import biws;
-
-public class FloatingLocationWrapper$3
+class FloatingLocationWrapper$3
   implements Runnable
 {
-  public FloatingLocationWrapper$3(biws parambiws, int paramInt) {}
+  FloatingLocationWrapper$3(FloatingLocationWrapper paramFloatingLocationWrapper, int paramInt) {}
   
   public void run()
   {
-    biws.a(this.this$0, this.a);
+    FloatingLocationWrapper.a(this.this$0, this.a);
     this.this$0.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper.3
  * JD-Core Version:    0.7.0.1
  */

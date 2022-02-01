@@ -1,28 +1,25 @@
 package com.tencent.qqmini.miniapp.widget.camera;
 
 import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
+import android.media.MediaRecorder.OnErrorListener;
 import android.util.Log;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class MiniAppCamera$4
-  implements MediaRecorder.OnInfoListener
+  implements MediaRecorder.OnErrorListener
 {
   MiniAppCamera$4(MiniAppCamera paramMiniAppCamera, RequestEvent paramRequestEvent) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    Log.i("MiniAppCamera", "onInfo: " + paramInt1);
-    QMLog.i("MiniAppCamera", "setOnInfoListener|reson: " + paramInt1);
-    if (paramInt1 == 800) {
-      this.this$0.stopRecord(this.val$req);
-    }
+    Log.i("MiniAppCamera", "onError: " + paramInt1);
+    this.val$req.fail();
+    MiniAppCamera.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera.4
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public final class RspGetGroupArea
   implements Cloneable
 {
   static GroupArea cache_stGroupArea;
-  public GroupArea stGroupArea;
+  public GroupArea stGroupArea = null;
   
   static
   {

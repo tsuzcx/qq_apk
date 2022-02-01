@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bmkt;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.MQUserPersonalData;
 import cooperation.qzone.util.QZLog;
+import cooperation.vip.VipReporterManager;
 
 class MsgPhotoView$3
   implements View.OnClickListener
@@ -40,7 +40,7 @@ class MsgPhotoView$3
       this.this$0.mContext.startActivity((Intent)localObject);
       break;
       str = ((MQUserPersonalData)localObject).mBVJumpUrl;
-      bmkt.a(12, 2);
+      VipReporterManager.a(12, 2);
       continue;
       str = ((MQUserPersonalData)localObject).mYJumpUrl;
       localObject = paramView.getTag();
@@ -49,18 +49,18 @@ class MsgPhotoView$3
         if (((Boolean)localObject).booleanValue()) {}
         for (int i = 11;; i = 10)
         {
-          bmkt.a(i, 2);
+          VipReporterManager.a(i, 2);
           break;
         }
         str = ((MQUserPersonalData)localObject).mLYJumpUrl;
-        bmkt.a(13, 2);
+        VipReporterManager.a(13, 2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgPhotoView.3
  * JD-Core Version:    0.7.0.1
  */

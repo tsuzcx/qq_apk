@@ -1,11 +1,9 @@
 package com.tencent.open.agent.report;
 
-import bjgx;
-
-public class ReportCenter$4
+class ReportCenter$4
   implements Runnable
 {
-  public ReportCenter$4(bjgx parambjgx, String paramString) {}
+  ReportCenter$4(ReportCenter paramReportCenter, String paramString) {}
   
   /* Error */
   public void run()
@@ -16,17 +14,17 @@ public class ReportCenter$4
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbjgx;
-    //   8: invokevirtual 34	bjgx:a	()Landroid/os/Bundle;
+    //   5: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   8: invokevirtual 34	com/tencent/open/agent/report/ReportCenter:a	()Landroid/os/Bundle;
     //   11: astore 6
     //   13: aload_0
     //   14: monitorexit
-    //   15: invokestatic 39	bizw:a	()Lbizw;
-    //   18: invokevirtual 42	bizw:a	()Landroid/content/Context;
+    //   15: invokestatic 39	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
+    //   18: invokevirtual 42	com/tencent/open/adapter/CommonDataAdapter:a	()Landroid/content/Context;
     //   21: aconst_null
-    //   22: invokestatic 47	bjlt:a	(Landroid/content/Context;Ljava/lang/String;)Lbjlt;
+    //   22: invokestatic 47	com/tencent/open/business/base/OpenConfig:a	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/open/business/base/OpenConfig;
     //   25: ldc 49
-    //   27: invokevirtual 52	bjlt:a	(Ljava/lang/String;)I
+    //   27: invokevirtual 52	com/tencent/open/business/base/OpenConfig:a	(Ljava/lang/String;)I
     //   30: istore_1
     //   31: iload_1
     //   32: ifne +267 -> 299
@@ -111,27 +109,27 @@ public class ReportCenter$4
     //   213: iload 5
     //   215: sipush 200
     //   218: if_icmpne +13 -> 231
-    //   221: invokestatic 163	bjgz:a	()Lbjgz;
+    //   221: invokestatic 163	com/tencent/open/agent/report/ReportDatabaseHelper:a	()Lcom/tencent/open/agent/report/ReportDatabaseHelper;
     //   224: ldc 165
-    //   226: invokevirtual 167	bjgz:a	(Ljava/lang/String;)V
+    //   226: invokevirtual 167	com/tencent/open/agent/report/ReportDatabaseHelper:a	(Ljava/lang/String;)V
     //   229: iconst_1
     //   230: istore_2
     //   231: iload_2
     //   232: ifne +18 -> 250
-    //   235: invokestatic 163	bjgz:a	()Lbjgz;
+    //   235: invokestatic 163	com/tencent/open/agent/report/ReportDatabaseHelper:a	()Lcom/tencent/open/agent/report/ReportDatabaseHelper;
     //   238: ldc 165
     //   240: aload_0
-    //   241: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbjgx;
-    //   244: getfield 170	bjgx:a	Ljava/util/ArrayList;
-    //   247: invokevirtual 173	bjgz:a	(Ljava/lang/String;Ljava/util/List;)V
+    //   241: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   244: getfield 170	com/tencent/open/agent/report/ReportCenter:a	Ljava/util/ArrayList;
+    //   247: invokevirtual 173	com/tencent/open/agent/report/ReportDatabaseHelper:a	(Ljava/lang/String;Ljava/util/List;)V
     //   250: aload_0
-    //   251: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbjgx;
+    //   251: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lcom/tencent/open/agent/report/ReportCenter;
     //   254: astore 6
     //   256: aload 6
     //   258: monitorenter
     //   259: aload_0
-    //   260: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lbjgx;
-    //   263: getfield 170	bjgx:a	Ljava/util/ArrayList;
+    //   260: getfield 14	com/tencent/open/agent/report/ReportCenter$4:this$0	Lcom/tencent/open/agent/report/ReportCenter;
+    //   263: getfield 170	com/tencent/open/agent/report/ReportCenter:a	Ljava/util/ArrayList;
     //   266: invokevirtual 178	java/util/ArrayList:clear	()V
     //   269: aload 6
     //   271: monitorexit
@@ -256,7 +254,7 @@ public class ReportCenter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.4
  * JD-Core Version:    0.7.0.1
  */

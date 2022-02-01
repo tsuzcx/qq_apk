@@ -4,7 +4,7 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class ScanEntranceReport$12
+class ScanEntranceReport$12
   implements Runnable
 {
   public void run()
@@ -18,7 +18,7 @@ public class ScanEntranceReport$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanEntranceReport.12
  * JD-Core Version:    0.7.0.1
  */

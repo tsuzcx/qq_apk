@@ -1,20 +1,26 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import com.tencent.mobileqq.widget.QQToast;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAIFilterManager.AIFilterObserver;
+import dov.com.qq.im.aeeditor.module.aifilter.AIFilterResult;
+import dov.com.qq.im.aeeditor.module.aifilter.VideoAIFilterResult;
 
 class AEEditorVideoEditFragment$17
-  implements Runnable
+  implements AEEditorAIFilterManager.AIFilterObserver
 {
   AEEditorVideoEditFragment$17(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void run()
+  public void a(int paramInt, AIFilterResult paramAIFilterResult)
   {
-    QQToast.a(this.this$0.a, 2131689870, 0).a();
+    if ((paramAIFilterResult instanceof VideoAIFilterResult)) {
+      this.a.a = ((VideoAIFilterResult)paramAIFilterResult);
+    }
   }
+  
+  public void aJ_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.17
  * JD-Core Version:    0.7.0.1
  */

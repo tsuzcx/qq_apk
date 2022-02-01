@@ -210,17 +210,23 @@ public class AppV8JsService
       if (this.mEmbeddedState != null)
       {
         localObject1 = (String)localObject1 + "__qqConfig.useXWebVideo=" + this.mEmbeddedState.isEnableEmbeddedVideo() + ";";
-        localObject2 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
+        localObject1 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
+        localObject2 = (String)localObject1 + "__qqConfig.useXWebElement=" + this.mEmbeddedState.isEnableEmbeddedElement() + ";";
         QMLog.d("miniapp-embedded", "x5 service enableEmbeddedVideo : " + this.mEmbeddedState.isEnableEmbeddedVideo());
         if (this.mEmbeddedState.isEnableEmbeddedVideo())
         {
           localObject1 = "x5_embedded_video";
           reportEmbeddedStatus(770, (String)localObject1);
           if (!this.mEmbeddedState.isEnableEmbeddedLive()) {
-            break label455;
+            break label514;
           }
           localObject1 = "x5_embedded_live";
           reportEmbeddedStatus(771, (String)localObject1);
+          if (!this.mEmbeddedState.isEnableEmbeddedElement()) {
+            break label521;
+          }
+          localObject1 = "x5_embedded_element";
+          reportEmbeddedStatus(772, (String)localObject1);
         }
       }
       else
@@ -237,8 +243,11 @@ public class AppV8JsService
         continue;
         String str = "x5_native_video";
         continue;
-        label455:
+        label514:
         str = "x5_native_live";
+        continue;
+        label521:
+        str = "x5_native_element";
       }
     }
   }
@@ -351,7 +360,7 @@ public class AppV8JsService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppV8JsService
  * JD-Core Version:    0.7.0.1
  */

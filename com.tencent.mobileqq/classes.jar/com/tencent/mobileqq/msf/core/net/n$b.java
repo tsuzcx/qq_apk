@@ -2,8 +2,8 @@ package com.tencent.mobileqq.msf.core.net;
 
 import android.os.Handler;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ar;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.ak;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.d;
 import com.tencent.qphone.base.a;
 import com.tencent.qphone.base.util.QLog;
@@ -111,7 +111,7 @@ class n$b
     //   95: iload_1
     //   96: putfield 21	com/tencent/mobileqq/msf/core/net/n$b:a	I
     //   99: iconst_0
-    //   100: putstatic 95	com/tencent/mobileqq/msf/core/aj:P	Z
+    //   100: putstatic 95	com/tencent/mobileqq/msf/core/ac:P	Z
     //   103: aload_0
     //   104: invokevirtual 98	java/lang/Object:notifyAll	()V
     //   107: aload_0
@@ -152,8 +152,8 @@ class n$b
   
   private void b(CopyOnWriteArrayList paramCopyOnWriteArrayList1, CopyOnWriteArrayList paramCopyOnWriteArrayList2, CopyOnWriteArrayList paramCopyOnWriteArrayList3, CopyOnWriteArrayList paramCopyOnWriteArrayList4, ArrayList paramArrayList)
   {
-    ar.a(String.format("开始竞速: delay %d..", new Object[] { Long.valueOf(this.d.f.delayIpRace.get()) }));
-    com.tencent.mobileqq.msf.core.aj.P = true;
+    ak.a(String.format("开始竞速: delay %d..", new Object[] { Long.valueOf(this.d.f.delayIpRace.get()) }));
+    com.tencent.mobileqq.msf.core.ac.P = true;
     ArrayList localArrayList = new ArrayList();
     n.b(this.d, paramCopyOnWriteArrayList3, paramCopyOnWriteArrayList4, localArrayList, 1);
     n.b(this.d, paramCopyOnWriteArrayList1, paramCopyOnWriteArrayList2, paramArrayList, 0);
@@ -216,11 +216,11 @@ class n$b
         String str = this.d.l().d.c();
         if (this.d.f.getStatReporter() != null)
         {
-          k localk = this.d.f.getStatReporter();
+          j localj = this.d.f.getStatReporter();
           if (paramInt1 == 2) {
             bool3 = true;
           }
-          localk.a(bool3, l1, bool1, l2, bool2, str);
+          localj.a(bool3, l1, bool1, l2, bool2, str);
         }
         return;
       }

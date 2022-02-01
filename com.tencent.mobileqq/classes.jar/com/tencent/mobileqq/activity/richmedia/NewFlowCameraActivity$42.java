@@ -1,60 +1,53 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.widget.CircleProgress;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 class NewFlowCameraActivity$42
   implements Runnable
 {
-  NewFlowCameraActivity$42(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean) {}
+  NewFlowCameraActivity$42(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 3) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4))
-    {
-      if (this.this$0.j) {
-        if (this.this$0.f >= 60000)
-        {
-          i = 10000;
-          if (!this.this$0.C) {
-            break label142;
-          }
-          this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i * 1.0F / (this.this$0.p * 10));
-        }
-      }
-      for (;;)
-      {
-        if (this.a) {
-          this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(100.0F);
-        }
-        return;
-        i = this.this$0.f % 10000;
-        break;
-        i = this.this$0.f;
-        break;
-        label142:
-        if (!NewFlowCameraActivity.k(this.this$0)) {
-          break label181;
-        }
-        this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i * 1.0F / (NewFlowCameraActivity.d(this.this$0) * 10));
-      }
-      label181:
-      CircleProgress localCircleProgress = this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
-      float f = i;
-      if (this.this$0.h) {}
-      for (int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.c() + 1;; i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.c())
-      {
-        localCircleProgress.setProgress(1.0F * f / i);
-        break;
-      }
+    int i = AIOUtils.a(47.0F, this.this$0.getResources());
+    int j = AIOUtils.a(75.0F, this.this$0.getResources());
+    Bitmap localBitmap1 = BitmapUtils.a(this.a, i, j, false);
+    if (localBitmap1 == null) {
+      SLog.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+    Bitmap localBitmap2;
+    do
+    {
+      return;
+      localBitmap2 = new RoundedTransformation(AIOUtils.a(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
+      if (localBitmap2 == null)
+      {
+        SLog.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
+        return;
+      }
+      i = this.a.getWidth();
+      j = this.a.getHeight();
+      float f1 = ScreenUtil.SCREEN_WIDTH;
+      float f2 = ScreenUtil.getInstantScreenHeight(this.this$0.getApplicationContext());
+      if (i / j > f1 / f2) {}
+      for (localBitmap1 = BitmapUtils.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = BitmapUtils.a(this.a, i, (int)(f2 / f1 * i), true))
+      {
+        SLog.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
+        return;
+      }
+    } while (this.this$0.a == null);
+    this.this$0.a.post(new NewFlowCameraActivity.RunnableUpdateThumb(this.this$0, localBitmap1, localBitmap2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.42
  * JD-Core Version:    0.7.0.1
  */

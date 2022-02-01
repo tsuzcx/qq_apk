@@ -9,9 +9,9 @@ public final class ResRichSigInfo
 {
   static byte[] cache_vbSigInfo;
   public byte cStatus = -1;
-  public long dwTime;
-  public long lUin;
-  public byte[] vbSigInfo;
+  public long dwTime = 0L;
+  public long lUin = 0L;
+  public byte[] vbSigInfo = null;
   
   public ResRichSigInfo() {}
   

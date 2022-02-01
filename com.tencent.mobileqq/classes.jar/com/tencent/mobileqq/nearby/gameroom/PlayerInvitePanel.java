@@ -8,8 +8,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import axta;
-import axtb;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class PlayerInvitePanel
   extends AdapterView<BaseAdapter>
 {
   private int jdField_a_of_type_Int = 5;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new axtb(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new PlayerInvitePanel.2(this);
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
   private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
   private List<View> jdField_a_of_type_JavaUtilList = new LinkedList();
@@ -40,7 +38,7 @@ public class PlayerInvitePanel
     return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
   }
   
-  public void a()
+  protected void a()
   {
     b();
     detachAllViewsFromParent();
@@ -48,7 +46,7 @@ public class PlayerInvitePanel
     while (i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount())
     {
       View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, a(), this);
-      localView.setOnClickListener(new axta(this, i));
+      localView.setOnClickListener(new PlayerInvitePanel.1(this, i));
       addViewInLayout(localView, i, new ViewGroup.LayoutParams(-2, -2));
       i += 1;
     }
@@ -71,7 +69,7 @@ public class PlayerInvitePanel
     return null;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int k = super.getChildCount();
     if (k > this.jdField_a_of_type_Int) {}
@@ -94,7 +92,7 @@ public class PlayerInvitePanel
     invalidate(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int j = getChildCount();
     int i = 0;

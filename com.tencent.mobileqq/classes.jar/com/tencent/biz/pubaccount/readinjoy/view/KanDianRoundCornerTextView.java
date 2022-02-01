@@ -11,7 +11,7 @@ public class KanDianRoundCornerTextView
   extends TextView
 {
   private float jdField_a_of_type_Float = 0.4F;
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private String jdField_a_of_type_JavaLangString = "#000000";
   
   public KanDianRoundCornerTextView(Context paramContext)
@@ -44,7 +44,7 @@ public class KanDianRoundCornerTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.KanDianRoundCornerTextView
  * JD-Core Version:    0.7.0.1
  */

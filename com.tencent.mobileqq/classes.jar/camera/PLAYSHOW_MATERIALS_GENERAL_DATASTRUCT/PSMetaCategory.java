@@ -13,13 +13,13 @@ public final class PSMetaCategory
   static Map<String, String> cache_additionalFields;
   static ArrayList<PSMetaMaterial> cache_materials;
   static ArrayList<PSMetaCategory> cache_subCategories = new ArrayList();
-  public Map<String, String> additionalFields;
+  public Map<String, String> additionalFields = null;
   public boolean defaultFlag = true;
   public String id = "";
-  public ArrayList<PSMetaMaterial> materials;
+  public ArrayList<PSMetaMaterial> materials = null;
   public String name = "";
   public boolean onlyFlag = true;
-  public ArrayList<PSMetaCategory> subCategories;
+  public ArrayList<PSMetaCategory> subCategories = null;
   
   static
   {
@@ -79,7 +79,7 @@ public final class PSMetaCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSMetaCategory
  * JD-Core Version:    0.7.0.1
  */

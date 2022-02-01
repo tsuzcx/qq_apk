@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import biiq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
@@ -8,17 +7,17 @@ import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
-public final class SwiftWebAccelerator$7
+final class SwiftWebAccelerator$7
   implements Runnable
 {
-  public SwiftWebAccelerator$7(long paramLong) {}
+  SwiftWebAccelerator$7(long paramLong) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_InitEngine.run cost " + (l - this.a) + "ms.");
     l = System.currentTimeMillis();
-    synchronized (biiq.a)
+    synchronized (SwiftWebAccelerator.a)
     {
       if (WebViewPluginEngine.a == null)
       {
@@ -38,7 +37,7 @@ public final class SwiftWebAccelerator$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.7
  * JD-Core Version:    0.7.0.1
  */

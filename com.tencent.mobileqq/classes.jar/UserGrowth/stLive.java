@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stLive
   extends JceStruct
 {
-  public int status;
+  public int status = 0;
   
   public stLive() {}
   

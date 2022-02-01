@@ -2,17 +2,19 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Environment;
 import android.os.Message;
-import anza;
-import azjq;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.AppConstants.RichMediaErrorCode;
-import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
 import com.tencent.mobileqq.highway.ipv6.Ipv6Flags;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.IProtoRespBack;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.RespCommon;
@@ -33,7 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.ProxyIpManager.ProxyIp;
 
 public class BaseTransProcessor
-  implements AppConstants.RichMediaErrorCode, INetEngine.INetEngineListener, ITransProcessor, ProtoReqManager.IProtoRespBack, RichProtoProc.RichProtoCallback, IHttpCommunicatorListener
+  implements AppConstants.RichMediaErrorCode, INetEngineListener, ITransProcessor, ProtoReqManagerImpl.IProtoRespBack, RichProtoProc.RichProtoCallback, IHttpCommunicatorListener
 {
   protected static final String COSTREPORT_HT = "ht";
   protected static final String COSTREPORT_PIC = "pic";
@@ -52,8 +54,6 @@ public class BaseTransProcessor
   public static final String KEY_BDHSRV_PORT = "param_bdhPort";
   public static final String KEY_BDHTRANS_INFO = "param_BdhTrans";
   public static final String KEY_BUSI_TYPE = "param_busiType";
-  public static final String KEY_CHECK_FAIL_CODE = "param_check_FailCode";
-  public static final String KEY_CHECK_RESULT = "param_check_result";
   public static final String KEY_COST_EACH = "param_CostEach";
   public static final String KEY_DOWN_MODE = "param_DownMode";
   public static final String KEY_ENCRYPT = "param_encrypt";
@@ -99,29 +99,6 @@ public class BaseTransProcessor
   public static final String KEY_PTT_NET_DOWN = "param_pttNetDown";
   public static final String KEY_PTT_OPT = "param_pttOpt";
   public static final String KEY_PTT_WRITTEN_SIZE = "param_writtenSize";
-  public static final String KEY_QUIC_CONN_COST = "param_quic_conn_cost";
-  public static final String KEY_QUIC_CONTENT_LENGTH = "param_quic_content_length";
-  public static final String KEY_QUIC_DOWNLOAD = "parameter_quic";
-  public static final String KEY_QUIC_DOWNLOAD_STATUS = "parameter_quic_status";
-  public static final String KEY_QUIC_ERR_CODE = "param_quic_err_code";
-  public static final String KEY_QUIC_ERR_MESSAGE = "param_quic_err_message";
-  public static final String KEY_QUIC_ESTIMATED_BANDWIDTH = "param_quic_estimated_bandwidth";
-  public static final String KEY_QUIC_FAIL_REASON = "param_quic_fail_reason";
-  public static final String KEY_QUIC_FIRST_PACKAGE_COST = "param_quic_first_package_cost";
-  public static final String KEY_QUIC_HTTP_STATUS = "param_quic_http_status";
-  public static final String KEY_QUIC_IN_QUEUE_COST = "param_quic_inQueueCost";
-  public static final String KEY_QUIC_IS_IPV6 = "param_quic_is_ipv6";
-  public static final String KEY_QUIC_LOST_RATE = "param_quic_lost_rate";
-  public static final String KEY_QUIC_NET_TYPE = "param_quic_net_type";
-  public static final String KEY_QUIC_REMOTE_ADDRESS = "param_quic_remote_address";
-  public static final String KEY_QUIC_REMOTE_PORT = "param_quic_remote_port";
-  public static final String KEY_QUIC_RTT_MEAN = "param_quic_rtt_mean";
-  public static final String KEY_QUIC_SHORT_VIDEO = "param_quic_short_video";
-  public static final String KEY_QUIC_SRTT_US = "param_quic_srtt_us";
-  public static final String KEY_QUIC_TIME_OUT = "param_quic_time_out";
-  public static final String KEY_QUIC_TOTAL_SIZE = "param_quic_total_size";
-  public static final String KEY_QUIC_TOTAL_TIME = "param_quic_total_time";
-  public static final String KEY_QUIC_TYPE_VIDEO = "param_quic_type_video";
   public static final String KEY_REASON = "param_reason";
   public static final String KEY_RECV_DATA_LEN = "param_recvDataLen";
   public static final String KEY_REQ_HEADER = "param_reqHeader";
@@ -177,13 +154,11 @@ public class BaseTransProcessor
   public static final String STORAGE_PIC_PLATFORM = "picplatform";
   public static final String STORAGE_PTT_CENTER = "pttcenter";
   public static final String TAG = "BaseTransProcessor";
-  public static final String TAG_MULTIMSG = "MultiMsg_TAG";
-  private static ArrayList<TransProcessorHandler> handlerList;
-  private static Object lock;
-  protected static INetEngine.IBreakDownFix mPicBreakDownFixForOldHttpEngine = new BaseTransProcessor.1();
-  public static String param_Reason;
+  private static ArrayList<TransProcessorHandler> handlerList = new ArrayList();
+  private static Object lock = new Object();
+  public static String param_Reason = "param_reason";
   static ConcurrentHashMap<String, Integer> sReportMap = new ConcurrentHashMap();
-  protected AppInterface app;
+  public AppInterface app;
   StringBuilder costReport = new StringBuilder();
   private int currentProgress;
   public int errCode = 9001;
@@ -194,21 +169,21 @@ public class BaseTransProcessor
   int errorHttpRollback = -9530;
   int errorUrlDecodeFailed = -9529;
   int errorUrlKeyFieldMiss = -9528;
-  protected FileMsg file;
+  public FileMsg file;
   String httpOkFailPre = "Q";
-  protected long inQueueCost;
-  protected boolean isDomainTest;
+  protected long inQueueCost = 0L;
+  protected boolean isDomainTest = false;
   boolean isReportValid = true;
   private String key;
   public BaseTransFileController mController;
   long mEndTime;
   boolean mIsCancel = false;
   boolean mIsOldDbRec = false;
-  boolean mIsPause = false;
-  boolean mIsRawPic = false;
-  boolean mIsShortVideoReceive = false;
-  boolean mIsShortVideoSend = false;
-  public INetEngine mNetEngine;
+  public boolean mIsPause = false;
+  public boolean mIsRawPic = false;
+  public boolean mIsShortVideoReceive = false;
+  public boolean mIsShortVideoSend = false;
+  public IHttpEngineService mNetEngine;
   NetReq mNetReq;
   int mNetworkChgRetryCount = 0;
   protected int mProgress;
@@ -225,30 +200,30 @@ public class BaseTransProcessor
   BaseTransProcessor.StepInfo mStepMsg = new BaseTransProcessor.StepInfo();
   BaseTransProcessor.StepInfo mStepTrans = new BaseTransProcessor.StepInfo();
   BaseTransProcessor.StepInfo mStepUrl = new BaseTransProcessor.StepInfo();
-  private boolean mSupportFakeProgress;
-  protected RichMediaStrategy.OldEngineDPCProfile mTimeoutProfile;
+  private boolean mSupportFakeProgress = false;
   public TransferRequest mUiRequest;
   public String reason = "";
   long reportTimeHt = 0L;
   long reportTimePicCache = 0L;
   long reportTimeTrans = 0L;
   String requestOkFailPre = "P";
-  protected int segmentNum;
-  
-  static
-  {
-    handlerList = new ArrayList();
-    lock = new Object();
-    param_Reason = "param_reason";
-  }
+  protected int segmentNum = 0;
   
   public BaseTransProcessor() {}
+  
+  public BaseTransProcessor(BaseTransFileController paramBaseTransFileController)
+  {
+    this.mController = paramBaseTransFileController;
+    this.app = paramBaseTransFileController.app;
+    this.file = new FileMsg();
+    this.mStartTime = System.nanoTime();
+  }
   
   public BaseTransProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
     this.app = paramBaseTransFileController.app;
     this.mStartTime = System.nanoTime();
-    azjq.a("BaseTransProcessor", "TimeCompare", "Processor Start Time = " + this.mStartTime + "ns,Processor = " + this);
+    TransFileUtil.printRichMediaDebug("BaseTransProcessor", "TimeCompare", "Processor Start Time = " + this.mStartTime + "ns,Processor = " + this);
     this.file = new FileMsg();
     this.mController = paramBaseTransFileController;
     this.mUiRequest = paramTransferRequest;
@@ -257,26 +232,21 @@ public class BaseTransProcessor
     this.file.uinType = this.mUiRequest.mUinType;
     this.file.friendUin = this.mUiRequest.mPeerUin;
     paramBaseTransFileController = this.file;
-    if (this.mUiRequest.mIsUp) {
-      i = 0;
+    if (this.mUiRequest.mIsUp) {}
+    for (;;)
+    {
+      paramBaseTransFileController.actionType = i;
+      this.mNetEngine = ((IHttpEngineService)this.app.getRuntimeService(IHttpEngineService.class, "all"));
+      fetchReportFlag();
+      return;
+      i = 1;
     }
-    paramBaseTransFileController.actionType = i;
-    this.mNetEngine = this.app.getNetEngine(0);
-    fetchReportFlag();
   }
   
-  public BaseTransProcessor(TransFileController paramTransFileController)
+  public BaseTransProcessor(String paramString1, String paramString2, boolean paramBoolean, BaseTransFileController paramBaseTransFileController)
   {
-    this.mController = paramTransFileController;
-    this.app = paramTransFileController.mApp;
-    this.file = new FileMsg();
-    this.mStartTime = System.nanoTime();
-  }
-  
-  public BaseTransProcessor(String paramString1, String paramString2, boolean paramBoolean, TransFileController paramTransFileController)
-  {
-    this.mController = paramTransFileController;
-    this.app = paramTransFileController.mApp;
+    this.mController = paramBaseTransFileController;
+    this.app = paramBaseTransFileController.app;
     this.mStartTime = System.nanoTime();
     if (paramBoolean) {}
     for (;;)
@@ -288,10 +258,10 @@ public class BaseTransProcessor
     }
   }
   
-  public BaseTransProcessor(String paramString, boolean paramBoolean, TransFileController paramTransFileController)
+  public BaseTransProcessor(String paramString, boolean paramBoolean, BaseTransFileController paramBaseTransFileController)
   {
-    this.mController = paramTransFileController;
-    this.app = paramTransFileController.mApp;
+    this.mController = paramBaseTransFileController;
+    this.app = paramBaseTransFileController.app;
     this.mStartTime = System.nanoTime();
     if (paramBoolean) {}
     for (;;)
@@ -407,9 +377,38 @@ public class BaseTransProcessor
     return "C_" + paramString;
   }
   
+  public static String getExceptionMessage(Exception paramException)
+  {
+    int i = 8;
+    if (paramException == null) {
+      return "Exception e is null";
+    }
+    Object localObject = paramException.getMessage();
+    StackTraceElement[] arrayOfStackTraceElement = paramException.getStackTrace();
+    if (arrayOfStackTraceElement != null)
+    {
+      localObject = new StringBuilder(":");
+      int j = arrayOfStackTraceElement.length;
+      if (j > 8) {}
+      for (;;)
+      {
+        ((StringBuilder)localObject).append("\n");
+        j = 0;
+        while (j < i)
+        {
+          ((StringBuilder)localObject).append(arrayOfStackTraceElement[j].toString()).append("\n");
+          j += 1;
+        }
+        i = j;
+      }
+      return paramException.toString() + ((StringBuilder)localObject).toString();
+    }
+    return localObject;
+  }
+  
   public static String getExpStackString(Exception paramException)
   {
-    return AbstractImageDownloader.getExceptionMessage(paramException);
+    return getExceptionMessage(paramException);
   }
   
   public static String getHttpCmdReason(int paramInt, long paramLong)
@@ -585,15 +584,6 @@ public class BaseTransProcessor
   
   public void cancelTransTimer() {}
   
-  protected void checkFailCodeReport(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (this.errCode == 0)) {
-      QLog.d("BaseTransProcessor", 1, new Throwable().getStackTrace());
-    }
-    this.mReportInfo.put("param_check_result", String.valueOf(paramBoolean));
-    this.mReportInfo.put("param_check_FailCode", String.valueOf(this.errCode));
-  }
-  
   public int checkParam()
   {
     return 0;
@@ -625,46 +615,46 @@ public class BaseTransProcessor
     setError(paramRespCommon.errCode, paramRespCommon.errStr, paramRespCommon.reason, paramStepInfo);
   }
   
-  public void copyStatisInfo(BaseTransProcessor.StepInfo paramStepInfo, boolean paramBoolean1, boolean paramBoolean2, anza paramanza)
+  public void copyStatisInfo(BaseTransProcessor.StepInfo paramStepInfo, boolean paramBoolean1, boolean paramBoolean2, StatictisInfo paramStatictisInfo)
   {
-    if (paramanza == null) {
+    if (paramStatictisInfo == null) {
       return;
     }
     paramStepInfo.logFinishTime();
     if (paramBoolean2)
     {
-      paramStepInfo.failTryCount = (paramanza.c - 1);
+      paramStepInfo.failTryCount = (paramStatictisInfo.c - 1);
       paramStepInfo.successTryCount = 1;
       paramStepInfo.result = 1;
       return;
     }
     String str;
-    if (paramanza.b == 2900)
+    if (paramStatictisInfo.b == 2900)
     {
       i = -9527;
       if (!paramBoolean1) {}
-      for (str = getMsgReason(paramanza.jdField_a_of_type_Long);; str = getUrlReason(paramanza.jdField_a_of_type_Long))
+      for (str = getMsgReason(paramStatictisInfo.jdField_a_of_type_Long);; str = getUrlReason(paramStatictisInfo.jdField_a_of_type_Long))
       {
         setError(i, "", str, paramStepInfo);
-        paramStepInfo.failTryCount = paramanza.c;
+        paramStepInfo.failTryCount = paramStatictisInfo.c;
         paramStepInfo.successTryCount = 0;
         paramStepInfo.result = 0;
         return;
       }
     }
-    if ((paramanza.b == 1002) || (paramanza.b == 1013))
+    if ((paramStatictisInfo.b == 1002) || (paramStatictisInfo.b == 1013))
     {
       if (!paramBoolean1) {}
       for (i = 9350;; i = 9311)
       {
-        str = paramanza.jdField_a_of_type_JavaLangString;
+        str = paramStatictisInfo.jdField_a_of_type_JavaLangString;
         break;
       }
     }
     if (!paramBoolean1) {}
     for (int i = 9351;; i = 9044)
     {
-      str = paramanza.jdField_a_of_type_JavaLangString;
+      str = paramStatictisInfo.jdField_a_of_type_JavaLangString;
       break;
     }
   }
@@ -716,7 +706,7 @@ public class BaseTransProcessor
     }
     this.mRSMReporter.mChatType = (this.mUiRequest.mUinType + "");
     this.mRSMReporter.mChatUin = (this.mUiRequest.mPeerUin + "");
-    if ((this instanceof BaseUploadProcessor)) {}
+    if (isUploadProcessor()) {}
     for (this.mRSMReporter.mIPPolicy = Ipv6Config.getFlags().mBdhStrategy;; this.mRSMReporter.mIPPolicy = Ipv6Config.getFlags().mRMDownStrategy)
     {
       if ((this.mStepTrans != null) && (this.mStepTrans.startTime > 0L)) {
@@ -797,9 +787,9 @@ public class BaseTransProcessor
     return (int)(this.file.transferedSize * 100L / this.file.fileSize);
   }
   
-  public String getPttStorePath(String paramString1, String paramString2, int paramInt)
+  protected IProtoReqManager getProtoReqManager()
   {
-    return MessageForPtt.getLocalFilePath(paramInt, AppConstants.SDCARD_PATH + this.app.getAccount() + "/" + "ptt" + "/" + paramString1 + "_" + FileMsg.getTransFileDateTime() + ".amr");
+    return (IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, "");
   }
   
   public int getRealProgress()
@@ -871,7 +861,7 @@ public class BaseTransProcessor
     }
   }
   
-  TransferRequest getTransferRequest()
+  public TransferRequest getTransferRequest()
   {
     return this.mUiRequest;
   }
@@ -894,7 +884,7 @@ public class BaseTransProcessor
     //   1: monitorenter
     //   2: aload_0
     //   3: iload_1
-    //   4: invokevirtual 1238	com/tencent/mobileqq/transfile/BaseTransProcessor:getStepInfo	(I)Lcom/tencent/mobileqq/transfile/FileMsg$StepBaseInfo;
+    //   4: invokevirtual 1131	com/tencent/mobileqq/transfile/BaseTransProcessor:getStepInfo	(I)Lcom/tencent/mobileqq/transfile/FileMsg$StepBaseInfo;
     //   7: astore 4
     //   9: aload 4
     //   11: ifnull +19 -> 30
@@ -902,19 +892,19 @@ public class BaseTransProcessor
     //   15: ifeq +18 -> 33
     //   18: aload 4
     //   20: aload 4
-    //   22: getfield 1241	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:successTryCount	I
+    //   22: getfield 1134	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:successTryCount	I
     //   25: iload_3
     //   26: iadd
-    //   27: putfield 1241	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:successTryCount	I
+    //   27: putfield 1134	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:successTryCount	I
     //   30: aload_0
     //   31: monitorexit
     //   32: return
     //   33: aload 4
     //   35: aload 4
-    //   37: getfield 1242	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:failTryCount	I
+    //   37: getfield 1135	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:failTryCount	I
     //   40: iload_3
     //   41: iadd
-    //   42: putfield 1242	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:failTryCount	I
+    //   42: putfield 1135	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:failTryCount	I
     //   45: goto -15 -> 30
     //   48: astore 4
     //   50: aload_0
@@ -962,45 +952,34 @@ public class BaseTransProcessor
     return true;
   }
   
+  protected boolean isUploadProcessor()
+  {
+    return true;
+  }
+  
   public void logRichMediaEvent(String paramString1, String paramString2)
   {
-    boolean bool = false;
-    if (this.file == null) {
-      azjq.b("BaseTransProcessor", "logRichMediaEvent", "file is null !");
-    }
-    do
+    if (this.file == null)
     {
+      TransFileUtil.printRichMediaError("BaseTransProcessor", "logRichMediaEvent", "file is null !");
       return;
-      if (!(this instanceof ShortVideoForwardProcessor)) {
-        break;
-      }
-    } while (this.mUiRequest == null);
-    RichMediaUtil.logForFw("T", RichMediaUtil.getUinDesc(this.mUiRequest.mUinType), RichMediaUtil.getFileTypeDesc(this.file.fileType), String.valueOf(this.file.uniseq), paramString1, paramString2, null);
-    return;
+    }
     int i = -1;
     if (this.mUiRequest != null) {
       i = this.mUiRequest.mUinType;
     }
-    if ((this instanceof BuddyTransfileProcessor))
-    {
-      i = 0;
-      if (this.mUiRequest == null) {
-        break label163;
-      }
+    boolean bool;
+    if (this.mUiRequest != null) {
       bool = this.mUiRequest.mIsUp;
     }
     for (;;)
     {
-      RichMediaUtil.log(RichMediaUtil.getUinDesc(i), bool, RichMediaUtil.getFileTypeDesc(this.file.fileType), String.valueOf(this.file.uniseq), paramString1, paramString2);
+      TransFileUtil.log(TransFileUtil.getUinDesc(i), bool, RichMediaUtil.getFileTypeDesc(this.file.fileType), String.valueOf(this.file.uniseq), paramString1, paramString2);
       return;
-      if (!(this instanceof C2CPicUploadProcessor)) {
-        break;
-      }
-      i = 0;
-      break;
-      label163:
       if (this.file.actionType == 0) {
         bool = true;
+      } else {
+        bool = false;
       }
     }
   }
@@ -1010,7 +989,7 @@ public class BaseTransProcessor
   void onError()
   {
     long l = (System.nanoTime() - this.mStartTime) / 1000000L;
-    if ((!this.app.isLogin()) || (!this.app.isRunning())) {
+    if ((this.app != null) && ((!this.app.isLogin()) || (!this.app.isRunning()))) {
       setError(9366, "account switch");
     }
     logRichMediaEvent("onError", "elapsed:" + l + " errCode:" + this.errCode + " errDesc:" + this.errDesc + " reason:" + (String)this.mReportInfo.get("param_reason"));
@@ -1018,32 +997,7 @@ public class BaseTransProcessor
     this.mController.removeProcessor(getKey());
   }
   
-  public void onFlowEvent(HttpMsg paramHttpMsg)
-  {
-    int i;
-    int j;
-    int k;
-    if (paramHttpMsg != null)
-    {
-      i = paramHttpMsg.fileType;
-      j = paramHttpMsg.busiType;
-      k = paramHttpMsg.netType;
-      if (((i == -1) || (j == -1)) && (QLog.isColorLevel())) {
-        QLog.e("flowstat", 2, "fileType:" + i + ",busiType:" + j);
-      }
-      if (!"POST".equals(paramHttpMsg.getRequestMethod())) {
-        break label115;
-      }
-    }
-    label115:
-    for (boolean bool = true;; bool = false)
-    {
-      this.app.sendAppDataIncerment(this.app.getAccount(), bool, k, i, j, paramHttpMsg.flow);
-      return;
-    }
-  }
-  
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq) {}
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq) {}
   
   public void onResp(NetResp paramNetResp)
   {
@@ -1078,7 +1032,7 @@ public class BaseTransProcessor
     do
     {
       return paramList;
-      localServerAddr = RichMediaUtil.getIpAndPortFromUrl(paramString);
+      localServerAddr = TransFileUtil.getIpAndPortFromUrl(paramString);
       if (localServerAddr != null) {
         break;
       }
@@ -1115,7 +1069,7 @@ public class BaseTransProcessor
       }
       for (;;)
       {
-        paramString = RichMediaUtil.replaceIp(paramString, paramList);
+        paramString = TransFileUtil.replaceIp(paramString, paramList);
         paramString = paramString + "&bHost=" + localServerAddr.mIp + "&bPort=" + localServerAddr.port;
         paramList = paramString;
         if (!QLog.isColorLevel()) {
@@ -1167,42 +1121,18 @@ public class BaseTransProcessor
   
   public void reportForIpv6(boolean paramBoolean, long paramLong)
   {
-    int j = 0;
     this.mReportInfo.put("ipStackType", String.valueOf(NetConnInfoCenter.getActiveNetIpFamily(false)));
     this.mReportInfo.put("msfConnIPType", String.valueOf(MsfServiceSdk.get().getConnectedIPFamily()));
-    BaseDownloadProcessor localBaseDownloadProcessor;
-    HashMap localHashMap;
-    if ((this instanceof BaseUploadProcessor))
-    {
+    if (isUploadProcessor()) {
       this.mReportInfo.put("param_Ipv6Policy", String.valueOf(Ipv6Config.getFlags().mBdhStrategy));
-      if ((this instanceof BaseDownloadProcessor))
-      {
-        localBaseDownloadProcessor = (BaseDownloadProcessor)this;
-        if (localBaseDownloadProcessor.mIpv6First) {
-          this.mReportInfo.put("param_is_ipv6", String.valueOf(1));
-        }
-        localHashMap = this.mReportInfo;
-        if (!localBaseDownloadProcessor.mHasIpv6List) {
-          break label269;
-        }
-      }
     }
-    label269:
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      localHashMap.put("param_hasV6List", String.valueOf(i));
-      localHashMap = this.mReportInfo;
-      i = j;
-      if (localBaseDownloadProcessor.mIpv6First) {
-        i = 1;
-      }
-      localHashMap.put("param_ipv6First", String.valueOf(i));
       if ((this.mReportInfo.get("param_is_ipv6") != null) && (((String)this.mReportInfo.get("param_is_ipv6")).equals(String.valueOf(1)))) {
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG() + "_ipv6", paramBoolean, paramLong, 0L, this.mReportInfo, "");
       }
       return;
       this.mReportInfo.put("param_Ipv6Policy", String.valueOf(Ipv6Config.getFlags().mRMDownStrategy));
-      break;
     }
   }
   
@@ -1225,7 +1155,7 @@ public class BaseTransProcessor
     logRichMediaEvent("updateUiState", "state:" + paramInt1 + " ret:" + paramInt2 + " currentProgress:" + this.currentProgress + " mProgress:" + this.mProgress);
     if (((paramInt1 == 2005) || (paramInt1 == 1005)) && (this.errCode == 9001))
     {
-      String str = AbstractImageDownloader.getExceptionMessage(new Exception());
+      String str = getExceptionMessage(new Exception());
       HashMap localHashMap = new HashMap();
       localHashMap.put("stackMsg", str);
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actRichMediaReportError", false, 0L, 0L, localHashMap, "");
@@ -1368,28 +1298,28 @@ public class BaseTransProcessor
     this.file.setFileId(paramLong);
   }
   
-  protected void setKey(String paramString)
+  public void setKey(String paramString)
   {
     this.key = paramString;
   }
   
   @Deprecated
-  public void setMsgError(int paramInt, anza paramanza, String paramString)
+  public void setMsgError(int paramInt, StatictisInfo paramStatictisInfo, String paramString)
   {
     try
     {
-      setMsgResult(paramInt, false, paramanza, paramString);
+      setMsgResult(paramInt, false, paramStatictisInfo, paramString);
       return;
     }
     finally
     {
-      paramanza = finally;
-      throw paramanza;
+      paramStatictisInfo = finally;
+      throw paramStatictisInfo;
     }
   }
   
   @Deprecated
-  public void setMsgResult(int paramInt, boolean paramBoolean, anza paramanza, String paramString)
+  public void setMsgResult(int paramInt, boolean paramBoolean, StatictisInfo paramStatictisInfo, String paramString)
   {
     int i = 9351;
     FileMsg.StepBaseInfo localStepBaseInfo;
@@ -1415,56 +1345,56 @@ public class BaseTransProcessor
         if (!paramBoolean) {
           break label115;
         }
-        if (paramanza == null)
+        if (paramStatictisInfo == null)
         {
           localStepBaseInfo.failTryCount = 0;
           localStepBaseInfo.successTryCount = 1;
           continue;
         }
-        localStepBaseInfo.failTryCount = (paramanza.c - 1);
+        localStepBaseInfo.failTryCount = (paramStatictisInfo.c - 1);
       }
       finally {}
       localStepBaseInfo.successTryCount = 1;
       continue;
       label115:
-      if (paramanza != null) {
+      if (paramStatictisInfo != null) {
         break;
       }
       localStepBaseInfo.failTryCount = 1;
       localStepBaseInfo.successTryCount = 0;
     }
-    if (paramanza.b == 2900)
+    if (paramStatictisInfo.b == 2900)
     {
-      paramanza.b = -9527;
+      paramStatictisInfo.b = -9527;
       if (paramInt == 3) {
-        paramString = getMsgReason(paramanza.jdField_a_of_type_Long);
+        paramString = getMsgReason(paramStatictisInfo.jdField_a_of_type_Long);
       }
     }
     for (;;)
     {
-      setStepError(paramInt, paramanza.b, paramString);
-      localStepBaseInfo.detailErrCode = paramanza.jdField_a_of_type_Long;
-      localStepBaseInfo.retryCount = paramanza.c;
-      localStepBaseInfo.failTryCount = paramanza.c;
+      setStepError(paramInt, paramStatictisInfo.b, paramString);
+      localStepBaseInfo.detailErrCode = paramStatictisInfo.jdField_a_of_type_Long;
+      localStepBaseInfo.retryCount = paramStatictisInfo.c;
+      localStepBaseInfo.failTryCount = paramStatictisInfo.c;
       localStepBaseInfo.successTryCount = 0;
       break;
-      paramString = getUrlReason(paramanza.jdField_a_of_type_Long);
+      paramString = getUrlReason(paramStatictisInfo.jdField_a_of_type_Long);
       continue;
-      if (paramanza.b == 1002) {
+      if (paramStatictisInfo.b == 1002) {
         break label285;
       }
-      if (paramanza.b != 1013) {
+      if (paramStatictisInfo.b != 1013) {
         break label306;
       }
       break label285;
-      paramanza.b = i;
-      paramString = paramanza.jdField_a_of_type_JavaLangString;
+      paramStatictisInfo.b = i;
+      paramString = paramStatictisInfo.jdField_a_of_type_JavaLangString;
     }
     for (;;)
     {
       label262:
-      paramanza.b = i;
-      paramString = paramanza.jdField_a_of_type_JavaLangString;
+      paramStatictisInfo.b = i;
+      paramString = paramStatictisInfo.jdField_a_of_type_JavaLangString;
       break;
       label285:
       label306:
@@ -1591,7 +1521,7 @@ public class BaseTransProcessor
   }
   
   @Deprecated
-  public void setTryCountInfoFromMsgHandler(int paramInt, boolean paramBoolean, anza paramanza)
+  public void setTryCountInfoFromMsgHandler(int paramInt, boolean paramBoolean, StatictisInfo paramStatictisInfo)
   {
     int j = 0;
     int k = 0;
@@ -1612,14 +1542,14 @@ public class BaseTransProcessor
         if (paramInt != 1) {
           break label148;
         }
-        if (paramanza == null)
+        if (paramStatictisInfo == null)
         {
           paramInt = i;
           localStepBaseInfo.failTryCount = paramInt;
           localStepBaseInfo.successTryCount = 1;
           continue;
         }
-        paramInt = paramanza.c - 1;
+        paramInt = paramStatictisInfo.c - 1;
       }
       finally {}
       continue;
@@ -1628,14 +1558,14 @@ public class BaseTransProcessor
         localStepBaseInfo.failTryCount = paramInt;
         break;
         label84:
-        paramInt = paramanza.c;
+        paramInt = paramStatictisInfo.c;
       }
     }
     localStepBaseInfo.successTryCount = 0;
     if (paramInt == 1)
     {
-      if (paramanza == null) {}
-      for (paramInt = k;; paramInt = paramanza.c)
+      if (paramStatictisInfo == null) {}
+      for (paramInt = k;; paramInt = paramStatictisInfo.c)
       {
         localStepBaseInfo.failTryCount = paramInt;
         break;
@@ -1649,15 +1579,15 @@ public class BaseTransProcessor
       label148:
       do
       {
-        paramInt = paramanza.c;
+        paramInt = paramStatictisInfo.c;
         paramInt += 1;
         break label127;
-        if (paramanza != null) {
+        if (paramStatictisInfo != null) {
           break label84;
         }
         paramInt = j;
         break;
-      } while (paramanza != null);
+      } while (paramStatictisInfo != null);
       paramInt = m;
     }
   }

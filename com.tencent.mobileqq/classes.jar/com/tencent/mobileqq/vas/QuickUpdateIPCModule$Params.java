@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vas;
 
 import java.io.Serializable;
 
-public class QuickUpdateIPCModule$Params
+class QuickUpdateIPCModule$Params
   implements Serializable
 {
   public boolean boolVal;
@@ -12,7 +12,7 @@ public class QuickUpdateIPCModule$Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params
  * JD-Core Version:    0.7.0.1
  */

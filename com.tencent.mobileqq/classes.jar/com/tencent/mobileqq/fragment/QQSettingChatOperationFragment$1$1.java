@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.fragment;
 
 import android.os.Handler;
-import auxm;
-import awtz;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
-public class QQSettingChatOperationFragment$1$1
+class QQSettingChatOperationFragment$1$1
   implements Runnable
 {
-  public QQSettingChatOperationFragment$1$1(auxm paramauxm) {}
+  QQSettingChatOperationFragment$1$1(QQSettingChatOperationFragment.1 param1) {}
   
   public void run()
   {
     this.a.a.b();
-    awtz.a().j(QQSettingChatOperationFragment.a(this.a.a));
+    TroopAssistantManager.a().j(QQSettingChatOperationFragment.a(this.a.a));
     this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

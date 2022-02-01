@@ -1,26 +1,26 @@
 package com.tencent.biz.qqstory.shareGroup.model;
 
-import anvx;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.database.ShareGroupEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
+import com.tencent.biz.qqstory.model.item.IFeedOwner;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupBasicInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupExtInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.List;
-import vzk;
-import wkw;
-import ykq;
-import zdl;
 
 public class ShareGroupItem
   extends BaseUIItem
-  implements vzk, wkw
+  implements Copyable, IFeedOwner
 {
   public static final int OWNER_TYPE_CREATOR = 1;
   public static final int OWNER_TYPE_PARTICIPATOR = 2;
@@ -28,16 +28,16 @@ public class ShareGroupItem
   public static final int TYPE_SHARE_GROUP = 2;
   public static final int TYPE_USER_GROUP = 1;
   public int allowStrangerVisitAndPost = -1;
-  public String backgroundUrl;
+  public String backgroundUrl = null;
   public int followCount = -1;
   public long groupUin = -1L;
   public List<String> headerUnionIdList = new ArrayList(0);
   public int isDisband = -1;
   public int isSubscribed = -1;
   public int memberCount = -1;
-  public String name = anvx.a(2131713369);
+  public String name = HardCodeUtil.a(2131713865);
   public int ownerType = 1;
-  public String ownerUnionId;
+  public String ownerUnionId = null;
   public String shareGroupId;
   public int type = 2;
   public int videoCount = -1;
@@ -66,9 +66,9 @@ public class ShareGroupItem
   
   public void assertItem()
   {
-    zdl.a(this.shareGroupId);
+    AssertUtils.a(this.shareGroupId);
     if (this.type == 2) {
-      ykq.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
+      SLog.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
     }
   }
   
@@ -295,7 +295,7 @@ public class ShareGroupItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem
  * JD-Core Version:    0.7.0.1
  */

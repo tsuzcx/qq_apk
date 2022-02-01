@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import androidx.fragment.app.FragmentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.view.FlutterNativeView;
@@ -30,6 +32,15 @@ public class FlutterFragmentActivity
     return null;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
   public FlutterView getFlutterView()
   {
     return this.viewProvider.getFlutterView();
@@ -40,7 +51,7 @@ public class FlutterFragmentActivity
     return this.pluginRegistry.hasPlugin(paramString);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (!this.eventDelegate.onActivityResult(paramInt1, paramInt2, paramIntent)) {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
@@ -58,15 +69,16 @@ public class FlutterFragmentActivity
   {
     super.onConfigurationChanged(paramConfiguration);
     this.eventDelegate.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.eventDelegate.onCreate(paramBundle);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     this.eventDelegate.onDestroy();
     super.onDestroy();
@@ -77,18 +89,19 @@ public class FlutterFragmentActivity
     this.eventDelegate.onLowMemory();
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
+    super.onNewIntent(paramIntent);
     this.eventDelegate.onNewIntent(paramIntent);
   }
   
-  protected void onPause()
+  public void onPause()
   {
     super.onPause();
     this.eventDelegate.onPause();
   }
   
-  protected void onPostResume()
+  public void onPostResume()
   {
     super.onPostResume();
     this.eventDelegate.onPostResume();
@@ -96,16 +109,17 @@ public class FlutterFragmentActivity
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     this.eventDelegate.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
-  protected void onStart()
+  public void onStart()
   {
     super.onStart();
     this.eventDelegate.onStart();
   }
   
-  protected void onStop()
+  public void onStop()
   {
     this.eventDelegate.onStop();
     super.onStop();
@@ -138,7 +152,7 @@ public class FlutterFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.app.FlutterFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

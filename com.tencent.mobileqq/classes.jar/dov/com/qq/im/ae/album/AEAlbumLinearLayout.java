@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
-import bmyd;
-import bmye;
-import bmyf;
-import bnrh;
 import com.tencent.mobileqq.R.styleable;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class AEAlbumLinearLayout
   extends LinearLayout
@@ -25,7 +22,7 @@ public class AEAlbumLinearLayout
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private View jdField_a_of_type_AndroidViewView;
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private bmyf jdField_a_of_type_Bmyf;
+  private AEAlbumLinearLayout.ScrollListener jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -55,7 +52,7 @@ public class AEAlbumLinearLayout
     {
       for (;;)
       {
-        bnrh.a("AEAlbumLinearLayout", "constructor, error=", paramAttributeSet);
+        AEQLog.a("AEAlbumLinearLayout", "constructor, error=", paramAttributeSet);
         paramContext.recycle();
       }
     }
@@ -101,8 +98,8 @@ public class AEAlbumLinearLayout
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmyd(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bmye(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new AEAlbumLinearLayout.1(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new AEAlbumLinearLayout.2(this));
       return;
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
@@ -110,20 +107,23 @@ public class AEAlbumLinearLayout
   
   public void a()
   {
-    bnrh.a("AEAlbumLinearLayout", "[collapsePreviewContainer]");
-    if (getScrollY() >= this.c)
-    {
-      bnrh.a("AEAlbumLinearLayout", "[collapsePreviewContainer], already collapsed");
-      return;
+    AEQLog.a("AEAlbumLinearLayout", "[collapsePreviewContainer]");
+    if (getScrollY() >= this.c) {
+      AEQLog.a("AEAlbumLinearLayout", "[collapsePreviewContainer], already collapsed");
     }
-    this.e = 1;
-    int i = this.c - getScrollY();
-    int j = (int)(1.0F * i / this.c * 275.0F);
-    bnrh.a("AEAlbumLinearLayout", "[collapsePreviewContainer], dy=" + i + ", duration=" + j);
-    d();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { getScrollY(), this.c });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(j);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    do
+    {
+      return;
+      this.e = 1;
+      int i = this.c - getScrollY();
+      int j = (int)(1.0F * i / this.c * 275.0F);
+      AEQLog.a("AEAlbumLinearLayout", "[collapsePreviewContainer], dy=" + i + ", duration=" + j);
+      d();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { getScrollY(), this.c });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(j);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    } while (this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener == null);
+    this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener.a(false);
   }
   
   public boolean a()
@@ -133,20 +133,23 @@ public class AEAlbumLinearLayout
   
   public void b()
   {
-    bnrh.a("AEAlbumLinearLayout", "[expandPreviewContainer]");
-    if (getScrollY() <= 0)
-    {
-      bnrh.a("AEAlbumLinearLayout", "[expandPreviewContainer], already expanded");
-      return;
+    AEQLog.a("AEAlbumLinearLayout", "[expandPreviewContainer]");
+    if (getScrollY() <= 0) {
+      AEQLog.a("AEAlbumLinearLayout", "[expandPreviewContainer], already expanded");
     }
-    this.e = 2;
-    int i = -getScrollY();
-    int j = (int)(1.0F * getScrollY() / this.c * 275.0F);
-    bnrh.a("AEAlbumLinearLayout", "[expandPreviewContainer], dy=" + i + ", duration=" + j);
-    d();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { getScrollY(), 0 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(j);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    do
+    {
+      return;
+      this.e = 2;
+      int i = -getScrollY();
+      int j = (int)(1.0F * getScrollY() / this.c * 275.0F);
+      AEQLog.a("AEAlbumLinearLayout", "[expandPreviewContainer], dy=" + i + ", duration=" + j);
+      d();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { getScrollY(), 0 });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(j);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    } while (this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener == null);
+    this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener.a(true);
   }
   
   public boolean b()
@@ -156,18 +159,18 @@ public class AEAlbumLinearLayout
   
   public int getNestedScrollAxes()
   {
-    bnrh.a("AEAlbumLinearLayout", "[getNestedScrollAxes]");
+    AEQLog.a("AEAlbumLinearLayout", "[getNestedScrollAxes]");
     return 2;
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     this.jdField_a_of_type_AndroidViewView = getChildAt(0);
     this.jdField_b_of_type_AndroidViewView = getChildAt(1);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
@@ -181,13 +184,13 @@ public class AEAlbumLinearLayout
   
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    bnrh.a("AEAlbumLinearLayout", "[onNestedFling], velocityX=" + paramFloat1 + ", velocityY=" + paramFloat2 + ", consumed=" + paramBoolean);
+    AEQLog.a("AEAlbumLinearLayout", "[onNestedFling], velocityX=" + paramFloat1 + ", velocityY=" + paramFloat2 + ", consumed=" + paramBoolean);
     return super.onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
   }
   
   public boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2)
   {
-    bnrh.a("AEAlbumLinearLayout", "[onNestedPreFling], velocityX=" + paramFloat1 + ", velocityY=" + paramFloat2);
+    AEQLog.a("AEAlbumLinearLayout", "[onNestedPreFling], velocityX=" + paramFloat1 + ", velocityY=" + paramFloat2);
     if ((paramFloat2 > 0.0F) && (getScrollY() < this.c))
     {
       a();
@@ -198,7 +201,7 @@ public class AEAlbumLinearLayout
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    bnrh.a("AEAlbumLinearLayout", "[onNestedPreScroll], dy=" + paramInt2 + ", scrollY=" + getScrollY());
+    AEQLog.a("AEAlbumLinearLayout", "[onNestedPreScroll], dy=" + paramInt2 + ", scrollY=" + getScrollY());
     int i;
     if ((paramInt2 > 0) && (getScrollY() < this.c))
     {
@@ -228,10 +231,10 @@ public class AEAlbumLinearLayout
     for (paramInt1 = 1;; paramInt1 = 2)
     {
       this.d = paramInt1;
-      if (this.jdField_a_of_type_Bmyf != null)
+      if (this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener != null)
       {
-        this.jdField_a_of_type_Bmyf.a(this.d);
-        this.jdField_a_of_type_Bmyf.b(a());
+        this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener.a(this.d);
+        this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener.b(a());
       }
       return;
       paramInt1 = 0;
@@ -245,36 +248,36 @@ public class AEAlbumLinearLayout
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bnrh.a("AEAlbumLinearLayout", "[onNestedScroll], dxConsumed=" + paramInt1 + ", dyConsumed=" + paramInt2 + ", dxUnconsumed=" + paramInt3 + ", dyUnconsumed=" + paramInt4);
+    AEQLog.a("AEAlbumLinearLayout", "[onNestedScroll], dxConsumed=" + paramInt1 + ", dyConsumed=" + paramInt2 + ", dxUnconsumed=" + paramInt3 + ", dyUnconsumed=" + paramInt4);
     super.onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bmyf != null) {
-      this.jdField_a_of_type_Bmyf.b(a());
+    if (this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener != null) {
+      this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener.b(a());
     }
   }
   
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
-    bnrh.a("AEAlbumLinearLayout", "[onNestedScrollAccepted], axes=" + paramInt);
+    AEQLog.a("AEAlbumLinearLayout", "[onNestedScrollAccepted], axes=" + paramInt);
     super.onNestedScrollAccepted(paramView1, paramView2, paramInt);
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    bnrh.a("AEAlbumLinearLayout", "[onStartNestedScroll], nestedScrollAxes=" + paramInt);
+    AEQLog.a("AEAlbumLinearLayout", "[onStartNestedScroll], nestedScrollAxes=" + paramInt);
     return (paramInt & 0x2) != 0;
   }
   
   public void onStopNestedScroll(View paramView)
   {
-    bnrh.a("AEAlbumLinearLayout", "[onStopNestedScroll], scrollY=" + getScrollY());
+    AEQLog.a("AEAlbumLinearLayout", "[onStopNestedScroll], scrollY=" + getScrollY());
     super.onStopNestedScroll(paramView);
     if (!this.jdField_a_of_type_Boolean) {
       c();
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bmyf != null) {
-        this.jdField_a_of_type_Bmyf.a(this.d, a(this.d));
+      if (this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener != null) {
+        this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener.a(this.d, a(this.d));
       }
       this.d = 0;
       return;
@@ -282,14 +285,14 @@ public class AEAlbumLinearLayout
     }
   }
   
-  public void setScrollListener(@Nullable bmyf parambmyf)
+  public void setScrollListener(@Nullable AEAlbumLinearLayout.ScrollListener paramScrollListener)
   {
-    this.jdField_a_of_type_Bmyf = parambmyf;
+    this.jdField_a_of_type_DovComQqImAeAlbumAEAlbumLinearLayout$ScrollListener = paramScrollListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.AEAlbumLinearLayout
  * JD-Core Version:    0.7.0.1
  */

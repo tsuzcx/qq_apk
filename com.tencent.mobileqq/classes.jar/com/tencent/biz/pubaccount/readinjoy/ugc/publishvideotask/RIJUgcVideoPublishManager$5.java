@@ -4,12 +4,11 @@ import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
-import sad;
 
-public class RIJUgcVideoPublishManager$5
+class RIJUgcVideoPublishManager$5
   implements Runnable
 {
-  public RIJUgcVideoPublishManager$5(sad paramsad, UgcVideo paramUgcVideo) {}
+  RIJUgcVideoPublishManager$5(RIJUgcVideoPublishManager paramRIJUgcVideoPublishManager, UgcVideo paramUgcVideo) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class RIJUgcVideoPublishManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.RIJUgcVideoPublishManager.5
  * JD-Core Version:    0.7.0.1
  */

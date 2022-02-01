@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import anvx;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Process;
 import com.tencent.component.network.downloader.DownloadResult.Status;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.utils.WxapkgUnpacker;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ class ApkgManager$5
   {
     if (this.val$listener != null)
     {
-      this.val$listener.onInitApkgInfo(2, this.val$apkgInfo, anvx.a(2131699790));
+      this.val$listener.onInitApkgInfo(2, this.val$apkgInfo, HardCodeUtil.a(2131700368));
       QLog.d("ApkgManager", 1, "onDownloadFailed() called with: s = [" + paramString + "], downloadResult = [" + paramDownloadResult + "]");
     }
     int i;
@@ -69,7 +69,7 @@ class ApkgManager$5
       while (this.val$listener == null) {
         return;
       }
-      this.val$listener.onInitApkgInfo(3, this.val$apkgInfo, anvx.a(2131699791));
+      this.val$listener.onInitApkgInfo(3, this.val$apkgInfo, HardCodeUtil.a(2131700369));
       return;
     }
   }

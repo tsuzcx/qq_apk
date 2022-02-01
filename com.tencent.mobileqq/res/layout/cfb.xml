@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nnh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="142.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@drawable/biw" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_marginLeft="6.5dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nek" android:paddingLeft="13.5dip" android:paddingRight="13.5dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <CheckedTextView android:id="@id/mte" android:background="@drawable/bj8" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <CheckedTextView android:textSize="12.0sp" android:textColor="@color/ky" android:gravity="center_vertical" android:id="@id/odt" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="true" android:text="@string/w_j" android:includeFontPadding="false" />
+        </LinearLayout>
+        <View android:background="#ffb8b9c7" android:layout_width="1.0dip" android:layout_height="9.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nei" android:paddingLeft="13.5dip" android:paddingRight="13.5dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <CheckedTextView android:id="@id/mtc" android:background="@drawable/bj6" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <CheckedTextView android:textSize="12.0sp" android:textColor="@color/ky" android:gravity="center_vertical" android:id="@id/odp" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="true" android:text="@string/w_b" android:includeFontPadding="false" />
+        </LinearLayout>
+        <View android:background="#ffb8b9c7" android:layout_width="1.0dip" android:layout_height="9.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nej" android:paddingLeft="13.5dip" android:paddingRight="13.5dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <CheckedTextView android:id="@id/mtd" android:background="@drawable/bj7" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <CheckedTextView android:textSize="12.0sp" android:textColor="@color/ky" android:gravity="center_vertical" android:id="@id/odq" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="true" android:text="@string/w_g" android:includeFontPadding="false" />
+        </LinearLayout>
+        <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nen" android:paddingLeft="13.5dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <CheckedTextView android:id="@id/mtg" android:background="@drawable/bsu" android:layout_width="14.0dip" android:layout_height="14.0dip" />
+            <CheckedTextView android:textSize="12.0sp" android:textColor="@color/ky" android:gravity="center_vertical" android:id="@id/mtf" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/w_n" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/o2_" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+</LinearLayout>

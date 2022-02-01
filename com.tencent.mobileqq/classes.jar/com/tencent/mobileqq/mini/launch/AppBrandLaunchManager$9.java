@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager.UpdateListener;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,19 +17,19 @@ class AppBrandLaunchManager$9
     }
     if (paramInt == 1)
     {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, anvx.a(2131700097));
+      QLog.w("miniapp-process_AppBrandLaunchManager", 1, HardCodeUtil.a(2131700675));
       return;
     }
-    String str = anvx.a(2131700094);
+    String str = HardCodeUtil.a(2131700672);
     if (paramInt == 1100) {
-      str = anvx.a(2131700100);
+      str = HardCodeUtil.a(2131700678);
     }
     for (;;)
     {
       QLog.w("miniapp-process_AppBrandLaunchManager", 1, str);
       return;
       if (paramInt == 1101) {
-        str = anvx.a(2131700103);
+        str = HardCodeUtil.a(2131700681);
       }
     }
   }

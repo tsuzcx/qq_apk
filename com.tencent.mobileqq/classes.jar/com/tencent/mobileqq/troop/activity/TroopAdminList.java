@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,13 +9,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import anvi;
-import bewf;
-import bewg;
-import bewh;
 import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.observer.AvatarObserver;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,28 +28,29 @@ public class TroopAdminList
 {
   public View.OnClickListener a;
   protected LinearLayout a;
-  anvi jdField_a_of_type_Anvi = new bewf(this);
-  bewh jdField_a_of_type_Bewh;
   protected FriendListHandler a;
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new TroopAdminList.2(this);
+  AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new TroopAdminList.1(this);
+  TroopAdminList.AdminListAdapter jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter;
   protected XListView a;
   protected final String a;
-  public List<Map<String, String>> a;
+  protected List<Map<String, String>> a;
   protected String[] a;
-  public String b;
-  public String c;
-  public String d;
+  protected String b;
+  protected String c;
+  protected String d;
   
   public TroopAdminList()
   {
     this.jdField_a_of_type_JavaLangString = "TroopAdminList";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bewg(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new TroopAdminList.6(this);
   }
   
   protected void a()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    ThreadManager.post(new TroopAdminList.2(this), 8, null, true);
+    ThreadManager.post(new TroopAdminList.3(this), 8, null, true);
   }
   
   protected boolean a()
@@ -88,8 +86,8 @@ public class TroopAdminList
   
   protected void b()
   {
-    View localView = View.inflate(this, 2131560626, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131365022));
+    View localView = View.inflate(this, 2131560716, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131365157));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
@@ -97,14 +95,14 @@ public class TroopAdminList
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     setContentView(localView);
-    setTitle(getString(2131693755));
+    setTitle(getString(2131693926));
   }
   
-  public void c()
+  protected void c()
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      ThreadManager.post(new TroopAdminList.3(this), 8, null, true);
+      ThreadManager.post(new TroopAdminList.4(this), 8, null, true);
       return;
     }
     int j = this.jdField_a_of_type_JavaUtilList.size();
@@ -112,10 +110,10 @@ public class TroopAdminList
     while (i < j)
     {
       String str = (String)((Map)this.jdField_a_of_type_JavaUtilList.get(i)).get("uin");
-      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", ContactUtils.getFriendDisplayName(this.app, str));
+      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", ContactUtils.j(this.app, str));
       i += 1;
     }
-    runOnUiThread(new TroopAdminList.4(this));
+    runOnUiThread(new TroopAdminList.5(this));
   }
   
   @Override
@@ -147,7 +145,8 @@ public class TroopAdminList
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Anvi);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
     super.doOnDestroy();
   }
   

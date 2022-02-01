@@ -10,7 +10,7 @@ public class FlutterFragmentActivity$NewEngineIntentBuilder
   private String backgroundMode = FlutterActivityLaunchConfigs.DEFAULT_BACKGROUND_MODE;
   private String initialRoute = "/";
   
-  protected FlutterFragmentActivity$NewEngineIntentBuilder(@NonNull Class<? extends FlutterFragmentActivity> paramClass)
+  public FlutterFragmentActivity$NewEngineIntentBuilder(@NonNull Class<? extends FlutterFragmentActivity> paramClass)
   {
     this.activityClass = paramClass;
   }
@@ -25,7 +25,7 @@ public class FlutterFragmentActivity$NewEngineIntentBuilder
   @NonNull
   public Intent build(@NonNull Context paramContext)
   {
-    return new Intent(paramContext, this.activityClass).putExtra("initial_route", this.initialRoute).putExtra("background_mode", this.backgroundMode).putExtra("destroy_engine_with_activity", true);
+    return new Intent(paramContext, this.activityClass).putExtra("route", this.initialRoute).putExtra("background_mode", this.backgroundMode).putExtra("destroy_engine_with_activity", true);
   }
   
   @NonNull
@@ -37,7 +37,7 @@ public class FlutterFragmentActivity$NewEngineIntentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragmentActivity.NewEngineIntentBuilder
  * JD-Core Version:    0.7.0.1
  */

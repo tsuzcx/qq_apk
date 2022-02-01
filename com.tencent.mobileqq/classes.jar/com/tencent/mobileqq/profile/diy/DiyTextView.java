@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profile.diy;
 
-import afkl;
 import android.content.Context;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity.OnMeasuredListener;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
 public class DiyTextView
   extends HiBoomTextView
 {
-  afkl a;
+  VipProfileCardDiyActivity.OnMeasuredListener a;
   
   public DiyTextView(Context paramContext)
   {
@@ -20,13 +20,13 @@ public class DiyTextView
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
     if (this.a != null) {
-      this.a.a(paramInt1, paramInt2);
+      this.a.onMeasured(paramInt1, paramInt2);
     }
   }
   
-  public void setOnMeasuredListener(afkl paramafkl)
+  public void setOnMeasuredListener(VipProfileCardDiyActivity.OnMeasuredListener paramOnMeasuredListener)
   {
-    this.a = paramafkl;
+    this.a = paramOnMeasuredListener;
   }
 }
 

@@ -1,47 +1,113 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.mobileqq.msf.core.c.e;
+import android.os.Build;
+import android.os.SystemClock;
+import com.tencent.mobileqq.msf.core.a.a;
+import com.tencent.mobileqq.msf.core.auth.b;
+import com.tencent.mobileqq.msf.core.c.d;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.quic.QuicWrapper;
+import com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat;
+import com.tencent.mobileqq.msf.service.k;
+import com.tencent.mobileqq.msf.service.l;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
-final class n
+class n
   extends Thread
 {
+  n(MsfCore paramMsfCore, j paramj, int paramInt1, int paramInt2) {}
+  
   public void run()
   {
-    File localFile = new File(QLog.getLogPath());
+    long l = SystemClock.elapsedRealtime();
+    NetConnInfoCenter.checkConnInfo(BaseApplication.getContext(), true);
+    this.d.netFlowStore = new d(MsfCore.sCore, BaseApplication.getContext());
     try
     {
-      i.j();
+      BaseApplication.monitor.start();
+      QLog.d("MSF.C.MsfCore", 1, "init netflow monitor cost=" + (SystemClock.elapsedRealtime() - l));
+      l = SystemClock.elapsedRealtime();
+      this.a.f();
+      if (this.a.c())
+      {
+        this.d.statReporter = this.a;
+        if (k.f)
+        {
+          QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_Log do report JobScheduler alive MSF to rdm in msfcore init");
+          k.a(true);
+        }
+        this.d.store.reportLoadCfgTempFile();
+      }
+      QLog.d("MSF.C.MsfCore", 1, "init beacon Cost=" + (SystemClock.elapsedRealtime() - l));
+      l = SystemClock.elapsedRealtime();
+      if (l.a)
+      {
+        QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_REPORT_Log do report MSF alive to bigT in msfcore init");
+        l.a(null);
+      }
+      QLog.d("MSF.C.MsfCore", 1, "init BigT Cost=" + (SystemClock.elapsedRealtime() - l));
+      l = SystemClock.elapsedRealtime();
+      if (this.d.bLoadUseTxlib)
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("bLoadUseTxlib", String.valueOf(this.d.bLoadUseTxlib));
+        localHashMap.put("newVersion", String.valueOf(this.b));
+        localHashMap.put("oldVersion", String.valueOf(this.c));
+        if (o.d() != null) {
+          break label551;
+        }
+        String str1 = "null";
+        localHashMap.put("imei", str1);
+        localHashMap.put("product", Build.MANUFACTURER + "_" + Build.MODEL);
+        localHashMap.put("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
+        localHashMap.put("platform", c.c(BaseApplication.getContext()));
+        if (this.d.statReporter != null) {
+          this.d.statReporter.a("msf.core.EvtLoadUseTxlib", true, 0L, 0L, localHashMap, false, false);
+        }
+      }
     }
-    catch (Throwable localThrowable2)
+    catch (Throwable localException1)
     {
-      for (;;)
+      try
+      {
+        u.a().a(MsfCore.sCore, true);
+        QLog.d("MSF.C.MsfCore", 1, "init wifiScan cost=" + (SystemClock.elapsedRealtime() - l));
+        l = SystemClock.elapsedRealtime();
+      }
+      catch (Exception localException1)
       {
         try
         {
-          boolean bool = i.b(localFile);
-          if (!bool) {
-            continue;
-          }
-          return;
+          label551:
+          do
+          {
+            for (;;)
+            {
+              u.a(u.O);
+              QLog.d("MSF.C.MsfCore", 1, "MsfCore init health step cost=" + (SystemClock.elapsedRealtime() - l));
+              QLog.i("MSF.C.MsfCore", 1, "init quic_enable=" + a.e("quic_enable") + " version=" + QuicWrapper.getQuicResVersion() + " libpath=" + QuicWrapper.getQuicResLoadPath());
+              return;
+              localThrowable = localThrowable;
+              QLog.d("MSF.C.MsfCore", 1, "", localThrowable);
+              continue;
+              String str2 = o.d();
+            }
+            localException1 = localException1;
+          } while (!QLog.isColorLevel());
+          QLog.d("MSF.C.MsfCore", 2, localException1.toString(), localException1);
         }
-        catch (Throwable localThrowable1)
+        catch (Exception localException2)
         {
-          localThrowable1.printStackTrace();
-          QLog.e(i.b, 1, "run: failed. ", localThrowable1);
-          Calendar localCalendar = Calendar.getInstance();
-          localCalendar.set(6, localCalendar.get(6) - 7);
-          localCalendar.set(11, 0);
-          localCalendar.set(12, 0);
-          localCalendar.set(13, 0);
-          localCalendar.set(14, 0);
-          e.b(localCalendar.getTimeInMillis());
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("MSF.C.MsfCore", 2, localException2.toString(), localException2);
+            }
+          }
         }
-        localThrowable2 = localThrowable2;
-        localThrowable2.printStackTrace();
-        QLog.e(i.b, 1, "run: failed. ", localThrowable2);
       }
     }
   }

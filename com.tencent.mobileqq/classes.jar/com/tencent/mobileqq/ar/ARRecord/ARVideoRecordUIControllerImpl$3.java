@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import apdk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class ARVideoRecordUIControllerImpl$3
+class ARVideoRecordUIControllerImpl$3
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$3(apdk paramapdk) {}
+  ARVideoRecordUIControllerImpl$3(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, apdk.b, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, ARVideoRecordUIControllerImpl.b, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl.3
  * JD-Core Version:    0.7.0.1
  */

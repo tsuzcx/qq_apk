@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import bbju;
-import bbov;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
 
-public class ConnManager$4
+class ConnManager$4
   implements Runnable
 {
-  public ConnManager$4(bbju parambbju, long paramLong) {}
+  ConnManager$4(ConnManager paramConnManager, long paramLong) {}
   
   public void run()
   {
-    ((bbov)bbju.a(this.this$0).getBusinessHandler(0)).a(this.a);
+    ((PeakAudioTransHandler)ConnManager.a(this.this$0).getBusinessHandler(PeakAppInterface.a)).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.ConnManager.4
  * JD-Core Version:    0.7.0.1
  */

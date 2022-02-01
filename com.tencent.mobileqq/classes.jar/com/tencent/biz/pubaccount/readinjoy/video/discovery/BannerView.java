@@ -27,7 +27,7 @@ public class BannerView
   private BannerView.DotsIndicator jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoDiscoveryBannerView$DotsIndicator;
   private boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int = DisplayUtil.dip2px(getContext(), 25.0F);
+  int jdField_b_of_type_Int = DisplayUtil.a(getContext(), 25.0F);
   private int c;
   private int d = 1;
   private int e = 3500;
@@ -36,21 +36,21 @@ public class BannerView
   public BannerView(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130843166;
+    this.jdField_a_of_type_Int = 2130843313;
     a(paramContext);
   }
   
   public BannerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130843166;
+    this.jdField_a_of_type_Int = 2130843313;
     a(paramContext);
   }
   
   public BannerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 2130843166;
+    this.jdField_a_of_type_Int = 2130843313;
     a(paramContext);
   }
   
@@ -301,7 +301,7 @@ public class BannerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.BannerView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,17 +6,16 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.text.TextUtils;
-import aqvn;
-import bifw;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 
-public class ConfessPlugin$5
+class ConfessPlugin$5
   implements Runnable
 {
   ConfessPlugin$5(ConfessPlugin paramConfessPlugin, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, JSONArray paramJSONArray, String paramString4, String paramString5, String paramString6, int paramInt4, boolean paramBoolean) {}
@@ -44,23 +43,23 @@ public class ConfessPlugin$5
       ConfessPlugin.a(this.this$0, false);
       return;
     }
-    Bitmap localBitmap = aqvn.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
+    Bitmap localBitmap = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
     if ((this.jdField_b_of_type_Int == 0) && (localBitmap != null)) {}
-    for (Object localObject2 = aqvn.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
+    for (Object localObject2 = ConfessShareHelper.b((AppInterface)localObject4, (Context)localObject3, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);; localObject2 = null)
     {
       if ((localBitmap == null) || ((this.jdField_b_of_type_Int == 0) && (localObject2 == null)))
       {
         ConfessPlugin.a(this.this$0);
         ConfessPlugin.a(this.this$0, false);
-        ConfessPlugin.a(this.this$0, 0, 2131718766);
+        ConfessPlugin.a(this.this$0, 0, 2131719291);
         return;
       }
-      String str3 = aqvn.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
+      String str3 = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject3, localBitmap);
       String str1 = this.jdField_c_of_type_JavaLangString;
       if (this.jdField_b_of_type_Int == 0)
       {
-        localObject1 = aqvn.a(str3, this.this$0.mRuntime.a());
-        localObject2 = aqvn.a(aqvn.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
+        localObject1 = ConfessShareHelper.a(str3, this.this$0.mRuntime.a());
+        localObject2 = ConfessShareHelper.a(ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject3, (Bitmap)localObject2), this.this$0.mRuntime.a());
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject3 = ((String)localObject2).replace("http://qqadapt.qpic.cn/qqshare/", "");
@@ -73,7 +72,7 @@ public class ConfessPlugin$5
         {
           ConfessPlugin.a(this.this$0);
           ConfessPlugin.a(this.this$0, false);
-          ConfessPlugin.a(this.this$0, 1, 2131696208);
+          ConfessPlugin.a(this.this$0, 1, 2131696460);
           return;
         }
         localObject2 = this.jdField_d_of_type_JavaLangString;
@@ -131,7 +130,7 @@ public class ConfessPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.photo.album.preview;
 
-import akki;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,6 +8,7 @@ import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.photo.ProGallery.OnProGalleryListener;
 import com.tencent.mobileqq.activity.photo.album.AbstractPhotoPreviewActivity;
 import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
 import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase;
@@ -23,12 +23,12 @@ import java.util.ArrayList;
 
 public class BasePreviewAdapter
   extends BaseAdapter
-  implements akki, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener
+  implements ProGallery.OnProGalleryListener, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener
 {
   public static final String TAG = "BasePreviewAdapter";
   BasePreviewPresent mCurrentPreviewPresent;
   ArrayList<String> mPaths;
-  protected PhotoPreviewBaseData mPhotoPreviewData;
+  PhotoPreviewBaseData mPhotoPreviewData;
   PhotoPreviewLogicBase mPhotoPreviewLogic;
   URLDrawable mRawDrawable;
   int mRawDrawablePosition = -1;
@@ -65,6 +65,41 @@ public class BasePreviewAdapter
       }
     }
     return null;
+  }
+  
+  private void loadRawDrawable(int paramInt, AbstractImageAdapter.URLImageView2 paramURLImageView2, URL paramURL)
+  {
+    if ((paramInt == this.mRawDrawablePosition) && (this.mRawDrawable != null))
+    {
+      paramURLImageView2 = this.mRawDrawable;
+      if ((QLog.isColorLevel()) && (this.mRawDrawable != null)) {
+        QLog.d("BasePreviewAdapter", 2, "use exist raw drawable");
+      }
+      return;
+    }
+    if ((QLog.isColorLevel()) && (this.mRawDrawable != null)) {
+      QLog.d("BasePreviewAdapter", 2, "rawDrawable is exist");
+    }
+    paramURL = paramURL.toString() + "#NOSAMPLE";
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mUseExifOrientation = false;
+    localURLDrawableOptions.mUseMemoryCache = false;
+    paramURL = URLDrawable.getDrawable(paramURL, localURLDrawableOptions);
+    paramURL.setTag(Integer.valueOf(2));
+    this.mRawDrawable = null;
+    this.mRawDrawablePosition = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("BasePreviewAdapter", 2, "create rawDrawable, position:" + paramInt);
+    }
+    if (paramURL.getStatus() == 1)
+    {
+      paramURLImageView2.jdField_a_of_type_Boolean = true;
+      paramURLImageView2.setImageDrawable(paramURL);
+      paramURLImageView2.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    paramURLImageView2.setDecodingDrawble(paramURL);
+    paramURL.startDownload();
   }
   
   protected BasePreviewPresent generatePreviewPresent(PreviewBean paramPreviewBean)
@@ -240,52 +275,22 @@ public class BasePreviewAdapter
     }
     do
     {
+      URLDrawable localURLDrawable;
       do
       {
-        do
-        {
-          return;
-          paramView = (AbstractImageAdapter.URLImageView2)paramView;
-          paramViewGroup = paramView.getDrawable();
-          localObject = paramView.jdField_a_of_type_ComTencentImageURLDrawable;
-        } while ((!(paramViewGroup instanceof URLDrawable)) || (!((URLDrawable)paramViewGroup).isFakeSize()) || (localObject != null));
-        paramViewGroup = ((URLDrawable)paramViewGroup).getURL();
-      } while ((!"file".equals(paramViewGroup.getProtocol())) || (paramViewGroup.getRef() != null));
-      if ((paramInt != this.mRawDrawablePosition) || (this.mRawDrawable == null)) {
-        break;
-      }
-      paramView = this.mRawDrawable;
-    } while ((!QLog.isColorLevel()) || (this.mRawDrawable == null));
-    QLog.d("BasePreviewAdapter", 2, "use exist raw drawable");
-    return;
-    if ((QLog.isColorLevel()) && (this.mRawDrawable != null)) {
-      QLog.d("BasePreviewAdapter", 2, "rawDrawable is exist");
-    }
-    paramViewGroup = paramViewGroup.toString() + "#NOSAMPLE";
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mUseExifOrientation = false;
-    ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = false;
-    paramViewGroup = URLDrawable.getDrawable(paramViewGroup, (URLDrawable.URLDrawableOptions)localObject);
-    paramViewGroup.setTag(Integer.valueOf(2));
-    this.mRawDrawable = null;
-    this.mRawDrawablePosition = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePreviewAdapter", 2, "create rawDrawable, position:" + paramInt);
-    }
-    if (paramViewGroup.getStatus() == 1)
-    {
-      paramView.jdField_a_of_type_Boolean = true;
-      paramView.setImageDrawable(paramViewGroup);
-      paramView.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    paramView.setDecodingDrawble(paramViewGroup);
-    paramViewGroup.startDownload();
+        return;
+        paramView = (AbstractImageAdapter.URLImageView2)paramView;
+        paramViewGroup = paramView.getDrawable();
+        localURLDrawable = paramView.jdField_a_of_type_ComTencentImageURLDrawable;
+      } while ((!(paramViewGroup instanceof URLDrawable)) || (!((URLDrawable)paramViewGroup).isFakeSize()) || (localURLDrawable != null));
+      paramViewGroup = ((URLDrawable)paramViewGroup).getURL();
+    } while ((!"file".equals(paramViewGroup.getProtocol())) || (paramViewGroup.getRef() != null));
+    loadRawDrawable(paramInt, paramView, paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

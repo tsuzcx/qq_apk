@@ -12,7 +12,7 @@ public final class cell_video_nagative_feedback
   public String buttonTxt = "";
   public String leftTitle = "";
   public String toastTxt = "";
-  public ArrayList<nagative_fb_info> vecNagFbInfo;
+  public ArrayList<nagative_fb_info> vecNagFbInfo = null;
   
   static
   {

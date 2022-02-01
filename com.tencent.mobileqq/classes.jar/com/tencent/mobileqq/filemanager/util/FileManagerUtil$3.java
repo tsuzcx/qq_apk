@@ -1,33 +1,42 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import audf;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
+import android.content.Context;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.util.Utils;
 
-public final class FileManagerUtil$3
+final class FileManagerUtil$3
   implements Runnable
 {
+  FileManagerUtil$3(String paramString, Context paramContext) {}
+  
   public void run()
   {
-    Object localObject2 = audf.a().b();
-    Object localObject1 = audf.a().c();
-    File localFile = new File((String)localObject2);
-    if (!FileUtils.fileExists((String)localObject2)) {
-      localFile.mkdirs();
+    try
+    {
+      long l = FileManagerUtil.a(this.jdField_a_of_type_JavaLangString);
+      if (Utils.b() < l)
+      {
+        FMToastUtil.a(HardCodeUtil.a(2131704550));
+        return;
+      }
+      FilePathUtil.b(this.jdField_a_of_type_JavaLangString);
+      FMToastUtil.a(this.jdField_a_of_type_AndroidContentContext, 2, 2131692782);
+      return;
     }
-    localObject2 = new File((String)localObject1);
-    if (!FileUtils.fileExists((String)localObject1)) {
-      ((File)localObject2).mkdirs();
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      FMToastUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131704550);
+      return;
     }
-    localObject1 = new File(audf.a().b() + ".nomedia");
-    if (((File)localObject1).exists()) {
-      ((File)localObject1).delete();
+    catch (Exception localException)
+    {
+      FMToastUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131692781);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.3
  * JD-Core Version:    0.7.0.1
  */

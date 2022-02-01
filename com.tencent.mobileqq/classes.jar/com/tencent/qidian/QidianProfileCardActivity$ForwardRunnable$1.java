@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QidianProfileCardActivity$ForwardRunnable$1
@@ -10,12 +10,12 @@ class QidianProfileCardActivity$ForwardRunnable$1
   
   public void run()
   {
-    QQToast.a(this.a, anvx.a(2131709207), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, HardCodeUtil.a(2131709723), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.ForwardRunnable.1
  * JD-Core Version:    0.7.0.1
  */

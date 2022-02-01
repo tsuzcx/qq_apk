@@ -22,7 +22,7 @@ public class NewIdentifierCameraCaptureView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = ScreenUtil.getInstantScreenWidth(getContext());
     paramInt2 = (int)(paramInt1 / this.a);
@@ -43,7 +43,7 @@ public class NewIdentifierCameraCaptureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.NewIdentifierCameraCaptureView
  * JD-Core Version:    0.7.0.1
  */

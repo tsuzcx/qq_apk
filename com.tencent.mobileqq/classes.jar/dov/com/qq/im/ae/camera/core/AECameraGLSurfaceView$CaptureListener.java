@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnay;
+import dov.com.qq.im.ae.camera.AEPhotoCaptureResult;
 import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
 
 public abstract interface AECameraGLSurfaceView$CaptureListener
@@ -12,7 +12,7 @@ public abstract interface AECameraGLSurfaceView$CaptureListener
   
   public abstract void onCaptureError(int paramInt);
   
-  public abstract void onPhotoCaptured(bnay parambnay);
+  public abstract void onPhotoCaptured(AEPhotoCaptureResult paramAEPhotoCaptureResult);
   
   public abstract void onVideoCaptureStart();
   
@@ -22,7 +22,7 @@ public abstract interface AECameraGLSurfaceView$CaptureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.CaptureListener
  * JD-Core Version:    0.7.0.1
  */

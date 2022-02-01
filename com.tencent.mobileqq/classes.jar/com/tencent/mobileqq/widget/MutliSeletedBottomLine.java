@@ -14,27 +14,27 @@ public class MutliSeletedBottomLine
   private final float jdField_a_of_type_Float = 0.2F;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private final float b = 1.0F;
   private final float c = 2.0F;
   private final float d = 6.0F;
-  private float e;
+  private float e = 0.0F;
   private float f = 29.0F;
   
   public MutliSeletedBottomLine(Context paramContext, int paramInt, boolean paramBoolean)
   {
     super(paramContext);
     this.e = paramInt;
-    this.f = DisplayUtil.dip2px(paramContext, 29.0F);
+    this.f = DisplayUtil.a(paramContext, 29.0F);
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Int = ((int)(paramInt / 8.0F));
   }
   
   @SuppressLint({"ResourceAsColor"})
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165292));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165290));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     float f1;
     int i;
@@ -63,7 +63,7 @@ public class MutliSeletedBottomLine
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension((int)this.e, getMeasuredHeight());
@@ -71,7 +71,7 @@ public class MutliSeletedBottomLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MutliSeletedBottomLine
  * JD-Core Version:    0.7.0.1
  */

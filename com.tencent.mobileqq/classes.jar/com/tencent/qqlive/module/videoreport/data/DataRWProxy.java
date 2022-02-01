@@ -47,15 +47,6 @@ public class DataRWProxy
     return DataEntityOperator.getPageId(getDataEntity(paramObject, false));
   }
   
-  public static long getPageInTime(Object paramObject)
-  {
-    paramObject = DataEntityOperator.getInnerParam(getDataEntity(paramObject, false), "page_in_time");
-    if ((paramObject instanceof Long)) {
-      return ((Long)paramObject).longValue();
-    }
-    return 0L;
-  }
-  
   public static Map<String, ?> getPageParams(Object paramObject)
   {
     return DataEntityOperator.getPageParams(getDataEntity(paramObject, false));
@@ -119,11 +110,6 @@ public class DataRWProxy
   public static void setPageContentId(Object paramObject, String paramString)
   {
     DataEntityOperator.setPageContentId(getDataEntity(paramObject, true), paramString);
-  }
-  
-  public static void setPageExpTs(Object paramObject, long paramLong)
-  {
-    DataEntityOperator.putInnerParam(getDataEntity(paramObject, true), "page_in_time", Long.valueOf(paramLong));
   }
   
   public static void setPageId(Object paramObject, String paramString)

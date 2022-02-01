@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Scroller;
 import android.widget.TextView;
-import bipk;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.widget.AbsSpinner;
 
@@ -25,7 +24,7 @@ public class HorizontalItemIndicator
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private bipk jdField_a_of_type_Bipk;
+  private HorizontalItemIndicator.OnItemChanged jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged;
   private int b;
   private int c;
   private int d;
@@ -104,8 +103,8 @@ public class HorizontalItemIndicator
     int k = getChildAt(paramInt).getLeft();
     this.f = this.e;
     this.e = paramInt;
-    if (this.jdField_a_of_type_Bipk != null) {
-      this.jdField_a_of_type_Bipk.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged.a(paramInt);
     }
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, j + k - i, 0);
     requestLayout();
@@ -169,7 +168,7 @@ public class HorizontalItemIndicator
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt3 = getChildCount();
     paramInt2 = getPaddingLeft();
@@ -189,7 +188,7 @@ public class HorizontalItemIndicator
   }
   
   @TargetApi(11)
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int n = getChildCount();
     measureChildren(paramInt1, paramInt2);
@@ -258,8 +257,8 @@ public class HorizontalItemIndicator
     }
     this.f = this.e;
     this.e = paramInt;
-    if (this.jdField_a_of_type_Bipk != null) {
-      this.jdField_a_of_type_Bipk.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged.a(paramInt);
     }
     requestLayout();
   }
@@ -273,9 +272,9 @@ public class HorizontalItemIndicator
     setCurrItem(i);
   }
   
-  public void setOnItemChanged(bipk parambipk)
+  public void setOnItemChanged(HorizontalItemIndicator.OnItemChanged paramOnItemChanged)
   {
-    this.jdField_a_of_type_Bipk = parambipk;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged = paramOnItemChanged;
   }
   
   public void setPrevItem()
@@ -289,7 +288,7 @@ public class HorizontalItemIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.HorizontalItemIndicator
  * JD-Core Version:    0.7.0.1
  */

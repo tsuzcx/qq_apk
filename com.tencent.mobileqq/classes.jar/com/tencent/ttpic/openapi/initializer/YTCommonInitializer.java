@@ -14,6 +14,7 @@ public class YTCommonInitializer
   extends Feature
 {
   private static final String TAG = YTCommonInitializer.class.getSimpleName();
+  private static final SharedLibraryInfo YT_COMMON = new SharedLibraryInfo("YTCommon");
   private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("YTCommon") };
   private int authMode = 0;
   
@@ -110,6 +111,13 @@ public class YTCommonInitializer
     return false;
   }
   
+  private boolean initCommonSoInAssets()
+  {
+    this.isInited = systemLoadLibrarySafely(YT_COMMON.fileName);
+    LogUtils.i(TAG, "YTCommon so init result: " + this.isInited);
+    return this.isInited;
+  }
+  
   private void logForInitAuth(Context paramContext, String paramString, int paramInt)
   {
     String str = TAG;
@@ -144,7 +152,17 @@ public class YTCommonInitializer
   
   protected boolean initImpl()
   {
-    return (loadAllSoFiles()) && (initAuth());
+    return (initCommonSoInAssets()) && (initAuth());
+  }
+  
+  public boolean isResourceReady()
+  {
+    return true;
+  }
+  
+  public boolean isSoReadyInDirectory(String paramString)
+  {
+    return true;
   }
   
   public void setAuthMode(int paramInt)
@@ -154,7 +172,7 @@ public class YTCommonInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.YTCommonInitializer
  * JD-Core Version:    0.7.0.1
  */

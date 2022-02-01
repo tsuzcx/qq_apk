@@ -11,7 +11,7 @@ public final class stFollowFeedsReq
   public boolean is_first = true;
   public boolean is_refresh = true;
   public String push_info = "";
-  public int scene;
+  public int scene = 0;
   
   public stFollowFeedsReq() {}
   

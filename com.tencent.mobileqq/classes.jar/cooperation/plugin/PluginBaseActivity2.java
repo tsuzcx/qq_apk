@@ -1,6 +1,5 @@
 package cooperation.plugin;
 
-import Override;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -46,7 +45,7 @@ public class PluginBaseActivity2
     {
       getWindow().addFlags(67108864);
       if (this.b) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131167084));
+        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131167091));
       }
     }
   }
@@ -61,7 +60,7 @@ public class PluginBaseActivity2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity2
  * JD-Core Version:    0.7.0.1
  */

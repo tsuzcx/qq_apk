@@ -4,10 +4,8 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.view.View;
-import bitq;
-import bitr;
 
-public class ScrollerRunnable$4
+class ScrollerRunnable$4
   implements Runnable
 {
   ScrollerRunnable$4(ScrollerRunnable paramScrollerRunnable, View paramView) {}
@@ -20,15 +18,15 @@ public class ScrollerRunnable$4
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofInt(this.a, "backgroundColor", new int[] { 867218367, 11580351 });
     localObjectAnimator2.setDuration(400L);
     localObjectAnimator2.setEvaluator(new ArgbEvaluator());
-    localObjectAnimator1.addListener(new bitq(this, localObjectAnimator2));
-    localObjectAnimator2.addListener(new bitr(this));
+    localObjectAnimator1.addListener(new ScrollerRunnable.4.1(this, localObjectAnimator2));
+    localObjectAnimator2.addListener(new ScrollerRunnable.4.2(this));
     localObjectAnimator1.start();
     ScrollerRunnable.a(this.this$0, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScrollerRunnable.4
  * JD-Core Version:    0.7.0.1
  */

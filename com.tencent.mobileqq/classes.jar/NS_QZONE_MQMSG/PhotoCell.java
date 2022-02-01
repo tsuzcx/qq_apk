@@ -8,7 +8,7 @@ public final class PhotoCell
   extends JceStruct
 {
   public String coverUrl = "";
-  public int type;
+  public int type = 0;
   
   public PhotoCell() {}
   

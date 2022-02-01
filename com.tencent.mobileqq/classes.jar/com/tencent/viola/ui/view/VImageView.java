@@ -180,7 +180,7 @@ public class VImageView
     return false;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     if (isBitmapRecycled())
     {
@@ -190,7 +190,7 @@ public class VImageView
     super.onAttachedToWindow();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }
@@ -205,7 +205,7 @@ public class VImageView
     super.onStartTemporaryDetach();
   }
   
-  protected void onWindowVisibilityChanged(int paramInt)
+  public void onWindowVisibilityChanged(int paramInt)
   {
     super.onWindowVisibilityChanged(paramInt);
     if (paramInt == 0)
@@ -362,7 +362,7 @@ public class VImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.VImageView
  * JD-Core Version:    0.7.0.1
  */

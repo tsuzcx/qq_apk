@@ -3,10 +3,10 @@ package cooperation.qzone.webviewplugin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -20,26 +20,26 @@ public class QzoneAlbumSelectJSPlugin
   private static final String TAG = QzoneBlogJsPlugin.class.getSimpleName();
   private static String pickCallBack = "";
   
-  private void handleSelectAlbum(bifw parambifw, String[] paramArrayOfString)
+  private void handleSelectAlbum(WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
     try
     {
       paramArrayOfString = new JSONObject(paramArrayOfString[0]);
       pickCallBack = paramArrayOfString.getString("callback");
-      parambifw = new Bundle();
-      parambifw.putInt("key_personal_album_enter_model", 0);
-      parambifw.putBoolean("key_pass_result_by_bundle", true);
-      parambifw.putString("key_accept_album_anonymity", paramArrayOfString.optString("acceptType"));
-      parambifw.putString("key_deny_delect_tips", paramArrayOfString.optString("denyTips"));
-      parambifw.putBoolean("key_can_new_album", false);
-      parambifw.putString("key_from_type", paramArrayOfString.optString("fromType"));
+      paramPluginRuntime = new Bundle();
+      paramPluginRuntime.putInt("key_personal_album_enter_model", 0);
+      paramPluginRuntime.putBoolean("key_pass_result_by_bundle", true);
+      paramPluginRuntime.putString("key_accept_album_anonymity", paramArrayOfString.optString("acceptType"));
+      paramPluginRuntime.putString("key_deny_delect_tips", paramArrayOfString.optString("denyTips"));
+      paramPluginRuntime.putBoolean("key_can_new_album", false);
+      paramPluginRuntime.putString("key_from_type", paramArrayOfString.optString("fromType"));
       paramArrayOfString = QZoneHelper.UserInfo.getInstance();
       paramArrayOfString.qzone_uin = this.parentPlugin.mRuntime.a().getCurrentAccountUin();
-      parambifw.putBoolean("key_need_change_to_jpg", false);
-      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.a(), paramArrayOfString, parambifw, QZoneHelper.generateRequestCode(this.parentPlugin, this.parentPlugin.mRuntime, 7));
+      paramPluginRuntime.putBoolean("key_need_change_to_jpg", false);
+      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.a(), paramArrayOfString, paramPluginRuntime, QZoneHelper.generateRequestCode(this.parentPlugin, this.parentPlugin.mRuntime, 7));
       return;
     }
-    catch (Exception parambifw)
+    catch (Exception paramPluginRuntime)
     {
       while (!QLog.isColorLevel()) {}
       QLog.w(TAG, 2, "handlePickQzoneAlbum,decode param error");
@@ -95,7 +95,7 @@ public class QzoneAlbumSelectJSPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneAlbumSelectJSPlugin
  * JD-Core Version:    0.7.0.1
  */

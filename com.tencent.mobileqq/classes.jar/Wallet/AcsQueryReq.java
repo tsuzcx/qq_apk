@@ -8,9 +8,9 @@ public final class AcsQueryReq
   extends JceStruct
 {
   static AcsHead cache_head = new AcsHead();
-  public AcsHead head;
+  public AcsHead head = null;
   public String msg_id = "";
-  public long uin;
+  public long uin = 0L;
   
   public AcsQueryReq() {}
   

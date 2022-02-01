@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import axty;
-
-public class ChooseInterestTagActivity$14$1
+class ChooseInterestTagActivity$14$1
   implements Runnable
 {
-  public ChooseInterestTagActivity$14$1(axty paramaxty) {}
+  ChooseInterestTagActivity$14$1(ChooseInterestTagActivity.14 param14) {}
   
   public void run()
   {

@@ -10,22 +10,20 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import bfpl;
-import bfpm;
-import ykq;
-import zdl;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 
 public class BaseScaleAndMoveBitmapView
   extends View
 {
-  public float a;
-  public Bitmap a;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bfpl(this, null));
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new bfpm(this, null));
-  private boolean jdField_a_of_type_Boolean;
-  public float b;
+  protected float a;
+  protected Bitmap a;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new BaseScaleAndMoveBitmapView.SimpleGestureListenerImpl(this, null));
+  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new BaseScaleAndMoveBitmapView.SimpleScaleListenerImpl(this, null));
+  private boolean jdField_a_of_type_Boolean = false;
+  protected float b;
   private boolean b;
-  public float c = 1.0F;
+  protected float c = 1.0F;
   private float d = 5.0F;
   private float e = 0.1F;
   
@@ -48,7 +46,7 @@ public class BaseScaleAndMoveBitmapView
   {
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      zdl.a("call resize when bitmap is invalid", new Object[0]);
+      AssertUtils.a("call resize when bitmap is invalid", new Object[0]);
       return;
     }
     this.jdField_a_of_type_Boolean = false;
@@ -63,14 +61,14 @@ public class BaseScaleAndMoveBitmapView
     for (;;)
     {
       setScaleRange(1.0F, 4.0F);
-      ykq.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "setImageBitmap mScaleFactor=" + this.c + ",mPosX=" + this.jdField_a_of_type_Float + ",mPosY=" + this.jdField_b_of_type_Float);
+      SLog.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "setImageBitmap mScaleFactor=" + this.c + ",mPosX=" + this.jdField_a_of_type_Float + ",mPosY=" + this.jdField_b_of_type_Float);
       return;
       this.jdField_b_of_type_Float = 0.0F;
       this.jdField_a_of_type_Float = ((int)((getWidth() - getHeight() / f2) / 2.0F / this.c));
     }
   }
   
-  public float a(float paramFloat)
+  protected float a(float paramFloat)
   {
     return (this.jdField_a_of_type_Float + paramFloat) * this.c;
   }
@@ -82,12 +80,12 @@ public class BaseScaleAndMoveBitmapView
   
   protected void a(MotionEvent paramMotionEvent) {}
   
-  public float b(float paramFloat)
+  protected float b(float paramFloat)
   {
     return (this.jdField_b_of_type_Float + paramFloat) * this.c;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean) {
@@ -105,7 +103,7 @@ public class BaseScaleAndMoveBitmapView
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
       if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 1)) {
-        ykq.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "when on touch the mBitmap is null");
+        SLog.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "when on touch the mBitmap is null");
       }
       return false;
     }
@@ -130,7 +128,7 @@ public class BaseScaleAndMoveBitmapView
   
   public void setImageBitmap(@NonNull Bitmap paramBitmap)
   {
-    ykq.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "setImageBitmap bitmap w=" + paramBitmap.getWidth() + ",h=" + paramBitmap.getHeight());
+    SLog.d("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "setImageBitmap bitmap w=" + paramBitmap.getWidth() + ",h=" + paramBitmap.getHeight());
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap.copy(paramBitmap.getConfig(), false);
     if ((getWidth() <= 0) || (getHeight() <= 0))
     {

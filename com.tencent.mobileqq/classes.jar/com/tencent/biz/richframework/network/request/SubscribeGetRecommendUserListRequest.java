@@ -3,6 +3,7 @@ package com.tencent.biz.richframework.network.request;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
 import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -25,7 +26,15 @@ public class SubscribeGetRecommendUserListRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountRead.StGetRecommendUserListRsp localStGetRecommendUserListRsp = new CertifiedAccountRead.StGetRecommendUserListRsp();
-    localStGetRecommendUserListRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetRecommendUserListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetRecommendUserListRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetRecommendUserListRsp;
   }
   
@@ -41,7 +50,7 @@ public class SubscribeGetRecommendUserListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.SubscribeGetRecommendUserListRequest
  * JD-Core Version:    0.7.0.1
  */

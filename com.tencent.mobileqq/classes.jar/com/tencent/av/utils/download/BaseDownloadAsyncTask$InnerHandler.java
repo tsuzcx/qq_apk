@@ -1,0 +1,25 @@
+package com.tencent.av.utils.download;
+
+import android.os.Handler;
+import android.os.Message;
+
+class BaseDownloadAsyncTask$InnerHandler
+  extends Handler
+{
+  public void handleMessage(Message paramMessage)
+  {
+    BaseDownloadAsyncTask.HYAsyncTaskResult localHYAsyncTaskResult = (BaseDownloadAsyncTask.HYAsyncTaskResult)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localHYAsyncTaskResult.jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask.a(((DownloadParams[])localHYAsyncTaskResult.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.av.utils.download.BaseDownloadAsyncTask.InnerHandler
+ * JD-Core Version:    0.7.0.1
+ */

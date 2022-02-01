@@ -12,6 +12,7 @@ public class KeyEventChannel$FlutterKeyEvent
   @Nullable
   public final Character complexCharacter;
   public final int deviceId;
+  public final long eventId;
   public final int flags;
   public final int keyCode;
   public final int metaState;
@@ -22,7 +23,7 @@ public class KeyEventChannel$FlutterKeyEvent
   public final int source;
   public final int vendorId;
   
-  public KeyEventChannel$FlutterKeyEvent(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, @Nullable Character paramCharacter, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
+  public KeyEventChannel$FlutterKeyEvent(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, @Nullable Character paramCharacter, int paramInt6, int paramInt7, int paramInt8, int paramInt9, long paramLong)
   {
     this.deviceId = paramInt1;
     this.flags = paramInt2;
@@ -34,6 +35,7 @@ public class KeyEventChannel$FlutterKeyEvent
     this.metaState = paramInt7;
     this.source = paramInt8;
     this.repeatCount = paramInt9;
+    this.eventId = paramLong;
     paramCharacter = InputDevice.getDevice(paramInt1);
     if (paramCharacter != null)
     {
@@ -51,19 +53,19 @@ public class KeyEventChannel$FlutterKeyEvent
     this.productId = 0;
   }
   
-  public KeyEventChannel$FlutterKeyEvent(@NonNull KeyEvent paramKeyEvent)
+  public KeyEventChannel$FlutterKeyEvent(@NonNull KeyEvent paramKeyEvent, long paramLong)
   {
-    this(paramKeyEvent, null);
+    this(paramKeyEvent, null, paramLong);
   }
   
-  public KeyEventChannel$FlutterKeyEvent(@NonNull KeyEvent paramKeyEvent, @Nullable Character paramCharacter)
+  public KeyEventChannel$FlutterKeyEvent(@NonNull KeyEvent paramKeyEvent, @Nullable Character paramCharacter, long paramLong)
   {
-    this(paramKeyEvent.getDeviceId(), paramKeyEvent.getFlags(), paramKeyEvent.getUnicodeChar(0), paramKeyEvent.getUnicodeChar(), paramKeyEvent.getKeyCode(), paramCharacter, paramKeyEvent.getScanCode(), paramKeyEvent.getMetaState(), paramKeyEvent.getSource(), paramKeyEvent.getRepeatCount());
+    this(paramKeyEvent.getDeviceId(), paramKeyEvent.getFlags(), paramKeyEvent.getUnicodeChar(0), paramKeyEvent.getUnicodeChar(), paramKeyEvent.getKeyCode(), paramCharacter, paramKeyEvent.getScanCode(), paramKeyEvent.getMetaState(), paramKeyEvent.getSource(), paramKeyEvent.getRepeatCount(), paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.KeyEventChannel.FlutterKeyEvent
  * JD-Core Version:    0.7.0.1
  */

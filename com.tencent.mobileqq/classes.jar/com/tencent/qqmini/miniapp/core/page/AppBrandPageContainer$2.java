@@ -1,27 +1,39 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
+import com.tencent.qqmini.miniapp.core.EventListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import org.json.JSONObject;
 
 class AppBrandPageContainer$2
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  AppBrandPageContainer$2(AppBrandPageContainer paramAppBrandPageContainer, AppBrandPage paramAppBrandPage) {}
+  AppBrandPageContainer$2(AppBrandPageContainer paramAppBrandPageContainer) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.val$appBrandPage.setVisibility(8);
-    AppBrandTask.runTaskOnUiThreadDelay(new AppBrandPageContainer.2.1(this), 50L);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("height", 0);
+      localJSONObject.put("inputId", this.this$0.getCurShowingInputId());
+      if (this.this$0.mEventListener != null) {
+        this.this$0.mEventListener.onWebViewEvent("onKeyboardHeightChange", localJSONObject.toString(), this.this$0.getShowingPageWebViewId());
+      }
+      this.this$0.resetCurShowingInputId();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QMLog.e("minisdk-start-AppBrandPageContainer", "KeyboardObserver error, ", localThrowable);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.2
  * JD-Core Version:    0.7.0.1
  */

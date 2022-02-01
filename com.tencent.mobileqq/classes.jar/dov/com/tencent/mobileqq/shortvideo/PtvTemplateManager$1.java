@@ -1,10 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
 import android.text.TextUtils;
-import bdee;
-import bpqp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +11,7 @@ import java.util.Iterator;
 class PtvTemplateManager$1
   implements Runnable
 {
-  PtvTemplateManager$1(PtvTemplateManager paramPtvTemplateManager, File paramFile, bpqp parambpqp, AppInterface paramAppInterface) {}
+  PtvTemplateManager$1(PtvTemplateManager paramPtvTemplateManager, File paramFile, PtvTemplateManager.DoodleInfoLoadObserver paramDoodleInfoLoadObserver, AppInterface paramAppInterface) {}
   
   public void run()
   {
@@ -48,12 +47,12 @@ class PtvTemplateManager$1
         synchronized (PtvTemplateManager.a())
         {
           PtvTemplateManager.a(this.this$0, (PtvTemplateManager.PtvTemplateInfo)localObject1);
-          if (this.jdField_a_of_type_Bpqp != null) {
-            this.jdField_a_of_type_Bpqp.a();
+          if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver != null) {
+            this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver.a();
           }
           if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
           {
-            if (!bdee.a()) {
+            if (!PtvFilterSoLoad.a()) {
               break;
             }
             PtvTemplateManager.a(this.this$0, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
@@ -71,7 +70,7 @@ class PtvTemplateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.1
  * JD-Core Version:    0.7.0.1
  */

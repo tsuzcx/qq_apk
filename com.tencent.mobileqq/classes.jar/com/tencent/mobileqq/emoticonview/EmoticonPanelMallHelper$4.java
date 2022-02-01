@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import asiu;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 class EmoticonPanelMallHelper$4
-  extends asiu
+  extends EmoticonPackageDownloadListener
 {
   EmoticonPanelMallHelper$4(EmoticonPanelMallHelper paramEmoticonPanelMallHelper) {}
   
@@ -27,7 +27,7 @@ class EmoticonPanelMallHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4
  * JD-Core Version:    0.7.0.1
  */

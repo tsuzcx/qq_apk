@@ -23,6 +23,7 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.ApkgManager;
 import com.tencent.qqmini.sdk.plugins.engine.JsPluginEngine;
+import com.tencent.qqmini.sdk.report.MiniReportManager;
 import org.json.JSONObject;
 
 public class EventListener
@@ -306,6 +307,7 @@ public class EventListener
   
   public void onWebViewReady(String paramString1, String paramString2, int paramInt)
   {
+    MiniReportManager.reportEventType(this.mRuntime.getMiniAppInfo(), 120, paramString2, null, null, 0);
     onAppRoute(paramString1, paramString2, paramInt);
     onAppRouteDone(paramString1, paramString2, paramInt);
   }
@@ -320,7 +322,7 @@ public class EventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.EventListener
  * JD-Core Version:    0.7.0.1
  */

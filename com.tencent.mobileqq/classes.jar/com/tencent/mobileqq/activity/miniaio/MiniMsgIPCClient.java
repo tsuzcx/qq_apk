@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import akep;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,7 +17,7 @@ public class MiniMsgIPCClient
   public static final String MODULE_NAME = "mini_msg_client_module";
   public static final String TAG = "mini_msg_IPCClient";
   private static MiniMsgIPCClient sInstance;
-  private ConcurrentHashMap<Integer, akep> mBusinessInfoMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, MiniMsgBusinessInfo> mBusinessInfoMap = new ConcurrentHashMap();
   private MiniMsgUser mMiniUser;
   
   public MiniMsgIPCClient(String paramString)
@@ -73,9 +72,9 @@ public class MiniMsgIPCClient
     paramString = getInstance().mBusinessInfoMap;
     if (!paramString.containsKey(Integer.valueOf(paramInt)))
     {
-      akep localakep = new akep();
-      localakep.a = paramInt;
-      paramString.put(Integer.valueOf(paramInt), localakep);
+      MiniMsgBusinessInfo localMiniMsgBusinessInfo = new MiniMsgBusinessInfo();
+      localMiniMsgBusinessInfo.a = paramInt;
+      paramString.put(Integer.valueOf(paramInt), localMiniMsgBusinessInfo);
       paramString = getInstance();
     }
     try
@@ -107,9 +106,9 @@ public class MiniMsgIPCClient
     QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_clear_business", localBundle, null);
   }
   
-  public akep getBusinessInfo(int paramInt)
+  public MiniMsgBusinessInfo getBusinessInfo(int paramInt)
   {
-    return (akep)this.mBusinessInfoMap.get(Integer.valueOf(paramInt));
+    return (MiniMsgBusinessInfo)this.mBusinessInfoMap.get(Integer.valueOf(paramInt));
   }
   
   public MiniMsgUser getMiniUser()
@@ -214,7 +213,7 @@ public class MiniMsgIPCClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient
  * JD-Core Version:    0.7.0.1
  */

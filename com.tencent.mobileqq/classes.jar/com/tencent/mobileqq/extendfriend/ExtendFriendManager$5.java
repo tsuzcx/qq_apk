@@ -1,61 +1,64 @@
 package com.tencent.mobileqq.extendfriend;
 
-import aslo;
-import aslx;
-import asly;
-import asma;
-import asrl;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import cooperation.plugin.PluginDownloader.OnPluginDownLoadListener;
 
-public class ExtendFriendManager$5
-  implements Runnable
+class ExtendFriendManager$5
+  implements PluginDownloader.OnPluginDownLoadListener
 {
-  public ExtendFriendManager$5(aslo paramaslo) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void run()
+  ExtendFriendManager$5(ExtendFriendManager paramExtendFriendManager) {}
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ExtendFriendManager", 4, "preDownloadExpandPlugin: onDownloadProgress " + paramString + " " + paramInt1 + " / " + paramInt2);
+    }
+    while ((!QLog.isColorLevel()) || ((paramInt1 * 100 / paramInt2 <= this.jdField_a_of_type_Int + 10) && (paramInt1 != paramInt2))) {
+      return;
+    }
+    this.jdField_a_of_type_Int = Math.min(100, paramInt1 * 100 / paramInt2 / 10 + 10);
+    QLog.d("ExtendFriendManager", 4, "preDownloadExpandPlugin: onDownloadProgress " + paramString + " " + paramInt1 + " / " + paramInt2);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.e("ExtendFriendManager", 1, "preDownloadExpandPlugin: onDownloadCheckInvalid " + paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource");
+      QLog.d("ExtendFriendManager", 2, "preDownloadExpandPlugin: recordPluginStartupTime " + paramString1 + " " + paramString2 + " " + paramLong);
     }
-    if (!aslo.a(this.this$0)) {
-      QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource !inited");
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendManager", 2, "preDownloadExpandPlugin: onDownloadFinish " + paramString);
     }
-    if (!asrl.a())
-    {
-      QLog.e("ExtendFriendManagerLimitchat", 2, "isBgPicFileExist  no！");
-      if (aslo.a(this.this$0) == null) {
-        QLog.d("ExtendFriendManagerLimitchat", 2, "mConfig  IS NOT READY");
-      }
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendManager", 2, "preDownloadExpandPlugin: onDownloadBegin " + paramString);
     }
-    else
-    {
-      return;
+  }
+  
+  public void c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendManager", 2, "preDownloadExpandPlugin: onDownloadCancel " + paramString);
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = aslo.a(this.this$0);
-    if ((!NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext())) && (l1 - l2 < 1200000L) && (aslo.a(this.this$0) > 2))
-    {
-      QLog.e("ExtendFriendManagerLimitchat", 2, " limitChatResList IS NOT READY currentTime" + l1 + " lastDownloadTime " + aslo.a(this.this$0) + " downloadTimes" + aslo.a(this.this$0));
-      return;
-    }
-    Object localObject = asrl.a();
-    if (aslo.a(this.this$0).a != null)
-    {
-      localObject = (asly)aslo.a(this.this$0).a.get(localObject);
-      aslo.a(this.this$0).a((asly)localObject);
-      aslo.a(this.this$0, l1);
-      aslo.b(this.this$0);
-      return;
-    }
-    QLog.d("ExtendFriendManagerLimitchat", 2, " limitChatResList IS NOT READY");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendFriendManager.5
  * JD-Core Version:    0.7.0.1
  */

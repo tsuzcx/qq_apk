@@ -10,16 +10,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bozx;
-import bozz;
-import bpaa;
-import bpab;
-import bpac;
-import bpad;
-import bpae;
-import bpag;
-import bpah;
-import bpaj;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -30,13 +20,13 @@ public class GLTextureView
   implements TextureView.SurfaceTextureListener
 {
   private static int jdField_a_of_type_Int;
-  private static final bpag jdField_a_of_type_Bpag = new bpag(null);
+  private static final GLTextureView.GLThreadManager jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThreadManager = new GLTextureView.GLThreadManager(null);
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
-  private bpac jdField_a_of_type_Bpac;
-  private bpad jdField_a_of_type_Bpad;
-  private bpae jdField_a_of_type_Bpae;
-  private bpah jdField_a_of_type_Bpah;
+  private GLTextureView.EGLConfigChooser jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser;
+  private GLTextureView.EGLContextFactory jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory;
+  private GLTextureView.EGLWindowSurfaceFactory jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory;
   private GLTextureView.GLThread jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread;
+  private GLTextureView.GLWrapper jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLWrapper;
   private Runnable jdField_a_of_type_JavaLangRunnable = new GLTextureView.2(this);
   private final WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
   private boolean jdField_a_of_type_Boolean;
@@ -89,7 +79,7 @@ public class GLTextureView
   {
     jdField_a_of_type_Int = a(getContext(), "ro.opengles.version", 0).intValue();
     setSurfaceTextureListener(this);
-    addOnLayoutChangeListener(new bozx(this));
+    addOnLayoutChangeListener(new GLTextureView.1(this));
   }
   
   @TargetApi(14)
@@ -167,7 +157,7 @@ public class GLTextureView
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer != null)) {
@@ -188,7 +178,7 @@ public class GLTextureView
     }
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread != null) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.d();
@@ -242,18 +232,18 @@ public class GLTextureView
   
   public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    setEGLConfigChooser(new bozz(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+    setEGLConfigChooser(new GLTextureView.ComponentSizeChooser(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
   }
   
-  public void setEGLConfigChooser(bpac parambpac)
+  public void setEGLConfigChooser(GLTextureView.EGLConfigChooser paramEGLConfigChooser)
   {
     b();
-    this.jdField_a_of_type_Bpac = parambpac;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser = paramEGLConfigChooser;
   }
   
   public void setEGLConfigChooser(boolean paramBoolean)
   {
-    setEGLConfigChooser(new bpaj(this, paramBoolean));
+    setEGLConfigChooser(new GLTextureView.SimpleEGLConfigChooser(this, paramBoolean));
   }
   
   public void setEGLContextClientVersion(int paramInt)
@@ -262,21 +252,21 @@ public class GLTextureView
     this.e = paramInt;
   }
   
-  public void setEGLContextFactory(bpad parambpad)
+  public void setEGLContextFactory(GLTextureView.EGLContextFactory paramEGLContextFactory)
   {
     b();
-    this.jdField_a_of_type_Bpad = parambpad;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory = paramEGLContextFactory;
   }
   
-  public void setEGLWindowSurfaceFactory(bpae parambpae)
+  public void setEGLWindowSurfaceFactory(GLTextureView.EGLWindowSurfaceFactory paramEGLWindowSurfaceFactory)
   {
     b();
-    this.jdField_a_of_type_Bpae = parambpae;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory = paramEGLWindowSurfaceFactory;
   }
   
-  public void setGLWrapper(bpah parambpah)
+  public void setGLWrapper(GLTextureView.GLWrapper paramGLWrapper)
   {
-    this.jdField_a_of_type_Bpah = parambpah;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLWrapper = paramGLWrapper;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
@@ -292,14 +282,14 @@ public class GLTextureView
   public void setRenderer(GLSurfaceView.Renderer paramRenderer)
   {
     b();
-    if (this.jdField_a_of_type_Bpac == null) {
-      this.jdField_a_of_type_Bpac = new bpaj(this, true);
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser == null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser = new GLTextureView.SimpleEGLConfigChooser(this, true);
     }
-    if (this.jdField_a_of_type_Bpad == null) {
-      this.jdField_a_of_type_Bpad = new bpaa(this, null);
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory == null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory = new GLTextureView.DefaultContextFactory(this, null);
     }
-    if (this.jdField_a_of_type_Bpae == null) {
-      this.jdField_a_of_type_Bpae = new bpab(null);
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory == null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory = new GLTextureView.DefaultWindowSurfaceFactory(null);
     }
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer = paramRenderer;
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread = new GLTextureView.GLThread(this.jdField_a_of_type_JavaLangRefWeakReference);
@@ -308,7 +298,7 @@ public class GLTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

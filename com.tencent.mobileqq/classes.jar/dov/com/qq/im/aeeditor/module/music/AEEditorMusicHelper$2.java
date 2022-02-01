@@ -1,11 +1,11 @@
 package dov.com.qq.im.aeeditor.module.music;
 
-import aang;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import bnrh;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import com.tencent.biz.videostory.video.FrameVideoHelper.GetFrameByteArrayListener;
 import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,7 +14,7 @@ import java.util.List;
 final class AEEditorMusicHelper$2
   implements Runnable
 {
-  AEEditorMusicHelper$2(TAVCutVideoSession paramTAVCutVideoSession, List paramList, long paramLong1, long paramLong2, long paramLong3, aang paramaang) {}
+  AEEditorMusicHelper$2(TAVCutVideoSession paramTAVCutVideoSession, List paramList, long paramLong1, long paramLong2, long paramLong3, FrameVideoHelper.GetFrameByteArrayListener paramGetFrameByteArrayListener) {}
   
   public void run()
   {
@@ -42,11 +42,11 @@ final class AEEditorMusicHelper$2
         ByteArrayOutputStream localByteArrayOutputStream;
         long l3;
         Object localObject2;
-        bnrh.a("AEEditorMusicHelper", "FrameVideoHelper.start(), error=", localThrowable);
-        if (this.jdField_a_of_type_Aang == null) {
+        AEQLog.a("AEEditorMusicHelper", "FrameVideoHelper.start(), error=", localThrowable);
+        if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener == null) {
           return;
         }
-        this.jdField_a_of_type_Aang.a(false, localArrayList, l1);
+        this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener.a(false, localArrayList, l1);
         return;
         l1 = l2;
         l2 += localObject2.length;
@@ -74,17 +74,17 @@ final class AEEditorMusicHelper$2
         if (l3 >= this.c)
         {
           l1 = l2;
-          bnrh.b("AEEditorMusicHelper", "[extractMultiCutFrameForSmartMusic] out of limit readBytes:" + l3 + ", frameCount:" + localArrayList.size());
+          AEQLog.b("AEEditorMusicHelper", "[extractMultiCutFrameForSmartMusic] out of limit readBytes:" + l3 + ", frameCount:" + localArrayList.size());
         }
       }
       else
       {
         l1 = l2;
-        if (this.jdField_a_of_type_Aang == null) {
+        if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener == null) {
           return;
         }
         l1 = l2;
-        this.jdField_a_of_type_Aang.a(true, localArrayList, l2);
+        this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener.a(true, localArrayList, l2);
         return;
       }
     }
@@ -92,7 +92,7 @@ final class AEEditorMusicHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper.2
  * JD-Core Version:    0.7.0.1
  */

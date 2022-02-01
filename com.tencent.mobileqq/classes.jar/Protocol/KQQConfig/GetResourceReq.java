@@ -9,8 +9,8 @@ public final class GetResourceReq
   extends JceStruct
 {
   static ArrayList<GetResourceReqInfo> cache_vecResReqInfo;
-  public short sLanCodeType;
-  public ArrayList<GetResourceReqInfo> vecResReqInfo;
+  public short sLanCodeType = 0;
+  public ArrayList<GetResourceReqInfo> vecResReqInfo = null;
   
   public GetResourceReq() {}
   
@@ -40,7 +40,7 @@ public final class GetResourceReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceReq
  * JD-Core Version:    0.7.0.1
  */

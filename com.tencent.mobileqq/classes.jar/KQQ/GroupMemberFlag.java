@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupMemberFlag
   extends JceStruct
 {
-  public byte cUinFlag;
-  public long dwUin;
+  public byte cUinFlag = 0;
+  public long dwUin = 0L;
   
   public GroupMemberFlag() {}
   

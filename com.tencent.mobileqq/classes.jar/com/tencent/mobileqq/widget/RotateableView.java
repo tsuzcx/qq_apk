@@ -9,7 +9,6 @@ import android.graphics.PaintFlagsDrawFilter;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
-import biti;
 
 public class RotateableView
   extends View
@@ -18,8 +17,8 @@ public class RotateableView
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new biti(this);
-  private boolean jdField_a_of_type_Boolean;
+  Handler jdField_a_of_type_AndroidOsHandler = new RotateableView.1(this);
+  private boolean jdField_a_of_type_Boolean = false;
   private int b;
   private int c;
   
@@ -47,7 +46,7 @@ public class RotateableView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.rotate(this.jdField_a_of_type_Float, this.b / 2.0F, this.c / 2.0F);
@@ -67,7 +66,7 @@ public class RotateableView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
@@ -87,7 +86,7 @@ public class RotateableView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RotateableView
  * JD-Core Version:    0.7.0.1
  */

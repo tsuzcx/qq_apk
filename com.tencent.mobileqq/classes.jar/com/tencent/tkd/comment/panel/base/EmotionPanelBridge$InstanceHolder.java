@@ -1,0 +1,12 @@
+package com.tencent.tkd.comment.panel.base;
+
+final class EmotionPanelBridge$InstanceHolder
+{
+  private static final EmotionPanelBridge a = new EmotionPanelBridge();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.tkd.comment.panel.base.EmotionPanelBridge.InstanceHolder
+ * JD-Core Version:    0.7.0.1
+ */

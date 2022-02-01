@@ -8,7 +8,7 @@ public final class RequestHideContact
   extends JceStruct
 {
   static AddressBookItem cache_contact = new AddressBookItem();
-  public AddressBookItem contact;
+  public AddressBookItem contact = null;
   public boolean isHide = true;
   
   public RequestHideContact() {}

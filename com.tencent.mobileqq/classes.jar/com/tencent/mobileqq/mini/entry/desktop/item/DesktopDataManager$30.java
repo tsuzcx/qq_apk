@@ -1,34 +1,31 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.applets.AppletsObserver;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 class DesktopDataManager$30
-  implements Runnable
+  extends AppletsObserver
 {
-  DesktopDataManager$30(DesktopDataManager paramDesktopDataManager, MiniAppRedDotEntity paramMiniAppRedDotEntity) {}
+  DesktopDataManager$30(DesktopDataManager paramDesktopDataManager) {}
   
-  public void run()
+  public void onGetAppletsPushUnreadInfo(Object paramObject)
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "updateRedDotData, app is null.");
-    }
-    do
+    if ((MiniAppConfProcessor.d()) && ((paramObject instanceof MiniAppRedDotEntity)))
     {
-      return;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
-    if (DesktopDataManager.access$3300(this.this$0, (EntityManager)localObject, this.val$entity))
-    {
-      QLog.d("DesktopDataManager", 1, "updateRedDotData, success to delete recommend appInfo: " + this.val$entity);
-      return;
+      paramObject = (MiniAppRedDotEntity)paramObject;
+      this.this$0.setMiniAppPushRedDotData(paramObject);
     }
-    QLog.e("DesktopDataManager", 1, "updateRedDotData, failed to delete recommend appInfo: " + this.val$entity);
+  }
+  
+  public void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 1, "onReceiveAppletsMessageUnreadInfo: " + paramMap);
+    }
+    this.this$0.setMiniAppNoticeRedDotData(paramMap);
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajgp;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -33,7 +32,7 @@ class TroopNotifyAndRecommendView$8$3$1
     try
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$8$3.a.a.a != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$8$3.a.a.a.getMessageFacade().updateMsgContentByUniseq(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.toByteArray());
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$8$3.a.a.a.getMessageFacade().a(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.toByteArray());
       }
       return;
     }
@@ -49,7 +48,7 @@ class TroopNotifyAndRecommendView$8$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.8.3.1
  * JD-Core Version:    0.7.0.1
  */

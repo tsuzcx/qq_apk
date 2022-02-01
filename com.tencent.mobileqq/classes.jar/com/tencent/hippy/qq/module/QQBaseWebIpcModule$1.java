@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.module;
 
 import android.os.Bundle;
-import ascz;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 
 class QQBaseWebIpcModule$1
-  extends ascz
+  extends Client.OnRemoteRespObserver
 {
   QQBaseWebIpcModule$1(QQBaseWebIpcModule paramQQBaseWebIpcModule) {}
   
@@ -30,7 +30,7 @@ class QQBaseWebIpcModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBaseWebIpcModule.1
  * JD-Core Version:    0.7.0.1
  */

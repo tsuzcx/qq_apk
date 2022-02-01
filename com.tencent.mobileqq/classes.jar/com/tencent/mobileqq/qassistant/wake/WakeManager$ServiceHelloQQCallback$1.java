@@ -1,18 +1,14 @@
 package com.tencent.mobileqq.qassistant.wake;
 
-import banp;
-import bans;
-import banv;
-
-public class WakeManager$ServiceHelloQQCallback$1
+class WakeManager$ServiceHelloQQCallback$1
   implements Runnable
 {
-  public WakeManager$ServiceHelloQQCallback$1(bans parambans) {}
+  WakeManager$ServiceHelloQQCallback$1(WakeManager.ServiceHelloQQCallback paramServiceHelloQQCallback) {}
   
   public void run()
   {
-    if (banp.a(this.a.a) != null) {
-      banp.a(this.a.a).a();
+    if (WakeManager.a(this.a.a) != null) {
+      WakeManager.a(this.a.a).a();
     }
   }
 }

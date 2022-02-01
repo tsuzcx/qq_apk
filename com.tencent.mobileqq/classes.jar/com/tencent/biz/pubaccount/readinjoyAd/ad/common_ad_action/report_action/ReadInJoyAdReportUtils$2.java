@@ -6,10 +6,10 @@ import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.IOException;
 
-public final class ReadInJoyAdReportUtils$2
+final class ReadInJoyAdReportUtils$2
   implements Runnable
 {
-  public ReadInJoyAdReportUtils$2(String paramString) {}
+  ReadInJoyAdReportUtils$2(String paramString) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public final class ReadInJoyAdReportUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.ReadInJoyAdReportUtils.2
  * JD-Core Version:    0.7.0.1
  */

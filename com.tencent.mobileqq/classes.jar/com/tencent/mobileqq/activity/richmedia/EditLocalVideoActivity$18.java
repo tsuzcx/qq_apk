@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alou;
-import alts;
-import altw;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -10,6 +7,8 @@ import android.media.MediaMetadataRetriever;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.common.GloableValue;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.utils.ThumbnailUtils;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
 import com.tencent.qphone.base.util.QLog;
@@ -55,7 +54,7 @@ class EditLocalVideoActivity$18
       label121:
       if (!EditLocalVideoActivity.a())
       {
-        i = altw.a(EditLocalVideoActivity.b(this.this$0), j, k, m, n, i, i);
+        i = ThumbnailUtils.a(EditLocalVideoActivity.b(this.this$0), j, k, m, n, i, i);
         if (QLog.isColorLevel()) {
           QLog.d("EditLocalVideoActivity", 2, "init, status1=" + i + ", dstWidth=" + j + ", dstHeight=" + k);
         }
@@ -81,7 +80,7 @@ class EditLocalVideoActivity$18
       if (!EditLocalVideoActivity.a())
       {
         if (TextUtils.isEmpty(EditLocalVideoActivity.b(this.this$0))) {}
-        for (i = -999;; i = altw.a(EditLocalVideoActivity.b(this.this$0), this.a, this.b))
+        for (i = -999;; i = ThumbnailUtils.a(EditLocalVideoActivity.b(this.this$0), this.a, this.b))
         {
           if (QLog.isColorLevel()) {
             QLog.d("EditLocalVideoActivity", 2, "init, status0=" + i);
@@ -107,13 +106,13 @@ class EditLocalVideoActivity$18
         }
         while (localBitmap != null)
         {
-          localObject = alts.a + File.separator + System.currentTimeMillis() + ".jpg";
+          localObject = GloableValue.a + File.separator + System.currentTimeMillis() + ".jpg";
           if (!PhotoUtils.saveBitmapToFile(localBitmap, (String)localObject, Bitmap.CompressFormat.JPEG, 90, true)) {
             break;
           }
           EditLocalVideoActivity.a(this.this$0).obtainMessage(1102, localObject).sendToTarget();
           return;
-          localBitmap = altw.a(0L, 1000L);
+          localBitmap = ThumbnailUtils.a(0L, 1000L);
         }
         return;
       }
@@ -123,7 +122,7 @@ class EditLocalVideoActivity$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.18
  * JD-Core Version:    0.7.0.1
  */

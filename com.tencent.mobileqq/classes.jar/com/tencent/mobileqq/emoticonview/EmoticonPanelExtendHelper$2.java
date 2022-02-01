@@ -17,13 +17,13 @@ class EmoticonPanelExtendHelper$2
       EmoticonPanelExtendHelper.access$000(this.this$0).getParent().requestLayout();
     }
     if ((this.val$targetH == EmoticonPanelExtendHelper.access$100(this.this$0)) && (XPanelContainer.a == EmoticonPanelExtendHelper.access$100(this.this$0))) {
-      this.this$0.abordFling();
+      this.this$0.abortFling();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelExtendHelper.2
  * JD-Core Version:    0.7.0.1
  */

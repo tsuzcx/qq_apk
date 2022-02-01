@@ -231,7 +231,7 @@ public class GLImage2DTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.ptvfilter.material.GLImage2DTexture
  * JD-Core Version:    0.7.0.1
  */

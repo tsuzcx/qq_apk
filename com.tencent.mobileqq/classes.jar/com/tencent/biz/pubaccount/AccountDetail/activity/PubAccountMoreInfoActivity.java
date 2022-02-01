@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -10,8 +9,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.Toast;
-import aoan;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.biz.pubaccount.api.impl.PublicAccountServletImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -24,9 +25,6 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import nzt;
-import obm;
-import oln;
 
 public class PubAccountMoreInfoActivity
   extends IphoneTitleBarActivity
@@ -34,19 +32,19 @@ public class PubAccountMoreInfoActivity
   float jdField_a_of_type_Float;
   private View jdField_a_of_type_AndroidViewView;
   ScrollView jdField_a_of_type_AndroidWidgetScrollView;
-  public AccountDetail a;
-  public mobileqq_mp.GetPublicAccountDetailInfoResponse a;
+  AccountDetailGroupListContainer jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer;
+  AccountDetail jdField_a_of_type_ComTencentMobileqqDataAccountDetail;
+  mobileqq_mp.GetPublicAccountDetailInfoResponse jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse;
   String jdField_a_of_type_JavaLangString;
   protected NewIntent a;
   protected BusinessObserver a;
-  obm jdField_a_of_type_Obm;
   
   private void c()
   {
     super.setContentView(2131558406);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376967));
-    setTitle(getResources().getString(2131694980));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374176);
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131377376));
+    setTitle(getResources().getString(2131695219));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374495);
     if (ThemeUtil.isInNightMode(this.app)) {
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -57,8 +55,8 @@ public class PubAccountMoreInfoActivity
       this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
       if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
       {
-        this.jdField_a_of_type_Obm = new obm(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
-        this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Obm.a());
+        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer = new AccountDetailGroupListContainer(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
+        this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a());
       }
       return;
       if (this.jdField_a_of_type_AndroidViewView != null) {
@@ -69,8 +67,8 @@ public class PubAccountMoreInfoActivity
   
   private void d()
   {
-    this.jdField_a_of_type_Obm = new obm(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
-    this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Obm.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer = new AccountDetailGroupListContainer(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
+    this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a());
   }
   
   protected void a()
@@ -83,9 +81,9 @@ public class PubAccountMoreInfoActivity
     if (localObject != null) {
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("uin");
     }
-    localObject = (aoan)this.app.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    localObject = (PublicAccountDataManager)this.app.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = ((aoan)localObject).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
       b();
@@ -105,10 +103,10 @@ public class PubAccountMoreInfoActivity
     if (this.jdField_a_of_type_MqqAppNewIntent != null) {
       this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
     }
-    this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), oln.class);
+    this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServletImpl.class);
     this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.10,3,4875");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.5.5,3,5105");
     localGetPublicAccountDetailInfoRequest.version.set(1);
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) {
       localGetPublicAccountDetailInfoRequest.seqno.set(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno);
@@ -120,7 +118,7 @@ public class PubAccountMoreInfoActivity
         localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(this.jdField_a_of_type_JavaLangString));
         label119:
         this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-        this.jdField_a_of_type_MqqObserverBusinessObserver = new nzt(this);
+        this.jdField_a_of_type_MqqObserverBusinessObserver = new PubAccountMoreInfoActivity.1(this);
         this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
         this.app.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
         return;
@@ -153,8 +151,8 @@ public class PubAccountMoreInfoActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Obm != null) {
-      this.jdField_a_of_type_Obm.b();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.b();
     }
   }
   
@@ -182,7 +180,7 @@ public class PubAccountMoreInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.activity.PubAccountMoreInfoActivity
  * JD-Core Version:    0.7.0.1
  */

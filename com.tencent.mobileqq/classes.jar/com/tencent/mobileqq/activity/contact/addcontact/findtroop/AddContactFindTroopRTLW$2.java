@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import aivl;
 import android.widget.TextView;
 
-public class AddContactFindTroopRTLW$2
+class AddContactFindTroopRTLW$2
   implements Runnable
 {
-  public AddContactFindTroopRTLW$2(aivl paramaivl) {}
+  AddContactFindTroopRTLW$2(AddContactFindTroopRTLW paramAddContactFindTroopRTLW) {}
   
   public void run()
   {
-    aivl.a(this.this$0).setVisibility(0);
+    AddContactFindTroopRTLW.a(this.this$0).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactFindTroopRTLW.2
  * JD-Core Version:    0.7.0.1
  */

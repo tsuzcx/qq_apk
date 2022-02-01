@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qassistant.view;
 
-import bakl;
+import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 
 class AssistantBackView$1
   implements Runnable
@@ -9,7 +9,7 @@ class AssistantBackView$1
   
   public void run()
   {
-    bakl.a("AssistantBackView", "mUpdateRunnable isEnabled:" + this.this$0.isEnabled() + "  mLottieDrawable:" + AssistantBackView.a(this.this$0) + " mIsDestroyed:" + AssistantBackView.a(this.this$0));
+    AssistantUtils.a("AssistantBackView", "mUpdateRunnable isEnabled:" + this.this$0.isEnabled() + "  mLottieDrawable:" + AssistantBackView.a(this.this$0) + " mIsDestroyed:" + AssistantBackView.a(this.this$0));
     if (AssistantBackView.a(this.this$0)) {
       return;
     }

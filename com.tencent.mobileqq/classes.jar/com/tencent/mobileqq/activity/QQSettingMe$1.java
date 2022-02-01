@@ -14,20 +14,20 @@ class QQSettingMe$1
   public void run()
   {
     this.this$0.a(Boolean.valueOf(this.a));
-    QQSettingMe.a(this.this$0).setImageResource(2130846040);
-    QQSettingMe.b(this.this$0).setImageResource(2130846056);
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166478));
+    QQSettingMe.a(this.this$0).setImageResource(2130846361);
+    QQSettingMe.b(this.this$0).setImageResource(2130846377);
+    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166481));
     if (this.this$0.b != null) {
-      this.this$0.b.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166478));
+      this.this$0.b.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166481));
     }
-    TextView localTextView = (TextView)this.this$0.e.findViewById(2131376649);
-    localTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166476));
-    ((ImageView)this.this$0.e.findViewById(2131368398)).setColorFilter(localTextView.getCurrentTextColor());
+    TextView localTextView = (TextView)this.this$0.e.findViewById(2131377044);
+    localTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166479));
+    ((ImageView)this.this$0.e.findViewById(2131368620)).setColorFilter(localTextView.getCurrentTextColor());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.1
  * JD-Core Version:    0.7.0.1
  */

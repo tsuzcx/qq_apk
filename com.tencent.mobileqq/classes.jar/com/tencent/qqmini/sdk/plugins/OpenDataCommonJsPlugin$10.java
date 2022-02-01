@@ -1,35 +1,51 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class OpenDataCommonJsPlugin$10
-  implements DialogInterface.OnClickListener
+  implements AsyncResult
 {
-  OpenDataCommonJsPlugin$10(OpenDataCommonJsPlugin paramOpenDataCommonJsPlugin, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, Boolean paramBoolean, RequestEvent paramRequestEvent, String paramString8, String paramString9, int paramInt2) {}
+  OpenDataCommonJsPlugin$10(OpenDataCommonJsPlugin paramOpenDataCommonJsPlugin, RequestEvent paramRequestEvent) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramDialogInterface != null) {}
-    try
+    if (paramBoolean)
     {
-      paramDialogInterface.dismiss();
-      OpenDataCommonJsPlugin.access$700(this.this$0, OpenDataCommonJsPlugin.access$1200(this.this$0), "share_modifyFriendInteractiveStorage", "success", 1, null);
-      OpenDataCommonJsPlugin.access$1300(this.this$0, this.val$key, this.val$opNum, this.val$operation, this.val$toUser, this.val$nick, this.val$title, this.val$imageUrl, this.val$imageUrlId, this.val$quiet, this.val$req, this.val$action, this.val$object, this.val$ratio);
-      return;
+      localObject = new JSONObject();
+      paramJSONObject = paramJSONObject.optJSONArray("key_result_data");
+      if (paramJSONObject == null) {}
+      try
+      {
+        ((JSONObject)localObject).putOpt("list", new JSONArray());
+        for (;;)
+        {
+          this.val$req.ok((JSONObject)localObject);
+          return;
+          ((JSONObject)localObject).putOpt("list", paramJSONObject);
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          paramJSONObject.printStackTrace();
+        }
+      }
     }
-    catch (Throwable paramDialogInterface)
-    {
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface);
-      this.val$req.fail(paramDialogInterface.getMessage());
-    }
+    long l = paramJSONObject.optLong("retCode");
+    Object localObject = paramJSONObject.optString("errMsg");
+    QMLog.e("OpenDataCommonJsPlugin", "getReactiveFriendList fail, retCode: " + l + "; errMsg : " + (String)localObject);
+    this.val$req.fail(paramJSONObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

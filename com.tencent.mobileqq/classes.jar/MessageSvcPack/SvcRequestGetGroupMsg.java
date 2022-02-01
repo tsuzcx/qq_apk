@@ -7,18 +7,18 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestGetGroupMsg
   extends JceStruct
 {
-  public byte c30Min;
-  public byte cGetGroupNick;
-  public byte cGetPttUrl;
-  public byte cGroupMsgRoam;
-  public byte cMsgStoreType;
-  public byte cRecivePic;
-  public byte cSubCmd;
-  public byte cVerifyType;
-  public long lBeginSeq;
-  public long lEndSeq;
-  public long lGroupCode;
-  public long lUin;
+  public byte c30Min = 0;
+  public byte cGetGroupNick = 0;
+  public byte cGetPttUrl = 0;
+  public byte cGroupMsgRoam = 0;
+  public byte cMsgStoreType = 0;
+  public byte cRecivePic = 0;
+  public byte cSubCmd = 0;
+  public byte cVerifyType = 0;
+  public long lBeginSeq = 0L;
+  public long lEndSeq = 0L;
+  public long lGroupCode = 0L;
+  public long lUin = 0L;
   
   public SvcRequestGetGroupMsg() {}
   

@@ -10,11 +10,11 @@ public final class s_likeman
   static s_PolyPraise cache_cpolyPraise = new s_PolyPraise();
   static s_CustomPraise cache_customPraise;
   static s_user cache_user = new s_user();
-  public s_PolyPraise cpolyPraise;
-  public s_CustomPraise customPraise;
+  public s_PolyPraise cpolyPraise = null;
+  public s_CustomPraise customPraise = null;
   public String refer = "";
-  public int superflag;
-  public s_user user;
+  public int superflag = 0;
+  public s_user user = null;
   
   static
   {

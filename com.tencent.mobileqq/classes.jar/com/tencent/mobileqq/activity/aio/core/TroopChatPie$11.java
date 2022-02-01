@@ -1,27 +1,35 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import bgqd;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import GROUP.MessageRemindRsp;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.SVIPObserver;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
 
 class TroopChatPie$11
-  implements Runnable
+  extends SVIPObserver
 {
-  TroopChatPie$11(TroopChatPie paramTroopChatPie, bgqd parambgqd) {}
+  TroopChatPie$11(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void onGetBigTroopExpiredInfo(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
   {
-    if (this.a.a(this.this$0.app, this.this$0.sessionInfo)) {}
-    for (int i = 1;; i = 0)
+    if (paramBoolean)
     {
-      ThreadManager.getUIHandler().post(new TroopChatPie.11.1(this, i));
+      if (QLog.isColorLevel()) {
+        QLog.e("vip_pretty." + this.a.b, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
+      }
+      ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramMessageRemindRsp);
+      TroopManager.a(paramMessageRemindRsp, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_AndroidContentContext, this.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager);
       return;
     }
+    QLog.e("vip_pretty." + this.a.b, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.11
  * JD-Core Version:    0.7.0.1
  */

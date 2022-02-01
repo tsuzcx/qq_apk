@@ -21,9 +21,9 @@ public class InnerFrameManager
 {
   public Activity a;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   private Set<InnerFrame> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public InnerFrameManager(Context paramContext)
   {
@@ -33,6 +33,7 @@ public class InnerFrameManager
   public InnerFrameManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_AndroidAppActivity = null;
     paramContext = new InnerFrame(paramContext);
     paramContext.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     addView(paramContext, 0);
@@ -86,8 +87,8 @@ public class InnerFrameManager
         if (getDisplayedChild() >= paramInt) {
           break label135;
         }
-        setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772050);
-        setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772051);
+        setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772056);
+        setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772057);
       }
     }
     for (;;)
@@ -100,11 +101,11 @@ public class InnerFrameManager
       ((InnerFrame)getChildAt(paramInt)).a();
       return;
       label135:
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772046);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772047);
+      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772050);
+      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772051);
       continue;
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772106);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772106);
+      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772121);
+      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772121);
     }
   }
   

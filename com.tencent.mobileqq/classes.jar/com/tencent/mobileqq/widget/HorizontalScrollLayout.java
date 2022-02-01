@@ -22,7 +22,7 @@ public class HorizontalScrollLayout
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private int c;
-  private int d;
+  private int d = 0;
   
   public HorizontalScrollLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -129,7 +129,7 @@ public class HorizontalScrollLayout
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (1 <= getChildCount()) {
@@ -190,7 +190,7 @@ public class HorizontalScrollLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.HorizontalScrollLayout
  * JD-Core Version:    0.7.0.1
  */

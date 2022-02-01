@@ -45,13 +45,12 @@ import com.tencent.commonsdk.badge.CommonBadgeUtilImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.ab;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.c.f;
-import com.tencent.mobileqq.msf.core.c.f.a;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.c.d;
+import com.tencent.mobileqq.msf.core.c.e.a;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.net.n;
-import com.tencent.mobileqq.msf.core.w;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.mobileqq.msf.sdk.CommandCallbackerInfo;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
@@ -61,7 +60,6 @@ import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.msf.sdk.aa;
 import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.mobileqq.msf.service.MsfService;
-import com.tencent.mobileqq.msf.service.u;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -1713,11 +1711,11 @@ public class g
     if (paramLong < 30000L)
     {
       if (!QLog.isColorLevel()) {
-        break label324;
+        break label356;
       }
       QLog.d("MSF.C.PushManager", 2, "queryPushIntervTime less than 30000,change to 30000.");
     }
-    label324:
+    label356:
     for (long l1 = 30000L;; l1 = 30000L)
     {
       if (this.aw != null) {
@@ -1752,13 +1750,27 @@ public class g
           QLog.d("MSF.C.PushManager", 2, "queryPushIntervTime greater than 600000 ,change to 600000.");
           l1 = paramLong;
         }
-        catch (Exception localException)
+        catch (Exception localException1)
         {
-          QLog.e("MSF.C.PushManager", 1, "MSF_Alive_Log doRegistertAlarm excep!", localException);
-          this.m.set(0, paramLong, this.aw);
+          QLog.e("MSF.C.PushManager", 1, "MSF_Alive_Log doRegistertAlarm excep!", localException1);
+          try
+          {
+            this.m.set(0, paramLong, this.aw);
+          }
+          catch (Exception localException2)
+          {
+            QLog.e("MSF.C.PushManager", 1, "MSF_Alive_Log doRegistertAlarm excep throw et!", localException2);
+          }
           continue;
         }
-        this.m.set(0, paramLong, this.aw);
+        try
+        {
+          this.m.set(0, paramLong, this.aw);
+        }
+        catch (Exception localException3)
+        {
+          QLog.e("MSF.C.PushManager", 1, "MSF_Alive_Log doRegistertAlarm excep throw et!", localException3);
+        }
       }
     }
   }
@@ -1807,7 +1819,7 @@ public class g
   {
     try
     {
-      String str = u.b(paramToServiceMsg);
+      String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " appCmdCallbacker " + paramCommandCallbackerInfo);
       }
@@ -1815,7 +1827,7 @@ public class g
         this.i.putIfAbsent(str, new a(str));
       }
       ((a)this.i.get(str)).m = paramCommandCallbackerInfo;
-      paramCommandCallbackerInfo = u.a(paramToServiceMsg);
+      paramCommandCallbackerInfo = com.tencent.mobileqq.msf.service.u.a(paramToServiceMsg);
       paramCommandCallbackerInfo.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, paramCommandCallbackerInfo);
       f(str);
@@ -1829,7 +1841,7 @@ public class g
     String str;
     try
     {
-      str = u.b(paramToServiceMsg);
+      str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
       if (!a(str, BaseApplication.getContext().getPackageName())) {
         break label322;
       }
@@ -1875,7 +1887,7 @@ public class g
   {
     try
     {
-      QLog.d("MSF.C.PushManager", 1, "recv proxyRegister sendProcess=" + u.b(paramToServiceMsg) + " registerProcess" + paramz.b + " callbacker=" + paramz.e + " appid=" + paramz.a + " ProxyRegisterInfo=" + paramz);
+      QLog.d("MSF.C.PushManager", 1, "recv proxyRegister sendProcess=" + com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg) + " registerProcess" + paramz.b + " callbacker=" + paramz.e + " appid=" + paramz.a + " ProxyRegisterInfo=" + paramz);
       if (!this.i.containsKey(paramz.b)) {
         this.i.putIfAbsent(paramz.b, new a(paramz.b));
       }
@@ -1883,7 +1895,7 @@ public class g
       ((a)localObject).a = paramz.a;
       ((a)localObject).m = paramz.e;
       ((a)localObject).l = paramz.d;
-      localObject = w.a(paramToServiceMsg);
+      localObject = o.a(paramToServiceMsg);
       ((FromServiceMsg)localObject).setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, (FromServiceMsg)localObject);
       f(paramz.b);
@@ -2111,7 +2123,7 @@ public class g
         else
         {
           if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-            f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 3);
+            com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 3);
           }
           if (QLog.isColorLevel()) {
             QLog.d("MSF.C.PushManager", 2, "recv error onRecvPushMsg FromServiceMsg  " + paramFromServiceMsg);
@@ -2129,7 +2141,7 @@ public class g
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    String str = u.b(paramToServiceMsg);
+    String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
     a locala = (a)this.i.get(str);
     if (locala != null)
     {
@@ -2157,7 +2169,7 @@ public class g
       }
       this.ay.removeMessages(1);
     }
-    String str = u.b(paramToServiceMsg);
+    String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
     if (a(str, BaseApplication.getContext().getPackageName()))
     {
       if (!this.i.containsKey(str)) {
@@ -2173,7 +2185,7 @@ public class g
         if (QLog.isColorLevel()) {
           QLog.e("MSF.C.PushManager", 2, "handlerPush also register Push " + MD5.toMD5(localPushRegisterInfo.uin) + "iStatus:" + localPushRegisterInfo.iStatus + " extStatus:" + localPushRegisterInfo.extStatus);
         }
-        paramRegPushReason = u.a(paramToServiceMsg);
+        paramRegPushReason = com.tencent.mobileqq.msf.service.u.a(paramToServiceMsg);
         paramRegPushReason.setMsgSuccess();
         this.c.addRespToQuque(paramToServiceMsg, paramRegPushReason);
         if ((localPushRegisterInfo.iStatus != 95) && (localPushRegisterInfo.iStatus != 21))
@@ -2224,9 +2236,9 @@ public class g
   {
     try
     {
-      QLog.d("MSF.C.PushManager", 1, "recv processName:" + u.b(paramToServiceMsg) + " recv proxyUnRegister " + paramString);
+      QLog.d("MSF.C.PushManager", 1, "recv processName:" + com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg) + " recv proxyUnRegister " + paramString);
       this.i.remove(paramString);
-      FromServiceMsg localFromServiceMsg = w.a(paramToServiceMsg);
+      FromServiceMsg localFromServiceMsg = o.a(paramToServiceMsg);
       localFromServiceMsg.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, localFromServiceMsg);
       MsfStore.getNativeConfigStore().removeConfig("app_push_info_" + paramString);
@@ -2273,15 +2285,15 @@ public class g
     //   51: putfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
     //   54: aload_0
     //   55: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
-    //   58: invokevirtual 1930	android/media/MediaPlayer:reset	()V
+    //   58: invokevirtual 1932	android/media/MediaPlayer:reset	()V
     //   61: aload_0
     //   62: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
-    //   65: new 1932	java/io/FileInputStream
+    //   65: new 1934	java/io/FileInputStream
     //   68: dup
     //   69: aload_1
-    //   70: invokespecial 1933	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   73: invokevirtual 1936	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   76: invokevirtual 1939	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   70: invokespecial 1935	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   73: invokevirtual 1938	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   76: invokevirtual 1941	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
     //   79: aload_0
     //   80: aload_0
     //   81: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
@@ -2291,10 +2303,10 @@ public class g
     //   91: invokevirtual 562	android/media/MediaPlayer:prepare	()V
     //   94: aload_0
     //   95: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
-    //   98: new 1941	com/tencent/mobileqq/msf/core/push/j
+    //   98: new 1943	com/tencent/mobileqq/msf/core/push/j
     //   101: dup
     //   102: aload_0
-    //   103: invokespecial 1942	com/tencent/mobileqq/msf/core/push/j:<init>	(Lcom/tencent/mobileqq/msf/core/push/g;)V
+    //   103: invokespecial 1944	com/tencent/mobileqq/msf/core/push/j:<init>	(Lcom/tencent/mobileqq/msf/core/push/g;)V
     //   106: invokevirtual 1514	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   109: aload_0
     //   110: getfield 1499	com/tencent/mobileqq/msf/core/push/g:Z	Landroid/media/MediaPlayer;
@@ -2409,7 +2421,7 @@ public class g
       label350:
       for (int i1 = 0;; i1 = 1)
       {
-        ((k)localObject1).a("dim.Msf.LoadPushTimes", bool, l1, i1, null, false, false);
+        ((j)localObject1).a("dim.Msf.LoadPushTimes", bool, l1, i1, null, false, false);
         break;
         bool = true;
         break label311;
@@ -2557,7 +2569,7 @@ public class g
   {
     try
     {
-      String str = u.b(paramToServiceMsg);
+      String str = com.tencent.mobileqq.msf.service.u.b(paramToServiceMsg);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " recv unRegisterCmdCall ");
       }
@@ -2565,7 +2577,7 @@ public class g
         this.i.putIfAbsent(str, new a(str));
       }
       ((a)this.i.get(str)).m = paramCommandCallbackerInfo;
-      paramCommandCallbackerInfo = u.a(paramToServiceMsg);
+      paramCommandCallbackerInfo = com.tencent.mobileqq.msf.service.u.a(paramToServiceMsg);
       paramCommandCallbackerInfo.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, paramCommandCallbackerInfo);
       f(str);
@@ -3130,7 +3142,7 @@ public class g
       {
         this.y.notify();
         if (this.az) {
-          ab.a().e();
+          com.tencent.mobileqq.msf.core.u.a().e();
         }
         if (QLog.isColorLevel())
         {
@@ -3143,7 +3155,7 @@ public class g
           if (this.c.getStandyModeManager() != null) {
             this.c.getStandyModeManager().a();
           }
-          com.tencent.mobileqq.msf.core.i.b();
+          com.tencent.qphone.base.util.log.a.b.b();
           s();
           return;
         }

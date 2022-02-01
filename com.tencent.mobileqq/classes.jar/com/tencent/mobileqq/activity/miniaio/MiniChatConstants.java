@@ -81,6 +81,7 @@ public class MiniChatConstants
   public static final int MINI_MSG_BUSINESS_SPORT = 12;
   public static final int MINI_MSG_BUSINESS_STORY = 5;
   public static final int MINI_MSG_BUSINESS_SUBSCRIBE = 25;
+  public static final int MINI_MSG_BUSINESS_VAS_LIVE = 29;
   public static final int MINI_MSG_BUSINESS_WEATHER = 22;
   public static final int MINI_MSG_BUSINESS_WEB = 100;
   public static final int MINI_MSG_BUSINESS_WEISHI = 6;
@@ -122,7 +123,7 @@ public class MiniChatConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatConstants
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,18 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import bgdq;
-import bhdj;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class VisitorTroopCardFragment$21
-  implements Runnable
+class VisitorTroopCardFragment$21
+  implements DialogInterface.OnClickListener
 {
-  VisitorTroopCardFragment$21(VisitorTroopCardFragment paramVisitorTroopCardFragment, String paramString) {}
+  VisitorTroopCardFragment$21(VisitorTroopCardFragment paramVisitorTroopCardFragment, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.this$0.a != null) {
-      if (!this.this$0.a.isShowing()) {
-        this.this$0.a.show();
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      VisitorTroopCardReport.a(2, new Object());
     }
-    do
-    {
-      return;
-      this.this$0.a = bhdj.a(this.this$0.getActivity(), 230);
-      this.this$0.a.setMessage(this.a);
-      bgdq localbgdq = new bgdq(this);
-      this.this$0.a.setPositiveButton(2131691037, localbgdq);
-      this.this$0.a.setNegativeButton(2131690697, localbgdq);
-    } while (this.this$0.a.isShowing());
-    this.this$0.a.show();
   }
 }
 

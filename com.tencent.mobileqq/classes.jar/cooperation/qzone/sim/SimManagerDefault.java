@@ -1,9 +1,9 @@
 package cooperation.qzone.sim;
 
-import ab;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.android.internal.telephony.ISub;
 import cooperation.qzone.util.QZLog;
 import java.lang.reflect.Method;
 
@@ -19,11 +19,11 @@ class SimManagerDefault
   static int mMethodIMSIIndex = -1;
   static int mMethodPhoneNumIndex = -1;
   
-  public int initAllDataByAIDL(ab paramab)
+  public int initAllDataByAIDL(ISub paramISub)
   {
     int j = 0;
     int i;
-    if (paramab == null)
+    if (paramISub == null)
     {
       i = -2;
       return i;
@@ -32,30 +32,30 @@ class SimManagerDefault
     {
       try
       {
-        int k = paramab.d();
+        int k = paramISub.d();
         if (k >= 0)
         {
           i = 0;
           if (i <= 10)
           {
-            paramab = getSimInfo(i);
-            if (paramab == null) {
+            paramISub = getSimInfo(i);
+            if (paramISub == null) {
               break label156;
             }
             if (i != k) {
               break label163;
             }
             bool = true;
-            paramab.setIsDataTrafficSim(bool);
+            paramISub.setIsDataTrafficSim(bool);
             break label156;
           }
-          paramab = getSimInfo(k);
+          paramISub = getSimInfo(k);
           i = j;
-          if (paramab == null) {
+          if (paramISub == null) {
             break;
           }
           i = j;
-          if (TextUtils.isEmpty(paramab.getIMSI())) {
+          if (TextUtils.isEmpty(paramISub.getIMSI())) {
             break;
           }
           SimInfo localSimInfo = getSimInfo(10);
@@ -64,16 +64,16 @@ class SimManagerDefault
             break;
           }
           i = j;
-          if (!paramab.getIMSI().equals(localSimInfo.getIMSI())) {
+          if (!paramISub.getIMSI().equals(localSimInfo.getIMSI())) {
             break;
           }
           localSimInfo.setIsDataTrafficSim(true);
           return 0;
         }
       }
-      catch (Throwable paramab)
+      catch (Throwable paramISub)
       {
-        QZLog.e("UniKingCardHelper/SimManager", "initAllDataByAIDL 1 error:" + paramab.getMessage());
+        QZLog.e("UniKingCardHelper/SimManager", "initAllDataByAIDL 1 error:" + paramISub.getMessage());
       }
       return -3;
       label156:
@@ -437,7 +437,7 @@ class SimManagerDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.sim.SimManagerDefault
  * JD-Core Version:    0.7.0.1
  */

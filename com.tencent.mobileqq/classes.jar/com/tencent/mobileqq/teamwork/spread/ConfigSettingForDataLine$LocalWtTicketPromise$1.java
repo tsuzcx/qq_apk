@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import beeb;
-import beec;
 import java.lang.ref.WeakReference;
 
-public class ConfigSettingForDataLine$LocalWtTicketPromise$1
+class ConfigSettingForDataLine$LocalWtTicketPromise$1
   implements Runnable
 {
-  public ConfigSettingForDataLine$LocalWtTicketPromise$1(beec parambeec) {}
+  ConfigSettingForDataLine$LocalWtTicketPromise$1(ConfigSettingForDataLine.LocalWtTicketPromise paramLocalWtTicketPromise) {}
   
   public void run()
   {
-    beeb localbeeb = (beeb)beec.a(this.this$0).get();
-    if (localbeeb != null) {
-      beeb.a(localbeeb, beec.a(this.this$0));
+    ConfigSettingForDataLine localConfigSettingForDataLine = (ConfigSettingForDataLine)ConfigSettingForDataLine.LocalWtTicketPromise.a(this.this$0).get();
+    if (localConfigSettingForDataLine != null) {
+      ConfigSettingForDataLine.a(localConfigSettingForDataLine, ConfigSettingForDataLine.LocalWtTicketPromise.a(this.this$0));
     }
   }
 }

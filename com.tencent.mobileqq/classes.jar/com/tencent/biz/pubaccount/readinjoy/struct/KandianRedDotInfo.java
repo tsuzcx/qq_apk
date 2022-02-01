@@ -1,6 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSPUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.push.RIJMergeKanDianMessage;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -13,8 +15,6 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
-import prd;
-import prr;
 
 public class KandianRedDotInfo
   implements Serializable
@@ -106,7 +106,7 @@ public class KandianRedDotInfo
           QLog.d("KandianRedDotInfo", 2, "createRedDotFromMessageRecord | exception " + paramString.getMessage());
         }
       }
-      paramMessageRecord = prr.a(paramMessageRecord);
+      paramMessageRecord = RIJMergeKanDianMessage.a(paramMessageRecord);
       if ((paramMessageRecord != null) && (!paramMessageRecord.isEmpty()))
       {
         paramMessageRecord = paramMessageRecord.iterator();
@@ -139,7 +139,7 @@ public class KandianRedDotInfo
   
   public static KandianRedDotInfo getRedDotFromDisk(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    return (KandianRedDotInfo)prd.a(paramAppRuntime, paramString, paramBoolean);
+    return (KandianRedDotInfo)RIJSPUtils.a(paramAppRuntime, paramString, paramBoolean);
   }
   
   public MessageRecord getMessageRecord()
@@ -175,12 +175,12 @@ public class KandianRedDotInfo
   
   public void removeFromDiskAsync(boolean paramBoolean)
   {
-    prd.a(this.type, paramBoolean);
+    RIJSPUtils.a(this.type, paramBoolean);
   }
   
   public void saveToDiskAsync(boolean paramBoolean)
   {
-    prd.a(this.type, this, true);
+    RIJSPUtils.a(this.type, this, true);
   }
   
   public boolean shouldRemoveFloatingRedPntArticleId()
@@ -195,7 +195,7 @@ public class KandianRedDotInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo
  * JD-Core Version:    0.7.0.1
  */

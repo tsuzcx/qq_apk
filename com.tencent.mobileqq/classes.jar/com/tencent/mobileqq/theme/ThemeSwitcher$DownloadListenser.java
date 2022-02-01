@@ -2,14 +2,13 @@ package com.tencent.mobileqq.theme;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import beik;
-import beil;
-import beip;
-import bhpe;
-import bhrw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.vas.VasMonitorHandler;
+import com.tencent.mobileqq.vas.quickupdate.ThemeUpdateCallback;
+import com.tencent.mobileqq.vas.theme.api.IThemeSwitchCallback;
+import com.tencent.mobileqq.vas.theme.api.ThemeLocator;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -96,8 +95,8 @@ class ThemeSwitcher$DownloadListenser
         str = ThemeUtil.getIDFromSCID(paramString);
       } while (!ThemeSwitcher.a(this.this$0).a().equals(str));
       this.b = (SystemClock.uptimeMillis() + this.jdField_a_of_type_Long);
-    } while ((!paramString.startsWith(bhrw.jdField_a_of_type_JavaLangString)) || (ThemeSwitcher.a(this.this$0) == null));
-    ThemeSwitcher.a(this.this$0).a(paramLong1, paramLong2);
+    } while ((!paramString.startsWith(ThemeUpdateCallback.SCID_THEME_ZIP_PREFIX)) || (ThemeSwitcher.a(this.this$0) == null));
+    ThemeSwitcher.a(this.this$0).onProgress(paramLong1, paramLong2);
   }
   
   public void a(String paramString1, String paramString2, int paramInt)
@@ -118,9 +117,9 @@ class ThemeSwitcher$DownloadListenser
         a(localQQAppInterface, null, null, 1);
         return;
       }
-    } while (!paramString1.startsWith(bhrw.jdField_a_of_type_JavaLangString));
+    } while (!paramString1.startsWith(ThemeUpdateCallback.SCID_THEME_ZIP_PREFIX));
     a(localQQAppInterface, paramString1, paramString2, 0);
-    beil.a(null, "theme_detail", ThemeSwitcher.a(this.this$0), 153, 1, 35, str, "20000000", beil.jdField_a_of_type_JavaLangString, "");
+    ThemeReporter.a(null, "theme_detail", ThemeSwitcher.a(this.this$0), 153, 1, 35, str, "20000000", ThemeReporter.jdField_a_of_type_JavaLangString, "");
   }
   
   public void run()
@@ -136,7 +135,7 @@ class ThemeSwitcher$DownloadListenser
       return;
     }
     QLog.e("ThemeSwitcher", 1, "downloadTheme timeout");
-    bhpe.a(null, "individual_v2_theme_download_fail", this.jdField_a_of_type_JavaLangString, this.this$0.toString(), ThemeSwitcher.a(this.this$0).a(), ThemeSwitcher.a(this.this$0), "", 0.0F, 0.0F);
+    VasMonitorHandler.a(null, "individual_v2_theme_download_fail", this.jdField_a_of_type_JavaLangString, this.this$0.toString(), ThemeSwitcher.a(this.this$0).a(), ThemeSwitcher.a(this.this$0), "", 0.0F, 0.0F);
     HashMap localHashMap = new HashMap();
     localHashMap.put("reportKey", this.jdField_a_of_type_JavaLangString);
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "individual_v2_theme_download_fail", false, 0L, -1L, localHashMap, "", true);

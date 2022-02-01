@@ -11,10 +11,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bnrh;
-import bnvt;
-import bnvu;
-import bnvv;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class AEEditorApplyAllLoadingView
   extends FrameLayout
@@ -39,8 +36,8 @@ public class AEEditorApplyAllLoadingView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131558550, this);
-    this.a = ((TextView)findViewById(2131378659));
+    LayoutInflater.from(paramContext).inflate(2131558562, this);
+    this.a = ((TextView)findViewById(2131379092));
     b();
   }
   
@@ -49,12 +46,12 @@ public class AEEditorApplyAllLoadingView
     AnimatorSet localAnimatorSet = new AnimatorSet();
     ValueAnimator localValueAnimator1 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator1.setDuration(1000L);
-    localValueAnimator1.addUpdateListener(new bnvt(this));
+    localValueAnimator1.addUpdateListener(new AEEditorApplyAllLoadingView.1(this));
     ValueAnimator localValueAnimator2 = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     localValueAnimator2.setDuration(1000L);
-    localValueAnimator2.addUpdateListener(new bnvu(this));
+    localValueAnimator2.addUpdateListener(new AEEditorApplyAllLoadingView.2(this));
     localAnimatorSet.play(localValueAnimator1).before(localValueAnimator2);
-    localAnimatorSet.addListener(new bnvv(this));
+    localAnimatorSet.addListener(new AEEditorApplyAllLoadingView.3(this));
     localAnimatorSet.start();
   }
   
@@ -62,7 +59,7 @@ public class AEEditorApplyAllLoadingView
   {
     if (getParent() == null)
     {
-      bnrh.a("AEEditorApplyAllLoadingView", "cancelLoading parent is null.");
+      AEQLog.a("AEEditorApplyAllLoadingView", "cancelLoading parent is null.");
       return;
     }
     ((ViewGroup)getParent()).removeAllViews();
@@ -70,7 +67,7 @@ public class AEEditorApplyAllLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView
  * JD-Core Version:    0.7.0.1
  */

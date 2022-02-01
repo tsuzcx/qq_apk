@@ -3,7 +3,6 @@ package com.tencent.mobileqq.mini.mainpage;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
 
 class AddPhoneNumberFragment$5
@@ -13,14 +12,13 @@ class AddPhoneNumberFragment$5
   
   public void onClick(View paramView)
   {
-    AddPhoneNumberFragment localAddPhoneNumberFragment = this.this$0;
+    paramView = this.this$0;
     if (!AddPhoneNumberFragment.access$700(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      AddPhoneNumberFragment.access$702(localAddPhoneNumberFragment, bool);
+      AddPhoneNumberFragment.access$702(paramView, bool);
       AddPhoneNumberFragment.access$800(this.this$0).setChecked(AddPhoneNumberFragment.access$700(this.this$0));
       QLog.d("AddPhoneNumberFragment", 1, "isSave : " + AddPhoneNumberFragment.access$700(this.this$0));
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
   }

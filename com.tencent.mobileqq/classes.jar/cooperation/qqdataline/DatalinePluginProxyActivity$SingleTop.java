@@ -1,6 +1,5 @@
 package cooperation.qqdataline;
 
-import Override;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -26,7 +25,7 @@ public class DatalinePluginProxyActivity$SingleTop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqdataline.DatalinePluginProxyActivity.SingleTop
  * JD-Core Version:    0.7.0.1
  */

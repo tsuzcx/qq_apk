@@ -112,62 +112,28 @@ public class SliderView
     if (!this.mShowDuration) {
       return;
     }
-    Object localObject1 = new Rect();
-    this.mDurationTextPaint.getTextBounds(this.mDuration, 0, this.mDuration.length(), (Rect)localObject1);
-    int i = ((Rect)localObject1).width();
-    int j = ((Rect)localObject1).height();
-    float f1 = (int)Util.dp2px(getContext(), 4.0F);
-    float f2 = (int)Util.dp2px(getContext(), 3.0F);
-    f2 = i + f2 * 2.0F;
-    f1 = j + f1 * 2.0F;
-    localObject1 = new RectF();
-    float f3;
-    float f4;
-    float f5;
-    float f6;
-    float f7;
-    Object localObject2;
-    if (f2 < this.mSelectAreaRect.width())
-    {
-      f3 = this.mSelectAreaRect.centerX();
-      f4 = f2 / 2.0F;
-      f5 = this.mSelectAreaRect.centerY();
-      f6 = f1 / 2.0F;
-      f7 = this.mSelectAreaRect.centerX();
-      f2 /= 2.0F;
-      float f8 = this.mSelectAreaRect.centerY();
-      ((RectF)localObject1).set(f3 - f4, f5 - f6, f2 + f7, f1 / 2.0F + f8);
-      if (this.mDurationBgBitmap == null) {
-        break label471;
-      }
-      localObject2 = new Rect(0, 0, this.mDurationBgBitmap.getWidth(), this.mDurationBgBitmap.getHeight());
-      paramCanvas.drawBitmap(this.mDurationBgBitmap, (Rect)localObject2, (RectF)localObject1, this.mDurationBgPaint);
+    Object localObject = new Rect();
+    this.mDurationTextPaint.getTextBounds(this.mDuration, 0, this.mDuration.length(), (Rect)localObject);
+    int i = ((Rect)localObject).width();
+    int j = ((Rect)localObject).height();
+    float f1 = (int)Util.dp2px(getContext(), 4.5F);
+    f1 = i + f1 * 2.0F;
+    float f2 = j + 0.0F * 2.0F;
+    localObject = new RectF();
+    if (f1 < this.mSelectAreaRect.width()) {
+      ((RectF)localObject).set(this.mSelectAreaRect.left + Util.dp2px(getContext(), 3.0F), this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, f1 + (this.mSelectAreaRect.left + Util.dp2px(getContext(), 3.0F)), this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
     }
     for (;;)
     {
-      localObject2 = this.mDurationTextPaint.getFontMetrics();
-      f1 = (((RectF)localObject1).bottom + ((RectF)localObject1).top - ((Paint.FontMetrics)localObject2).bottom - ((Paint.FontMetrics)localObject2).top) / 2.0F;
-      paramCanvas.drawText(this.mDuration, ((RectF)localObject1).centerX(), f1, this.mDurationTextPaint);
+      Paint.FontMetrics localFontMetrics = this.mDurationTextPaint.getFontMetrics();
+      f1 = (((RectF)localObject).bottom + ((RectF)localObject).top - localFontMetrics.bottom - localFontMetrics.top) / 2.0F;
+      paramCanvas.drawText(this.mDuration, ((RectF)localObject).centerX(), f1, this.mDurationTextPaint);
       return;
-      if (this.mSelectAreaRect.centerX() * 2 < getWidth())
-      {
-        f3 = this.mSelectAreaRect.right + this.mBarWidth;
-        f4 = this.mSelectAreaRect.centerY();
-        f5 = f1 / 2.0F;
-        f6 = this.mSelectAreaRect.right + this.mBarWidth;
-        f7 = this.mSelectAreaRect.centerY();
-        ((RectF)localObject1).set(f3, f4 - f5, f2 + f6, f1 / 2.0F + f7);
-        break;
+      if (this.mSelectAreaRect.centerX() * 2 < getWidth()) {
+        ((RectF)localObject).set(this.mSelectAreaRect.right + this.mBarWidth, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, f1 + (this.mSelectAreaRect.right + this.mBarWidth), this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
+      } else {
+        ((RectF)localObject).set(this.mSelectAreaRect.left - this.mBarWidth - f1, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, this.mSelectAreaRect.left - this.mBarWidth, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
       }
-      f3 = this.mSelectAreaRect.left - this.mBarWidth;
-      f4 = this.mSelectAreaRect.centerY();
-      f5 = f1 / 2.0F;
-      f6 = this.mSelectAreaRect.left - this.mBarWidth;
-      f7 = this.mSelectAreaRect.centerY();
-      ((RectF)localObject1).set(f3 - f2, f4 - f5, f6, f1 / 2.0F + f7);
-      break;
-      label471:
-      paramCanvas.drawRoundRect((RectF)localObject1, this.mDurationBgRadius, this.mDurationBgRadius, this.mDurationBgPaint);
     }
   }
   
@@ -235,31 +201,30 @@ public class SliderView
       ((Paint)localObject).setColor(i);
       Paint localPaint = this.mFramePaint;
       if (!this.mSliderBarMode) {
-        break label370;
+        break label360;
       }
       localObject = Paint.Style.FILL;
-      label163:
+      label164:
       localPaint.setStyle((Paint.Style)localObject);
       localObject = this.mFramePaint;
       if (!this.mSliderBarMode) {
-        break label377;
+        break label367;
       }
     }
-    label370:
-    label377:
+    label360:
+    label367:
     for (float f = 0.0F;; f = this.mFrameStrokeWidth)
     {
       ((Paint)localObject).setStrokeWidth(f);
       this.mIndicatorPaint = new Paint();
       this.mIndicatorPaint.setColor(Color.parseColor("#FFFFFFFF"));
       this.mMaxDurationTips = "已达到模板最大时长";
-      this.mDurationTextSize = ((int)Util.dp2px(getContext(), 10.0F));
+      this.mDurationTextSize = ((int)Util.sp2px(getContext(), 12.0F));
       this.mDurationTextPaint = new Paint();
       this.mDurationTextPaint.setColor(Color.parseColor("#FFFFFFFF"));
       this.mDurationTextPaint.setAntiAlias(true);
       this.mDurationTextPaint.setTextAlign(Paint.Align.CENTER);
       this.mDurationTextPaint.setTextSize(this.mDurationTextSize);
-      this.mDurationTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
       this.mDurationBgRadius = ((int)Util.dp2px(getContext(), 1.0F));
       this.mDurationBgPaint = new Paint();
       this.mDurationBgPaint.setColor(Color.parseColor("#80000000"));
@@ -269,7 +234,7 @@ public class SliderView
       i = Color.parseColor("#66FFFFFF");
       break;
       localObject = Paint.Style.STROKE;
-      break label163;
+      break label164;
     }
   }
   
@@ -431,22 +396,8 @@ public class SliderView
   
   private String translateDuration(long paramLong)
   {
-    long l1 = Math.round((float)paramLong / 1000.0F);
-    long l2 = l1 % 60L;
-    long l3 = l1 / 60L % 60L;
-    l1 = l1 / 3600L % 24L;
-    if (l1 > 0L) {
-      return String.format(Locale.US, "%d:%02d:%02d", new Object[] { Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2) });
-    }
-    l1 = l2;
-    if (paramLong < 1000L)
-    {
-      l1 = l2;
-      if (paramLong > 0L) {
-        l1 = 1L;
-      }
-    }
-    return String.format(Locale.US, "%02d:%02d", new Object[] { Long.valueOf(l3), Long.valueOf(l1) });
+    double d = Math.round((float)paramLong / 100.0F) / 10.0D;
+    return String.format(Locale.US, "%.1fs", new Object[] { Double.valueOf(d) });
   }
   
   private void updateSliderBarSource()
@@ -570,7 +521,7 @@ public class SliderView
     return this.mIndicatorMoved;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
@@ -831,10 +782,15 @@ public class SliderView
   {
     this.mTotalDurationMs = paramLong;
   }
+  
+  public void setTypeface(Typeface paramTypeface)
+  {
+    this.mDurationTextPaint.setTypeface(paramTypeface);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.timeline.SliderView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,15 @@ package com.tencent.mobileqq.app;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 import android.os.Bundle;
-import azrs;
-import azrt;
 import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.CardProfile;
 import com.tencent.mobileqq.data.LikeRankingInfo;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
+import com.tencent.mobileqq.profile.SchoolInfo;
+import com.tencent.mobileqq.profile.ShoppingPhotoItemInfo;
+import com.tencent.mobileqq.profilecard.observer.ICardObserver;
 import com.tencent.qidian.data.BmqqAccountType;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.Map;
 import mqq.os.MqqHandler;
 
 public class CardObserver
-  implements BusinessObserver
+  implements ICardObserver
 {
   private void onUpdate_onAnonymousSettingMeRedPoint(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -30,14 +31,6 @@ public class CardObserver
       bool = ((Boolean)paramObject).booleanValue();
     }
     onAnonymousSettingMeRedPoint(paramBoolean, bool);
-  }
-  
-  private void onUpdate_onCardDownLoad(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt != 1) {
-      return;
-    }
-    onCardDownload(paramBoolean, paramObject);
   }
   
   private void onUpdate_onCardInBlackList(int paramInt, boolean paramBoolean, Object paramObject)
@@ -248,16 +241,6 @@ public class CardObserver
       paramObject = (Object[])paramObject;
     } while (paramObject.length < 2);
     onGetConnectionsSwitch(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-  }
-  
-  private void onUpdate_onGetDetailInfo(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt != 20) {}
-    while (!paramBoolean) {
-      return;
-    }
-    paramObject = (Card)paramObject;
-    onGetDetailInfo(paramBoolean, paramObject.uin, paramObject);
   }
   
   private void onUpdate_onGetEducationList(int paramInt, boolean paramBoolean, Object paramObject)
@@ -661,15 +644,6 @@ public class CardObserver
     onSetConnectionsSwitch(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
   }
   
-  private void onUpdate_onSetDetailInfo(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt != 31) {
-      return;
-    }
-    paramObject = (Object[])paramObject;
-    onSetDetailInfo(paramBoolean, ((Integer)paramObject[0]).intValue(), (Card)paramObject[1]);
-  }
-  
   private void onUpdate_onSetEmotionRecSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
     if (paramInt != 104) {
@@ -890,8 +864,6 @@ public class CardObserver
   
   protected void onAnonymousSettingMeRedPoint(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject) {}
-  
   protected void onCardInBlackList(boolean paramBoolean, String paramString) {}
   
   protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject) {}
@@ -928,7 +900,7 @@ public class CardObserver
   
   protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard) {}
   
-  protected void onGetEducationList(boolean paramBoolean, long paramLong, ArrayList<azrs> paramArrayList) {}
+  protected void onGetEducationList(boolean paramBoolean, long paramLong, ArrayList<SchoolInfo> paramArrayList) {}
   
   protected void onGetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2) {}
   
@@ -960,7 +932,7 @@ public class CardObserver
   
   protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt) {}
   
-  protected void onGetShoppingInfo(boolean paramBoolean, String paramString, List<azrt> paramList, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void onGetShoppingInfo(boolean paramBoolean, String paramString, List<ShoppingPhotoItemInfo> paramList, int paramInt1, int paramInt2, int paramInt3) {}
   
   protected void onGetSignInInfo(boolean paramBoolean) {}
   
@@ -1014,8 +986,6 @@ public class CardObserver
   
   protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2) {}
   
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard) {}
-  
   protected void onSetEmotionRecSwitch(boolean paramBoolean1, boolean paramBoolean2) {}
   
   protected void onSetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2) {}
@@ -1048,7 +1018,6 @@ public class CardObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    onUpdate_onCardDownLoad(paramInt, paramBoolean, paramObject);
     onUpdate_onCardLabelUpdate(paramInt, paramBoolean, paramObject);
     onUpdate_onLabelLikeSet(paramInt, paramBoolean, paramObject);
     onUpdate_onVoiceManager(paramInt, paramBoolean, paramObject);
@@ -1063,12 +1032,10 @@ public class CardObserver
     onUpdate_onDeletePortrait(paramInt, paramBoolean, paramObject);
     onUpdate_onGreetingSent(paramInt, paramBoolean, paramObject);
     onUpdate_onGreetingRecv(paramInt, paramBoolean, paramObject);
-    onUpdate_onGetDetailInfo(paramInt, paramBoolean, paramObject);
     onUpdate_onGetLocationDescription(paramInt, paramBoolean, paramObject);
     onUpdate_onImpeach(paramInt, paramBoolean, paramObject);
     onUpdate_onSetCardTemplateReturn(paramInt, paramBoolean, paramObject);
     onUpdate_onNewVotePush(paramInt, paramBoolean, paramObject);
-    onUpdate_onSetDetailInfo(paramInt, paramBoolean, paramObject);
     onUpdate_onSetCardSwitch(paramInt, paramBoolean, paramObject);
     onUpdate_onGetCardSwitch(paramInt, paramBoolean, paramObject);
     onUpdate_onReqApplyUploadVoice(paramInt, paramBoolean, paramObject);
@@ -1149,12 +1116,10 @@ public class CardObserver
   protected void onVoterList(boolean paramBoolean, String paramString, ArrayList<CardProfile> paramArrayList, ArrayList<Long> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard) {}
   
   protected void reqShoppingInfo(boolean paramBoolean, int paramInt, String paramString1, String paramString2) {}
-  
-  protected void simpleUpdate(boolean paramBoolean, String paramString, Card paramCard) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardObserver
  * JD-Core Version:    0.7.0.1
  */

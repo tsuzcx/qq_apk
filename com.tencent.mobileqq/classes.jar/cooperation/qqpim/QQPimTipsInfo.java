@@ -3,12 +3,11 @@ package cooperation.qqpim;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmdu;
 
 public class QQPimTipsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQPimTipsInfo> CREATOR = new bmdu();
+  public static final Parcelable.Creator<QQPimTipsInfo> CREATOR = new QQPimTipsInfo.1();
   public byte a;
   public int a;
   public String a;
@@ -39,7 +38,7 @@ public class QQPimTipsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqpim.QQPimTipsInfo
  * JD-Core Version:    0.7.0.1
  */

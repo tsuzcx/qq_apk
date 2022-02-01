@@ -24,8 +24,8 @@ public class MsgTitleView
   
   private void init(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562423, this);
-    this.mText = ((TextView)findViewById(2131378658));
+    LayoutInflater.from(paramContext).inflate(2131562563, this);
+    this.mText = ((TextView)findViewById(2131379091));
     setOnClickListener(new MsgTitleView.1(this));
   }
   
@@ -55,7 +55,7 @@ public class MsgTitleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgTitleView
  * JD-Core Version:    0.7.0.1
  */

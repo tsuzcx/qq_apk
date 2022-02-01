@@ -10,10 +10,10 @@ public final class s_medal
   static int cache_medal_state = 0;
   static int cache_medal_type = 0;
   public String jump_url = "";
-  public int level;
-  public int medal_id;
-  public int medal_state;
-  public int medal_type;
+  public int level = 0;
+  public int medal_id = 0;
+  public int medal_state = 0;
+  public int medal_type = 0;
   public String pic_url = "";
   
   public s_medal() {}

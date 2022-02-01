@@ -48,19 +48,19 @@ class QQGameCenterModule$1
         } while (paramContext == null);
         paramIntent = new HippyMap();
         paramIntent.pushJSONObject(paramContext);
-        HippyQQEngine.dispatchEvent("QQGameCenter_newMsgCountChanged", "QQGameCenter", paramIntent);
+        HippyQQEngine.dispatchEvent("QQGameCenter_sessionChanged", "QQGameCenter", paramIntent);
         return;
       } while (!"action_qgame_unread_change".equals(str));
       paramContext = GameCenterAPIJavaScript.parseGameMessageUnreadCount(paramIntent.getExtras());
     } while (paramContext == null);
     paramIntent = new HippyMap();
     paramIntent.pushJSONObject(paramContext);
-    HippyQQEngine.dispatchEvent("QQGameCenter_sessionChanged", "QQGameCenter", paramIntent);
+    HippyQQEngine.dispatchEvent("QQGameCenter_newMsgCountChanged", "QQGameCenter", paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.gamecenter.QQGameCenterModule.1
  * JD-Core Version:    0.7.0.1
  */

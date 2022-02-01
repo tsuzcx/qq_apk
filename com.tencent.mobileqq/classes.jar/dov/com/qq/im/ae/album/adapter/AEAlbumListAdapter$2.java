@@ -1,12 +1,11 @@
 package dov.com.qq.im.ae.album.adapter;
 
-import bmyh;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 
-public class AEAlbumListAdapter$2
+class AEAlbumListAdapter$2
   implements Runnable
 {
-  public AEAlbumListAdapter$2(bmyh parambmyh, QQAlbumInfo paramQQAlbumInfo) {}
+  AEAlbumListAdapter$2(AEAlbumListAdapter paramAEAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class AEAlbumListAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.adapter.AEAlbumListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

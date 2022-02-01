@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
 import android.content.Intent;
-import anfk;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
 
@@ -19,7 +18,7 @@ class ApolloStoreActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.2
  * JD-Core Version:    0.7.0.1
  */

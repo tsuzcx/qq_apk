@@ -13,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import anvx;
-import aqfg;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class DrawableSeekbar
   extends LinearLayout
@@ -22,7 +21,7 @@ public class DrawableSeekbar
 {
   int jdField_a_of_type_Int;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  aqfg jdField_a_of_type_Aqfg;
+  DrawableSeekbar.OnProgressChangedListener jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener;
   boolean jdField_a_of_type_Boolean = false;
   int b;
   int c;
@@ -53,7 +52,7 @@ public class DrawableSeekbar
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131703012));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131703560));
   }
   
   private void b()
@@ -81,7 +80,7 @@ public class DrawableSeekbar
     return this.c > 0;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getOrientation() == 1)
     {
@@ -108,8 +107,8 @@ public class DrawableSeekbar
         getParent().requestDisallowInterceptTouchEvent(true);
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
         this.b = ((int)paramMotionEvent.getRawY());
-        if (this.jdField_a_of_type_Aqfg != null) {
-          this.jdField_a_of_type_Aqfg.a();
+        if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.a();
         }
       }
     case 2: 
@@ -132,12 +131,12 @@ public class DrawableSeekbar
         k = getWidth();
         j = k - paramView.getWidth();
       }
-      if (this.jdField_a_of_type_Aqfg != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener != null)
       {
         i = this.d;
         this.d = ((int)(j / (getWidth() - paramView.getWidth()) * this.c));
         if (i != this.d) {
-          this.jdField_a_of_type_Aqfg.a(this.d);
+          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.a(this.d);
         }
       }
       paramView.layout(j, paramView.getTop(), k, paramView.getBottom());
@@ -147,10 +146,10 @@ public class DrawableSeekbar
       break;
       getParent().requestDisallowInterceptTouchEvent(false);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Aqfg == null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener == null) {
         break;
       }
-      this.jdField_a_of_type_Aqfg.b();
+      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.b();
       break;
       j = i;
     }
@@ -161,9 +160,9 @@ public class DrawableSeekbar
     this.c = paramInt;
   }
   
-  public void setOnProgressChangedListener(aqfg paramaqfg)
+  public void setOnProgressChangedListener(DrawableSeekbar.OnProgressChangedListener paramOnProgressChangedListener)
   {
-    this.jdField_a_of_type_Aqfg = paramaqfg;
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener = paramOnProgressChangedListener;
   }
   
   public void setProgress(int paramInt)

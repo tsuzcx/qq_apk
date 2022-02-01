@@ -8,26 +8,26 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.utils.IPlayableView;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteItemViewUtil;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteItemViewUtil.Companion;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.pts.core.itemview.PTSItemView;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
-import qch;
-import qfw;
-import qyp;
-import qyq;
-import rab;
-import rac;
-import rbx;
-import szd;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLitePlayableCardView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/biz/pubaccount/readinjoy/gifvideo/utils/IPlayableView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "componentLastRead", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentLastRead;", "currentDividerType", "", "currentShowLastRead", "", "dividerView", "Landroid/view/View;", "hasTraversed", "ptsItemView", "Lcom/tencent/pts/core/itemview/PTSItemView;", "getPtsItemView", "()Lcom/tencent/pts/core/itemview/PTSItemView;", "videoView", "Lcom/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView;", "destroy", "", "enumeratePtsItemView", "action", "getFirstVideoView", "viewGroup", "Landroid/view/ViewGroup;", "initUI", "pause", "start", "stop", "updateComponentLastRead", "readInJoyModel", "Lcom/tencent/biz/pubaccount/readinjoy/model/IReadInJoyModel;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "updateDividerView", "dividerType", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLitePlayableCardView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/biz/pubaccount/readinjoy/gifvideo/utils/IPlayableView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "componentLastRead", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentLastRead;", "currentDividerType", "", "currentShowLastRead", "", "dividerView", "Landroid/view/View;", "hasTraversed", "ptsItemView", "Lcom/tencent/pts/core/itemview/PTSItemView;", "getPtsItemView", "()Lcom/tencent/pts/core/itemview/PTSItemView;", "videoView", "Lcom/tencent/biz/pubaccount/readinjoy/gifvideo/base/video/VideoView;", "destroy", "", "enumeratePtsItemView", "action", "getArticleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "getFirstVideoView", "viewGroup", "Landroid/view/ViewGroup;", "hasVideoView", "initUI", "pause", "start", "stop", "updateComponentLastRead", "readInJoyModel", "Lcom/tencent/biz/pubaccount/readinjoy/model/IReadInJoyModel;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "updateDividerView", "dividerType", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class PTSLitePlayableCardView
   extends LinearLayout
-  implements qch
+  implements IPlayableView
 {
-  public static final qyp a;
+  public static final PTSLitePlayableCardView.Companion a;
   private int jdField_a_of_type_Int;
   private final View jdField_a_of_type_AndroidViewView;
   private VideoView jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView;
@@ -39,7 +39,7 @@ public final class PTSLitePlayableCardView
   
   static
   {
-    jdField_a_of_type_Qyp = new qyp(null);
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyPtsLitePTSLitePlayableCardView$Companion = new PTSLitePlayableCardView.Companion(null);
   }
   
   public PTSLitePlayableCardView(@NotNull Context paramContext)
@@ -47,7 +47,7 @@ public final class PTSLitePlayableCardView
     super(paramContext);
     this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView = new PTSItemView(paramContext);
     this.jdField_a_of_type_AndroidViewView = new View(paramContext);
-    d();
+    c();
   }
   
   private final VideoView a(ViewGroup paramViewGroup)
@@ -68,7 +68,7 @@ public final class PTSLitePlayableCardView
     return null;
   }
   
-  private final boolean a(int paramInt)
+  private final boolean b(int paramInt)
   {
     if (!this.jdField_a_of_type_Boolean)
     {
@@ -80,14 +80,16 @@ public final class PTSLitePlayableCardView
     {
       switch (paramInt)
       {
+      case 4: 
       default: 
         return false;
-      case 1: 
-        return localVideoView.startPlay();
-      case 2: 
+      case 3: 
+      case 8: 
+        return localVideoView.startPlay(paramInt);
+      case 6: 
         localVideoView.stop();
         return false;
-      case 3: 
+      case 5: 
         localVideoView.pause();
         return false;
       }
@@ -97,16 +99,26 @@ public final class PTSLitePlayableCardView
     return false;
   }
   
-  private final void d()
+  private final void c()
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(-1, 1);
-    localMarginLayoutParams.leftMargin = rab.a.b();
-    localMarginLayoutParams.rightMargin = rab.a.b();
+    localMarginLayoutParams.leftMargin = PTSLiteItemViewUtil.a.b();
+    localMarginLayoutParams.rightMargin = PTSLiteItemViewUtil.a.b();
     this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localMarginLayoutParams);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1710619);
     setOrientation(1);
     addView((View)this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView);
     addView(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  @Nullable
+  public BaseArticleInfo a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView;
+    if (localObject != null) {}
+    for (localObject = ((VideoView)localObject).getArticleInfo();; localObject = null) {
+      return (BaseArticleInfo)localObject;
+    }
   }
   
   @NotNull
@@ -117,7 +129,7 @@ public final class PTSLitePlayableCardView
   
   public void a()
   {
-    a(2);
+    b(6);
   }
   
   public final void a(int paramInt)
@@ -139,13 +151,13 @@ public final class PTSLitePlayableCardView
       }
       if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
       {
-        ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = rab.a.b();
-        ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = rab.a.b();
+        ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = PTSLiteItemViewUtil.a.b();
+        ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = PTSLiteItemViewUtil.a.b();
       }
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1710619);
       continue;
       if (localLayoutParams != null) {
-        localLayoutParams.height = rab.a.a();
+        localLayoutParams.height = PTSLiteItemViewUtil.a.a();
       }
       if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
       {
@@ -159,8 +171,8 @@ public final class PTSLitePlayableCardView
       }
       if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
       {
-        ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = rab.a.c();
-        ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = rab.a.c();
+        ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = PTSLiteItemViewUtil.a.c();
+        ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = PTSLiteItemViewUtil.a.c();
       }
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1710619);
       continue;
@@ -170,11 +182,11 @@ public final class PTSLitePlayableCardView
     }
   }
   
-  public final void a(@NotNull qfw paramqfw, @NotNull szd paramszd)
+  public final void a(@NotNull IReadInJoyModel paramIReadInJoyModel, @NotNull ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    Intrinsics.checkParameterIsNotNull(paramqfw, "readInJoyModel");
-    Intrinsics.checkParameterIsNotNull(paramszd, "adapter");
-    boolean bool = paramqfw.g();
+    Intrinsics.checkParameterIsNotNull(paramIReadInJoyModel, "readInJoyModel");
+    Intrinsics.checkParameterIsNotNull(paramReadInJoyBaseAdapter, "adapter");
+    boolean bool = paramIReadInJoyModel.g();
     if (this.b == bool) {}
     do
     {
@@ -197,35 +209,36 @@ public final class PTSLitePlayableCardView
         }
         localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead;
         if (localObject != null) {
-          ((ComponentLastRead)localObject).a(paramqfw);
+          ((ComponentLastRead)localObject).a(paramIReadInJoyModel);
         }
-        paramqfw = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead;
-      } while (paramqfw == null);
-      paramqfw.a((rbx)new qyq(paramszd));
+        paramIReadInJoyModel = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead;
+      } while (paramIReadInJoyModel == null);
+      paramIReadInJoyModel.a((FeedItemCell.CellListener)new PTSLitePlayableCardView.updateComponentLastRead.1(paramReadInJoyBaseAdapter));
       return;
-      paramqfw = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead;
-    } while (paramqfw == null);
-    paramqfw.setVisibility(8);
+      paramIReadInJoyModel = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead;
+    } while (paramIReadInJoyModel == null);
+    paramIReadInJoyModel.setVisibility(8);
   }
   
   public boolean a()
   {
-    return a(1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView = a((ViewGroup)this);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView != null;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return b(paramInt);
   }
   
   public void b()
   {
-    a(3);
-  }
-  
-  public void c()
-  {
-    a(4);
+    b(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLitePlayableCardView
  * JD-Core Version:    0.7.0.1
  */

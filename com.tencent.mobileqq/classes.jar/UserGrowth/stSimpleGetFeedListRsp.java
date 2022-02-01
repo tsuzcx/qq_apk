@@ -15,13 +15,13 @@ public final class stSimpleGetFeedListRsp
   static Map<String, Integer> cache_followinfo;
   static stMyVideoInfo cache_my_vinfo = new stMyVideoInfo();
   public String attach_info = "";
-  public byte clearcache;
-  public stGlobalConfig config;
-  public ArrayList<stSimpleMetaFeed> feeds;
-  public Map<String, Integer> followinfo;
+  public byte clearcache = 0;
+  public stGlobalConfig config = null;
+  public ArrayList<stSimpleMetaFeed> feeds = null;
+  public Map<String, Integer> followinfo = null;
   public String gdt_args = "";
   public boolean is_finished = true;
-  public stMyVideoInfo my_vinfo;
+  public stMyVideoInfo my_vinfo = null;
   public String session = "";
   public String trace_id = "";
   

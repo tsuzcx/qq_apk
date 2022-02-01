@@ -43,7 +43,7 @@ public enum CMSActionStatus
   
   public final boolean isEndState()
   {
-    switch (amvd.b[ordinal()])
+    switch (CMSActionStatus.WhenMappings.b[ordinal()])
     {
     default: 
       return true;
@@ -53,7 +53,7 @@ public enum CMSActionStatus
   
   public final int toReportErrorCode()
   {
-    switch (amvd.a[ordinal()])
+    switch (CMSActionStatus.WhenMappings.a[ordinal()])
     {
     default: 
       throw new NoWhenBranchMatchedException();
@@ -87,7 +87,7 @@ public enum CMSActionStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.CMSActionStatus
  * JD-Core Version:    0.7.0.1
  */

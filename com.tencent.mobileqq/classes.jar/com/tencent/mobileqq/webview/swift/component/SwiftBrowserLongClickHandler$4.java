@@ -3,21 +3,20 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import bigy;
-import bkzi;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.common.util.Util;
 import com.tencent.biz.qrcode.activity.ScannerResult;
+import com.tencent.biz.qrcode.activity.ScannerUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.widget.ActionSheet;
 import java.io.File;
-import nwh;
-import nwo;
-import zmk;
 
-public class SwiftBrowserLongClickHandler$4
+class SwiftBrowserLongClickHandler$4
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$4(bigy parambigy, String paramString) {}
+  SwiftBrowserLongClickHandler$4(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler, String paramString) {}
   
   public void run()
   {
@@ -32,10 +31,10 @@ public class SwiftBrowserLongClickHandler$4
     {
       ((Bundle)???).putString("Cookie", (String)localObject2);
       if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserLongClickHandler", 2, "Get cookie: " + nwo.c((String)localObject2, new String[0]) + " from " + nwo.b(this.a, new String[0]));
+        QLog.d("SwiftBrowserLongClickHandler", 2, "Get cookie: " + Util.c((String)localObject2, new String[0]) + " from " + Util.b(this.a, new String[0]));
       }
     }
-    ??? = nwh.a(BaseApplication.getContext(), this.a, (Bundle)???);
+    ??? = ImageUtil.a(BaseApplication.getContext(), this.a, (Bundle)???);
     this.this$0.jdField_b_of_type_JavaLangString = ((String)???);
     if (QLog.isColorLevel()) {
       QLog.d("SwiftBrowserLongClickHandler", 2, "saveImage filepath = " + this.this$0.jdField_b_of_type_JavaLangString);
@@ -62,7 +61,7 @@ public class SwiftBrowserLongClickHandler$4
         this.this$0.c((String)???);
         return;
       }
-      localObject2 = zmk.a(Uri.parse("file://" + new File((String)???).getAbsolutePath()), this.this$0.jdField_a_of_type_AndroidAppActivity, 3);
+      localObject2 = ScannerUtils.a(Uri.parse("file://" + new File((String)???).getAbsolutePath()), this.this$0.jdField_a_of_type_AndroidAppActivity, 3);
       if (localObject2 == null) {
         continue;
       }
@@ -70,7 +69,7 @@ public class SwiftBrowserLongClickHandler$4
       {
         this.this$0.c = this.this$0.jdField_b_of_type_JavaLangString;
         this.this$0.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult = ((ScannerResult)localObject2);
-        if (!this.this$0.jdField_a_of_type_Bkzi.isShowing()) {
+        if (!this.this$0.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
           continue;
         }
         this.this$0.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new SwiftBrowserLongClickHandler.4.3(this, (ScannerResult)localObject2));
@@ -81,7 +80,7 @@ public class SwiftBrowserLongClickHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4
  * JD-Core Version:    0.7.0.1
  */

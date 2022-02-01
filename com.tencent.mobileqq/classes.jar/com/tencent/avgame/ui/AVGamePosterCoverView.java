@@ -36,7 +36,7 @@ public class AVGamePosterCoverView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
-  private void b(Canvas paramCanvas)
+  private void a(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
@@ -46,7 +46,7 @@ public class AVGamePosterCoverView
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  private void c(Canvas paramCanvas)
+  private void b(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPath.moveTo(getWidth(), this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPath.lineTo(getWidth(), 0.0F);
@@ -56,7 +56,7 @@ public class AVGamePosterCoverView
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  private void d(Canvas paramCanvas)
+  private void c(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, getHeight() - this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, getHeight());
@@ -66,7 +66,7 @@ public class AVGamePosterCoverView
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  private void e(Canvas paramCanvas)
+  private void d(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPath.moveTo(getWidth() - this.jdField_a_of_type_Int, getHeight());
     this.jdField_a_of_type_AndroidGraphicsPath.lineTo(getWidth(), getHeight());
@@ -80,10 +80,10 @@ public class AVGamePosterCoverView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
+    a(paramCanvas);
     b(paramCanvas);
     c(paramCanvas);
     d(paramCanvas);
-    e(paramCanvas);
   }
   
   public void setRadius(int paramInt)
@@ -93,7 +93,7 @@ public class AVGamePosterCoverView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGamePosterCoverView
  * JD-Core Version:    0.7.0.1
  */

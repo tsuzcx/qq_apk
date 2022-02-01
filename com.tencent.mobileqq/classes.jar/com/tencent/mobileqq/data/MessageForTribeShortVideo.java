@@ -2,7 +2,7 @@ package com.tencent.mobileqq.data;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -38,7 +38,7 @@ public class MessageForTribeShortVideo
   
   public static String buildCompatibleText()
   {
-    return anvx.a(2131706045) + "QQ" + anvx.a(2131706073);
+    return HardCodeUtil.a(2131706585) + "QQ" + HardCodeUtil.a(2131706613);
   }
   
   public void doParse()
@@ -86,12 +86,12 @@ public class MessageForTribeShortVideo
   public String getSummaryMsg()
   {
     if (!TextUtils.isEmpty(this.themeName)) {
-      return anvx.a(2131706064) + this.themeName;
+      return HardCodeUtil.a(2131706604) + this.themeName;
     }
     if (!TextUtils.isEmpty(this.brief)) {
-      return anvx.a(2131706039) + this.brief;
+      return HardCodeUtil.a(2131706579) + this.brief;
     }
-    return anvx.a(2131706081);
+    return HardCodeUtil.a(2131706621);
   }
   
   public boolean isSupportReply()
@@ -114,7 +114,7 @@ public class MessageForTribeShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTribeShortVideo
  * JD-Core Version:    0.7.0.1
  */

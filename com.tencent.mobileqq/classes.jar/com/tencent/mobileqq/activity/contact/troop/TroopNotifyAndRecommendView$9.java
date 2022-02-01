@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajhg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,8 +19,8 @@ class TroopNotifyAndRecommendView$9
     if (this.this$0.a == null) {
       return;
     }
-    this.this$0.b = this.this$0.a.getMessageFacade().getMsgList(AppConstants.TROOP_SUSPICIOUS_MSG_UIN, 0);
-    ajhg.a(this.this$0.b, this.this$0.a);
+    this.this$0.b = this.this$0.a.getMessageFacade().b(AppConstants.TROOP_SUSPICIOUS_MSG_UIN, 0);
+    TroopSuspiciousHelper.a(this.this$0.b, this.this$0.a);
     ArrayList localArrayList = new ArrayList();
     while (i < this.this$0.b.size())
     {
@@ -34,7 +33,7 @@ class TroopNotifyAndRecommendView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9
  * JD-Core Version:    0.7.0.1
  */

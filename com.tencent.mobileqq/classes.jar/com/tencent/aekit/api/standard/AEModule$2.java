@@ -3,10 +3,10 @@ package com.tencent.aekit.api.standard;
 import android.content.Context;
 import com.tencent.ttpic.baseutils.device.DeviceAttrs;
 import com.tencent.ttpic.baseutils.device.DeviceInstance;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.device.GpuScopeAttrs;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.util.SecurityUtils;
 
@@ -78,7 +78,7 @@ final class AEModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.api.standard.AEModule.2
  * JD-Core Version:    0.7.0.1
  */

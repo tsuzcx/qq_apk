@@ -13,9 +13,6 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import bbis;
-import bbit;
-import bbiu;
 
 public class CircleBarView
   extends View
@@ -25,9 +22,9 @@ public class CircleBarView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbis jdField_a_of_type_Bbis;
-  private bbit jdField_a_of_type_Bbit;
-  private bbiu jdField_a_of_type_Bbiu;
+  private CircleBarView.CircleAnim jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim;
+  private CircleBarView.OnAnimationListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$OnAnimationListener;
+  private CircleBarView.ProgressAnim jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$ProgressAnim;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -86,25 +83,25 @@ public class CircleBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Bbiu = new bbiu(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$ProgressAnim = new CircleBarView.ProgressAnim(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bbis != null) && (this.jdField_a_of_type_Bbis.hasStarted())) {
-      this.jdField_a_of_type_Bbis.cancel();
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim.hasStarted())) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim.cancel();
     }
     clearAnimation();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bbis = new bbis(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim = new CircleBarView.CircleAnim(this);
     this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_Bbis.setDuration(paramInt);
-    this.jdField_a_of_type_Bbis.setRepeatCount(-1);
-    this.jdField_a_of_type_Bbis.setInterpolator(new LinearInterpolator());
-    startAnimation(this.jdField_a_of_type_Bbis);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim.setDuration(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim.setRepeatCount(-1);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim.setInterpolator(new LinearInterpolator());
+    startAnimation(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim);
   }
   
   public boolean a(int paramInt)
@@ -129,14 +126,14 @@ public class CircleBarView
     return false;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Float, this.d, false, this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Float, this.f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt2 = a(this.jdField_c_of_type_Int, paramInt2);
@@ -152,9 +149,9 @@ public class CircleBarView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setOnAnimationListener(bbit parambbit)
+  public void setOnAnimationListener(CircleBarView.OnAnimationListener paramOnAnimationListener)
   {
-    this.jdField_a_of_type_Bbit = parambbit;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$OnAnimationListener = paramOnAnimationListener;
   }
   
   public void setTextView(TextView paramTextView)
@@ -164,7 +161,7 @@ public class CircleBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CircleBarView
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class HorizontalLabelLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int k = getPaddingLeft();
     paramInt2 = getPaddingTop();
@@ -94,7 +94,7 @@ public class HorizontalLabelLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i3 = resolveSize(0, paramInt1);
     int i4 = getPaddingLeft();
@@ -163,7 +163,7 @@ public class HorizontalLabelLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HorizontalLabelLayout
  * JD-Core Version:    0.7.0.1
  */

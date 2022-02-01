@@ -1,22 +1,27 @@
 package com.tencent.mobileqq.ar;
 
-import apfv;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.download.old.AEOldResInfo;
+import dov.com.qq.im.ae.download.old.AEOldResManager.AEOldDownloadCallBack;
 
-public class ArConfigService$ArConfigManagerStub$1
-  implements Runnable
+class ArConfigService$ArConfigManagerStub$1
+  implements AEOldResManager.AEOldDownloadCallBack
 {
-  public ArConfigService$ArConfigManagerStub$1(apfv paramapfv, ArConfigService paramArConfigService, int paramInt) {}
+  ArConfigService$ArConfigManagerStub$1(ArConfigService.ArConfigManagerStub paramArConfigManagerStub) {}
   
-  public void run()
+  public void a(AEOldResInfo paramAEOldResInfo, long paramLong1, long paramLong2) {}
+  
+  public void a(AEOldResInfo paramAEOldResInfo, String paramString, boolean paramBoolean, int paramInt)
   {
-    ArConfigService.a(this.jdField_a_of_type_ComTencentMobileqqArArConfigService, this.jdField_a_of_type_Int);
-    QLog.d("ArConfig_ArConfigService", 1, "downloadArSo first progress " + this.jdField_a_of_type_Int);
+    QLog.d("ArConfig_ArConfigService", 1, "downloadFaceResource onAEDownloadFinish downloaded = " + paramBoolean + ",errorType = " + paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "downloadFaceResource onAEDownloadFinish downloaded = " + paramBoolean + ",errorType = " + paramInt + ",localFilePath = " + paramString + ",aeResInfo = " + paramAEOldResInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.1
  * JD-Core Version:    0.7.0.1
  */

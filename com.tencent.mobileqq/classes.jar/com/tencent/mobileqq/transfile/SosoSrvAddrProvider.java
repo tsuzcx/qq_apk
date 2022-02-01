@@ -33,7 +33,7 @@ public class SosoSrvAddrProvider
   public static final String TAG = "SosoSrvAddrProvider";
   private static SosoSrvAddrProvider sInstance;
   Application app;
-  private boolean bFetchedHttpsList;
+  private boolean bFetchedHttpsList = false;
   SosoSrvAddrProvider.SrvAddrChooser mChooser = new SosoSrvAddrProvider.SrvAddrChooser(this);
   private List<ISvrAddr> mSvcList;
   
@@ -161,7 +161,7 @@ public class SosoSrvAddrProvider
           }
           else
           {
-            if ((!this.bFetchedHttpsList) && (NetworkUtil.isNetworkAvailable(BaseApplication.getContext())))
+            if ((!this.bFetchedHttpsList) && (NetworkUtil.g(BaseApplication.getContext())))
             {
               HwServlet.getConfig(paramAppInterface, paramAppInterface.getCurrentAccountUin());
               this.bFetchedHttpsList = true;

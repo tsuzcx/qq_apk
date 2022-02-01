@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import aldh;
-import alfg;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.MessageToShowBanner;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import mqq.app.AppRuntime;
@@ -24,17 +24,17 @@ public class MiniAppBannerIPCModule
   public static final String ACTION_ENTER_FOREGROUND = "action.miniapp.enterforeground";
   private static final int AUTO_CLOSE_DELAY = 300000;
   private static final int MSG_AUTO_CLOSE_TIMEOUT = 1;
-  public static final String NAME = MiniAppBannerIPCModule.class.getSimpleName();
+  public static final String NAME = "MiniAppBannerIPCModule";
   public static final String TAG = "MiniAppBannerIPCModule";
   public static final String TVALUE_CLICK_MINIAPP = "0X800A123";
   public static final String TVALUE_CLOSE_MINIAPP = "0X800A124";
   public static final String TVALUE_SHOW_MINIAPP = "0X800A121";
   private Handler mHandler = new MiniAppBannerIPCModule.1(this, Looper.getMainLooper());
-  private alfg mMessageToShowBanner;
+  private BBannerHelper.MessageToShowBanner mMessageToShowBanner;
   
   private MiniAppBannerIPCModule()
   {
-    super(NAME);
+    super("MiniAppBannerIPCModule");
   }
   
   private static QQAppInterface getAppInterface()
@@ -55,7 +55,7 @@ public class MiniAppBannerIPCModule
   {
     if (this.mMessageToShowBanner != null)
     {
-      aldh.a(getAppInterface(), this.mMessageToShowBanner);
+      BBannerHelper.a(getAppInterface(), this.mMessageToShowBanner);
       this.mMessageToShowBanner = null;
     }
   }
@@ -108,9 +108,9 @@ public class MiniAppBannerIPCModule
       hideExistingMessageToBanner();
       if ("action.miniapp.enterbackground".equals(paramString))
       {
-        this.mMessageToShowBanner = aldh.a(getAppInterface(), paramInt, "com.tencent.mobileqq.miniapp", localStringBuilder.toString(), new MiniAppBannerIPCModule.BannerInteract(localMiniAppConfig));
+        this.mMessageToShowBanner = BBannerHelper.a(getAppInterface(), paramInt, "com.tencent.mobileqq.miniapp", localStringBuilder.toString(), new MiniAppBannerIPCModule.BannerInteract(localMiniAppConfig));
         this.mHandler.sendEmptyMessageDelayed(1, 300000L);
-        bdla.a(getAppInterface(), "dc00898", "", "", "0X800A121", "0X800A121", 4, 0, "", "", "", "");
+        ReportController.a(getAppInterface(), "dc00898", "", "", "0X800A121", "0X800A121", 4, 0, "", "", "", "");
       }
       return new EIPCResult();
       paramBundle = "正在使用";

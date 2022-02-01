@@ -14,10 +14,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
-import bimu;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport.ReportR5Builder;
+import com.tencent.biz.pubaccount.readinjoy.mvp.ListContract.IListModel;
+import com.tencent.biz.pubaccount.readinjoy.mvp.ListPresenter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils;
+import com.tencent.biz.pubaccount.readinjoy.ugc.mycolumn.MyColumnModel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.ClickableToastView;
+import com.tencent.mobileqq.widget.ClickableToastView.RightActionParams;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
@@ -26,29 +34,18 @@ import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
-import olh;
 import org.jetbrains.annotations.Nullable;
-import pnn;
-import pqg;
-import qjj;
-import qjt;
-import rth;
-import rzu;
-import sce;
-import scf;
-import sch;
-import scl;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment;", "Landroid/support/v4/app/Fragment;", "()V", "finish", "", "handleVideoAddToTopicResult", "errorCode", "", "activity", "Landroid/support/v4/app/FragmentActivity;", "topicId", "rowKey", "", "errorMsg", "needShowServerErrorMsg", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class SelectTopicFragment
   extends ReportV4Fragment
 {
-  public static final sce a;
+  public static final SelectTopicFragment.Companion a;
   private HashMap a;
   
   static
   {
-    jdField_a_of_type_Sce = new sce(null);
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$Companion = new SelectTopicFragment.Companion(null);
   }
   
   private final void a(int paramInt1, FragmentActivity paramFragmentActivity, int paramInt2, String paramString1, String paramString2)
@@ -61,20 +58,21 @@ public final class SelectTopicFragment
       if ((paramString2 != null) && (!paramString2.isFinishing()))
       {
         paramString2 = (Activity)paramString2;
-        localCharSequence = (CharSequence)paramFragmentActivity.getResources().getString(2131717940);
-        bimu localbimu = new bimu();
-        localbimu.jdField_a_of_type_JavaLangString = paramFragmentActivity.getResources().getString(2131717941);
-        localbimu.jdField_a_of_type_AndroidViewView$OnClickListener = ((View.OnClickListener)new scf(paramFragmentActivity, paramInt2));
-        ClickableToastView.a(paramString2, 2, localCharSequence, localbimu).a();
+        localCharSequence = (CharSequence)paramFragmentActivity.getResources().getString(2131718432);
+        ClickableToastView.RightActionParams localRightActionParams = new ClickableToastView.RightActionParams();
+        localRightActionParams.jdField_a_of_type_JavaLangString = paramFragmentActivity.getResources().getString(2131718433);
+        localRightActionParams.jdField_a_of_type_AndroidViewView$OnClickListener = ((View.OnClickListener)new SelectTopicFragment.handleVideoAddToTopicResult..inlined.apply.lambda.1(paramFragmentActivity, paramInt2));
+        ClickableToastView.a(paramString2, 2, localCharSequence, localRightActionParams).a();
       }
-      paramFragmentActivity = pnn.a();
+      paramFragmentActivity = RIJQQAppInterfaceUtil.a();
       if (paramFragmentActivity != null)
       {
-        paramFragmentActivity = new pqg().a("uin", paramFragmentActivity.getCurrentAccountUin()).a("column_id", Integer.valueOf(paramInt2)).a("rowkey", paramString1);
-        if (rth.h()) {}
+        paramFragmentActivity = new RIJTransMergeKanDianReport.ReportR5Builder().a("uin", paramFragmentActivity.getCurrentAccountUin()).a("column_id", Integer.valueOf(paramInt2)).a("rowkey", paramString1);
+        if (RIJUgcUtils.h()) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
-          olh.a("0X800ADD1", paramFragmentActivity.a("ugc_column_flag", Integer.valueOf(paramInt1)).a());
+          paramFragmentActivity = paramFragmentActivity.a("ugc_column_flag", Integer.valueOf(paramInt1)).a();
+          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X800ADD1", paramFragmentActivity);
           return;
         }
       }
@@ -89,32 +87,33 @@ public final class SelectTopicFragment
       {
         i = 1;
         if (i != 0) {
-          break label320;
+          break label344;
         }
-        label219:
+        label231:
         QQToast.a((Context)paramFragmentActivity, (CharSequence)paramString2, 0).a();
-        paramFragmentActivity = pnn.a();
+        paramFragmentActivity = RIJQQAppInterfaceUtil.a();
         if (paramFragmentActivity == null) {
-          break label339;
+          break label363;
         }
-        paramFragmentActivity = new pqg().a("uin", paramFragmentActivity.getCurrentAccountUin()).a("column_id", Integer.valueOf(paramInt2)).a("rowkey", paramString1);
-        if (!rth.h()) {
-          break label334;
+        paramFragmentActivity = new RIJTransMergeKanDianReport.ReportR5Builder().a("uin", paramFragmentActivity.getCurrentAccountUin()).a("column_id", Integer.valueOf(paramInt2)).a("rowkey", paramString1);
+        if (!RIJUgcUtils.h()) {
+          break label358;
         }
       }
     }
-    label320:
-    label334:
+    label344:
+    label358:
     for (paramInt2 = j;; paramInt2 = 0)
     {
-      olh.a("0X800ADD2", paramFragmentActivity.a("ugc_column_flag", Integer.valueOf(paramInt2)).a("reason_flag", Integer.valueOf(paramInt1)).a());
+      paramFragmentActivity = paramFragmentActivity.a("ugc_column_flag", Integer.valueOf(paramInt2)).a("reason_flag", Integer.valueOf(paramInt1)).a();
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X800ADD2", paramFragmentActivity);
       return;
       i = 0;
       break;
-      paramString2 = paramFragmentActivity.getResources().getString(2131717939);
-      break label219;
+      paramString2 = paramFragmentActivity.getResources().getString(2131718431);
+      break label231;
     }
-    label339:
+    label363:
     QLog.e("SelectTopicFragment", 1, "getQQApp, app == null");
   }
   
@@ -136,7 +135,7 @@ public final class SelectTopicFragment
         throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
       }
       localObject = (ViewGroup)localObject;
-      View localView = ((ViewGroup)localObject).findViewById(2131376186);
+      View localView = ((ViewGroup)localObject).findViewById(2131376573);
       if (localView != null) {
         ((ViewGroup)localObject).removeView(localView);
       }
@@ -179,11 +178,11 @@ public final class SelectTopicFragment
       localObject = getActivity();
       if (localObject != null)
       {
-        SelectTopicView localSelectTopicView = new SelectTopicView((FragmentActivity)localObject, new qjt((qjj)new rzu()));
-        scl localscl = new scl((Activity)localObject, (View)localSelectTopicView, new RelativeLayout.LayoutParams(-1, -2));
-        localSelectTopicView.setSelectCallback((Function1)new SelectTopicFragment.onCreate..inlined.let.lambda.1(localscl, (FragmentActivity)localObject, this, i, paramBundle));
-        localscl.setOnDismissListener((DialogInterface.OnDismissListener)new sch(this, i, paramBundle));
-        localscl.show();
+        SelectTopicView localSelectTopicView = new SelectTopicView((FragmentActivity)localObject, new ListPresenter((ListContract.IListModel)new MyColumnModel()));
+        SlidingUpDialog localSlidingUpDialog = new SlidingUpDialog((Activity)localObject, (View)localSelectTopicView, new RelativeLayout.LayoutParams(-1, -2));
+        localSelectTopicView.setSelectCallback((Function1)new SelectTopicFragment.onCreate..inlined.let.lambda.1(localSlidingUpDialog, (FragmentActivity)localObject, this, i, paramBundle));
+        localSlidingUpDialog.setOnDismissListener((DialogInterface.OnDismissListener)new SelectTopicFragment.onCreate..inlined.let.lambda.2(this, i, paramBundle));
+        localSlidingUpDialog.show();
       }
       return;
       paramBundle = "";
@@ -196,7 +195,7 @@ public final class SelectTopicFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment
  * JD-Core Version:    0.7.0.1
  */

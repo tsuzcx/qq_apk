@@ -9,10 +9,10 @@ public final class RequestGetRecommendedListV2
 {
   static byte[] cache_sessionSid;
   static int cache_type;
-  public long PopVersion;
-  public long nextFlag;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public long PopVersion = 0L;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   public int type = 0;
   
   public RequestGetRecommendedListV2() {}

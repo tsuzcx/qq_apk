@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.launch;
 
-public final class DebugInstaller$2
+final class DebugInstaller$2
   implements Runnable
 {
   /* Error */
@@ -203,7 +203,7 @@ public final class DebugInstaller$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.DebugInstaller.2
  * JD-Core Version:    0.7.0.1
  */

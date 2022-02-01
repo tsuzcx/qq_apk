@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bfoh;
-import bfoi;
-import bfok;
 import java.util.UUID;
 
-public class TroopFileUploadMgr$6$1
+class TroopFileUploadMgr$6$1
   implements Runnable
 {
-  public TroopFileUploadMgr$6$1(bfoi parambfoi, UUID paramUUID, boolean paramBoolean, int paramInt, bfok parambfok) {}
+  TroopFileUploadMgr$6$1(TroopFileUploadMgr.6 param6, UUID paramUUID, boolean paramBoolean, int paramInt, TroopFileUploadMgr.ITroopFileUploadWorker paramITroopFileUploadWorker) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bfoi.a.a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bfok);
+    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadMgr$6.a.a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadMgr$ITroopFileUploadWorker);
   }
 }
 

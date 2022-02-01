@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.teamwork;
 
-import becr;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import java.util.ArrayList;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.NotOnlineFile;
 
-public final class TeamWorkUtils$4
+final class TeamWorkUtils$4
   implements Runnable
 {
-  public TeamWorkUtils$4(String paramString, QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity) {}
+  TeamWorkUtils$4(QQAppInterface paramQQAppInterface, msg_comm.Msg paramMsg, im_msg_body.NotOnlineFile paramNotOnlineFile, MessageForStructing paramMessageForStructing) {}
   
   public void run()
   {
-    becr.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler(), new ArrayList(), this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg, this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.frienduin, false, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.vipBubbleID, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.vipBubbleDiyTextId, null);
   }
 }
 

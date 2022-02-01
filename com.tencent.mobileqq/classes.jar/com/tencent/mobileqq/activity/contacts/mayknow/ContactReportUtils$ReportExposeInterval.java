@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.mayknow;
 
-import ajlj;
-import ajlk;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -21,9 +19,9 @@ public class ContactReportUtils$ReportExposeInterval
   private Handler jdField_a_of_type_AndroidOsHandler;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<ajlj> jdField_a_of_type_JavaUtilList;
+  private List<ContactReportUtils.ReportExposeInterval.ReportItem> jdField_a_of_type_JavaUtilList;
   private volatile boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  private volatile boolean b = false;
   
   ContactReportUtils$ReportExposeInterval()
   {
@@ -38,7 +36,7 @@ public class ContactReportUtils$ReportExposeInterval
     }
   }
   
-  private void a(ajlj paramajlj)
+  private void a(ContactReportUtils.ReportExposeInterval.ReportItem paramReportItem)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ContactReportUtils", 2, "really do delay report, mApp = " + this.jdField_a_of_type_JavaLangRefWeakReference);
@@ -50,7 +48,7 @@ public class ContactReportUtils$ReportExposeInterval
       return;
       localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (localQQAppInterface == null);
-    ContactReportUtils.a(localQQAppInterface, paramajlj.jdField_a_of_type_Int, paramajlj.jdField_a_of_type_JavaUtilArrayList, paramajlj.jdField_b_of_type_JavaUtilArrayList, paramajlj.c, paramajlj.d, paramajlj.jdField_b_of_type_Int, paramajlj.jdField_a_of_type_JavaLangString, true);
+    ContactReportUtils.a(localQQAppInterface, paramReportItem.jdField_a_of_type_Int, paramReportItem.jdField_a_of_type_JavaUtilArrayList, paramReportItem.jdField_b_of_type_JavaUtilArrayList, paramReportItem.c, paramReportItem.d, paramReportItem.jdField_b_of_type_Int, paramReportItem.jdField_a_of_type_JavaLangString, true);
   }
   
   private void a(QQAppInterface arg1)
@@ -59,9 +57,9 @@ public class ContactReportUtils$ReportExposeInterval
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(???);
       ??? = BaseApplicationImpl.getApplication().getSharedPreferences("com.tencent.mobileqq.ReportExposeInterval_" + ???.getCurrentAccountUin(), 0);
-      ajlk localajlk = new ajlk();
-      this.jdField_a_of_type_Boolean = ???.getBoolean("ReportExposeInterval_enable", localajlk.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Long = ???.getLong("ReportExposeInterval_interval", localajlk.jdField_a_of_type_Long);
+      ContactReportUtils.ReportExposeIntervalConfig localReportExposeIntervalConfig = new ContactReportUtils.ReportExposeIntervalConfig();
+      this.jdField_a_of_type_Boolean = ???.getBoolean("ReportExposeInterval_enable", localReportExposeIntervalConfig.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Long = ???.getLong("ReportExposeInterval_interval", localReportExposeIntervalConfig.jdField_a_of_type_Long);
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         this.jdField_a_of_type_JavaUtilList.clear();
@@ -115,7 +113,7 @@ public class ContactReportUtils$ReportExposeInterval
     if (localQQAppInterface != paramQQAppInterface) {
       a(paramQQAppInterface);
     }
-    paramQQAppInterface = new ajlj();
+    paramQQAppInterface = new ContactReportUtils.ReportExposeInterval.ReportItem();
     paramQQAppInterface.jdField_a_of_type_Int = paramInt1;
     paramQQAppInterface.jdField_a_of_type_JavaUtilArrayList = ???;
     paramQQAppInterface.jdField_b_of_type_JavaUtilArrayList = paramArrayList2;
@@ -179,7 +177,7 @@ public class ContactReportUtils$ReportExposeInterval
         }
         ??? = localArrayList.iterator();
         if (((Iterator)???).hasNext()) {
-          a((ajlj)((Iterator)???).next());
+          a((ContactReportUtils.ReportExposeInterval.ReportItem)((Iterator)???).next());
         }
       }
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.jdField_a_of_type_Long);
@@ -194,7 +192,7 @@ public class ContactReportUtils$ReportExposeInterval
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.ContactReportUtils.ReportExposeInterval
  * JD-Core Version:    0.7.0.1
  */

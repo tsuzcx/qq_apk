@@ -4,54 +4,54 @@ import android.support.annotation.NonNull;
 
 public class ExcitingTransferUploadResultRp
 {
-  public boolean m_bIsFlashTransfer;
-  public boolean m_bIsXTFValid;
-  public int m_cXTFTransferType = -1;
-  public long m_dwFileCookieId;
-  public int m_dwProxyType;
-  public int m_eInvalidReason;
-  public long m_nResult;
-  public long m_nSrvReturCode;
-  public int m_nTcpCnnCode;
-  public int m_nTcpSocketCode;
-  public String m_strFileIdCrc;
-  public String m_strFileName;
-  public String m_strFileUrl;
-  public String m_strServerIp;
-  public String m_strSuffix;
-  public long m_u64FileSize;
-  public long m_u64HttpTime;
-  public long m_u64ReportVer;
-  public long m_u64StartSize;
-  public long m_u64TransferSize;
-  public long m_u64TransferSpeed;
-  public long m_uDelayTotoalCount;
-  public long m_uFullHashCaculateTime;
-  public long m_uGroupCode;
-  public long m_uHashCaculateTime;
-  public long m_uIpChangeCount;
-  public long m_uMaxUploadingFtnNum;
-  public long m_uPeerUin;
-  public long m_uQueryHoleCount;
-  public long m_uRangDiffCount;
-  public long m_uRetryCount;
-  public long m_uRollBackCount;
-  public long m_uSecurityTime;
-  public long m_uTotalTime;
-  public int m_wAppType = -1;
-  public short m_wHttpsSupport;
-  public short m_wServerPort;
-  public int m_wTranferPlatform = -1;
+  public boolean mbIsFlashTransfer = false;
+  public boolean mbIsXTFValid = false;
+  public int mcXTFTransferType = -1;
+  public long mdwFileCookieId;
+  public int mdwProxyType = 0;
+  public int meInvalidReason = 0;
+  public long mnResult = 0L;
+  public long mnSrvReturCode = 0L;
+  public int mnTcpCnnCode = 0;
+  public int mnTcpSocketCode = 0;
+  public String mstrFileIdCrc;
+  public String mstrFileName;
+  public String mstrFileUrl;
+  public String mstrServerIp;
+  public String mstrSuffix;
+  public long mu64FileSize = 0L;
+  public long mu64HttpTime = 0L;
+  public long mu64ReportVer = 0L;
+  public long mu64StartSize = 0L;
+  public long mu64TransferSize = 0L;
+  public long mu64TransferSpeed = 0L;
+  public long muDelayTotoalCount = 0L;
+  public long muFullHashCaculateTime = 0L;
+  public long muGroupCode = 0L;
+  public long muHashCaculateTime = 0L;
+  public long muIpChangeCount = 0L;
+  public long muMaxUploadingFtnNum = 0L;
+  public long muPeerUin = 0L;
+  public long muQueryHoleCount = 0L;
+  public long muRangDiffCount = 0L;
+  public long muRetryCount = 0L;
+  public long muRollBackCount = 0L;
+  public long muSecurityTime = 0L;
+  public long muTotalTime = 0L;
+  public int mwAppType = -1;
+  public short mwHttpsSupport = 0;
+  public short mwServerPort = 0;
+  public int mwTranferPlatform = -1;
   
   @NonNull
   public String toString()
   {
-    return "m_dwFileCookieId:" + this.m_dwFileCookieId + "TransferType:" + this.m_cXTFTransferType + " m_wTranferPlatform:" + this.m_wTranferPlatform + " m_wAppType:" + this.m_wAppType + " m_nResult:" + this.m_nResult + " m_nSrvReturCode:" + this.m_nSrvReturCode + " m_strFileName:" + this.m_strFileName + " m_strSuffix:" + this.m_strSuffix + " m_u64FileSize:" + this.m_u64FileSize + " m_uPeerUin:" + this.m_uPeerUin + " m_uGroupCode:" + this.m_uGroupCode + " m_bIsXTFValid:" + this.m_bIsXTFValid + " m_u64TransferSpeed:" + this.m_u64TransferSpeed + " m_u64HttpTime:" + this.m_u64HttpTime + " m_u64TransferSize:" + this.m_u64TransferSize + " m_strServerIp:" + this.m_strServerIp + " m_wServerPort:" + this.m_wServerPort + " m_dwProxyType:" + this.m_dwProxyType + " m_strFileUrl:" + this.m_strFileUrl + " m_u64StartSize:" + this.m_u64StartSize + " m_u64ReportVer:" + this.m_u64ReportVer + " m_eInvalidReason:" + this.m_eInvalidReason + " m_uMaxUploadingFtnNum:" + this.m_uMaxUploadingFtnNum + " m_uRetryCount:" + this.m_uRetryCount + " m_uIpChangeCount:" + this.m_uIpChangeCount + " m_uRollBackCount:" + this.m_uRollBackCount + " m_uQueryHoleCount:" + this.m_uQueryHoleCount + " m_uRangDiffCount:" + this.m_uRangDiffCount + " m_uDelayTotoalCount:" + this.m_uDelayTotoalCount + " m_nTcpCnnCode:" + this.m_nTcpCnnCode + " m_nTcpSocketCode:" + this.m_nTcpSocketCode + " m_wHttpsSupport:" + this.m_wHttpsSupport + " m_uTotalTime:" + this.m_uTotalTime + " m_uFullHashCaculateTime:" + this.m_uFullHashCaculateTime;
+    return "m_dwFileCookieId:" + this.mdwFileCookieId + "TransferType:" + this.mcXTFTransferType + " m_wTranferPlatform:" + this.mwTranferPlatform + " m_wAppType:" + this.mwAppType + " m_nResult:" + this.mnResult + " m_nSrvReturCode:" + this.mnSrvReturCode + " m_strFileName:" + this.mstrFileName + " m_strSuffix:" + this.mstrSuffix + " m_u64FileSize:" + this.mu64FileSize + " m_uPeerUin:" + this.muPeerUin + " m_uGroupCode:" + this.muGroupCode + " m_bIsXTFValid:" + this.mbIsXTFValid + " m_u64TransferSpeed:" + this.mu64TransferSpeed + " m_u64HttpTime:" + this.mu64HttpTime + " m_u64TransferSize:" + this.mu64TransferSize + " m_strServerIp:" + this.mstrServerIp + " m_wServerPort:" + this.mwServerPort + " m_dwProxyType:" + this.mdwProxyType + " m_strFileUrl:" + this.mstrFileUrl + " m_u64StartSize:" + this.mu64StartSize + " m_u64ReportVer:" + this.mu64ReportVer + " m_eInvalidReason:" + this.meInvalidReason + " m_uMaxUploadingFtnNum:" + this.muMaxUploadingFtnNum + " m_uRetryCount:" + this.muRetryCount + " m_uIpChangeCount:" + this.muIpChangeCount + " m_uRollBackCount:" + this.muRollBackCount + " m_uQueryHoleCount:" + this.muQueryHoleCount + " m_uRangDiffCount:" + this.muRangDiffCount + " m_uDelayTotoalCount:" + this.muDelayTotoalCount + " m_nTcpCnnCode:" + this.mnTcpCnnCode + " m_nTcpSocketCode:" + this.mnTcpSocketCode + " m_wHttpsSupport:" + this.mwHttpsSupport + " m_uTotalTime:" + this.muTotalTime + " m_uFullHashCaculateTime:" + this.muFullHashCaculateTime;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp
  * JD-Core Version:    0.7.0.1
  */

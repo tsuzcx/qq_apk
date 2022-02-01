@@ -3,7 +3,7 @@ package com.tencent.image;
 import android.os.Handler;
 import android.os.SystemClock;
 
-class NativeGifIndex8$NativeDecodeFrameTask
+public class NativeGifIndex8$NativeDecodeFrameTask
   implements Runnable
 {
   final long mNextFrameTime;

@@ -6,33 +6,31 @@ import android.net.Uri;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.view.View;
-import antj;
-import bihf;
-import biit;
+import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.sonic.SonicRuntimeImpl;
-import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.dpc.api.IDPCApi;
+import com.tencent.mobileqq.dpc.enumname.DPCNames;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.webprocess.temp.api.IWebviewApi;
+import com.tencent.mobileqq.webview.swift.CommonJsPluginFactory;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.WebViewProvider;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtilss;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sonic.sdk.SonicConfig.Builder;
 import com.tencent.sonic.sdk.SonicEngine;
 import java.util.Arrays;
 import java.util.List;
-import nwo;
+import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WebAccelerateHelper
 {
-  private static final String[] CFG_KEYS = { "preloadUrl" };
+  private static final String[] CFG_KEYS;
   public static final String CREATE_WEB_VIEW_PLUGIN_ENGINE = "createWebViewPluginEngine";
   public static final String KEY_PRELOAD_URL = "preloadUrl";
   public static final int NEED_CHECK_COOKIE = 1;
@@ -56,15 +54,21 @@ public class WebAccelerateHelper
   public static final int SW_VERIFY_COOKIE = 1;
   public static final int SW_WEB_CORE_DUMP_MASK = 6;
   private static final String TAG = "WebAccelerateHelper";
-  private static WebAccelerateHelper instance;
-  public static boolean isWebViewCache;
-  private static final Object lock = new Object();
+  private static WebAccelerateHelper instance = null;
+  public static boolean isWebViewCache = false;
+  private static final Object lock;
   public static View preloadBrowserView;
   static volatile ArrayMap<String, String> sWebViewFeatureConfigs;
   static volatile Integer[] sWebViewFeatureParams;
   public WebAccelerateHelper.TicketInfoListener mTicketInfoListener;
   public volatile String param;
   private final Object sDPCLock = new Object();
+  
+  static
+  {
+    CFG_KEYS = new String[] { "preloadUrl" };
+    lock = new Object();
+  }
   
   public static WebAccelerateHelper getInstance()
   {
@@ -85,7 +89,7 @@ public class WebAccelerateHelper
       if (SonicEngine.isGetInstanceAllowed()) {
         return SonicEngine.getInstance();
       }
-      SonicEngine localSonicEngine = SonicEngine.createInstance(new SonicRuntimeImpl(BaseApplicationImpl.getApplication()), new SonicConfig.Builder().build());
+      SonicEngine localSonicEngine = SonicEngine.createInstance(((IWebviewApi)QRoute.api(IWebviewApi.class)).createSonicRuntime(), new SonicConfig.Builder().build());
       return localSonicEngine;
     }
     catch (Throwable localThrowable)
@@ -101,8 +105,7 @@ public class WebAccelerateHelper
     if (preloadBrowserView == null) {}
     try
     {
-      preloadBrowserView = new WebBrowserViewContainer(BaseApplicationImpl.sApplication);
-      ((WebBrowserViewContainer)preloadBrowserView).a(false);
+      preloadBrowserView = ((IWebviewApi)QRoute.api(IWebviewApi.class)).preloadWebView();
       if (QLog.isColorLevel()) {
         QLog.d("WebAccelerateHelper", 2, "Pre_Load_init_browser_view cost = " + (System.currentTimeMillis() - l));
       }
@@ -117,76 +120,69 @@ public class WebAccelerateHelper
     }
   }
   
-  public void bindFragment(WebViewPluginEngine paramWebViewPluginEngine, WebViewFragment paramWebViewFragment)
+  public void bindFragment(WebViewPluginEngine paramWebViewPluginEngine, WebViewProvider paramWebViewProvider)
   {
     long l = System.currentTimeMillis();
-    paramWebViewPluginEngine.a(paramWebViewFragment);
+    paramWebViewPluginEngine.a(paramWebViewProvider);
     if (QLog.isColorLevel()) {
       QLog.d("WebAccelerateHelper", 2, "bindFragment cost : " + (System.currentTimeMillis() - l));
     }
   }
   
-  public void checkCookie(String paramString)
+  public WebViewPluginEngine createWebViewPluginEngine(AppRuntime paramAppRuntime, Activity paramActivity, CustomWebView paramCustomWebView, CommonJsPluginFactory paramCommonJsPluginFactory, List<WebViewPlugin> paramList)
   {
-    if ((isCheckCookie()) && (!TextUtils.isEmpty(paramString))) {
-      ThreadManager.post(new WebAccelerateHelper.3(this, paramString), 5, null, true);
-    }
-  }
-  
-  public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, WebAccelerateHelper.CommonJsPluginFactory paramCommonJsPluginFactory, List<WebViewPlugin> paramList)
-  {
-    nwo.a("createWebViewPluginEngine");
-    if ((paramAppInterface != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList == null))
+    Util.a("createWebViewPluginEngine");
+    if ((paramAppRuntime != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList == null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("WebAccelerateHelper", 2, "preload webview engine(with no plugin list)");
       }
-      paramAppInterface = new WebViewPluginEngine(paramAppInterface, paramCommonJsPluginFactory, null);
+      paramAppRuntime = new WebViewPluginEngine(paramAppRuntime, paramCommonJsPluginFactory, null);
     }
     for (;;)
     {
-      nwo.b("createWebViewPluginEngine");
-      if (paramAppInterface != null)
+      Util.b("createWebViewPluginEngine");
+      if (paramAppRuntime != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("WebAccelerateHelper", 2, "plugin list:" + paramAppInterface.a());
+          QLog.d("WebAccelerateHelper", 2, "plugin list:" + paramAppRuntime.a());
         }
-        return paramAppInterface;
-        if ((paramAppInterface != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList != null))
+        return paramAppRuntime;
+        if ((paramAppRuntime != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList != null))
         {
           if (QLog.isColorLevel()) {
             QLog.d("WebAccelerateHelper", 2, "preload webview engine(with plugin list");
           }
-          paramAppInterface = new WebViewPluginEngine(paramAppInterface, paramCommonJsPluginFactory, paramList);
+          paramAppRuntime = new WebViewPluginEngine(paramAppRuntime, paramCommonJsPluginFactory, paramList);
           continue;
         }
-        if ((paramAppInterface != null) && (paramList == null))
+        if ((paramAppRuntime != null) && (paramList == null))
         {
           if (QLog.isColorLevel()) {
             QLog.d("WebAccelerateHelper", 2, "create webview engine(with no plugin list");
           }
-          paramAppInterface = new WebViewPluginEngine(paramCustomWebView, paramActivity, paramAppInterface, paramCommonJsPluginFactory);
+          paramAppRuntime = new WebViewPluginEngine(paramCustomWebView, paramActivity, paramAppRuntime, paramCommonJsPluginFactory);
           continue;
         }
-        if ((paramAppInterface != null) && (paramList != null))
+        if ((paramAppRuntime != null) && (paramList != null))
         {
           if (QLog.isColorLevel()) {
             QLog.d("WebAccelerateHelper", 2, "create webview engine(with plugin list");
           }
-          paramAppInterface = new WebViewPluginEngine(paramCustomWebView, paramActivity, paramAppInterface, paramCommonJsPluginFactory, paramList);
+          paramAppRuntime = new WebViewPluginEngine(paramCustomWebView, paramActivity, paramAppRuntime, paramCommonJsPluginFactory, paramList);
         }
       }
       else
       {
         throw new IllegalArgumentException("No contructor to create webview engine,check your arguments!");
       }
-      paramAppInterface = null;
+      paramAppRuntime = null;
     }
   }
   
-  public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, List<WebViewPlugin> paramList)
+  public WebViewPluginEngine createWebViewPluginEngine(AppRuntime paramAppRuntime, Activity paramActivity, CustomWebView paramCustomWebView, List<WebViewPlugin> paramList)
   {
-    return createWebViewPluginEngine(paramAppInterface, paramActivity, paramCustomWebView, new WebAccelerateHelper.CommonJsPluginFactory(), paramList);
+    return createWebViewPluginEngine(paramAppRuntime, paramActivity, paramCustomWebView, new CommonJsPluginFactory(), paramList);
   }
   
   public String getTBSDpcParam()
@@ -195,7 +191,7 @@ public class WebAccelerateHelper
     synchronized (this.sDPCLock)
     {
       if (TextUtils.isEmpty(this.param)) {
-        this.param = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.tbs_switch.name(), "1|1");
+        this.param = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.tbs_switch.name(), "1|1");
       }
       return this.param;
     }
@@ -208,7 +204,7 @@ public class WebAccelerateHelper
     {
       if (sWebViewFeatureConfigs == null)
       {
-        Object localObject2 = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.WebViewConfig.name());
+        Object localObject2 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.WebViewConfig.name());
         if (QLog.isColorLevel()) {
           QLog.d("WebAccelerateHelper", 2, "WebViewConfig:" + (String)localObject2);
         }
@@ -250,13 +246,13 @@ public class WebAccelerateHelper
     {
       if (sWebViewFeatureParams == null)
       {
-        String str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.WebViewFeature.name());
+        String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.WebViewFeature.name());
         if (QLog.isColorLevel()) {
           QLog.d("WebAccelerateHelper", 2, "WebViewFeature:" + str);
         }
         Integer[] arrayOfInteger = new Integer[15];
         Arrays.fill(arrayOfInteger, Integer.valueOf(-1));
-        DeviceProfileManager.a(str, arrayOfInteger, new antj());
+        ((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsByStringToIntParser(str, arrayOfInteger);
         sWebViewFeatureParams = arrayOfInteger;
         if (QLog.isColorLevel()) {
           QLog.d("WebAccelerateHelper", 2, "WebView feature params=" + Arrays.toString(sWebViewFeatureParams));
@@ -283,10 +279,10 @@ public class WebAccelerateHelper
     return getWebViewFeatureParams()[0].intValue() == 1;
   }
   
-  public void onPluginRuntimeReady(WebViewPluginEngine paramWebViewPluginEngine, AppInterface paramAppInterface, Activity paramActivity)
+  public void onPluginRuntimeReady(WebViewPluginEngine paramWebViewPluginEngine, AppRuntime paramAppRuntime, Activity paramActivity)
   {
     long l = System.currentTimeMillis();
-    paramWebViewPluginEngine.a(paramAppInterface, paramActivity);
+    paramWebViewPluginEngine.a(paramAppRuntime, paramActivity);
     if (QLog.isColorLevel()) {
       QLog.d("WebAccelerateHelper", 2, "-->prepare plugin runtime cost:" + (System.currentTimeMillis() - l) + "(ms)");
     }
@@ -294,10 +290,7 @@ public class WebAccelerateHelper
   
   public void preCheckOffline(String paramString)
   {
-    bihf localbihf = bihf.a(paramString);
-    if (localbihf != null) {
-      localbihf.a(new WebAccelerateHelper.4(this), paramString);
-    }
+    ((IWebviewApi)QRoute.api(IWebviewApi.class)).preCheckOffline(paramString);
   }
   
   public void preFetchResource(String paramString)
@@ -351,16 +344,16 @@ public class WebAccelerateHelper
     }
   }
   
-  public void preGetKey(Intent paramIntent, AppInterface paramAppInterface)
+  public void preGetKey(Intent paramIntent, AppRuntime paramAppRuntime)
   {
-    preGetKey(biit.a(paramIntent), paramIntent, paramAppInterface);
+    preGetKey(SwiftWebViewUtilss.a(paramIntent), paramIntent, paramAppRuntime);
   }
   
-  public void preGetKey(String paramString, Intent paramIntent, AppInterface paramAppInterface)
+  public void preGetKey(String paramString, Intent paramIntent, AppRuntime paramAppRuntime)
   {
     SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(paramString);
     if (localSwiftBrowserCookieMonster != null) {
-      localSwiftBrowserCookieMonster.a(paramString, null, paramAppInterface, paramIntent);
+      localSwiftBrowserCookieMonster.a(paramString, null, paramAppRuntime, paramIntent);
     }
   }
   
@@ -374,7 +367,7 @@ public class WebAccelerateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper
  * JD-Core Version:    0.7.0.1
  */

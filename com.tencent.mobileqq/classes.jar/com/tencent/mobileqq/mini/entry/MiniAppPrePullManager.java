@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.entry;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mini.api.IPrePullListener;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -89,12 +90,12 @@ public class MiniAppPrePullManager
     return null;
   }
   
-  public void prePullAppinfoById(String paramString1, String paramString2, MiniAppPrePullManager.IPrePullListener paramIPrePullListener)
+  public void prePullAppinfoById(String paramString1, String paramString2, IPrePullListener paramIPrePullListener)
   {
     prePullAppinfoById(paramString1, paramString2, "release", paramIPrePullListener);
   }
   
-  public void prePullAppinfoById(String paramString1, String paramString2, String paramString3, MiniAppPrePullManager.IPrePullListener paramIPrePullListener)
+  public void prePullAppinfoById(String paramString1, String paramString2, String paramString3, IPrePullListener paramIPrePullListener)
   {
     if (!enablePrePull) {}
     do
@@ -123,7 +124,7 @@ public class MiniAppPrePullManager
     MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, paramString2, paramString3, new MiniAppPrePullManager.2(this, paramString1, paramString2, paramIPrePullListener));
   }
   
-  public void prePullAppinfoByLink(String paramString, int paramInt, boolean paramBoolean, MiniAppPrePullManager.IPrePullListener paramIPrePullListener)
+  public void prePullAppinfoByLink(String paramString, int paramInt, boolean paramBoolean, IPrePullListener paramIPrePullListener)
   {
     if (!enablePrePull) {}
     Object localObject;
@@ -213,7 +214,7 @@ public class MiniAppPrePullManager
     }
   }
   
-  public void prePullAppinfoByLink(String paramString, boolean paramBoolean, MiniAppPrePullManager.IPrePullListener paramIPrePullListener)
+  public void prePullAppinfoByLink(String paramString, boolean paramBoolean, IPrePullListener paramIPrePullListener)
   {
     if ((paramString != null) && (paramString.startsWith("mqqapi://miniapp/"))) {
       prePullAppinfoByLink(paramString, 2, paramBoolean, paramIPrePullListener);

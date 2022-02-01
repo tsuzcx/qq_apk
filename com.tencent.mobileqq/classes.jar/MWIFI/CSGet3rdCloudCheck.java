@@ -14,9 +14,9 @@ public final class CSGet3rdCloudCheck
   public String mac = "";
   public int networkType = 0;
   public int operType = 0;
-  public ArrayList<String> vecDns;
+  public ArrayList<String> vecDns = null;
   public String vid = "";
-  public WifiInfo wifiInfo;
+  public WifiInfo wifiInfo = null;
   
   static
   {

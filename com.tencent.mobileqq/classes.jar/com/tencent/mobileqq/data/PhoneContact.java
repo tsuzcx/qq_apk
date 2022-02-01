@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ajlh;
+import com.tencent.mobileqq.activity.contacts.friend.OnlineStatusIconHelper;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -13,7 +13,7 @@ public class PhoneContact
   implements Serializable, Cloneable
 {
   public int ability;
-  public long abilityBits;
+  public long abilityBits = 0L;
   public int age;
   public long bindingDate;
   public int contactID;
@@ -21,13 +21,13 @@ public class PhoneContact
   public int eNetworkType;
   @Deprecated
   public String faceUrl;
-  public boolean hasSendAddReq;
+  public boolean hasSendAddReq = false;
   public long highLightTimeStamp;
   public int iTermType;
   public boolean isHiden;
   public boolean isNewRecommend;
   public int isRecommend;
-  public boolean isUploaded;
+  public boolean isUploaded = false;
   public String label;
   @Deprecated
   public long lastScanTime;
@@ -55,7 +55,7 @@ public class PhoneContact
   public long richTime;
   public int samFriend;
   public int sex;
-  public int sortWeight;
+  public int sortWeight = 0;
   public String strTermDesc = "";
   public int type;
   public String uin;
@@ -92,7 +92,7 @@ public class PhoneContact
         i = this.netTypeIconId;
       }
     }
-    ajlh localajlh;
+    OnlineStatusIconHelper localOnlineStatusIconHelper;
     do
     {
       return i;
@@ -102,7 +102,7 @@ public class PhoneContact
       if (((this.detalStatusFlag == -55) && (this.iTermType == 68361) && ((this.abilityBits & 1L) == 0L)) || (this.iTermType == 68104) || (this.iTermType == 65805)) {
         return 0;
       }
-      localajlh = ajlh.a();
+      localOnlineStatusIconHelper = OnlineStatusIconHelper.a();
       if (this.eNetworkType != 0) {
         break;
       }
@@ -110,8 +110,8 @@ public class PhoneContact
         return 0;
       }
       i = j;
-    } while (1 != localajlh.a(this.iTermType, 1));
-    if (1 != localajlh.a(this.iTermType, 1)) {
+    } while (1 != localOnlineStatusIconHelper.a(this.iTermType, 1));
+    if (1 != localOnlineStatusIconHelper.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)
@@ -155,7 +155,7 @@ public class PhoneContact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PhoneContact
  * JD-Core Version:    0.7.0.1
  */

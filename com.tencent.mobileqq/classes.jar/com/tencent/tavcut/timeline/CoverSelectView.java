@@ -109,6 +109,13 @@ public class CoverSelectView
     return this.currCoverProgress;
   }
   
+  public void release()
+  {
+    if (this.timelineView != null) {
+      this.timelineView.release();
+    }
+  }
+  
   public void setClipAndSpeed(float paramFloat, long paramLong1, long paramLong2, long paramLong3)
   {
     if (this.timelineView != null)
@@ -161,12 +168,8 @@ public class CoverSelectView
   
   public void updateTavVideoSession(TAVCutVideoSession paramTAVCutVideoSession)
   {
-    if (paramTAVCutVideoSession != null)
-    {
+    if (paramTAVCutVideoSession != null) {
       this.tavCutVideoSession = paramTAVCutVideoSession;
-      if (this.timelineView != null) {
-        this.timelineView.updateTavSource(paramTAVCutVideoSession.getTAVSource());
-      }
     }
   }
   
@@ -179,7 +182,7 @@ public class CoverSelectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.timeline.CoverSelectView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class CustomTrackDeco
   static byte[] cache_strExtFields = (byte[])new byte[1];
   public int iAppID = 149;
   public int iItemId = -1;
-  public byte[] strExtFields;
+  public byte[] strExtFields = null;
   
   static
   {

@@ -9,6 +9,8 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.transaction.Transaction;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
@@ -23,9 +25,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class C2CQzonePicUploadProcessor
   extends C2CPicUploadProcessor
 {
-  public C2CQzonePicUploadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public C2CQzonePicUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
   }
   
   public int checkParam()
@@ -244,7 +246,7 @@ public class C2CQzonePicUploadProcessor
       localRichProtoReq.callback = this;
       localRichProtoReq.protoKey = "c2c_pic_up";
       localRichProtoReq.reqs.add(localPicUpReq);
-      localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+      localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
       MessageRecord localMessageRecord = this.mUiRequest.mRec;
       if (MessageForPic.class.isInstance(localMessageRecord))
       {
@@ -252,12 +254,12 @@ public class C2CQzonePicUploadProcessor
         this.mPicType = ((MessageForPic)localMessageRecord).imageType;
       }
       if (isAppValid()) {
-        break label264;
+        break label272;
       }
       setError(9366, "illegal app", null, this.mStepUrl);
       onError();
     }
-    label264:
+    label272:
     do
     {
       return;

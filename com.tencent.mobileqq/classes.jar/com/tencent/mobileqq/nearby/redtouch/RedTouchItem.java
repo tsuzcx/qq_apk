@@ -27,15 +27,15 @@ public class RedTouchItem
   public List<RedTouchItemExtMsg> extMsgs = new ArrayList();
   public long fromId;
   public String icon;
-  public boolean isClosed;
+  public boolean isClosed = false;
   public int lastRecvTime;
-  public int passThroughLevel;
-  public long receiveTime;
+  public int passThroughLevel = 0;
+  public long receiveTime = 0L;
   public int redtouchType;
   public int taskId;
   public String tips;
   public boolean unReadFlag = true;
-  public int validTimeRemained;
+  public int validTimeRemained = 0;
   
   public static RedTouchItem getRedTouchItem(cmd0x6cd.RedpointInfo paramRedpointInfo)
   {

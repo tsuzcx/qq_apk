@@ -618,7 +618,7 @@ public class TAVStickerEditView
     this.isNeedInitLocation = true;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.isFirstDraw)
@@ -846,7 +846,7 @@ public class TAVStickerEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerEditView
  * JD-Core Version:    0.7.0.1
  */

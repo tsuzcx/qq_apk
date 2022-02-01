@@ -4,14 +4,13 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import syw;
-import tlt;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.DrawableController;
 
 public class KandianUrlImageView
   extends ResizeURLImageView
 {
   private boolean mIsRecyclerView;
-  private syw mVisibilityChangedListener;
+  private KandianUrlImageView.OnVisibilityChangedListener mVisibilityChangedListener;
   
   public KandianUrlImageView(Context paramContext)
   {
@@ -35,7 +34,7 @@ public class KandianUrlImageView
     }
   }
   
-  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
     if (this.mVisibilityChangedListener != null) {
@@ -55,14 +54,14 @@ public class KandianUrlImageView
     this.mIsRecyclerView = paramBoolean;
   }
   
-  public void setVisibilityChangedListener(syw paramsyw)
+  public void setVisibilityChangedListener(KandianUrlImageView.OnVisibilityChangedListener paramOnVisibilityChangedListener)
   {
-    this.mVisibilityChangedListener = paramsyw;
+    this.mVisibilityChangedListener = paramOnVisibilityChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView
  * JD-Core Version:    0.7.0.1
  */

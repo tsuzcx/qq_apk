@@ -12,7 +12,7 @@ public final class cell_userinfo
   static s_user cache_user = new s_user();
   public String action_desc = "";
   public int actiontype = 5;
-  public ArrayList<String> luckyMoneyPics;
+  public ArrayList<String> luckyMoneyPics = null;
   public s_user user;
   
   static

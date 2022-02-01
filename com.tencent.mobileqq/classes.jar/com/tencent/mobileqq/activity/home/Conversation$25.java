@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.home;
 
-import bdkx;
+import com.tencent.mobileqq.statistics.QZoneReport;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -11,7 +11,7 @@ class Conversation$25
   
   public void run()
   {
-    int i = bdkx.a();
+    int i = QZoneReport.a();
     try
     {
       MqqHandler localMqqHandler = this.this$0.a;
@@ -34,7 +34,7 @@ class Conversation$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.25
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.minigame.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bizw;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.util.QZLog;
@@ -280,7 +280,7 @@ public class GameWnsUtils
   
   public static String getGameRetainConfirmImageUrl()
   {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_retain_confirm_animation_image_url", "https://sola.gtimg.cn/aoi/sola/20200610173326_9Y4cq17qBe.png");
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_retain_confirm_animation_image_url", "https://sola.gtimg.cn/aoi/sola/20201023180719_cpjdc4WFx1.png");
   }
   
   public static int getMaxRangeNumber()
@@ -316,6 +316,16 @@ public class GameWnsUtils
   public static int getPreConnectNum()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePreConnectNum", 5);
+  }
+  
+  public static String getPreconnectMethod()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDefaultPreconnectMethod", "HEAD");
+  }
+  
+  public static long getPreconnectTimeInterval()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDefaultPreconnectTimeInterval", 43200L);
   }
   
   public static String getQQUpdateUrl()
@@ -355,7 +365,7 @@ public class GameWnsUtils
   
   public static int getRetainConfirmInterval()
   {
-    return QzoneConfig.getInstance().getConfig("qqtriton", "retainConfirmInterval", 30);
+    return QzoneConfig.getInstance().getConfig("qqtriton", "retainConfirmInterval", 10);
   }
   
   public static int getRetainConfirmShowTimes()
@@ -472,7 +482,7 @@ public class GameWnsUtils
         localThrowable.printStackTrace();
       }
     }
-    l = bizw.a().a() % 100L;
+    l = CommonDataAdapter.a().a() % 100L;
     return (l >= arrayOfInt[0]) && (l < arrayOfInt[1]);
   }
 }

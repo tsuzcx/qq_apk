@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfRecentReq
   extends JceStruct
 {
-  public long uTimeStamp;
+  public long uTimeStamp = 0L;
   
   public ProfRecentReq() {}
   

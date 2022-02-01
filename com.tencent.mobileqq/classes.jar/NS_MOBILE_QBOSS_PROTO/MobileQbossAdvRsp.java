@@ -13,9 +13,9 @@ public final class MobileQbossAdvRsp
 {
   static Map<Integer, ArrayList<tAdvDesc>> cache_mapAdv = new HashMap();
   static Map<Integer, Long> cache_map_next_query_ts;
-  public int iRet;
-  public Map<Integer, ArrayList<tAdvDesc>> mapAdv;
-  public Map<Integer, Long> map_next_query_ts;
+  public int iRet = 0;
+  public Map<Integer, ArrayList<tAdvDesc>> mapAdv = null;
+  public Map<Integer, Long> map_next_query_ts = null;
   public String sMsg = "";
   
   static

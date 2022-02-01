@@ -1,30 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class BaseChatPie$34
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  BaseChatPie$34(BaseChatPie paramBaseChatPie, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext) {}
+  BaseChatPie$34(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.val$refreshMessageContext.needAutoNavigateTop)
-    {
-      if (this.val$refreshMessageContext.isSuccess)
-      {
-        this.this$0.refresh(131079);
-        return;
-      }
-      this.this$0.refresh(131078);
-      return;
-    }
-    this.this$0.refresh(131076);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.34
  * JD-Core Version:    0.7.0.1
  */

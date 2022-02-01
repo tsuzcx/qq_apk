@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.text.TextUtils;
-import bguh;
-import bhbu;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troopshare.TroopShareUtility.OnShareListener;
+import com.tencent.mobileqq.util.TroopReportor;
 
 final class TroopUtils$1
-  implements bguh
+  implements TroopShareUtility.OnShareListener
 {
   TroopUtils$1(TroopInfoData paramTroopInfoData) {}
   
-  public void onShareResp(int paramInt, boolean paramBoolean)
+  public void a(int paramInt, boolean paramBoolean)
   {
     String str1;
-    if (this.val$mTroopInfoData.isMember)
+    if (this.a.isMember)
     {
       str1 = "";
       switch (paramInt)
@@ -31,12 +31,12 @@ final class TroopUtils$1
       continue;
       str1 = "share_wechat";
     }
-    String str3 = this.val$mTroopInfoData.troopUin;
-    String str4 = bhbu.a(this.val$mTroopInfoData);
+    String str3 = this.a.troopUin;
+    String str4 = TroopReportor.a(this.a);
     if (paramBoolean) {}
     for (String str2 = "0";; str2 = "1")
     {
-      bhbu.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
+      TroopReportor.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
       return;
     }
   }

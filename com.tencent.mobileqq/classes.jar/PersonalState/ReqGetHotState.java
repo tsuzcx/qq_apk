@@ -8,7 +8,7 @@ public final class ReqGetHotState
   extends JceStruct
 {
   static BusiReqHead cache_oHead;
-  public BusiReqHead oHead;
+  public BusiReqHead oHead = null;
   
   public ReqGetHotState() {}
   

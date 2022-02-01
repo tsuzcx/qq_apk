@@ -30,7 +30,7 @@ public final class mutualmark$ResourceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tencent.im.mutualmark.mutualmark.ResourceInfo
  * JD-Core Version:    0.7.0.1
  */

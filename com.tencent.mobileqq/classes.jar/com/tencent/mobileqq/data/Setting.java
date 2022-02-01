@@ -3,7 +3,6 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arvj;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 
@@ -11,13 +10,13 @@ public class Setting
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<Setting> CREATOR = new arvj();
+  public static final Parcelable.Creator<Setting> CREATOR = new Setting.1();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;
   public byte bUsrType;
-  public long headImgTimestamp;
-  public short systemHeadID;
+  public long headImgTimestamp = 0L;
+  public short systemHeadID = 0;
   @unique
   public String uin;
   public long updateTimestamp;
@@ -86,7 +85,7 @@ public class Setting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Setting
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class FeedSkin
   extends JceStruct
 {
-  public int iFrameRate;
+  public int iFrameRate = 0;
   public int iItemId = -1;
-  public int iType;
+  public int iType = 0;
   public String strAndBgUrl = "";
   public String strBgColor = "";
   public String strFrameZip = "";

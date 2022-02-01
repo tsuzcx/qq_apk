@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stPlusRecomInfo
   extends JceStruct
 {
-  public int status;
+  public int status = 0;
   public String strMinProgramJson = "";
   
   public stPlusRecomInfo() {}

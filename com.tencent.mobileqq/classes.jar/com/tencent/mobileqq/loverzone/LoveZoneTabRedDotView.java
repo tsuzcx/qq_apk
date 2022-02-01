@@ -13,11 +13,10 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import awpt;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.zipanimate.ZipAnimationDrawable;
@@ -31,7 +30,7 @@ public class LoveZoneTabRedDotView
   private final int jdField_a_of_type_Int = 11;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new awpt(this);
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new LoveZoneTabRedDotView.1(this);
   private ZipAnimationDrawable jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable;
   public boolean a;
   private String b = "";
@@ -44,11 +43,13 @@ public class LoveZoneTabRedDotView
   public LoveZoneTabRedDotView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public LoveZoneTabRedDotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private boolean a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
@@ -112,19 +113,19 @@ public class LoveZoneTabRedDotView
     this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.restartAnimation();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidGraphicsRect == null) || (this.jdField_a_of_type_AndroidGraphicsPaint == null) || (TextUtils.isEmpty(this.b))) {
       return;
     }
     paramCanvas.save();
-    Drawable localDrawable = getResources().getDrawable(2130846039);
+    Drawable localDrawable = getResources().getDrawable(2130846360);
     localDrawable.getBounds();
     localDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
     localDrawable.draw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.dpToPx(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable == null)
     {
       this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable = new ZipAnimationDrawable();
@@ -135,12 +136,12 @@ public class LoveZoneTabRedDotView
       this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
       this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.start();
     }
-    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - ViewUtils.dpToPx(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.dpToPx(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + ViewUtils.dpToPx(25.0F) - ViewUtils.dpToPx(2.0F) * 3);
+    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - ViewUtils.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + ViewUtils.b(25.0F) - ViewUtils.b(2.0F) * 3);
     this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.draw(paramCanvas);
     paramCanvas.restore();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (TextUtils.isEmpty(this.b)) {
@@ -149,15 +150,15 @@ public class LoveZoneTabRedDotView
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(ViewUtils.dpToPx(11.0F));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(ViewUtils.b(11.0F));
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
     }
     int j = View.MeasureSpec.getSize(paramInt2);
-    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + ViewUtils.dpToPx(6.0F) + ViewUtils.dpToPx(25.0F);
+    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + ViewUtils.b(6.0F) + ViewUtils.b(25.0F);
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
     int i = (int)(localFontMetrics.bottom - localFontMetrics.top);
-    j = j / 2 - i / 2 - ViewUtils.dpToPx(2.0F);
-    int k = ViewUtils.dpToPx(2.0F);
+    j = j / 2 - i / 2 - ViewUtils.b(2.0F);
+    int k = ViewUtils.b(2.0F);
     if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
@@ -165,7 +166,7 @@ public class LoveZoneTabRedDotView
     this.jdField_a_of_type_AndroidGraphicsRect.top = j;
     this.jdField_a_of_type_AndroidGraphicsRect.right = (paramInt1 + 0);
     this.jdField_a_of_type_AndroidGraphicsRect.bottom = (i + k * 2 + j);
-    this.jdField_a_of_type_Float = (j + ViewUtils.dpToPx(2.0F) - localFontMetrics.top);
+    this.jdField_a_of_type_Float = (j + ViewUtils.b(2.0F) - localFontMetrics.top);
     setMeasuredDimension(paramInt1, paramInt2);
   }
   

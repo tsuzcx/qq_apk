@@ -20,22 +20,29 @@ public class ElasticHorScrView
   protected View a;
   protected ViewGroup a;
   protected boolean a;
-  protected boolean b = true;
+  protected int b;
+  protected boolean b;
   
   public ElasticHorScrView(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 300;
     this.jdField_a_of_type_Double = 2.5D;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
   }
   
   public ElasticHorScrView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 300;
     this.jdField_a_of_type_Double = 2.5D;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
   }
   
   private void a()
@@ -64,12 +71,12 @@ public class ElasticHorScrView
       if (a()) {
         a();
       }
-      this.b = true;
+      this.jdField_b_of_type_Boolean = true;
       return;
-      if (this.b)
+      if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        this.b = false;
+        this.jdField_b_of_type_Boolean = false;
       }
       float f1 = this.jdField_a_of_type_Float;
       float f2 = paramMotionEvent.getX();
@@ -104,7 +111,7 @@ public class ElasticHorScrView
     return (k == 0) || (i - j == k);
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     if ((getChildCount() > 0) && ((getChildAt(0) instanceof ViewGroup))) {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getChildAt(0));
@@ -131,7 +138,7 @@ public class ElasticHorScrView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.widgets.ElasticHorScrView
  * JD-Core Version:    0.7.0.1
  */

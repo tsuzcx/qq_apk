@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.recent.guidebanner;
 
-import alkp;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +12,11 @@ import java.lang.ref.WeakReference;
 public class NewerGuideWebLaunchSuccessReceiver
   extends BroadcastReceiver
 {
-  private final WeakReference<alkp> a;
+  private final WeakReference<NewerGuideBannerViewModel> a;
   
-  public NewerGuideWebLaunchSuccessReceiver(alkp paramalkp)
+  public NewerGuideWebLaunchSuccessReceiver(NewerGuideBannerViewModel paramNewerGuideBannerViewModel)
   {
-    this.a = new WeakReference(paramalkp);
+    this.a = new WeakReference(paramNewerGuideBannerViewModel);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -27,7 +26,7 @@ public class NewerGuideWebLaunchSuccessReceiver
     }
     if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "ACTION_NEWER_GUIDE_WEB_LAUNCH_SUCCESS")))
     {
-      paramContext = (alkp)this.a.get();
+      paramContext = (NewerGuideBannerViewModel)this.a.get();
       if (paramContext != null)
       {
         paramIntent = BaseApplicationImpl.getApplication().getRuntime();
@@ -41,7 +40,7 @@ public class NewerGuideWebLaunchSuccessReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideWebLaunchSuccessReceiver
  * JD-Core Version:    0.7.0.1
  */

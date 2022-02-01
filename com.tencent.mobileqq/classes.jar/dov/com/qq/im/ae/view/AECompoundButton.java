@@ -40,8 +40,8 @@ public class AECompoundButton
   private void a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     b(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2131558497, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369406));
+    LayoutInflater.from(paramContext).inflate(2131558503, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369664));
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
@@ -66,7 +66,7 @@ public class AECompoundButton
     return this.jdField_a_of_type_AndroidWidgetImageView;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Int != 0) && (this.b != 0))
@@ -99,7 +99,7 @@ public class AECompoundButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.view.AECompoundButton
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akjg;
-import akjr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
 public class ImageInfo
-  extends akjg
+  extends BaseImageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageInfo> CREATOR = new akjr();
+  public static final Parcelable.Creator<ImageInfo> CREATOR = new ImageInfo.1();
   public long a;
   public int b;
   public long b;
@@ -42,18 +40,26 @@ public class ImageInfo
   public int l;
   public String l;
   public boolean l;
-  public boolean m;
-  public boolean n;
-  public boolean o;
-  public boolean p;
+  public boolean m = false;
+  public boolean n = false;
+  public boolean o = false;
+  public boolean p = false;
+  public boolean q;
   
   public ImageInfo()
   {
     this.jdField_a_of_type_Long = -1L;
+    this.jdField_g_of_type_Boolean = false;
     this.jdField_h_of_type_Boolean = true;
+    this.jdField_i_of_type_Boolean = false;
     this.jdField_e_of_type_Int = 54;
     this.jdField_f_of_type_Int = -1;
+    this.jdField_g_of_type_Int = 0;
+    this.jdField_h_of_type_Int = 0;
+    this.jdField_j_of_type_Boolean = false;
+    this.jdField_k_of_type_Boolean = false;
     this.jdField_l_of_type_Boolean = true;
+    this.jdField_j_of_type_Int = 0;
     this.jdField_l_of_type_Int = 2;
   }
   
@@ -143,7 +149,7 @@ public class ImageInfo
       paramInt = 1;
       label297:
       paramParcel.writeInt(paramInt);
-      if (!this.p) {
+      if (!this.q) {
         break label407;
       }
     }
@@ -156,7 +162,7 @@ public class ImageInfo
     {
       paramParcel.writeInt(paramInt);
       paramParcel.writeLong(this.jdField_d_of_type_Long);
-      paramParcel.writeString(this.j);
+      paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_k_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_l_of_type_JavaLangString);
       paramParcel.writeInt(this.jdField_l_of_type_Int);
@@ -191,7 +197,7 @@ public class ImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

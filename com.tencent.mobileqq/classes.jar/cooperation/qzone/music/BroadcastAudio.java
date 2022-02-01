@@ -12,8 +12,8 @@ public class BroadcastAudio
   implements Parcelable
 {
   public static final Parcelable.Creator<BroadcastAudio> CREATOR = new BroadcastAudio.1();
-  public BroadcastUrl masterUrl;
-  public ArrayList<BroadcastUrl> slaveUrl;
+  public BroadcastUrl masterUrl = null;
+  public ArrayList<BroadcastUrl> slaveUrl = null;
   
   public BroadcastAudio() {}
   
@@ -74,7 +74,7 @@ public class BroadcastAudio
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastAudio
  * JD-Core Version:    0.7.0.1
  */

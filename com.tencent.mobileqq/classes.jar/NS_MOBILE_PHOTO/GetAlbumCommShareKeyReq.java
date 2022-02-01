@@ -11,9 +11,9 @@ public final class GetAlbumCommShareKeyReq
 {
   static Map<String, String> cache_ins;
   static int cache_scene = 0;
-  public Map<String, String> ins;
+  public Map<String, String> ins = null;
   public int scene = 0;
-  public long uin;
+  public long uin = 0L;
   
   static
   {

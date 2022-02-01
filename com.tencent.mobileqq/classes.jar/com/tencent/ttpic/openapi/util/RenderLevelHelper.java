@@ -2,7 +2,8 @@ package com.tencent.ttpic.openapi.util;
 
 import android.support.annotation.NonNull;
 import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import com.tencent.ttpic.device.DeviceUtils;
+import org.light.device.LightDeviceUtils;
 
 public class RenderLevelHelper
 {
@@ -49,7 +50,7 @@ public class RenderLevelHelper
   
   public static RenderLevelHelper.DOWNGRADE_LEVEL getScreenLevel()
   {
-    int i = DeviceUtils.getScreenWidth(AEModule.getContext());
+    int i = LightDeviceUtils.getScreenWidth(AEModule.getContext());
     if (i >= 1080) {
       return RenderLevelHelper.DOWNGRADE_LEVEL.HIGH;
     }
@@ -107,7 +108,7 @@ public class RenderLevelHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.RenderLevelHelper
  * JD-Core Version:    0.7.0.1
  */

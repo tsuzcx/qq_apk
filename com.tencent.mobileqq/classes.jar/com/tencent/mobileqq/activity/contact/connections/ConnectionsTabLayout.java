@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import aixy;
-import aixz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -11,23 +9,23 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdoa;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.OnTabSelectedListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.Tab;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.structmsg.RoundedColorDrawable;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import trf;
-import trk;
 
 public class ConnectionsTabLayout
   extends TabLayoutCompat
-  implements trf
+  implements TabLayoutCompat.OnTabSelectedListener
 {
-  private ArrayList<aixy> a = new ArrayList();
+  private ArrayList<ConnectionsTabInfo> a = new ArrayList();
   
   public ConnectionsTabLayout(Context paramContext)
   {
@@ -69,49 +67,49 @@ public class ConnectionsTabLayout
     return localURLDrawable;
   }
   
-  private void a(trk paramtrk, aixz paramaixz, aixy paramaixy)
+  private void a(TabLayoutCompat.Tab paramTab, ConnectionsTabLayout.TabItemViewHolder paramTabItemViewHolder, ConnectionsTabInfo paramConnectionsTabInfo)
   {
-    if ((paramtrk == null) || (paramaixz == null) || (paramaixy == null)) {}
+    if ((paramTab == null) || (paramTabItemViewHolder == null) || (paramConnectionsTabInfo == null)) {}
     label236:
     label246:
     for (;;)
     {
       return;
-      paramtrk.a(Integer.valueOf(paramaixy.jdField_a_of_type_Int));
-      paramaixz.jdField_a_of_type_AndroidWidgetTextView.setText(paramaixy.jdField_a_of_type_JavaLangString);
-      paramtrk = getContext().getResources().getString(2131698674, new Object[] { Integer.valueOf(paramaixy.jdField_b_of_type_Int) });
-      if (!paramaixy.jdField_a_of_type_Boolean) {
-        paramtrk = getContext().getResources().getString(2131698672);
+      paramTab.a(Integer.valueOf(paramConnectionsTabInfo.jdField_a_of_type_Int));
+      paramTabItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramConnectionsTabInfo.jdField_a_of_type_JavaLangString);
+      paramTab = getContext().getResources().getString(2131698977, new Object[] { Integer.valueOf(paramConnectionsTabInfo.jdField_b_of_type_Int) });
+      if (!paramConnectionsTabInfo.jdField_a_of_type_Boolean) {
+        paramTab = getContext().getResources().getString(2131698975);
       }
-      paramaixz.jdField_b_of_type_AndroidWidgetTextView.setText(paramtrk);
-      paramtrk = a(paramaixy.jdField_b_of_type_JavaLangString, paramaixy.c);
-      if (paramtrk != null) {
-        paramaixz.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramtrk);
+      paramTabItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramTab);
+      paramTab = a(paramConnectionsTabInfo.jdField_b_of_type_JavaLangString, paramConnectionsTabInfo.c);
+      if (paramTab != null) {
+        paramTabItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramTab);
       }
-      int i = getContext().getResources().getColor(2131167165);
+      int i = getContext().getResources().getColor(2131167172);
       int j = Color.parseColor("#F5F6FA");
-      paramtrk = a(i, j);
-      if (paramtrk != null)
+      paramTab = a(i, j);
+      if (paramTab != null)
       {
-        paramaixz.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramtrk);
+        paramTabItemViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramTab);
         if (i == 0) {
           break label236;
         }
-        paramaixz.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setDrawColor(i);
+        paramTabItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setDrawColor(i);
       }
       for (;;)
       {
         if (!ThemeUtil.isNowThemeIsNight(null, false, null)) {
           break label246;
         }
-        paramtrk = getContext().getResources().getColorStateList(2131166447);
-        paramaixy = getContext().getResources().getColorStateList(2131166449);
-        paramaixz.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramtrk);
-        paramaixz.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramaixy);
+        paramTab = getContext().getResources().getColorStateList(2131166450);
+        paramConnectionsTabInfo = getContext().getResources().getColorStateList(2131166452);
+        paramTabItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramTab);
+        paramTabItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramConnectionsTabInfo);
         return;
-        paramaixz.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130850547);
+        paramTabItemViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130850970);
         break;
-        paramaixz.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setDrawColor(j);
+        paramTabItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setDrawColor(j);
       }
     }
   }
@@ -121,7 +119,7 @@ public class ConnectionsTabLayout
     setSelectedTabIndicatorHeight(0);
   }
   
-  public int a(ArrayList<aixy> paramArrayList, int paramInt)
+  public int a(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
   {
     int k;
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
@@ -137,7 +135,7 @@ public class ConnectionsTabLayout
       if (i >= paramArrayList.size()) {
         break;
       }
-      if (((aixy)paramArrayList.get(i)).jdField_a_of_type_Int == paramInt) {
+      if (((ConnectionsTabInfo)paramArrayList.get(i)).jdField_a_of_type_Int == paramInt) {
         j = i;
       }
       i += 1;
@@ -151,19 +149,19 @@ public class ConnectionsTabLayout
       localObject = null;
     }
     StateListDrawable localStateListDrawable;
-    bdoa localbdoa;
+    RoundedColorDrawable localRoundedColorDrawable;
     do
     {
       return localObject;
-      localObject = new bdoa(paramInt1, 50, 50, ViewUtils.dip2px(6.0F));
+      localObject = new RoundedColorDrawable(paramInt1, 50, 50, ViewUtils.a(6.0F));
       localStateListDrawable = new StateListDrawable();
-      localbdoa = new bdoa(paramInt2, 50, 50, ViewUtils.dip2px(6.0F));
+      localRoundedColorDrawable = new RoundedColorDrawable(paramInt2, 50, 50, ViewUtils.a(6.0F));
       if (localObject != null) {
         localStateListDrawable.addState(new int[] { 16842913 }, (Drawable)localObject);
       }
       localObject = localStateListDrawable;
-    } while (localbdoa == null);
-    localStateListDrawable.addState(new int[] { -16842913 }, localbdoa);
+    } while (localRoundedColorDrawable == null);
+    localStateListDrawable.addState(new int[] { -16842913 }, localRoundedColorDrawable);
     return localStateListDrawable;
   }
   
@@ -210,16 +208,21 @@ public class ConnectionsTabLayout
         QLog.d("ConnectionsTabLayout", 2, "selectTabWithoutCallback viewPosition ->" + i + ",position =" + paramInt);
       }
     }
-    trk localtrk;
+    TabLayoutCompat.Tab localTab;
     do
     {
       return;
-      localtrk = a(paramInt);
-    } while (localtrk == null);
-    localtrk.b();
+      localTab = a(paramInt);
+    } while (localTab == null);
+    localTab.b();
   }
   
-  public void a(ArrayList<aixy> paramArrayList, int paramInt)
+  public void a(TabLayoutCompat.Tab paramTab)
+  {
+    new ConnectionsTabLayout.TabItemViewHolder(paramTab.a()).a();
+  }
+  
+  public void a(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -259,8 +262,8 @@ public class ConnectionsTabLayout
       setTabGravity(1);
     }
     label131:
-    paramArrayList.a(2131561302);
-    a(paramArrayList, new aixz(paramArrayList.a()), (aixy)this.a.get(paramInt));
+    paramArrayList.a(2131561407);
+    a(paramArrayList, new ConnectionsTabLayout.TabItemViewHolder(paramArrayList.a()), (ConnectionsTabInfo)this.a.get(paramInt));
     if (i == paramInt) {
       a(paramArrayList, true);
     }
@@ -274,12 +277,12 @@ public class ConnectionsTabLayout
     }
   }
   
-  public void a(trk paramtrk)
+  public void b(TabLayoutCompat.Tab paramTab)
   {
-    new aixz(paramtrk.a()).a();
+    new ConnectionsTabLayout.TabItemViewHolder(paramTab.a()).b();
   }
   
-  public void b(ArrayList<aixy> paramArrayList, int paramInt)
+  public void b(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -302,20 +305,20 @@ public class ConnectionsTabLayout
     i = a(paramArrayList, paramInt);
     paramInt = 0;
     label134:
-    aixz localaixz;
+    ConnectionsTabLayout.TabItemViewHolder localTabItemViewHolder;
     if (paramInt < a())
     {
       paramArrayList = a(paramInt);
       if (paramArrayList != null)
       {
-        aixy localaixy = (aixy)this.a.get(paramInt);
-        localaixz = new aixz(paramArrayList.a());
-        a(paramArrayList, localaixz, localaixy);
+        ConnectionsTabInfo localConnectionsTabInfo = (ConnectionsTabInfo)this.a.get(paramInt);
+        localTabItemViewHolder = new ConnectionsTabLayout.TabItemViewHolder(paramArrayList.a());
+        a(paramArrayList, localTabItemViewHolder, localConnectionsTabInfo);
         if (i != paramInt) {
           break label209;
         }
         a(paramInt);
-        localaixz.a();
+        localTabItemViewHolder.a();
       }
     }
     for (;;)
@@ -324,20 +327,15 @@ public class ConnectionsTabLayout
       break label134;
       break;
       label209:
-      localaixz.b();
+      localTabItemViewHolder.b();
     }
   }
   
-  public void b(trk paramtrk)
-  {
-    new aixz(paramtrk.a()).b();
-  }
-  
-  public void c(trk paramtrk) {}
+  public void c(TabLayoutCompat.Tab paramTab) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsTabLayout
  * JD-Core Version:    0.7.0.1
  */

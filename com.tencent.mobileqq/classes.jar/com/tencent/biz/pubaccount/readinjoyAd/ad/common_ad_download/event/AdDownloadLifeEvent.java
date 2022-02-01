@@ -5,12 +5,11 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDown
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import uez;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/AdDownloadLifeEvent;", "", "(Ljava/lang/String;I)V", "onEvent", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "OnAttachedToWindow", "OnDetachedFromWindow", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public enum AdDownloadLifeEvent
 {
-  public static final uez Companion = new uez(null);
+  public static final AdDownloadLifeEvent.Companion Companion = new AdDownloadLifeEvent.Companion(null);
   @NotNull
   public static final String TAG = "AD_DOWNLOAD_TAG";
   
@@ -30,7 +29,7 @@ public enum AdDownloadLifeEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadLifeEvent
  * JD-Core Version:    0.7.0.1
  */

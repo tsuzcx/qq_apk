@@ -1,10 +1,5 @@
 package cooperation.vip;
 
-import bmkf;
-import bmkg;
-import bmkj;
-import bmkk;
-import bmkl;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.adv_report.MobileAdvReportReq;
@@ -22,14 +17,14 @@ import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcooperation/vip/VasAdvService;", "", "()V", "isReportingAd", "Ljava/util/concurrent/atomic/AtomicBoolean;", "isRequestingAd", "isShowingAd", "beforeReportAd", "", "beforeRequestAd", "beforeShowAd", "createReportAdReq", "Lcooperation/vip/pb/adv_report$MobileAdvReportReq;", "createRequestAdReq", "Lcooperation/vip/pb/vac_adv_get$VacAdvReq;", "generateCmdKey", "", "getDeviceInfo", "Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;", "gdtBizId", "onError", "", "serviceCode", "Lcooperation/vip/VasAdvService$ServiceCode;", "errMsg", "onReportAdSuccess", "rsp", "Lcooperation/vip/pb/adv_report$MobileAdvReportRsp;", "onRequestAdSuccess", "Lcooperation/vip/pb/vac_adv_get$VacAdvRsp;", "realShowAd", "showAdCallback", "Lcooperation/vip/VasAdvService$ShowAdCallback;", "reportAd", "requestAd", "showAd", "isSuccess", "Companion", "ServiceCode", "ShowAdCallback", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public abstract class VasAdvService
 {
-  public static final bmkf a;
+  public static final VasAdvService.Companion a;
   private volatile AtomicBoolean a;
   private volatile AtomicBoolean b = new AtomicBoolean(false);
   private volatile AtomicBoolean c = new AtomicBoolean(false);
   
   static
   {
-    jdField_a_of_type_Bmkf = new bmkf(null);
+    jdField_a_of_type_CooperationVipVasAdvService$Companion = new VasAdvService.Companion(null);
   }
   
   public VasAdvService()
@@ -64,21 +59,21 @@ public abstract class VasAdvService
   protected final qq_ad_get.QQAdGet.DeviceInfo a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "gdtBizId");
-    return bmkk.a.a().a(paramString);
+    return VasAdvSupport.a.a().a(paramString);
   }
   
   public final void a()
   {
-    bmkk.a.a().a((Runnable)new VasAdvService.requestAd.1(this));
+    VasAdvAppInterface.DefaultImpls.a(VasAdvSupport.a.a(), (Runnable)new VasAdvService.requestAd.1(this), true, false, 4, null);
   }
   
-  protected abstract void a(@NotNull bmkg parambmkg);
+  protected abstract void a(@NotNull VasAdvService.ServiceCode paramServiceCode, @NotNull String paramString);
   
-  public abstract void a(@NotNull VasAdvService.ServiceCode paramServiceCode, @NotNull String paramString);
+  protected abstract void a(@NotNull VasAdvService.ShowAdCallback paramShowAdCallback);
   
-  public abstract void a(@NotNull adv_report.MobileAdvReportRsp paramMobileAdvReportRsp);
+  protected abstract void a(@NotNull adv_report.MobileAdvReportRsp paramMobileAdvReportRsp);
   
-  public abstract void a(@NotNull vac_adv_get.VacAdvRsp paramVacAdvRsp);
+  protected abstract void a(@NotNull vac_adv_get.VacAdvRsp paramVacAdvRsp);
   
   protected abstract boolean a();
   
@@ -99,21 +94,21 @@ public abstract class VasAdvService
     } while (!QLog.isColorLevel());
     QLog.d("VasAdvService", 2, "showAd: early return, beforeShowAd failed");
     return;
-    a((bmkg)new bmkj(this));
+    a((VasAdvService.ShowAdCallback)new VasAdvService.showAd.showAdCallback.1(this));
   }
   
   protected abstract boolean b();
   
   public final void c()
   {
-    bmkk.a.a().a((Runnable)new VasAdvService.reportAd.1(this));
+    VasAdvAppInterface.DefaultImpls.a(VasAdvSupport.a.a(), (Runnable)new VasAdvService.reportAd.1(this), true, false, 4, null);
   }
   
   protected abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.VasAdvService
  * JD-Core Version:    0.7.0.1
  */

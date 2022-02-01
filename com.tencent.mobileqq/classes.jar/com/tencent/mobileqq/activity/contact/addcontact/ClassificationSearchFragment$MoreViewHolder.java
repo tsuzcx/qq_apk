@@ -1,0 +1,16 @@
+package com.tencent.mobileqq.activity.contact.addcontact;
+
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+class ClassificationSearchFragment$MoreViewHolder
+{
+  public ProgressBar a;
+  public TextView a;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment.MoreViewHolder
+ * JD-Core Version:    0.7.0.1
+ */

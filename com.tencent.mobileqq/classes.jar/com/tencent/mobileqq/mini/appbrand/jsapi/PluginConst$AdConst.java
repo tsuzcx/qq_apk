@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.HashMap;
 
 public class PluginConst$AdConst
@@ -25,7 +25,7 @@ public class PluginConst$AdConst
   public static final String ERROR_MSG_NO_AD;
   public static final String ERROR_MSG_PARAM_ERROR;
   public static final String ERROR_MSG_REJECTED;
-  public static final String ERROR_MSG_SERVICE_FAIL = anvx.a(2131707716);
+  public static final String ERROR_MSG_SERVICE_FAIL = HardCodeUtil.a(2131708243);
   public static final int KErrAdBlocked = -100100009;
   public static final int KErrAdDeleted = -100100002;
   public static final int KErrAdGdtNoData = -100100008;
@@ -38,15 +38,15 @@ public class PluginConst$AdConst
   
   static
   {
-    ERROR_MSG_PARAM_ERROR = anvx.a(2131707722);
-    ERROR_MSG_INVALID_ADUNITID = anvx.a(2131707720);
-    ERROR_MSG_INNER_ERROR = anvx.a(2131707723);
-    ERROR_MSG_NO_AD = anvx.a(2131707719);
-    ERROR_MSG_IN_REVIEW = anvx.a(2131707717);
-    ERROR_MSG_REJECTED = anvx.a(2131707718);
-    ERROR_MSG_BANNED = anvx.a(2131707721);
-    ERROR_MSG_CLOSED = anvx.a(2131707715);
-    ERROR_MSG_INVALID_POSITION = anvx.a(2131693955);
+    ERROR_MSG_PARAM_ERROR = HardCodeUtil.a(2131708249);
+    ERROR_MSG_INVALID_ADUNITID = HardCodeUtil.a(2131708247);
+    ERROR_MSG_INNER_ERROR = HardCodeUtil.a(2131708250);
+    ERROR_MSG_NO_AD = HardCodeUtil.a(2131708246);
+    ERROR_MSG_IN_REVIEW = HardCodeUtil.a(2131708244);
+    ERROR_MSG_REJECTED = HardCodeUtil.a(2131708245);
+    ERROR_MSG_BANNED = HardCodeUtil.a(2131708248);
+    ERROR_MSG_CLOSED = HardCodeUtil.a(2131708242);
+    ERROR_MSG_INVALID_POSITION = HardCodeUtil.a(2131694157);
   }
   
   public static int getRetCodeByServerResult(int paramInt)

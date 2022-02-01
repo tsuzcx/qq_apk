@@ -11,10 +11,10 @@ import android.view.View;
 public class CallView
   extends View
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 0L;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = null;
   private volatile boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int = 4;
   private long jdField_b_of_type_Long = 150L;
@@ -65,7 +65,7 @@ public class CallView
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -100.0F, 100.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
@@ -114,7 +114,7 @@ public class CallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.CallView
  * JD-Core Version:    0.7.0.1
  */

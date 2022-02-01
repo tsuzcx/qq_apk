@@ -10,7 +10,7 @@ public final class daily_recommend_status
   static int cache_switchType = 0;
   public boolean recommendPush_on = true;
   public boolean recommend_on = true;
-  public int switchType;
+  public int switchType = 0;
   
   public daily_recommend_status() {}
   

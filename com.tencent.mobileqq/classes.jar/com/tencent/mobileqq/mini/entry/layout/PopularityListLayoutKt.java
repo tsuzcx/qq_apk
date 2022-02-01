@@ -18,11 +18,10 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
-import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"buildPopularityListLayout", "Landroid/view/View;", "context", "Landroid/content/Context;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"buildPopularityListLayout", "Landroid/view/View;", "context", "Landroid/content/Context;", "qqmini_impl_release"}, k=2, mv={1, 1, 16})
 public final class PopularityListLayoutKt
 {
   @NotNull
@@ -37,7 +36,7 @@ public final class PopularityListLayoutKt
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
       if (paramContext.getLayoutParams() == null) {
-        break label621;
+        break label605;
       }
       paramContext.getLayoutParams().width = -1;
       paramContext.getLayoutParams().height = i;
@@ -45,13 +44,13 @@ public final class PopularityListLayoutKt
       paramContext = (View)localLinearLayout;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label640;
+        break label624;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
       label85:
       j = LayoutAttrsKt.getDp(208);
       if (paramContext.getLayoutParams() == null) {
-        break label645;
+        break label629;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
@@ -62,44 +61,41 @@ public final class PopularityListLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.topMargin = LayoutAttrsKt.getDp(20);
-        paramContext = Unit.INSTANCE;
       }
-      localLinearLayout.setId(2131371277);
+      localLinearLayout.setId(2131371557);
       localLinearLayout.setOrientation(1);
       localViewGroup1 = (ViewGroup)localLinearLayout;
       localObject2 = new RelativeLayout(localViewGroup1.getContext());
       ((RelativeLayout)localObject2).setTag(localViewGroup1);
-      paramContext = Unit.INSTANCE;
       paramContext = (View)localObject2;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label664;
+        break label648;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label228:
+      label220:
       if (paramContext.getLayoutParams() == null) {
-        break label669;
+        break label653;
       }
       paramContext.getLayoutParams().width = -1;
       paramContext.getLayoutParams().height = i;
-      label251:
+      label243:
       paramContext = (View)localObject2;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label688;
+        break label672;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label274:
+      label266:
       j = LayoutAttrsKt.getDp(25);
       if (paramContext.getLayoutParams() == null) {
-        break label693;
+        break label677;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label303:
+      label295:
       ((RelativeLayout)localObject2).setGravity(16);
       localObject1 = ((View)localObject2).getLayoutParams();
       paramContext = (Context)localObject1;
@@ -107,59 +103,57 @@ public final class PopularityListLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.topMargin = LayoutAttrsKt.getDp(10);
-        paramContext = Unit.INSTANCE;
       }
       localViewGroup2 = (ViewGroup)localObject2;
       localObject3 = new ImageView(localViewGroup2.getContext());
       ((ImageView)localObject3).setTag(localViewGroup2);
-      paramContext = Unit.INSTANCE;
-      ((ImageView)localObject3).setId(2131371285);
+      ((ImageView)localObject3).setId(2131371565);
       paramContext = (View)localObject3;
       j = LayoutAttrsKt.getDp(20);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label712;
+        break label696;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label423:
+      label407:
       if (paramContext.getLayoutParams() == null) {
-        break label717;
+        break label701;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label446:
+      label430:
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label736;
+        break label720;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label469:
+      label453:
       j = LayoutAttrsKt.getDp(20);
       if (paramContext.getLayoutParams() == null) {
-        break label741;
+        break label725;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label498:
+      label482:
       localObject4 = (View)localObject3;
       paramContext = ((View)localObject4).getLayoutParams();
       if (paramContext == null) {
-        break label760;
+        break label744;
       }
       i = paramContext.width;
-      label520:
+      label504:
       paramContext = ((View)localObject4).getLayoutParams();
       if (paramContext == null) {
-        break label769;
+        break label753;
       }
     }
     int k;
-    label640:
-    label769:
+    label605:
+    label624:
+    label753:
     for (int j = paramContext.height;; j = ((View)localObject4).getHeight())
     {
       localObject5 = new RelativeLayout.LayoutParams(i, j);
@@ -170,11 +164,11 @@ public final class PopularityListLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label782;
+        break label762;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label782;
+        break label762;
       }
       i = 0;
       k = paramContext.length;
@@ -187,46 +181,43 @@ public final class PopularityListLayoutKt
       }
       i = 0;
       break;
-      label621:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
       break label62;
       i = 0;
       break label85;
-      label645:
+      label629:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
       break label115;
-      label664:
       i = 0;
-      break label228;
-      label669:
+      break label220;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
-      break label251;
-      label688:
+      break label243;
       i = 0;
-      break label274;
-      label693:
+      break label266;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label303;
-      label712:
+      break label295;
       i = 0;
-      break label423;
-      label717:
+      break label407;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label446;
-      label736:
+      break label430;
       i = 0;
-      break label469;
-      label741:
+      break label453;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label498;
-      label760:
+      break label482;
       i = ((View)localObject4).getWidth();
-      break label520;
+      break label504;
     }
-    paramContext = Unit.INSTANCE;
-    label782:
+    label648:
+    label653:
+    label672:
+    label677:
+    label696:
+    label701:
+    label720:
+    label725:
+    label744:
+    label762:
     ((RelativeLayout.LayoutParams)localObject5).addRule(9, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
     localObject1 = ((View)localObject3).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -234,74 +225,73 @@ public final class PopularityListLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.leftMargin = LayoutAttrsKt.getDp(11);
-      paramContext = Unit.INSTANCE;
     }
-    ((ImageView)localObject3).setImageResource(2130841039);
+    ((ImageView)localObject3).setImageResource(2130841172);
     localViewGroup2.addView((View)localObject3);
-    paramContext = Unit.INSTANCE;
     ViewGroup localViewGroup2 = (ViewGroup)localObject2;
     Object localObject3 = new TextView(localViewGroup2.getContext());
     ((TextView)localObject3).setTag(localViewGroup2);
-    paramContext = Unit.INSTANCE;
-    ((TextView)localObject3).setId(2131371284);
+    ((TextView)localObject3).setId(2131371564);
     paramContext = (View)localObject3;
     localObject1 = paramContext.getLayoutParams();
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
       if (paramContext.getLayoutParams() == null) {
-        break label1213;
+        break label1173;
       }
       paramContext.getLayoutParams().width = -2;
       paramContext.getLayoutParams().height = i;
-      label956:
+      label920:
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label1233;
+        break label1193;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label979:
+      label943:
       if (paramContext.getLayoutParams() == null) {
-        break label1238;
+        break label1198;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
-      label1003:
+      label967:
       ((TextView)localObject3).setTextSize(14.0F);
-      ((TextView)localObject3).setText(2131706269);
+      ((TextView)localObject3).setText(2131706809);
       if (!("#060606" instanceof Integer)) {
-        break label1258;
+        break label1218;
       }
       ((TextView)localObject3).setTextColor(((TextView)localObject3).getResources().getColor(((Number)"#060606").intValue()));
-      label1046:
+      label1010:
       localObject1 = ((View)localObject3).getLayoutParams();
       paramContext = (Context)localObject1;
       if (!(localObject1 instanceof ViewGroup.MarginLayoutParams)) {
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.leftMargin = LayoutAttrsKt.getDp(3);
-        paramContext = Unit.INSTANCE;
       }
       localObject4 = (View)localObject3;
       paramContext = ((View)localObject4).getLayoutParams();
       if (paramContext == null) {
-        break label1271;
+        break label1231;
       }
       i = paramContext.width;
-      label1112:
+      label1072:
       paramContext = ((View)localObject4).getLayoutParams();
       if (paramContext == null) {
-        break label1280;
+        break label1240;
       }
     }
-    label1280:
+    label1173:
+    label1193:
+    label1198:
+    label1218:
+    label1231:
+    label1240:
     for (j = paramContext.height;; j = ((View)localObject4).getHeight())
     {
       localObject5 = new RelativeLayout.LayoutParams(i, j);
@@ -312,11 +302,11 @@ public final class PopularityListLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label1293;
+        break label1249;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label1293;
+        break label1249;
       }
       i = 0;
       k = paramContext.length;
@@ -329,34 +319,25 @@ public final class PopularityListLayoutKt
       }
       i = 0;
       break;
-      label1213:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label956;
-      label1233:
+      break label920;
       i = 0;
-      break label979;
-      label1238:
+      break label943;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
-      break label1003;
-      label1258:
+      break label967;
       ((TextView)localObject3).setTextColor(Color.parseColor("#060606"));
-      break label1046;
-      label1271:
+      break label1010;
       i = ((View)localObject4).getWidth();
-      break label1112;
+      break label1072;
     }
-    paramContext = Unit.INSTANCE;
-    label1293:
-    ((RelativeLayout.LayoutParams)localObject5).addRule(1, 2131371285);
-    paramContext = Unit.INSTANCE;
+    label1249:
+    ((RelativeLayout.LayoutParams)localObject5).addRule(1, 2131371565);
     ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
     localViewGroup2.addView((View)localObject3);
-    paramContext = Unit.INSTANCE;
     localViewGroup2 = (ViewGroup)localObject2;
     localObject3 = new ImageView(localViewGroup2.getContext());
     ((ImageView)localObject3).setTag(localViewGroup2);
-    paramContext = Unit.INSTANCE;
-    ((ImageView)localObject3).setId(2131371276);
+    ((ImageView)localObject3).setId(2131371556);
     paramContext = (View)localObject3;
     j = LayoutAttrsKt.getDp(20);
     localObject1 = paramContext.getLayoutParams();
@@ -364,42 +345,42 @@ public final class PopularityListLayoutKt
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
       if (paramContext.getLayoutParams() == null) {
-        break label1595;
+        break label1539;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label1420:
+      label1364:
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label1614;
+        break label1558;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label1443:
+      label1387:
       j = LayoutAttrsKt.getDp(20);
       if (paramContext.getLayoutParams() == null) {
-        break label1619;
+        break label1563;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
-      label1472:
+      label1416:
       localObject4 = (View)localObject3;
       paramContext = ((View)localObject4).getLayoutParams();
       if (paramContext == null) {
-        break label1638;
+        break label1582;
       }
       i = paramContext.width;
-      label1494:
+      label1438:
       paramContext = ((View)localObject4).getLayoutParams();
       if (paramContext == null) {
-        break label1647;
+        break label1591;
       }
     }
-    label1595:
-    label1614:
-    label1619:
-    label1638:
-    label1647:
+    label1539:
+    label1558:
+    label1563:
+    label1582:
+    label1591:
     for (j = paramContext.height;; j = ((View)localObject4).getHeight())
     {
       localObject5 = new RelativeLayout.LayoutParams(i, j);
@@ -410,11 +391,11 @@ public final class PopularityListLayoutKt
       }
       paramContext = (RelativeLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label1660;
+        break label1600;
       }
       paramContext = paramContext.getRules();
       if (paramContext == null) {
-        break label1660;
+        break label1600;
       }
       i = 0;
       k = paramContext.length;
@@ -428,18 +409,16 @@ public final class PopularityListLayoutKt
       i = 0;
       break;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label1420;
+      break label1364;
       i = 0;
-      break label1443;
+      break label1387;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
-      break label1472;
+      break label1416;
       i = ((View)localObject4).getWidth();
-      break label1494;
+      break label1438;
     }
-    paramContext = Unit.INSTANCE;
-    label1660:
+    label1600:
     ((RelativeLayout.LayoutParams)localObject5).addRule(11, -1);
-    paramContext = Unit.INSTANCE;
     ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
     localObject1 = ((View)localObject3).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -447,74 +426,68 @@ public final class PopularityListLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(10);
-      paramContext = Unit.INSTANCE;
     }
-    ((ImageView)localObject3).setImageResource(2130848410);
+    ((ImageView)localObject3).setImageResource(2130848767);
     localViewGroup2.addView((View)localObject3);
-    paramContext = Unit.INSTANCE;
     localViewGroup1.addView((View)localObject2);
-    paramContext = Unit.INSTANCE;
     ViewGroup localViewGroup1 = (ViewGroup)localLinearLayout;
     Object localObject2 = new LinearLayout(localViewGroup1.getContext());
     ((LinearLayout)localObject2).setTag(localViewGroup1);
-    paramContext = Unit.INSTANCE;
     paramContext = (View)localObject2;
     localObject1 = paramContext.getLayoutParams();
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
       if (paramContext.getLayoutParams() == null) {
-        break label2353;
+        break label2257;
       }
       paramContext.getLayoutParams().width = -1;
       paramContext.getLayoutParams().height = i;
-      label1840:
+      label1760:
       paramContext = (View)localObject2;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label2372;
+        break label2276;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label1863:
+      label1783:
       if (paramContext.getLayoutParams() == null) {
-        break label2377;
+        break label2281;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
-      label1887:
+      label1807:
       ((LinearLayout)localObject2).setOrientation(0);
       localViewGroup2 = (ViewGroup)localObject2;
       localObject3 = new LinearLayout(localViewGroup2.getContext());
       ((LinearLayout)localObject3).setTag(localViewGroup2);
-      paramContext = Unit.INSTANCE;
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label2397;
+        break label2301;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label1948:
+      label1864:
       if (paramContext.getLayoutParams() == null) {
-        break label2402;
+        break label2306;
       }
       paramContext.getLayoutParams().width = 0;
       paramContext.getLayoutParams().height = i;
-      label1971:
+      label1887:
       paramContext = ((LinearLayout)localObject3).getLayoutParams();
       if (paramContext == null) {
-        break label2421;
+        break label2325;
       }
       i = paramContext.width;
-      label1986:
+      label1902:
       paramContext = ((LinearLayout)localObject3).getLayoutParams();
       if (paramContext == null) {
-        break label2430;
+        break label2334;
       }
       j = paramContext.height;
-      label2001:
+      label1917:
       localObject4 = new LinearLayout.LayoutParams(i, j, 1.0F);
       localObject1 = ((LinearLayout)localObject3).getLayoutParams();
       paramContext = (Context)localObject1;
@@ -523,12 +496,11 @@ public final class PopularityListLayoutKt
       }
       paramContext = (LinearLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label2439;
+        break label2343;
       }
       i = paramContext.gravity;
-      label2047:
+      label1963:
       ((LinearLayout.LayoutParams)localObject4).gravity = i;
-      paramContext = Unit.INSTANCE;
       ((LinearLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
       localObject1 = ((View)localObject3).getLayoutParams();
       paramContext = (Context)localObject1;
@@ -536,54 +508,51 @@ public final class PopularityListLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.leftMargin = LayoutAttrsKt.getDp(10);
-        paramContext = Unit.INSTANCE;
       }
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label2444;
+        break label2348;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label2135:
+      label2043:
       if (paramContext.getLayoutParams() == null) {
-        break label2449;
+        break label2353;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -1;
-      label2158:
+      label2066:
       ((LinearLayout)localObject3).setOrientation(1);
       localObject4 = (ViewGroup)localObject3;
       localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
       ((ImageView)localObject5).setTag(localObject4);
-      paramContext = Unit.INSTANCE;
-      ((ImageView)localObject5).setId(2131371278);
+      ((ImageView)localObject5).setId(2131371558);
       paramContext = (View)localObject5;
       j = LayoutAttrsKt.getDp(50);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label2468;
+        break label2372;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label2232:
+      label2136:
       if (paramContext.getLayoutParams() == null) {
-        break label2473;
+        break label2377;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label2255:
+      label2159:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label2492;
+        break label2396;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label2278:
+      label2182:
       j = LayoutAttrsKt.getDp(50);
       if (paramContext.getLayoutParams() == null) {
-        break label2497;
+        break label2401;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
@@ -593,61 +562,60 @@ public final class PopularityListLayoutKt
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label2835;
+        break label2718;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label2516;
+        break label2420;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
       i = 0;
       break;
-      label2353:
+      label2257:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, i));
-      break label1840;
+      break label1760;
+      label2276:
+      i = 0;
+      break label1783;
+      label2281:
+      paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
+      break label1807;
+      label2301:
+      i = 0;
+      break label1864;
+      label2306:
+      paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(0, i));
+      break label1887;
+      label2325:
+      i = ((LinearLayout)localObject3).getWidth();
+      break label1902;
+      label2334:
+      j = ((LinearLayout)localObject3).getHeight();
+      break label1917;
+      label2343:
+      i = -1;
+      break label1963;
+      label2348:
+      i = 0;
+      break label2043;
+      label2353:
+      paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
+      break label2066;
       label2372:
       i = 0;
-      break label1863;
+      break label2136;
       label2377:
-      paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
-      break label1887;
-      label2397:
-      i = 0;
-      break label1948;
-      label2402:
-      paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(0, i));
-      break label1971;
-      label2421:
-      i = ((LinearLayout)localObject3).getWidth();
-      break label1986;
-      label2430:
-      j = ((LinearLayout)localObject3).getHeight();
-      break label2001;
-      label2439:
-      i = -1;
-      break label2047;
-      label2444:
-      i = 0;
-      break label2135;
-      label2449:
-      paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
-      break label2158;
-      label2468:
-      i = 0;
-      break label2232;
-      label2473:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label2255;
-      label2492:
+      break label2159;
+      label2396:
       i = 0;
-      break label2278;
-      label2497:
+      break label2182;
+      label2401:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    label2516:
+    label2420:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 1;
-    Unit localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = ((View)localObject5).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -655,39 +623,35 @@ public final class PopularityListLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(31);
-      paramContext = Unit.INSTANCE;
     }
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     Object localObject4 = (ViewGroup)localObject3;
     Object localObject5 = new TextView(((ViewGroup)localObject4).getContext());
     ((TextView)localObject5).setTag(localObject4);
-    paramContext = Unit.INSTANCE;
-    ((TextView)localObject5).setId(2131371280);
+    ((TextView)localObject5).setId(2131371560);
     paramContext = (View)localObject5;
     localObject1 = paramContext.getLayoutParams();
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label2671:
+      label2558:
       if (paramContext.getLayoutParams() == null) {
-        break label2906;
+        break label2784;
       }
       paramContext.getLayoutParams().width = -2;
       paramContext.getLayoutParams().height = i;
-      label2695:
+      label2582:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label2926;
+        break label2804;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label2718:
+      label2605:
       if (paramContext.getLayoutParams() == null) {
-        break label2931;
+        break label2809;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
@@ -701,22 +665,20 @@ public final class PopularityListLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.topMargin = LayoutAttrsKt.getDp(18);
-        paramContext = Unit.INSTANCE;
       }
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label3232;
+        break label3097;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label2951;
+        break label2829;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label2835:
+      label2718:
       if (!(localObject1 instanceof LinearLayout)) {
         break;
       }
@@ -726,24 +688,22 @@ public final class PopularityListLayoutKt
       }
       localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
       ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-      localUnit = Unit.INSTANCE;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       break;
       i = 0;
-      break label2671;
-      label2906:
+      break label2558;
+      label2784:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label2695;
-      label2926:
+      break label2582;
+      label2804:
       i = 0;
-      break label2718;
-      label2931:
+      break label2605;
+      label2809:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
     }
-    label2951:
+    label2829:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 1;
-    localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     ((TextView)localObject5).setMaxLines(1);
     ((TextView)localObject5).setMaxEms(4);
@@ -751,38 +711,36 @@ public final class PopularityListLayoutKt
     if (("#484848" instanceof Integer))
     {
       ((TextView)localObject5).setTextColor(((TextView)localObject5).getResources().getColor(((Number)"#484848").intValue()));
-      label3034:
+      label2907:
       ((ViewGroup)localObject4).addView((View)localObject5);
-      paramContext = Unit.INSTANCE;
       localObject4 = (ViewGroup)localObject3;
       localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
       ((ImageView)localObject5).setTag(localObject4);
-      paramContext = Unit.INSTANCE;
-      ((ImageView)localObject5).setId(2131371279);
+      ((ImageView)localObject5).setId(2131371559);
       paramContext = (View)localObject5;
       j = LayoutAttrsKt.getDp(54);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label3311;
+        break label3171;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label3116:
+      label2981:
       if (paramContext.getLayoutParams() == null) {
-        break label3316;
+        break label3176;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label3139:
+      label3004:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label3335;
+        break label3195;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label3162:
+      label3027:
       j = LayoutAttrsKt.getDp(28);
       if (paramContext.getLayoutParams() == null) {
-        break label3340;
+        break label3200;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
@@ -792,14 +750,14 @@ public final class PopularityListLayoutKt
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label3872;
+        break label3703;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label3359;
+        break label3219;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label3232:
+      label3097:
       if (!(localObject1 instanceof LinearLayout)) {
         break;
       }
@@ -809,27 +767,25 @@ public final class PopularityListLayoutKt
       }
       localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
       ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-      localUnit = Unit.INSTANCE;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       break;
       ((TextView)localObject5).setTextColor(Color.parseColor("#484848"));
-      break label3034;
-      label3311:
+      break label2907;
+      label3171:
       i = 0;
-      break label3116;
-      label3316:
+      break label2981;
+      label3176:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label3139;
-      label3335:
+      break label3004;
+      label3195:
       i = 0;
-      break label3162;
-      label3340:
+      break label3027;
+      label3200:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    label3359:
+    label3219:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 1;
-    localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = ((View)localObject5).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -837,44 +793,39 @@ public final class PopularityListLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(2);
-      paramContext = Unit.INSTANCE;
     }
-    ((ImageView)localObject5).setImageResource(2130841014);
+    ((ImageView)localObject5).setImageResource(2130841146);
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     localViewGroup2.addView((View)localObject3);
-    paramContext = Unit.INSTANCE;
     localViewGroup2 = (ViewGroup)localObject2;
     localObject3 = new LinearLayout(localViewGroup2.getContext());
     ((LinearLayout)localObject3).setTag(localViewGroup2);
-    paramContext = Unit.INSTANCE;
     paramContext = (View)localObject3;
     localObject1 = paramContext.getLayoutParams();
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label3527:
+      label3366:
       if (paramContext.getLayoutParams() == null) {
-        break label3943;
+        break label3769;
       }
       paramContext.getLayoutParams().width = 0;
       paramContext.getLayoutParams().height = i;
-      label3550:
+      label3389:
       paramContext = ((LinearLayout)localObject3).getLayoutParams();
       if (paramContext == null) {
-        break label3962;
+        break label3788;
       }
       i = paramContext.width;
-      label3565:
+      label3404:
       paramContext = ((LinearLayout)localObject3).getLayoutParams();
       if (paramContext == null) {
-        break label3971;
+        break label3797;
       }
       j = paramContext.height;
-      label3580:
+      label3419:
       localObject4 = new LinearLayout.LayoutParams(i, j, 1.0F);
       localObject1 = ((LinearLayout)localObject3).getLayoutParams();
       paramContext = (Context)localObject1;
@@ -883,71 +834,69 @@ public final class PopularityListLayoutKt
       }
       paramContext = (LinearLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label3980;
+        break label3806;
       }
       i = paramContext.gravity;
-      label3626:
+      label3465:
       ((LinearLayout.LayoutParams)localObject4).gravity = i;
-      paramContext = Unit.INSTANCE;
       ((LinearLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label3985;
+        break label3811;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label3669:
+      label3504:
       if (paramContext.getLayoutParams() == null) {
-        break label3990;
+        break label3816;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -1;
-      label3692:
+      label3527:
       ((LinearLayout)localObject3).setOrientation(1);
       localObject4 = (ViewGroup)localObject3;
       localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
       ((ImageView)localObject5).setTag(localObject4);
-      paramContext = Unit.INSTANCE;
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label4009;
+        break label3835;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label3753:
+      label3584:
       if (paramContext.getLayoutParams() == null) {
-        break label4014;
+        break label3840;
       }
       paramContext.getLayoutParams().width = -2;
       paramContext.getLayoutParams().height = i;
-      label3777:
+      label3608:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label4034;
+        break label3860;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label3800:
+      label3631:
       if (paramContext.getLayoutParams() == null) {
-        break label4039;
+        break label3865;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
     }
     for (;;)
     {
-      ((ImageView)localObject5).setImageResource(2130841039);
+      ((ImageView)localObject5).setImageResource(2130841172);
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label4399;
+        break label4203;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label4059;
+        break label3885;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label3872:
+      label3703:
       if (!(localObject1 instanceof LinearLayout)) {
         break;
       }
@@ -957,45 +906,43 @@ public final class PopularityListLayoutKt
       }
       localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
       ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-      localUnit = Unit.INSTANCE;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       break;
       i = 0;
-      break label3527;
-      label3943:
+      break label3366;
+      label3769:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(0, i));
-      break label3550;
-      label3962:
+      break label3389;
+      label3788:
       i = ((LinearLayout)localObject3).getWidth();
-      break label3565;
-      label3971:
+      break label3404;
+      label3797:
       j = ((LinearLayout)localObject3).getHeight();
-      break label3580;
-      label3980:
+      break label3419;
+      label3806:
       i = -1;
-      break label3626;
-      label3985:
+      break label3465;
+      label3811:
       i = 0;
-      break label3669;
-      label3990:
+      break label3504;
+      label3816:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
-      break label3692;
-      label4009:
+      break label3527;
+      label3835:
       i = 0;
-      break label3753;
-      label4014:
+      break label3584;
+      label3840:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label3777;
-      label4034:
+      break label3608;
+      label3860:
       i = 0;
-      break label3800;
-      label4039:
+      break label3631;
+      label3865:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
     }
-    label4059:
+    label3885:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 1;
-    localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     ((ImageView)localObject5).setRotation(30.0F);
     localObject1 = ((View)localObject5).getLayoutParams();
@@ -1004,10 +951,8 @@ public final class PopularityListLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.bottomMargin = LayoutAttrsKt.getDp(-7);
-      paramContext = Unit.INSTANCE;
     }
     localObject1 = ((View)localObject5).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -1015,41 +960,37 @@ public final class PopularityListLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.leftMargin = LayoutAttrsKt.getDp(23);
-      paramContext = Unit.INSTANCE;
     }
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     paramContext = (ViewGroup)localObject3;
     localObject1 = new ImageView(paramContext.getContext());
     ((ImageView)localObject1).setTag(paramContext);
-    localObject4 = Unit.INSTANCE;
-    ((ImageView)localObject1).setId(2131371273);
+    ((ImageView)localObject1).setId(2131371553);
     localObject4 = (View)localObject1;
     j = LayoutAttrsKt.getDp(50);
     localObject5 = ((View)localObject4).getLayoutParams();
     if (localObject5 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject5).height;
-      label4272:
+      label4076:
       if (((View)localObject4).getLayoutParams() == null) {
-        break label4470;
+        break label4269;
       }
       ((View)localObject4).getLayoutParams().width = j;
       ((View)localObject4).getLayoutParams().height = i;
-      label4298:
+      label4102:
       localObject4 = (View)localObject1;
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 == null) {
-        break label4490;
+        break label4289;
       }
       i = ((ViewGroup.LayoutParams)localObject5).width;
-      label4323:
+      label4127:
       j = LayoutAttrsKt.getDp(50);
       if (((View)localObject4).getLayoutParams() == null) {
-        break label4495;
+        break label4294;
       }
       ((View)localObject4).getLayoutParams().width = i;
       ((View)localObject4).getLayoutParams().height = j;
@@ -1059,14 +1000,14 @@ public final class PopularityListLayoutKt
       localObject4 = (View)localObject1;
       localObject5 = ((View)localObject4).getTag();
       if (!(localObject5 instanceof FrameLayout)) {
-        break label4809;
+        break label4591;
       }
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 != null) {
-        break label4515;
+        break label4314;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label4399:
+      label4203:
       if (!(localObject1 instanceof LinearLayout)) {
         break;
       }
@@ -1076,53 +1017,49 @@ public final class PopularityListLayoutKt
       }
       localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
       ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-      localUnit = Unit.INSTANCE;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       break;
       i = 0;
-      break label4272;
-      label4470:
+      break label4076;
+      label4269:
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label4298;
-      label4490:
+      break label4102;
+      label4289:
       i = 0;
-      break label4323;
-      label4495:
+      break label4127;
+      label4294:
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    label4515:
+    label4314:
     localObject5 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject5);
     ((FrameLayout.LayoutParams)localObject5).gravity = 1;
-    localUnit = Unit.INSTANCE;
     ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
     paramContext.addView((View)localObject1);
-    paramContext = Unit.INSTANCE;
     localObject4 = (ViewGroup)localObject3;
     localObject5 = new TextView(((ViewGroup)localObject4).getContext());
     ((TextView)localObject5).setTag(localObject4);
-    paramContext = Unit.INSTANCE;
-    ((TextView)localObject5).setId(2131371275);
+    ((TextView)localObject5).setId(2131371555);
     paramContext = (View)localObject5;
     localObject1 = paramContext.getLayoutParams();
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label4625:
+      label4411:
       if (paramContext.getLayoutParams() == null) {
-        break label4882;
+        break label4659;
       }
       paramContext.getLayoutParams().width = -2;
       paramContext.getLayoutParams().height = i;
-      label4649:
+      label4435:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label4902;
+        break label4679;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label4672:
+      label4458:
       if (paramContext.getLayoutParams() == null) {
-        break label4907;
+        break label4684;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
@@ -1136,10 +1073,8 @@ public final class PopularityListLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.topMargin = LayoutAttrsKt.getDp(22);
-        paramContext = Unit.INSTANCE;
       }
       ((TextView)localObject5).setMaxLines(1);
       ((TextView)localObject5).setMaxEms(4);
@@ -1147,14 +1082,14 @@ public final class PopularityListLayoutKt
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label5188;
+        break label4952;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label4927;
+        break label4704;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label4809:
+      label4591:
       if (!(localObject5 instanceof LinearLayout)) {
         break;
       }
@@ -1164,60 +1099,56 @@ public final class PopularityListLayoutKt
       }
       localObject5 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject5);
       ((LinearLayout.LayoutParams)localObject5).gravity = 1;
-      localUnit = Unit.INSTANCE;
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
       break;
       i = 0;
-      break label4625;
-      label4882:
+      break label4411;
+      label4659:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label4649;
-      label4902:
+      break label4435;
+      label4679:
       i = 0;
-      break label4672;
-      label4907:
+      break label4458;
+      label4684:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
     }
-    label4927:
+    label4704:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 1;
-    localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     if (("#7c4f01" instanceof Integer))
     {
       ((TextView)localObject5).setTextColor(((TextView)localObject5).getResources().getColor(((Number)"#7c4f01").intValue()));
-      label4990:
+      label4762:
       ((ViewGroup)localObject4).addView((View)localObject5);
-      paramContext = Unit.INSTANCE;
       localObject4 = (ViewGroup)localObject3;
       localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
       ((ImageView)localObject5).setTag(localObject4);
-      paramContext = Unit.INSTANCE;
-      ((ImageView)localObject5).setId(2131371274);
+      ((ImageView)localObject5).setId(2131371554);
       paramContext = (View)localObject5;
       j = LayoutAttrsKt.getDp(54);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label5267;
+        break label5026;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label5072:
+      label4836:
       if (paramContext.getLayoutParams() == null) {
-        break label5272;
+        break label5031;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label5095:
+      label4859:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label5291;
+        break label5050;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label5118:
+      label4882:
       j = LayoutAttrsKt.getDp(28);
       if (paramContext.getLayoutParams() == null) {
-        break label5296;
+        break label5055;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
@@ -1227,14 +1158,14 @@ public final class PopularityListLayoutKt
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label5884;
+        break label5610;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label5315;
+        break label5074;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label5188:
+      label4952:
       if (!(localObject1 instanceof LinearLayout)) {
         break;
       }
@@ -1244,27 +1175,25 @@ public final class PopularityListLayoutKt
       }
       localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
       ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-      localUnit = Unit.INSTANCE;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       break;
       ((TextView)localObject5).setTextColor(Color.parseColor("#7c4f01"));
-      break label4990;
-      label5267:
+      break label4762;
+      label5026:
       i = 0;
-      break label5072;
-      label5272:
+      break label4836;
+      label5031:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label5095;
-      label5291:
+      break label4859;
+      label5050:
       i = 0;
-      break label5118;
-      label5296:
+      break label4882;
+      label5055:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    label5315:
+    label5074:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 1;
-    localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = ((View)localObject5).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -1272,44 +1201,39 @@ public final class PopularityListLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(10);
-      paramContext = Unit.INSTANCE;
     }
-    ((ImageView)localObject5).setImageResource(2130841014);
+    ((ImageView)localObject5).setImageResource(2130841146);
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     localViewGroup2.addView((View)localObject3);
-    paramContext = Unit.INSTANCE;
     localViewGroup2 = (ViewGroup)localObject2;
     localObject3 = new LinearLayout(localViewGroup2.getContext());
     ((LinearLayout)localObject3).setTag(localViewGroup2);
-    paramContext = Unit.INSTANCE;
     paramContext = (View)localObject3;
     localObject1 = paramContext.getLayoutParams();
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label5484:
+      label5222:
       if (paramContext.getLayoutParams() == null) {
-        break label5955;
+        break label5676;
       }
       paramContext.getLayoutParams().width = 0;
       paramContext.getLayoutParams().height = i;
-      label5507:
+      label5245:
       paramContext = ((LinearLayout)localObject3).getLayoutParams();
       if (paramContext == null) {
-        break label5974;
+        break label5695;
       }
       i = paramContext.width;
-      label5522:
+      label5260:
       paramContext = ((LinearLayout)localObject3).getLayoutParams();
       if (paramContext == null) {
-        break label5983;
+        break label5704;
       }
       j = paramContext.height;
-      label5537:
+      label5275:
       localObject4 = new LinearLayout.LayoutParams(i, j, 1.0F);
       localObject1 = ((LinearLayout)localObject3).getLayoutParams();
       paramContext = (Context)localObject1;
@@ -1318,12 +1242,11 @@ public final class PopularityListLayoutKt
       }
       paramContext = (LinearLayout.LayoutParams)paramContext;
       if (paramContext == null) {
-        break label5992;
+        break label5713;
       }
       i = paramContext.gravity;
-      label5583:
+      label5321:
       ((LinearLayout.LayoutParams)localObject4).gravity = i;
-      paramContext = Unit.INSTANCE;
       ((LinearLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
       localObject1 = ((View)localObject3).getLayoutParams();
       paramContext = (Context)localObject1;
@@ -1331,54 +1254,51 @@ public final class PopularityListLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.rightMargin = LayoutAttrsKt.getDp(12);
-        paramContext = Unit.INSTANCE;
       }
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label5997;
+        break label5718;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label5671:
+      label5401:
       if (paramContext.getLayoutParams() == null) {
-        break label6002;
+        break label5723;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -1;
-      label5694:
+      label5424:
       ((LinearLayout)localObject3).setOrientation(1);
       localObject4 = (ViewGroup)localObject3;
       localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
       ((ImageView)localObject5).setTag(localObject4);
-      paramContext = Unit.INSTANCE;
-      ((ImageView)localObject5).setId(2131371281);
+      ((ImageView)localObject5).setId(2131371561);
       paramContext = (View)localObject5;
       j = LayoutAttrsKt.getDp(50);
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label6021;
+        break label5742;
       }
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label5768:
+      label5494:
       if (paramContext.getLayoutParams() == null) {
-        break label6026;
+        break label5747;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label5791:
+      label5517:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label6045;
+        break label5766;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label5814:
+      label5540:
       j = LayoutAttrsKt.getDp(50);
       if (paramContext.getLayoutParams() == null) {
-        break label6050;
+        break label5771;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
@@ -1388,14 +1308,14 @@ public final class PopularityListLayoutKt
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label6417;
+        break label6117;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label6069;
+        break label5790;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label5884:
+      label5610:
       if (!(localObject1 instanceof LinearLayout)) {
         break;
       }
@@ -1405,45 +1325,43 @@ public final class PopularityListLayoutKt
       }
       localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
       ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-      localUnit = Unit.INSTANCE;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       break;
       i = 0;
-      break label5484;
-      label5955:
+      break label5222;
+      label5676:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(0, i));
-      break label5507;
-      label5974:
+      break label5245;
+      label5695:
       i = ((LinearLayout)localObject3).getWidth();
-      break label5522;
-      label5983:
+      break label5260;
+      label5704:
       j = ((LinearLayout)localObject3).getHeight();
-      break label5537;
-      label5992:
+      break label5275;
+      label5713:
       i = -1;
-      break label5583;
-      label5997:
+      break label5321;
+      label5718:
       i = 0;
-      break label5671;
-      label6002:
+      break label5401;
+      label5723:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
-      break label5694;
-      label6021:
+      break label5424;
+      label5742:
       i = 0;
-      break label5768;
-      label6026:
+      break label5494;
+      label5747:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label5791;
-      label6045:
+      break label5517;
+      label5766:
       i = 0;
-      break label5814;
-      label6050:
+      break label5540;
+      label5771:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    label6069:
+    label5790:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 1;
-    localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = ((View)localObject5).getLayoutParams();
     paramContext = (Context)localObject1;
@@ -1451,46 +1369,42 @@ public final class PopularityListLayoutKt
       paramContext = null;
     }
     paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(33);
-      paramContext = Unit.INSTANCE;
     }
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     localObject4 = (ViewGroup)localObject3;
     localObject5 = new TextView(((ViewGroup)localObject4).getContext());
     ((TextView)localObject5).setTag(localObject4);
-    paramContext = Unit.INSTANCE;
-    ((TextView)localObject5).setId(2131371283);
+    ((TextView)localObject5).setId(2131371563);
     paramContext = (View)localObject5;
     localObject1 = paramContext.getLayoutParams();
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label6224:
+      label5928:
       if (paramContext.getLayoutParams() == null) {
-        break label6488;
+        break label6183;
       }
       paramContext.getLayoutParams().width = -2;
       paramContext.getLayoutParams().height = i;
-      label6248:
+      label5952:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label6508;
+        break label6203;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label6271:
+      label5975:
       if (paramContext.getLayoutParams() == null) {
-        break label6513;
+        break label6208;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -2;
-      label6295:
+      label5999:
       ((TextView)localObject5).setTextSize(14.0F);
       if (!("#8d4811" instanceof Integer)) {
-        break label6533;
+        break label6228;
       }
       ((TextView)localObject5).setTextColor(((TextView)localObject5).getResources().getColor(((Number)"#8d4811").intValue()));
     }
@@ -1502,22 +1416,20 @@ public final class PopularityListLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.topMargin = LayoutAttrsKt.getDp(18);
-        paramContext = Unit.INSTANCE;
       }
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label6798;
+        break label6480;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label6546;
+        break label6241;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label6417:
+      label6117:
       if (!(localObject1 instanceof LinearLayout)) {
         break;
       }
@@ -1527,61 +1439,57 @@ public final class PopularityListLayoutKt
       }
       localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
       ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-      localUnit = Unit.INSTANCE;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       break;
       i = 0;
-      break label6224;
-      label6488:
+      break label5928;
+      label6183:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-2, i));
-      break label6248;
-      label6508:
+      break label5952;
+      label6203:
       i = 0;
-      break label6271;
-      label6513:
+      break label5975;
+      label6208:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
-      break label6295;
-      label6533:
+      break label5999;
+      label6228:
       ((TextView)localObject5).setTextColor(Color.parseColor("#8d4811"));
     }
-    label6546:
+    label6241:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 1;
-    localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     ((TextView)localObject5).setMaxLines(1);
     ((TextView)localObject5).setMaxEms(4);
     ((TextView)localObject5).setEllipsize(TextUtils.TruncateAt.END);
     ((ViewGroup)localObject4).addView((View)localObject5);
-    paramContext = Unit.INSTANCE;
     localObject4 = (ViewGroup)localObject3;
     localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
     ((ImageView)localObject5).setTag(localObject4);
-    paramContext = Unit.INSTANCE;
-    ((ImageView)localObject5).setId(2131371282);
+    ((ImageView)localObject5).setId(2131371562);
     paramContext = (View)localObject5;
     j = LayoutAttrsKt.getDp(54);
     localObject1 = paramContext.getLayoutParams();
     if (localObject1 != null)
     {
       i = ((ViewGroup.LayoutParams)localObject1).height;
-      label6682:
+      label6364:
       if (paramContext.getLayoutParams() == null) {
-        break label6869;
+        break label6546;
       }
       paramContext.getLayoutParams().width = j;
       paramContext.getLayoutParams().height = i;
-      label6705:
+      label6387:
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
-        break label6888;
+        break label6565;
       }
       i = ((ViewGroup.LayoutParams)localObject1).width;
-      label6728:
+      label6410:
       j = LayoutAttrsKt.getDp(28);
       if (paramContext.getLayoutParams() == null) {
-        break label6893;
+        break label6570;
       }
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = j;
@@ -1591,14 +1499,14 @@ public final class PopularityListLayoutKt
       paramContext = (View)localObject5;
       localObject1 = paramContext.getTag();
       if (!(localObject1 instanceof FrameLayout)) {
-        break label7046;
+        break label6702;
       }
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 != null) {
-        break label6912;
+        break label6589;
       }
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      label6798:
+      label6480:
       if (!(localObject1 instanceof LinearLayout)) {
         break;
       }
@@ -1608,24 +1516,22 @@ public final class PopularityListLayoutKt
       }
       localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
       ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-      localUnit = Unit.INSTANCE;
       paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       break;
       i = 0;
-      break label6682;
-      label6869:
+      break label6364;
+      label6546:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(j, i));
-      break label6705;
-      label6888:
+      break label6387;
+      label6565:
       i = 0;
-      break label6728;
-      label6893:
+      break label6410;
+      label6570:
       paramContext.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, j));
     }
-    label6912:
+    label6589:
     localObject1 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
     ((FrameLayout.LayoutParams)localObject1).gravity = 81;
-    localUnit = Unit.INSTANCE;
     paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     for (;;)
     {
@@ -1635,20 +1541,15 @@ public final class PopularityListLayoutKt
         paramContext = null;
       }
       paramContext = (ViewGroup.MarginLayoutParams)paramContext;
-      if (paramContext != null)
-      {
+      if (paramContext != null) {
         paramContext.topMargin = LayoutAttrsKt.getDp(2);
-        paramContext = Unit.INSTANCE;
       }
-      ((ImageView)localObject5).setImageResource(2130841014);
+      ((ImageView)localObject5).setImageResource(2130841146);
       ((ViewGroup)localObject4).addView((View)localObject5);
-      paramContext = Unit.INSTANCE;
       localViewGroup2.addView((View)localObject3);
-      paramContext = Unit.INSTANCE;
       localViewGroup1.addView((View)localObject2);
-      paramContext = Unit.INSTANCE;
       return (View)localLinearLayout;
-      label7046:
+      label6702:
       if ((localObject1 instanceof LinearLayout))
       {
         localObject1 = paramContext.getLayoutParams();
@@ -1657,7 +1558,6 @@ public final class PopularityListLayoutKt
         }
         localObject1 = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject1);
         ((LinearLayout.LayoutParams)localObject1).gravity = 81;
-        localUnit = Unit.INSTANCE;
         paramContext.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
     }

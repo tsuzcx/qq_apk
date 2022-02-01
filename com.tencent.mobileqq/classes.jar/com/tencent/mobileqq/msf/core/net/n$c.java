@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 
 class n$c
   implements Runnable

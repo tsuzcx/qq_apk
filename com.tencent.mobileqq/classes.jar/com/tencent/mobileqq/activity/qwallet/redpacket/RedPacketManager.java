@@ -5,31 +5,21 @@ import Wallet.GetGroupRedPackListRsp;
 import Wallet.GetSkinListReq;
 import Wallet.RedPackGrapInfo;
 import Wallet.SetSelectedSkinReq;
-import akqe;
-import akra;
-import aktz;
-import akwl;
-import akwm;
-import akym;
-import akyn;
-import akyq;
-import akyr;
-import akys;
-import akyt;
-import akyu;
-import akyv;
-import akyw;
-import akyy;
-import albw;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgDBHelper.NotifyMsgRecord;
+import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -63,7 +53,7 @@ public class RedPacketManager
   public static final String CONFIG_URL_PANEL_PREFIX = "https://i.gtimg.cn/channel/imglib/201803/";
   public static final String CONFIG_URL_THEME_PREFIX = "https://i.gtimg.cn/channel/static/socialpay/paneltheme/socialpay_theme_v1_";
   public static final String CONFIG_URL_VOICE_PREFIX = "https://imgcache.qq.com/channel/static/socialpay/voice/";
-  public static List<akym> CURRENT_PANEL_DATA = new ArrayList();
+  public static List<PanelData> CURRENT_PANEL_DATA = new ArrayList();
   public static final String FILE_SKINS = "skins";
   public static final int FLAG_DEFAULT_REDPKG = 1;
   public static final int FLAG_LOCK_TEXT_REDPKG = 4;
@@ -87,7 +77,7 @@ public class RedPacketManager
   public static final int TYPE_LUCK_REDPKG = 1;
   public static final int TYPE_MINIAPP_REDPKG = 13;
   public static final int TYPE_THEME_REDPKG = 3;
-  static HashMap<Integer, akym> jdField_a_of_type_JavaUtilHashMap;
+  static HashMap<Integer, PanelData> jdField_a_of_type_JavaUtilHashMap;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private List<BusinessObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
   protected BusinessObserver a;
@@ -99,13 +89,13 @@ public class RedPacketManager
   {
     TYPEHBINFOMAP = new RedPacketManager.1();
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), new akym("", 0, anvx.a(2131712766), "1102", "", "#5B6175"));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), new akym("", 1, anvx.a(2131712778), "1101", "", "#5B6175"));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), new PanelData("", 0, HardCodeUtil.a(2131713262), "1102", "", "#5B6175"));
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), new PanelData("", 1, HardCodeUtil.a(2131713274), "1101", "", "#5B6175"));
   }
   
   public RedPacketManager()
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new akyu(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new RedPacketManager.9(this);
   }
   
   private boolean a(int paramInt)
@@ -161,16 +151,16 @@ public class RedPacketManager
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return akyv.a;
+      return RedPacketManager.RedPacketManagerHolder.a;
     }
-    return akyw.a;
+    return RedPacketManager.RedPacketProxyHolder.a;
   }
   
   public static boolean isBulletinValidDate(String paramString1, String paramString2)
   {
     boolean bool2 = false;
-    long l1 = albw.b(paramString1);
-    long l2 = albw.b(paramString2);
+    long l1 = QWalletTools.b(paramString1);
+    long l2 = QWalletTools.b(paramString2);
     boolean bool1 = bool2;
     if (l1 != -1L)
     {
@@ -198,8 +188,8 @@ public class RedPacketManager
   public static boolean isValidDate(String paramString1, String paramString2)
   {
     long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = albw.b(paramString1);
-    long l3 = albw.b(paramString2);
+    long l2 = QWalletTools.b(paramString1);
+    long l3 = QWalletTools.b(paramString2);
     boolean bool;
     if (l1 >= l2) {
       bool = true;
@@ -218,16 +208,16 @@ public class RedPacketManager
     return bool;
   }
   
-  public static boolean verifyDrawHbParams(akym paramakym)
+  public static boolean verifyDrawHbParams(PanelData paramPanelData)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramakym != null)
+    if (paramPanelData != null)
     {
       bool1 = bool2;
-      if (paramakym.jdField_a_of_type_OrgJsonJSONObject != null)
+      if (paramPanelData.jdField_a_of_type_OrgJsonJSONObject != null)
       {
-        if ((paramakym.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subjects") == null) || (paramakym.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subjects").length() <= 0)) {
+        if ((paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subjects") == null) || (paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subjects").length() <= 0)) {
           break label50;
         }
         bool1 = true;
@@ -237,17 +227,17 @@ public class RedPacketManager
     do
     {
       return bool1;
-      paramakym = paramakym.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("modelList");
+      paramPanelData = paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("modelList");
       bool1 = bool2;
-    } while (paramakym == null);
+    } while (paramPanelData == null);
     int i = 0;
     for (;;)
     {
       bool1 = bool2;
-      if (i >= paramakym.length()) {
+      if (i >= paramPanelData.length()) {
         break;
       }
-      Object localObject = paramakym.optJSONObject(i);
+      Object localObject = paramPanelData.optJSONObject(i);
       if (localObject != null)
       {
         localObject = ((JSONObject)localObject).optJSONArray("subjects");
@@ -259,17 +249,17 @@ public class RedPacketManager
     }
   }
   
-  public static boolean verifyEmojiHbParams(akym paramakym)
+  public static boolean verifyEmojiHbParams(PanelData paramPanelData)
   {
-    return (paramakym != null) && (paramakym.jdField_a_of_type_OrgJsonJSONObject != null) && (paramakym.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("heartList") != null) && (paramakym.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("heartList").length() != 0);
+    return (paramPanelData != null) && (paramPanelData.jdField_a_of_type_OrgJsonJSONObject != null) && (paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("heartList") != null) && (paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("heartList").length() != 0);
   }
   
-  public static boolean verifyKuaKuaHbParams(akym paramakym)
+  public static boolean verifyKuaKuaHbParams(PanelData paramPanelData)
   {
-    if ((paramakym != null) && (paramakym.jdField_a_of_type_OrgJsonJSONObject != null))
+    if ((paramPanelData != null) && (paramPanelData.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      paramakym = paramakym.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subjectList");
-      if ((paramakym != null) && (paramakym.length() > 0)) {
+      paramPanelData = paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subjectList");
+      if ((paramPanelData != null) && (paramPanelData.length() > 0)) {
         return true;
       }
     }
@@ -278,12 +268,12 @@ public class RedPacketManager
   
   public static boolean verifyLingBySession(SessionInfo paramSessionInfo)
   {
-    return (paramSessionInfo == null) || (!ChatActivityUtils.a(paramSessionInfo.curType));
+    return (paramSessionInfo == null) || (!ChatActivityUtils.a(paramSessionInfo.jdField_a_of_type_Int));
   }
   
   public static boolean verifyLuckBySession(SessionInfo paramSessionInfo)
   {
-    return (paramSessionInfo == null) || (b(paramSessionInfo.curType));
+    return (paramSessionInfo == null) || (b(paramSessionInfo.jdField_a_of_type_Int));
   }
   
   protected void a(String paramString1, String paramString2, int paramInt, IRedPacket.OnGetAvailableListListener paramOnGetAvailableListListener, GetGroupRedPackListRsp paramGetGroupRedPackListRsp, boolean paramBoolean)
@@ -304,7 +294,7 @@ public class RedPacketManager
         paramOnGetAvailableListListener.OnGetAvailableList(null);
         return;
       }
-      Object localObject1 = akwm.a(2);
+      Object localObject1 = NotifyMsgManager.a(2);
       int i = paramGetGroupRedPackListRsp.vecRedPackList.size() - 1;
       int j;
       if (i >= 0)
@@ -334,8 +324,8 @@ public class RedPacketManager
                   if (j >= ((ArrayList)localObject1).size()) {
                     break label247;
                   }
-                  akwl localakwl = (akwl)((ArrayList)localObject1).get(j);
-                  if ((localakwl != null) && (localakwl.jdField_a_of_type_JavaLangString != null) && (localakwl.jdField_a_of_type_JavaLangString.equals(localObject2)))
+                  NotifyMsgDBHelper.NotifyMsgRecord localNotifyMsgRecord = (NotifyMsgDBHelper.NotifyMsgRecord)((ArrayList)localObject1).get(j);
+                  if ((localNotifyMsgRecord != null) && (localNotifyMsgRecord.jdField_a_of_type_JavaLangString != null) && (localNotifyMsgRecord.jdField_a_of_type_JavaLangString.equals(localObject2)))
                   {
                     paramGetGroupRedPackListRsp.vecRedPackList.remove(i);
                     break;
@@ -351,10 +341,10 @@ public class RedPacketManager
         }
       }
       paramOnGetAvailableListListener.OnGetAvailableList(paramGetGroupRedPackListRsp.vecRedPackList);
-      localObject1 = albw.a();
+      localObject1 = QWalletTools.a();
       paramOnGetAvailableListListener = null;
       if (localObject1 != null) {
-        paramOnGetAvailableListListener = (akqe)((QQAppInterface)localObject1).getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER);
+        paramOnGetAvailableListListener = (PasswdRedBagManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER);
       }
       if (paramOnGetAvailableListListener != null)
       {
@@ -410,7 +400,7 @@ public class RedPacketManager
     return;
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
     if (paramBundle == null) {}
     Object localObject1;
@@ -430,7 +420,7 @@ public class RedPacketManager
         return;
         localObject1 = (GetGroupRedPackListReq)paramBundle.getSerializable("req");
         localGetGroupRedPackListRsp = (GetGroupRedPackListRsp)paramBundle.getSerializable("rsp");
-        paramBundle = albw.a();
+        paramBundle = QWalletTools.a();
       } while (paramBundle == null);
       if (localGetGroupRedPackListRsp != null)
       {
@@ -485,7 +475,7 @@ public class RedPacketManager
     a(str, paramBundle, j, (IRedPacket.OnGetAvailableListListener)localObject1, localGetGroupRedPackListRsp, true);
   }
   
-  public List<akym> getPanelList(SessionInfo paramSessionInfo)
+  public List<PanelData> getPanelList(SessionInfo paramSessionInfo)
   {
     ArrayList localArrayList = new ArrayList();
     for (;;)
@@ -494,13 +484,13 @@ public class RedPacketManager
       int n;
       try
       {
-        Object localObject1 = albw.a();
+        Object localObject1 = QWalletTools.a();
         if (localObject1 == null) {
           continue;
         }
-        Object localObject2 = (aktz)((QQAppInterface)localObject1).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
-        localObject1 = ((aktz)localObject2).a("redPackPanel", new String[] { "panelRedPkgList" });
-        localObject2 = ((aktz)localObject2).a("redPackPanel", "#5B6175", new String[] { "themeInfo", "fontColorIcon" });
+        Object localObject2 = (QWalletConfigManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+        localObject1 = ((QWalletConfigManager)localObject2).a("redPackPanel", new String[] { "panelRedPkgList" });
+        localObject2 = ((QWalletConfigManager)localObject2).a("redPackPanel", "#5B6175", new String[] { "themeInfo", "fontColorIcon" });
         if (localObject1 == null) {
           continue;
         }
@@ -522,35 +512,35 @@ public class RedPacketManager
           else
           {
             k = j;
-            localakym = new akym();
+            localPanelData = new PanelData();
             k = j;
-            localakym.jdField_a_of_type_JavaLangString = localJSONObject.optString("id", "");
+            localPanelData.jdField_a_of_type_JavaLangString = localJSONObject.optString("id", "");
             k = j;
-            localakym.jdField_a_of_type_Int = localJSONObject.optInt("type", -1);
+            localPanelData.jdField_a_of_type_Int = localJSONObject.optInt("type", -1);
             k = j;
-            localakym.jdField_b_of_type_JavaLangString = localJSONObject.optString("name", "");
+            localPanelData.jdField_b_of_type_JavaLangString = localJSONObject.optString("name", "");
             k = j;
-            localakym.jdField_c_of_type_JavaLangString = localJSONObject.optString("icon_pic", "");
+            localPanelData.jdField_c_of_type_JavaLangString = localJSONObject.optString("icon_pic", "");
             k = j;
-            localakym.jdField_e_of_type_JavaLangString = ((String)localObject2);
+            localPanelData.jdField_e_of_type_JavaLangString = ((String)localObject2);
             k = j;
-            localakym.jdField_a_of_type_OrgJsonJSONObject = localJSONObject.optJSONObject("params");
+            localPanelData.jdField_a_of_type_OrgJsonJSONObject = localJSONObject.optJSONObject("params");
             k = j;
             if (QLog.isColorLevel())
             {
               k = j;
-              QLog.i("RedPacketManager", 2, "panelData: " + localakym);
+              QLog.i("RedPacketManager", 2, "panelData: " + localPanelData);
             }
             k = j;
-            if (localakym.jdField_a_of_type_Int == 0)
+            if (localPanelData.jdField_a_of_type_Int == 0)
             {
               i = j | 0x1;
               k = i;
-              if (localakym.jdField_a_of_type_OrgJsonJSONObject != null) {
+              if (localPanelData.jdField_a_of_type_OrgJsonJSONObject != null) {
                 continue;
               }
               k = i;
-              localArrayList.add(localakym);
+              localArrayList.add(localPanelData);
               n = i;
             }
           }
@@ -563,7 +553,7 @@ public class RedPacketManager
       catch (Throwable localThrowable2)
       {
         int k;
-        akym localakym;
+        PanelData localPanelData;
         int i1;
         int i = 0;
         continue;
@@ -582,12 +572,12 @@ public class RedPacketManager
       {
         k = j;
         n = j;
-        if (ChatActivityUtils.a(paramSessionInfo.curType)) {}
+        if (ChatActivityUtils.a(paramSessionInfo.jdField_a_of_type_Int)) {}
       }
       else
       {
         k = j;
-        if (localakym.jdField_a_of_type_Int == 1)
+        if (localPanelData.jdField_a_of_type_Int == 1)
         {
           k = j;
           n = j;
@@ -598,7 +588,7 @@ public class RedPacketManager
         else
         {
           k = j;
-          if (localakym.jdField_a_of_type_Int == 2)
+          if (localPanelData.jdField_a_of_type_Int == 2)
           {
             k = j;
             n = j;
@@ -609,7 +599,7 @@ public class RedPacketManager
           else
           {
             k = j;
-            if (localakym.jdField_a_of_type_Int == 6)
+            if (localPanelData.jdField_a_of_type_Int == 6)
             {
               k = j;
               n = j;
@@ -620,16 +610,16 @@ public class RedPacketManager
             else
             {
               k = j;
-              if (localakym.jdField_a_of_type_Int == 3)
+              if (localPanelData.jdField_a_of_type_Int == 3)
               {
                 k = j;
                 n = j;
-                if (localakym.jdField_a_of_type_OrgJsonJSONObject != null)
+                if (localPanelData.jdField_a_of_type_OrgJsonJSONObject != null)
                 {
                   k = j;
-                  i = localakym.jdField_a_of_type_OrgJsonJSONObject.optInt("entry", 0);
+                  i = localPanelData.jdField_a_of_type_OrgJsonJSONObject.optInt("entry", 0);
                   k = j;
-                  i1 = localakym.jdField_a_of_type_OrgJsonJSONObject.optInt("theme_id", 0);
+                  i1 = localPanelData.jdField_a_of_type_OrgJsonJSONObject.optInt("theme_id", 0);
                   n = j;
                   if (i >= 0)
                   {
@@ -652,15 +642,15 @@ public class RedPacketManager
               else
               {
                 k = j;
-                if (localakym.jdField_a_of_type_Int == 4)
+                if (localPanelData.jdField_a_of_type_Int == 4)
                 {
                   k = j;
                   n = j;
-                  if (localakym.jdField_a_of_type_OrgJsonJSONObject != null)
+                  if (localPanelData.jdField_a_of_type_OrgJsonJSONObject != null)
                   {
                     i = j;
                     k = j;
-                    if (!TextUtils.isEmpty(localakym.jdField_a_of_type_OrgJsonJSONObject.optString("url"))) {
+                    if (!TextUtils.isEmpty(localPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("url"))) {
                       continue;
                     }
                     n = j;
@@ -670,14 +660,14 @@ public class RedPacketManager
                 {
                   k = j;
                   n = j;
-                  if (localakym.jdField_a_of_type_Int != 8)
+                  if (localPanelData.jdField_a_of_type_Int != 8)
                   {
                     k = j;
-                    if (localakym.jdField_a_of_type_Int == 10)
+                    if (localPanelData.jdField_a_of_type_Int == 10)
                     {
                       i = j;
                       k = j;
-                      if (verifyDrawHbParams(localakym)) {
+                      if (verifyDrawHbParams(localPanelData)) {
                         continue;
                       }
                       n = j;
@@ -685,7 +675,7 @@ public class RedPacketManager
                     else
                     {
                       k = j;
-                      if (localakym.jdField_a_of_type_Int == 11)
+                      if (localPanelData.jdField_a_of_type_Int == 11)
                       {
                         i = j;
                         if (paramSessionInfo == null) {
@@ -693,7 +683,7 @@ public class RedPacketManager
                         }
                         i = j;
                         k = j;
-                        if (b(paramSessionInfo.curType)) {
+                        if (b(paramSessionInfo.jdField_a_of_type_Int)) {
                           continue;
                         }
                         n = j;
@@ -701,15 +691,15 @@ public class RedPacketManager
                       else
                       {
                         k = j;
-                        if (localakym.jdField_a_of_type_Int == 12)
+                        if (localPanelData.jdField_a_of_type_Int == 12)
                         {
                           k = j;
                           n = j;
-                          if (localakym.jdField_a_of_type_OrgJsonJSONObject != null)
+                          if (localPanelData.jdField_a_of_type_OrgJsonJSONObject != null)
                           {
                             i = j;
                             k = j;
-                            if (!TextUtils.isEmpty(localakym.jdField_a_of_type_OrgJsonJSONObject.optString("schema"))) {
+                            if (!TextUtils.isEmpty(localPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("schema"))) {
                               continue;
                             }
                             n = j;
@@ -719,22 +709,22 @@ public class RedPacketManager
                         {
                           i = j;
                           k = j;
-                          if (localakym.jdField_a_of_type_Int != 15) {
+                          if (localPanelData.jdField_a_of_type_Int != 15) {
                             continue;
                           }
                           i = j;
                           k = j;
-                          if (verifyKuaKuaHbParams(localakym)) {
+                          if (verifyKuaKuaHbParams(localPanelData)) {
                             continue;
                           }
                           n = j;
                           break label907;
                           k = i;
                           n = i;
-                          if (isValidDate(localakym.jdField_a_of_type_OrgJsonJSONObject.optString("begintime", ""), localakym.jdField_a_of_type_OrgJsonJSONObject.optString("endtime", "")))
+                          if (isValidDate(localPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("begintime", ""), localPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("endtime", "")))
                           {
                             k = i;
-                            localArrayList.add(localakym);
+                            localArrayList.add(localPanelData);
                             n = i;
                           }
                         }
@@ -753,23 +743,23 @@ public class RedPacketManager
     }
   }
   
-  public List<akyn> getPanelTabList(SessionInfo paramSessionInfo)
+  public List<PanelTabData> getPanelTabList(SessionInfo paramSessionInfo)
   {
     ArrayList localArrayList = new ArrayList();
-    boolean bool = b(paramSessionInfo.curType);
+    boolean bool = b(paramSessionInfo.jdField_a_of_type_Int);
     for (;;)
     {
       int j;
-      akyn localakyn;
+      PanelTabData localPanelTabData;
       int i;
       try
       {
-        Object localObject1 = albw.a();
+        Object localObject1 = QWalletTools.a();
         if (localObject1 != null)
         {
-          Object localObject2 = (aktz)((QQAppInterface)localObject1).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
-          localObject1 = ((aktz)localObject2).a("redPackPanel", new String[] { "panelTabList" });
-          localObject2 = ((aktz)localObject2).a("redPackPanel", "#27BEF6", new String[] { "themeInfo", "fontColorTab" });
+          Object localObject2 = (QWalletConfigManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+          localObject1 = ((QWalletConfigManager)localObject2).a("redPackPanel", new String[] { "panelTabList" });
+          localObject2 = ((QWalletConfigManager)localObject2).a("redPackPanel", "#27BEF6", new String[] { "themeInfo", "fontColorTab" });
           if (localObject1 != null)
           {
             j = 0;
@@ -779,35 +769,35 @@ public class RedPacketManager
               if ((localObject3 == null) || ((a(((JSONObject)localObject3).optInt("type", -1))) && (!bool))) {
                 break label433;
               }
-              localakyn = new akyn();
-              localakyn.jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("id", "");
-              localakyn.jdField_a_of_type_Int = ((JSONObject)localObject3).optInt("type", -1);
-              localakyn.jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).optString("name", "");
-              localakyn.jdField_c_of_type_JavaLangString = ((String)localObject2);
-              localakyn.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject3).optJSONObject("params");
-              if ((localakyn.jdField_a_of_type_Int == 100) || (localakyn.jdField_a_of_type_Int == 102))
+              localPanelTabData = new PanelTabData();
+              localPanelTabData.jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("id", "");
+              localPanelTabData.jdField_a_of_type_Int = ((JSONObject)localObject3).optInt("type", -1);
+              localPanelTabData.jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).optString("name", "");
+              localPanelTabData.jdField_c_of_type_JavaLangString = ((String)localObject2);
+              localPanelTabData.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject3).optJSONObject("params");
+              if ((localPanelTabData.jdField_a_of_type_Int == 100) || (localPanelTabData.jdField_a_of_type_Int == 102))
               {
-                if (localakyn.jdField_a_of_type_OrgJsonJSONObject == null) {
+                if (localPanelTabData.jdField_a_of_type_OrgJsonJSONObject == null) {
                   break label433;
                 }
-                localObject3 = localakyn.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+                localObject3 = localPanelTabData.jdField_a_of_type_OrgJsonJSONObject.optString("url");
                 if (TextUtils.isEmpty((CharSequence)localObject3)) {
                   break label433;
                 }
-                if (localakyn.jdField_a_of_type_Int == 100)
+                if (localPanelTabData.jdField_a_of_type_Int == 100)
                 {
-                  if (paramSessionInfo.curType != 1) {
+                  if (paramSessionInfo.jdField_a_of_type_Int != 1) {
                     break label368;
                   }
                   i = 1;
-                  localObject3 = (String)localObject3 + "&type=" + i + "&uin=" + paramSessionInfo.curFriendUin;
-                  localakyn.jdField_a_of_type_OrgJsonJSONObject.put("url", localObject3);
+                  localObject3 = (String)localObject3 + "&type=" + i + "&uin=" + paramSessionInfo.jdField_a_of_type_JavaLangString;
+                  localPanelTabData.jdField_a_of_type_OrgJsonJSONObject.put("url", localObject3);
                 }
               }
-              if (localakyn.jdField_a_of_type_OrgJsonJSONObject != null) {
+              if (localPanelTabData.jdField_a_of_type_OrgJsonJSONObject != null) {
                 break label383;
               }
-              localArrayList.add(localakyn);
+              localArrayList.add(localPanelTabData);
             }
           }
         }
@@ -818,13 +808,13 @@ public class RedPacketManager
       }
       return localArrayList;
       label368:
-      if (paramSessionInfo.curType == 3000)
+      if (paramSessionInfo.jdField_a_of_type_Int == 3000)
       {
         i = 2;
         continue;
         label383:
-        if (isValidDate(localakyn.jdField_a_of_type_OrgJsonJSONObject.optString("begintime", ""), localakyn.jdField_a_of_type_OrgJsonJSONObject.optString("endtime", ""))) {
-          localArrayList.add(localakyn);
+        if (isValidDate(localPanelTabData.jdField_a_of_type_OrgJsonJSONObject.optString("begintime", ""), localPanelTabData.jdField_a_of_type_OrgJsonJSONObject.optString("endtime", ""))) {
+          localArrayList.add(localPanelTabData);
         }
       }
       else
@@ -846,11 +836,11 @@ public class RedPacketManager
     Object localObject3;
     try
     {
-      ??? = albw.a();
+      ??? = QWalletTools.a();
       if (??? == null) {
         break label264;
       }
-      localObject6 = (aktz)((QQAppInterface)???).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+      localObject6 = (QWalletConfigManager)((QQAppInterface)???).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
       if (this.d != null) {
         break label187;
       }
@@ -859,7 +849,7 @@ public class RedPacketManager
         if (this.d != null) {
           break label184;
         }
-        localObject6 = ((aktz)localObject6).a("redPack", new String[] { "popAd" });
+        localObject6 = ((QWalletConfigManager)localObject6).a("redPack", new String[] { "popAd" });
         if (localObject6 == null) {
           break label184;
         }
@@ -941,7 +931,7 @@ public class RedPacketManager
       return;
       try
       {
-        Object localObject = albw.a();
+        Object localObject = QWalletTools.a();
         if (localObject != null)
         {
           WeakReference localWeakReference = new WeakReference(paramOnGetSkinListener);
@@ -951,7 +941,7 @@ public class RedPacketManager
           localRedPacketInfo.skinId = paramRedPacketInfoBase.skinId;
           localRedPacketInfo.bigAnimId = paramRedPacketInfoBase.bigAnimId;
           localRedPacketInfo.isCache = paramRedPacketInfoBase.isCache;
-          localObject = CustomizeStrategyFactory.a().a((QQAppInterface)localObject, localRedPacketInfo, new akys(this, paramRedPacketInfoBase, localWeakReference));
+          localObject = CustomizeStrategyFactory.a().a((QQAppInterface)localObject, localRedPacketInfo, new RedPacketManager.5(this, paramRedPacketInfoBase, localWeakReference));
           if (localObject != null)
           {
             ((CustomizeStrategyFactory.RedPacketInfo)localObject).isCache = paramRedPacketInfoBase.isCache;
@@ -976,11 +966,11 @@ public class RedPacketManager
     Object localObject3;
     try
     {
-      ??? = albw.a();
+      ??? = QWalletTools.a();
       if (??? == null) {
         break label264;
       }
-      localObject6 = (aktz)((QQAppInterface)???).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+      localObject6 = (QWalletConfigManager)((QQAppInterface)???).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
       if (this.c != null) {
         break label187;
       }
@@ -989,7 +979,7 @@ public class RedPacketManager
         if (this.c != null) {
           break label184;
         }
-        localObject6 = ((aktz)localObject6).a("redPack", new String[] { "tail" });
+        localObject6 = ((QWalletConfigManager)localObject6).a("redPack", new String[] { "tail" });
         if (localObject6 == null) {
           break label184;
         }
@@ -1058,7 +1048,7 @@ public class RedPacketManager
     }
   }
   
-  public akyy getThemeRedPkgConfById(int paramInt)
+  public ThemeRedPkgConfig getThemeRedPkgConfById(int paramInt)
   {
     if (paramInt == -1) {}
     for (;;)
@@ -1066,10 +1056,10 @@ public class RedPacketManager
       return null;
       try
       {
-        localObject1 = albw.a();
+        localObject1 = QWalletTools.a();
         if (localObject1 != null)
         {
-          localObject1 = ((aktz)((QQAppInterface)localObject1).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a("redPackPanel", new String[] { "panelRedPkgList" });
+          localObject1 = ((QWalletConfigManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a("redPackPanel", new String[] { "panelRedPkgList" });
           if (localObject1 != null)
           {
             int j = ((JSONArray)localObject1).length();
@@ -1090,7 +1080,7 @@ public class RedPacketManager
                 if (paramInt != k) {
                   break label501;
                 }
-                localObject2 = new akyy();
+                localObject2 = new ThemeRedPkgConfig();
               }
             }
           }
@@ -1106,13 +1096,13 @@ public class RedPacketManager
             Object localObject2;
             JSONObject localJSONObject;
             int k;
-            ((akyy)localObject2).jdField_a_of_type_Int = k;
-            ((akyy)localObject2).jdField_a_of_type_JavaLangString = localJSONObject.optString("name", "");
-            ((akyy)localObject2).g = localJSONObject.optString("begintime", "");
-            ((akyy)localObject2).h = localJSONObject.optString("endtime", "");
-            ((akyy)localObject2).jdField_c_of_type_Int = localJSONObject.optInt("entry", 0);
-            ((akyy)localObject2).jdField_b_of_type_Int = localJSONObject.optInt("resource_type", 0);
-            if (!isValidDate(((akyy)localObject2).g, ((akyy)localObject2).h)) {
+            ((ThemeRedPkgConfig)localObject2).jdField_a_of_type_Int = k;
+            ((ThemeRedPkgConfig)localObject2).jdField_a_of_type_JavaLangString = localJSONObject.optString("name", "");
+            ((ThemeRedPkgConfig)localObject2).g = localJSONObject.optString("begintime", "");
+            ((ThemeRedPkgConfig)localObject2).h = localJSONObject.optString("endtime", "");
+            ((ThemeRedPkgConfig)localObject2).jdField_c_of_type_Int = localJSONObject.optInt("entry", 0);
+            ((ThemeRedPkgConfig)localObject2).jdField_b_of_type_Int = localJSONObject.optInt("resource_type", 0);
+            if (!isValidDate(((ThemeRedPkgConfig)localObject2).g, ((ThemeRedPkgConfig)localObject2).h)) {
               break;
             }
             Object localObject4 = localJSONObject.optString("prefix", "");
@@ -1120,24 +1110,24 @@ public class RedPacketManager
             if (TextUtils.isEmpty((CharSequence)localObject4)) {
               localObject1 = "https://i.gtimg.cn/channel/static/socialpay/paneltheme/socialpay_theme_v1_";
             }
-            ((akyy)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1 + k);
-            ((akyy)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1 + k + "_bg");
-            ((akyy)localObject2).jdField_d_of_type_JavaLangString = localJSONObject.optString("tail_word", "");
-            ((akyy)localObject2).jdField_e_of_type_JavaLangString = localJSONObject.optString("tail_color", "");
-            ((akyy)localObject2).f = localJSONObject.optString("tail_url", "");
+            ((ThemeRedPkgConfig)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1 + k);
+            ((ThemeRedPkgConfig)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1 + k + "_bg");
+            ((ThemeRedPkgConfig)localObject2).jdField_d_of_type_JavaLangString = localJSONObject.optString("tail_word", "");
+            ((ThemeRedPkgConfig)localObject2).jdField_e_of_type_JavaLangString = localJSONObject.optString("tail_color", "");
+            ((ThemeRedPkgConfig)localObject2).f = localJSONObject.optString("tail_url", "");
             localObject1 = localJSONObject.optJSONObject("c2c");
             if (localObject1 != null)
             {
-              ((akyy)localObject2).jdField_a_of_type_OrgJsonJSONArray = ((JSONObject)localObject1).optJSONArray("wish_array");
-              ((akyy)localObject2).jdField_b_of_type_OrgJsonJSONArray = ((JSONObject)localObject1).optJSONArray("money_array");
+              ((ThemeRedPkgConfig)localObject2).jdField_a_of_type_OrgJsonJSONArray = ((JSONObject)localObject1).optJSONArray("wish_array");
+              ((ThemeRedPkgConfig)localObject2).jdField_b_of_type_OrgJsonJSONArray = ((JSONObject)localObject1).optJSONArray("money_array");
             }
             localObject4 = localJSONObject.optJSONObject("group");
             localObject1 = localObject2;
             if (localObject4 != null)
             {
-              ((akyy)localObject2).jdField_c_of_type_OrgJsonJSONArray = ((JSONObject)localObject4).optJSONArray("group_wish_array");
-              ((akyy)localObject2).jdField_d_of_type_OrgJsonJSONArray = ((JSONObject)localObject4).optJSONArray("group_money_array");
-              ((akyy)localObject2).jdField_e_of_type_OrgJsonJSONArray = ((JSONObject)localObject4).optJSONArray("group_total_num_array");
+              ((ThemeRedPkgConfig)localObject2).jdField_c_of_type_OrgJsonJSONArray = ((JSONObject)localObject4).optJSONArray("group_wish_array");
+              ((ThemeRedPkgConfig)localObject2).jdField_d_of_type_OrgJsonJSONArray = ((JSONObject)localObject4).optJSONArray("group_money_array");
+              ((ThemeRedPkgConfig)localObject2).jdField_e_of_type_OrgJsonJSONArray = ((JSONObject)localObject4).optJSONArray("group_total_num_array");
               localObject1 = localObject2;
             }
             return localObject1;
@@ -1169,13 +1159,13 @@ public class RedPacketManager
       return;
       try
       {
-        QQAppInterface localQQAppInterface = albw.a();
+        QQAppInterface localQQAppInterface = QWalletTools.a();
         if (localQQAppInterface != null)
         {
           CustomizeStrategyFactory.RedPacketInfo localRedPacketInfo = new CustomizeStrategyFactory.RedPacketInfo();
           localRedPacketInfo.type = 6;
           localRedPacketInfo.templateId = paramRedPacketInfoBase.templateId;
-          paramRedPacketInfoBase = CustomizeStrategyFactory.a().a(localQQAppInterface, localRedPacketInfo, new akyt(this, paramOnGetSkinListener));
+          paramRedPacketInfoBase = CustomizeStrategyFactory.a().a(localQQAppInterface, localRedPacketInfo, new RedPacketManager.6(this, paramOnGetSkinListener));
           if (paramRedPacketInfoBase != null)
           {
             paramOnGetSkinListener.onGetSkin(paramRedPacketInfoBase);
@@ -1194,10 +1184,10 @@ public class RedPacketManager
   {
     try
     {
-      QQAppInterface localQQAppInterface = albw.a();
+      QQAppInterface localQQAppInterface = QWalletTools.a();
       if (localQQAppInterface != null)
       {
-        if (((aktz)localQQAppInterface.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a("redPack", 0, new String[] { "riskSwitch" }) != 0) {}
+        if (((QWalletConfigManager)localQQAppInterface.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a("redPack", 0, new String[] { "riskSwitch" }) != 0) {}
         for (boolean bool = true;; bool = false)
         {
           if (QLog.isColorLevel()) {
@@ -1259,7 +1249,7 @@ public class RedPacketManager
     do
     {
       return;
-      localObject = albw.a();
+      localObject = QWalletTools.a();
     } while (localObject == null);
     String str;
     if (paramInt == 1)
@@ -1281,12 +1271,12 @@ public class RedPacketManager
       paramOnGetAvailableListListener = new GetGroupRedPackListReq();
       paramOnGetAvailableListListener.sGroupUin = paramString;
       paramOnGetAvailableListListener.iPlatForm = 1;
-      paramOnGetAvailableListListener.sQQVersion = DeviceInfoUtil.getQQVersionWithCode(BaseApplicationImpl.getApplication());
+      paramOnGetAvailableListListener.sQQVersion = DeviceInfoUtil.a(BaseApplicationImpl.getApplication());
       paramOnGetAvailableListListener.iGroupType = paramInt;
       paramOnGetAvailableListListener.sUin = str;
       paramOnGetAvailableListListener.sSkey = ((String)localObject);
-      akra.a(paramOnGetAvailableListListener, this.jdField_a_of_type_MqqObserverBusinessObserver);
-      akwm.a();
+      QWalletCommonServlet.a(paramOnGetAvailableListListener, this.jdField_a_of_type_MqqObserverBusinessObserver);
+      NotifyMsgManager.a();
       return;
       paramInt = 2;
       break;
@@ -1302,14 +1292,14 @@ public class RedPacketManager
   {
     try
     {
-      QQAppInterface localQQAppInterface = albw.a();
+      QQAppInterface localQQAppInterface = QWalletTools.a();
       if (localQQAppInterface != null)
       {
         if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
           return;
         }
         ThreadManager.post(new RedPacketManager.2(this, localQQAppInterface), 5, null, false);
-        akra.a(new GetSkinListReq(localQQAppInterface.getLongAccountUin(), 0, "8.4.10", "Android", Build.MODEL, paramString2, paramString1, paramInt), new akyq(this, paramString1, localQQAppInterface));
+        QWalletCommonServlet.a(new GetSkinListReq(localQQAppInterface.getLongAccountUin(), 0, "8.5.5", "Android", Build.MODEL, paramString2, paramString1, paramInt), new RedPacketManager.3(this, paramString1, localQQAppInterface));
         if (QLog.isColorLevel())
         {
           QLog.d("RedPacketManager", 2, "requestRedPacketSkinList");
@@ -1325,12 +1315,12 @@ public class RedPacketManager
   
   public void setSelectedSkin(int paramInt, BusinessObserver paramBusinessObserver)
   {
-    QQAppInterface localQQAppInterface = albw.a();
+    QQAppInterface localQQAppInterface = QWalletTools.a();
     if ((localQQAppInterface == null) || (paramBusinessObserver == null)) {}
     do
     {
       return;
-      akra.a(new SetSelectedSkinReq(localQQAppInterface.getLongAccountUin(), 0, "8.4.10", "Android", Build.MODEL, paramInt), new akyr(this, paramBusinessObserver));
+      QWalletCommonServlet.a(new SetSelectedSkinReq(localQQAppInterface.getLongAccountUin(), 0, "8.5.5", "Android", Build.MODEL, paramInt), new RedPacketManager.4(this, paramBusinessObserver));
     } while (!QLog.isColorLevel());
     QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged");
   }
@@ -1342,7 +1332,7 @@ public class RedPacketManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager
  * JD-Core Version:    0.7.0.1
  */

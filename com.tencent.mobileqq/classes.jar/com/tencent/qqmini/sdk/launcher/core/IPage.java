@@ -6,6 +6,7 @@ import android.view.View.OnClickListener;
 import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.model.AppPageInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.FloatDragAdInfo;
+import com.tencent.qqmini.sdk.launcher.core.model.PendantAdInfo;
 import org.json.JSONObject;
 
 public abstract interface IPage
@@ -34,6 +35,8 @@ public abstract interface IPage
   
   public abstract boolean operateFloatDragAd(String paramString, FloatDragAdInfo paramFloatDragAdInfo);
   
+  public abstract boolean operatePendantAd(String paramString, PendantAdInfo paramPendantAdInfo);
+  
   public abstract boolean setMiniAIOEntranceVisible(boolean paramBoolean, JSONObject paramJSONObject);
   
   public abstract void setNaviVisibility(int paramInt);
@@ -46,7 +49,7 @@ public abstract interface IPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.IPage
  * JD-Core Version:    0.7.0.1
  */

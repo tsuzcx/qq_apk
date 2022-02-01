@@ -13,9 +13,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.format.Time;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.BaseDeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.lang.reflect.Method;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -38,7 +37,7 @@ public class AppSetting
   public static int e;
   private static String e;
   public static boolean e;
-  private static int jdField_f_of_type_Int = 537065981;
+  private static int jdField_f_of_type_Int = 537066979;
   private static String jdField_f_of_type_JavaLangString;
   public static boolean f;
   private static final String g;
@@ -49,32 +48,46 @@ public class AppSetting
   public static boolean i;
   private static String j;
   public static boolean j;
-  private static String jdField_k_of_type_JavaLangString;
-  private static boolean jdField_k_of_type_Boolean;
-  private static volatile boolean l;
+  private static String k;
+  public static boolean k;
+  public static boolean l;
+  public static boolean m;
+  private static boolean n;
+  private static boolean o;
+  private static boolean p;
+  private static volatile boolean q;
   
   static
   {
     jdField_a_of_type_Boolean = true;
-    jdField_d_of_type_JavaLangString = "15D4A59F15E0EFFD";
-    jdField_e_of_type_JavaLangString = "V 8.4.10.4875";
+    jdField_d_of_type_JavaLangString = "54C724F9A929CCC2";
+    jdField_e_of_type_JavaLangString = "V 8.5.5.5105";
     jdField_a_of_type_JavaLangString = jdField_e_of_type_JavaLangString;
-    jdField_f_of_type_JavaLangString = "8.4.10.4875.2020-10-20.b8c39faf.YingYongBao";
+    jdField_f_of_type_JavaLangString = "8.5.5.5105.2021-01-15.de12fadd.YingYongBao";
     jdField_b_of_type_Boolean = true;
-    g = Build.VERSION.RELEASE;
+    jdField_g_of_type_JavaLangString = Build.VERSION.RELEASE;
     jdField_h_of_type_JavaLangString = "0";
     jdField_i_of_type_JavaLangString = "";
+    jdField_c_of_type_Boolean = false;
+    jdField_d_of_type_Boolean = false;
+    jdField_e_of_type_Boolean = false;
+    jdField_f_of_type_Boolean = false;
+    jdField_g_of_type_Boolean = false;
+    jdField_h_of_type_Boolean = false;
+    q = false;
     jdField_c_of_type_Int = 1048576;
-    jdField_h_of_type_Boolean = true;
-    jdField_b_of_type_JavaLangString = "use_msg_reflesh_delay";
     jdField_i_of_type_Boolean = true;
+    jdField_b_of_type_JavaLangString = "use_msg_reflesh_delay";
     jdField_j_of_type_Boolean = true;
+    jdField_k_of_type_Boolean = true;
+    l = false;
+    m = false;
     jdField_d_of_type_Int = 1000;
     jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
     jdField_c_of_type_JavaLangString = Build.MANUFACTURER + "-" + Build.MODEL;
   }
   
-  public static final int a()
+  public static int a()
   {
     b();
     return jdField_f_of_type_Int;
@@ -82,35 +95,32 @@ public class AppSetting
   
   public static int a(String paramString)
   {
-    String[] arrayOfString = "8.4.10".split("\\.");
+    int i3 = 0;
+    String[] arrayOfString = "8.5.5".split("\\.");
     paramString = paramString.split("\\.");
-    int m;
-    int n;
-    if (arrayOfString.length < paramString.length)
-    {
-      m = arrayOfString.length;
-      n = 0;
-    }
+    int i4 = Math.min(arrayOfString.length, paramString.length);
+    int i1 = 0;
     for (;;)
     {
-      if (n >= m) {
-        break label80;
-      }
-      int i1 = Integer.parseInt(arrayOfString[n]);
-      int i2 = Integer.parseInt(paramString[n]);
-      if (i1 > i2)
+      int i2 = i3;
+      int i5;
+      if (i1 < i4)
       {
-        return 1;
-        m = paramString.length;
-        break;
+        i2 = Integer.parseInt(arrayOfString[i1]);
+        i5 = Integer.parseInt(paramString[i1]);
+        if (i2 > i5) {
+          i2 = 1;
+        }
       }
-      if (i1 < i2) {
+      else
+      {
+        return i2;
+      }
+      if (i2 < i5) {
         return -1;
       }
-      n += 1;
+      i1 += 1;
     }
-    label80:
-    return 0;
   }
   
   public static String a()
@@ -121,18 +131,18 @@ public class AppSetting
   
   public static String a(Context paramContext)
   {
-    int m = 0;
+    int i1 = 0;
     try
     {
-      int n = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      m = n;
+      int i2 = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
+      i1 = i2;
     }
     catch (Exception paramContext)
     {
       label20:
       break label20;
     }
-    return "8.4.10." + m;
+    return "8.5.5." + i1;
   }
   
   public static String a(Context paramContext, String paramString)
@@ -143,7 +153,7 @@ public class AppSetting
     localStringBuffer.append(((Time)localObject1).format("%Y-%m-%d %H:%M:%S") + "/");
     localStringBuffer.append("mobileQQ/");
     localObject2 = "";
-    long l1 = DeviceInfoUtil.getSystemTotalMemory() / 1048576L;
+    long l1 = BaseDeviceInfoUtil.a() / 1048576L;
     localObject1 = localObject2;
     try
     {
@@ -324,7 +334,7 @@ public class AppSetting
   {
     try
     {
-      Object localObject1 = BaseApplicationImpl.getContext().getPackageManager().getApplicationInfo(BaseApplicationImpl.getContext().getPackageName(), 128);
+      Object localObject1 = BaseApplication.getContext().getPackageManager().getApplicationInfo(BaseApplication.getContext().getPackageName(), 128);
       if ((localObject1 != null) && (((ApplicationInfo)localObject1).metaData != null))
       {
         localObject1 = ((ApplicationInfo)localObject1).metaData.getString("AppSetting_params");
@@ -363,8 +373,13 @@ public class AppSetting
       jdField_i_of_type_JavaLangString = paramString[3];
     }
     if (!"".equals(jdField_i_of_type_JavaLangString)) {
-      jdField_f_of_type_JavaLangString = "8.4.10.4875.2020-10-20.b8c39faf.YingYongBao";
+      jdField_f_of_type_JavaLangString = "8.5.5.5105.2021-01-15.de12fadd.YingYongBao";
     }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    o = paramBoolean;
   }
   
   public static boolean a()
@@ -383,13 +398,13 @@ public class AppSetting
   
   private static void b()
   {
-    if ((jdField_a_of_type_Boolean) && (!l)) {
+    if ((jdField_a_of_type_Boolean) && (!q)) {
       try
       {
-        if (!l)
+        if (!q)
         {
           a();
-          l = true;
+          q = true;
         }
         return;
       }
@@ -397,23 +412,33 @@ public class AppSetting
     }
   }
   
-  public static boolean b()
+  public static void b(boolean paramBoolean)
   {
-    return jdField_k_of_type_Boolean;
+    n = paramBoolean;
   }
   
-  public static final String c()
+  public static boolean b()
+  {
+    return n;
+  }
+  
+  public static String c()
   {
     b();
     return jdField_h_of_type_JavaLangString;
   }
   
-  public static boolean c()
+  public static void c(boolean paramBoolean)
   {
-    return false;
+    p = paramBoolean;
   }
   
-  public static final String d()
+  public static boolean c()
+  {
+    return o;
+  }
+  
+  public static String d()
   {
     b();
     return jdField_d_of_type_JavaLangString;
@@ -421,10 +446,10 @@ public class AppSetting
   
   public static boolean d()
   {
-    return false;
+    return p;
   }
   
-  public static final String e()
+  public static String e()
   {
     if (jdField_j_of_type_JavaLangString != null) {
       return jdField_j_of_type_JavaLangString;
@@ -443,13 +468,13 @@ public class AppSetting
       }
       localObject2 = ((String)localObject1).toCharArray();
       localStringBuffer = new StringBuffer(32);
-      int m = 0;
-      while (m < localObject2.length)
+      int i1 = 0;
+      while (i1 < localObject2.length)
       {
-        if ((localObject2[m] > ' ') && (localObject2[m] != '/') && (localObject2[m] != '_') && (localObject2[m] != '&') && (localObject2[m] != '|') && (localObject2[m] != '-')) {
-          localStringBuffer.append(localObject2[m]);
+        if ((localObject2[i1] > ' ') && (localObject2[i1] != '/') && (localObject2[i1] != '_') && (localObject2[i1] != '&') && (localObject2[i1] != '|') && (localObject2[i1] != '-')) {
+          localStringBuffer.append(localObject2[i1]);
         }
-        m += 1;
+        i1 += 1;
       }
     }
     catch (SecurityException localSecurityException)
@@ -475,21 +500,31 @@ public class AppSetting
       if (str2.length() > 20) {
         localObject2 = str2.substring(0, 20);
       }
-      jdField_j_of_type_JavaLangString = "AQQ_2013 4.6/2013 8.4.104875&NA_0/000000&ADR&" + jdField_k_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + c() + "&" + d() + "&" + g + "&" + "V3";
+      jdField_j_of_type_JavaLangString = "AQQ_2013 4.6/2013 8.5.55105&NA_0/000000&ADR&" + jdField_k_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + c() + "&" + d() + "&" + jdField_g_of_type_JavaLangString + "&" + "V3";
       return jdField_j_of_type_JavaLangString;
       label301:
       str2 = "ALL";
     }
   }
   
+  public static boolean e()
+  {
+    return false;
+  }
+  
   public static final String f()
   {
-    return "android 8.4.10";
+    return "android 8.5.5";
+  }
+  
+  public static boolean f()
+  {
+    return false;
   }
   
   public static String g()
   {
-    return "b8c39faf";
+    return "de12fadd";
   }
   
   public static String h()

@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bieo;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -23,6 +23,7 @@ public class TroopTagViewActivity$TroopTagViewFragment
   
   public TroopTagViewActivity$TroopTagViewFragment()
   {
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Int = 1;
   }
   
@@ -31,14 +32,14 @@ public class TroopTagViewActivity$TroopTagViewFragment
     int i = super.doCreateLoopStep_Final(paramBundle);
     if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
     {
-      this.mSwiftTitleUI.rightViewText.setText(2131691815);
-      this.mSwiftTitleUI.rightViewText.setVisibility(0);
-      this.mSwiftTitleUI.rightViewImg.setVisibility(8);
-      this.mSwiftTitleUI.rightViewText.setOnClickListener(this);
+      this.mSwiftTitleUI.c.setText(2131691933);
+      this.mSwiftTitleUI.c.setVisibility(0);
+      this.mSwiftTitleUI.a.setVisibility(8);
+      this.mSwiftTitleUI.c.setOnClickListener(this);
       return i;
     }
-    this.mSwiftTitleUI.rightViewText.setVisibility(8);
-    this.mSwiftTitleUI.rightViewImg.setVisibility(8);
+    this.mSwiftTitleUI.c.setVisibility(8);
+    this.mSwiftTitleUI.a.setVisibility(8);
     return i;
   }
   
@@ -59,7 +60,7 @@ public class TroopTagViewActivity$TroopTagViewFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == this.mSwiftTitleUI.rightViewText) {
+    if (paramView == this.mSwiftTitleUI.c) {
       if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
       {
         Intent localIntent = new Intent(super.getActivity(), TroopTagViewActivity.class);

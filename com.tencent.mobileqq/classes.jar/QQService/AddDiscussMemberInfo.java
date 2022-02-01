@@ -10,9 +10,9 @@ public final class AddDiscussMemberInfo
   extends JceStruct
 {
   public String RefStr = "";
-  public long RefUin;
-  public int Type;
-  public long Uin;
+  public long RefUin = 0L;
+  public int Type = 0;
+  public long Uin = 0L;
   
   static
   {

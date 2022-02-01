@@ -1,101 +1,106 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.net.a.f;
-import com.tencent.mobileqq.msf.service.MsfService;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Collection;
+import java.util.Iterator;
 
-final class k
-  extends BroadcastReceiver
+public class k
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private static k.b a = null;
+  private static k.c b = null;
+  private static boolean c = true;
+  private static boolean d = true;
+  private static k.d e = null;
+  
+  public static void a() {}
+  
+  public static void b()
   {
-    paramContext = paramIntent.getAction();
-    if (TextUtils.isEmpty(paramContext)) {
-      if (QLog.isColorLevel()) {
-        QLog.d(i.b, 2, "onReceive broadcastreceiver.action null");
+    if ((c) || (d))
+    {
+      if (b == null) {
+        b = new k.c();
+      }
+      Handler localHandler = q.b();
+      localHandler.removeCallbacks(b);
+      localHandler.postDelayed(b, 5000L);
+    }
+  }
+  
+  private static void b(StringBuilder paramStringBuilder, Collection paramCollection, int paramInt)
+  {
+    String str;
+    if ((paramCollection != null) && (paramCollection.size() > 0) && (paramStringBuilder != null)) {
+      if (paramInt == 1) {
+        str = "  ";
       }
     }
     for (;;)
     {
+      paramCollection = paramCollection.iterator();
+      for (;;)
+      {
+        if (!paramCollection.hasNext()) {
+          break label238;
+        }
+        Object localObject = paramCollection.next();
+        if ((localObject instanceof ToServiceMsg))
+        {
+          localObject = (ToServiceMsg)localObject;
+          if (localObject == null) {
+            continue;
+          }
+          paramStringBuilder.append(str).append(((ToServiceMsg)localObject).getShortStringForLog()).append("\n");
+          continue;
+          if (paramInt == 2)
+          {
+            str = "    ";
+            break;
+          }
+          if (paramInt != 3) {
+            break label239;
+          }
+          str = "      ";
+          break;
+        }
+        if ((localObject instanceof FromServiceMsg))
+        {
+          localObject = (FromServiceMsg)localObject;
+          if (localObject != null) {
+            paramStringBuilder.append(str).append(((FromServiceMsg)localObject).getShortStringForLog()).append("\n");
+          }
+        }
+        else if ((localObject instanceof MsfMessagePair))
+        {
+          localObject = (MsfMessagePair)localObject;
+          if (localObject != null)
+          {
+            if (((MsfMessagePair)localObject).toServiceMsg != null) {
+              paramStringBuilder.append(str).append(((MsfMessagePair)localObject).toServiceMsg.getShortStringForLog()).append("\n");
+            }
+            if (((MsfMessagePair)localObject).fromServiceMsg != null) {
+              paramStringBuilder.append(str).append(((MsfMessagePair)localObject).fromServiceMsg.getShortStringForLog()).append("\n");
+            }
+          }
+        }
+      }
+      label238:
       return;
-      QLog.d(i.b, 1, "onReceive broadcastreceiver.action = " + paramContext);
-      boolean bool;
-      if (paramContext.equals("android.intent.action.SCREEN_OFF"))
-      {
-        i.c = false;
-        aj.V = -1;
-        aj.W.set(false);
-        if ((com.tencent.mobileqq.msf.core.a.a.r()) || (i.f()))
-        {
-          i.g().removeMessages(10000);
-          i.g().sendEmptyMessageDelayed(10000, com.tencent.mobileqq.msf.core.a.a.p());
-        }
-        for (;;)
-        {
-          try
-          {
-            bool = com.tencent.mobileqq.msf.core.a.a.aQ();
-            if (!bool) {
-              break;
-            }
-            try
-            {
-              MsfService.core.sender.I.c().c();
-              return;
-            }
-            catch (Exception paramContext) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d(i.b, 2, "failed to call adaptorcontroller screenoff ", paramContext);
-            return;
-          }
-          catch (Exception paramContext)
-          {
-            QLog.d(i.b, 1, "onReceive ScreenOff to controller failed " + paramContext.toString(), paramContext);
-            return;
-          }
-          i.d += 1;
-          if (i.d == BaseConstants.checkExpiresLogScreenOffCount) {
-            i.h();
-          }
-        }
-      }
-      if (paramContext.equals("android.intent.action.SCREEN_ON"))
-      {
-        i.c = true;
-        i.g().removeMessages(10000);
-        try
-        {
-          bool = com.tencent.mobileqq.msf.core.a.a.aQ();
-          if (bool)
-          {
-            try
-            {
-              MsfService.core.sender.I.c().d();
-              return;
-            }
-            catch (Exception paramContext) {}
-            if (QLog.isColorLevel())
-            {
-              QLog.d(i.b, 2, "failed to call adaptorcontroller screenon ", paramContext);
-              return;
-            }
-          }
-        }
-        catch (Exception paramContext)
-        {
-          QLog.d(i.b, 1, "onReceive ScreenOn to controller failed " + paramContext.toString(), paramContext);
-        }
-      }
+      label239:
+      str = "";
     }
+  }
+  
+  public static void c()
+  {
+    if (e == null) {
+      e = new k.d(null);
+    }
+    q.b().removeCallbacks(e);
+    q.b().postDelayed(e, 60000L);
   }
 }
 

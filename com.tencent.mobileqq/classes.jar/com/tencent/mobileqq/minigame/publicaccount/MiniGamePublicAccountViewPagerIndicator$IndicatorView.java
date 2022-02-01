@@ -2,57 +2,35 @@ package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
-import androidx.annotation.Nullable;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.lang.reflect.Array;
 
 class MiniGamePublicAccountViewPagerIndicator$IndicatorView
   extends View
 {
-  private static final int HEIGHT;
-  private static final int NORMAL_COLOR = Color.parseColor("#D0D8F2");
-  private static final int NORMAL_WIDTH = ViewUtils.dpToPx(14.0F);
-  private static final int SELECTED_COLOR = Color.parseColor("#3857FF");
-  private static final int SELECTED_WIDTH = ViewUtils.dpToPx(32.0F);
-  private static final int SPACE;
+  private static final int HEIGHT = ViewUtils.b(2.0F);
+  private static final int SPACE = ViewUtils.b(2.5F);
+  private MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig mConfig;
   
-  static
-  {
-    HEIGHT = ViewUtils.dpToPx(2.0F);
-    SPACE = ViewUtils.dpToPx(2.5F);
-  }
-  
-  public MiniGamePublicAccountViewPagerIndicator$IndicatorView(Context paramContext)
+  public MiniGamePublicAccountViewPagerIndicator$IndicatorView(Context paramContext, MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig paramIndicatorViewConfig)
   {
     super(paramContext);
-    init(paramContext);
-  }
-  
-  public MiniGamePublicAccountViewPagerIndicator$IndicatorView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
-  {
-    super(paramContext, paramAttributeSet);
-    init(paramContext);
-  }
-  
-  public MiniGamePublicAccountViewPagerIndicator$IndicatorView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
-  {
-    super(paramContext, paramAttributeSet, paramInt);
+    this.mConfig = paramIndicatorViewConfig;
     init(paramContext);
   }
   
   private int getCurrentColor(float paramFloat)
   {
     int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, 3 });
-    arrayOfInt[0][0] = ((SELECTED_COLOR & 0xFF0000) >> 16);
-    arrayOfInt[0][1] = ((SELECTED_COLOR & 0xFF00) >> 8);
-    arrayOfInt[0][2] = (SELECTED_COLOR & 0xFF);
-    arrayOfInt[1][0] = ((NORMAL_COLOR & 0xFF0000) >> 16);
-    arrayOfInt[1][1] = ((NORMAL_COLOR & 0xFF00) >> 8);
-    arrayOfInt[1][2] = (NORMAL_COLOR & 0xFF);
+    arrayOfInt[0][0] = ((this.mConfig.selectedColor & 0xFF0000) >> 16);
+    arrayOfInt[0][1] = ((this.mConfig.selectedColor & 0xFF00) >> 8);
+    arrayOfInt[0][2] = (this.mConfig.selectedColor & 0xFF);
+    arrayOfInt[1][0] = ((this.mConfig.normalColor & 0xFF0000) >> 16);
+    arrayOfInt[1][1] = ((this.mConfig.normalColor & 0xFF00) >> 8);
+    arrayOfInt[1][2] = (this.mConfig.normalColor & 0xFF);
     int[] arrayOfInt1 = new int[3];
     int i = 0;
     while (i < 3)
@@ -65,7 +43,7 @@ class MiniGamePublicAccountViewPagerIndicator$IndicatorView
   
   private void init(Context paramContext)
   {
-    paramContext = new LinearLayout.LayoutParams(NORMAL_WIDTH, HEIGHT);
+    paramContext = new LinearLayout.LayoutParams(this.mConfig.normalWidth, HEIGHT);
     paramContext.gravity = 17;
     paramContext.leftMargin = SPACE;
     paramContext.rightMargin = SPACE;
@@ -79,20 +57,20 @@ class MiniGamePublicAccountViewPagerIndicator$IndicatorView
     ViewGroup.LayoutParams localLayoutParams;
     if (paramBoolean)
     {
-      i = SELECTED_COLOR;
+      i = this.mConfig.selectedColor;
       setBackgroundColor(i);
       localLayoutParams = getLayoutParams();
       if (!paramBoolean) {
-        break label44;
+        break label56;
       }
     }
-    label44:
-    for (int i = SELECTED_WIDTH;; i = NORMAL_WIDTH)
+    label56:
+    for (int i = this.mConfig.selectedWidth;; i = this.mConfig.normalWidth)
     {
       localLayoutParams.width = i;
       setLayoutParams(localLayoutParams);
       return;
-      i = NORMAL_COLOR;
+      i = this.mConfig.normalColor;
       break;
     }
   }
@@ -100,7 +78,7 @@ class MiniGamePublicAccountViewPagerIndicator$IndicatorView
   public void update(float paramFloat)
   {
     setBackgroundColor(getCurrentColor(paramFloat));
-    int i = (int)(SELECTED_WIDTH + (NORMAL_WIDTH - SELECTED_WIDTH) * paramFloat);
+    int i = (int)(this.mConfig.selectedWidth + (this.mConfig.normalWidth - this.mConfig.selectedWidth) * paramFloat);
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
     localLayoutParams.width = i;
     setLayoutParams(localLayoutParams);

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.app.Activity;
-import bigy;
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
 class SwiftBrowserLongClickHandler$4$1
@@ -12,15 +11,15 @@ class SwiftBrowserLongClickHandler$4$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_Bisl != null) && (this.a.this$0.jdField_a_of_type_Bisl.isShowing())) {
-      this.a.this$0.jdField_a_of_type_Bisl.dismiss();
+    if ((this.a.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
-    QQToast.a(this.a.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131716557, 1).b(this.a.this$0.jdField_a_of_type_Int);
+    QQToast.a(this.a.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131717052, 1).b(this.a.this$0.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4.1
  * JD-Core Version:    0.7.0.1
  */

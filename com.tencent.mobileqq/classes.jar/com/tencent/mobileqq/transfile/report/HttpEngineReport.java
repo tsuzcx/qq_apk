@@ -9,6 +9,12 @@ import java.util.HashMap;
 
 public class HttpEngineReport
 {
+  public static final String KEY_ERR_DESC = "param_errorDesc";
+  public static final String KEY_FAIL_CODE = "param_FailCode";
+  public static final String KEY_IN_QUEUE_COST = "param_inQueueCost";
+  public static final String KEY_IS_HTTPS = "param_isHttps";
+  public static final String KEY_TIME_COST = "param_time_cost";
+  public static final String KEY_URL = "param_url";
   public static final String REPORT_NAME_HTTP_ENGINE_TRANS = "actHttpEngineTrans";
   private static final String TAG = "HttpEngineReport";
   public int mErrCode;
@@ -23,42 +29,37 @@ public class HttpEngineReport
   boolean mIsSync;
   public long mTimeCost;
   public long mTotalBlockLen;
-  public int mTryTime;
+  public int mTryTime = 0;
   public String mUrl = "";
   
   public HttpEngineReport(HttpNetReq paramHttpNetReq, NetResp paramNetResp)
   {
-    boolean bool;
     if (paramNetResp.mResult == 0) {
       bool = true;
     }
-    for (;;)
+    this.mIsSuccess = bool;
+    this.mTimeCost = paramNetResp.reqCost;
+    this.mInQueueCost = paramNetResp.inQueueCost;
+    this.mUrl = paramHttpNetReq.mReqUrl;
+    if (this.mUrl != null) {}
+    try
     {
-      this.mIsSuccess = bool;
-      this.mTimeCost = paramNetResp.reqCost;
-      this.mInQueueCost = paramNetResp.inQueueCost;
-      this.mUrl = paramHttpNetReq.mReqUrl;
-      if (this.mUrl != null) {}
-      try
-      {
-        this.mHost = new URL(this.mUrl).getHost();
-        label79:
-        this.mIsHttps = paramHttpNetReq.mIsHttps;
-        this.mHttpMethod = paramHttpNetReq.mHttpMethod;
-        this.mErrCode = paramNetResp.mErrCode;
-        this.mErrDesc = paramNetResp.mErrDesc;
-        this.mHttpCode = paramNetResp.mHttpCode;
-        this.mTryTime = paramNetResp.mTryTime;
-        this.mTotalBlockLen = paramNetResp.mTotalBlockLen;
-        this.mIsSync = paramHttpNetReq.mIsSync;
-        this.mIsInnerDns = paramHttpNetReq.mHaveIpConnect;
-        return;
-        bool = false;
-      }
-      catch (Exception localException)
-      {
-        break label79;
-      }
+      this.mHost = new URL(this.mUrl).getHost();
+      label86:
+      this.mIsHttps = paramHttpNetReq.mIsHttps;
+      this.mHttpMethod = paramHttpNetReq.mHttpMethod;
+      this.mErrCode = paramNetResp.mErrCode;
+      this.mErrDesc = paramNetResp.mErrDesc;
+      this.mHttpCode = paramNetResp.mHttpCode;
+      this.mTryTime = paramNetResp.mTryTime;
+      this.mTotalBlockLen = paramNetResp.mTotalBlockLen;
+      this.mIsSync = paramHttpNetReq.mIsSync;
+      this.mIsInnerDns = paramHttpNetReq.mHaveIpConnect;
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label86;
     }
   }
   

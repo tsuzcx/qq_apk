@@ -1,7 +1,5 @@
 package dov.com.qq.im.ae.camera.ui.poi;
 
-import aeow;
-import aeox;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -22,26 +20,25 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bngp;
-import bngq;
-import bngr;
-import bngt;
-import bnqm;
-import bnrh;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.SystemBarCompact;
+import dov.com.qq.im.ae.report.AEBaseDataReporter;
+import dov.com.qq.im.ae.util.AEQLog;
 import mqq.os.MqqHandler;
 
 public class AESelectLocationFragment
   extends PublicBaseFragment
-  implements aeox, TextWatcher, View.OnClickListener
+  implements TextWatcher, View.OnClickListener, PublicFragmentActivityCallBackInterface
 {
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
@@ -49,61 +46,61 @@ public class AESelectLocationFragment
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bngt jdField_a_of_type_Bngt;
+  private AESelectionLocationAdapter jdField_a_of_type_DovComQqImAeCameraUiPoiAESelectionLocationAdapter;
   private String jdField_a_of_type_JavaLangString;
   private View b;
   
   public static void a(Context paramContext, int paramInt)
   {
-    aeow.a(paramContext, new Intent(), PublicFragmentActivityForPeak.class, AESelectLocationFragment.class, paramInt);
+    PublicFragmentActivity.Launcher.a(paramContext, new Intent(), PublicFragmentActivityForPeak.class, AESelectLocationFragment.class, paramInt);
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377016));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363329);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131377191));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379862));
-    this.b = paramView.findViewById(2131365345);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364676));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366164));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377426));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363408);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131377611));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380291));
+    this.b = paramView.findViewById(2131365494);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364790));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366335));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
     if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null)
     {
-      bnrh.a("AESelectLocationFragment", "mRecycleView is null ");
+      AEQLog.a("AESelectLocationFragment", "mRecycleView is null ");
       return;
     }
     paramView = new LinearLayoutManager(getActivity(), 1, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-    this.jdField_a_of_type_Bngt = new bngt(getActivity());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bngt);
-    this.jdField_a_of_type_Bngt.a(new bngq(this));
+    this.jdField_a_of_type_DovComQqImAeCameraUiPoiAESelectionLocationAdapter = new AESelectionLocationAdapter(getActivity());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_DovComQqImAeCameraUiPoiAESelectionLocationAdapter);
+    this.jdField_a_of_type_DovComQqImAeCameraUiPoiAESelectionLocationAdapter.a(new AESelectLocationFragment.2(this));
   }
   
   private void a(String paramString)
   {
-    if (!NetworkUtil.isNetworkAvailable(getActivity()))
+    if (!NetworkUtil.g(getActivity()))
     {
-      bnrh.b("AESelectLocationFragment", "requestPoiList---no network");
+      AEQLog.b("AESelectLocationFragment", "requestPoiList---no network");
       ThreadManager.getUIHandler().post(new AESelectLocationFragment.3(this));
       return;
     }
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    LbsManagerService.startLocation(new bngr(this, "qzone_address_select", false, paramString));
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new AESelectLocationFragment.4(this, "qzone_address_select", false, paramString));
   }
   
   private void b(String paramString)
   {
-    bnrh.a("AESelectLocationFragment", "setSelectResult" + paramString);
-    bnqm localbnqm = bnqm.a();
+    AEQLog.a("AESelectLocationFragment", "setSelectResult" + paramString);
+    AEBaseDataReporter localAEBaseDataReporter = AEBaseDataReporter.a();
     if (paramString == null) {}
     for (Object localObject = "none";; localObject = paramString)
     {
-      localbnqm.n((String)localObject);
+      localAEBaseDataReporter.q((String)localObject);
       localObject = new Intent();
       ((Intent)localObject).putExtra("key_select_poi", paramString);
       getActivity().setResult(-1, (Intent)localObject);
@@ -125,7 +122,7 @@ public class AESelectLocationFragment
   
   public void afterTextChanged(Editable paramEditable)
   {
-    bnrh.a("AESelectLocationFragment", "onTextChanged :" + paramEditable);
+    AEQLog.a("AESelectLocationFragment", "onTextChanged :" + paramEditable);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramEditable);
     this.jdField_a_of_type_JavaLangString = paramEditable.toString();
     if ((this.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (!this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().equals("")))
@@ -165,7 +162,7 @@ public class AESelectLocationFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bnqm.a().ax();
+      AEBaseDataReporter.a().av();
       getActivity().finish();
       continue;
       this.jdField_a_of_type_AndroidWidgetEditText.setText("");
@@ -184,9 +181,9 @@ public class AESelectLocationFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558487, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558488, paramViewGroup, false);
     a(paramLayoutInflater);
-    ViewCompat.setOnApplyWindowInsetsListener(paramLayoutInflater, new bngp(this));
+    ViewCompat.setOnApplyWindowInsetsListener(paramLayoutInflater, new AESelectLocationFragment.1(this));
     ViewCompat.requestApplyInsets(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -195,7 +192,7 @@ public class AESelectLocationFragment
   public void onResume()
   {
     super.onResume();
-    bnqm.a().aw();
+    AEBaseDataReporter.a().au();
     a();
   }
   
@@ -209,7 +206,7 @@ public class AESelectLocationFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.poi.AESelectLocationFragment
  * JD-Core Version:    0.7.0.1
  */

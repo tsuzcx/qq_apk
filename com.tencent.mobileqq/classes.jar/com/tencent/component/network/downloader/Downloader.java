@@ -166,7 +166,7 @@ public abstract class Downloader
     return this.pProcessStrategy;
   }
   
-  public abstract void preConnectHost(ArrayList<String> paramArrayList);
+  public abstract void preConnectHost(ArrayList<String> paramArrayList, String paramString);
   
   public void setBackupIPConfigStrategy(IPStrategy paramIPStrategy)
   {
@@ -263,7 +263,7 @@ public abstract class Downloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.component.network.downloader.Downloader
  * JD-Core Version:    0.7.0.1
  */

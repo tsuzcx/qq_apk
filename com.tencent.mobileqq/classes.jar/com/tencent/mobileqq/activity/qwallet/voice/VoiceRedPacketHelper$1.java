@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import alcm;
 import android.content.Context;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class VoiceRedPacketHelper$1
+class VoiceRedPacketHelper$1
   implements Runnable
 {
-  public VoiceRedPacketHelper$1(alcm paramalcm, Context paramContext, int paramInt1, int paramInt2) {}
+  VoiceRedPacketHelper$1(VoiceRedPacketHelper paramVoiceRedPacketHelper, Context paramContext, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class VoiceRedPacketHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper.1
  * JD-Core Version:    0.7.0.1
  */

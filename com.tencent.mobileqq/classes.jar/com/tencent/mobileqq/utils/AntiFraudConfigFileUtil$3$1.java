@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.utils;
 
-import bhce;
-import bhcf;
-
-public class AntiFraudConfigFileUtil$3$1
+class AntiFraudConfigFileUtil$3$1
   implements Runnable
 {
-  public AntiFraudConfigFileUtil$3$1(bhcf parambhcf, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  AntiFraudConfigFileUtil$3$1(AntiFraudConfigFileUtil.3 param3, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bhcf.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    String str = SecUtil.getFileMd5(this.jdField_a_of_type_Bhcf.a.a(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil$3.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    String str = SecUtil.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil$3.a.a(this.jdField_a_of_type_JavaLangString));
     if (!this.b.equalsIgnoreCase(str))
     {
-      this.jdField_a_of_type_Bhcf.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil$3.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
       return;
     }
-    this.jdField_a_of_type_Bhcf.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil$3.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
   }
 }
 

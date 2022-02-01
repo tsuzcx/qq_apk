@@ -3,7 +3,6 @@ package com.tencent.mobileqq.vas;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhpw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -11,34 +10,34 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-public final class VipGrayConfigHelper$1
+final class VipGrayConfigHelper$1
   implements Runnable
 {
   public void run()
   {
-    int i = bhpw.a().get();
-    if ((i < 0) || (i >= bhpw.a().size())) {}
+    int i = VipGrayConfigHelper.a().get();
+    if ((i < 0) || (i >= VipGrayConfigHelper.a().size())) {}
     for (;;)
     {
       return;
-      String str = (String)bhpw.a().get(i);
-      AtomicInteger localAtomicInteger = (AtomicInteger)bhpw.a().get(str);
-      Object localObject = (AtomicInteger)bhpw.b().get(str);
-      for (AtomicReference localAtomicReference = (AtomicReference)bhpw.c().get(str); localAtomicInteger.get() >= ((AtomicInteger)localObject).get(); localAtomicReference = (AtomicReference)bhpw.c().get(str))
+      String str = (String)VipGrayConfigHelper.a().get(i);
+      AtomicInteger localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.a().get(str);
+      Object localObject = (AtomicInteger)VipGrayConfigHelper.b().get(str);
+      for (AtomicReference localAtomicReference = (AtomicReference)VipGrayConfigHelper.c().get(str); localAtomicInteger.get() >= ((AtomicInteger)localObject).get(); localAtomicReference = (AtomicReference)VipGrayConfigHelper.c().get(str))
       {
         i += 1;
         j = i;
-        if (i >= bhpw.a().size()) {
+        if (i >= VipGrayConfigHelper.a().size()) {
           break label175;
         }
-        str = (String)bhpw.a().get(i);
-        localAtomicInteger = (AtomicInteger)bhpw.a().get(str);
-        localObject = (AtomicInteger)bhpw.b().get(str);
+        str = (String)VipGrayConfigHelper.a().get(i);
+        localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.a().get(str);
+        localObject = (AtomicInteger)VipGrayConfigHelper.b().get(str);
       }
       int j = i;
       label175:
-      bhpw.a().set(j);
-      if (j >= bhpw.a().size()) {
+      VipGrayConfigHelper.a().set(j);
+      if (j >= VipGrayConfigHelper.a().size()) {
         continue;
       }
       if (QLog.isColorLevel()) {
@@ -67,7 +66,7 @@ public final class VipGrayConfigHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipGrayConfigHelper.1
  * JD-Core Version:    0.7.0.1
  */

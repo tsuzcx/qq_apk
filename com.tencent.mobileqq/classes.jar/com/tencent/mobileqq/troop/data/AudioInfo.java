@@ -9,15 +9,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bffk;
-import bhdz;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AudioInfo
-  extends bffk
+  extends MediaInfo
   implements Serializable, Cloneable
 {
   public static final String AUDIO_DURATION = "duration";
@@ -26,7 +25,7 @@ public class AudioInfo
   protected static final String AUDIO_URL = "url";
   private static final long serialVersionUID = 1L;
   public int duration;
-  public ImageView mAudioIcon;
+  public ImageView mAudioIcon = null;
   private int mAudioType;
   protected int mMaxLayoutLength = 226;
   protected int mMinLayoutLength = 84;
@@ -125,23 +124,23 @@ public class AudioInfo
     if (this.duration < 0) {
       return null;
     }
-    View localView = LayoutInflater.from(paramContext).inflate(2131559965, null);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131363051);
+    View localView = LayoutInflater.from(paramContext).inflate(2131560041, null);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131363094);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(localRelativeLayout.getLayoutParams());
     int i = (int)((this.mMaxLayoutLength - this.mMinLayoutLength) / 60000.0F * this.duration + this.mMinLayoutLength);
     if (this.duration < 60000) {}
-    for (localLayoutParams.width = ((int)bhdz.a(paramContext, i));; localLayoutParams.width = ((int)bhdz.a(paramContext, this.mMaxLayoutLength)))
+    for (localLayoutParams.width = ((int)DisplayUtils.a(paramContext, i));; localLayoutParams.width = ((int)DisplayUtils.a(paramContext, this.mMaxLayoutLength)))
     {
-      localLayoutParams.height = ((int)bhdz.a(paramContext, 41.0F));
-      localLayoutParams.topMargin = ((int)bhdz.a(paramContext, 12.0F));
-      localLayoutParams.leftMargin = ((int)bhdz.a(paramContext, 3.0F));
+      localLayoutParams.height = ((int)DisplayUtils.a(paramContext, 41.0F));
+      localLayoutParams.topMargin = ((int)DisplayUtils.a(paramContext, 12.0F));
+      localLayoutParams.leftMargin = ((int)DisplayUtils.a(paramContext, 3.0F));
       localRelativeLayout.setLayoutParams(localLayoutParams);
-      i = (int)bhdz.a(paramContext, 5.0F);
+      i = (int)DisplayUtils.a(paramContext, 5.0F);
       localRelativeLayout.setPadding(i, i, i, i);
-      localView.findViewById(2131363054).setOnClickListener(paramOnClickListener);
-      this.mAudioIcon = ((ImageView)localView.findViewById(2131363053));
+      localView.findViewById(2131363097).setOnClickListener(paramOnClickListener);
+      this.mAudioIcon = ((ImageView)localView.findViewById(2131363096));
       this.mAudioIcon.setOnClickListener(paramOnClickListener);
-      paramContext = (TextView)localView.findViewById(2131363052);
+      paramContext = (TextView)localView.findViewById(2131363095);
       paramContext.setOnClickListener(paramOnClickListener);
       paramContext.setText(getAudioTime(this.duration));
       return localView;

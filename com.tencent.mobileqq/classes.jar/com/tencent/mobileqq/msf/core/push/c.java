@@ -5,7 +5,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.mobileqq.msf.core.quicksend.b;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.service.e;
@@ -101,8 +101,8 @@ public class c
       this.o.removeMessages(10000);
       this.l = "0";
       MsfStore.getNativeConfigStore().removeConfig("0");
-      this.m.quicksender.d();
       this.m.quicksender.e();
+      this.m.quicksender.f();
       this.i = 0L;
       QLog.d("PCActiveEchoManager", 1, "stopEcho succ");
       return;
@@ -220,8 +220,8 @@ public class c
       this.k.set(true);
       this.o.removeMessages(10000);
       this.i = 0L;
-      this.m.quicksender.d();
       this.m.quicksender.e();
+      this.m.quicksender.f();
       this.l = paramString;
       MsfStore.getNativeConfigStore().setConfig("0", paramString);
       this.o.sendEmptyMessageDelayed(10000, 60000L);

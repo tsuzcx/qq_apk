@@ -74,14 +74,14 @@ public class RedPointHelper
     if ((paramInt1 & 0x8) != 0) {
       i = j + paramView.getHeight() / 2 - m / 2;
     }
-    paramInt1 = AIOUtils.dp2px(paramInt2, this.mContext.getResources());
-    paramInt2 = AIOUtils.dp2px(paramInt3, this.mContext.getResources());
+    paramInt1 = AIOUtils.a(paramInt2, this.mContext.getResources());
+    paramInt2 = AIOUtils.a(paramInt3, this.mContext.getResources());
     this.popupWindow.showAtLocation(paramView, 0, k + paramInt1, i + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.RedPointHelper
  * JD-Core Version:    0.7.0.1
  */

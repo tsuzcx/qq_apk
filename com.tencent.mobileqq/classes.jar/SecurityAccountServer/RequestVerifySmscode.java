@@ -9,9 +9,9 @@ public final class RequestVerifySmscode
 {
   static byte[] cache_sessionSid;
   static int cache_type;
-  public boolean isFromChangeBind;
-  public boolean isFromUni;
-  public byte[] sessionSid;
+  public boolean isFromChangeBind = false;
+  public boolean isFromUni = false;
+  public byte[] sessionSid = null;
   public String smsCode = "";
   public int type = 0;
   

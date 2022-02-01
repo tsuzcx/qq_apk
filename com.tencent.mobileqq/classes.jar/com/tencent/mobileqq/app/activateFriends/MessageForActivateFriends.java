@@ -8,7 +8,7 @@ public class MessageForActivateFriends
   extends ChatMessage
 {
   private static final String TAG = "ActivateFriends.Message";
-  public SubMsgType0x76.MsgBody msgBody;
+  public SubMsgType0x76.MsgBody msgBody = null;
   
   public void doParse()
   {
@@ -39,7 +39,7 @@ public class MessageForActivateFriends
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.MessageForActivateFriends
  * JD-Core Version:    0.7.0.1
  */

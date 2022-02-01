@@ -10,7 +10,7 @@ public final class mobile_get_rank_comment_rsp
   extends JceStruct
 {
   static ArrayList<OfficialComment> cache_vcComments = new ArrayList();
-  public ArrayList<OfficialComment> vcComments;
+  public ArrayList<OfficialComment> vcComments = null;
   
   static
   {

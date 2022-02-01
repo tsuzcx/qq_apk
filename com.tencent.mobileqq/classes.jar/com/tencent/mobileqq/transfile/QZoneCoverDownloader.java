@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import bhyo;
-import bhyq;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.cache.CacheManager;
@@ -75,7 +75,7 @@ public class QZoneCoverDownloader
     if (QLog.isColorLevel())
     {
       QLog.i("Q.qzonecover.", 2, "downloadImage|path = " + paramDownloadParams);
-      if (!FileUtils.fileExistsAndNotEmpty(paramDownloadParams)) {
+      if (!FileUtils.b(paramDownloadParams)) {
         break label198;
       }
       QLog.i("Q.qzonecover.", 2, "downloadImage|file exist and not empty");
@@ -87,7 +87,7 @@ public class QZoneCoverDownloader
       QLog.i("Q.qzonecover.", 2, "downloadImage|file not exist or empty!!");
     }
     paramURLDrawableHandler = new File(paramDownloadParams);
-    if ((paramURLDrawableHandler.exists()) || (((paramOutputStream.startsWith("http://")) || (paramOutputStream.startsWith("https://"))) && (bhyq.a(new bhyo(paramOutputStream, paramURLDrawableHandler), null) == 0) && (paramURLDrawableHandler.exists()))) {
+    if ((paramURLDrawableHandler.exists()) || (((paramOutputStream.startsWith("http://")) || (paramOutputStream.startsWith("https://"))) && (DownloaderFactory.a(new DownloadTask(paramOutputStream, paramURLDrawableHandler), null) == 0) && (paramURLDrawableHandler.exists()))) {
       return paramURLDrawableHandler;
     }
     throw new RuntimeException("downloadImage|file not exist, path = " + paramDownloadParams);

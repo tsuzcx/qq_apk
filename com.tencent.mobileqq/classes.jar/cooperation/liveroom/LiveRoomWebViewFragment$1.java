@@ -1,13 +1,13 @@
 package cooperation.liveroom;
 
-import bieb;
-import biko;
+import com.tencent.mobileqq.webview.WebViewDirector;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebviewReportSpeedInterface;
 import org.json.JSONObject;
 
 class LiveRoomWebViewFragment$1
-  implements biko
+  implements WebUiUtils.WebviewReportSpeedInterface
 {
-  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, bieb parambieb) {}
+  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, WebViewDirector paramWebViewDirector) {}
   
   public long getDetect302Time()
   {
@@ -111,7 +111,7 @@ class LiveRoomWebViewFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomWebViewFragment.1
  * JD-Core Version:    0.7.0.1
  */

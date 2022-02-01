@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahud;
-import ahup;
-import akkq;
 import android.os.Handler;
 import android.os.SystemClock;
 import com.tencent.mobileqq.activity.photo.FlowThumbDecoder;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.ReplacePhotoDataUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -71,7 +69,7 @@ class PhotoListPanel$QueryMediaTask
             QLog.d("PhotoListPanel", 2, localException + "get album medias size : " + paramList.size() + "mPhotos size" + this.this$0.jdField_b_of_type_JavaUtilArrayList.size());
           }
         }
-        akkq.a(paramList, 0, this.this$0.jdField_b_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_JavaUtilHashMap);
+        ReplacePhotoDataUtil.a(paramList, 0, this.this$0.jdField_b_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_JavaUtilHashMap);
         return;
         label358:
         if (k == 1) {
@@ -94,10 +92,10 @@ class PhotoListPanel$QueryMediaTask
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListPanel", 2, "QueryMediaTask start" + l1 + "to qurey time=" + (this.this$0.jdField_a_of_type_Long - l1));
     }
-    Object localObject1 = ahud.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    int i = ((ahud)localObject1).jdField_a_of_type_Int;
-    int j = ((ahud)localObject1).jdField_b_of_type_Int;
-    localObject1 = ((ahud)localObject1).jdField_a_of_type_JavaUtilSet;
+    Object localObject1 = PhotoListConfigManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = ((PhotoListConfigManager)localObject1).jdField_a_of_type_Int;
+    int j = ((PhotoListConfigManager)localObject1).jdField_b_of_type_Int;
+    localObject1 = ((PhotoListConfigManager)localObject1).jdField_a_of_type_JavaUtilSet;
     Object localObject3;
     if ((localObject1 != null) && (((Set)localObject1).size() > 0))
     {
@@ -139,12 +137,12 @@ class PhotoListPanel$QueryMediaTask
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListPanel", 2, "QueryMediaTask,mediaList.size :" + ((List)localObject2).size());
     }
-    this.this$0.jdField_a_of_type_Ahup.b((List)localObject2);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.b((List)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.QueryMediaTask
  * JD-Core Version:    0.7.0.1
  */

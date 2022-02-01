@@ -2,18 +2,17 @@ package cooperation.troop;
 
 import android.os.Handler;
 import android.os.Message;
-import blvy;
-import bmiz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.plugin.IPluginManager;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 class TroopPluginManager$1
   implements Runnable
 {
-  TroopPluginManager$1(TroopPluginManager paramTroopPluginManager, String paramString, bmiz parambmiz) {}
+  TroopPluginManager$1(TroopPluginManager paramTroopPluginManager, String paramString, TroopPluginManager.TroopPluginCallback paramTroopPluginCallback) {}
   
   public void run()
   {
@@ -21,10 +20,10 @@ class TroopPluginManager$1
     if (localObject == null) {
       return;
     }
-    if (((blvy)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled(this.jdField_a_of_type_JavaLangString))
+    if (((IPluginManager)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled(this.jdField_a_of_type_JavaLangString))
     {
       localObject = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-      ((Message)localObject).obj = this.jdField_a_of_type_Bmiz;
+      ((Message)localObject).obj = this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback;
       ((Message)localObject).arg1 = 0;
       ((Message)localObject).sendToTarget();
       return;
@@ -32,17 +31,17 @@ class TroopPluginManager$1
     if (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(this.jdField_a_of_type_JavaLangString))
     {
       localObject = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-      ((Message)localObject).obj = this.jdField_a_of_type_Bmiz;
+      ((Message)localObject).obj = this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback;
       ((Message)localObject).arg1 = 1;
       ((Message)localObject).sendToTarget();
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(this.jdField_a_of_type_JavaLangString);
-    ThreadManager.post(new TroopPluginManager.InstallRunable(this.this$0, this.jdField_a_of_type_Bmiz, this.jdField_a_of_type_JavaLangString), 8, null, true);
+    ThreadManager.post(new TroopPluginManager.InstallRunable(this.this$0, this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback, this.jdField_a_of_type_JavaLangString), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager.1
  * JD-Core Version:    0.7.0.1
  */

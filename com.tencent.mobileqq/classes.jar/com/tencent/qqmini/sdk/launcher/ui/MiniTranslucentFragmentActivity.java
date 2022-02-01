@@ -1,6 +1,5 @@
 package com.tencent.qqmini.sdk.launcher.ui;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -43,7 +42,7 @@ public class MiniTranslucentFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MiniTranslucentFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

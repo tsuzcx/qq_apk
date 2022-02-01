@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 
 public class StackBlur
 {
-  public static void fastblur(Bitmap paramBitmap, int paramInt)
+  public static void a(Bitmap paramBitmap, int paramInt)
   {
     if (paramInt < 1) {
       return;

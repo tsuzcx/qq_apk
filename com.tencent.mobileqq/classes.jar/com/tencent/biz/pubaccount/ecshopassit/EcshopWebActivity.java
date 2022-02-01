@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Rect;
@@ -9,13 +8,13 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import apau;
-import bifp;
-import blfe;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.applets.PublicAccountEventReport;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewFragmentBuilder;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.SwipListView.RightIconMenuListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.Set;
 
 public class EcshopWebActivity
   extends QQBrowserActivity
-  implements blfe
+  implements SwipListView.RightIconMenuListener
 {
   public long a;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -38,11 +37,11 @@ public class EcshopWebActivity
   boolean b;
   long jdField_c_of_type_Long;
   boolean jdField_c_of_type_Boolean = false;
-  private long e;
+  private long d = 0L;
   
   public EcshopWebActivity()
   {
-    this.jdField_a_of_type_JavaLangClass = ShopWebViewFragment.class;
+    this.mFragmentClass = ShopWebViewFragment.class;
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -57,14 +56,6 @@ public class EcshopWebActivity
       }
     }
     return false;
-  }
-  
-  public WebViewFragment a(WebViewTabBarData paramWebViewTabBarData)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return super.a(paramWebViewTabBarData);
-    }
-    return bifp.a(this, paramWebViewTabBarData, super.getIntent());
   }
   
   public void a(Rect paramRect, boolean paramBoolean)
@@ -96,11 +87,6 @@ public class EcshopWebActivity
     this.jdField_a_of_type_Boolean = paramBundle.getBoolean("is_tab_show", false);
   }
   
-  public void a(View paramView)
-  {
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
   public void a(String paramString)
   {
     if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {}
@@ -122,20 +108,15 @@ public class EcshopWebActivity
     }
   }
   
-  public void b(View paramView)
-  {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381412));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381873));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365171));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365308));
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {}
     }
@@ -144,7 +125,7 @@ public class EcshopWebActivity
     {
       EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
       return bool;
-      localView = findViewById(2131376760);
+      localView = findViewById(2131377159);
       if (localView != null) {
         break;
       }
@@ -190,7 +171,7 @@ public class EcshopWebActivity
       localIntent.putExtra("uin", ((RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
     }
     sendBroadcast(localIntent);
-    apau.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
+    PublicAccountEventReport.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.d);
   }
   
   public void doOnRestoreInstanceState(Bundle paramBundle)
@@ -204,13 +185,21 @@ public class EcshopWebActivity
   public void doOnResume()
   {
     super.doOnResume();
-    this.e = System.currentTimeMillis();
+    this.d = System.currentTimeMillis();
   }
   
   public void doOnSaveInstanceState(Bundle paramBundle)
   {
     super.doOnSaveInstanceState(paramBundle);
     paramBundle.putBundle("bundle", getIntent().getBundleExtra("bundle"));
+  }
+  
+  public WebViewFragment getFragmentByTabBarData(WebViewTabBarData paramWebViewTabBarData)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return super.getFragmentByTabBarData(paramWebViewTabBarData);
+    }
+    return WebViewFragmentBuilder.a(this, paramWebViewTabBarData, super.getIntent());
   }
   
   public boolean isWrapContent()
@@ -234,10 +223,20 @@ public class EcshopWebActivity
     a(getIntent().getBundleExtra("bundle"));
     this.jdField_c_of_type_Long = System.currentTimeMillis();
   }
+  
+  public void onRightIconMenuHide(View paramView)
+  {
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void onRightIconMenuShow(View paramView)
+  {
+    this.jdField_b_of_type_Boolean = true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity
  * JD-Core Version:    0.7.0.1
  */

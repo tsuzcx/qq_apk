@@ -10,16 +10,16 @@ public final class PrivExtV2Req
   extends JceStruct
 {
   static Map<String, String> cache_extendInfo = new HashMap();
-  public int clientLangugeId;
-  public Map<String, String> extendInfo;
-  public int iGetType;
-  public long iItemCfgVer;
-  public int iPopupVer;
-  public int iToastVer;
-  public int iWkOrderState1;
-  public int iWkOrderState2;
-  public long lastVisitTime;
-  public long pullPayRuleCfgTime;
+  public int clientLangugeId = 0;
+  public Map<String, String> extendInfo = null;
+  public int iGetType = 0;
+  public long iItemCfgVer = 0L;
+  public int iPopupVer = 0;
+  public int iToastVer = 0;
+  public int iWkOrderState1 = 0;
+  public int iWkOrderState2 = 0;
+  public long lastVisitTime = 0L;
+  public long pullPayRuleCfgTime = 0L;
   public String qua = "";
   public String sImsi1 = "";
   public String sImsi2 = "";

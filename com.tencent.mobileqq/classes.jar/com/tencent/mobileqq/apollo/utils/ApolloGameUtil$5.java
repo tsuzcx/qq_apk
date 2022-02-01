@@ -1,100 +1,58 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import android.text.TextUtils;
-import ankc;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.ApolloGameRoamData;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import org.json.JSONObject;
 
 final class ApolloGameUtil$5
-  implements Runnable
+  implements APICallback
 {
-  ApolloGameUtil$5(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean) {}
+  final String jdField_a_of_type_JavaLangString = "https://open.hudong.qq.com/devtool/authorize";
   
-  public void run()
+  ApolloGameUtil$5(int paramInt1, int paramInt2, String paramString1, String paramString2) {}
+  
+  private String[] a(int paramInt)
   {
-    int j = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      QLog.e("ApolloGameUtil", 1, "[highLightGame] app is null");
-    }
-    ankc localankc;
-    do
-    {
-      return;
-      localankc = (ankc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOOLO_DAO_MANAGER);
-      localObject1 = localankc.i();
-      if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-        break;
-      }
-      localObject2 = (ApolloGameRoamData)((List)localObject1).get(0);
-    } while ((localObject2 != null) && (((ApolloGameRoamData)localObject2).gameId == this.jdField_a_of_type_Int));
-    Object localObject1 = new LinkedList((Collection)localObject1);
-    Object localObject2 = ((LinkedList)localObject1).iterator();
-    int i = 0;
-    Object localObject3;
-    if (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (ApolloGameRoamData)((Iterator)localObject2).next();
-      if ((localObject3 != null) && (!TextUtils.isEmpty(((ApolloGameRoamData)localObject3).tagUrl))) {}
-    }
-    else
-    {
-      localObject2 = ((LinkedList)localObject1).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (ApolloGameRoamData)((Iterator)localObject2).next();
-        if ((localObject3 != null) && (((ApolloGameRoamData)localObject3).gameId == this.jdField_a_of_type_Int))
-        {
-          ((LinkedList)localObject1).remove(localObject3);
-          if (!TextUtils.isEmpty(((ApolloGameRoamData)localObject3).tagUrl)) {
-            break label327;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      ((LinkedList)localObject1).add(i, localObject3);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameUtil", 2, new Object[] { "[highLightGame] ", Integer.valueOf(this.jdField_a_of_type_Int) });
-      }
-      localObject1 = new ArrayList((Collection)localObject1);
-      localObject2 = new int[((ArrayList)localObject1).size()];
-      localObject3 = ((ArrayList)localObject1).iterator();
-      i = j;
-      while (((Iterator)localObject3).hasNext())
-      {
-        ApolloGameRoamData localApolloGameRoamData = (ApolloGameRoamData)((Iterator)localObject3).next();
-        localObject2[i] = localApolloGameRoamData.gameId;
-        i += 1;
-        localApolloGameRoamData.setStatus(1000);
-      }
-      i += 1;
-      break;
-      label327:
-      i = 0;
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (int[])localObject2);
-    }
-    localankc.c();
-    localankc.b((ArrayList)localObject1);
-    ApolloGameUtil.b();
-    return;
-    QLog.e("ApolloGameUtil", 1, "[highLightGame] no game in list");
+    return new String[] { "Content-Type", "application/x-www-form-urlencoded", "Content-Length", "" + paramInt, "Cookie", "uin=" + this.jdField_b_of_type_JavaLangString + ";skey=" + this.c };
   }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    String str = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=0";
+    ThreadManager.post(new ApolloGameUtil.5.2(this, str, a(str.length()), new ApolloGameUtil.5.1(this)), 8, null, false);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    paramString = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=2";
+    ThreadManager.post(new ApolloGameUtil.5.6(this, paramString, a(paramString.length()), new ApolloGameUtil.5.5(this)), 8, null, false);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    QLog.d("ApolloGameUtil", 2, new Object[] { "get openid and accessToken on Success result = ", paramJSONObject.toString() });
+    try
+    {
+      String str = paramJSONObject.optString("openid");
+      paramJSONObject = paramJSONObject.optString("access_token");
+      paramJSONObject = "openID=" + str + "&&accesstoken=" + paramJSONObject + "&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=1";
+      ThreadManager.post(new ApolloGameUtil.5.4(this, paramJSONObject, a(paramJSONObject.length()), new ApolloGameUtil.5.3(this)), 8, null, false);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.e("ApolloGameUtil", 2, "getOpenIdAndAccessToken failed ", paramJSONObject);
+    }
+  }
+  
+  public void b(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.5
  * JD-Core Version:    0.7.0.1
  */

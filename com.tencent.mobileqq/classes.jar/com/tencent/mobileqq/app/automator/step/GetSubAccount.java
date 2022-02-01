@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bdxp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetSubAccount
@@ -12,9 +12,9 @@ public class GetSubAccount
 {
   public int a()
   {
-    bdxp localbdxp = (bdxp)this.a.app.getManager(QQManagerFactory.MGR_SUB_ACNT);
-    if (localbdxp != null) {
-      localbdxp.a();
+    SubAccountProtocManager localSubAccountProtocManager = (SubAccountProtocManager)this.a.a.getManager(QQManagerFactory.MGR_SUB_ACNT);
+    if (localSubAccountProtocManager != null) {
+      localSubAccountProtocManager.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "subaccount onGetSubAccountBind start int QQInitHandler...");

@@ -1,6 +1,6 @@
 package cooperation.qlink;
 
-import aueq;
+import com.tencent.mobileqq.filemanager.util.FilePathUtil;
 import java.io.Serializable;
 
 public class QlAndQQInterface$InsertFMFileInfo
@@ -20,14 +20,14 @@ public class QlAndQQInterface$InsertFMFileInfo
     this.uin = paramString1;
     this.bSend = paramBoolean;
     this.sessionId = paramLong;
-    this.filePath = aueq.c(paramString2);
+    this.filePath = FilePathUtil.c(paramString2);
     this.thumbPath = paramString3;
     this.transSeq = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qlink.QlAndQQInterface.InsertFMFileInfo
  * JD-Core Version:    0.7.0.1
  */

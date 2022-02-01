@@ -6,8 +6,8 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import bnrh;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import dov.com.qq.im.ae.util.AEQLog;
 import dov.com.qq.im.aeeditor.view.ProgressView;
 
 class AEEditorBaseFragment$1
@@ -19,7 +19,7 @@ class AEEditorBaseFragment$1
   {
     if (this.this$0.getActivity().isFinishing())
     {
-      bnrh.c("AEEditorBaseFragment", "Activity has been destroy.");
+      AEQLog.c("AEEditorBaseFragment", "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)
@@ -44,7 +44,7 @@ class AEEditorBaseFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.arch.AEEditorBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

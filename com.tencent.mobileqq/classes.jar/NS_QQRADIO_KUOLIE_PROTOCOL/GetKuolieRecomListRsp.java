@@ -15,13 +15,13 @@ public final class GetKuolieRecomListRsp
   static DefaultInfo cache_info;
   static ArrayList<SimpleKuolieRoomInfo> cache_roomList;
   static SimpleKuolieRoomInfo cache_userRoom = new SimpleKuolieRoomInfo();
-  public CommonInfo commInfo;
-  public Map<String, String> dc_report;
-  public int favNum;
-  public DefaultInfo info;
-  public ArrayList<SimpleKuolieRoomInfo> roomList;
+  public CommonInfo commInfo = null;
+  public Map<String, String> dc_report = null;
+  public int favNum = 0;
+  public DefaultInfo info = null;
+  public ArrayList<SimpleKuolieRoomInfo> roomList = null;
   public String userId = "";
-  public SimpleKuolieRoomInfo userRoom;
+  public SimpleKuolieRoomInfo userRoom = null;
   
   static
   {

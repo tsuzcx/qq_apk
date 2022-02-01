@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import ahtm;
-import bkys;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.util.ArrayList;
 
-public class ChatHistoryImageView$DownloadAndSaveTask
+class ChatHistoryImageView$DownloadAndSaveTask
   implements Runnable
 {
   volatile int jdField_a_of_type_Int = 0;
-  ahtm jdField_a_of_type_Ahtm;
+  AIORichMediaInfo jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
   final Object jdField_a_of_type_JavaLangObject = new Object();
-  ArrayList<ahtm> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<AIORichMediaInfo> jdField_a_of_type_JavaUtilArrayList;
   boolean jdField_a_of_type_Boolean;
-  public boolean b;
+  boolean b;
   volatile boolean c = true;
   volatile boolean d = false;
   volatile boolean e = false;
   
-  public ChatHistoryImageView$DownloadAndSaveTask(ArrayList<ahtm> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
+  public ChatHistoryImageView$DownloadAndSaveTask(ArrayList<AIORichMediaInfo> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramBoolean1);
     this.jdField_a_of_type_Boolean = paramBoolean2;
@@ -37,10 +37,10 @@ public class ChatHistoryImageView$DownloadAndSaveTask
       if (!this.e)
       {
         this.jdField_a_of_type_JavaLangObject.notifyAll();
-        this.this$0.jdField_a_of_type_Bkys.sendEmptyMessageDelayed(102, (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int) * 60000L);
+        this.this$0.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(102, (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int) * 60000L);
         return;
       }
-      this.this$0.jdField_a_of_type_Bkys.removeMessages(102);
+      this.this$0.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(102);
     }
   }
   
@@ -56,7 +56,7 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   9: putfield 30	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:d	Z
     //   12: aload_0
     //   13: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   16: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   16: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   19: bipush 102
     //   21: aload_0
     //   22: getfield 43	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
@@ -64,7 +64,7 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   28: i2l
     //   29: ldc2_w 91
     //   32: lmul
-    //   33: invokevirtual 98	bkys:sendEmptyMessageDelayed	(IJ)Z
+    //   33: invokevirtual 98	com/tencent/util/WeakReferenceHandler:sendEmptyMessageDelayed	(IJ)Z
     //   36: pop
     //   37: iconst_0
     //   38: istore_1
@@ -78,24 +78,24 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   54: ifne +17 -> 71
     //   57: aload_0
     //   58: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   61: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   61: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   64: bipush 101
-    //   66: invokevirtual 109	bkys:sendEmptyMessage	(I)Z
+    //   66: invokevirtual 109	com/tencent/util/WeakReferenceHandler:sendEmptyMessage	(I)Z
     //   69: pop
     //   70: return
     //   71: aload_0
     //   72: getfield 43	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   75: iload_1
     //   76: invokevirtual 113	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   79: checkcast 115	ahtm
+    //   79: checkcast 115	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo
     //   82: astore 9
     //   84: ldc 117
     //   86: aload 9
-    //   88: getfield 120	ahtm:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   88: getfield 120	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   91: invokevirtual 126	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
     //   94: ifeq +167 -> 261
     //   97: aload 9
-    //   99: getfield 120	ahtm:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   99: getfield 120	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   102: checkcast 117	com/tencent/mobileqq/activity/aio/photo/AIOImageData
     //   105: astore 10
     //   107: aload 10
@@ -113,10 +113,10 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   136: ifne +69 -> 205
     //   139: aload_0
     //   140: aload 9
-    //   142: putfield 146	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_Ahtm	Lahtm;
+    //   142: putfield 146	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;
     //   145: aload 9
     //   147: iconst_1
-    //   148: putfield 147	ahtm:jdField_a_of_type_Boolean	Z
+    //   148: putfield 147	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Boolean	Z
     //   151: aload_0
     //   152: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
     //   155: getfield 150	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService	Lcom/tencent/mobileqq/activity/aio/photo/AIOImageProviderService;
@@ -127,18 +127,18 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   168: iconst_2
     //   169: invokevirtual 161	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:a	(JII)V
     //   172: aload_0
-    //   173: getfield 146	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_Ahtm	Lahtm;
+    //   173: getfield 146	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;
     //   176: astore 9
     //   178: aload 9
     //   180: monitorenter
     //   181: aload_0
-    //   182: getfield 146	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_Ahtm	Lahtm;
-    //   185: getfield 147	ahtm:jdField_a_of_type_Boolean	Z
+    //   182: getfield 146	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;
+    //   185: getfield 147	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Boolean	Z
     //   188: istore 6
     //   190: iload 6
     //   192: ifeq +10 -> 202
     //   195: aload_0
-    //   196: getfield 146	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_Ahtm	Lahtm;
+    //   196: getfield 146	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;
     //   199: invokevirtual 164	java/lang/Object:wait	()V
     //   202: aload 9
     //   204: monitorexit
@@ -177,9 +177,9 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   268: putfield 34	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_Int	I
     //   271: aload_0
     //   272: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   275: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   275: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   278: bipush 100
-    //   280: invokevirtual 171	bkys:obtainMessage	(I)Landroid/os/Message;
+    //   280: invokevirtual 171	com/tencent/util/WeakReferenceHandler:obtainMessage	(I)Landroid/os/Message;
     //   283: astore 9
     //   285: aload 9
     //   287: iconst_1
@@ -199,9 +199,9 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   309: putfield 179	android/os/Message:arg2	I
     //   312: aload_0
     //   313: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   316: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   316: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   319: aload 9
-    //   321: invokevirtual 183	bkys:sendMessage	(Landroid/os/Message;)Z
+    //   321: invokevirtual 183	com/tencent/util/WeakReferenceHandler:sendMessage	(Landroid/os/Message;)Z
     //   324: pop
     //   325: iload_1
     //   326: iconst_1
@@ -215,9 +215,9 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   339: athrow
     //   340: aload_0
     //   341: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   344: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   344: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   347: bipush 102
-    //   349: invokevirtual 102	bkys:removeMessages	(I)V
+    //   349: invokevirtual 102	com/tencent/util/WeakReferenceHandler:removeMessages	(I)V
     //   352: aload_0
     //   353: iconst_0
     //   354: putfield 30	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:d	Z
@@ -226,9 +226,9 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   361: ifne +17 -> 378
     //   364: aload_0
     //   365: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   368: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   368: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   371: bipush 101
-    //   373: invokevirtual 109	bkys:sendEmptyMessage	(I)Z
+    //   373: invokevirtual 109	com/tencent/util/WeakReferenceHandler:sendEmptyMessage	(I)Z
     //   376: pop
     //   377: return
     //   378: new 138	java/io/File
@@ -255,9 +255,9 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   419: if_icmpge +653 -> 1072
     //   422: aload_0
     //   423: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   426: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   426: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   429: bipush 100
-    //   431: invokevirtual 171	bkys:obtainMessage	(I)Landroid/os/Message;
+    //   431: invokevirtual 171	com/tencent/util/WeakReferenceHandler:obtainMessage	(I)Landroid/os/Message;
     //   434: astore 9
     //   436: aload 9
     //   438: iconst_2
@@ -282,18 +282,18 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   473: putfield 179	android/os/Message:arg2	I
     //   476: aload_0
     //   477: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   480: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   480: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   483: aload 9
-    //   485: invokevirtual 183	bkys:sendMessage	(Landroid/os/Message;)Z
+    //   485: invokevirtual 183	com/tencent/util/WeakReferenceHandler:sendMessage	(Landroid/os/Message;)Z
     //   488: pop
     //   489: aload_0
     //   490: getfield 28	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:c	Z
     //   493: ifne +37 -> 530
     //   496: aload_0
     //   497: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   500: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   500: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   503: bipush 101
-    //   505: invokevirtual 109	bkys:sendEmptyMessage	(I)Z
+    //   505: invokevirtual 109	com/tencent/util/WeakReferenceHandler:sendEmptyMessage	(I)Z
     //   508: pop
     //   509: return
     //   510: aload 9
@@ -310,17 +310,17 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   531: getfield 43	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   534: iload_3
     //   535: invokevirtual 113	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   538: checkcast 115	ahtm
+    //   538: checkcast 115	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo
     //   541: astore 10
     //   543: aconst_null
     //   544: astore 9
     //   546: ldc 117
     //   548: aload 10
-    //   550: getfield 120	ahtm:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   550: getfield 120	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   553: invokevirtual 126	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
     //   556: ifeq +132 -> 688
     //   559: aload 10
-    //   561: getfield 120	ahtm:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   561: getfield 120	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   564: checkcast 117	com/tencent/mobileqq/activity/aio/photo/AIOImageData
     //   567: iconst_2
     //   568: invokevirtual 194	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(I)Ljava/io/File;
@@ -371,25 +371,25 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   656: ldc 216
     //   658: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   661: ldc 217
-    //   663: invokestatic 222	anvx:a	(I)Ljava/lang/String;
-    //   666: invokestatic 226	audr:a	(Ljava/lang/String;)V
+    //   663: invokestatic 222	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   666: invokestatic 226	com/tencent/mobileqq/filemanager/util/FMToastUtil:a	(Ljava/lang/String;)V
     //   669: aload_0
     //   670: iconst_0
     //   671: putfield 28	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:c	Z
     //   674: aload_0
     //   675: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   678: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   678: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   681: bipush 101
-    //   683: invokevirtual 109	bkys:sendEmptyMessage	(I)Z
+    //   683: invokevirtual 109	com/tencent/util/WeakReferenceHandler:sendEmptyMessage	(I)Z
     //   686: pop
     //   687: return
     //   688: ldc 228
     //   690: aload 10
-    //   692: getfield 120	ahtm:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   692: getfield 120	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   695: invokevirtual 126	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
     //   698: ifeq -81 -> 617
     //   701: aload 10
-    //   703: getfield 120	ahtm:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   703: getfield 120	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   706: checkcast 228	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData
     //   709: astore 11
     //   711: aload 11
@@ -481,7 +481,7 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   908: ifne +98 -> 1006
     //   911: aload 9
     //   913: aload 10
-    //   915: invokestatic 256	fd:a	(Ljava/io/File;Ljava/io/File;)Z
+    //   915: invokestatic 256	com/dataline/util/file/FileUtil:a	(Ljava/io/File;Ljava/io/File;)Z
     //   918: ifne +88 -> 1006
     //   921: invokestatic 259	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
     //   924: ldc_w 261
@@ -494,16 +494,16 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   942: ldc_w 267
     //   945: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   948: ldc_w 268
-    //   951: invokestatic 222	anvx:a	(I)Ljava/lang/String;
-    //   954: invokestatic 226	audr:a	(Ljava/lang/String;)V
+    //   951: invokestatic 222	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   954: invokestatic 226	com/tencent/mobileqq/filemanager/util/FMToastUtil:a	(Ljava/lang/String;)V
     //   957: aload_0
     //   958: iconst_0
     //   959: putfield 28	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:c	Z
     //   962: aload_0
     //   963: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   966: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   966: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   969: bipush 101
-    //   971: invokevirtual 109	bkys:sendEmptyMessage	(I)Z
+    //   971: invokevirtual 109	com/tencent/util/WeakReferenceHandler:sendEmptyMessage	(I)Z
     //   974: pop
     //   975: return
     //   976: iload 4
@@ -530,7 +530,7 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   1016: getfield 273	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   1019: aload 10
     //   1021: invokevirtual 276	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   1024: invokestatic 281	bheg:a	(Landroid/content/Context;Ljava/lang/String;)V
+    //   1024: invokestatic 281	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/content/Context;Ljava/lang/String;)V
     //   1027: iload 4
     //   1029: istore_2
     //   1030: iload_1
@@ -576,15 +576,15 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   1112: getstatic 188	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
     //   1115: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1118: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1121: invokestatic 306	audr:b	(Ljava/lang/String;)V
+    //   1121: invokestatic 306	com/tencent/mobileqq/filemanager/util/FMToastUtil:b	(Ljava/lang/String;)V
     //   1124: aload_0
     //   1125: iconst_0
     //   1126: putfield 28	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:c	Z
     //   1129: aload_0
     //   1130: getfield 23	com/tencent/mobileqq/activity/ChatHistoryImageView$DownloadAndSaveTask:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryImageView;
-    //   1133: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_Bkys	Lbkys;
+    //   1133: getfield 86	com/tencent/mobileqq/activity/ChatHistoryImageView:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
     //   1136: bipush 101
-    //   1138: invokevirtual 109	bkys:sendEmptyMessage	(I)Z
+    //   1138: invokevirtual 109	com/tencent/util/WeakReferenceHandler:sendEmptyMessage	(I)Z
     //   1141: pop
     //   1142: return
     //   1143: iload 4
@@ -622,11 +622,11 @@ public class ChatHistoryImageView$DownloadAndSaveTask
     //   1210: getstatic 188	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
     //   1213: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1216: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1219: invokestatic 306	audr:b	(Ljava/lang/String;)V
+    //   1219: invokestatic 306	com/tencent/mobileqq/filemanager/util/FMToastUtil:b	(Ljava/lang/String;)V
     //   1222: goto -98 -> 1124
     //   1225: ldc_w 323
-    //   1228: invokestatic 222	anvx:a	(I)Ljava/lang/String;
-    //   1231: invokestatic 226	audr:a	(Ljava/lang/String;)V
+    //   1228: invokestatic 222	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1231: invokestatic 226	com/tencent/mobileqq/filemanager/util/FMToastUtil:a	(Ljava/lang/String;)V
     //   1234: goto -110 -> 1124
     //   1237: goto -620 -> 617
     // Local variable table:
@@ -664,7 +664,7 @@ public class ChatHistoryImageView$DownloadAndSaveTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ class QzoneTextBuilder$SpanComparator
   
   public int compare(Object paramObject1, Object paramObject2)
   {
-    int i = this.this$0.getSpanStart(paramObject1);
-    int j = this.this$0.getSpanStart(paramObject2);
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
     if (i == j) {
       return 0;
     }

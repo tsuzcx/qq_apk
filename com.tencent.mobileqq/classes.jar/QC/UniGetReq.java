@@ -10,9 +10,9 @@ public final class UniGetReq
 {
   static ArrayList<Integer> cache_appidList;
   static LoginInfo cache_stLogin = new LoginInfo();
-  public ArrayList<Integer> appidList;
-  public int oidbType;
-  public LoginInfo stLogin;
+  public ArrayList<Integer> appidList = null;
+  public int oidbType = 0;
+  public LoginInfo stLogin = null;
   
   static
   {

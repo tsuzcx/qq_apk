@@ -7,18 +7,18 @@ import com.qq.taf.jce.JceStruct;
 public final class stSongInfo
   extends JceStruct
 {
-  public int copyright;
-  public int iIsOnly;
-  public int iPlayTime;
-  public int iPlayable;
-  public int iSize;
-  public int iSizeHq;
-  public int iSizeSq;
-  public int iSizeStandard;
-  public int iSource;
-  public int iTryBegin;
-  public int iTryEnd;
-  public int iTrySize;
+  public int copyright = 0;
+  public int iIsOnly = 0;
+  public int iPlayTime = 0;
+  public int iPlayable = 0;
+  public int iSize = 0;
+  public int iSizeHq = 0;
+  public int iSizeSq = 0;
+  public int iSizeStandard = 0;
+  public int iSource = 0;
+  public int iTryBegin = 0;
+  public int iTryEnd = 0;
+  public int iTrySize = 0;
   public String strGenre = "";
   public String strH5Url = "";
   public String strLanguage = "";
@@ -28,7 +28,7 @@ public final class stSongInfo
   public String strPlayUrlHq = "";
   public String strPlayUrlSq = "";
   public String strPlayUrlStandard = "";
-  public long uiId;
+  public long uiId = 0L;
   
   public stSongInfo() {}
   

@@ -1,39 +1,34 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data.RIJDataFetchManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import qeh;
-import szd;
 
-public class ReadinjoyFixPosArticleManager$1
+class ReadinjoyFixPosArticleManager$1
   implements Runnable
 {
-  public ReadinjoyFixPosArticleManager$1(qeh paramqeh, szd paramszd, int paramInt) {}
+  ReadinjoyFixPosArticleManager$1(ReadinjoyFixPosArticleManager paramReadinjoyFixPosArticleManager, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, int paramInt) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_Szd.a().iterator();
-    while (((Iterator)localObject).hasNext())
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a().iterator();
+    while (localIterator.hasNext())
     {
-      BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)((Iterator)localObject).next();
-      if (!qeh.a(localBaseArticleInfo.mRecommendSeq)) {
+      BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)localIterator.next();
+      if ((!ReadinjoyFixPosArticleManager.a(localBaseArticleInfo.mRecommendSeq)) && (!RIJDataFetchManager.a(localBaseArticleInfo))) {
         localArrayList.add(localBaseArticleInfo);
       }
     }
-    localObject = this.this$0.a(this.jdField_a_of_type_Int, localArrayList, localArrayList, 3);
-    if (qeh.a(this.this$0, (List)localObject, localArrayList))
-    {
-      this.jdField_a_of_type_Szd.a((List)localObject);
-      this.jdField_a_of_type_Szd.notifyDataSetChanged();
-    }
+    RIJDataFetchManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter, this.jdField_a_of_type_Int, localArrayList, localArrayList, 3, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager.1
  * JD-Core Version:    0.7.0.1
  */

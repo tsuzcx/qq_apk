@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="32.0dip" android:layout_height="54.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/n2_" android:layout_width="8.0dip" android:layout_height="8.0dip" android:src="@drawable/etj" android:scaleType="centerInside" android:layout_weight="1.0" />
-    <TextView android:textSize="36.0dip" android:textColor="#ff00cafc" android:layout_gravity="center" android:id="@id/nym" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" />
-</FrameLayout>
+    <dov.com.qq.im.aeeditor.view.videotrack.RoundFrameLayout android:id="@id/content" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/a7v" android:background="@drawable/bi5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</RelativeLayout>

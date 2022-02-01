@@ -39,8 +39,8 @@ public class BaseLibManager
   private static final String TAG = "miniapp-process_BaseLibManager[MiniEng]";
   private static BaseLibManager instance;
   private static byte[] lock = new byte[0];
-  private boolean isFirstTimeUpdateBaseLib;
-  private boolean isUpdatingBaseLib;
+  private boolean isFirstTimeUpdateBaseLib = false;
+  private boolean isUpdatingBaseLib = false;
   private List<BaseLibManager.UpdateListener> mListeners = new ArrayList();
   private List<String> miniAppBaseLibFiles = Arrays.asList(new String[] { "QView.js", "QLogic.js", "QVConsole.js", "QRemoteDebug.js", "QWebview.js" });
   private List<String> miniGameBaseLibFiles = Arrays.asList(new String[] { "QGame.js", "QGameOpenDataContext.js", "QGameWorkerContext.js" });
@@ -100,7 +100,7 @@ public class BaseLibManager
     if (paramBaseLibInfo == null) {
       return Boolean.valueOf(false);
     }
-    String str = StorageUtil.getPreference().getString("version", "1.19.0.00043");
+    String str = StorageUtil.getPreference().getString("version", "1.22.0.00008");
     return Boolean.valueOf(BaseLibInfo.needUpdateVersion(paramBaseLibInfo.baseLibVersion, str));
   }
   
@@ -222,7 +222,7 @@ public class BaseLibManager
   {
     BaseLibInfo localBaseLibInfo = new BaseLibInfo();
     String str = StorageUtil.getPreference().getString("downloadUrl", null);
-    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.19.0.00043");
+    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.22.0.00008");
     localBaseLibInfo.baseLibUrl = str;
     return localBaseLibInfo;
   }
@@ -241,14 +241,14 @@ public class BaseLibManager
     {
       try
       {
-        String str = g().getBaseLibDir("mini", "1.19.0.00043");
+        String str = g().getBaseLibDir("mini", "1.22.0.00008");
         if (g().isBaseLibDirValid4MiniGame(str))
         {
-          QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, inner baseLib already installed, version:1.19.0.00043");
+          QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, inner baseLib already installed, version:1.22.0.00008");
           return str;
         }
         int j = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
-        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, version:1.19.0.00043, totalCount:" + j);
+        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, version:1.22.0.00008, totalCount:" + j);
         int i = 0;
         boolean bool;
         if (i < j)
@@ -266,7 +266,7 @@ public class BaseLibManager
           {
             File localFile = new File(str);
             if (localFile.exists()) {
-              FileUtil.deleteFile(localFile);
+              FileUtil.a(localFile);
             }
           }
         }
@@ -387,12 +387,12 @@ public class BaseLibManager
     //   23: ldc_w 464
     //   26: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: aload_0
-    //   30: getfield 102	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
+    //   30: getfield 55	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
     //   33: invokevirtual 418	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   36: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   39: invokestatic 281	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   42: aload_0
-    //   43: getfield 102	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
+    //   43: getfield 55	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
     //   46: istore 4
     //   48: iload 4
     //   50: ifeq +6 -> 56
@@ -401,7 +401,7 @@ public class BaseLibManager
     //   55: return
     //   56: aload_0
     //   57: iconst_1
-    //   58: putfield 102	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
+    //   58: putfield 55	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
     //   61: new 466	com/tencent/mobileqq/mini/apkg/BaseLibManager$2
     //   64: dup
     //   65: aload_0

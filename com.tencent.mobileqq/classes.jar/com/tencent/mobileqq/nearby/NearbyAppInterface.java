@@ -1,42 +1,26 @@
 package com.tencent.mobileqq.nearby;
 
+import EncounterSvc.UserDetailLocalInfo;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.view.accessibility.AccessibilityManager;
-import anzr;
-import aokc;
-import aoke;
-import aqeo;
-import aqeq;
-import aqww;
-import axnx;
-import axoc;
-import axoe;
-import axqa;
-import axqc;
-import axqd;
-import axqf;
-import axql;
-import axqp;
-import axut;
-import axuu;
-import ayob;
-import bhyq;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseToolAppInterface;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
+import com.tencent.mobileqq.config.NearbyDataManager;
+import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
 import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -44,11 +28,11 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.service.MobileQQServiceBase;
 import com.tencent.mobileqq.transfile.NetEngineFactory;
 import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -56,9 +40,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Vector;
 import mqq.app.AccountManagerImpl;
 import mqq.app.IToolProcEventListener;
+import mqq.app.MobileQQ;
 import mqq.app.ProxyIpManagerImpl;
 import mqq.app.TicketManagerImpl;
 import mqq.app.WtloginManagerImpl;
@@ -67,30 +51,26 @@ import mqq.os.MqqHandler;
 import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
 
 public class NearbyAppInterface
-  extends AppInterface
+  extends BaseToolAppInterface
   implements IToolProcEventListener
 {
   public static boolean a;
   public static boolean b;
   public int a;
   public long a;
-  axnx jdField_a_of_type_Axnx = null;
-  public axqd a;
-  private axqf jdField_a_of_type_Axqf;
+  public UserDetailLocalInfo a;
+  NearbyAppInterface.MyNetInfoHandler jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface$MyNetInfoHandler = null;
   NearbyEntityManagerFactory jdField_a_of_type_ComTencentMobileqqNearbyNearbyEntityManagerFactory;
+  public NearbyService a;
   NearbyMyTabCard jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard;
-  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
+  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
   Object jdField_a_of_type_JavaLangObject = new Object();
   String jdField_a_of_type_JavaLangString = null;
-  HashMap<Integer, BusinessHandler> jdField_a_of_type_JavaUtilHashMap;
-  public List<BusinessObserver> a;
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
   public oidb_0x8dd.SelfInfo a;
   int jdField_b_of_type_Int = -2147483648;
   private Object jdField_b_of_type_JavaLangObject = new Object();
-  public List<BusinessObserver> b;
   int c;
-  public List<BusinessObserver> c;
   public boolean c;
   int jdField_d_of_type_Int = 0;
   boolean jdField_d_of_type_Boolean = false;
@@ -105,7 +85,9 @@ public class NearbyAppInterface
   public NearbyAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
+    this.jdField_a_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_EncounterSvcUserDetailLocalInfo = null;
     this.jdField_c_of_type_Int = 0;
   }
   
@@ -119,40 +101,40 @@ public class NearbyAppInterface
     //   6: ifnull +8 -> 14
     //   9: aload 5
     //   11: ifnonnull +6 -> 17
-    //   14: ldc 82
+    //   14: ldc 85
     //   16: areturn
     //   17: aload_1
-    //   18: ldc 84
-    //   20: invokevirtual 90	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   18: ldc 87
+    //   20: invokevirtual 93	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   23: ifeq +13 -> 36
     //   26: aload_2
-    //   27: invokevirtual 94	java/lang/String:length	()I
+    //   27: invokevirtual 97	java/lang/String:length	()I
     //   30: ifle +6 -> 36
-    //   33: ldc 96
+    //   33: ldc 99
     //   35: areturn
     //   36: aload_1
-    //   37: ldc 84
-    //   39: invokevirtual 90	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   37: ldc 87
+    //   39: invokevirtual 93	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   42: ifeq +31 -> 73
     //   45: aload 8
-    //   47: invokestatic 102	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   47: invokestatic 105	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   50: ifne +9 -> 59
     //   53: aload 8
-    //   55: invokestatic 108	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   55: invokestatic 111	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   58: pop2
     //   59: aload 9
-    //   61: invokestatic 102	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   61: invokestatic 105	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   64: ifne +9 -> 73
     //   67: aload 9
-    //   69: invokestatic 108	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   69: invokestatic 111	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   72: pop2
     //   73: aconst_null
     //   74: areturn
     //   75: astore_1
-    //   76: ldc 110
+    //   76: ldc 113
     //   78: areturn
     //   79: astore_1
-    //   80: ldc 112
+    //   80: ldc 115
     //   82: areturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -176,56 +158,16 @@ public class NearbyAppInterface
   
   public static void b()
   {
-    if (BaseApplicationImpl.sImageCache != null)
+    if (GlobalImageCache.a != null)
     {
-      int i = BaseApplicationImpl.sImageCache.size() * 3 / 4;
-      BaseApplicationImpl.sImageCache.trimToSize(i);
+      int i = GlobalImageCache.a.size() * 3 / 4;
+      GlobalImageCache.a.trimToSize(i);
     }
   }
   
-  public axqf a()
+  public NearbyProcManager a()
   {
-    if (this.jdField_a_of_type_Axqf == null) {
-      this.jdField_a_of_type_Axqf = new axqf(this);
-    }
-    return this.jdField_a_of_type_Axqf;
-  }
-  
-  public axut a()
-  {
-    return (axut)getManager(axoc.i);
-  }
-  
-  public BusinessHandler a(int paramInt)
-  {
-    Object localObject1 = (BusinessHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    Object localObject3;
-    if (localObject1 == null) {
-      for (;;)
-      {
-        synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-        {
-          localObject1 = (BusinessHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-          if (localObject1 != null) {
-            return localObject1;
-          }
-          if (paramInt == axoc.jdField_c_of_type_Int)
-          {
-            localObject1 = new anzr(this);
-            if (localObject1 != null) {
-              this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject1);
-            }
-            return localObject1;
-          }
-        }
-        if (paramInt == axoc.jdField_d_of_type_Int) {
-          localObject3 = new aokc(this);
-        } else if (paramInt == BusinessHandlerFactory.DYNAMIC_AVATAR_HANDLER) {
-          localObject3 = new aqeo(this);
-        }
-      }
-    }
-    return localObject3;
+    return (NearbyProcManager)getManager(NearbyConstants.e);
   }
   
   public NearbyMyTabCard a()
@@ -239,20 +181,20 @@ public class NearbyAppInterface
     if (localNearbyMyTabCard != null)
     {
       localNearbyMyTabCard.visitors.clear();
-      ayob.a(this, localNearbyMyTabCard);
+      NearbyMineHelper.a(this, localNearbyMyTabCard);
     }
   }
   
   public void a(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    axqc.a(getAccount(), "sp_nearby_mytab", 0, "key_nearby_mytab_zan_check", Integer.valueOf(this.jdField_b_of_type_Int));
+    NearbySPUtil.a(getAccount(), "sp_nearby_mytab", 0, "key_nearby_mytab_zan_check", Integer.valueOf(this.jdField_b_of_type_Int));
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      axql.a("updatePerfState", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.jdField_c_of_type_Int) });
+      NearbyUtils.a("updatePerfState", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.jdField_c_of_type_Int) });
     }
     if (paramInt1 > this.jdField_c_of_type_Int)
     {
@@ -265,11 +207,11 @@ public class NearbyAppInterface
     }
   }
   
-  public void a(axuu paramaxuu)
+  public void a(NearbyProcObserver paramNearbyProcObserver)
   {
-    axut localaxut = (axut)getManager(axoc.i);
-    if (localaxut != null) {
-      localaxut.a(paramaxuu);
+    NearbyProcManager localNearbyProcManager = (NearbyProcManager)getManager(NearbyConstants.e);
+    if (localNearbyProcManager != null) {
+      localNearbyProcManager.a(paramNearbyProcObserver);
     }
   }
   
@@ -278,11 +220,6 @@ public class NearbyAppInterface
     if (this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard != paramNearbyMyTabCard) {
       this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard = paramNearbyMyTabCard;
     }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    this.jdField_a_of_type_Axqd.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
@@ -301,19 +238,19 @@ public class NearbyAppInterface
     }
     this.jdField_a_of_type_TencentImOidbCmd0x8ddOidb_0x8dd$SelfInfo = paramSelfInfo;
     if (paramSelfInfo.uint64_tinyid.get() != 0L) {
-      axqc.a(getAccount(), "self_tinnyid", Long.valueOf(paramSelfInfo.uint64_tinyid.get()));
+      NearbySPUtil.a(getAccount(), "self_tinnyid", Long.valueOf(paramSelfInfo.uint64_tinyid.get()));
     }
     if (!TextUtils.isEmpty(paramSelfInfo.bytes_nick.get().toStringUtf8())) {
-      axqc.a(getAccount(), "self_nick", paramSelfInfo.bytes_nick.get().toStringUtf8());
+      NearbySPUtil.a(getAccount(), "self_nick", paramSelfInfo.bytes_nick.get().toStringUtf8());
     }
     if (!TextUtils.isEmpty(paramSelfInfo.str_third_line_info.get())) {
-      axqc.a(getAccount(), "self_third_line_info", paramSelfInfo.str_third_line_info.get());
+      NearbySPUtil.a(getAccount(), "self_third_line_info", paramSelfInfo.str_third_line_info.get());
     }
     if (!TextUtils.isEmpty(paramSelfInfo.str_third_line_icon.get())) {
-      axqc.a(getAccount(), "self_third_line_icon", paramSelfInfo.str_third_line_icon.get());
+      NearbySPUtil.a(getAccount(), "self_third_line_icon", paramSelfInfo.str_third_line_icon.get());
     }
     if (paramSelfInfo.uint32_age.get() != -1) {
-      axqc.a(getAccount(), "self_age", Integer.valueOf(paramSelfInfo.uint32_age.get()));
+      NearbySPUtil.a(getAccount(), "self_age", Integer.valueOf(paramSelfInfo.uint32_age.get()));
     }
     int i;
     if (paramSelfInfo.uint32_gender.get() != -1) {
@@ -325,7 +262,7 @@ public class NearbyAppInterface
     }
     for (;;)
     {
-      axqc.a(getAccount(), "self_gender", Integer.valueOf(i));
+      NearbySPUtil.a(getAccount(), "self_gender", Integer.valueOf(i));
       a().a(paramSelfInfo);
       return;
       i = 1;
@@ -342,38 +279,29 @@ public class NearbyAppInterface
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramManager);
   }
   
-  public void addObserver(BusinessObserver paramBusinessObserver)
-  {
-    addObserver(paramBusinessObserver, false);
-  }
-  
-  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (!this.jdField_b_of_type_JavaUtilList.contains(paramBusinessObserver)) {
-        this.jdField_b_of_type_JavaUtilList.add(paramBusinessObserver);
-      }
-    }
-    while (this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
-  }
-  
   public NearbyMyTabCard b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard == null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard = ayob.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard = NearbyMineHelper.a(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard;
   }
   
-  public void b(axuu paramaxuu)
+  public void b(NearbyProcObserver paramNearbyProcObserver)
   {
-    axut localaxut = (axut)getManager(axoc.i);
-    if (localaxut != null) {
-      localaxut.b(paramaxuu);
+    NearbyProcManager localNearbyProcManager = (NearbyProcManager)getManager(NearbyConstants.e);
+    if (localNearbyProcManager != null) {
+      localNearbyProcManager.b(paramNearbyProcObserver);
     }
+  }
+  
+  public void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    String str = a(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    if (!TextUtils.isEmpty(str)) {
+      throw new IllegalArgumentException(str);
+    }
+    a().a(false, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   @TargetApi(14)
@@ -387,9 +315,9 @@ public class NearbyAppInterface
       if ((bool1) && (bool2)) {}
       for (bool1 = true;; bool1 = false)
       {
-        AppSetting.jdField_c_of_type_Boolean = bool1;
+        AppSetting.jdField_d_of_type_Boolean = bool1;
         if (QLog.isColorLevel()) {
-          QLog.d("NearbyAppInterface", 2, "set talkback enable: " + AppSetting.jdField_c_of_type_Boolean);
+          QLog.d("NearbyAppInterface", 2, "set talkback enable: " + AppSetting.jdField_d_of_type_Boolean);
         }
         return;
       }
@@ -415,20 +343,6 @@ public class NearbyAppInterface
   public int getAppid()
   {
     return AppSetting.a();
-  }
-  
-  public List<BusinessObserver> getBusinessObserver(int paramInt)
-  {
-    if (paramInt == 1) {
-      return this.jdField_a_of_type_JavaUtilList;
-    }
-    if (paramInt == 2) {
-      return this.jdField_b_of_type_JavaUtilList;
-    }
-    if (paramInt == 0) {
-      return this.jdField_c_of_type_JavaUtilList;
-    }
-    return this.jdField_c_of_type_JavaUtilList;
   }
   
   public String getCurrentAccountUin()
@@ -483,7 +397,7 @@ public class NearbyAppInterface
         {
           localObject1 = new AccountManagerImpl(this);
           if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) == null) {
-            break label346;
+            break label308;
           }
           localObject4 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
           return localObject4;
@@ -501,51 +415,43 @@ public class NearbyAppInterface
         {
           localObject3 = new ProxyIpManagerImpl(this);
         }
-        else if (paramInt == axoc.f)
+        else if (paramInt == NearbyConstants.jdField_b_of_type_Int)
         {
-          localObject3 = new aqww(this);
+          localObject3 = new NearbyDataManager(this);
         }
-        else if (paramInt == axoc.g)
+        else if (paramInt == NearbyConstants.jdField_c_of_type_Int)
         {
           localObject3 = new NetEngineFactory();
         }
-        else if (paramInt == axoc.i)
+        else if (paramInt == NearbyConstants.e)
         {
-          localObject3 = new axut(this);
+          localObject3 = new NearbyProcManager(this);
         }
-        else if (paramInt == axoc.j)
+        else if (paramInt == NearbyConstants.g)
         {
-          localObject3 = new DeviceProfileManager.AccountDpcManager(this);
+          localObject3 = new OldBigDataChannelManager(this);
         }
-        else if (paramInt == axoc.k)
+        else if (paramInt == NearbyConstants.h)
         {
-          localObject3 = new aoke(this);
+          localObject3 = new NearbyReportManager(this);
         }
-        else if (paramInt == axoc.l)
+        else if (paramInt == NearbyConstants.i)
         {
-          localObject3 = new axqp(this);
+          localObject3 = new NearbyFaceScoreManager(this);
         }
-        else if (paramInt == axoc.m)
-        {
-          localObject3 = new axqa(this);
-        }
-        else if (paramInt == axoc.n)
-        {
-          localObject3 = new axoe(this);
-        }
-        else if (paramInt == axoc.o)
+        else if (paramInt == NearbyConstants.j)
         {
           localObject3 = new UsingTimeReportManager(this);
         }
-        else if (paramInt == axoc.p)
+        else if (paramInt == NearbyConstants.k)
         {
-          localObject3 = new bhyq(this);
+          localObject3 = new DownloaderFactory(this);
         }
         else if (paramInt == QQManagerFactory.DYNAMIC_AVATAR_MANAGER)
         {
-          localObject3 = new aqeq(this);
+          localObject3 = new DynamicAvatarManager(this);
           continue;
-          label346:
+          label308:
           localObject4 = localObject3;
           if (localObject3 != null)
           {
@@ -558,17 +464,14 @@ public class NearbyAppInterface
     return localObject3;
   }
   
+  public MobileQQServiceBase getMobileQQService()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyService;
+  }
+  
   public String getModuleId()
   {
     return "module_nearby";
-  }
-  
-  public INetEngine getNetEngine(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = ((NetEngineFactory)getManager(axoc.g));
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.getEngineInstance(this, paramInt);
   }
   
   public void onBeforeExitProc() {}
@@ -576,12 +479,8 @@ public class NearbyAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Axqd = new axqd(this);
-    this.jdField_a_of_type_JavaUtilList = new Vector();
-    this.jdField_b_of_type_JavaUtilList = new Vector();
-    this.jdField_c_of_type_JavaUtilList = new Vector();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
-    ((axut)getManager(axoc.i)).a();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyService = new NearbyService(this);
+    ((NearbyProcManager)getManager(NearbyConstants.e)).a();
     ThreadManager.post(new NearbyAppInterface.2(this), 8, null, true);
   }
   
@@ -599,7 +498,7 @@ public class NearbyAppInterface
         if (bool) {
           try
           {
-            DeviceProfileManager.a(this, axoc.j).b(this);
+            ((IDPCApi)QRoute.api(IDPCApi.class)).unRegisterBroadCast(this);
             synchronized (this.jdField_a_of_type_JavaUtilMap)
             {
               Object localObject2 = this.jdField_a_of_type_JavaUtilMap.keySet();
@@ -626,7 +525,7 @@ public class NearbyAppInterface
               if (!QLog.isColorLevel()) {
                 continue;
               }
-              axql.a("NearbyAppInterface", new Object[] { "onDestroy", localException2.toString() });
+              NearbyUtils.a("NearbyAppInterface", new Object[] { "onDestroy", localException2.toString() });
             }
           }
           catch (Exception localException1)
@@ -646,53 +545,23 @@ public class NearbyAppInterface
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
   {
-    axql.a("onReceiveAccountAction", new Object[0]);
+    NearbyUtils.a("onReceiveAccountAction", new Object[0]);
     if ("mqq.intent.action.ACCOUNT_KICKED".equals(paramString)) {
-      ((UsingTimeReportManager)getManager(axoc.o)).a();
+      ((UsingTimeReportManager)getManager(NearbyConstants.j)).a();
     }
     return false;
   }
   
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
-    axql.a("onReceiveLegalExitProcAction", new Object[0]);
+    NearbyUtils.a("onReceiveLegalExitProcAction", new Object[0]);
     return false;
-  }
-  
-  public void removeObserver(BusinessObserver paramBusinessObserver)
-  {
-    this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
-    this.jdField_b_of_type_JavaUtilList.remove(paramBusinessObserver);
-    this.jdField_c_of_type_JavaUtilList.remove(paramBusinessObserver);
-  }
-  
-  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    String str = a(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-    if (!TextUtils.isEmpty(str)) {
-      throw new IllegalArgumentException(str);
-    }
-    a().a(false, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
-  
-  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    String str = a(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-    if (!TextUtils.isEmpty(str)) {
-      throw new IllegalArgumentException(str);
-    }
-    a().a(true, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
-  
-  public void sendToService(ToServiceMsg paramToServiceMsg)
-  {
-    this.jdField_a_of_type_Axqd.a(paramToServiceMsg);
   }
   
   public void start(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Axnx = new axnx(this, null);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Axnx);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface$MyNetInfoHandler = new NearbyAppInterface.MyNetInfoHandler(this, null);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface$MyNetInfoHandler);
     super.start(paramBoolean);
   }
 }

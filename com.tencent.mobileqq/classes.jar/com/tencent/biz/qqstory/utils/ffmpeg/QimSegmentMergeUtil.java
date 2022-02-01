@@ -6,16 +6,16 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
 import android.text.TextUtils;
-import bbmm;
-import bbnt;
-import bptd;
-import bpti;
-import bptj;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
 import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.util.HwVideoMerge;
+import dov.com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils;
+import dov.com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils.MetaData;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -40,7 +40,7 @@ public class QimSegmentMergeUtil
     long l = -10L;
     while (paramList.hasNext())
     {
-      l = bbnt.a((String)paramList.next()) + l;
+      l = MediaUtil.a((String)paramList.next()) + l;
       localArrayList.add(Long.valueOf(l));
     }
     if (localArrayList.size() > 1) {
@@ -54,13 +54,13 @@ public class QimSegmentMergeUtil
     if ((paramList == null) || (paramList.size() == 1) || (TextUtils.isEmpty(paramString))) {
       return null;
     }
-    long l2 = bbnt.a(paramString);
+    long l2 = MediaUtil.a(paramString);
     paramString = new ArrayList();
     Iterator localIterator = paramList.iterator();
     long l1 = 0L;
     while (localIterator.hasNext())
     {
-      l1 = bbnt.a((String)localIterator.next()) + l1;
+      l1 = MediaUtil.a((String)localIterator.next()) + l1;
       paramString.add(Long.valueOf(l1));
     }
     if (l1 > l2) {}
@@ -87,7 +87,7 @@ public class QimSegmentMergeUtil
     if ((paramList == null) || (paramList.size() == 1) || (TextUtils.isEmpty(paramString))) {
       return null;
     }
-    long l2 = bbnt.a(paramString);
+    long l2 = MediaUtil.a(paramString);
     paramString = new LinkedHashMap();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -100,7 +100,7 @@ public class QimSegmentMergeUtil
       }
       else
       {
-        paramString.put(localObject, Long.valueOf(bbnt.a((String)localObject)));
+        paramString.put(localObject, Long.valueOf(MediaUtil.a((String)localObject)));
       }
     }
     paramList = new ArrayList();
@@ -147,7 +147,7 @@ public class QimSegmentMergeUtil
       }
       else
       {
-        localLinkedHashMap.put(localObject, Long.valueOf(bbnt.a((String)localObject)));
+        localLinkedHashMap.put(localObject, Long.valueOf(MediaUtil.a((String)localObject)));
       }
     }
     paramList = new ArrayList();
@@ -381,10 +381,10 @@ public class QimSegmentMergeUtil
     Object localObject4;
     if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      localObject4 = new bptj();
+      localObject4 = new MediaMetadataUtils.MetaData();
       try
       {
-        i = bpti.a((String)paramList.get(0), (bptj)localObject4);
+        i = MediaMetadataUtils.a((String)paramList.get(0), (MediaMetadataUtils.MetaData)localObject4);
         paramInt2 = localObject4.a[2];
         paramInt1 = paramInt2;
         if (i >= 0) {
@@ -424,8 +424,8 @@ public class QimSegmentMergeUtil
       paramInt2 = localObject4.a[1];
       i = paramInt1;
       paramInt1 = j;
-      if (AudioHelper.g()) {
-        return bptd.a(paramList, paramString, i);
+      if (AudioHelper.f()) {
+        return HwVideoMerge.a(paramList, paramString, i);
       }
       localObject4 = new ArrayList();
       j = 0;
@@ -434,8 +434,8 @@ public class QimSegmentMergeUtil
         ((List)localObject4).add(new DecodeConfig((String)paramList.get(j), 0, false, true));
         j += 1;
       }
-      localObject5 = new bbmm(paramString, paramInt1, paramInt2, CodecParam.mMaxrate, 1, false, i);
-      ((bbmm)localObject5).b = true;
+      localObject5 = new EncodeConfig(paramString, paramInt1, paramInt2, CodecParam.mMaxrate, 1, false, i);
+      ((EncodeConfig)localObject5).b = true;
     }
     for (;;)
     {
@@ -444,12 +444,12 @@ public class QimSegmentMergeUtil
       {
         paramList = ByteBuffer.allocate(1048576);
         paramString = new MediaCodec.BufferInfo();
-        localObject3 = new File(((bbmm)localObject5).a);
+        localObject3 = new File(((EncodeConfig)localObject5).a);
         if (!((File)localObject3).exists()) {
-          FileUtils.createFileIfNotExits(((File)localObject3).getAbsolutePath());
+          FileUtils.c(((File)localObject3).getAbsolutePath());
         }
-        localObject3 = new MediaMuxer(((bbmm)localObject5).a, 0);
-        ((MediaMuxer)localObject3).setOrientationHint(((bbmm)localObject5).g);
+        localObject3 = new MediaMuxer(((EncodeConfig)localObject5).a, 0);
+        ((MediaMuxer)localObject3).setOrientationHint(((EncodeConfig)localObject5).g);
         i = ((MediaMuxer)localObject3).addTrack(paramMediaFormat);
         ((MediaMuxer)localObject3).start();
         paramInt1 = 1;
@@ -524,7 +524,7 @@ public class QimSegmentMergeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.QimSegmentMergeUtil
  * JD-Core Version:    0.7.0.1
  */

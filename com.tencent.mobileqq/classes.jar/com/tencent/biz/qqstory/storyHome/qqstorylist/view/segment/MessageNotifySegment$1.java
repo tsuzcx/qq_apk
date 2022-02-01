@@ -2,27 +2,26 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import wjs;
-import wke;
-import yiz;
 
-public class MessageNotifySegment$1
+class MessageNotifySegment$1
   implements Runnable
 {
-  public MessageNotifySegment$1(yiz paramyiz, ImageView paramImageView, Drawable paramDrawable) {}
+  MessageNotifySegment$1(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView, Drawable paramDrawable) {}
   
   public void run()
   {
-    wke localwke = (wke)wjs.a(2);
-    String str = localwke.b(Long.toString(yiz.a(this.this$0)), true);
-    ThreadManager.getUIHandler().post(new MessageNotifySegment.1.1(this, str, localwke));
+    UserManager localUserManager = (UserManager)SuperManager.a(2);
+    String str = localUserManager.b(Long.toString(MessageNotifySegment.a(this.this$0)), true);
+    ThreadManager.getUIHandler().post(new MessageNotifySegment.1.1(this, str, localUserManager));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment.1
  * JD-Core Version:    0.7.0.1
  */

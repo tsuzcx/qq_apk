@@ -1,27 +1,25 @@
 package com.tencent.mobileqq.multicard;
 
-import axgu;
-import axgx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
 
-public class MultiCardManager$3
+class MultiCardManager$3
   implements Runnable
 {
-  public MultiCardManager$3(axgu paramaxgu, long paramLong, axgx paramaxgx) {}
+  MultiCardManager$3(MultiCardManager paramMultiCardManager, long paramLong, MultiCardManager.GetGroupRecommendUinListsListener paramGetGroupRecommendUinListsListener) {}
   
   public void run()
   {
-    ArrayList localArrayList = axgu.a(this.this$0, this.jdField_a_of_type_Long);
+    ArrayList localArrayList = MultiCardManager.a(this.this$0, this.jdField_a_of_type_Long);
     if (localArrayList != null) {}
     for (;;)
     {
-      synchronized (axgu.a(this.this$0))
+      synchronized (MultiCardManager.a(this.this$0))
       {
-        axgu.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList.clone());
+        MultiCardManager.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList.clone());
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder().append("callbackWithNativeUinList ").append(this.jdField_a_of_type_Long).append(" ");

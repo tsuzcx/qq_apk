@@ -34,7 +34,7 @@ public class ZipDrawableLoader
   private static final int PRELOAD_FRAME_NUM = 1;
   public static final byte[] inTempStorage = new byte[24576];
   private CopyOnWriteArrayList<ZipDrawableLoader.AnimationFrame> mAnimationFrames = new CopyOnWriteArrayList();
-  private Rect mBounds;
+  private Rect mBounds = null;
   private String mBusiness;
   private QzoneZipCacheHelperCallBack mCallback = new ZipDrawableLoader.2(this);
   private WeakReference<Context> mContext;
@@ -46,7 +46,7 @@ public class ZipDrawableLoader
   private String mDir;
   private ZipFrameLoadedListener mDrawableLoadedListener;
   boolean mFirstFrameLoaded = false;
-  private volatile boolean mIsRunning;
+  private volatile boolean mIsRunning = false;
   private ZipLoadedListener mListener;
   private boolean mPreLoadFrame;
   private int mPreloadNum = -1;
@@ -424,8 +424,8 @@ public class ZipDrawableLoader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 70	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 183	java/util/concurrent/CopyOnWriteArrayList:size	()I
+    //   3: getfield 74	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   6: invokevirtual 185	java/util/concurrent/CopyOnWriteArrayList:size	()I
     //   9: istore_3
     //   10: iload_3
     //   11: iload_1
@@ -436,10 +436,10 @@ public class ZipDrawableLoader
     //   18: aload_0
     //   19: iload_1
     //   20: aload_2
-    //   21: invokespecial 482	cooperation/qzone/zipanimate/ZipDrawableLoader:decodeFrameAsyn	(ILcooperation/qzone/zipanimate/ZipFrameLoadedListener;)V
+    //   21: invokespecial 484	cooperation/qzone/zipanimate/ZipDrawableLoader:decodeFrameAsyn	(ILcooperation/qzone/zipanimate/ZipFrameLoadedListener;)V
     //   24: aload_0
     //   25: iload_1
-    //   26: invokevirtual 485	cooperation/qzone/zipanimate/ZipDrawableLoader:setFrame	(I)V
+    //   26: invokevirtual 487	cooperation/qzone/zipanimate/ZipDrawableLoader:setFrame	(I)V
     //   29: goto -14 -> 15
     //   32: astore_2
     //   33: aload_0
@@ -480,10 +480,10 @@ public class ZipDrawableLoader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 70	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 377	java/util/concurrent/CopyOnWriteArrayList:clear	()V
+    //   3: getfield 74	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   6: invokevirtual 379	java/util/concurrent/CopyOnWriteArrayList:clear	()V
     //   9: aload_1
-    //   10: invokestatic 223	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   10: invokestatic 225	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   13: istore_3
     //   14: iload_3
     //   15: ifeq +6 -> 21
@@ -491,19 +491,19 @@ public class ZipDrawableLoader
     //   19: monitorexit
     //   20: return
     //   21: aload_0
-    //   22: getfield 61	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
+    //   22: getfield 63	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
     //   25: ifgt +8 -> 33
     //   28: aload_0
     //   29: iconst_1
-    //   30: putfield 61	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
+    //   30: putfield 63	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
     //   33: aload_0
     //   34: iload_2
-    //   35: putfield 400	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreLoadFrame	Z
+    //   35: putfield 402	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreLoadFrame	Z
     //   38: aload_0
     //   39: aload_1
-    //   40: invokestatic 495	cooperation/qzone/webviewplugin/QzoneZipCacheHelper:getFileList	(Ljava/lang/String;)[Ljava/lang/String;
+    //   40: invokestatic 497	cooperation/qzone/webviewplugin/QzoneZipCacheHelper:getFileList	(Ljava/lang/String;)[Ljava/lang/String;
     //   43: aload_1
-    //   44: invokespecial 450	cooperation/qzone/zipanimate/ZipDrawableLoader:loadZipData	([Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokespecial 452	cooperation/qzone/zipanimate/ZipDrawableLoader:loadZipData	([Ljava/lang/String;Ljava/lang/String;)V
     //   47: goto -29 -> 18
     //   50: astore_1
     //   51: aload_0
@@ -558,8 +558,8 @@ public class ZipDrawableLoader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 70	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 504	java/util/concurrent/CopyOnWriteArrayList:isEmpty	()Z
+    //   3: getfield 74	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   6: invokevirtual 506	java/util/concurrent/CopyOnWriteArrayList:isEmpty	()Z
     //   9: istore 4
     //   11: iload 4
     //   13: ifeq +6 -> 19
@@ -570,18 +570,18 @@ public class ZipDrawableLoader
     //   20: istore_3
     //   21: iload_3
     //   22: aload_0
-    //   23: getfield 61	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
+    //   23: getfield 63	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
     //   26: if_icmpge -10 -> 16
     //   29: aload_0
     //   30: iload_2
     //   31: iload_3
     //   32: iadd
     //   33: aload_1
-    //   34: invokeinterface 507 1 0
+    //   34: invokeinterface 509 1 0
     //   39: irem
     //   40: aload_0
-    //   41: getfield 402	cooperation/qzone/zipanimate/ZipDrawableLoader:mDrawableLoadedListener	Lcooperation/qzone/zipanimate/ZipFrameLoadedListener;
-    //   44: invokespecial 482	cooperation/qzone/zipanimate/ZipDrawableLoader:decodeFrameAsyn	(ILcooperation/qzone/zipanimate/ZipFrameLoadedListener;)V
+    //   41: getfield 404	cooperation/qzone/zipanimate/ZipDrawableLoader:mDrawableLoadedListener	Lcooperation/qzone/zipanimate/ZipFrameLoadedListener;
+    //   44: invokespecial 484	cooperation/qzone/zipanimate/ZipDrawableLoader:decodeFrameAsyn	(ILcooperation/qzone/zipanimate/ZipFrameLoadedListener;)V
     //   47: iload_3
     //   48: iconst_1
     //   49: iadd
@@ -646,39 +646,39 @@ public class ZipDrawableLoader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 70	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 377	java/util/concurrent/CopyOnWriteArrayList:clear	()V
+    //   3: getfield 74	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   6: invokevirtual 379	java/util/concurrent/CopyOnWriteArrayList:clear	()V
     //   9: aload_1
     //   10: ifnonnull +6 -> 16
     //   13: aload_0
     //   14: monitorexit
     //   15: return
     //   16: aload_0
-    //   17: getfield 61	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
+    //   17: getfield 63	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
     //   20: ifgt +8 -> 28
     //   23: aload_0
     //   24: iconst_1
-    //   25: putfield 61	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
+    //   25: putfield 63	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreloadNum	I
     //   28: aload_0
     //   29: aload_1
-    //   30: putfield 112	cooperation/qzone/zipanimate/ZipDrawableLoader:mZipUrl	Ljava/lang/String;
+    //   30: putfield 116	cooperation/qzone/zipanimate/ZipDrawableLoader:mZipUrl	Ljava/lang/String;
     //   33: aload_0
     //   34: aload_3
-    //   35: putfield 126	cooperation/qzone/zipanimate/ZipDrawableLoader:mDir	Ljava/lang/String;
+    //   35: putfield 128	cooperation/qzone/zipanimate/ZipDrawableLoader:mDir	Ljava/lang/String;
     //   38: aload_0
     //   39: aload_2
-    //   40: putfield 115	cooperation/qzone/zipanimate/ZipDrawableLoader:mBusiness	Ljava/lang/String;
+    //   40: putfield 119	cooperation/qzone/zipanimate/ZipDrawableLoader:mBusiness	Ljava/lang/String;
     //   43: aload_0
     //   44: iload 5
-    //   46: putfield 400	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreLoadFrame	Z
-    //   49: ldc_w 524
-    //   52: invokestatic 349	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;)Lcooperation/qzone/thread/QzoneBaseThread;
-    //   55: new 526	cooperation/qzone/zipanimate/ZipDrawableLoader$1
+    //   46: putfield 402	cooperation/qzone/zipanimate/ZipDrawableLoader:mPreLoadFrame	Z
+    //   49: ldc_w 526
+    //   52: invokestatic 351	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;)Lcooperation/qzone/thread/QzoneBaseThread;
+    //   55: new 528	cooperation/qzone/zipanimate/ZipDrawableLoader$1
     //   58: dup
     //   59: aload_0
     //   60: iload 4
-    //   62: invokespecial 529	cooperation/qzone/zipanimate/ZipDrawableLoader$1:<init>	(Lcooperation/qzone/zipanimate/ZipDrawableLoader;I)V
-    //   65: invokevirtual 360	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
+    //   62: invokespecial 531	cooperation/qzone/zipanimate/ZipDrawableLoader$1:<init>	(Lcooperation/qzone/zipanimate/ZipDrawableLoader;I)V
+    //   65: invokevirtual 362	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
     //   68: goto -55 -> 13
     //   71: astore_1
     //   72: aload_0
@@ -712,8 +712,8 @@ public class ZipDrawableLoader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 70	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   6: invokevirtual 183	java/util/concurrent/CopyOnWriteArrayList:size	()I
+    //   3: getfield 74	cooperation/qzone/zipanimate/ZipDrawableLoader:mAnimationFrames	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   6: invokevirtual 185	java/util/concurrent/CopyOnWriteArrayList:size	()I
     //   9: istore_2
     //   10: iload_1
     //   11: iload_2
@@ -723,10 +723,10 @@ public class ZipDrawableLoader
     //   17: return
     //   18: aload_0
     //   19: iload_1
-    //   20: putfield 72	cooperation/qzone/zipanimate/ZipDrawableLoader:mCurFrame	I
+    //   20: putfield 76	cooperation/qzone/zipanimate/ZipDrawableLoader:mCurFrame	I
     //   23: aload_0
     //   24: iload_1
-    //   25: invokespecial 533	cooperation/qzone/zipanimate/ZipDrawableLoader:selectDrawable	(I)Z
+    //   25: invokespecial 535	cooperation/qzone/zipanimate/ZipDrawableLoader:selectDrawable	(I)Z
     //   28: pop
     //   29: goto -14 -> 15
     //   32: astore_3
@@ -781,7 +781,7 @@ public class ZipDrawableLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipDrawableLoader
  * JD-Core Version:    0.7.0.1
  */

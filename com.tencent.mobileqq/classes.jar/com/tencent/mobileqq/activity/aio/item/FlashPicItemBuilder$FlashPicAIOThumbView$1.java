@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.qphone.base.util.QLog;
 
 class FlashPicItemBuilder$FlashPicAIOThumbView$1
@@ -12,7 +12,7 @@ class FlashPicItemBuilder$FlashPicAIOThumbView$1
   {
     try
     {
-      synchronized (BaseApplicationImpl.sImageCache) {}
+      synchronized (GlobalImageCache.a) {}
       return;
     }
     catch (Exception localException)
@@ -25,7 +25,7 @@ class FlashPicItemBuilder$FlashPicAIOThumbView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView.1
  * JD-Core Version:    0.7.0.1
  */

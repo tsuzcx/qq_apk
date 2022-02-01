@@ -107,7 +107,7 @@ public class MainBrowserScene
   
   protected RelativeLayout createLayout()
   {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559383, null);
+    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559450, null);
   }
   
   public RelativeLayout getContentView()
@@ -147,12 +147,12 @@ public class MainBrowserScene
   
   public void initView()
   {
-    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131365157));
+    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131365294));
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
       this.recyclerView.scrollToPosition(this.mainBrowserPresenter.browserModel.getSelectedIndex());
     }
     this.recyclerView.setVisibility(0);
-    this.mDragView = ((DragView)this.mRoot.findViewById(2131365898));
+    this.mDragView = ((DragView)this.mRoot.findViewById(2131366062));
     this.mDragView.setGestureChangeListener(this);
     this.mDragView.setRatioModify(true);
     this.mDragView.init();
@@ -461,7 +461,7 @@ public class MainBrowserScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.MainBrowserScene
  * JD-Core Version:    0.7.0.1
  */

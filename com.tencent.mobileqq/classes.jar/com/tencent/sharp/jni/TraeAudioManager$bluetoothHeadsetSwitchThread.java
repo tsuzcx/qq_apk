@@ -2,7 +2,6 @@ package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
 import android.os.Build.VERSION;
-import bkwu;
 import com.tencent.qphone.base.util.QLog;
 
 class TraeAudioManager$bluetoothHeadsetSwitchThread
@@ -33,10 +32,10 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
       {
         int i;
         int n;
-        label371:
+        label336:
         continue;
-        label437:
-        label444:
+        label402:
+        label409:
         int j = n;
         continue;
         int m = 0;
@@ -44,15 +43,8 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
         int k = 0;
       }
     }
-    if (TraeAudioManager.a(this.this$0) == 7)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread, WIREDHEADSET plugout, bluetoothState == Bluetooth_State.SCO_CONNECTED force to HEADSET_AVAILABLE, reconnect");
-      }
-      TraeAudioManager.a(this.this$0, 4);
-    }
     i = 0;
-    while (TraeAudioManager.a(this.this$0) != 4)
+    while (TraeAudioManager.a(this.this$0) == 3)
     {
       j = i + 1;
       if (i >= 10) {
@@ -71,7 +63,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
         i = j;
       }
     }
-    if (TraeAudioManager.a(this.this$0) != 4)
+    if (TraeAudioManager.a(this.this$0) == 3)
     {
       k = 1;
       if ((k == 0) && (this.jdField_a_of_type_Boolean == true))
@@ -98,7 +90,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 localStringBuilder.append(n);
                 localStringBuilder.append(" sco:");
                 if (!TraeAudioManager.a(this.this$0).isBluetoothScoOn()) {
-                  break label437;
+                  break label402;
                 }
                 str = "Y";
                 localStringBuilder.append(str);
@@ -108,7 +100,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
                 QLog.w(this.jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
               }
               if (TraeAudioManager.a(this.this$0) != 7) {
-                break label444;
+                break label409;
               }
               QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread bluetoothState ==  Bluetooth_State.SCO_CONNECTED 1");
               c();
@@ -156,7 +148,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
             {
               Thread.sleep(1000L);
               if (i != 0) {
-                break label371;
+                break label336;
               }
               d();
               QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread retry start sco");
@@ -207,7 +199,7 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.bluetoothHeadsetSwitchThread
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import aocx;
-import bhdf;
+import com.tencent.mobileqq.app.RoamSettingManager;
 import com.tencent.mobileqq.data.RoamSetting;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class DBUtils$1
+class DBUtils$1
   implements Runnable
 {
-  public DBUtils$1(bhdf parambhdf, ArrayList paramArrayList, aocx paramaocx) {}
+  DBUtils$1(DBUtils paramDBUtils, ArrayList paramArrayList, RoamSettingManager paramRoamSettingManager) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class DBUtils$1
     while (localIterator.hasNext())
     {
       RoamSetting localRoamSetting = (RoamSetting)localIterator.next();
-      this.jdField_a_of_type_Aocx.a(localRoamSetting);
+      this.jdField_a_of_type_ComTencentMobileqqAppRoamSettingManager.a(localRoamSetting);
     }
   }
 }

@@ -6,19 +6,24 @@ import java.util.Iterator;
 import java.util.Set;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tlv_type.tlv_t104;
+import oicq.wlogin_sdk.tlv_type.tlv_t113;
 import oicq.wlogin_sdk.tlv_type.tlv_t116;
 import oicq.wlogin_sdk.tlv_type.tlv_t174;
 import oicq.wlogin_sdk.tlv_type.tlv_t17c;
+import oicq.wlogin_sdk.tlv_type.tlv_t184;
 import oicq.wlogin_sdk.tlv_type.tlv_t401;
 import oicq.wlogin_sdk.tlv_type.tlv_t402;
 import oicq.wlogin_sdk.tlv_type.tlv_t403;
 import oicq.wlogin_sdk.tlv_type.tlv_t542;
 import oicq.wlogin_sdk.tlv_type.tlv_t8;
+import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.util;
 
 public class o
   extends oicq_request
 {
+  private int K = 0;
+  
   public o(t paramt)
   {
     this.t = 2064;
@@ -62,7 +67,7 @@ public class o
         int i = 0;
         for (;;)
         {
-          localObject1 = a(localtlv_t104.get_data(), paramArrayOfByte1, localtlv_t174.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G, paramArrayOfByte2, paramWUserSigInfo);
+          localObject1 = a(localtlv_t104.get_data(), paramArrayOfByte1, localtlv_t174.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G, paramArrayOfByte2, paramWUserSigInfo, localasync_context);
           a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject1);
           int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
           if (k != 0) {
@@ -82,7 +87,7 @@ public class o
     }
   }
   
-  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, WUserSigInfo paramWUserSigInfo)
+  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, WUserSigInfo paramWUserSigInfo, async_context paramasync_context)
   {
     int[] arrayOfInt = new int[8];
     int[] tmp8_6 = arrayOfInt;
@@ -104,6 +109,7 @@ public class o
     tmp50_43;
     ArrayList localArrayList = new ArrayList();
     int i = 0;
+    StringBuffer localStringBuffer = new StringBuffer("request_checksms").append(util.LOG_TAG_GATEWAY_LOGIN_NEW_DOV);
     int j = 0;
     if (j < arrayOfInt.length)
     {
@@ -155,14 +161,24 @@ public class o
         break;
       }
     }
+    localStringBuffer.append(",_msalt=").append(Long.toHexString(paramasync_context._msalt));
+    paramInt1 = i;
+    if (paramasync_context._msalt > 0L)
+    {
+      localStringBuffer.append(",_mpasswd=").append(paramasync_context._mpasswd);
+      paramArrayOfByte1 = new tlv_t184().get_tlv_184(paramasync_context._msalt, paramasync_context._mpasswd);
+      localArrayList.add(paramArrayOfByte1);
+      paramInt1 = i + paramArrayOfByte1.length;
+    }
     paramArrayOfByte1 = paramWUserSigInfo.extraLoginTLVMap.keySet().iterator();
-    for (paramInt1 = i; paramArrayOfByte1.hasNext(); paramInt1 = paramInt2 + paramInt1)
+    while (paramArrayOfByte1.hasNext())
     {
       paramArrayOfByte2 = (Integer)paramArrayOfByte1.next();
       paramArrayOfByte3 = ((tlv_t)paramWUserSigInfo.extraLoginTLVMap.get(paramArrayOfByte2)).get_buf();
       localArrayList.add(paramArrayOfByte3);
       paramInt2 = paramArrayOfByte3.length;
       util.LOGI("Extra Tlv from user：0x" + paramArrayOfByte2);
+      paramInt1 = paramInt2 + paramInt1;
     }
     i = localArrayList.size();
     paramArrayOfByte1 = new byte[paramInt1];
@@ -175,7 +191,70 @@ public class o
       paramInt2 += paramArrayOfByte2.length;
       paramInt1 += 1;
     }
+    util.LOGI(localStringBuffer.toString(), "");
     return b(paramArrayOfByte1, this.u, i);
+  }
+  
+  public o b(int paramInt)
+  {
+    this.K = paramInt;
+    return this;
+  }
+  
+  public int d(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.K == 2) {
+      return e(paramArrayOfByte, paramInt1, paramInt2);
+    }
+    util.LOGI("request_checksms" + util.LOG_TAG_GATEWAY_LOGIN_NEW_DOV + " super get_response_body", "");
+    return super.d(paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
+  public int e(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    StringBuffer localStringBuffer = new StringBuffer("request_checksms").append(util.LOG_TAG_GATEWAY_LOGIN_NEW_DOV).append("get_response_body");
+    if (paramInt2 < 5)
+    {
+      localStringBuffer.append(",len < 5");
+      util.LOGI(localStringBuffer.toString(), "");
+      return -1009;
+    }
+    async_context localasync_context = t.b(this.x.h);
+    paramInt2 = c(paramArrayOfByte, paramInt1 + 2);
+    localStringBuffer.append(",ret=").append(paramInt2);
+    paramInt1 += 5;
+    Object localObject = new tlv_t113();
+    int i = ((tlv_t113)localObject).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+    localStringBuffer.append(",ret113=").append(i);
+    if (i >= 0)
+    {
+      this.x.f = ((tlv_t113)localObject).get_uin();
+      localasync_context._uin = this.x.f;
+      localStringBuffer.append(",ret113 uin=").append(this.x.f);
+    }
+    localObject = new tlv_t104();
+    i = ((tlv_t104)localObject).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+    localStringBuffer.append(",ret104=").append(i);
+    if (i >= 0) {
+      localasync_context._t104 = ((tlv_t104)localObject);
+    }
+    if (paramInt2 != 0)
+    {
+      c(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+      if (localasync_context._last_err_msg == null) {
+        break label327;
+      }
+      localStringBuffer.append(",err type=").append(localasync_context._last_err_msg.getType());
+      localStringBuffer.append(",err title=").append(localasync_context._last_err_msg.getTitle());
+      localStringBuffer.append(",err msg=").append(localasync_context._last_err_msg.getMessage());
+    }
+    for (;;)
+    {
+      util.LOGI(localStringBuffer.toString(), "");
+      return paramInt2;
+      label327:
+      localStringBuffer.append(",err = null");
+    }
   }
 }
 

@@ -29,7 +29,7 @@ public class TouchController
   private float currentTouchSensitivity;
   private float downX;
   private float downY;
-  private boolean isTouchMove;
+  private boolean isTouchMove = false;
   private float mCurrentScale = 1.0F;
   private float mPreviousX;
   private float mPreviousY;
@@ -196,7 +196,7 @@ public class TouchController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.panorama.controller.TouchController
  * JD-Core Version:    0.7.0.1
  */

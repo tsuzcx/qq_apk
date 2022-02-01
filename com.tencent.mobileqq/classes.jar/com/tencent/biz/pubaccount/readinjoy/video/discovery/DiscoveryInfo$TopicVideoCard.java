@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ssi;
 
 public class DiscoveryInfo$TopicVideoCard
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicVideoCard> CREATOR = new ssi();
+  public static final Parcelable.Creator<TopicVideoCard> CREATOR = new DiscoveryInfo.TopicVideoCard.1();
   public int a;
   public long a;
   public String a;
@@ -38,7 +37,7 @@ public class DiscoveryInfo$TopicVideoCard
   
   public DiscoveryInfo$TopicVideoCard() {}
   
-  public DiscoveryInfo$TopicVideoCard(Parcel paramParcel)
+  protected DiscoveryInfo$TopicVideoCard(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
@@ -120,7 +119,7 @@ public class DiscoveryInfo$TopicVideoCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard
  * JD-Core Version:    0.7.0.1
  */

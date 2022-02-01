@@ -1,56 +1,59 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.common.RIJTabFrameBase;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJWebSearchUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
+import com.tencent.mobileqq.webview.api.IWebProcessPreload;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import prm;
+import mqq.app.AppRuntime;
 
-class ReadinjoyTabFrame$InitWebProcessRunnable
+public class ReadinjoyTabFrame$InitWebProcessRunnable
   implements Runnable
 {
-  private long jdField_a_of_type_Long;
-  private WeakReference<ReadinjoyTabFrame> jdField_a_of_type_JavaLangRefWeakReference;
+  private long jdField_a_of_type_Long = 0L;
+  private WeakReference<RIJTabFrameBase> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(ReadinjoyTabFrame paramReadinjoyTabFrame)
+  public void a(RIJTabFrameBase paramRIJTabFrameBase)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadinjoyTabFrame);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramRIJTabFrameBase);
   }
   
   public void run()
   {
-    if (WebProcessManager.c()) {}
+    if (((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist()) {}
     do
     {
       do
       {
         return;
       } while ((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1000L) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-      ReadinjoyTabFrame localReadinjoyTabFrame = (ReadinjoyTabFrame)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localWebProcessManager = (WebProcessManager)localReadinjoyTabFrame.a.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
-      if (localWebProcessManager != null)
+      RIJTabFrameBase localRIJTabFrameBase = (RIJTabFrameBase)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localIWebProcessManagerService = (IWebProcessManagerService)localRIJTabFrameBase.a.getRuntimeService(IWebProcessManagerService.class, "multi");
+      if (localIWebProcessManagerService != null)
       {
-        i = prm.a();
-        if (!prm.a()) {}
+        i = RIJWebSearchUtils.a();
+        if (!RIJWebSearchUtils.a()) {}
       }
       try
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-        localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.getSystemTotalMemory()));
-        localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.getSystemAvaialbeMemory()));
-        localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.getCpuNumber()));
-        localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.getCpuFrequency()));
+        localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.a()));
+        localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.e()));
+        localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
+        localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.b()));
         localHashMap.put("param_preloadLevel", String.valueOf(i));
         if (QLog.isColorLevel()) {
           QLog.d("Q.readinjoy.4tab", 2, "preloadToolProcessReport:" + localHashMap.toString());
         }
-        StatisticCollector.getInstance(localReadinjoyTabFrame.a()).collectPerformance(localReadinjoyTabFrame.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+        StatisticCollector.getInstance(localRIJTabFrameBase.a()).collectPerformance(((QQAppInterface)localRIJTabFrameBase.a).getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       }
       catch (Exception localException)
       {
@@ -59,14 +62,14 @@ class ReadinjoyTabFrame$InitWebProcessRunnable
           QLog.d("Q.readinjoy.4tab", 2, "", localException);
           continue;
           if (i == 2) {
-            localWebProcessManager.a(201);
+            localIWebProcessManagerService.startWebProcess(201, null);
           }
         }
       }
       if (i != 1) {
         break;
       }
-      localWebProcessManager.a(200);
+      localIWebProcessManagerService.startWebProcess(200, null);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
     } while (!QLog.isColorLevel());
     QLog.d("Q.readinjoy.4tab", 2, "enter folder preload web process");
@@ -74,7 +77,7 @@ class ReadinjoyTabFrame$InitWebProcessRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.InitWebProcessRunnable
  * JD-Core Version:    0.7.0.1
  */

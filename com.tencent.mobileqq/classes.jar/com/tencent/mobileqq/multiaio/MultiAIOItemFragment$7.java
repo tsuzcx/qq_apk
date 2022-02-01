@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multiaio;
 
-import akfg;
+import com.tencent.mobileqq.activity.miniaio.MiniPie;
 
 class MultiAIOItemFragment$7
   implements Runnable

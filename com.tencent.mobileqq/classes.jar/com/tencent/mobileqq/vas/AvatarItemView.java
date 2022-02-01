@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vas;
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bhqp;
 import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.vas.avatar.VasAvatarLoader;
 import com.tencent.qqconnect.wtlogin.Login;
 
 public class AvatarItemView
@@ -14,7 +14,7 @@ public class AvatarItemView
   {
     super(paramContext);
     paramContext = new VasAvatar(paramContext);
-    paramContext.setLoader(null, new bhqp(Login.a, -1, "small", 0L));
+    paramContext.setLoader(null, new VasAvatarLoader(Login.a, -1, "small", 0L));
     paramContext.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramContext.setVisibility(0);
   }

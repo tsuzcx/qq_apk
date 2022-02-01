@@ -15,9 +15,10 @@ public class RoundedCornerImageViewNoPadding
   extends PressDarkImageView
 {
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private boolean jdField_a_of_type_Boolean;
-  private int b = Color.parseColor("#FFD5D5D5");
-  private int c;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = Color.parseColor("#FFD5D5D5");
+  private boolean jdField_b_of_type_Boolean = false;
+  private int c = 0;
   
   public RoundedCornerImageViewNoPadding(Context paramContext)
   {
@@ -51,12 +52,12 @@ public class RoundedCornerImageViewNoPadding
     }
     for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidGraphicsPath.reset();
         this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, i, i, Path.Direction.CCW);
         this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
-        this.jdField_a_of_type_Boolean = true;
+        this.jdField_b_of_type_Boolean = true;
       }
       paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
       super.draw(paramCanvas);
@@ -65,10 +66,10 @@ public class RoundedCornerImageViewNoPadding
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
   
   public void setCorner(int paramInt)
@@ -77,13 +78,13 @@ public class RoundedCornerImageViewNoPadding
       throw new IllegalArgumentException("should not be less than 0");
     }
     this.c = paramInt;
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundedCornerImageViewNoPadding
  * JD-Core Version:    0.7.0.1
  */

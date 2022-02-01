@@ -12,10 +12,9 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import bdfk;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.qqui.R.styleable;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.List;
 
 public class TabBarView2
@@ -40,18 +39,18 @@ public class TabBarView2
   public TabBarView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = AIOUtils.dp2px(56.0F, getResources());
+    this.jdField_b_of_type_Int = ViewUtils.a(56.0F);
     this.m = 16;
-    boolean bool1 = ThemeUtil.isNowThemeIsDefaultCache(BaseApplicationImpl.getApplication().getRuntime(), true);
+    boolean bool1 = QQTheme.d();
     int k = this.s;
-    boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+    boolean bool2 = QQTheme.a();
     int i;
     int j;
-    if (bdfk.a()) {
+    if (QQTheme.e()) {
       if (bool2)
       {
-        i = 2131166485;
-        k = 2131167110;
+        i = 2131166488;
+        k = 2131167117;
         int n = 255;
         j = i;
         i = k;
@@ -69,39 +68,39 @@ public class TabBarView2
       this.p = ((int)TypedValue.applyDimension(1, this.p, localDisplayMetrics));
       this.q = ((int)TypedValue.applyDimension(1, this.q, localDisplayMetrics));
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
-      this.r = paramContext.getColor(2, this.r);
-      this.s = paramContext.getInt(1, this.s);
-      this.p = paramContext.getDimensionPixelSize(5, this.p);
-      this.q = paramContext.getDimensionPixelSize(6, this.q);
-      this.t = paramContext.getDimensionPixelSize(4, this.t);
-      this.u = paramContext.getDimensionPixelSize(3, this.u);
+      this.r = paramContext.getColor(R.styleable.J, this.r);
+      this.s = paramContext.getInt(R.styleable.I, this.s);
+      this.p = paramContext.getDimensionPixelSize(R.styleable.M, this.p);
+      this.q = paramContext.getDimensionPixelSize(R.styleable.N, this.q);
+      this.t = paramContext.getDimensionPixelSize(R.styleable.L, this.t);
+      this.u = paramContext.getDimensionPixelSize(R.styleable.K, this.u);
       paramContext.recycle();
-      if (("1103".equals(ThemeUtil.curThemeId)) || (bdfk.a()))
+      if (("1103".equals(QQTheme.a())) || (QQTheme.e()))
       {
         this.r = getResources().getColor(j);
         this.s = k;
       }
       b();
       return;
-      i = 2131166484;
+      i = 2131166487;
       break;
       if (bool2)
       {
-        m = 2131165594;
-        i = 2131165593;
-        j = 2131165592;
+        m = 2131165596;
+        i = 2131165595;
+        j = 2131165594;
         k = 30;
       }
       else if (!bool1)
       {
-        i = 2131167110;
-        j = 2131167033;
+        i = 2131167117;
+        j = 2131167040;
       }
       else
       {
-        m = 2131165595;
-        i = 2131167110;
-        j = 2131165595;
+        m = 2131165597;
+        i = 2131167117;
+        j = 2131165597;
       }
     }
   }
@@ -176,7 +175,7 @@ public class TabBarView2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import java.util.List;
 public class DesktopSearchInfo
   extends DesktopItemInfo
 {
+  public boolean isSpringFestivalMode = false;
   public List<String> keyword;
   public MiniAppInfo mAppInfo;
   

@@ -6,24 +6,21 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.widget.Button;
-import anvx;
-import awzh;
-import awzs;
-import axbo;
-import axbp;
-import axbq;
-import axcw;
-import bhdj;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class MsgBackupPcBaseFragment
   extends MsgBackupBaseFragment
 {
-  public String a;
-  public boolean e;
-  public boolean f;
+  protected String a;
+  protected boolean e = false;
+  protected boolean f = false;
   
   public static void a(Context paramContext, int paramInt)
   {
@@ -35,15 +32,15 @@ public class MsgBackupPcBaseFragment
   
   private void n()
   {
-    if ((getActivity() != null) && (this.jdField_a_of_type_Awzi != null)) {
-      getActivity().addObserver(this.jdField_a_of_type_Awzi);
+    if ((getActivity() != null) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver != null)) {
+      getActivity().addObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
     }
   }
   
   private void o()
   {
-    if ((getActivity() != null) && (this.jdField_a_of_type_Awzi != null)) {
-      getActivity().removeObserver(this.jdField_a_of_type_Awzi);
+    if ((getActivity() != null) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver != null)) {
+      getActivity().removeObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
     }
   }
   
@@ -53,7 +50,7 @@ public class MsgBackupPcBaseFragment
     n();
   }
   
-  public void ax_()
+  public void ay_()
   {
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {}
@@ -61,20 +58,20 @@ public class MsgBackupPcBaseFragment
     do
     {
       return;
-      localObject = anvx.a(2131706401);
-      String str1 = anvx.a(2131706387);
-      this.jdField_b_of_type_Int = awzh.a().a();
+      localObject = HardCodeUtil.a(2131706942);
+      String str1 = HardCodeUtil.a(2131706928);
+      this.jdField_b_of_type_Int = MsgBackupAuthProcessor.a().a();
       if (this.jdField_b_of_type_Int == 2) {
-        localObject = anvx.a(2131706383);
+        localObject = HardCodeUtil.a(2131706924);
       }
       if (this.jdField_b_of_type_Int == 2) {
-        str1 = anvx.a(2131706389);
+        str1 = HardCodeUtil.a(2131706930);
       }
-      String str2 = anvx.a(2131706397);
+      String str2 = HardCodeUtil.a(2131706938);
       if (this.jdField_b_of_type_Int == 1) {
-        str2 = anvx.a(2131706384);
+        str2 = HardCodeUtil.a(2131706925);
       }
-      localObject = bhdj.a(localFragmentActivity, 0, (String)localObject, str2, localFragmentActivity.getString(2131690513), str1, new axbp(this), new axbq(this));
+      localObject = DialogUtil.a(localFragmentActivity, 0, (String)localObject, str2, localFragmentActivity.getString(2131690615), str1, new MsgBackupPcBaseFragment.2(this), new MsgBackupPcBaseFragment.3(this));
     } while (localFragmentActivity.isFinishing());
     ((QQCustomDialog)localObject).show();
   }
@@ -82,16 +79,16 @@ public class MsgBackupPcBaseFragment
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131690503));
-    if (awzh.a().a() == 2) {
-      setTitle(getActivity().getString(2131690500));
+    setTitle(getActivity().getString(2131690605));
+    if (MsgBackupAuthProcessor.a().a() == 2) {
+      setTitle(getActivity().getString(2131690602));
     }
   }
   
   protected void c()
   {
     super.c();
-    axcw.a("MsgBackup_MsgBackupPcBaseFragment", "MsgBackupPcBaseFragment bindview is called! biztype = %d, isFromPcHandle = %b", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.e) });
+    MsgBackupUtil.a("MsgBackup_MsgBackupPcBaseFragment", "MsgBackupPcBaseFragment bindview is called! biztype = %d, isFromPcHandle = %b", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.e) });
   }
   
   protected void d()
@@ -119,7 +116,7 @@ public class MsgBackupPcBaseFragment
       }
       bool1 = bool2;
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!awzs.c) {
+        if (!MsgBackupManager.c) {
           break label124;
         }
       }
@@ -138,16 +135,16 @@ public class MsgBackupPcBaseFragment
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {
       return;
     }
-    String str2 = anvx.a(2131706382);
-    this.jdField_b_of_type_Int = awzh.a().a();
-    String str1 = anvx.a(2131706398);
+    String str2 = HardCodeUtil.a(2131706923);
+    this.jdField_b_of_type_Int = MsgBackupAuthProcessor.a().a();
+    String str1 = HardCodeUtil.a(2131706939);
     if (this.jdField_b_of_type_Int == 1) {
-      str1 = anvx.a(2131706388);
+      str1 = HardCodeUtil.a(2131706929);
     }
-    bhdj.a(localFragmentActivity, 0, null, str1, null, str2, new axbo(this), null).show();
+    DialogUtil.a(localFragmentActivity, 0, null, str1, null, str2, new MsgBackupPcBaseFragment.1(this), null).show();
   }
   
-  public void m()
+  protected void m()
   {
     if (this.jdField_b_of_type_Int == 1) {
       MsgBackupCompleteFragment.a(getActivity(), this.c, this.d, this.e);
@@ -162,7 +159,7 @@ public class MsgBackupPcBaseFragment
   {
     super.onDestroyView();
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupPcBaseFragment", 2, "onDestroyView topage = " + this.jdField_a_of_type_Int + ", bizType = " + awzh.a().a() + ", sIsShouQiBtnClick = " + awzs.a);
+      QLog.d("MsgBackup_MsgBackupPcBaseFragment", 2, "onDestroyView topage = " + this.jdField_a_of_type_Int + ", bizType = " + MsgBackupAuthProcessor.a().a() + ", sIsShouQiBtnClick = " + MsgBackupManager.a);
     }
     o();
   }

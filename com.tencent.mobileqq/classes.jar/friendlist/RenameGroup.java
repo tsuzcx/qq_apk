@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RenameGroup
   extends JceStruct
 {
-  public byte cGroupId;
-  public byte cLen;
+  public byte cGroupId = 0;
+  public byte cLen = 0;
   public String sGroupName = "";
   
   public RenameGroup() {}
@@ -36,7 +36,7 @@ public final class RenameGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.RenameGroup
  * JD-Core Version:    0.7.0.1
  */

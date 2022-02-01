@@ -2,21 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy;
 
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import java.util.Map;
-import oqv;
 
-public class ReadInJoyChannelViewController$2
+class ReadInJoyChannelViewController$2
   implements Runnable
 {
-  public ReadInJoyChannelViewController$2(oqv paramoqv, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
+  ReadInJoyChannelViewController$2(ReadInJoyChannelViewController paramReadInJoyChannelViewController, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
   
   public void run()
   {
-    ((ReadInJoyListViewGroup)oqv.a(this.this$0)).a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.this$0)).a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_reward_node
   extends JceStruct
 {
-  public long uin;
+  public long uin = 0L;
   
   public s_reward_node() {}
   

@@ -35,7 +35,7 @@ public class QzoneOnlineTimeCollectRptService
   private static QzoneOnlineTimeCollectRptService mInstance;
   int RetryTimes = 0;
   QQAppInterface app;
-  private volatile boolean isForeground;
+  private volatile boolean isForeground = false;
   private ArrayList<mobile_online_report_item> mBackupItems = new ArrayList();
   private int mDelay = 10000;
   private String mKeyOnlineSp = "QZonlinetime";
@@ -369,7 +369,7 @@ public class QzoneOnlineTimeCollectRptService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.QzoneOnlineTimeCollectRptService
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ public final class SyncRes
 {
   static SyncReqCookie cache_cookie;
   static ArrayList<InfoItem> cache_vecResPkg;
-  public SyncReqCookie cookie;
-  public byte result;
-  public ArrayList<InfoItem> vecResPkg;
+  public SyncReqCookie cookie = null;
+  public byte result = 0;
+  public ArrayList<InfoItem> vecResPkg = null;
   
   public SyncRes() {}
   

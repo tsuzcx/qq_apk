@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.multicard;
 
-import axgu;
-import axgw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -12,10 +10,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import mqq.os.MqqHandler;
 
-public class MultiCardManager$1
+class MultiCardManager$1
   implements Runnable
 {
-  public MultiCardManager$1(axgu paramaxgu, ArrayList paramArrayList, long paramLong, axgw paramaxgw) {}
+  MultiCardManager$1(MultiCardManager paramMultiCardManager, ArrayList paramArrayList, long paramLong, MultiCardManager.GetGroupMemberNickListener paramGetGroupMemberNickListener) {}
   
   public void run()
   {
@@ -23,7 +21,7 @@ public class MultiCardManager$1
     Object localObject2;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localObject1 = (TroopManager)axgu.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER);
+      localObject1 = (TroopManager)MultiCardManager.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER);
       localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {

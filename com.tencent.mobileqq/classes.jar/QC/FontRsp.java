@@ -8,8 +8,8 @@ public final class FontRsp
   extends JceStruct
 {
   public String actUrl = "";
-  public int authRet;
-  public int fontID;
+  public int authRet = 0;
+  public int fontID = 0;
   
   public FontRsp() {}
   

@@ -11,9 +11,9 @@ public final class ReqResUpdate
   implements Cloneable
 {
   static int cache_ResID;
-  public int ResID;
-  public long SeqID;
-  public byte SeqOnly;
+  public int ResID = 0;
+  public long SeqID = 0L;
+  public byte SeqOnly = 0;
   
   static
   {

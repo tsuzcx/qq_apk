@@ -8,20 +8,20 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import anvx;
-import bifw;
-import bjkv;
-import bkwb;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqsharpP.QQSharpPUtil;
 import com.tencent.sharpP.SharpPUtil;
 import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 import cooperation.qzone.QZoneHelper;
@@ -47,7 +47,7 @@ public class QzonePhotoWallPlugin
   private static final String TAG = "QzonePhotoWallPlugin";
   public static Set<String> identifierset = new HashSet();
   private byte REQUEST_PICK_PHOTO = 115;
-  private boolean clipFlag;
+  private boolean clipFlag = false;
   int compressType = 0;
   public int mFrom = 4;
   public int mSource = 0;
@@ -67,7 +67,7 @@ public class QzonePhotoWallPlugin
     } while ((!((File)localObject).exists()) || (!((File)localObject).canRead()) || (!SharpPUtil.isSharpPFile((File)localObject)));
     try
     {
-      if (!bkwb.a(paramContext))
+      if (!QQSharpPUtil.a(paramContext))
       {
         QLog.w("QzonePhotoWallPlugin", 1, "------ sharpp is not avaliable.");
         return paramString;
@@ -191,7 +191,7 @@ public class QzonePhotoWallPlugin
   
   private static void gotoSelectPicture(Activity paramActivity, WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte)
   {
-    int i = AbsBaseWebViewActivity.a(paramWebViewPlugin, paramByte);
+    int i = AbsBaseWebViewActivity.switchRequestCodeImpl(paramWebViewPlugin, paramByte);
     paramIntent.putExtra("keyAction", "actionSelectPicture");
     paramIntent.putExtra("requestCode", i);
     paramActivity.startActivity(paramIntent);
@@ -335,7 +335,7 @@ public class QzonePhotoWallPlugin
                 catch (OutOfMemoryError localOutOfMemoryError)
                 {
                   QLog.e("QzonePhotoWallPlugin", 2, "imageBase64 size=" + str1.length() + ",compressType=" + this.compressType + ",width=" + ((QzoneDynamicAlbumPlugin.Size)localObject).width + ",height=" + ((QzoneDynamicAlbumPlugin.Size)localObject).height + "," + localOutOfMemoryError);
-                  bjkv.a().a(anvx.a(2131711602), 1);
+                  ToastUtil.a().a(HardCodeUtil.a(2131712117), 1);
                 }
               }
             }
@@ -473,7 +473,7 @@ public class QzonePhotoWallPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzonePhotoWallPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class Font
   extends JceStruct
 {
-  public int forbidThemeFont;
-  public int isBlackWhiteFont;
-  public int isWithTheme;
+  public int forbidThemeFont = 0;
+  public int isBlackWhiteFont = 0;
+  public int isWithTheme = 0;
   
   public Font() {}
   

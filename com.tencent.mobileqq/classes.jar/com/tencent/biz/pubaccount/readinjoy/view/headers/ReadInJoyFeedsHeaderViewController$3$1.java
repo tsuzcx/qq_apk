@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import aogi;
-import tkx;
+import com.tencent.mobileqq.app.UniteSearchHandler;
 
 class ReadInJoyFeedsHeaderViewController$3$1
   implements Runnable
@@ -14,13 +13,13 @@ class ReadInJoyFeedsHeaderViewController$3$1
       return;
     }
     this.a.this$0.f();
-    this.a.this$0.jdField_a_of_type_Aogi = new aogi(this.a.a);
-    this.a.this$0.jdField_a_of_type_Aogi.a(this.a.a, 6);
+    this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler = new UniteSearchHandler(this.a.a);
+    this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.a(this.a.a, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.3.1
  * JD-Core Version:    0.7.0.1
  */

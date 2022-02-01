@@ -1,32 +1,19 @@
 package com.tencent.mobileqq.location.ui;
 
+import android.app.Activity;
 import android.content.res.Resources;
-import awju;
-import awkj;
-import awnx;
-import bhdj;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
 
-public final class LocationDialogUtil$7
+final class LocationDialogUtil$7
   implements Runnable
 {
-  public LocationDialogUtil$7(BaseActivity paramBaseActivity) {}
+  LocationDialogUtil$7(Activity paramActivity) {}
   
   public void run()
   {
-    if (awnx.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationDialogUtil", 2, "showBadNetDialog: invoked. 当前如果展示悬浮窗，就不显示这个弹窗了");
-      }
-      return;
-    }
-    QQCustomDialog localQQCustomDialog = bhdj.a(this.a, 230, null, this.a.getResources().getString(2131718875), 2131694399, 2131690697, null, new awkj(this));
-    awju.a(this.a, localQQCustomDialog);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230, null, this.a.getResources().getString(2131719406), 2131694615, 2131690800, null, new LocationDialogUtil.7.1(this));
+    LocationDialogUtil.a(this.a, localQQCustomDialog);
   }
 }
 

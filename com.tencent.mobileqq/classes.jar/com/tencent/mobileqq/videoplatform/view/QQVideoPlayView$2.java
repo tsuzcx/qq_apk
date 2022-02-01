@@ -15,8 +15,8 @@ class QQVideoPlayView$2
     this.this$0.mBufferPanel.setVisibility(8);
     QQVideoPlayView.access$100(this.this$0).setVisibility(0);
     QQVideoPlayView.access$200(this.this$0).setVisibility(8);
-    this.this$0.mPlayButton.setImageResource(2130850848);
-    TextView localTextView = (TextView)QQVideoPlayView.access$100(this.this$0).findViewById(2131366253);
+    this.this$0.mPlayButton.setImageResource(2130851277);
+    TextView localTextView = (TextView)QQVideoPlayView.access$100(this.this$0).findViewById(2131366426);
     if (localTextView != null) {
       localTextView.setText(this.val$erroText);
     }
@@ -24,7 +24,7 @@ class QQVideoPlayView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.view.QQVideoPlayView.2
  * JD-Core Version:    0.7.0.1
  */

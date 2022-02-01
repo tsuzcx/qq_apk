@@ -29,15 +29,23 @@ public final class Version
     Ref.IntRef localIntRef = new Ref.IntRef();
     int j = Math.min(paramString1.size(), paramString2.size());
     int i = 0;
-    while (i < j)
+    for (;;)
     {
-      localIntRef.element = StringsKt.trimStart((String)paramString1.get(i), new char[] { '0' }).compareTo(StringsKt.trimStart((String)paramString2.get(i), new char[] { '0' }));
-      if (localIntRef.element != 0) {
-        return localIntRef.element;
+      if (i < j) {}
+      try
+      {
+        localIntRef.element = (Integer.parseInt((String)paramString1.get(i)) - Integer.parseInt((String)paramString2.get(i)));
+        if (localIntRef.element != 0)
+        {
+          i = localIntRef.element;
+          return i;
+        }
+        i += 1;
       }
-      i += 1;
+      catch (Exception paramString1) {}
     }
     return paramString1.size() - paramString2.size();
+    return 0;
   }
   
   public int compareTo(@NotNull Version paramVersion)

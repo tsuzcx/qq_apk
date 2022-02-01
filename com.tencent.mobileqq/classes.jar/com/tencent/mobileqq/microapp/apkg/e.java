@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import akxc;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 import java.io.File;
 
 final class e
-  implements akxc
+  implements PreloadManager.OnGetPathListener
 {
   e(d paramd, String paramString) {}
   

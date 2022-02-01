@@ -1,77 +1,59 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Handler;
-import bhdf;
+import android.view.View;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class ChatSettingForTroop$18
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  ChatSettingForTroop$18(ChatSettingForTroop paramChatSettingForTroop) {}
+  ChatSettingForTroop$18(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "mInitRunnable and init cardInfo");
-      }
-      this.this$0.u();
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = bhdf.a(this.this$0.app.getCurrentAccountUin(), "troop_photo_message", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum = bhdf.a(this.this$0.app.getCurrentAccountUin(), "troop_photo_new", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "初始化，群空间未读计数， troopuin = " + this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin + ", unreadmsgnum = " + this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum + ", newphotonum = " + this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "init(),getTroopMemberCard,getMutiTroopInfo,refreshTroopFace");
-      }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewFileMsgNum = bhdf.a(this.this$0.app.getCurrentAccountUin(), "troop_file_new", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadFileMsgnum = 0;
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mNewTroopNotificationNum = bhdf.a(this.this$0.app.getCurrentAccountUin(), "troop_notification_new", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isGameTroop()) {
-        this.this$0.j = bhdf.a(this.this$0.app.getCurrentAccountUin(), "troop_game_last_visit_time", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      }
-      this.this$0.c();
-      this.this$0.s();
-      ChatSettingForTroop.a(this.this$0, 0, false);
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
-      this.this$0.app.refreshTroopFace(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      ChatSettingForTroop.f(this.this$0);
+    default: 
       return;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      while (!QLog.isDevelopLevel()) {}
-      QLog.e("Q.chatopttroop", 4, localNumberFormatException.toString());
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
+    if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop))
     {
-      while (!QLog.isDevelopLevel()) {}
-      QLog.e("Q.chatopttroop", 4, localIllegalArgumentException.toString());
-      return;
+      paramView = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+      if (paramView != null)
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.j & 0x1) == 0)
+        {
+          ChatSettingForTroop localChatSettingForTroop = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop;
+          localChatSettingForTroop.j |= 0x1;
+          paramView.k(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(0, 2131692170, 1000);
+      }
     }
-    catch (Exception localException)
+    for (;;)
     {
-      while (!QLog.isDevelopLevel()) {}
-      QLog.e("Q.chatopttroop", 4, localException.toString());
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
       return;
-    }
-    catch (Error localError)
-    {
-      while (!QLog.isDevelopLevel()) {}
-      QLog.e("Q.chatopttroop", 4, localError.toString());
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(2, 2131692165, 1500);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(2, 2131694510, 1500);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.18
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public class PhotoUtils
   public static final int RECENT_IMAGE_MIN_SIZE = 20480;
   private static final int SHOW = 4;
   private static final String TAG = "PhotoUtils";
-  private static PhotoUtils mInstance;
+  private static PhotoUtils mInstance = null;
   static Map<Long, Integer> map = new HashMap();
   private static long uin;
   
@@ -58,12 +58,12 @@ public class PhotoUtils
     //   14: ifnull +27 -> 41
     //   17: aload 8
     //   19: astore 7
-    //   21: ldc 64
+    //   21: ldc 66
     //   23: aload_0
-    //   24: invokevirtual 68	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   24: invokevirtual 70	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   27: ifne +14 -> 41
     //   30: aload_0
-    //   31: invokevirtual 72	java/lang/String:length	()I
+    //   31: invokevirtual 74	java/lang/String:length	()I
     //   34: ifgt +10 -> 44
     //   37: aload 8
     //   39: astore 7
@@ -72,30 +72,30 @@ public class PhotoUtils
     //   44: aload 8
     //   46: astore 7
     //   48: aload_0
-    //   49: invokestatic 78	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   49: invokestatic 80	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   52: ifne -11 -> 41
     //   55: aload 8
     //   57: astore 7
-    //   59: new 80	java/io/File
+    //   59: new 82	java/io/File
     //   62: dup
     //   63: aload_0
-    //   64: invokespecial 83	java/io/File:<init>	(Ljava/lang/String;)V
-    //   67: invokevirtual 87	java/io/File:exists	()Z
+    //   64: invokespecial 85	java/io/File:<init>	(Ljava/lang/String;)V
+    //   67: invokevirtual 89	java/io/File:exists	()Z
     //   70: ifeq -29 -> 41
-    //   73: new 89	android/graphics/BitmapFactory$Options
+    //   73: new 91	android/graphics/BitmapFactory$Options
     //   76: dup
-    //   77: invokespecial 90	android/graphics/BitmapFactory$Options:<init>	()V
+    //   77: invokespecial 92	android/graphics/BitmapFactory$Options:<init>	()V
     //   80: astore 8
     //   82: aload 8
     //   84: iconst_1
-    //   85: putfield 94	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   85: putfield 96	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   88: aload_0
     //   89: aload 8
-    //   91: invokestatic 100	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   91: invokestatic 102	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   94: pop
     //   95: aload 8
     //   97: iconst_0
-    //   98: putfield 94	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   98: putfield 96	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   101: iload 6
     //   103: istore 5
     //   105: iload_1
@@ -107,44 +107,44 @@ public class PhotoUtils
     //   117: iload_3
     //   118: ifeq +116 -> 234
     //   121: aload 8
-    //   123: getfield 103	android/graphics/BitmapFactory$Options:outWidth	I
+    //   123: getfield 105	android/graphics/BitmapFactory$Options:outWidth	I
     //   126: iload_1
     //   127: idiv
     //   128: aload 8
-    //   130: getfield 106	android/graphics/BitmapFactory$Options:outHeight	I
+    //   130: getfield 108	android/graphics/BitmapFactory$Options:outHeight	I
     //   133: iload_2
     //   134: idiv
-    //   135: invokestatic 112	java/lang/Math:max	(II)I
+    //   135: invokestatic 114	java/lang/Math:max	(II)I
     //   138: istore 5
     //   140: aload 8
     //   142: iload 5
-    //   144: putfield 115	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   144: putfield 117	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   147: aload 8
     //   149: iconst_1
-    //   150: putfield 118	android/graphics/BitmapFactory$Options:inMutable	Z
-    //   153: getstatic 123	android/os/Build$VERSION:SDK_INT	I
+    //   150: putfield 120	android/graphics/BitmapFactory$Options:inMutable	Z
+    //   153: getstatic 125	android/os/Build$VERSION:SDK_INT	I
     //   156: bipush 11
     //   158: if_icmplt +15 -> 173
     //   161: aload 4
     //   163: ifnull +10 -> 173
     //   166: aload 8
     //   168: aload 4
-    //   170: putfield 127	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
-    //   173: new 129	java/io/BufferedInputStream
+    //   170: putfield 129	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
+    //   173: new 131	java/io/BufferedInputStream
     //   176: dup
-    //   177: new 131	java/io/FileInputStream
+    //   177: new 133	java/io/FileInputStream
     //   180: dup
     //   181: aload_0
-    //   182: invokespecial 132	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   182: invokespecial 134	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   185: sipush 4096
-    //   188: invokespecial 135	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   188: invokespecial 137	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   191: astore 4
     //   193: aload 4
     //   195: astore 7
     //   197: aload 4
     //   199: aconst_null
     //   200: aload 8
-    //   202: invokestatic 139	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   202: invokestatic 141	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   205: astore 10
     //   207: aload 10
     //   209: astore_0
@@ -153,23 +153,23 @@ public class PhotoUtils
     //   213: aload 4
     //   215: ifnull -174 -> 41
     //   218: aload 4
-    //   220: invokevirtual 142	java/io/BufferedInputStream:close	()V
+    //   220: invokevirtual 144	java/io/BufferedInputStream:close	()V
     //   223: aload_0
     //   224: areturn
     //   225: astore 4
     //   227: aload 4
-    //   229: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   229: invokevirtual 147	java/io/IOException:printStackTrace	()V
     //   232: aload_0
     //   233: areturn
     //   234: aload 8
-    //   236: getfield 103	android/graphics/BitmapFactory$Options:outWidth	I
+    //   236: getfield 105	android/graphics/BitmapFactory$Options:outWidth	I
     //   239: iload_1
     //   240: idiv
     //   241: aload 8
-    //   243: getfield 106	android/graphics/BitmapFactory$Options:outHeight	I
+    //   243: getfield 108	android/graphics/BitmapFactory$Options:outHeight	I
     //   246: iload_2
     //   247: idiv
-    //   248: invokestatic 148	java/lang/Math:min	(II)I
+    //   248: invokestatic 150	java/lang/Math:min	(II)I
     //   251: istore 5
     //   253: goto -113 -> 140
     //   256: astore 4
@@ -179,24 +179,24 @@ public class PhotoUtils
     //   262: astore 8
     //   264: aload 4
     //   266: astore 7
-    //   268: invokestatic 153	java/lang/System:gc	()V
+    //   268: invokestatic 155	java/lang/System:gc	()V
     //   271: aload 4
     //   273: astore 7
     //   275: aload_0
     //   276: aload 8
-    //   278: invokestatic 100	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   278: invokestatic 102	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   281: astore_0
     //   282: aload_0
     //   283: astore 7
     //   285: aload 4
     //   287: ifnull -246 -> 41
     //   290: aload 4
-    //   292: invokevirtual 142	java/io/BufferedInputStream:close	()V
+    //   292: invokevirtual 144	java/io/BufferedInputStream:close	()V
     //   295: aload_0
     //   296: areturn
     //   297: astore 4
     //   299: aload 4
-    //   301: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   301: invokevirtual 147	java/io/IOException:printStackTrace	()V
     //   304: aload_0
     //   305: areturn
     //   306: astore_0
@@ -204,11 +204,11 @@ public class PhotoUtils
     //   309: astore 7
     //   311: ldc 23
     //   313: iconst_1
-    //   314: ldc 155
-    //   316: invokestatic 161	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   314: ldc 157
+    //   316: invokestatic 163	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   319: aload 4
     //   321: astore 7
-    //   323: invokestatic 153	java/lang/System:gc	()V
+    //   323: invokestatic 155	java/lang/System:gc	()V
     //   326: aload 9
     //   328: astore_0
     //   329: goto -47 -> 282
@@ -216,12 +216,12 @@ public class PhotoUtils
     //   333: aload 7
     //   335: ifnull +8 -> 343
     //   338: aload 7
-    //   340: invokevirtual 142	java/io/BufferedInputStream:close	()V
+    //   340: invokevirtual 144	java/io/BufferedInputStream:close	()V
     //   343: aload_0
     //   344: athrow
     //   345: astore 4
     //   347: aload 4
-    //   349: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   349: invokevirtual 147	java/io/IOException:printStackTrace	()V
     //   352: goto -9 -> 343
     //   355: astore_0
     //   356: aconst_null
@@ -523,15 +523,15 @@ public class PhotoUtils
     //   116: aload 10
     //   118: invokeinterface 428 2 0
     //   123: ifne -32 -> 91
-    //   126: new 80	java/io/File
+    //   126: new 82	java/io/File
     //   129: dup
     //   130: aload 10
-    //   132: invokespecial 83	java/io/File:<init>	(Ljava/lang/String;)V
+    //   132: invokespecial 85	java/io/File:<init>	(Ljava/lang/String;)V
     //   135: astore 11
     //   137: aload 11
     //   139: ifnull -48 -> 91
     //   142: aload 11
-    //   144: invokevirtual 87	java/io/File:exists	()Z
+    //   144: invokevirtual 89	java/io/File:exists	()Z
     //   147: ifeq -56 -> 91
     //   150: aload 11
     //   152: invokevirtual 431	java/io/File:isDirectory	()Z
@@ -709,13 +709,13 @@ public class PhotoUtils
   public static boolean saveBitmapToFile(Bitmap paramBitmap, String paramString, android.graphics.Bitmap.CompressFormat paramCompressFormat, int paramInt, boolean paramBoolean)
   {
     // Byte code:
-    //   0: new 80	java/io/File
+    //   0: new 82	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 83	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 85	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_1
     //   9: aload_1
-    //   10: invokevirtual 87	java/io/File:exists	()Z
+    //   10: invokevirtual 89	java/io/File:exists	()Z
     //   13: ifne +8 -> 21
     //   16: aload_1
     //   17: invokevirtual 463	java/io/File:createNewFile	()Z
@@ -765,7 +765,7 @@ public class PhotoUtils
     //   105: goto -84 -> 21
     //   108: astore_0
     //   109: aload_0
-    //   110: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   110: invokevirtual 147	java/io/IOException:printStackTrace	()V
     //   113: iload 5
     //   115: ireturn
     //   116: astore_0
@@ -790,7 +790,7 @@ public class PhotoUtils
     //   148: ireturn
     //   149: astore_0
     //   150: aload_0
-    //   151: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   151: invokevirtual 147	java/io/IOException:printStackTrace	()V
     //   154: iload 4
     //   156: ireturn
     //   157: astore_0
@@ -804,7 +804,7 @@ public class PhotoUtils
     //   169: athrow
     //   170: astore_1
     //   171: aload_1
-    //   172: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   172: invokevirtual 147	java/io/IOException:printStackTrace	()V
     //   175: goto -7 -> 168
     //   178: astore_0
     //   179: goto -19 -> 160
@@ -911,7 +911,7 @@ public class PhotoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.PhotoUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.widget.TextView;
-import awmp;
 
-public final class MapUtils$1
+final class MapUtils$1
   implements Runnable
 {
-  public MapUtils$1(String paramString1, String paramString2, TextView paramTextView) {}
+  MapUtils$1(String paramString1, String paramString2, TextView paramTextView) {}
   
   public void run()
   {
-    awmp.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetTextView);
+    MapUtils.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetTextView);
   }
 }
 

@@ -35,12 +35,12 @@ class NativeAppBrandRuntime$2$8
     if (paramMap != null) {
       localObject = new JSONObject(paramMap).toString();
     }
-    NativeAppBrandRuntime.access$700(this.this$1.this$0).onWebViewEvent(str, (String)localObject, paramReply.intValue());
+    NativeAppBrandRuntime.access$800(this.this$1.this$0).onWebViewEvent(str, (String)localObject, paramReply.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.NativeAppBrandRuntime.2.8
  * JD-Core Version:    0.7.0.1
  */

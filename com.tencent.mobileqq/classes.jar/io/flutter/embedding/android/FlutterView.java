@@ -8,16 +8,23 @@ import android.content.res.Resources;
 import android.graphics.Insets;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.os.LocaleList;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.SparseArray;
+import android.view.Display;
+import android.view.DisplayCutout;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.PointerIcon;
 import android.view.View;
+import android.view.ViewStructure;
 import android.view.WindowInsets;
+import android.view.WindowInsets.Type;
+import android.view.WindowManager;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeProvider;
+import android.view.autofill.AutofillValue;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
@@ -32,22 +39,24 @@ import io.flutter.embedding.engine.renderer.FlutterRenderer;
 import io.flutter.embedding.engine.renderer.FlutterRenderer.ViewportMetrics;
 import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 import io.flutter.embedding.engine.renderer.RenderSurface;
-import io.flutter.embedding.engine.systemchannels.LocalizationChannel;
+import io.flutter.embedding.engine.systemchannels.NavigationChannel;
 import io.flutter.embedding.engine.systemchannels.SettingsChannel;
 import io.flutter.embedding.engine.systemchannels.SettingsChannel.MessageBuilder;
 import io.flutter.embedding.engine.systemchannels.SettingsChannel.PlatformBrightness;
 import io.flutter.plugin.editing.TextInputPlugin;
+import io.flutter.plugin.localization.LocalizationPlugin;
+import io.flutter.plugin.mouse.MouseCursorPlugin;
+import io.flutter.plugin.mouse.MouseCursorPlugin.MouseCursorViewDelegate;
 import io.flutter.plugin.platform.PlatformViewsController;
 import io.flutter.view.AccessibilityBridge;
 import io.flutter.view.AccessibilityBridge.OnAccessibilityChangeListener;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 public class FlutterView
   extends FrameLayout
+  implements MouseCursorPlugin.MouseCursorViewDelegate
 {
   private static final String TAG = "FlutterView";
   @Nullable
@@ -60,90 +69,192 @@ public class FlutterView
   private FlutterEngine flutterEngine;
   @NonNull
   private final Set<FlutterView.FlutterEngineAttachmentListener> flutterEngineAttachmentListeners = new HashSet();
+  @Nullable
+  private FlutterImageView flutterImageView;
+  @Nullable
+  private FlutterSurfaceView flutterSurfaceView;
+  @Nullable
+  private FlutterTextureView flutterTextureView;
   private final FlutterUiDisplayListener flutterUiDisplayListener = new FlutterView.2(this);
   private final Set<FlutterUiDisplayListener> flutterUiDisplayListeners = new HashSet();
   private boolean isFlutterUiDisplayed;
+  @Nullable
+  private LocalizationPlugin localizationPlugin;
+  @Nullable
+  private MouseCursorPlugin mouseCursorPlugin;
   private final AccessibilityBridge.OnAccessibilityChangeListener onAccessibilityChangeListener = new FlutterView.1(this);
-  @NonNull
-  private FlutterView.RenderMode renderMode;
+  @Nullable
+  private RenderSurface previousRenderSurface;
   @Nullable
   private RenderSurface renderSurface;
   @Nullable
   private TextInputPlugin textInputPlugin;
-  @Nullable
-  private FlutterView.TransparencyMode transparencyMode;
   private final FlutterRenderer.ViewportMetrics viewportMetrics = new FlutterRenderer.ViewportMetrics();
   
   public FlutterView(@NonNull Context paramContext)
   {
-    this(paramContext, null, null, null);
+    this(paramContext, null, new FlutterSurfaceView(paramContext));
   }
   
   public FlutterView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, null, null);
+    this(paramContext, paramAttributeSet, new FlutterSurfaceView(paramContext));
   }
   
-  private FlutterView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @Nullable FlutterView.RenderMode paramRenderMode, @Nullable FlutterView.TransparencyMode paramTransparencyMode)
+  @TargetApi(19)
+  private FlutterView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull FlutterImageView paramFlutterImageView)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramRenderMode;
-    if (paramRenderMode == null) {
-      paramContext = FlutterView.RenderMode.surface;
-    }
-    this.renderMode = paramContext;
-    if (paramTransparencyMode != null) {}
-    for (;;)
-    {
-      this.transparencyMode = paramTransparencyMode;
-      init();
-      return;
-      paramTransparencyMode = FlutterView.TransparencyMode.opaque;
-    }
+    this.flutterImageView = paramFlutterImageView;
+    this.renderSurface = paramFlutterImageView;
+    init();
   }
   
+  private FlutterView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull FlutterSurfaceView paramFlutterSurfaceView)
+  {
+    super(paramContext, paramAttributeSet);
+    this.flutterSurfaceView = paramFlutterSurfaceView;
+    this.renderSurface = paramFlutterSurfaceView;
+    init();
+  }
+  
+  private FlutterView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull FlutterTextureView paramFlutterTextureView)
+  {
+    super(paramContext, paramAttributeSet);
+    this.flutterTextureView = paramFlutterTextureView;
+    this.renderSurface = paramFlutterTextureView;
+    init();
+  }
+  
+  @TargetApi(19)
+  public FlutterView(@NonNull Context paramContext, @NonNull FlutterImageView paramFlutterImageView)
+  {
+    this(paramContext, null, paramFlutterImageView);
+  }
+  
+  public FlutterView(@NonNull Context paramContext, @NonNull FlutterSurfaceView paramFlutterSurfaceView)
+  {
+    this(paramContext, null, paramFlutterSurfaceView);
+  }
+  
+  public FlutterView(@NonNull Context paramContext, @NonNull FlutterTextureView paramFlutterTextureView)
+  {
+    this(paramContext, null, paramFlutterTextureView);
+  }
+  
+  @Deprecated
   public FlutterView(@NonNull Context paramContext, @NonNull FlutterView.RenderMode paramRenderMode)
   {
-    this(paramContext, null, paramRenderMode, null);
+    super(paramContext, null);
+    if (paramRenderMode == FlutterView.RenderMode.surface) {
+      this.flutterSurfaceView = new FlutterSurfaceView(paramContext);
+    }
+    for (this.renderSurface = this.flutterSurfaceView;; this.renderSurface = this.flutterTextureView)
+    {
+      init();
+      return;
+      if (paramRenderMode != FlutterView.RenderMode.texture) {
+        break;
+      }
+      this.flutterTextureView = new FlutterTextureView(paramContext);
+    }
+    throw new IllegalArgumentException(String.format("RenderMode not supported with this constructor: %s", new Object[] { paramRenderMode }));
   }
   
+  @Deprecated
   public FlutterView(@NonNull Context paramContext, @NonNull FlutterView.RenderMode paramRenderMode, @NonNull FlutterView.TransparencyMode paramTransparencyMode)
   {
-    this(paramContext, null, paramRenderMode, paramTransparencyMode);
+    super(paramContext, null);
+    if (paramRenderMode == FlutterView.RenderMode.surface) {
+      if (paramTransparencyMode != FlutterView.TransparencyMode.transparent) {
+        break label158;
+      }
+    }
+    for (;;)
+    {
+      this.flutterSurfaceView = new FlutterSurfaceView(paramContext, bool);
+      for (this.renderSurface = this.flutterSurfaceView;; this.renderSurface = this.flutterTextureView)
+      {
+        init();
+        return;
+        if (paramRenderMode != FlutterView.RenderMode.texture) {
+          break;
+        }
+        this.flutterTextureView = new FlutterTextureView(paramContext);
+      }
+      throw new IllegalArgumentException(String.format("RenderMode not supported with this constructor: %s", new Object[] { paramRenderMode }));
+      label158:
+      bool = false;
+    }
   }
   
-  public FlutterView(@NonNull Context paramContext, @NonNull FlutterView.TransparencyMode paramTransparencyMode)
+  @Deprecated
+  public FlutterView(@NonNull Context paramContext, @NonNull FlutterView.TransparencyMode paramTransparencyMode) {}
+  
+  private FlutterView.ZeroSides calculateShouldZeroSides()
   {
-    this(paramContext, null, FlutterView.RenderMode.surface, paramTransparencyMode);
+    Context localContext = getContext();
+    int i = localContext.getResources().getConfiguration().orientation;
+    int j = ((WindowManager)localContext.getSystemService("window")).getDefaultDisplay().getRotation();
+    if (i == 2)
+    {
+      if (j == 1) {
+        return FlutterView.ZeroSides.RIGHT;
+      }
+      if (j == 3)
+      {
+        if (Build.VERSION.SDK_INT >= 23) {
+          return FlutterView.ZeroSides.LEFT;
+        }
+        return FlutterView.ZeroSides.RIGHT;
+      }
+      if ((j == 0) || (j == 2)) {
+        return FlutterView.ZeroSides.BOTH;
+      }
+    }
+    return FlutterView.ZeroSides.NONE;
+  }
+  
+  @TargetApi(20)
+  @RequiresApi(20)
+  private int guessBottomKeyboardInset(WindowInsets paramWindowInsets)
+  {
+    int i = getRootView().getHeight();
+    double d1 = paramWindowInsets.getSystemWindowInsetBottom();
+    double d2 = i;
+    Double.isNaN(d2);
+    if (d1 < d2 * 0.18D) {
+      return 0;
+    }
+    return paramWindowInsets.getSystemWindowInsetBottom();
   }
   
   private void init()
   {
     Log.v("FlutterView", "Initializing FlutterView");
-    switch (FlutterView.3.$SwitchMap$io$flutter$embedding$android$FlutterView$RenderMode[this.renderMode.ordinal()])
+    if (this.flutterSurfaceView != null)
     {
-    default: 
-    case 2: 
-      for (;;)
-      {
-        setFocusable(true);
-        setFocusableInTouchMode(true);
-        return;
-        Log.v("FlutterView", "Internally using a FlutterTextureView.");
-        localObject = new FlutterTextureView(getContext());
-        this.renderSurface = ((RenderSurface)localObject);
-        addView((View)localObject);
-      }
+      Log.v("FlutterView", "Internally using a FlutterSurfaceView.");
+      addView(this.flutterSurfaceView);
     }
-    Log.v("FlutterView", "Internally using a FlutterSurfaceView.");
-    Object localObject = getContext();
-    if (this.transparencyMode == FlutterView.TransparencyMode.transparent) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localObject = new FlutterSurfaceView((Context)localObject, bool);
-      this.renderSurface = ((RenderSurface)localObject);
-      addView((View)localObject);
-      break;
+      setFocusable(true);
+      setFocusableInTouchMode(true);
+      if (Build.VERSION.SDK_INT >= 26) {
+        setImportantForAutofill(4);
+      }
+      return;
+      if (this.flutterTextureView != null)
+      {
+        Log.v("FlutterView", "Internally using a FlutterTextureView.");
+        addView(this.flutterTextureView);
+      }
+      else
+      {
+        Log.v("FlutterView", "Internally using a FlutterImageView.");
+        addView(this.flutterImageView);
+      }
     }
   }
   
@@ -166,24 +277,6 @@ public class FlutterView
     setWillNotDraw(false);
   }
   
-  private void sendLocalesToFlutter(@NonNull Configuration paramConfiguration)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      paramConfiguration = paramConfiguration.getLocales();
-      int j = paramConfiguration.size();
-      int i = 0;
-      while (i < j)
-      {
-        localArrayList.add(paramConfiguration.get(i));
-        i += 1;
-      }
-    }
-    localArrayList.add(paramConfiguration.locale);
-    this.flutterEngine.getLocalizationChannel().sendLocales(localArrayList);
-  }
-  
   private void sendViewportMetricsToFlutter()
   {
     if (!isAttachedToFlutterEngine())
@@ -193,6 +286,14 @@ public class FlutterView
     }
     this.viewportMetrics.devicePixelRatio = getResources().getDisplayMetrics().density;
     this.flutterEngine.getRenderer().setViewportMetrics(this.viewportMetrics);
+  }
+  
+  public boolean acquireLatestImageViewFrame()
+  {
+    if (this.flutterImageView != null) {
+      return this.flutterImageView.acquireLatestImage();
+    }
+    return false;
   }
   
   @VisibleForTesting
@@ -206,37 +307,51 @@ public class FlutterView
     this.flutterUiDisplayListeners.add(paramFlutterUiDisplayListener);
   }
   
+  public void attachOverlaySurfaceToRender(FlutterImageView paramFlutterImageView)
+  {
+    if (this.flutterEngine != null) {
+      paramFlutterImageView.attachToRenderer(this.flutterEngine.getRenderer());
+    }
+  }
+  
   public void attachToFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Attaching to a FlutterEngine: ");
     ((StringBuilder)localObject).append(paramFlutterEngine);
-    Log.d("FlutterView", ((StringBuilder)localObject).toString());
+    Log.v("FlutterView", ((StringBuilder)localObject).toString());
     if (isAttachedToFlutterEngine()) {
       if (paramFlutterEngine == this.flutterEngine) {
-        Log.d("FlutterView", "Already attached to this engine. Doing nothing.");
+        Log.v("FlutterView", "Already attached to this engine. Doing nothing.");
       }
     }
     do
     {
       return;
-      Log.d("FlutterView", "Currently attached to a different engine. Detaching and then attaching to new engine.");
+      Log.v("FlutterView", "Currently attached to a different engine. Detaching and then attaching to new engine.");
       detachFromFlutterEngine();
+      paramFlutterEngine.getNavigationChannel().setMethodCallHandler(null);
       this.flutterEngine = paramFlutterEngine;
+      paramFlutterEngine.getNavigationChannel().setMethodCallHandler(new FlutterView.3(this));
       localObject = this.flutterEngine.getRenderer();
       this.isFlutterUiDisplayed = ((FlutterRenderer)localObject).isDisplayingFlutterUi();
       this.renderSurface.attachToRenderer((FlutterRenderer)localObject);
       ((FlutterRenderer)localObject).addIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
-      this.textInputPlugin = new TextInputPlugin(this, this.flutterEngine.getDartExecutor(), this.flutterEngine.getPlatformViewsController());
-      this.androidKeyProcessor = new AndroidKeyProcessor(this.flutterEngine.getKeyEventChannel(), this.textInputPlugin);
-      this.androidTouchProcessor = new AndroidTouchProcessor(this.flutterEngine.getRenderer());
+      if (Build.VERSION.SDK_INT >= 24) {
+        this.mouseCursorPlugin = new MouseCursorPlugin(this, this.flutterEngine.getMouseCursorChannel());
+      }
+      this.textInputPlugin = new TextInputPlugin(this, this.flutterEngine.getTextInputChannel(), this.flutterEngine.getPlatformViewsController());
+      this.localizationPlugin = this.flutterEngine.getLocalizationPlugin();
+      this.androidKeyProcessor = new AndroidKeyProcessor(this, this.flutterEngine.getKeyEventChannel(), this.textInputPlugin);
+      this.androidTouchProcessor = new AndroidTouchProcessor(this.flutterEngine.getRenderer(), false);
       this.accessibilityBridge = new AccessibilityBridge(this, paramFlutterEngine.getAccessibilityChannel(), (AccessibilityManager)getContext().getSystemService("accessibility"), getContext().getContentResolver(), this.flutterEngine.getPlatformViewsController());
       this.accessibilityBridge.setOnAccessibilityChangeListener(this.onAccessibilityChangeListener);
       resetWillNotDraw(this.accessibilityBridge.isAccessibilityEnabled(), this.accessibilityBridge.isTouchExplorationEnabled());
       this.flutterEngine.getPlatformViewsController().attachAccessibilityBridge(this.accessibilityBridge);
+      this.flutterEngine.getPlatformViewsController().attachToFlutterRenderer(this.flutterEngine.getRenderer());
       this.textInputPlugin.getInputMethodManager().restartInput(this);
       sendUserSettingsToFlutter();
-      sendLocalesToFlutter(getResources().getConfiguration());
+      this.localizationPlugin.sendLocalesToFlutter(getResources().getConfiguration());
       sendViewportMetricsToFlutter();
       paramFlutterEngine.getPlatformViewsController().attachToView(this);
       localObject = this.flutterEngineAttachmentListeners.iterator();
@@ -247,6 +362,11 @@ public class FlutterView
     this.flutterUiDisplayListener.onFlutterUiDisplayed();
   }
   
+  public void autofill(SparseArray<AutofillValue> paramSparseArray)
+  {
+    this.textInputPlugin.autofill(paramSparseArray);
+  }
+  
   public boolean checkInputConnectionProxy(View paramView)
   {
     if (this.flutterEngine != null) {
@@ -255,15 +375,42 @@ public class FlutterView
     return super.checkInputConnectionProxy(paramView);
   }
   
+  public void convertToImageView()
+  {
+    this.renderSurface.pause();
+    if (this.flutterImageView == null)
+    {
+      this.flutterImageView = createImageView();
+      addView(this.flutterImageView);
+    }
+    for (;;)
+    {
+      this.previousRenderSurface = this.renderSurface;
+      this.renderSurface = this.flutterImageView;
+      if (this.flutterEngine != null) {
+        this.renderSurface.attachToRenderer(this.flutterEngine.getRenderer());
+      }
+      return;
+      this.flutterImageView.resizeIfNeeded(getWidth(), getHeight());
+    }
+  }
+  
+  @NonNull
+  @VisibleForTesting
+  public FlutterImageView createImageView()
+  {
+    return new FlutterImageView(getContext(), getWidth(), getHeight(), FlutterImageView.SurfaceKind.background);
+  }
+  
   public void detachFromFlutterEngine()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Detaching from a FlutterEngine: ");
     ((StringBuilder)localObject).append(this.flutterEngine);
-    Log.d("FlutterView", ((StringBuilder)localObject).toString());
+    Log.v("FlutterView", ((StringBuilder)localObject).toString());
     if (!isAttachedToFlutterEngine())
     {
-      Log.d("FlutterView", "Not attached to an engine. Doing nothing.");
+      Log.v("FlutterView", "Not attached to an engine. Doing nothing.");
       return;
     }
     localObject = this.flutterEngineAttachmentListeners.iterator();
@@ -276,16 +423,22 @@ public class FlutterView
     this.accessibilityBridge = null;
     this.textInputPlugin.getInputMethodManager().restartInput(this);
     this.textInputPlugin.destroy();
+    this.androidKeyProcessor.destroy();
+    if (this.mouseCursorPlugin != null) {
+      this.mouseCursorPlugin.destroy();
+    }
     localObject = this.flutterEngine.getRenderer();
     this.isFlutterUiDisplayed = false;
     ((FlutterRenderer)localObject).removeIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
     ((FlutterRenderer)localObject).stopRenderingToSurface();
     ((FlutterRenderer)localObject).setSemanticsEnabled(false);
     this.renderSurface.detachFromRenderer();
+    this.flutterImageView = null;
+    this.previousRenderSurface = null;
     this.flutterEngine = null;
   }
   
-  protected boolean fitSystemWindows(@NonNull Rect paramRect)
+  public boolean fitSystemWindows(@NonNull Rect paramRect)
   {
     if (Build.VERSION.SDK_INT <= 19)
     {
@@ -333,6 +486,14 @@ public class FlutterView
     return this.flutterEngine;
   }
   
+  @TargetApi(24)
+  @NonNull
+  @RequiresApi(24)
+  public PointerIcon getSystemPointerIcon(int paramInt)
+  {
+    return PointerIcon.getSystemIcon(getContext(), paramInt);
+  }
+  
   public boolean hasRenderedFirstFrame()
   {
     return this.isFlutterUiDisplayed;
@@ -350,56 +511,151 @@ public class FlutterView
   @RequiresApi(20)
   public final WindowInsets onApplyWindowInsets(@NonNull WindowInsets paramWindowInsets)
   {
+    int i = 1;
     WindowInsets localWindowInsets = super.onApplyWindowInsets(paramWindowInsets);
-    this.viewportMetrics.paddingTop = paramWindowInsets.getSystemWindowInsetTop();
-    this.viewportMetrics.paddingRight = paramWindowInsets.getSystemWindowInsetRight();
-    this.viewportMetrics.paddingBottom = 0;
-    this.viewportMetrics.paddingLeft = paramWindowInsets.getSystemWindowInsetLeft();
-    this.viewportMetrics.viewInsetTop = 0;
-    this.viewportMetrics.viewInsetRight = 0;
-    this.viewportMetrics.viewInsetBottom = paramWindowInsets.getSystemWindowInsetBottom();
-    this.viewportMetrics.viewInsetLeft = 0;
-    if (Build.VERSION.SDK_INT >= 29)
+    Object localObject;
+    if (Build.VERSION.SDK_INT == 29)
     {
-      paramWindowInsets = paramWindowInsets.getSystemGestureInsets();
-      this.viewportMetrics.systemGestureInsetTop = paramWindowInsets.top;
-      this.viewportMetrics.systemGestureInsetRight = paramWindowInsets.right;
-      this.viewportMetrics.systemGestureInsetBottom = paramWindowInsets.bottom;
-      this.viewportMetrics.systemGestureInsetLeft = paramWindowInsets.left;
+      localObject = paramWindowInsets.getSystemGestureInsets();
+      this.viewportMetrics.systemGestureInsetTop = ((Insets)localObject).top;
+      this.viewportMetrics.systemGestureInsetRight = ((Insets)localObject).right;
+      this.viewportMetrics.systemGestureInsetBottom = ((Insets)localObject).bottom;
+      this.viewportMetrics.systemGestureInsetLeft = ((Insets)localObject).left;
     }
-    paramWindowInsets = new StringBuilder();
-    paramWindowInsets.append("Updating window insets (onApplyWindowInsets()):\nStatus bar insets: Top: ");
-    paramWindowInsets.append(this.viewportMetrics.paddingTop);
-    paramWindowInsets.append(", Left: ");
-    paramWindowInsets.append(this.viewportMetrics.paddingLeft);
-    paramWindowInsets.append(", Right: ");
-    paramWindowInsets.append(this.viewportMetrics.paddingRight);
-    paramWindowInsets.append("\nKeyboard insets: Bottom: ");
-    paramWindowInsets.append(this.viewportMetrics.viewInsetBottom);
-    paramWindowInsets.append(", Left: ");
-    paramWindowInsets.append(this.viewportMetrics.viewInsetLeft);
-    paramWindowInsets.append(", Right: ");
-    paramWindowInsets.append(this.viewportMetrics.viewInsetRight);
-    paramWindowInsets.append("System Gesture Insets - Left: ");
-    paramWindowInsets.append(this.viewportMetrics.systemGestureInsetLeft);
-    paramWindowInsets.append(", Top: ");
-    paramWindowInsets.append(this.viewportMetrics.systemGestureInsetTop);
-    paramWindowInsets.append(", Right: ");
-    paramWindowInsets.append(this.viewportMetrics.systemGestureInsetRight);
-    paramWindowInsets.append(", Bottom: ");
-    paramWindowInsets.append(this.viewportMetrics.viewInsetBottom);
-    Log.v("FlutterView", paramWindowInsets.toString());
-    sendViewportMetricsToFlutter();
-    return localWindowInsets;
+    int j;
+    if ((getWindowSystemUiVisibility() & 0x4) == 0)
+    {
+      j = 1;
+      if ((getWindowSystemUiVisibility() & 0x2) != 0) {
+        break label648;
+      }
+      label91:
+      if (Build.VERSION.SDK_INT < 30) {
+        break label653;
+      }
+      if (i == 0) {
+        break label838;
+      }
+    }
+    label648:
+    label653:
+    label683:
+    label818:
+    label826:
+    label838:
+    for (i = WindowInsets.Type.navigationBars() | 0x0;; i = 0)
+    {
+      if (j != 0) {
+        i = WindowInsets.Type.statusBars() | i;
+      }
+      for (;;)
+      {
+        localObject = paramWindowInsets.getInsets(i);
+        this.viewportMetrics.paddingTop = ((Insets)localObject).top;
+        this.viewportMetrics.paddingRight = ((Insets)localObject).right;
+        this.viewportMetrics.paddingBottom = ((Insets)localObject).bottom;
+        this.viewportMetrics.paddingLeft = ((Insets)localObject).left;
+        localObject = paramWindowInsets.getInsets(WindowInsets.Type.ime());
+        this.viewportMetrics.viewInsetTop = ((Insets)localObject).top;
+        this.viewportMetrics.viewInsetRight = ((Insets)localObject).right;
+        this.viewportMetrics.viewInsetBottom = ((Insets)localObject).bottom;
+        this.viewportMetrics.viewInsetLeft = ((Insets)localObject).left;
+        localObject = paramWindowInsets.getInsets(WindowInsets.Type.systemGestures());
+        this.viewportMetrics.systemGestureInsetTop = ((Insets)localObject).top;
+        this.viewportMetrics.systemGestureInsetRight = ((Insets)localObject).right;
+        this.viewportMetrics.systemGestureInsetBottom = ((Insets)localObject).bottom;
+        this.viewportMetrics.systemGestureInsetLeft = ((Insets)localObject).left;
+        paramWindowInsets = paramWindowInsets.getDisplayCutout();
+        if (paramWindowInsets != null)
+        {
+          localObject = paramWindowInsets.getWaterfallInsets();
+          this.viewportMetrics.paddingTop = Math.max(Math.max(this.viewportMetrics.paddingTop, ((Insets)localObject).top), paramWindowInsets.getSafeInsetTop());
+          this.viewportMetrics.paddingRight = Math.max(Math.max(this.viewportMetrics.paddingRight, ((Insets)localObject).right), paramWindowInsets.getSafeInsetRight());
+          this.viewportMetrics.paddingBottom = Math.max(Math.max(this.viewportMetrics.paddingBottom, ((Insets)localObject).bottom), paramWindowInsets.getSafeInsetBottom());
+          this.viewportMetrics.paddingLeft = Math.max(Math.max(this.viewportMetrics.paddingLeft, ((Insets)localObject).left), paramWindowInsets.getSafeInsetLeft());
+        }
+        paramWindowInsets = new StringBuilder();
+        paramWindowInsets.append("Updating window insets (onApplyWindowInsets()):\nStatus bar insets: Top: ");
+        paramWindowInsets.append(this.viewportMetrics.paddingTop);
+        paramWindowInsets.append(", Left: ");
+        paramWindowInsets.append(this.viewportMetrics.paddingLeft);
+        paramWindowInsets.append(", Right: ");
+        paramWindowInsets.append(this.viewportMetrics.paddingRight);
+        paramWindowInsets.append("\nKeyboard insets: Bottom: ");
+        paramWindowInsets.append(this.viewportMetrics.viewInsetBottom);
+        paramWindowInsets.append(", Left: ");
+        paramWindowInsets.append(this.viewportMetrics.viewInsetLeft);
+        paramWindowInsets.append(", Right: ");
+        paramWindowInsets.append(this.viewportMetrics.viewInsetRight);
+        paramWindowInsets.append("System Gesture Insets - Left: ");
+        paramWindowInsets.append(this.viewportMetrics.systemGestureInsetLeft);
+        paramWindowInsets.append(", Top: ");
+        paramWindowInsets.append(this.viewportMetrics.systemGestureInsetTop);
+        paramWindowInsets.append(", Right: ");
+        paramWindowInsets.append(this.viewportMetrics.systemGestureInsetRight);
+        paramWindowInsets.append(", Bottom: ");
+        paramWindowInsets.append(this.viewportMetrics.viewInsetBottom);
+        Log.v("FlutterView", paramWindowInsets.toString());
+        sendViewportMetricsToFlutter();
+        return localWindowInsets;
+        j = 0;
+        break;
+        i = 0;
+        break label91;
+        localObject = FlutterView.ZeroSides.NONE;
+        if (i == 0) {
+          localObject = calculateShouldZeroSides();
+        }
+        FlutterRenderer.ViewportMetrics localViewportMetrics = this.viewportMetrics;
+        if (j != 0)
+        {
+          j = paramWindowInsets.getSystemWindowInsetTop();
+          localViewportMetrics.paddingTop = j;
+          localViewportMetrics = this.viewportMetrics;
+          if ((localObject != FlutterView.ZeroSides.RIGHT) && (localObject != FlutterView.ZeroSides.BOTH)) {
+            break label810;
+          }
+          j = 0;
+          label713:
+          localViewportMetrics.paddingRight = j;
+          this.viewportMetrics.paddingBottom = 0;
+          localViewportMetrics = this.viewportMetrics;
+          if ((localObject != FlutterView.ZeroSides.LEFT) && (localObject != FlutterView.ZeroSides.BOTH)) {
+            break label818;
+          }
+          j = 0;
+          label751:
+          localViewportMetrics.paddingLeft = j;
+          this.viewportMetrics.viewInsetTop = 0;
+          this.viewportMetrics.viewInsetRight = 0;
+          localObject = this.viewportMetrics;
+          if (i == 0) {
+            break label826;
+          }
+        }
+        for (i = paramWindowInsets.getSystemWindowInsetBottom();; i = guessBottomKeyboardInset(paramWindowInsets))
+        {
+          ((FlutterRenderer.ViewportMetrics)localObject).viewInsetBottom = i;
+          this.viewportMetrics.viewInsetLeft = 0;
+          break;
+          j = 0;
+          break label683;
+          j = paramWindowInsets.getSystemWindowInsetRight();
+          break label713;
+          j = paramWindowInsets.getSystemWindowInsetLeft();
+          break label751;
+        }
+      }
+    }
   }
   
-  protected void onConfigurationChanged(@NonNull Configuration paramConfiguration)
+  public void onConfigurationChanged(@NonNull Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     if (this.flutterEngine != null)
     {
       Log.v("FlutterView", "Configuration changed. Sending locales and user settings to Flutter.");
-      sendLocalesToFlutter(paramConfiguration);
+      this.localizationPlugin.sendLocalesToFlutter(paramConfiguration);
       sendUserSettingsToFlutter();
     }
   }
@@ -435,8 +691,7 @@ public class FlutterView
     if (!isAttachedToFlutterEngine()) {
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
-    this.androidKeyProcessor.onKeyDown(paramKeyEvent);
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    return (this.androidKeyProcessor.onKeyDown(paramKeyEvent)) || (super.onKeyDown(paramInt, paramKeyEvent));
   }
   
   public boolean onKeyUp(int paramInt, @NonNull KeyEvent paramKeyEvent)
@@ -444,11 +699,16 @@ public class FlutterView
     if (!isAttachedToFlutterEngine()) {
       return super.onKeyUp(paramInt, paramKeyEvent);
     }
-    this.androidKeyProcessor.onKeyUp(paramKeyEvent);
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    return (this.androidKeyProcessor.onKeyUp(paramKeyEvent)) || (super.onKeyUp(paramInt, paramKeyEvent));
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onProvideAutofillVirtualStructure(ViewStructure paramViewStructure, int paramInt)
+  {
+    super.onProvideAutofillVirtualStructure(paramViewStructure, paramInt);
+    this.textInputPlugin.onProvideAutofillVirtualStructure(paramViewStructure, paramInt);
+  }
+  
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -488,6 +748,37 @@ public class FlutterView
     this.flutterUiDisplayListeners.remove(paramFlutterUiDisplayListener);
   }
   
+  public void revertImageView(@NonNull Runnable paramRunnable)
+  {
+    if (this.flutterImageView == null)
+    {
+      Log.v("FlutterView", "Tried to revert the image view, but no image view is used.");
+      return;
+    }
+    if (this.previousRenderSurface == null)
+    {
+      Log.v("FlutterView", "Tried to revert the image view, but no previous surface was used.");
+      return;
+    }
+    this.renderSurface = this.previousRenderSurface;
+    this.previousRenderSurface = null;
+    if (this.flutterEngine == null)
+    {
+      this.flutterImageView.detachFromRenderer();
+      paramRunnable.run();
+      return;
+    }
+    FlutterRenderer localFlutterRenderer = this.flutterEngine.getRenderer();
+    if (localFlutterRenderer == null)
+    {
+      this.flutterImageView.detachFromRenderer();
+      paramRunnable.run();
+      return;
+    }
+    this.renderSurface.attachToRenderer(localFlutterRenderer);
+    localFlutterRenderer.addIsDisplayingFlutterUiListener(new FlutterView.4(this, localFlutterRenderer, paramRunnable));
+  }
+  
   @VisibleForTesting
   void sendUserSettingsToFlutter()
   {
@@ -511,7 +802,7 @@ public class FlutterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterView
  * JD-Core Version:    0.7.0.1
  */

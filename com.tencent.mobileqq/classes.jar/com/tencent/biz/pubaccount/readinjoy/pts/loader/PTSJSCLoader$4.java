@@ -2,40 +2,38 @@ package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import qzc;
-import qze;
 
-public class PTSJSCLoader$4
+class PTSJSCLoader$4
   implements Runnable
 {
-  public PTSJSCLoader$4(qzc paramqzc) {}
+  PTSJSCLoader$4(PTSJSCLoader paramPTSJSCLoader) {}
   
   public void run()
   {
-    if (!FileUtils.fileExists(qzc.b(this.this$0)))
+    if (!FileUtils.a(PTSJSCLoader.b(this.this$0)))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], offline dir does not exist.");
       return;
     }
-    if (!qze.a(qzc.b(this.this$0), "4044"))
+    if (!PTSOfflineUtil.a(PTSJSCLoader.b(this.this$0), "4044"))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], offline dir is not valid.");
       return;
     }
-    if (!qze.a(qzc.b(this.this$0) + "/" + "pts_jsc_config.json"))
+    if (!PTSOfflineUtil.a(PTSJSCLoader.b(this.this$0) + "/" + "pts_jsc_config.json"))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], offline version is not valid.");
       return;
     }
-    if (FileUtils.fileExists(qzc.a(this.this$0)))
+    if (FileUtils.a(PTSJSCLoader.a(this.this$0)))
     {
-      QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], delete inner dir, dir = " + qzc.a(this.this$0));
-      FileUtils.deleteDirectory(qzc.a(this.this$0));
+      QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], delete inner dir, dir = " + PTSJSCLoader.a(this.this$0));
+      FileUtils.a(PTSJSCLoader.a(this.this$0));
     }
     try
     {
-      boolean bool1 = FileUtils.copyFile(qzc.b(this.this$0) + "/" + "libjsc.so", qzc.a(this.this$0) + "/" + "libjsc.so");
-      boolean bool2 = FileUtils.copyFile(qzc.b(this.this$0) + "/" + "pts_jsc_config.json", qzc.a(this.this$0) + "/" + "pts_jsc_config.json");
+      boolean bool1 = FileUtils.d(PTSJSCLoader.b(this.this$0) + "/" + "libjsc.so", PTSJSCLoader.a(this.this$0) + "/" + "libjsc.so");
+      boolean bool2 = FileUtils.d(PTSJSCLoader.b(this.this$0) + "/" + "pts_jsc_config.json", PTSJSCLoader.a(this.this$0) + "/" + "pts_jsc_config.json");
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], copyJSCSoSuccess = " + bool1 + ", copyConfigSuccess = " + bool2);
       return;
     }
@@ -47,7 +45,7 @@ public class PTSJSCLoader$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.4
  * JD-Core Version:    0.7.0.1
  */

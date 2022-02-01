@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfVipqqInfoReq
   extends JceStruct
 {
-  public int iReloadFlag;
-  public int iRetIncomPlete;
-  public long iUin;
+  public int iReloadFlag = 0;
+  public int iRetIncomPlete = 0;
+  public long iUin = 0L;
   
   public ProfVipqqInfoReq() {}
   

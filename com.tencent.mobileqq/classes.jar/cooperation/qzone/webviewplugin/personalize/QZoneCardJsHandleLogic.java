@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bifw;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -16,7 +16,7 @@ public class QZoneCardJsHandleLogic
   public static final String KEY_PERSONALIZE_PREFIX = "key_personalize_prefix";
   public static final String TAG = "QZoneCardJsHandleLogicQZonePersonalizePlugin";
   
-  public static void handleDownCardMethod(bifw parambifw, String... paramVarArgs)
+  public static void handleDownCardMethod(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     str2 = "";
     String str1 = "";
@@ -55,11 +55,11 @@ public class QZoneCardJsHandleLogic
     ((Bundle)localObject1).putString("cmd", "downloadcard");
     ((Bundle)localObject1).putString("cardDownloadUrl", (String)localObject2);
     paramVarArgs.putExtras((Bundle)localObject1);
-    QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
+    QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
   }
   
   /* Error */
-  public static void handleSetSkinFinish(com.tencent.mobileqq.webview.swift.WebViewPlugin paramWebViewPlugin, bifw parambifw, String... paramVarArgs)
+  public static void handleSetSkinFinish(com.tencent.mobileqq.webview.swift.WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     // Byte code:
     //   0: ldc 28
@@ -678,14 +678,14 @@ public class QZoneCardJsHandleLogic
     //   1245: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1248: invokestatic 68	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1251: aload_1
-    //   1252: invokevirtual 96	bifw:a	()Landroid/app/Activity;
+    //   1252: invokevirtual 96	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
     //   1255: invokestatic 102	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
     //   1258: aload_2
     //   1259: invokestatic 108	cooperation/qzone/QZoneHelper:forwardToQzoneTransluentActivity	(Landroid/app/Activity;Lcooperation/qzone/QZoneHelper$UserInfo;Landroid/content/Intent;)V
     //   1262: ldc 8
     //   1264: iconst_0
     //   1265: aload_1
-    //   1266: invokevirtual 210	bifw:a	()Lcom/tencent/common/app/AppInterface;
+    //   1266: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
     //   1269: invokevirtual 215	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1272: invokestatic 221	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
     //   1275: invokevirtual 225	java/lang/Long:longValue	()J
@@ -693,10 +693,10 @@ public class QZoneCardJsHandleLogic
     //   1281: iload_3
     //   1282: ifeq +25 -> 1307
     //   1285: aload_1
-    //   1286: invokevirtual 96	bifw:a	()Landroid/app/Activity;
+    //   1286: invokevirtual 96	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
     //   1289: invokestatic 102	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
     //   1292: aload_1
-    //   1293: invokevirtual 210	bifw:a	()Lcom/tencent/common/app/AppInterface;
+    //   1293: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
     //   1296: invokevirtual 234	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
     //   1299: iconst_0
     //   1300: iconst_0
@@ -817,7 +817,7 @@ public class QZoneCardJsHandleLogic
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	1508	0	paramWebViewPlugin	com.tencent.mobileqq.webview.swift.WebViewPlugin
-    //   0	1508	1	parambifw	bifw
+    //   0	1508	1	paramPluginRuntime	WebViewPlugin.PluginRuntime
     //   0	1508	2	paramVarArgs	String[]
     //   70	1382	3	i	int
     //   27	1431	4	j	int
@@ -871,7 +871,7 @@ public class QZoneCardJsHandleLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCardJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

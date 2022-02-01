@@ -3,19 +3,18 @@ package com.tencent.av.ui;
 import android.graphics.Rect;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import meu;
 
 public class VideoLayerUI$MultiVideoOpenAnimation
   implements Runnable
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private int b;
+  private float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int = 0;
+  private int b = 0;
   
   public VideoLayerUI$MultiVideoOpenAnimation(VideoLayerUI paramVideoLayerUI, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfMeu[this.jdField_a_of_type_Int];
+    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int];
     Rect localRect = paramVideoLayerUI.b();
     this.jdField_a_of_type_Float = (localRect.width() / 10.0F);
     paramInt = localRect.right;
@@ -36,18 +35,18 @@ public class VideoLayerUI$MultiVideoOpenAnimation
         this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
       }
       return;
-      meu localmeu = this.this$0.jdField_a_of_type_ArrayOfMeu[this.jdField_a_of_type_Int];
-      Rect localRect = localmeu.b();
+      GLVideoView localGLVideoView = this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int];
+      Rect localRect = localGLVideoView.b();
       int i = (int)(localRect.left - this.jdField_a_of_type_Float);
       int j = localRect.width();
-      localmeu.b(i, localRect.top, j + i, localRect.bottom);
-      localmeu.b();
+      localGLVideoView.b(i, localRect.top, j + i, localRect.bottom);
+      localGLVideoView.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.MultiVideoOpenAnimation
  * JD-Core Version:    0.7.0.1
  */

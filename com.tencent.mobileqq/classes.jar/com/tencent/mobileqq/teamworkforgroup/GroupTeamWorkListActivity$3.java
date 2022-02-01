@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import befe;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 
-public class GroupTeamWorkListActivity$3
+class GroupTeamWorkListActivity$3
   implements Runnable
 {
   GroupTeamWorkListActivity$3(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
   public void run()
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.app.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(101, new befe(this));
+    IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)this.this$0.app.getRuntimeService(IWebProcessManagerService.class, "");
+    if ((localIWebProcessManagerService != null) && (localIWebProcessManagerService.isNeedPreloadWebProcess())) {
+      localIWebProcessManagerService.startWebProcess(101, new GroupTeamWorkListActivity.3.1(this));
     }
   }
 }

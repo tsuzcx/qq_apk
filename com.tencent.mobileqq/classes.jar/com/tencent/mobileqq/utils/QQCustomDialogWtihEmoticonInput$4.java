@@ -12,14 +12,14 @@ class QQCustomDialogWtihEmoticonInput$4
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.this$0.mIsWindowAdded))
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
     {
-      this.this$0.mWindowManager.removeView(this.this$0.mOldViewEmoSpace);
-      this.this$0.mIsWindowAdded = false;
-      paramKeyEvent = this.this$0.getWindow().getAttributes();
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      this.a.c = false;
+      paramKeyEvent = this.a.getWindow().getAttributes();
       paramKeyEvent.y = 0;
-      this.this$0.getWindow().setAttributes(paramKeyEvent);
-      QQCustomDialogWtihEmoticonInput.access$100(this.this$0);
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      QQCustomDialogWtihEmoticonInput.a(this.a);
       return true;
     }
     return false;

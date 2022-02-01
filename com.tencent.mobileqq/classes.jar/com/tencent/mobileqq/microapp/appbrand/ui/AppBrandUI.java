@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.microapp.appbrand.ui;
 
-import Override;
 import Wallet.ApkgConfig;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,8 +11,6 @@ import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
-import bcng;
-import bcnh;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
@@ -24,6 +21,8 @@ import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.mobileqq.microapp.sdk.MiniAppController;
 import com.tencent.mobileqq.microapp.widget.input.a.a;
+import com.tencent.mobileqq.search.util.SoftKeyboardStateHelper;
+import com.tencent.mobileqq.search.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -38,8 +37,8 @@ public class AppBrandUI
   private FrameLayout d;
   private boolean e;
   private boolean f;
-  private bcng g;
-  private bcnh h = new a(this);
+  private SoftKeyboardStateHelper g;
+  private SoftKeyboardStateHelper.SoftKeyboardStateListener h = new a(this);
   
   private void a()
   {
@@ -180,7 +179,7 @@ public class AppBrandUI
     if (this.a == null) {
       this.a = new j(this, this.d);
     }
-    this.g = new bcng(this.d);
+    this.g = new SoftKeyboardStateHelper(this.d);
     this.g.a(this.h);
     return true;
   }
@@ -277,7 +276,7 @@ public class AppBrandUI
         b(localObject1);
         a(localObject1);
         if (QLog.isColorLevel()) {
-          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + DeviceInfoUtil.getDesity());
+          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + DeviceInfoUtil.a());
         }
         localObject2 = localObject1.config.mini_appid;
         locala = this.a.a((String)localObject2, localObject1.getRuntimeType());

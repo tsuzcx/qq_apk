@@ -3,26 +3,26 @@ package com.tencent.mobileqq.search.fragment.searchentry.hotword;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import aogi;
-import aogk;
-import bbzh;
-import bcmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.UniteSearchHandler;
+import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.search.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchHippyEventEmitter;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import com.tencent.mobileqq.search.util.SearchConfigUtils;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SearchHotwordHandler
-  extends aogk
+  extends UniteSearchObserver
 {
   private QQAppInterface app;
   private final HotWordSearchEntryDataModel dataModel;
   private SearchHippyEventEmitter eventEmitter;
-  private final aogi uniteSearchHandler;
+  private final UniteSearchHandler uniteSearchHandler;
   
   public SearchHotwordHandler()
   {
@@ -32,7 +32,7 @@ public class SearchHotwordHandler
       this.app.addObserver(this);
     }
     this.dataModel = new HotWordSearchEntryDataModel(this.app, 7, 10, false);
-    this.uniteSearchHandler = new aogi(this.app);
+    this.uniteSearchHandler = new UniteSearchHandler(this.app);
   }
   
   @NonNull
@@ -47,7 +47,7 @@ public class SearchHotwordHandler
     String str2 = paramHotSearchItem.jumpUrl;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = bcmz.a(paramHotSearchItem.recallWord, 5, "kandian_recomword");
+      str1 = SearchConfigUtils.a(paramHotSearchItem.recallWord, 5, "kandian_recomword");
     }
     localSmartBox_HotWordsItem.sUrl = str1;
     localSmartBox_HotWordsItem.sAppend = paramHotSearchItem.sAppend;
@@ -91,7 +91,7 @@ public class SearchHotwordHandler
   
   public boolean isHotwordVisible()
   {
-    return bbzh.a(this.app);
+    return SearchEntryConfigManager.a(this.app);
   }
   
   public void notifyFEHotwordChanged()
@@ -113,12 +113,12 @@ public class SearchHotwordHandler
   
   public void setHotwordVisibility(boolean paramBoolean)
   {
-    bbzh.a(this.app, paramBoolean);
+    SearchEntryConfigManager.a(this.app, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler
  * JD-Core Version:    0.7.0.1
  */

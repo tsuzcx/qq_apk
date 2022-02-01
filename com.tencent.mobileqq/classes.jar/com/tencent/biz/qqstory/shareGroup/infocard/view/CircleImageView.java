@@ -138,7 +138,7 @@ public class CircleImageView
       return;
     }
     if (this.jdField_b_of_type_Int == -1) {
-      this.jdField_b_of_type_Int = AIOUtils.dp2px(1.0F, getContext().getResources());
+      this.jdField_b_of_type_Int = AIOUtils.a(1.0F, getContext().getResources());
     }
     this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -162,7 +162,7 @@ public class CircleImageView
     return jdField_a_of_type_AndroidWidgetImageView$ScaleType;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (getDrawable() == null) {
       return;
@@ -180,7 +180,7 @@ public class CircleImageView
     setImageDrawable(paramURLDrawable);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     b();
@@ -235,7 +235,7 @@ public class CircleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView
  * JD-Core Version:    0.7.0.1
  */

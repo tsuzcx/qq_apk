@@ -2,7 +2,7 @@ package com.tencent.mobileqq.qfix;
 
 public final class R$string
 {
-  public static final int app_name = 2131690119;
+  public static final int app_name = 2131690175;
 }
 
 

@@ -5,7 +5,7 @@ import android.opengl.EGLContext;
 import android.opengl.ETC1Util.ETC1Texture;
 import android.os.AsyncTask;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.io.File;
 import java.util.Map;
 
@@ -34,13 +34,13 @@ public class LoadETCItemManager
   
   public ETC1Util.ETC1Texture loadETCAlphaTexture(int paramInt)
   {
-    String str = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + String.format(new StringBuilder().append("%0").append(FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(paramInt) }) + "_alpha.pkm";
+    String str = VideoMaterial.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + String.format(new StringBuilder().append("%0").append(FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(paramInt) }) + "_alpha.pkm";
     return (ETC1Util.ETC1Texture)this.mCache.get(str);
   }
   
   public ETC1Util.ETC1Texture loadETCRGBTexture(int paramInt)
   {
-    String str = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + String.format(new StringBuilder().append("%0").append(FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(paramInt) }) + ".pkm";
+    String str = VideoMaterial.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + String.format(new StringBuilder().append("%0").append(FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(paramInt) }) + ".pkm";
     return (ETC1Util.ETC1Texture)this.mCache.get(str);
   }
   
@@ -66,7 +66,7 @@ public class LoadETCItemManager
   
   public void prepareImages()
   {
-    this.mImageTask = new LoadETCTextureTask(this.mCache, this.item.id, this.item.frames, this.dataPath + File.separator + this.item.subFolder + ".zip", VideoMaterialUtil.getMaterialId(this.dataPath));
+    this.mImageTask = new LoadETCTextureTask(this.mCache, this.item.id, this.item.frames, this.dataPath + File.separator + this.item.subFolder + ".zip", VideoMaterial.getMaterialId(this.dataPath));
     this.mImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
   }
   
@@ -74,7 +74,7 @@ public class LoadETCItemManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadETCItemManager
  * JD-Core Version:    0.7.0.1
  */

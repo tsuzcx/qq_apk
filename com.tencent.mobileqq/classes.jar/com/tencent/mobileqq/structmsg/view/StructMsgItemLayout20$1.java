@@ -2,22 +2,20 @@ package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdqo;
-import bdqp;
 import com.tencent.widget.SingleLineTextView;
 
-public class StructMsgItemLayout20$1
+class StructMsgItemLayout20$1
   implements Runnable
 {
-  public StructMsgItemLayout20$1(bdqo parambdqo, int paramInt, bdqp parambdqp) {}
+  StructMsgItemLayout20$1(StructMsgItemLayout20 paramStructMsgItemLayout20, int paramInt, StructMsgItemLayout20.Holder paramHolder) {}
   
   public void run()
   {
     int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Bdqp.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Bdqp.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
+    int j = this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout20$Holder.jdField_a_of_type_AndroidWidgetTextView.getWidth();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout20$Holder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
     localLayoutParams.rightMargin = (j + i);
-    this.jdField_a_of_type_Bdqp.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout20$Holder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(localLayoutParams);
   }
 }
 

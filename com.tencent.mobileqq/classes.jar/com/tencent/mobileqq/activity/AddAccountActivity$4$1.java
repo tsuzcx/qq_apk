@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adfd;
 import com.tencent.mobileqq.widget.PastablePwdEditText;
 
-public class AddAccountActivity$4$1
+class AddAccountActivity$4$1
   implements Runnable
 {
-  public AddAccountActivity$4$1(adfd paramadfd) {}
+  AddAccountActivity$4$1(AddAccountActivity.4 param4) {}
   
   public void run()
   {
@@ -18,7 +17,7 @@ public class AddAccountActivity$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

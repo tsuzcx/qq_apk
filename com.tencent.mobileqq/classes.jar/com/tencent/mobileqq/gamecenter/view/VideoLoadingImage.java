@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import avgc;
 
 public class VideoLoadingImage
   extends ImageView
@@ -26,10 +25,10 @@ public class VideoLoadingImage
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    setImageDrawable(new avgc(getResources()));
+    setImageDrawable(new VideoLoadingImage.DefaultLoadingDrawable(getResources()));
   }
   
   public void setStyle(int paramInt)
@@ -39,7 +38,7 @@ public class VideoLoadingImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.VideoLoadingImage
  * JD-Core Version:    0.7.0.1
  */

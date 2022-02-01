@@ -16,7 +16,7 @@ public class DisplayHelper
 {
   public static final float DENSITY = Resources.getSystem().getDisplayMetrics().density;
   private static final String TAG = "Devices";
-  public static float sDensity;
+  public static float sDensity = 0.0F;
   
   public static int dp2px(Context paramContext, int paramInt)
   {

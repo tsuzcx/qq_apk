@@ -10,7 +10,7 @@ public final class operation_addcomment_rsp
   public String commentLikekey = "";
   public String commentid = "";
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   public String verifyurl = "";
   
   public operation_addcomment_rsp() {}

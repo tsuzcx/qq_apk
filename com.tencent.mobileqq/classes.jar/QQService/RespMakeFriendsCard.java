@@ -13,16 +13,16 @@ public final class RespMakeFriendsCard
   static ArrayList<FaceInfo> cache_vFaceInfo;
   static ArrayList<Visitor> cache_vVisitors;
   static ArrayList<Visitor> cache_vVoter;
-  public byte bShareLBS;
-  public byte cSqqLevel;
-  public int iVoteIncrement;
-  public long lCardShowNum;
-  public int lListVoterTime;
-  public RespHead stHeader;
-  public MakeFriendsCard stMakeFriendsCard;
-  public ArrayList<FaceInfo> vFaceInfo;
-  public ArrayList<Visitor> vVisitors;
-  public ArrayList<Visitor> vVoter;
+  public byte bShareLBS = 0;
+  public byte cSqqLevel = 0;
+  public int iVoteIncrement = 0;
+  public long lCardShowNum = 0L;
+  public int lListVoterTime = 0;
+  public RespHead stHeader = null;
+  public MakeFriendsCard stMakeFriendsCard = null;
+  public ArrayList<FaceInfo> vFaceInfo = null;
+  public ArrayList<Visitor> vVisitors = null;
+  public ArrayList<Visitor> vVoter = null;
   
   public RespMakeFriendsCard() {}
   

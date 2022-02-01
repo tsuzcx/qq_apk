@@ -1,6 +1,6 @@
 package com.tencent.av.app;
 
-import lig;
+import com.tencent.av.business.manager.report.VideoBeaconReporter;
 
 class VideoAppInterface$3
   implements Runnable
@@ -9,12 +9,12 @@ class VideoAppInterface$3
   
   public void run()
   {
-    lig.a(this.this$0.f, this.this$0.g);
+    VideoBeaconReporter.a(this.this$0.f, this.this$0.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface.3
  * JD-Core Version:    0.7.0.1
  */

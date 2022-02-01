@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import ayks;
-import aykw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class NearbyMomentManager$4$1
+class NearbyMomentManager$4$1
   implements Runnable
 {
-  public NearbyMomentManager$4$1(aykw paramaykw, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  NearbyMomentManager$4$1(NearbyMomentManager.4 param4, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
   public void run()
   {
-    List localList = ayks.a(this.jdField_a_of_type_Aykw.a, this.jdField_a_of_type_JavaUtilList);
+    List localList = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$4.a, this.jdField_a_of_type_JavaUtilList);
     Object localObject;
     if (localList == null)
     {

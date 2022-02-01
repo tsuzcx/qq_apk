@@ -1,17 +1,5 @@
 package com.tencent.mobileqq.activity.recent.msgbox;
 
-import acmw;
-import acmz;
-import alfv;
-import algc;
-import alik;
-import alje;
-import almd;
-import alme;
-import almf;
-import almg;
-import almi;
-import almj;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -35,25 +23,31 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import aoxz;
-import bapk;
-import bdla;
-import bhbx;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.ConversationProxyObserver;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
@@ -64,18 +58,18 @@ import java.util.Observer;
 
 public class TempMsgBoxFragment
   extends IphoneTitleBarFragment
-  implements alfv, alje, GestureDetector.OnGestureListener, View.OnTouchListener, Observer
+  implements GestureDetector.OnGestureListener, View.OnTouchListener, OnRecentUserOpsListener, DragFrameLayout.OnDragModeChangedListener, Observer
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private acmz jdField_a_of_type_Acmz;
-  private algc jdField_a_of_type_Algc;
-  private almi jdField_a_of_type_Almi;
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   protected TextView a;
+  private ConversationProxyObserver jdField_a_of_type_ComTencentImcoreMessageConversationProxyObserver;
+  private RecentAdapter jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
   private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
+  private TempMsgBoxObserver jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxTempMsgBoxObserver;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  public QQAppInterface a;
+  protected QQAppInterface a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   protected boolean a;
   private boolean b = true;
@@ -107,7 +101,7 @@ public class TempMsgBoxFragment
   
   private void a(QQMessageFacade paramQQMessageFacade)
   {
-    int i = paramQQMessageFacade.getUnreadMsgsNum() + bapk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) - almj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = paramQQMessageFacade.b() + QCallFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) - TempMsgBoxUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (i > 99) {
       paramQQMessageFacade = "99+";
     }
@@ -134,21 +128,23 @@ public class TempMsgBoxFragment
       i = paramRecentBaseData.mPosition;
     }
     if (localRecentUser != null) {
-      alik.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser, i);
+      RecentUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser, i);
     }
   }
   
   private void a(RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean)
   {
-    RecentUser localRecentUser = (RecentUser)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy().findRecentUserByUin(paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType());
+    RecentUser localRecentUser = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy().a(paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType());
     Bundle localBundle = new Bundle();
+    localBundle.putBoolean("enter_from_temp_msg_box", true);
+    localBundle.putBoolean("need_to_show_unread_num", true);
     localBundle.putString("KEY_OPEN_AIO_INTENT_CLASS_NAME", ChatActivity.class.getName());
-    alik.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser, paramString, paramBoolean, 3, paramRecentBaseData, localBundle, null);
+    RecentUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser, paramString, paramBoolean, 3, paramRecentBaseData, localBundle, null);
   }
   
   private void b()
   {
-    List localList = ((almg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    List localList = ((TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (QLog.isColorLevel()) {
       QLog.d("TempMsgBoxFragment", 2, "refreshTempMsgBoxList() called " + localList);
     }
@@ -178,14 +174,14 @@ public class TempMsgBoxFragment
     if (QLog.isColorLevel()) {
       QLog.e("TempMsgBoxFragment", 2, "initTitleBar");
     }
-    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698949));
+    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131699295));
     ImageView localImageView = this.rightViewImg;
-    localImageView.setImageResource(2130850144);
-    localImageView.setContentDescription(getString(2131698947));
-    localImageView.setOnClickListener(new almf(this));
+    localImageView.setImageResource(2130850542);
+    localImageView.setContentDescription(getString(2131699293));
+    localImageView.setOnClickListener(new TempMsgBoxFragment.4(this));
     localImageView.setVisibility(0);
     e();
-    this.titleRoot.setBackgroundResource(2130850109);
+    this.titleRoot.setBackgroundResource(2130850507);
   }
   
   private void d()
@@ -193,19 +189,19 @@ public class TempMsgBoxFragment
     if (QLog.isColorLevel()) {
       QLog.e("TempMsgBoxFragment", 2, "initContentView");
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131378567));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131378998));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131558961, null);
+    View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559002, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(localView);
-    this.jdField_a_of_type_Algc = new algc(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this, 15);
-    this.jdField_a_of_type_Algc.a(23);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Algc);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new RecentAdapter(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this, 15);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(23);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
     }
-    this.jdField_a_of_type_Algc.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
   }
   
   private void e()
@@ -224,8 +220,7 @@ public class TempMsgBoxFragment
   
   private void f()
   {
-    if ((this.leftView == null) || (this.mLeftBackText == null)) {}
-    label86:
+    if ((this.leftView == null) || (this.mLeftBackText == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (!isAdded())) {}
     do
     {
       return;
@@ -235,24 +230,20 @@ public class TempMsgBoxFragment
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.leftView.setVisibility(8);
       this.mLeftBackIcon.setVisibility(0);
-      this.mLeftBackIcon.setContentDescription(anvx.a(2131714566));
-      localObject = this.mLeftBackText;
-      AIOUtils.expandViewTouchDelegate((View)localObject, 0, 0, 0, (int)(30.0F * this.mDensity + 0.5F));
-      if (localObject == null) {
-        break label282;
-      }
+      this.mLeftBackIcon.setContentDescription(HardCodeUtil.a(2131715061));
+      AIOUtils.a(this.mLeftBackText, 0, 0, 0, (int)(30.0F * this.mDensity + 0.5F));
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
     } while (localObject == null);
     ThreadManager.post(new TempMsgBoxFragment.6(this, (QQMessageFacade)localObject), 8, null, true);
     return;
     this.leftView.setVisibility(0);
-    Object localObject = getResources().getColorStateList(2131167023);
+    Object localObject = getResources().getColorStateList(2131167030);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject);
     GradientDrawable localGradientDrawable = (GradientDrawable)this.jdField_a_of_type_AndroidWidgetTextView.getBackground();
     if (localGradientDrawable != null)
     {
       if (Build.VERSION.SDK_INT < 21) {
-        break label284;
+        break label292;
       }
       localGradientDrawable.setColor((ColorStateList)localObject);
     }
@@ -262,19 +253,17 @@ public class TempMsgBoxFragment
       if (!ThemeUtil.isNowThemeIsSimple(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))
       {
         localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(28.0F, getResources());
+        ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.a(28.0F, getResources());
         this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         localObject = (RelativeLayout.LayoutParams)this.leftView.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(5.0F, getResources());
+        ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.a(5.0F, getResources());
         this.leftView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       this.mLeftBackIcon.setVisibility(8);
       this.mLeftBackText.setVisibility(8);
       localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      break label86;
-      label282:
       break;
-      label284:
+      label292:
       localGradientDrawable.setColor(((ColorStateList)localObject).getDefaultColor());
     }
   }
@@ -306,12 +295,12 @@ public class TempMsgBoxFragment
       }
       while ((paramView != null) && (paramView.intValue() >= 0))
       {
-        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B1C0", "0X800B1C0", paramView.intValue(), 0, "", "", "", "");
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B1C0", "0X800B1C0", paramView.intValue(), 0, "", "", "", "");
         return;
         if (paramRecentBaseData.getUnreadNum() > 0) {
           this.jdField_a_of_type_Boolean = true;
         }
-        paramView = (Integer)almj.b().get(Integer.valueOf(paramRecentBaseData.getRecentUserType()));
+        paramView = (Integer)TempMsgBoxUtil.b().get(Integer.valueOf(paramRecentBaseData.getRecentUserType()));
         a(paramRecentBaseData, paramString, paramBoolean);
       }
     }
@@ -326,13 +315,13 @@ public class TempMsgBoxFragment
     {
       return;
       a(paramRecentBaseData);
-      paramString = ((almg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramString = ((TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d("TempMsgBoxFragment", 2, "onRecentBaseDataDelete() called with: data = [" + paramRecentBaseData + "], msgBoxRecentUsers = [" + paramString + "]");
       }
     } while (!paramString.isEmpty());
-    paramRecentBaseData = (RecentUser)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy().findRecentUserByUin(AppConstants.TEMP_MSG_BOX_UIN, 10011);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy().removeCache(paramRecentBaseData);
+    paramRecentBaseData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy().a(AppConstants.TEMP_MSG_BOX_UIN, 10011);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy().a(paramRecentBaseData, false);
   }
   
   public void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2)
@@ -340,16 +329,16 @@ public class TempMsgBoxFragment
     if (QLog.isColorLevel()) {
       QLog.d("TempMsgBoxFragment", 2, new Object[] { "menuItem clicked ", paramString1, " data " + paramRecentBaseData, " uin ", paramRecentBaseData.getRecentUserUin(), " type ", Integer.valueOf(paramRecentBaseData.getRecentUserType()) });
     }
-    if (bhbx.a(paramString1, getResources().getString(alhd.a[3]))) {
-      ((almg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType(), true);
+    if (Utils.a(paramString1, getResources().getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.a[3]))) {
+      ((TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType(), true);
     }
     for (;;)
     {
       b();
       e();
       return;
-      if (bhbx.a(paramString1, getResources().getString(alhd.a[2]))) {
-        ((almg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType(), false);
+      if (Utils.a(paramString1, getResources().getString(com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder.a[2]))) {
+        ((TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType(), false);
       }
     }
   }
@@ -385,13 +374,13 @@ public class TempMsgBoxFragment
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this);
     this.jdField_a_of_type_Float = (ViewConfiguration.get(getActivity()).getScaledDoubleTapSlop() * 2);
-    paramLayoutInflater = (LinearLayout)this.mContentView.findViewById(2131378568);
+    paramLayoutInflater = (LinearLayout)this.mContentView.findViewById(2131378999);
     if (paramLayoutInflater != null)
     {
       paramLayoutInflater.setOnTouchListener(this);
       paramLayoutInflater.setLongClickable(true);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.titleRoot.findViewById(2131369269));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.titleRoot.findViewById(2131369525));
     d();
     c();
     a();
@@ -399,7 +388,7 @@ public class TempMsgBoxFragment
   
   public int getContentLayoutId()
   {
-    return 2131562948;
+    return 2131563099;
   }
   
   public boolean isWrapContent()
@@ -417,10 +406,10 @@ public class TempMsgBoxFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getActivity();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
-    this.jdField_a_of_type_Almi = new almd(this);
-    this.jdField_a_of_type_Acmz = new alme(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Almi);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Acmz);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxTempMsgBoxObserver = new TempMsgBoxFragment.1(this);
+    this.jdField_a_of_type_ComTencentImcoreMessageConversationProxyObserver = new TempMsgBoxFragment.2(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxTempMsgBoxObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentImcoreMessageConversationProxyObserver);
     if (QLog.isColorLevel()) {
       QLog.e("TempMsgBoxFragment", 2, new Object[] { "doOnCreate ", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity });
     }
@@ -429,8 +418,8 @@ public class TempMsgBoxFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Algc != null) {
-      this.jdField_a_of_type_Algc.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.b();
     }
     if (this.jdField_a_of_type_ComTencentWidgetXListView != null) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(null);
@@ -438,9 +427,9 @@ public class TempMsgBoxFragment
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Almi);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Acmz);
-    this.jdField_a_of_type_Algc = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxTempMsgBoxObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentImcoreMessageConversationProxyObserver);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = null;
     QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
     if (localQQMessageFacade != null) {
       localQQMessageFacade.deleteObserver(this);
@@ -491,7 +480,7 @@ public class TempMsgBoxFragment
   public void onPause()
   {
     super.onPause();
-    ((almg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(true);
+    ((TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(AppConstants.TEMP_MSG_BOX_UIN, 10011, 0);
   }
   
@@ -500,7 +489,7 @@ public class TempMsgBoxFragment
     super.onResume();
     b();
     e();
-    ((almg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(true);
+    ((TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(AppConstants.TEMP_MSG_BOX_UIN, 10011, 0);
   }
   
@@ -569,7 +558,7 @@ public class TempMsgBoxFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment
  * JD-Core Version:    0.7.0.1
  */

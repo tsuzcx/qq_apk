@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pvm;
-import qga;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class RIJArticleInfoRepo$17
+class RIJArticleInfoRepo$17
   implements Runnable
 {
-  public RIJArticleInfoRepo$17(qga paramqga) {}
+  RIJArticleInfoRepo$17(RIJArticleInfoRepo paramRIJArticleInfoRepo) {}
   
   public void run()
   {
-    pvm.a().b();
+    ReadInJoyLogicEngineEventDispatcher.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.RIJArticleInfoRepo.17
  * JD-Core Version:    0.7.0.1
  */

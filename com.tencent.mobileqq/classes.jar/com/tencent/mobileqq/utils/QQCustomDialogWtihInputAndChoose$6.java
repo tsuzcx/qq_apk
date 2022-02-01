@@ -10,12 +10,12 @@ class QQCustomDialogWtihInputAndChoose$6
   
   public void run()
   {
-    if (this.this$0.mWindowParams == null) {
+    if (this.this$0.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
       return;
     }
-    this.this$0.mWindowManager.addView(this.this$0.mChooseLayout, this.this$0.mWindowParams);
-    this.this$0.mIsWindowAdded = true;
-    this.this$0.mChooseLayout.post(new QQCustomDialogWtihInputAndChoose.6.1(this));
+    this.this$0.jdField_a_of_type_AndroidViewWindowManager.addView(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout, this.this$0.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    this.this$0.b = true;
+    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.post(new QQCustomDialogWtihInputAndChoose.6.1(this));
   }
 }
 

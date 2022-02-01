@@ -19,6 +19,7 @@ public class FaceInfo
   public float[] origFacePoints = new float['¼'];
   public float[] origPointsVis = new float[94];
   public float pitch;
+  public List<PointF> point94;
   public List<PointF> points;
   public Float[] pointsVis;
   public float[] rect = new float[4];
@@ -31,7 +32,7 @@ public class FaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.facedetect.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

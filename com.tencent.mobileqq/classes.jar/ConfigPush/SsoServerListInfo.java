@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SsoServerListInfo
   extends JceStruct
 {
-  public byte bLinkType;
-  public byte bProtocolType;
-  public byte bProxy;
-  public int iPort;
+  public byte bLinkType = 0;
+  public byte bProtocolType = 0;
+  public byte bProxy = 0;
+  public int iPort = 0;
   public int iTimeOut = 10;
   public String sIP = "";
   

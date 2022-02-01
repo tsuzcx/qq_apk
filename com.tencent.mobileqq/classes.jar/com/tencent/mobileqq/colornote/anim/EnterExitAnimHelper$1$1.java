@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.colornote.anim;
 
 import android.animation.Animator;
-import aqoc;
-import zjh;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealAnimator;
 
-public class EnterExitAnimHelper$1$1
+class EnterExitAnimHelper$1$1
   implements Runnable
 {
-  public EnterExitAnimHelper$1$1(aqoc paramaqoc, Animator paramAnimator) {}
+  EnterExitAnimHelper$1$1(EnterExitAnimHelper.1 param1, Animator paramAnimator) {}
   
   public void run()
   {
-    ((zjh)this.jdField_a_of_type_AndroidAnimationAnimator).a();
+    ((CircularRevealAnimator)this.jdField_a_of_type_AndroidAnimationAnimator).a();
   }
 }
 

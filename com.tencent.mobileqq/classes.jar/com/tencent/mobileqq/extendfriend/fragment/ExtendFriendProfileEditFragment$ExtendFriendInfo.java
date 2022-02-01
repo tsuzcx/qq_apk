@@ -3,13 +3,12 @@ package com.tencent.mobileqq.extendfriend.fragment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aspp;
 import com.tencent.mobileqq.data.Card;
 
 public class ExtendFriendProfileEditFragment$ExtendFriendInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<ExtendFriendInfo> CREATOR = new aspp();
+  public static final Parcelable.Creator<ExtendFriendInfo> CREATOR = new ExtendFriendProfileEditFragment.ExtendFriendInfo.1();
   public int a;
   public long a;
   public String a;
@@ -22,14 +21,14 @@ public class ExtendFriendProfileEditFragment$ExtendFriendInfo
   public boolean c;
   public int d;
   public String d;
-  public int e;
-  public int f;
+  public int e = 0;
+  public int f = 0;
   public int g;
   public int h;
   
   public ExtendFriendProfileEditFragment$ExtendFriendInfo() {}
   
-  public ExtendFriendProfileEditFragment$ExtendFriendInfo(Parcel paramParcel)
+  protected ExtendFriendProfileEditFragment$ExtendFriendInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -44,17 +43,17 @@ public class ExtendFriendProfileEditFragment$ExtendFriendInfo
       this.e = paramParcel.readInt();
       this.f = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label158;
+        break label168;
       }
       bool1 = true;
-      label93:
+      label103:
       this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label163;
+        break label173;
       }
     }
-    label158:
-    label163:
+    label168:
+    label173:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_c_of_type_Boolean = bool1;
@@ -67,7 +66,7 @@ public class ExtendFriendProfileEditFragment$ExtendFriendInfo
       bool1 = false;
       break;
       bool1 = false;
-      break label93;
+      break label103;
     }
   }
   
@@ -147,7 +146,7 @@ public class ExtendFriendProfileEditFragment$ExtendFriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo
  * JD-Core Version:    0.7.0.1
  */

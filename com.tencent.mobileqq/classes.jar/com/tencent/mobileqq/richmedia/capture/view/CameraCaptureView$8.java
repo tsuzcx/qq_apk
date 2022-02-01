@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import bbii;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import java.util.Map;
 
@@ -11,24 +10,24 @@ class CameraCaptureView$8
   
   public void run()
   {
-    if (!this.this$0.a.containsKey(bbii.d)) {
-      this.this$0.a.put(bbii.d, new RenderBuffer(this.a, this.b, 33984));
+    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.d)) {
+      this.this$0.a.put(CameraCaptureView.CaptureParam.d, new RenderBuffer(this.a, this.b, 33984));
     }
-    if (!this.this$0.a.containsKey(bbii.e)) {
-      this.this$0.a.put(bbii.e, new RenderBuffer(this.this$0.f, this.this$0.g, 33984));
+    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.e)) {
+      this.this$0.a.put(CameraCaptureView.CaptureParam.e, new RenderBuffer(this.this$0.f, this.this$0.g, 33984));
     }
-    if (!this.this$0.a.containsKey(bbii.f)) {
-      this.this$0.a.put(bbii.f, new RenderBuffer(this.c, this.d, 33984));
+    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.f)) {
+      this.this$0.a.put(CameraCaptureView.CaptureParam.f, new RenderBuffer(this.c, this.d, 33984));
     }
-    if (!this.this$0.a.containsKey(bbii.g)) {
-      this.this$0.a.put(bbii.g, new RenderBuffer(this.this$0.h, this.this$0.i, 33984));
+    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.g)) {
+      this.this$0.a.put(CameraCaptureView.CaptureParam.g, new RenderBuffer(this.this$0.h, this.this$0.i, 33984));
     }
-    this.this$0.b(false);
+    this.this$0.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.8
  * JD-Core Version:    0.7.0.1
  */

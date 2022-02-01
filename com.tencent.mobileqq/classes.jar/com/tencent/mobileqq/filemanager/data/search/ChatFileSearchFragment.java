@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import atqh;
-import bcbc;
-import bclw;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +30,12 @@ public class ChatFileSearchFragment
     this.jdField_a_of_type_JavaLangRunnable = new ChatFileSearchFragment.1(this);
   }
   
-  public bcbc a()
+  public BaseMvpAdapter a()
   {
-    return new atqh(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new ChatFileSearchFragment.ChatFileSearchAdapter(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public bclw a()
+  public ISearchEngine a()
   {
     ChatFileManagerSearchEngine localChatFileManagerSearchEngine = new ChatFileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
     if (this.jdField_a_of_type_Int == 1)
@@ -61,7 +60,7 @@ public class ChatFileSearchFragment
     return false;
   }
   
-  public void g_(boolean paramBoolean)
+  public void h_(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Int == 2)
     {
@@ -70,13 +69,13 @@ public class ChatFileSearchFragment
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_d_of_type_AndroidViewView.setVisibility(8);
         this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        f_(false);
+        g_(false);
         return;
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       return;
     }
-    super.g_(paramBoolean);
+    super.h_(paramBoolean);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -87,11 +86,11 @@ public class ChatFileSearchFragment
       ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViewsInLayout();
       paramViewGroup = new TextView(getActivity());
-      paramViewGroup.setText(anvx.a(2131701083));
+      paramViewGroup.setText(HardCodeUtil.a(2131701658));
       paramViewGroup.setSingleLine(true);
       paramViewGroup.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
       paramViewGroup.setTextSize(1, 15.0F);
-      paramViewGroup.setTextColor(getResources().getColor(2131167112));
+      paramViewGroup.setTextColor(getResources().getColor(2131167119));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
     }
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -100,7 +99,7 @@ public class ChatFileSearchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment
  * JD-Core Version:    0.7.0.1
  */

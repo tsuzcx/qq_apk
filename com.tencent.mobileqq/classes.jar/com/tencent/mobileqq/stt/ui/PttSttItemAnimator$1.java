@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.stt.ui;
 
-import bduc;
-
-public class PttSttItemAnimator$1
+class PttSttItemAnimator$1
   implements Runnable
 {
-  public PttSttItemAnimator$1(bduc parambduc) {}
+  PttSttItemAnimator$1(PttSttItemAnimator paramPttSttItemAnimator) {}
   
   public void run()
   {
-    bduc.a(this.this$0);
+    PttSttItemAnimator.a(this.this$0);
   }
 }
 

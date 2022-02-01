@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.utils;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bijj;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -17,9 +17,9 @@ final class TroopApplicationListUtil$2
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.obj instanceof bijj))
+    if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
-      paramMessage = (bijj)paramMessage.obj;
+      paramMessage = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
       if (paramMessage.c == 0) {
         try
         {

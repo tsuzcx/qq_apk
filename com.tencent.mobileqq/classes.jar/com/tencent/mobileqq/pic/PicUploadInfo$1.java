@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.pic;
 
-import azkn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class PicUploadInfo$1
+class PicUploadInfo$1
   implements Runnable
 {
-  public PicUploadInfo$1(azkn paramazkn) {}
+  PicUploadInfo$1(PicUploadInfo paramPicUploadInfo) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.sApplication, 2131689932, 1).a();
+    QQToast.a(BaseApplicationImpl.sApplication, 2131689974, 1).a();
   }
 }
 

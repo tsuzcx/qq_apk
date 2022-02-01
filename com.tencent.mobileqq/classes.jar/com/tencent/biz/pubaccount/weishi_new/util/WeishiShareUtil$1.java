@@ -8,10 +8,10 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.io.IOException;
 
-public final class WeishiShareUtil$1
+final class WeishiShareUtil$1
   implements Runnable
 {
-  public WeishiShareUtil$1(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt) {}
+  WeishiShareUtil$1(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt) {}
   
   public void run()
   {
@@ -66,7 +66,7 @@ public final class WeishiShareUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiShareUtil.1
  * JD-Core Version:    0.7.0.1
  */

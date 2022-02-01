@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import pxt;
-
-public class ReadInJoyAtlasCommentFragment$6$1
+class ReadInJoyAtlasCommentFragment$6$1
   implements Runnable
 {
-  public ReadInJoyAtlasCommentFragment$6$1(pxt parampxt) {}
+  ReadInJoyAtlasCommentFragment$6$1(ReadInJoyAtlasCommentFragment.6 param6) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReadInJoyAtlasCommentFragment$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

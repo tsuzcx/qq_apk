@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class FestivalGetReqItem
   extends JceStruct
 {
-  public long mdays;
-  public long month;
-  public long time;
-  public long type;
-  public long year;
+  public long mdays = 0L;
+  public long month = 0L;
+  public long time = 0L;
+  public long type = 0L;
+  public long year = 0L;
   
   public FestivalGetReqItem() {}
   

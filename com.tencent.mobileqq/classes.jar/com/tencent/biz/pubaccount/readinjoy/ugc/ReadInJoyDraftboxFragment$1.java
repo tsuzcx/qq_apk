@@ -1,9 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import qhi;
-import rup;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxModule;
 
-public class ReadInJoyDraftboxFragment$1
+class ReadInJoyDraftboxFragment$1
   implements Runnable
 {
   ReadInJoyDraftboxFragment$1(ReadInJoyDraftboxFragment paramReadInJoyDraftboxFragment) {}
@@ -11,13 +10,13 @@ public class ReadInJoyDraftboxFragment$1
   public void run()
   {
     if (ReadInJoyDraftboxFragment.a(this.this$0) != null) {
-      ReadInJoyDraftboxFragment.a(this.this$0).a(new rup(this));
+      ReadInJoyDraftboxFragment.a(this.this$0).a(new ReadInJoyDraftboxFragment.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,13 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import blgj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 
 class ListView$ListDataSetObserver
   extends AbsListView.AdapterDataSetObserver
-  implements blgj
+  implements XBaseAdapter.ListDataSetListener
 {
   ListView$ListDataSetObserver(ListView paramListView)
   {
@@ -291,7 +290,7 @@ class ListView$ListDataSetObserver
         i1 = this.this$0.mFirstPosition;
         i3 = this.this$0.mFirstPosition + i4 - 1;
         if (this.this$0.mFastScroller != null) {
-          this.this$0.mFastScroller.a(this.this$0.mItemCount, this.this$0.mItemCount - paramInt1);
+          this.this$0.mFastScroller.onItemCountChanged(this.this$0.mItemCount, this.this$0.mItemCount - paramInt1);
         }
         this.this$0.mItemCount -= paramInt1;
         if (this.this$0.mSelectedPosition >= 0)
@@ -635,7 +634,7 @@ class ListView$ListDataSetObserver
         {
           paramInt1 = 1;
           if (this.this$0.mFastScroller != null) {
-            this.this$0.mFastScroller.a(this.this$0.mItemCount, this.this$0.mItemCount - n);
+            this.this$0.mFastScroller.onItemCountChanged(this.this$0.mItemCount, this.this$0.mItemCount - n);
           }
           this.this$0.mItemCount += n;
           if (this.this$0.mSelectedPosition < 0) {

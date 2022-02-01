@@ -1,64 +1,39 @@
 package com.tencent.mobileqq.model;
 
-import android.os.Handler;
-import awyr;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import mqq.app.MobileQQ;
+import java.util.List;
 
-public class EmoticonManager$26
+class EmoticonManager$26
   implements Runnable
 {
-  public EmoticonManager$26(awyr paramawyr, int paramInt) {}
+  EmoticonManager$26(EmoticonManager paramEmoticonManager, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend, int paramInt) {}
   
   public void run()
   {
-    Object localObject = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.a + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    if (!((File)localObject).exists()) {}
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend == null)
     {
-      try
-      {
-        if (!((File)localObject).createNewFile())
-        {
-          QLog.e("EmoticonManager", 1, "writeRecommendInfoFromFileToCache, create file fail");
-          return;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonManager", 2, "recommendresp is null");
       }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-      }
-      byte[] arrayOfByte = FileUtils.fileToBytes((File)localObject);
-      localObject = new EmosmPb.SubCmd0x5RspBQRecommend();
-      if (arrayOfByte == null) {
-        continue;
-      }
-      try
-      {
-        ((EmosmPb.SubCmd0x5RspBQRecommend)localObject).mergeFrom(arrayOfByte);
-        if (localObject == null) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonManager", 2, "writeRecommendInfoFromFileToCache post to uithread");
-        }
-        this.this$0.jdField_a_of_type_AndroidOsHandler.post(new EmoticonManager.26.1(this, (EmosmPb.SubCmd0x5RspBQRecommend)localObject));
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localObject = null;
-          localException.printStackTrace();
-        }
-      }
+      return;
     }
+    this.this$0.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend);
+    int i = this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.int32_exposure_num.get();
+    if (i > 0) {
+      EmoticonManager.jdField_a_of_type_Int = i;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "saveAndUpdateRecommendEmosInfo maxexposenum = " + EmoticonManager.jdField_a_of_type_Int);
+    }
+    List localList = this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.st_new_tab_info.get();
+    if ((localList != null) && (QLog.isColorLevel())) {
+      QLog.d("EmoticonManager", 2, "saveAndUpdateRecommendEmosInfo recommend emotion num = " + localList.size());
+    }
+    EmoticonManager.b(this.this$0);
   }
 }
 

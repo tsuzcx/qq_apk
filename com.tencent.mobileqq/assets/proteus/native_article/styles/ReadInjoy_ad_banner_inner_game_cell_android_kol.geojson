@@ -1,0 +1,382 @@
+{
+  "platform" : "android",
+  "ReadInjoy_ad_banner_inner_game_cell_kol": {
+    "view_type": "container",
+    "layout_type": "layout_linear",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "padding_top": "15",
+    "padding_bottom": "15",
+    "subviews": [
+      {
+        "view_type": "ReadInjoyAsynImageView",
+        "view_id": "id_inner_author_recommend",
+        "height": {
+          "type": "relative",
+          "value": "25"
+        },
+        "margin_bottom": "-7",
+        "margin_left": "12",
+        "width": {
+          "type": "relative",
+          "value": "88"
+        },
+        "event_type": "cmd_native_inner_ad_cover_click",
+        "attributes": {
+          "setImageWithURLString:lineup:": ["$author_rec_image_url", "-1"]
+        }
+      },
+      {
+        "view_type": "UIView",
+        "layout_type": "layout_relative",
+        "view_id": "id_ad_banner_game_root",
+        "event_type": "cmd_native_inner_ad_nothing_click",
+        "margin_left": "12",
+        "margin_right": "12",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "351"
+        },
+        "default_visible": "YES",
+        "attributes": {
+          "setBackgroundColorString:": "#FFF5F5F5",
+          "setBorderWidthString:": "0.5",
+          "setBorderColorString:": "#D1D1D1",
+          "setCornerRadiusString:": "6"
+        },
+        "subviews": [
+          {
+            "view_type": "container",
+            "default_visible": "YES",
+            "layout_type": "layout_relative",
+            "view_id": "id_inner_main_area",
+            "height": {
+              "type": "relative",
+              "value": "95"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "default_visible": "YES",
+            "subviews": [
+              {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_inner_small_img",
+                "margin_top": "15",
+                "margin_left": "15",
+                "height": {
+                  "type": "relative",
+                  "value": "65"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "65"
+                },
+                "align_parent_left": "YES",
+                "event_type": "cmd_native_inner_ad_cover_click",
+                "attributes": {
+                  "setImageWithURLString:lineup:": [
+                    "$image_url",
+                    "-1"
+                  ]
+                }
+              },
+              {
+                "view_type": "UIView",
+                "default_visible": "YES",
+                "view_id": "id_area_right_of_img",
+                "event_type": "cmd_id_area_left_of_img_click",
+                "layout_type": "layout_linear",
+                "direction": "vertical",
+                "align_parent_center_vertical": "YES",
+                "right_of_view": "id_inner_small_img",
+                "margin_left": "10",
+                "height": {
+                  "type": "wrap_content"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "163"
+                },
+                "subviews": [
+                  {
+                    "view_type": "UILabel",
+                    "view_id": "id_inner_title",
+                    "event_type": "cmd_native_inner_ad_title_click",
+                    "height": {
+                      "type": "wrap_content"
+                    },
+                    "width": {
+                      "type": "match_parent"
+                    },
+                    "align_parent_left": "YES",
+                    "attributes": {
+                      "setTextColorString:": "#262626",
+                      "setText:lineSpace:": [
+                        "$text",
+                        "0"
+                      ],
+                      "setBoldFontSizeString": "16",
+                      "setNumberOfLinesString:": "1"
+                    }
+                  },
+                  {
+                    "view_type": "UILabel",
+                    "view_id": "id_inner_category",
+                    "event_type": "cmd_native_inner_ad_title_click",
+                    "height": {
+                      "type": "wrap_content"
+                    },
+                    "width": {
+                      "type": "match_parent"
+                    },
+                    "margin_top": "4",
+                    "align_parent_left": "YES",
+                    "attributes": {
+                      "setTextColorString:": "#8E8E93",
+                      "setText:": "$text",
+                      "setFontSizeString:": "13",
+                      "setNumberOfLinesString:": "1"
+                    }
+                  },
+                  {
+                    "view_type": "UIView",
+                    "view_id": "id_bottom_operation",
+                    "event_type": "cmd_id_area_left_bottom_operation_click",
+                    "layout_type": "layout_linear",
+                    "direction": "horizontal",
+                    "align_parent_center_vertical": "YES",
+                    "margin_top": "3",
+                    "height": {
+                      "type": "wrap_content"
+                    },
+                    "width": {
+                      "type": "match_parent"
+                    },
+                    "align_parent_left": "YES",
+                    "subviews": [
+                      {
+                        "view_type": "UIView",
+                        "view_id": "id_game_img1_container1",
+                        "layout_type": "layout_relative",
+                        "margin_right": "-7",
+                        "height": {
+                          "type": "relative",
+                          "value": "27"
+                        },
+                        "width": {
+                          "type": "relative",
+                          "value": "27"
+                        },
+                        "attributes": {
+                          "setBorderWidthString:": "1",
+                          "setBorderColorString:": "#FFFFFF",
+                          "setCornerRadiusString:": "13.5",
+                          "setBackgroundColorString:": "#E8E8E8"
+                        },
+                        "subviews": [
+                          {
+                            "view_type": "ReadInjoyAsynImageView",
+                            "view_id": "id_inner_game_img1",
+                            "height": {
+                              "type": "relative",
+                              "value": "20"
+                            },
+                            "width": {
+                              "type": "relative",
+                              "value": "20"
+                            },
+                            "align_parent_center": "YES",
+                            "attributes": {
+                              "setImageWithURLString:lineup:": [
+                                "$image_url",
+                                "-1"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "view_type": "UIView",
+                        "view_id": "id_game_img2_container2",
+                        "layout_type": "layout_relative",
+                        "margin_right": "-7",
+                        "height": {
+                          "type": "relative",
+                          "value": "27"
+                        },
+                        "width": {
+                          "type": "relative",
+                          "value": "27"
+                        },
+                        "attributes": {
+                          "setBorderWidthString:": "1",
+                          "setBorderColorString:": "#FFFFFF",
+                          "setCornerRadiusString:": "13.5",
+                          "setBackgroundColorString:": "#E8E8E8"
+                        },
+                        "subviews": [
+                          {
+                            "view_type": "ReadInjoyAsynImageView",
+                            "view_id": "id_inner_game_img2",
+                            "height": {
+                              "type": "relative",
+                              "value": "20"
+                            },
+                            "width": {
+                              "type": "relative",
+                              "value": "20"
+                            },
+                            "align_parent_center": "YES",
+                            "attributes": {
+                              "setImageWithURLString:lineup:": [
+                                "$image_url",
+                                "-1"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "view_type": "UIView",
+                        "view_id": "id_game_img3_container3",
+                        "layout_type": "layout_relative",
+                        "margin_right": "6",
+                        "height": {
+                          "type": "relative",
+                          "value": "27"
+                        },
+                        "width": {
+                          "type": "relative",
+                          "value": "27"
+                        },
+                        "attributes": {
+                          "setBorderWidthString:": "1",
+                          "setBorderColorString:": "#FFFFFF",
+                          "setCornerRadiusString:": "13.5",
+                          "setBackgroundColorString:": "#E8E8E8"
+                        },
+                        "subviews": [
+                          {
+                            "view_type": "ReadInjoyAsynImageView",
+                            "view_id": "id_inner_game_img3",
+                            "height": {
+                              "type": "relative",
+                              "value": "20"
+                            },
+                            "width": {
+                              "type": "relative",
+                              "value": "20"
+                            },
+                            "align_parent_center": "YES",
+                            "attributes": {
+                              "setImageWithURLString:lineup:": [
+                                "$image_url",
+                                "-1"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "view_type": "UIView",
+                        "view_id": "id_game_img_right_space",
+                        "height": {
+                          "type": "relative",
+                          "value": "25"
+                        },
+                        "width": {
+                          "type": "relative",
+                          "value": "12"
+                        }
+                      },
+                      {
+                        "view_type": "UILabel",
+                        "view_id": "id_inner_ad_name",
+                        "height": {
+                          "type": "wrap_content"
+                        },
+                        "width": {
+                          "type": "wrap_content"
+                        },
+                        "event_type": "cmd_native_inner_ad_icon_click",
+                        "align_parent_center_vertical": "YES",
+                        "attributes": {
+                          "setTextColorString:": "#8E8E93",
+                          "setText:": "$text",
+                          "setFontSizeString:": "12",
+                          "setNumberOfLinesString:": "1"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "view_type": "ReadInJoyAdDownloadView",
+                "view_id": "id_view_AdDownloadView",
+                "height": {
+                  "type": "relative",
+                  "value": "29"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "58"
+                },
+                "align_parent_center_vertical": "YES",
+                "align_parent_right": "YES",
+                "event_type": "cmd_native_inner_game_button_click",
+                "margin_right": "15",
+                "attributes": {
+                  "setFeedsModel:": "$innerGameModel",
+                  "setDownloadBtnStyle:": {
+                    "buttonTextColor": "#FFFFFF",
+                    "buttonTextSize": "13",
+                    "buttonCornerSize": "3",
+                    "buttonWidth": "58",
+                    "buttonHeight": "29",
+                    "buttonBackgroundColor": "#FF136CE9",
+                    "buttonBorderSize": "",
+                    "buttonBorderColor": "",
+                    "buttonHorizontalPadding": "8",
+                    "buttonVerticalPadding": "6",
+                    "buttonAlignment": "3",
+                    "clickTextColor": "#A5A7B3",
+                    "clickBackgroundColor": "#EBEDF5",
+                    "clickBorderColor": ""
+                  },
+                  "progressStyle:": {
+                    "style": "1",
+                    "showProgress": "1",
+                    "width": "58",
+                    "height": "29",
+                    "minWidth": "58",
+                    "maxHeight": "29",
+                    "textColor": "#FF136CE9",
+                    "textSize": "12",
+                    "corner": "3",
+                    "background": "",
+                    "buttonBorderSize": "1",
+                    "buttonBorderColor": "#FF136CE9",
+                    "progressBg": "#FFFFFF",
+                    "secondaryProgressBg": "#FFFFFF",
+                    "progressColor": "#FF136CE9"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

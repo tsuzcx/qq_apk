@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.utils.confighandler;
 
 import android.content.SharedPreferences;
-import anvx;
-import bhhz;
-import bhjm;
-import bhjp;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.SyncLoadTask;
+import com.tencent.mobileqq.utils.configsp.BaseConfigSP;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -15,7 +14,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
 {
   T mConfig;
   Object mLock_Config = new Object();
-  public ReadConfigTask<T> mReadConfigTask;
+  ReadConfigTask<T> mReadConfigTask;
   String mSPKey_Config;
   String mSPKey_Ver;
   String mSPName;
@@ -30,18 +29,18 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
   
   private SharedPreferences getSP()
   {
-    if ((AudioHelper.e()) && (this.mSPName == null)) {
+    if ((AudioHelper.d()) && (this.mSPName == null)) {
       throw new IllegalArgumentException(this.TAG + "mSPName为空");
     }
-    return bhjp.a(this.TAG, this.mUin, this.mSPName);
+    return BaseConfigSP.a(this.TAG, this.mUin, this.mSPName);
   }
   
   public T getConfig()
   {
-    if ((this.mConfig == null) && (AudioHelper.e()))
+    if ((this.mConfig == null) && (AudioHelper.d()))
     {
       QLog.w(this.TAG, 1, "getConfig, 配置还未初始化", new Throwable("打印调用栈"));
-      throw new IllegalArgumentException(anvx.a(2131707054));
+      throw new IllegalArgumentException(HardCodeUtil.a(2131707579));
     }
     return this.mConfig;
   }
@@ -61,7 +60,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
   
   public int getConfigVer()
   {
-    if ((AudioHelper.e()) && (this.mSPKey_Config == null)) {
+    if ((AudioHelper.d()) && (this.mSPKey_Config == null)) {
       throw new IllegalArgumentException(this.TAG + "mSPKey_Config为空");
     }
     return getConfigVer(getSP(), this.mSPKey_Config, this.mSPKey_Ver);
@@ -85,14 +84,14 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
   
   public void saveConfig(String paramString, int paramInt)
   {
-    if ((AudioHelper.e()) && (this.mSPKey_Config == null)) {
+    if ((AudioHelper.d()) && (this.mSPKey_Config == null)) {
       throw new IllegalArgumentException(this.TAG + "mSPKey_Config为空");
     }
     SharedPreferences localSharedPreferences = getSP();
     saveConfigSP(this.TAG, localSharedPreferences, paramString, paramInt, this.mSPKey_Config, this.mSPKey_Ver);
   }
   
-  public boolean setConfig(T paramT)
+  boolean setConfig(T paramT)
   {
     synchronized (this.mLock_Config)
     {
@@ -123,7 +122,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
       QLog.w(this.TAG, 1, "异步加载config[" + ((ReadConfigTask)localObject1).TAG + "]");
       localObject2 = new ArrayList();
       ((ArrayList)localObject2).add(localObject1);
-      bhhz.requestSyncTask(null, (ArrayList)localObject2, new bhjm(this, paramGetConfigListen, paramAppInterface));
+      SyncLoadTask.requestSyncTask(null, (ArrayList)localObject2, new NormalConfigHandler.1(this, paramGetConfigListen, paramAppInterface));
       return localObject1;
     }
     QLog.w(this.TAG, 1, "异步加载config[" + ((ReadConfigTask)localObject1).TAG + "], 已经在加载中");

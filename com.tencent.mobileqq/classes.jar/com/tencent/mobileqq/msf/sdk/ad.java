@@ -4,7 +4,7 @@ import android.os.IBinder.DeathRecipient;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.auth.b;
-import com.tencent.mobileqq.msf.sdk.report.e;
+import com.tencent.mobileqq.msf.sdk.b.e;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 

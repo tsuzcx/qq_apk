@@ -12,7 +12,7 @@ public final class RspGetNearbyGroupArea
   implements Cloneable
 {
   static ArrayList<GroupArea> cache_vGroupArea;
-  public ArrayList<GroupArea> vGroupArea;
+  public ArrayList<GroupArea> vGroupArea = null;
   
   static
   {

@@ -1,16 +1,16 @@
 package com.tencent.gdtad.statistics;
 
-import acho;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import org.json.JSONObject;
 
-public final class GdtReportForAntiSpam$2
+final class GdtReportForAntiSpam$2
   implements Runnable
 {
-  public GdtReportForAntiSpam$2(byte[] paramArrayOfByte, JSONObject paramJSONObject) {}
+  GdtReportForAntiSpam$2(byte[] paramArrayOfByte, GdtReportForAntiSpam.ReportCallback paramReportCallback, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -25,12 +25,15 @@ public final class GdtReportForAntiSpam$2
       return;
     }
     AdHttp.send(localParams);
-    acho.b("GdtReportForAntiSpam", String.format(Locale.getDefault(), "reportFlyingStreaming responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
+    if (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtReportForAntiSpam$ReportCallback != null) {
+      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtReportForAntiSpam$ReportCallback.a(localParams);
+    }
+    GdtLog.b("GdtReportForAntiSpam", String.format(Locale.getDefault(), "reportFlyingStreaming responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtReportForAntiSpam.2
  * JD-Core Version:    0.7.0.1
  */

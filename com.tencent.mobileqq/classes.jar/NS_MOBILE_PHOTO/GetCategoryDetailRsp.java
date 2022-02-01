@@ -10,8 +10,8 @@ public final class GetCategoryDetailRsp
   extends JceStruct
 {
   static Map<Integer, GetCategoryDetailRspItem> cache_rsp_item_map = new HashMap();
-  public long host;
-  public Map<Integer, GetCategoryDetailRspItem> rsp_item_map;
+  public long host = 0L;
+  public Map<Integer, GetCategoryDetailRspItem> rsp_item_map = null;
   
   static
   {

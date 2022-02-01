@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.business.AvGameManager;
+import com.tencent.avgame.gamelogic.GameEngine;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
-import ncz;
-import nfc;
 
 public class AVGameBroadcastReceiver
   extends BroadcastReceiver
@@ -47,7 +47,7 @@ public class AVGameBroadcastReceiver
       QLog.i("AVGameBroadcastReceiver", 2, "actionToAVGame, action[" + paramAVGameAppInterface + "]");
     }
     if ("tencent.video.v2g.exitAVGame".equals(paramAVGameAppInterface)) {
-      nfc.a().a(8, null, nfc.a().a());
+      GameEngine.a().a(8, null, GameEngine.a().a());
     }
     while (!"tencent.avgame.q2g.entring".equals(paramAVGameAppInterface)) {
       return;
@@ -75,7 +75,7 @@ public class AVGameBroadcastReceiver
         }
         i = paramIntent.getIntExtra("action_key_status", 0);
         paramContext = paramIntent.getStringExtra("action_key_room_id");
-        paramQQAppInterface = (ncz)paramQQAppInterface.getManager(QQManagerFactory.AV_GAME_MANAGER);
+        paramQQAppInterface = (AvGameManager)paramQQAppInterface.getManager(QQManagerFactory.AV_GAME_MANAGER);
       } while (paramQQAppInterface == null);
       paramQQAppInterface.a(i, paramContext);
       return;
@@ -175,7 +175,7 @@ public class AVGameBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ipc.AVGameBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

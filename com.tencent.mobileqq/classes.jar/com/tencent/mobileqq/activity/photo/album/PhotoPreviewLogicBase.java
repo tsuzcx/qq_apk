@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O extends OtherCommonData>
   extends PhotoPreviewLogic<K, O>
@@ -33,7 +32,86 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
     this.mOnCheckedChangedCallback = this;
   }
   
-  protected void doOnDestroy()
+  private void filterPreviewDataPath()
+  {
+    Iterator localIterator = this.mPhotoPreviewData.paths.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if ((!this.mPhotoPreviewData.canUseURL) || (!QAlbumUtil.isNetUrl(str))) {
+        if (str != null)
+        {
+          if (!new File(str).exists()) {
+            localIterator.remove();
+          }
+        }
+        else {
+          localIterator.remove();
+        }
+      }
+    }
+  }
+  
+  private void handleShowAlbum(Intent paramIntent)
+  {
+    this.mPhotoPreviewData.paths = new ArrayList();
+    this.mPhotoPreviewData.paths.addAll(this.mPhotoCommonData.mediaPathsList);
+    if (this.mPhotoPreviewData.paths.isEmpty()) {
+      this.mPhotoPreviewData.paths = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    }
+    if (this.mPhotoPreviewData.paths == null) {
+      this.mPhotoPreviewData.paths = new ArrayList();
+    }
+    this.mPhotoCommonData.selectedPhotoList = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
+    paramIntent = paramIntent.getIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS");
+    if ((paramIntent != null) && (!paramIntent.isEmpty())) {
+      this.mPhotoCommonData.selectedIndex = paramIntent;
+    }
+    if ((this.mPhotoCommonData.selectedIndex == null) || (this.mPhotoPreviewData.paths == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPreviewActivity", 2, "initData(): Error! selectedItem or sSelectedIndex is null");
+      }
+      this.mActivity.finish();
+    }
+  }
+  
+  private void handleUnShowAlbum(Intent paramIntent)
+  {
+    this.mPhotoPreviewData.paths = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    if (this.mPhotoPreviewData.paths == null)
+    {
+      this.mPhotoPreviewData.paths = new ArrayList();
+      this.mPhotoPreviewData.paths.addAll(this.mPhotoCommonData.selectedPhotoList);
+    }
+    paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+    if ((paramIntent != null) && (!paramIntent.equals("")))
+    {
+      this.mPhotoPreviewData.paths.clear();
+      this.mPhotoPreviewData.paths.add(paramIntent);
+    }
+    filterPreviewDataPath();
+    if (this.mPhotoCommonData.selectedPhotoList == null) {
+      this.mPhotoCommonData.selectedPhotoList = new ArrayList();
+    }
+    for (;;)
+    {
+      this.mPhotoCommonData.selectedPhotoList.addAll(this.mPhotoPreviewData.paths);
+      this.mPhotoCommonData.selectedIndex.clear();
+      if (this.mPhotoPreviewData.isSingleMode) {
+        break;
+      }
+      int i = 0;
+      while (i < this.mPhotoPreviewData.paths.size())
+      {
+        this.mPhotoCommonData.selectedIndex.add(Integer.valueOf(i));
+        i += 1;
+      }
+      this.mPhotoCommonData.selectedPhotoList.clear();
+    }
+  }
+  
+  void doOnDestroy()
   {
     try
     {
@@ -59,7 +137,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
     }
   }
   
-  protected void doOnResume()
+  void doOnResume()
   {
     if ((this.mPhotoPreviewData.showBar) && (this.mActivity.topBar != null)) {
       this.mActivity.topBar.setVisibility(0);
@@ -75,46 +153,29 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
   
   protected void initData(Intent paramIntent)
   {
-    com.tencent.mobileqq.activity.photo.FlowThumbDecoder.sFlowItemHeight = this.mActivity.getResources().getDimension(2131297099);
+    com.tencent.mobileqq.activity.photo.FlowThumbDecoder.sFlowItemHeight = this.mActivity.getResources().getDimension(2131297120);
     this.mPhotoPreviewData.from = paramIntent.getStringExtra("FROM_WHERE");
     paramIntent.removeExtra("FROM_WHERE");
     this.mPhotoPreviewData.isSingleMode = paramIntent.getBooleanExtra("PhotoConst.IS_SINGLE_MODE", false);
     if (this.mPhotoCommonData.selectedMediaInfoHashMap == null) {
       this.mPhotoCommonData.selectedMediaInfoHashMap = new HashMap();
     }
-    Object localObject = (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
-    if ((localObject != null) && (!((HashMap)localObject).isEmpty())) {
-      this.mPhotoCommonData.selectedMediaInfoHashMap.putAll((Map)localObject);
+    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
+    if ((localHashMap != null) && (!localHashMap.isEmpty())) {
+      this.mPhotoCommonData.selectedMediaInfoHashMap.putAll(localHashMap);
     }
-    localObject = (HashMap)paramIntent.getSerializableExtra("PhotoConst.ALL_MEDIA_PATHS");
-    if (localObject != null) {
-      this.mPhotoCommonData.allMediaInfoHashMap = ((HashMap)localObject);
+    localHashMap = (HashMap)paramIntent.getSerializableExtra("PhotoConst.ALL_MEDIA_PATHS");
+    if (localHashMap != null) {
+      this.mPhotoCommonData.allMediaInfoHashMap = localHashMap;
     }
     this.mPhotoCommonData.maxSelectNum = paramIntent.getIntExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
     this.mPhotoPreviewData.showAlbum = paramIntent.getBooleanExtra("PhotoConst.SHOW_ALBUM", false);
     this.mPhotoPreviewData.backBtnText = paramIntent.getStringExtra("back_btn_text");
-    if (this.mPhotoPreviewData.showAlbum)
+    if (this.mPhotoPreviewData.showAlbum) {
+      handleShowAlbum(paramIntent);
+    }
+    for (;;)
     {
-      this.mPhotoPreviewData.paths = new ArrayList();
-      this.mPhotoPreviewData.paths.addAll(this.mPhotoCommonData.mediaPathsList);
-      if (this.mPhotoPreviewData.paths.isEmpty()) {
-        this.mPhotoPreviewData.paths = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-      }
-      if (this.mPhotoPreviewData.paths == null) {
-        this.mPhotoPreviewData.paths = new ArrayList();
-      }
-      this.mPhotoCommonData.selectedPhotoList = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-      localObject = paramIntent.getIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS");
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
-        this.mPhotoCommonData.selectedIndex = ((ArrayList)localObject);
-      }
-      if ((this.mPhotoCommonData.selectedIndex == null) || (this.mPhotoPreviewData.paths == null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoPreviewActivity", 2, "initData(): Error! selectedItem or sSelectedIndex is null");
-        }
-        this.mActivity.finish();
-      }
       this.mPhotoPreviewData.totalPicCount = this.mPhotoPreviewData.paths.size();
       this.mPhotoPreviewData.firstSelectedPostion = this.mActivity.getIntent().getIntExtra("PhotoConst.CURRENT_SELECTED_INDEX", -1);
       if (this.mPhotoPreviewData.firstSelectedPostion >= this.mPhotoPreviewData.totalPicCount) {
@@ -123,53 +184,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
       paramIntent.removeExtra("PhotoConst.CURRENT_SELECTED_INDEX");
       this.mPhotoPreviewData.customSendBtnText = paramIntent.getStringExtra("PhotoConst.CUSTOM_SENDBTN_TEXT");
       return;
-    }
-    this.mPhotoPreviewData.paths = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    if (this.mPhotoPreviewData.paths == null)
-    {
-      this.mPhotoPreviewData.paths = new ArrayList();
-      this.mPhotoPreviewData.paths.addAll(this.mPhotoCommonData.selectedPhotoList);
-    }
-    localObject = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-    if ((localObject != null) && (!((String)localObject).equals("")))
-    {
-      this.mPhotoPreviewData.paths.clear();
-      this.mPhotoPreviewData.paths.add(localObject);
-    }
-    localObject = this.mPhotoPreviewData.paths.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      if ((!this.mPhotoPreviewData.canUseURL) || (!QAlbumUtil.isNetUrl(str))) {
-        if (str != null)
-        {
-          if (!new File(str).exists()) {
-            ((Iterator)localObject).remove();
-          }
-        }
-        else {
-          ((Iterator)localObject).remove();
-        }
-      }
-    }
-    if (this.mPhotoCommonData.selectedPhotoList == null) {
-      this.mPhotoCommonData.selectedPhotoList = new ArrayList();
-    }
-    for (;;)
-    {
-      this.mPhotoCommonData.selectedPhotoList.addAll(this.mPhotoPreviewData.paths);
-      this.mPhotoCommonData.selectedIndex.clear();
-      if (this.mPhotoPreviewData.isSingleMode) {
-        break;
-      }
-      int i = 0;
-      while (i < this.mPhotoPreviewData.paths.size())
-      {
-        this.mPhotoCommonData.selectedIndex.add(Integer.valueOf(i));
-        i += 1;
-      }
-      break;
-      this.mPhotoCommonData.selectedPhotoList.clear();
+      handleUnShowAlbum(paramIntent);
     }
   }
   
@@ -246,12 +261,13 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
   
   public void onGalleryItemClicked(int paramInt1, String paramString, int paramInt2)
   {
-    if (paramInt1 == 1) {
-      return;
-    }
-    if (this.mPhotoPreviewData.showBar)
+    if (paramInt1 != 1)
     {
-      this.mActivity.hideMenuBar();
+      if (this.mPhotoPreviewData.showBar) {
+        this.mActivity.hideMenuBar();
+      }
+    }
+    else {
       return;
     }
     this.mActivity.showMenuBar();
@@ -285,7 +301,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
       this.mActivity.selectedBox.setChecked(false);
       break;
       label172:
-      this.mActivity.titleView.setText(this.mActivity.getResources().getString(2131694766));
+      this.mActivity.titleView.setText(this.mActivity.getResources().getString(2131695004));
     }
   }
   
@@ -362,7 +378,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
       }
       this.mActivity.selectedBox.setActivated(true);
       return;
-      localObject = ((Resources)localObject).getString(2131694617);
+      localObject = ((Resources)localObject).getString(2131694852);
       break;
       label153:
       i = 0;
@@ -379,7 +395,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase
  * JD-Core Version:    0.7.0.1
  */

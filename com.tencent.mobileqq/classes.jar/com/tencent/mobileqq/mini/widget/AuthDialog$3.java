@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AuthDialog$3
   implements View.OnClickListener
@@ -19,7 +18,6 @@ class AuthDialog$3
     this.this$0.getData().putBoolean("key_once_sub_cb_maintain", AuthDialog.access$900(this.this$0).isChecked());
     this.this$0.setRefuse(true);
     this.this$0.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

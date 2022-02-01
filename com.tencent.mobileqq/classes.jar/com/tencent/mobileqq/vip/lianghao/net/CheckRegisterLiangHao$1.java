@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
 import android.os.SystemClock;
-import biap;
-import biau;
+import com.tencent.mobileqq.vip.lianghao.data.LiangHaoStatusRsp;
 
-public class CheckRegisterLiangHao$1
+class CheckRegisterLiangHao$1
   implements Runnable
 {
-  public CheckRegisterLiangHao$1(biau parambiau) {}
+  CheckRegisterLiangHao$1(CheckRegisterLiangHao paramCheckRegisterLiangHao) {}
   
   public void run()
   {
-    biau.a(this.this$0, SystemClock.elapsedRealtime());
-    biap localbiap = biau.a(this.this$0);
-    biau.a(this.this$0, localbiap);
+    CheckRegisterLiangHao.a(this.this$0, SystemClock.elapsedRealtime());
+    LiangHaoStatusRsp localLiangHaoStatusRsp = CheckRegisterLiangHao.a(this.this$0);
+    CheckRegisterLiangHao.a(this.this$0, localLiangHaoStatusRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.1
  * JD-Core Version:    0.7.0.1
  */

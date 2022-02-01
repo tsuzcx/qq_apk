@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/cfi" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/b93"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/b93" android:layout_marginLeft="8.0dip">
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/aot" android:background="@drawable/b0w" android:layout_width="@dimen/b93" android:layout_height="@dimen/b93" app:foregroundResource="@drawable/evc" />
-        <dov.com.qq.im.capture.view.PressScaleTextView android:textSize="17.0dip" android:textColor="@color/if" android:gravity="center" android:id="@id/cancel" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel" android:shadowColor="@color/by" android:shadowRadius="3.0" />
-    </LinearLayout>
-    <LinearLayout android:layout_gravity="center|right" android:orientation="horizontal" android:id="@id/lbh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip">
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/bdd" android:background="@drawable/b0w" android:focusable="true" android:visibility="gone" android:layout_width="@dimen/b93" android:layout_height="@dimen/b93" android:contentDescription="@string/j6h" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/a0g" app:foregroundWidth="35.0dip" />
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/m__" android:background="@drawable/b0w" android:focusable="true" android:visibility="gone" android:layout_width="@dimen/b93" android:layout_height="@dimen/b93" android:contentDescription="@string/j6d" app:foregroundHeight="49.0dip" app:foregroundResource="@drawable/gx8" app:foregroundWidth="49.0dip" />
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/ban" android:background="@drawable/b0w" android:focusable="true" android:visibility="gone" android:layout_width="@dimen/b93" android:layout_height="@dimen/b93" android:contentDescription="@string/j6i" app:foregroundHeight="49.0dip" app:foregroundResource="@drawable/gx0" app:foregroundWidth="49.0dip" />
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/ccr" android:background="@drawable/b0w" android:focusable="true" android:layout_width="@dimen/b93" android:layout_height="@dimen/b93" android:contentDescription="@string/j6k" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/a0h" app:foregroundWidth="35.0dip" />
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/mkw" android:background="@drawable/b0w" android:focusable="true" android:layout_width="@dimen/b93" android:layout_height="@dimen/b93" android:contentDescription="@string/j6n" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/evz" app:foregroundWidth="35.0dip" />
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/l_x" android:background="@drawable/b0w" android:focusable="true" android:layout_width="@dimen/b93" android:layout_height="@dimen/b93" android:contentDescription="@string/j6n" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/equ" app:foregroundWidth="35.0dip" />
-        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/at2" android:background="@drawable/b0w" android:focusable="true" android:layout_width="@dimen/b93" android:layout_height="@dimen/b93" android:contentDescription="@string/j6b" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/evx" app:foregroundWidth="35.0dip" />
-    </LinearLayout>
-</FrameLayout>
+<RelativeLayout android:id="@id/root" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/idz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/c50" />
+    <include android:id="@id/mys" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/b_j" android:layout_below="@id/idz" layout="@layout/c34" />
+    <FrameLayout android:id="@id/l9k" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/b_j" android:layout_below="@id/idz" />
+    <include android:id="@id/npe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c5w" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ab2" />
+</RelativeLayout>

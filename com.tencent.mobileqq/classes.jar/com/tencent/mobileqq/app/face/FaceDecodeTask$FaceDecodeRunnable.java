@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.face;
 
 import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 
 class FaceDecodeTask$FaceDecodeRunnable
@@ -19,7 +19,7 @@ class FaceDecodeTask$FaceDecodeRunnable
   {
     Object localObject1 = Thread.currentThread();
     ((Thread)localObject1).setName("FaceDecodeThread" + ((Thread)localObject1).getId());
-    localObject1 = BaseApplicationImpl.processName;
+    localObject1 = BaseApplication.processName;
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals("com.tencent.mobileqq"))) {
       Process.setThreadPriority(-8);
     }
@@ -65,7 +65,7 @@ class FaceDecodeTask$FaceDecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecodeTask.FaceDecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

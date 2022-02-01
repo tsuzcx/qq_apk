@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import awzp;
-import awzz;
 import java.util.List;
 
-public class MsgBackupController$5
+class MsgBackupController$5
   implements Runnable
 {
-  public MsgBackupController$5(awzp paramawzp, List paramList, awzz paramawzz) {}
+  MsgBackupController$5(MsgBackupController paramMsgBackupController, List paramList, MsgBackupSessionRequest paramMsgBackupSessionRequest) {}
   
   public void run()
   {
-    awzp.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Awzz, awzp.b());
+    MsgBackupController.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerMsgBackupSessionRequest, MsgBackupController.b());
   }
 }
 

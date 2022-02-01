@@ -5,58 +5,54 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyPageItemCache;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data.RIJDataFetchManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseReportData;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KanDianVideoUploadUtils;
 import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService.ICallBack;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoySuperMaskAdUtil;
+import com.tencent.biz.pubaccount.util.PublicTracker;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import oqu;
-import pjt;
-import pkh;
-import pmz;
-import pvj;
-import rot;
-import rsz;
-import rtd;
-import syt;
-import szl;
-import szm;
-import uky;
-import uuq;
 
 public abstract class ReadInJoyBaseListViewGroup
   extends FrameLayout
 {
-  public int a;
+  protected int a;
+  protected ReadInJoyBaseViewController a;
+  protected ReadInJoyPageItemCache a;
+  KandianVideoUploadService.ICallBack jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcKandianVideoUploadService$ICallBack = new ReadInJoyBaseListViewGroup.1(this);
+  KandianProgressView.ClickCallBack jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianProgressView$ClickCallBack = new ReadInJoyBaseListViewGroup.2(this);
   protected ReadInJoyXListView a;
   List<KandianProgressView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public Map<String, KandianProgressView> a;
-  protected oqu a;
-  protected pjt a;
-  public rtd a;
-  syt jdField_a_of_type_Syt = new szm(this);
+  Map<String, KandianProgressView> jdField_a_of_type_JavaUtilMap = new HashMap();
   protected boolean a;
   
-  public ReadInJoyBaseListViewGroup(oqu paramoqu, int paramInt, pjt parampjt)
+  public ReadInJoyBaseListViewGroup(ReadInJoyBaseViewController paramReadInJoyBaseViewController, int paramInt, ReadInJoyPageItemCache paramReadInJoyPageItemCache)
   {
-    super(paramoqu.a());
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Rtd = new szl(this);
+    super(paramReadInJoyBaseViewController.a());
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Oqu = paramoqu;
-    if (parampjt == null)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController = paramReadInJoyBaseViewController;
+    if (paramReadInJoyPageItemCache == null)
     {
-      this.jdField_a_of_type_Pjt = new pjt();
-      this.jdField_a_of_type_Pjt.a = bmhv.a(paramInt, (QQAppInterface)pkh.a());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyPageItemCache = new ReadInJoyPageItemCache();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyPageItemCache.a = ReadInJoyHelper.a(paramInt, (QQAppInterface)ReadInJoyUtils.a());
       return;
     }
-    this.jdField_a_of_type_Pjt = parampjt;
-    this.jdField_a_of_type_Pjt.b = 1;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyPageItemCache = paramReadInJoyPageItemCache;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyPageItemCache.b = 1;
   }
   
   private void a(Bundle paramBundle, String paramString)
@@ -81,7 +77,7 @@ public abstract class ReadInJoyBaseListViewGroup
         this.jdField_a_of_type_JavaUtilMap.put(str, localObject);
         return;
         label106:
-        localObject = new KandianProgressView(a(), paramBundle, this.jdField_a_of_type_Syt);
+        localObject = new KandianProgressView(a(), paramBundle, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianProgressView$ClickCallBack);
       }
     }
     ((View)localObject).setTag(paramString);
@@ -107,14 +103,14 @@ public abstract class ReadInJoyBaseListViewGroup
   
   private void b()
   {
-    Iterator localIterator = rsz.a().iterator();
+    Iterator localIterator = KanDianVideoUploadUtils.a().iterator();
     while (localIterator.hasNext())
     {
       Intent localIntent = (Intent)localIterator.next();
       String str = localIntent.getStringExtra("mTaskID");
       QLog.d("KandianVideoUpload", 1, "is loading fail view:" + str + "map size" + this.jdField_a_of_type_JavaUtilMap.size());
       if (this.jdField_a_of_type_JavaUtilMap.get(str) == null) {
-        KandianVideoUploadService.a(localIntent.getExtras(), this.jdField_a_of_type_Rtd);
+        KandianVideoUploadService.a(localIntent.getExtras(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcKandianVideoUploadService$ICallBack);
       }
     }
   }
@@ -126,20 +122,15 @@ public abstract class ReadInJoyBaseListViewGroup
   
   public Activity a()
   {
-    return this.jdField_a_of_type_Oqu.a();
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a();
   }
   
-  public ReadInJoyXListView a()
+  public ReadInJoyBaseViewController a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController;
   }
   
-  public oqu a()
-  {
-    return this.jdField_a_of_type_Oqu;
-  }
-  
-  public pmz a()
+  public RIJDataFetchManager a()
   {
     return null;
   }
@@ -150,9 +141,9 @@ public abstract class ReadInJoyBaseListViewGroup
   
   public abstract void a(Map<Integer, Boolean> paramMap);
   
-  public abstract void a(Map<Long, rot> paramMap, boolean paramBoolean);
+  public abstract void a(Map<Long, BaseReportData> paramMap, boolean paramBoolean);
   
-  public abstract void a(Set<Long> paramSet, Map<Long, rot> paramMap);
+  public abstract void a(Set<Long> paramSet, Map<Long, BaseReportData> paramMap);
   
   public abstract void a(boolean paramBoolean);
   
@@ -160,7 +151,7 @@ public abstract class ReadInJoyBaseListViewGroup
   
   public abstract void b(Map<Integer, Boolean> paramMap);
   
-  public void c(Map<Integer, rot> paramMap) {}
+  public void c(Map<Integer, BaseReportData> paramMap) {}
   
   public void d() {}
   
@@ -173,7 +164,7 @@ public abstract class ReadInJoyBaseListViewGroup
   public void h()
   {
     b();
-    KandianVideoUploadService.a(this.jdField_a_of_type_Rtd);
+    KandianVideoUploadService.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcKandianVideoUploadService$ICallBack);
   }
   
   public void i()
@@ -186,15 +177,15 @@ public abstract class ReadInJoyBaseListViewGroup
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      uky.a().a(this.jdField_a_of_type_Int, true);
-      uuq.a(null, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE");
-      pvj.a().a(this.jdField_a_of_type_Int, 20, 9223372036854775807L, true);
+      ReadInJoySuperMaskAdUtil.a().a(this.jdField_a_of_type_Int, true);
+      PublicTracker.a(null, "KANDIAN_NEW_FEEDS_LOAD_ARTICLE");
+      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_Int, 20, 9223372036854775807L, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.sdk;
 
 import android.os.Handler;
-import com.tencent.mobileqq.msf.sdk.report.c;
+import com.tencent.mobileqq.msf.sdk.b.c;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.IMsfServiceCallbacker.Stub;
 import com.tencent.qphone.base.remote.ServiceMsgWrapper;

@@ -11,37 +11,31 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bgyd;
-import bimc;
-import bimd;
-import bime;
-import bimf;
-import bitm;
-import bldn;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.widget.OnSizeChangeListener;
 import com.tencent.widget.ScrollView;
 
 public class BounceScrollView
   extends ScrollView
 {
+  private static boolean jdField_c_of_type_Boolean;
   private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new bimc(this));
-  private bimd jdField_a_of_type_Bimd;
-  private bime jdField_a_of_type_Bime;
-  protected bimf a;
-  bitm jdField_a_of_type_Bitm = null;
-  bldn jdField_a_of_type_Bldn;
-  private boolean jdField_a_of_type_Boolean;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new BounceScrollView.1(this));
+  private BounceScrollView.DrawFinishedListener jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$DrawFinishedListener;
+  private BounceScrollView.MotionEventInterceptor jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor;
+  protected BounceScrollView.OnScrollChangedListener a;
+  private OnInterceptTouchEventListener jdField_a_of_type_ComTencentMobileqqWidgetOnInterceptTouchEventListener;
+  ScrollListener jdField_a_of_type_ComTencentMobileqqWidgetScrollListener = null;
+  OnSizeChangeListener jdField_a_of_type_ComTencentWidgetOnSizeChangeListener;
+  private boolean jdField_a_of_type_Boolean = false;
   private float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 1.0F };
   private int[] jdField_a_of_type_ArrayOfInt = { -654311425, -654311425 };
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int d;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean = false;
   private int e;
   
   public BounceScrollView(Context paramContext)
@@ -55,26 +49,21 @@ public class BounceScrollView
     super(paramContext, paramAttributeSet);
     setOverScrollMode(0);
     setFadingEdgeLength(0);
-    if (AppSetting.jdField_c_of_type_Boolean) {
-      bgyd.a(this, false);
-    }
   }
   
   private void a()
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.jdField_d_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setShader(new LinearGradient(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_Float, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP));
-      this.d = getWidth();
+      this.jdField_d_of_type_Int = getWidth();
       this.e = getHeight();
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public static void setEnableTalkBack(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
+    jdField_c_of_type_Boolean = paramBoolean;
   }
   
   public void computeScroll()
@@ -85,8 +74,8 @@ public class BounceScrollView
   public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bimd != null) {
-      this.jdField_a_of_type_Bimd.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$DrawFinishedListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$DrawFinishedListener.a();
     }
   }
   
@@ -94,12 +83,12 @@ public class BounceScrollView
   {
     boolean bool2 = false;
     boolean bool1;
-    if (this.jdField_a_of_type_Bime != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor != null)
     {
       MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
       if (localMotionEvent != null)
       {
-        bool1 = this.jdField_a_of_type_Bime.a(this, localMotionEvent);
+        bool1 = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor.a(this, localMotionEvent);
         localMotionEvent.recycle();
       }
     }
@@ -108,11 +97,11 @@ public class BounceScrollView
       int i = paramMotionEvent.getAction() & 0xFF;
       if (i == 1)
       {
-        if (this.jdField_a_of_type_Bimf != null) {
-          this.jdField_a_of_type_Bimf.a(paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener.a(paramMotionEvent.getX(), paramMotionEvent.getY());
         }
-        if (this.jdField_a_of_type_Bitm != null) {
-          this.jdField_a_of_type_Bitm.a(this, paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.onFingerUpOrCancel(this, paramMotionEvent.getX(), paramMotionEvent.getY());
         }
       }
       for (;;)
@@ -133,27 +122,27 @@ public class BounceScrollView
         }
         if (i == 3)
         {
-          if (this.jdField_a_of_type_Bitm != null) {
-            this.jdField_a_of_type_Bitm.a(this, paramMotionEvent.getX(), paramMotionEvent.getY());
+          if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null) {
+            this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.onFingerUpOrCancel(this, paramMotionEvent.getX(), paramMotionEvent.getY());
           }
         }
-        else if ((i == 0) && (this.jdField_a_of_type_Bitm != null)) {
-          this.jdField_a_of_type_Bitm.b(this, paramMotionEvent.getX(), paramMotionEvent.getY());
+        else if ((i == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.onFingerDown(this, paramMotionEvent.getX(), paramMotionEvent.getY());
         }
       }
       bool1 = false;
     }
   }
   
-  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.jdField_d_of_type_Boolean) {
       return super.drawChild(paramCanvas, paramView, paramLong);
     }
     int i = paramCanvas.saveLayer(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight(), null, 31);
     boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
     int j = paramCanvas.save();
-    paramCanvas.drawRect(0.0F, this.e + getScrollY() - this.jdField_a_of_type_Float, this.d, this.e + getScrollY(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(0.0F, this.e + getScrollY() - this.jdField_a_of_type_Float, this.jdField_d_of_type_Int, this.e + getScrollY(), this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.restoreToCount(j);
     paramCanvas.restoreToCount(i);
     return bool;
@@ -162,15 +151,15 @@ public class BounceScrollView
   public void fling(int paramInt)
   {
     super.fling(paramInt);
-    if (this.jdField_a_of_type_Bitm != null) {
-      this.jdField_a_of_type_Bitm.a(this, paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.fling(this, paramInt);
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((getContext() instanceof NearbyPeopleProfileActivity)) {
-      ((NearbyPeopleProfileActivity)getContext()).a(true);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetOnInterceptTouchEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetOnInterceptTouchEventListener.a(paramMotionEvent);
     }
     try
     {
@@ -197,13 +186,13 @@ public class BounceScrollView
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bimf != null) {
-      this.jdField_a_of_type_Bimf.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    if (this.jdField_a_of_type_Bitm != null) {
-      this.jdField_a_of_type_Bitm.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener.onScrollChanged(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.jdField_d_of_type_Boolean) {
       getChildAt(0).invalidate();
     }
     invalidate();
@@ -213,8 +202,8 @@ public class BounceScrollView
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a();
-    if (this.jdField_a_of_type_Bldn != null) {
-      this.jdField_a_of_type_Bldn.a(paramInt1, paramInt2, paramInt3, paramInt4, false, 0);
+    if (this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener != null) {
+      this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, false, 0);
     }
   }
   
@@ -249,9 +238,9 @@ public class BounceScrollView
     return true;
   }
   
-  public void setDrawFinishedListener(bimd parambimd)
+  public void setDrawFinishedListener(BounceScrollView.DrawFinishedListener paramDrawFinishedListener)
   {
-    this.jdField_a_of_type_Bimd = parambimd;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$DrawFinishedListener = paramDrawFinishedListener;
   }
   
   public void setMaxHeight(int paramInt)
@@ -259,9 +248,9 @@ public class BounceScrollView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setMotionEventInterceptor(bime parambime)
+  public void setMotionEventInterceptor(BounceScrollView.MotionEventInterceptor paramMotionEventInterceptor)
   {
-    this.jdField_a_of_type_Bime = parambime;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor = paramMotionEventInterceptor;
   }
   
   public void setNeedHorizontalGesture(boolean paramBoolean)
@@ -269,24 +258,29 @@ public class BounceScrollView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScrollChangedListener(bimf parambimf)
+  public void setOnInterceptTouchEventListener(OnInterceptTouchEventListener paramOnInterceptTouchEventListener)
   {
-    this.jdField_a_of_type_Bimf = parambimf;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetOnInterceptTouchEventListener = paramOnInterceptTouchEventListener;
   }
   
-  public void setOnSizeChangeListener(bldn parambldn)
+  public void setOnScrollChangedListener(BounceScrollView.OnScrollChangedListener paramOnScrollChangedListener)
   {
-    this.jdField_a_of_type_Bldn = parambldn;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$OnScrollChangedListener = paramOnScrollChangedListener;
   }
   
-  public void setScrollListener(bitm parambitm)
+  public void setOnSizeChangeListener(OnSizeChangeListener paramOnSizeChangeListener)
   {
-    this.jdField_a_of_type_Bitm = parambitm;
+    this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener = paramOnSizeChangeListener;
+  }
+  
+  public void setScrollListener(ScrollListener paramScrollListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetScrollListener = paramScrollListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BounceScrollView
  * JD-Core Version:    0.7.0.1
  */

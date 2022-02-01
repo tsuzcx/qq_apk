@@ -234,19 +234,19 @@ public class WsStickerContentView
     return this.curStickerEditView;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     StickerEventDispatcher.getInstance().addStickerEventListener(this);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     StickerEventDispatcher.getInstance().removeStickerEventListener(this);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((this.isStickerTouching) && (paramCanvas != null))
@@ -295,7 +295,7 @@ public class WsStickerContentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.view.WsStickerContentView
  * JD-Core Version:    0.7.0.1
  */

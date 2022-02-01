@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.vip;
 
-import bhyo;
-import bhyq;
-import bhzg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
@@ -10,21 +7,21 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 
-public class QueueDownloader$1
+class QueueDownloader$1
   implements Runnable
 {
-  public QueueDownloader$1(bhzg parambhzg, bhyo parambhyo) {}
+  QueueDownloader$1(QueueDownloader paramQueueDownloader, DownloadTask paramDownloadTask) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QueueDownloader", 2, "doTask | run() downloadLimitCount=" + this.this$0.a.get() + ",task=" + this.a);
     }
-    if ((this.a.c) && (bhyq.a(this.a.jdField_a_of_type_JavaLangString)))
+    if ((this.a.c) && (DownloaderFactory.a(this.a.jdField_a_of_type_JavaLangString)))
     {
       this.a.jdField_a_of_type_Int = -101;
       this.a.a(-1);
-      this.a.e();
+      this.a.f();
       this.this$0.a(this.a);
       this.this$0.a.addAndGet(-1);
       this.this$0.a();
@@ -34,7 +31,7 @@ public class QueueDownloader$1
       return;
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    int i = bhyq.a(this.a, localAppRuntime);
+    int i = DownloaderFactory.a(this.a, localAppRuntime);
     if (QLog.isColorLevel()) {
       QLog.d("QueueDownloader", 2, "doTask | run() download task result=" + i + ",task=" + this.a);
     }
@@ -53,12 +50,12 @@ public class QueueDownloader$1
       {
         localObject = this.a.jdField_a_of_type_JavaLangString;
         localObject = localStringBuilder.append("QueueDownloader").append(" current task:").append((String)localObject).append(",downloadQueue size:");
-        if (bhzg.a(this.this$0) != null) {
+        if (QueueDownloader.a(this.this$0) != null) {
           break label105;
         }
       }
       label105:
-      for (int i = 0;; i = bhzg.a(this.this$0).size())
+      for (int i = 0;; i = QueueDownloader.a(this.this$0).size())
       {
         ((StringBuilder)localObject).append(i);
         return localStringBuilder.toString();
@@ -75,7 +72,7 @@ public class QueueDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.QueueDownloader.1
  * JD-Core Version:    0.7.0.1
  */

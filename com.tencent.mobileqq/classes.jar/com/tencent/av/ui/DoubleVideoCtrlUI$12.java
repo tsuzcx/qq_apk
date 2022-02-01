@@ -1,9 +1,9 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import lfe;
 
 class DoubleVideoCtrlUI$12
   implements Runnable
@@ -24,7 +24,7 @@ class DoubleVideoCtrlUI$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.12
  * JD-Core Version:    0.7.0.1
  */

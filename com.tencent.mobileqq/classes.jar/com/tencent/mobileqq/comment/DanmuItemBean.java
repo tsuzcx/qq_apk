@@ -3,14 +3,13 @@ package com.tencent.mobileqq.comment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqsk;
-import bhbx;
+import com.tencent.mobileqq.util.MessageRecordUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class DanmuItemBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<DanmuItemBean> CREATOR = new aqsk();
+  public static final Parcelable.Creator<DanmuItemBean> CREATOR = new DanmuItemBean.1();
   public int a;
   public long a;
   public String a;
@@ -48,7 +47,7 @@ public class DanmuItemBean
   
   public String toString()
   {
-    return "DanmuItemBean{commentUin=" + this.jdField_a_of_type_Long + ", commentSeq=" + this.jdField_b_of_type_Long + ", createTime=" + this.d + ", location=" + this.jdField_c_of_type_Long + ", content=" + bhbx.a(this.jdField_a_of_type_JavaLangString) + ", nickName='" + this.jdField_b_of_type_JavaLangString + ", createTime=" + this.d + ", anonymousFlag=" + this.jdField_a_of_type_Boolean + ", anonymousNick=" + this.jdField_c_of_type_JavaLangString + ", anonymousHeadPortrait=" + this.jdField_a_of_type_Int + '}';
+    return "DanmuItemBean{commentUin=" + this.jdField_a_of_type_Long + ", commentSeq=" + this.jdField_b_of_type_Long + ", createTime=" + this.d + ", location=" + this.jdField_c_of_type_Long + ", content=" + MessageRecordUtil.a(this.jdField_a_of_type_JavaLangString) + ", nickName='" + this.jdField_b_of_type_JavaLangString + ", createTime=" + this.d + ", anonymousFlag=" + this.jdField_a_of_type_Boolean + ", anonymousNick=" + this.jdField_c_of_type_JavaLangString + ", anonymousHeadPortrait=" + this.jdField_a_of_type_Int + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

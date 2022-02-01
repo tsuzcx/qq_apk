@@ -1,22 +1,20 @@
 package dov.com.qq.im.aeeditor.lyric.common;
 
-import bnta;
-
-public class TimerTaskManager$InternalTaskEntry$1
+class TimerTaskManager$InternalTaskEntry$1
   implements Runnable
 {
-  public TimerTaskManager$InternalTaskEntry$1(bnta parambnta) {}
+  TimerTaskManager$InternalTaskEntry$1(TimerTaskManager.InternalTaskEntry paramInternalTaskEntry) {}
   
   public void run()
   {
-    if (bnta.a(this.this$0) != null) {
-      bnta.a(this.this$0).run();
+    if (TimerTaskManager.InternalTaskEntry.a(this.this$0) != null) {
+      TimerTaskManager.InternalTaskEntry.a(this.this$0).run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.InternalTaskEntry.1
  * JD-Core Version:    0.7.0.1
  */

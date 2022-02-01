@@ -10,35 +10,34 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bnrh;
-import bodo;
-import bodq;
-import bodr;
-import bods;
 import com.tencent.mobileqq.utils.ViewUtils;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class AEEditorMusicWaveView
   extends View
-  implements bodr
+  implements AEEditorMusicWaveScrollProcessor.IMusicScrollProcessorParent
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private bodo jdField_a_of_type_Bodo;
-  private bodq jdField_a_of_type_Bodq;
-  private bods jdField_a_of_type_Bods;
+  private AEEditorMusicWaveScrollProcessor.IMusicBarMoveListener jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor$IMusicBarMoveListener;
+  private AEEditorMusicWaveScrollProcessor jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor;
+  private AEEditorMusicWaveView.IDragIndicatorListener jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView$IDragIndicatorListener;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
   private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e = true;
-  private boolean f;
+  private float jdField_c_of_type_Float = 0.0F;
+  private int jdField_c_of_type_Int = 0;
+  private boolean jdField_c_of_type_Boolean = false;
+  private float jdField_d_of_type_Float = 0.0F;
+  private boolean jdField_d_of_type_Boolean = false;
+  private float jdField_e_of_type_Float = 0.0F;
+  private boolean jdField_e_of_type_Boolean = true;
+  private boolean f = false;
   private boolean g = true;
-  private boolean h;
+  private boolean h = false;
   
   public AEEditorMusicWaveView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,7 +49,7 @@ public class AEEditorMusicWaveView
   private void a(MotionEvent paramMotionEvent)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bodo.a(paramMotionEvent);
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a(paramMotionEvent);
     }
   }
   
@@ -63,22 +62,22 @@ public class AEEditorMusicWaveView
   
   public int a()
   {
-    return this.jdField_a_of_type_Bodo.f();
+    return this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.f();
   }
   
   public int a(int paramInt)
   {
     float f2 = 0.0F;
     float f1 = f2;
-    if (this.jdField_a_of_type_Bodo != null)
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null)
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bodo.a();
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a();
       f1 = f2;
-      if (this.jdField_b_of_type_Int <= this.jdField_a_of_type_Bodo.d() - this.jdField_a_of_type_Bodo.c())
+      if (this.jdField_b_of_type_Int <= this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.d() - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c())
       {
         f1 = f2;
-        if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bodo.c()) {
-          f1 = paramInt * 1.0F / (this.jdField_a_of_type_Bodo.d() - this.jdField_a_of_type_Bodo.c() * 2) * (this.jdField_b_of_type_Int - this.jdField_a_of_type_Bodo.c());
+        if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c()) {
+          f1 = paramInt * 1.0F / (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.d() - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c() * 2) * (this.jdField_b_of_type_Int - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c());
         }
       }
     }
@@ -97,8 +96,8 @@ public class AEEditorMusicWaveView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bodo != null) {
-      this.jdField_a_of_type_Bodo.c(paramInt);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c(paramInt);
     }
   }
   
@@ -106,25 +105,25 @@ public class AEEditorMusicWaveView
   {
     if (TextUtils.isEmpty(paramString2))
     {
-      bnrh.d("AEEditorMusicWaveView", "audioPath is empty, can not init");
+      AEQLog.d("AEEditorMusicWaveView", "audioPath is empty, can not init");
       return;
     }
     if ((paramString2.equals(this.jdField_a_of_type_JavaLangString)) && (!paramBoolean2))
     {
-      bnrh.b("AEEditorMusicWaveView", "相同 audioPath， 不再重新初始化裁剪条");
+      AEQLog.b("AEEditorMusicWaveView", "相同 audioPath， 不再重新初始化裁剪条");
       return;
     }
     this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bodo = new bodo(this, paramString1, paramString2, paramInt1, paramInt2, ViewUtils.dip2px(18.0F), paramBoolean1, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bodo != null) {
-      this.jdField_a_of_type_Bodo.a(this.h);
+    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor = new AEEditorMusicWaveScrollProcessor(this, paramString1, paramString2, paramInt1, paramInt2, ViewUtils.a(18.0F), paramBoolean1, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a(this.h);
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_Boolean = true;
-    if ((!paramBoolean1) && (this.jdField_a_of_type_Bodo != null))
+    if ((!paramBoolean1) && (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null))
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bodo.a();
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_Bodo.b();
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a();
+      this.jdField_c_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.b();
     }
     requestLayout();
   }
@@ -137,7 +136,7 @@ public class AEEditorMusicWaveView
   
   public boolean a()
   {
-    return this.e;
+    return this.jdField_e_of_type_Boolean;
   }
   
   void b()
@@ -160,28 +159,28 @@ public class AEEditorMusicWaveView
     return this.f;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bodo == null) {
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor == null) {
       return;
     }
-    this.jdField_a_of_type_Bodo.a(paramCanvas, this.e);
+    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a(paramCanvas, this.jdField_e_of_type_Boolean);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bodo == null)
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor == null)
     {
       setMeasuredDimension(0, 0);
       return;
     }
-    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.jdField_a_of_type_Bodo.e());
+    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.e());
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     if (!isEnabled()) {}
-    while ((this.jdField_a_of_type_Bodo == null) || (!a())) {
+    while ((this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor == null) || (!a())) {
       return false;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -192,13 +191,13 @@ public class AEEditorMusicWaveView
       return this.jdField_a_of_type_Boolean;
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      if (this.jdField_a_of_type_Bodo != null)
+      if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null)
       {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Bodo.a();
-        if ((this.g) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bodo.c()) && (this.jdField_a_of_type_Float >= this.jdField_b_of_type_Int - this.jdField_c_of_type_Int / 2 - 70) && (this.jdField_a_of_type_Float <= this.jdField_b_of_type_Int + this.jdField_c_of_type_Int / 2 + 70)) {
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a();
+        if ((this.g) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c()) && (this.jdField_a_of_type_Float >= this.jdField_b_of_type_Int - this.jdField_c_of_type_Int / 2 - 70) && (this.jdField_a_of_type_Float <= this.jdField_b_of_type_Int + this.jdField_c_of_type_Int / 2 + 70)) {
           this.f = true;
         }
-        this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bodo.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+        this.jdField_a_of_type_Boolean = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
       }
       if (!this.jdField_a_of_type_Boolean) {
         return super.onTouchEvent(paramMotionEvent);
@@ -209,14 +208,14 @@ public class AEEditorMusicWaveView
       a(paramMotionEvent);
       d();
       continue;
-      if (this.jdField_a_of_type_Bodo != null)
+      if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null)
       {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Bodo.a();
-        if ((this.f) && (this.jdField_a_of_type_Bodo != null) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bodo.c()) && (paramMotionEvent.getX() >= this.jdField_a_of_type_Bodo.c()) && (paramMotionEvent.getX() <= this.jdField_a_of_type_Bodo.d()))
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a();
+        if ((this.f) && (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c()) && (paramMotionEvent.getX() >= this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c()) && (paramMotionEvent.getX() <= this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.d()))
         {
           this.jdField_b_of_type_Int = ((int)paramMotionEvent.getX());
-          this.jdField_a_of_type_Bodo.a(this.jdField_b_of_type_Int);
-          this.jdField_a_of_type_Bodo.b(this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a(this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.b(this.jdField_b_of_type_Int);
           invalidate();
           continue;
         }
@@ -236,8 +235,8 @@ public class AEEditorMusicWaveView
         if (this.f)
         {
           this.f = false;
-          if (this.jdField_a_of_type_Bods != null) {
-            this.jdField_a_of_type_Bods.a(this.jdField_a_of_type_Bodo.a());
+          if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView$IDragIndicatorListener != null) {
+            this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView$IDragIndicatorListener.a(this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a());
           }
         }
         else
@@ -247,7 +246,7 @@ public class AEEditorMusicWaveView
             a(paramMotionEvent);
             c();
             setPressed(false);
-            this.d = true;
+            this.jdField_d_of_type_Boolean = true;
           }
           for (;;)
           {
@@ -273,39 +272,39 @@ public class AEEditorMusicWaveView
   
   public void setCurrentPosition(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bodo != null) {
-      this.jdField_a_of_type_Bodo.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a(paramInt1, paramInt2);
     }
   }
   
-  public void setDragIndicatorListener(bods parambods)
+  public void setDragIndicatorListener(AEEditorMusicWaveView.IDragIndicatorListener paramIDragIndicatorListener)
   {
-    this.jdField_a_of_type_Bods = parambods;
+    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveView$IDragIndicatorListener = paramIDragIndicatorListener;
   }
   
   public void setEnableTrimMusic(boolean paramBoolean)
   {
-    this.e = paramBoolean;
+    this.jdField_e_of_type_Boolean = paramBoolean;
   }
   
   public void setIndicatorIndex(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bodo != null) && (this.jdField_a_of_type_Bodo.g() - this.jdField_a_of_type_Bodo.f() > 0.01D))
+    if ((this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null) && (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.g() - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.f() > 0.01D))
     {
-      float f1 = this.jdField_a_of_type_Bodo.c();
-      float f2 = (paramInt - this.jdField_a_of_type_Bodo.f()) * 1.0F / (this.jdField_a_of_type_Bodo.g() - this.jdField_a_of_type_Bodo.f());
-      float f3 = this.jdField_a_of_type_Bodo.d() - this.jdField_a_of_type_Bodo.c() * 2;
-      this.jdField_a_of_type_Bodo.a((int)(f1 + f2 * f3));
+      float f1 = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c();
+      float f2 = (paramInt - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.f()) * 1.0F / (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.g() - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.f());
+      float f3 = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.d() - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c() * 2;
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a((int)(f1 + f2 * f3));
     }
   }
   
   public void setIndicatorIndexByVideo(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Bodo != null) && (this.jdField_a_of_type_Bodo.g() - this.jdField_a_of_type_Bodo.f() > 0.01D))
+    if ((this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null) && (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.g() - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.f() > 0.01D))
     {
-      float f1 = this.jdField_a_of_type_Bodo.c() + paramInt1 * 1.0F / paramInt2 * (this.jdField_a_of_type_Bodo.d() - this.jdField_a_of_type_Bodo.c() * 2);
-      this.jdField_a_of_type_Bodo.a((int)f1);
-      this.jdField_a_of_type_Bodo.b((int)f1);
+      float f1 = this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c() + paramInt1 * 1.0F / paramInt2 * (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.d() - this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.c() * 2);
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a((int)f1);
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.b((int)f1);
     }
   }
   
@@ -314,17 +313,17 @@ public class AEEditorMusicWaveView
     this.h = paramBoolean;
   }
   
-  public void setOnMusicMoveListener(bodq parambodq)
+  public void setOnMusicMoveListener(AEEditorMusicWaveScrollProcessor.IMusicBarMoveListener paramIMusicBarMoveListener)
   {
-    this.jdField_a_of_type_Bodq = parambodq;
-    if (this.jdField_a_of_type_Bodo != null) {
-      this.jdField_a_of_type_Bodo.a(this.jdField_a_of_type_Bodq);
+    this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor$IMusicBarMoveListener = paramIMusicBarMoveListener;
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor.a(this.jdField_a_of_type_DovComQqImAeeditorViewAEEditorMusicWaveScrollProcessor$IMusicBarMoveListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.AEEditorMusicWaveView
  * JD-Core Version:    0.7.0.1
  */

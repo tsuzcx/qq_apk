@@ -1,0 +1,55 @@
+package com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders;
+
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.file.ReadAssetFile;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.OfflineUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
+
+public class AssetsComplementFileStringLoader
+  implements ComplementFileStringLoader
+{
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ReadAssetFile jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusLoadersFileReadAssetFile;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public AssetsComplementFileStringLoader(Context paramContext, String paramString)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusLoadersFileReadAssetFile = new ReadAssetFile(paramContext, paramString);
+  }
+  
+  public String loadFileAsString(String paramString)
+  {
+    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
+    try
+    {
+      InputStream localInputStream = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusLoadersFileReadAssetFile.a(paramString);
+      Object localObject = localInputStream;
+      if (localInputStream == null) {
+        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+      }
+      localObject = OfflineUtils.a((InputStream)localObject);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+    }
+    return null;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.AssetsComplementFileStringLoader
+ * JD-Core Version:    0.7.0.1
+ */

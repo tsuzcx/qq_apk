@@ -30,20 +30,21 @@ public final class R$layout
   public static final int abc_search_view = 2131296281;
   public static final int abc_select_dialog_material = 2131296282;
   public static final int abc_tooltip = 2131296283;
-  public static final int notification_action = 2131296285;
-  public static final int notification_action_tombstone = 2131296286;
-  public static final int notification_template_custom_big = 2131296287;
-  public static final int notification_template_icon_group = 2131296288;
-  public static final int notification_template_part_chronometer = 2131296289;
-  public static final int notification_template_part_time = 2131296290;
-  public static final int select_dialog_item_material = 2131296291;
-  public static final int select_dialog_multichoice_material = 2131296292;
-  public static final int select_dialog_singlechoice_material = 2131296293;
-  public static final int support_simple_spinner_dropdown_item = 2131296294;
+  public static final int custom_dialog = 2131296284;
+  public static final int notification_action = 2131296286;
+  public static final int notification_action_tombstone = 2131296287;
+  public static final int notification_template_custom_big = 2131296288;
+  public static final int notification_template_icon_group = 2131296289;
+  public static final int notification_template_part_chronometer = 2131296290;
+  public static final int notification_template_part_time = 2131296291;
+  public static final int select_dialog_item_material = 2131296292;
+  public static final int select_dialog_multichoice_material = 2131296293;
+  public static final int select_dialog_singlechoice_material = 2131296294;
+  public static final int support_simple_spinner_dropdown_item = 2131296295;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.qflutter_network_image.R.layout
  * JD-Core Version:    0.7.0.1
  */

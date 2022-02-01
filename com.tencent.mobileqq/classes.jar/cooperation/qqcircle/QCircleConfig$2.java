@@ -1,9 +1,8 @@
 package cooperation.qqcircle;
 
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.biz.richframework.network.request.BaseRequest;
 import qqcircle.QQCircleSwitch.SetCircleSwitchRsp;
 
 class QCircleConfig$2
@@ -11,17 +10,17 @@ class QCircleConfig$2
 {
   QCircleConfig$2(QCircleConfig paramQCircleConfig) {}
   
-  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSwitch.SetCircleSwitchRsp paramSetCircleSwitchRsp)
+  public void onReceive(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSwitch.SetCircleSwitchRsp paramSetCircleSwitchRsp)
   {
-    QLog.i("QCircleFolderSplashPart", 1, "setSplashNotShowAgain isSuccess=" + paramBoolean + ",retCode=" + paramLong + ",errMsg=" + paramString);
+    RFLog.i("QCircleFolderSplashPart", RFLog.USR, "setSplashNotShowAgain isSuccess=" + paramBoolean + ",retCode=" + paramLong + ",errMsg=" + paramString);
     if ((paramBoolean) && (paramLong == 0L)) {
-      QzoneConfig.getInstance().updateOneConfig("qqcircle", "qqcircle_splash_enable", "0");
+      this.this$0.updateOneConfig("qqcircle", "qqcircle_splash_enable", "0");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.QCircleConfig.2
  * JD-Core Version:    0.7.0.1
  */

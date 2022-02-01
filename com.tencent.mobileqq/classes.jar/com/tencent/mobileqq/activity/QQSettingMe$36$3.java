@@ -1,20 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import aesc;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class QQSettingMe$36$3
+class QQSettingMe$36$3
   implements Runnable
 {
-  public QQSettingMe$36$3(aesc paramaesc) {}
+  QQSettingMe$36$3(QQSettingMe.36 param36, Card paramCard) {}
   
   public void run()
   {
-    this.a.a.y();
+    if (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$36.a) != null) {
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$36.a).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.36.3
  * JD-Core Version:    0.7.0.1
  */

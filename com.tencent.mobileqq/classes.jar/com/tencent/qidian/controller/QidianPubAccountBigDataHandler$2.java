@@ -1,13 +1,12 @@
 package com.tencent.qidian.controller;
 
-import bjyk;
 import com.tencent.qidian.data.PubAccountNavigationMenu;
 import java.util.Map;
 
-public class QidianPubAccountBigDataHandler$2
+class QidianPubAccountBigDataHandler$2
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$2(bjyk parambjyk, long paramLong1, long paramLong2) {}
+  QidianPubAccountBigDataHandler$2(QidianPubAccountBigDataHandler paramQidianPubAccountBigDataHandler, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -22,14 +21,14 @@ public class QidianPubAccountBigDataHandler$2
     }
     for (;;)
     {
-      bjyk.a(this.this$0, this.a, localPubAccountNavigationMenu, this.b);
+      QidianPubAccountBigDataHandler.a(this.this$0, this.a, localPubAccountNavigationMenu, this.b);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianPubAccountBigDataHandler.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,19 @@
 package com.tencent.mobileqq.werewolves;
 
-import aiav;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
 public class GameView
   extends FrameLayout
 {
-  aiav a;
+  GameRoomChatPie a;
   
   public GameView(Context paramContext)
   {
     super(paramContext);
-  }
-  
-  public GameView(Context paramContext, aiav paramaiav)
-  {
-    super(paramContext);
-    this.a = paramaiav;
   }
   
   public GameView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,15 +21,21 @@ public class GameView
     super(paramContext, paramAttributeSet);
   }
   
+  public GameView(Context paramContext, GameRoomChatPie paramGameRoomChatPie)
+  {
+    super(paramContext);
+    this.a = paramGameRoomChatPie;
+  }
+  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.a.hideGiftPanel();
+    this.a.aM();
     return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.GameView
  * JD-Core Version:    0.7.0.1
  */

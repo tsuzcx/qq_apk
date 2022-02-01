@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asix;
+import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListener;
 
 class EmotionNeedDownloadAdapter$1
-  extends asix
+  extends EmotionPanelPayBackListener
 {
   EmotionNeedDownloadAdapter$1(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
   
@@ -14,7 +14,7 @@ class EmotionNeedDownloadAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter.1
  * JD-Core Version:    0.7.0.1
  */

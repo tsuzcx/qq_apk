@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class TagInfo
   extends JceStruct
 {
-  public byte bType;
-  public long iTagId;
+  public byte bType = 0;
+  public long iTagId = 0L;
   public String strContent = "";
   
   public TagInfo() {}

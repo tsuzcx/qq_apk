@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 
@@ -14,14 +15,14 @@ class IVCommonInterfaceImpl$1
   {
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     Bundle[] arrayOfBundle = new Bundle[1];
-    LbsManagerService.startLocation(new IVCommonInterfaceImpl.1.1(this, this.val$businessId, arrayOfBundle, localCountDownLatch));
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new IVCommonInterfaceImpl.1.1(this, this.val$businessId, arrayOfBundle, localCountDownLatch));
     localCountDownLatch.await();
     return arrayOfBundle[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl.1
  * JD-Core Version:    0.7.0.1
  */

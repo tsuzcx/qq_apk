@@ -15,11 +15,11 @@ public final class stGetPersonalFeedListRsp
   static ArrayList<stSimpleMetaFeed> cache_feeds = new ArrayList();
   static Map<String, String> cache_map_ext;
   public String attach_info = "";
-  public stGlobalConfig config;
-  public stFeedStatus contextFeedStatus;
-  public ArrayList<stSimpleMetaFeed> feeds;
+  public stGlobalConfig config = null;
+  public stFeedStatus contextFeedStatus = null;
+  public ArrayList<stSimpleMetaFeed> feeds = null;
   public boolean is_finished = true;
-  public Map<String, String> map_ext;
+  public Map<String, String> map_ext = null;
   public String traceId = "";
   
   static

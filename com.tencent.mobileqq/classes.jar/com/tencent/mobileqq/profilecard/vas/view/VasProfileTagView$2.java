@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.profilecard.vas.view;
 
-import azrb;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 import java.util.List;
 
 class VasProfileTagView$2
   implements Runnable
 {
-  VasProfileTagView$2(VasProfileTagView paramVasProfileTagView, azrb paramazrb) {}
+  VasProfileTagView$2(VasProfileTagView paramVasProfileTagView, ProfileCardInfo paramProfileCardInfo) {}
   
   public void run()
   {
-    List localList = this.a.a.getLabelList();
-    VasProfileTagView.a(this.this$0).runOnUiThread(new VasProfileTagView.2.1(this, localList));
+    List localList = this.val$cardInfo.a.getLabelList();
+    VasProfileTagView.access$1000(this.this$0).runOnUiThread(new VasProfileTagView.2.1(this, localList));
   }
 }
 

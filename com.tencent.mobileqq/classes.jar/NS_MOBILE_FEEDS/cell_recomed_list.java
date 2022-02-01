@@ -9,9 +9,9 @@ public final class cell_recomed_list
   extends JceStruct
 {
   static ArrayList<s_likeman> cache_likemans = new ArrayList();
-  public int isrecomed;
-  public ArrayList<s_likeman> likemans;
-  public int num;
+  public int isrecomed = 0;
+  public ArrayList<s_likeman> likemans = null;
+  public int num = 0;
   
   static
   {

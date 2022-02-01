@@ -1,7 +1,8 @@
 package com.tencent.image;
 
 import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.image.api.ITool;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 class NativeVideoImage$1
   implements Runnable
@@ -10,7 +11,7 @@ class NativeVideoImage$1
   
   public void run()
   {
-    Toast.makeText(BaseApplication.getContext(), "[NativeVideoImage]OOM:" + this.val$tips, 0).show();
+    Toast.makeText(URLDrawable.depImp.mTool.getContext(), "[NativeVideoImage]OOM:" + this.val$tips, 0).show();
   }
 }
 

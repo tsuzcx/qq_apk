@@ -4,18 +4,16 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blxo;
-import blxx;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new blxx();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new SendMsg.1();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   public final Bundle a;
-  public blxo a;
+  public IActionListener a;
   public String a;
   long b = -1L;
   
@@ -67,8 +65,8 @@ public class SendMsg
     //   61: aload_0
     //   62: aload_1
     //   63: invokevirtual 105	android/os/Parcel:readStrongBinder	()Landroid/os/IBinder;
-    //   66: invokestatic 110	blxp:a	(Landroid/os/IBinder;)Lblxo;
-    //   69: putfield 112	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_Blxo	Lblxo;
+    //   66: invokestatic 110	cooperation/qappcenter/remote/IActionListener$Stub:a	(Landroid/os/IBinder;)Lcooperation/qappcenter/remote/IActionListener;
+    //   69: putfield 112	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_CooperationQappcenterRemoteIActionListener	Lcooperation/qappcenter/remote/IActionListener;
     //   72: return
     //   73: astore_3
     //   74: aload_3
@@ -102,9 +100,9 @@ public class SendMsg
     return this.jdField_a_of_type_Int;
   }
   
-  public blxo a()
+  public IActionListener a()
   {
-    return this.jdField_a_of_type_Blxo;
+    return this.jdField_a_of_type_CooperationQappcenterRemoteIActionListener;
   }
   
   public String a()
@@ -130,7 +128,7 @@ public class SendMsg
       paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       paramParcel.writeLong(this.jdField_a_of_type_Long);
       paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
-      paramParcel.writeStrongInterface(this.jdField_a_of_type_Blxo);
+      paramParcel.writeStrongInterface(this.jdField_a_of_type_CooperationQappcenterRemoteIActionListener);
       return;
     }
     catch (RuntimeException paramParcel)
@@ -142,7 +140,7 @@ public class SendMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qappcenter.remote.SendMsg
  * JD-Core Version:    0.7.0.1
  */

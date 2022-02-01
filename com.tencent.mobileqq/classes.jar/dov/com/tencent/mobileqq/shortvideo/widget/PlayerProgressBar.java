@@ -58,7 +58,7 @@ public class PlayerProgressBar
     return paramInt1;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (super.isInEditMode()) {}
@@ -103,7 +103,7 @@ public class PlayerProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.widget.PlayerProgressBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import albw;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.microapp.a.c;
@@ -35,7 +35,7 @@ public final class a
     String str = a(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (a)albw.a(str);
+      paramQQAppInterface = (a)QWalletTools.a(str);
       Object localObject = paramQQAppInterface;
       if (paramQQAppInterface == null) {
         localObject = new a();
@@ -72,12 +72,12 @@ public final class a
   {
     if (paramApkgConfig != null)
     {
-      PreloadManager.a(paramApkgConfig.apkg_url, false, 0);
+      PreloadManager.deleteRes(paramApkgConfig.apkg_url, false, 0);
       if (paramApkgConfig.sub_apkg_urls != null)
       {
         Iterator localIterator = paramApkgConfig.sub_apkg_urls.values().iterator();
         while (localIterator.hasNext()) {
-          PreloadManager.a((String)localIterator.next(), false, 0);
+          PreloadManager.deleteRes((String)localIterator.next(), false, 0);
         }
       }
       c.a(g.a(paramApkgConfig), false);

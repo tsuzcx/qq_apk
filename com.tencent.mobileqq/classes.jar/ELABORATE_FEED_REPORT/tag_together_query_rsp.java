@@ -13,9 +13,9 @@ public final class tag_together_query_rsp
   static Map<Long, ArrayList<Long>> cache_mapClassContrastList;
   static Map<Long, String> cache_mapClassId2Text;
   static tag_deatail_info cache_stTagDetailInfo = new tag_deatail_info();
-  public Map<Long, ArrayList<Long>> mapClassContrastList;
-  public Map<Long, String> mapClassId2Text;
-  public tag_deatail_info stTagDetailInfo;
+  public Map<Long, ArrayList<Long>> mapClassContrastList = null;
+  public Map<Long, String> mapClassId2Text = null;
+  public tag_deatail_info stTagDetailInfo = null;
   
   static
   {

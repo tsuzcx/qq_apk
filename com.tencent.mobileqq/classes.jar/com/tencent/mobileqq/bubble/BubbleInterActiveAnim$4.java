@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.bubble;
 
 import android.animation.AnimatorSet;
-import aqhk;
-import aqhr;
 
-public class BubbleInterActiveAnim$4
+class BubbleInterActiveAnim$4
   implements Runnable
 {
-  public BubbleInterActiveAnim$4(aqhk paramaqhk, aqhr paramaqhr) {}
+  BubbleInterActiveAnim$4(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimHolder paramAnimHolder) {}
   
   public void run()
   {

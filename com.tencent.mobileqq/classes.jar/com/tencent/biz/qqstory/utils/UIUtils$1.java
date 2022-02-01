@@ -24,12 +24,12 @@ final class UIUtils$1
       paramDownloadParams = paramBitmap;
     } while (((int[])localObject).length != 3);
     paramDownloadParams = (int[])localObject;
-    return UIUtils.getRoundedCornerBitmap(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    return UIUtils.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.UIUtils.1
  * JD-Core Version:    0.7.0.1
  */

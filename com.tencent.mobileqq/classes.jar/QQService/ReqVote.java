@@ -8,8 +8,8 @@ public final class ReqVote
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public long lMID;
-  public ReqHead stHeader;
+  public long lMID = 0L;
+  public ReqHead stHeader = null;
   
   public ReqVote() {}
   

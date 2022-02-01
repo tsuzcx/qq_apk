@@ -4,32 +4,31 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.text.TextUtils;
-import apfw;
+import com.tencent.av.AVLog;
+import com.tencent.av.ManageConfig.QAVConfItem;
+import com.tencent.av.ManageConfig.QAVConfig;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.AudioTransClientInfoHandler;
+import com.tencent.av.business.handler.AudioTransClientInfoHandlerExtend;
+import com.tencent.av.business.handler.BusinessHandlerFactory;
+import com.tencent.av.business.manager.pendant.EffectPendantTools;
 import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.av.business.manager.zimu.EffectZimuManager;
 import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.av.ui.ControlUIObserver.RequestPlayMagicFace;
+import com.tencent.av.ui.ControlUIObserver.ZimuRequest;
 import com.tencent.av.ui.VoiceChangeToolbar;
+import com.tencent.av.utils.UITools;
+import com.tencent.mobileqq.ar.ArConfigUtils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lbd;
-import lbs;
-import lbt;
-import lfe;
-import lge;
-import lgf;
-import lgp;
-import lgx;
-import lid;
-import ljd;
-import mdc;
-import mdd;
-import mvk;
 import org.json.JSONObject;
 
 @Deprecated
 public class EffectOperateManager
-  extends lgp
+  extends BusinessManager
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
@@ -40,7 +39,7 @@ public class EffectOperateManager
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
   private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int;
   private String jdField_d_of_type_JavaLangString;
   private int e = -1;
@@ -59,7 +58,7 @@ public class EffectOperateManager
     boolean bool;
     if (!TextUtils.isEmpty(paramString))
     {
-      lbd.f("EffectOperateManager", "parse config: " + paramString);
+      AVLog.printColorLog("EffectOperateManager", "parse config: " + paramString);
       try
       {
         localJSONObject = new JSONObject(paramString);
@@ -67,10 +66,10 @@ public class EffectOperateManager
           this.jdField_a_of_type_Int = localJSONObject.getInt("versionCode");
         }
         if (localJSONObject.has("beginTime")) {
-          this.jdField_a_of_type_Long = apfw.a(localJSONObject.getString("beginTime"));
+          this.jdField_a_of_type_Long = ArConfigUtils.a(localJSONObject.getString("beginTime"));
         }
         if (localJSONObject.has("endTime")) {
-          this.jdField_b_of_type_Long = apfw.a(localJSONObject.getString("endTime"));
+          this.jdField_b_of_type_Long = ArConfigUtils.a(localJSONObject.getString("endTime"));
         }
         if (localJSONObject.has("wording")) {
           this.jdField_b_of_type_JavaLangString = localJSONObject.getString("wording");
@@ -92,7 +91,7 @@ public class EffectOperateManager
             {
               this.jdField_b_of_type_Int = -1;
               paramString.printStackTrace();
-              lbd.f("EffectOperateManager", "parse|wording color is invalid!" + paramString.getMessage());
+              AVLog.printColorLog("EffectOperateManager", "parse|wording color is invalid!" + paramString.getMessage());
             }
           }
           if (!localJSONObject.has("wordingBgColor")) {
@@ -105,7 +104,7 @@ public class EffectOperateManager
       {
         JSONObject localJSONObject;
         paramString.printStackTrace();
-        lbd.f("EffectOperateManager", "parse exception: " + paramString.toString());
+        AVLog.printColorLog("EffectOperateManager", "parse exception: " + paramString.toString());
         return;
       }
       try
@@ -120,7 +119,7 @@ public class EffectOperateManager
       {
         this.jdField_c_of_type_Int = -16777216;
         paramString.printStackTrace();
-        lbd.f("EffectOperateManager", "parse|wording color is invalid!" + paramString.getMessage());
+        AVLog.printColorLog("EffectOperateManager", "parse|wording color is invalid!" + paramString.getMessage());
         break label225;
       }
       if (localJSONObject.has("showTimes")) {
@@ -164,7 +163,7 @@ public class EffectOperateManager
       }
       for (;;)
       {
-        lbd.f("EffectOperateManager", "parse|versionCode: " + this.jdField_a_of_type_Int + ", beginTime: " + this.jdField_a_of_type_Long + ", endTime: " + this.jdField_b_of_type_Long + ", wording: " + this.jdField_b_of_type_JavaLangString + ", play: " + this.jdField_a_of_type_Boolean + ", wordingColor: 0x" + Long.toString(this.jdField_b_of_type_Int, 16).toUpperCase() + ", wordingBgColor: 0x" + Long.toString(this.jdField_c_of_type_Int, 16).toUpperCase() + ", showTimes: " + this.jdField_d_of_type_Int + ", showBeforeConnect: " + this.jdField_b_of_type_Boolean + ", effectType: " + this.e + ", effectId: " + this.jdField_c_of_type_JavaLangString + ", iconUrl: " + this.jdField_d_of_type_JavaLangString);
+        AVLog.printColorLog("EffectOperateManager", "parse|versionCode: " + this.jdField_a_of_type_Int + ", beginTime: " + this.jdField_a_of_type_Long + ", endTime: " + this.jdField_b_of_type_Long + ", wording: " + this.jdField_b_of_type_JavaLangString + ", play: " + this.jdField_a_of_type_Boolean + ", wordingColor: 0x" + Long.toString(this.jdField_b_of_type_Int, 16).toUpperCase() + ", wordingBgColor: 0x" + Long.toString(this.jdField_c_of_type_Int, 16).toUpperCase() + ", showTimes: " + this.jdField_d_of_type_Int + ", showBeforeConnect: " + this.jdField_b_of_type_Boolean + ", effectType: " + this.e + ", effectId: " + this.jdField_c_of_type_JavaLangString + ", iconUrl: " + this.jdField_d_of_type_JavaLangString);
         return;
         label622:
         paramString = str;
@@ -185,11 +184,11 @@ public class EffectOperateManager
         label796:
         this.jdField_c_of_type_Int = -16777216;
         break label225;
-        lbd.f("EffectOperateManager", "parse|cannot get item!");
+        AVLog.printColorLog("EffectOperateManager", "parse|cannot get item!");
         continue;
         this.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
       }
-      lbd.f("EffectOperateManager", "parse|config is empty!");
+      AVLog.printColorLog("EffectOperateManager", "parse|config is empty!");
       return;
       int i = -1;
       continue;
@@ -216,21 +215,21 @@ public class EffectOperateManager
     return this.jdField_c_of_type_JavaLangString;
   }
   
-  public void a()
+  protected void a()
   {
-    a(lbt.b(263).a);
+    a(QAVConfig.b(263).a);
   }
   
   protected void a(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    lbd.f("EffectOperateManager", "notifyEvent :" + paramInteger + "|" + paramObject1 + "|" + paramObject2);
+    AVLog.printColorLog("EffectOperateManager", "notifyEvent :" + paramInteger + "|" + paramObject1 + "|" + paramObject2);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { paramInteger, paramObject1, paramObject2 });
   }
   
   public void a(boolean paramBoolean)
   {
     int i = 0;
-    Object localObject = mvk.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    Object localObject = UITools.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     String str = "qav_effect_operate_config_show_times_" + this.jdField_a_of_type_Int;
     if (!paramBoolean) {
       i = ((SharedPreferences)localObject).getInt(str, 0);
@@ -245,7 +244,7 @@ public class EffectOperateManager
     return this.jdField_c_of_type_Boolean;
   }
   
-  public boolean a(String paramString)
+  protected boolean a(String paramString)
   {
     return false;
   }
@@ -261,23 +260,23 @@ public class EffectOperateManager
   
   public void b(boolean paramBoolean)
   {
-    lfe locallfe = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-    if (locallfe == null) {
+    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+    if (localSessionInfo == null) {
       QLog.w("EffectOperateManager", 1, "setEffectOperateShown, sessionInfo为null, show[" + paramBoolean + "]");
     }
     do
     {
       return;
-      QLog.w("EffectOperateManager", 1, "setEffectOperateShown, hasShownEffectOperate[" + locallfe.v + "->" + paramBoolean + "], sessionInfo[" + locallfe + "]");
-      locallfe.v = paramBoolean;
+      QLog.w("EffectOperateManager", 1, "setEffectOperateShown, hasShownEffectOperate[" + localSessionInfo.v + "->" + paramBoolean + "], sessionInfo[" + localSessionInfo + "]");
+      localSessionInfo.v = paramBoolean;
     } while (!paramBoolean);
     a(false);
   }
   
   void c()
   {
-    lid locallid = (lid)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2);
-    PendantItem localPendantItem = (PendantItem)locallid.a(this.jdField_c_of_type_JavaLangString);
+    EffectPendantTools localEffectPendantTools = (EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2);
+    PendantItem localPendantItem = (PendantItem)localEffectPendantTools.a(this.jdField_c_of_type_JavaLangString);
     long l;
     if (localPendantItem != null)
     {
@@ -288,14 +287,14 @@ public class EffectOperateManager
         if (localPendantItem.isUsable()) {
           break label147;
         }
-        locallid.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+        localEffectPendantTools.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
         a(Integer.valueOf(171), null, null);
-        locallid.a(l, localPendantItem);
+        localEffectPendantTools.a(l, localPendantItem);
       }
     }
     return;
     label147:
-    locallid.a(l, localPendantItem);
+    localEffectPendantTools.a(l, localPendantItem);
   }
   
   public void c(boolean paramBoolean)
@@ -306,8 +305,8 @@ public class EffectOperateManager
   void d()
   {
     String str = this.jdField_c_of_type_JavaLangString;
-    ljd localljd = (ljd)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
-    ZimuItem localZimuItem = (ZimuItem)localljd.a();
+    EffectZimuManager localEffectZimuManager = (EffectZimuManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
+    ZimuItem localZimuItem = (ZimuItem)localEffectZimuManager.a();
     boolean bool;
     if (localZimuItem == null) {
       bool = true;
@@ -319,14 +318,14 @@ public class EffectOperateManager
       QLog.w("EffectOperateManager", 1, "gotoZimu, id[" + str + "], isChanged[" + bool + "], play[" + this.jdField_a_of_type_Boolean + "], seq[" + l + "]");
       if ((bool) && (this.jdField_a_of_type_Boolean))
       {
-        new mdd(l, "gotoZimu", 1, str).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-        if (((lge)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a()) {
-          lgf.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, "gotoZimu", l, str, true);
+        new ControlUIObserver.ZimuRequest(l, "gotoZimu", 1, str).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+        if (((AudioTransClientInfoHandler)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getBusinessHandler(BusinessHandlerFactory.jdField_b_of_type_JavaLangString)).a()) {
+          AudioTransClientInfoHandlerExtend.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, "gotoZimu", l, str, true);
         }
         if (localZimuItem != null) {
           break;
         }
-        localljd.a("gotoZimu_" + str, true, l, null);
+        localEffectZimuManager.a("gotoZimu_" + str, true, l, null);
       }
       return;
       if (!str.equalsIgnoreCase(localZimuItem.getId())) {
@@ -335,7 +334,7 @@ public class EffectOperateManager
         bool = false;
       }
     }
-    localljd.b("gotoZimu_" + str, l);
+    localEffectZimuManager.b("gotoZimu_" + str, l);
   }
   
   void e()
@@ -349,12 +348,12 @@ public class EffectOperateManager
       return;
       AudioHelper.a(str, false);
     } while (!this.jdField_a_of_type_Boolean);
-    new mdc(AudioHelper.b(), str, true, 5).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    new ControlUIObserver.RequestPlayMagicFace(AudioHelper.b(), str, true, 5).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectOperateManager
  * JD-Core Version:    0.7.0.1
  */

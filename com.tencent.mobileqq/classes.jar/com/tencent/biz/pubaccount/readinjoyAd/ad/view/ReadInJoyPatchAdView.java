@@ -12,23 +12,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticlePatchStatus;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyPatchAdUtils;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pjr;
-import rop;
-import spk;
-import uks;
-import ukv;
-import unw;
-import unx;
 
 public class ReadInJoyPatchAdView
   extends FrameLayout
@@ -38,10 +36,10 @@ public class ReadInJoyPatchAdView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public AdvertisementInfo a;
+  private VideoPlayManager.VideoPlayParam jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam;
   private KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private spk jdField_a_of_type_Spk;
-  public unx a;
+  public ReadInJoyPatchAdView.PatchAdListener a;
   private TextView b;
   private TextView c;
   private TextView d;
@@ -66,18 +64,18 @@ public class ReadInJoyPatchAdView
   
   private int a()
   {
-    if (this.jdField_a_of_type_Spk == null) {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Spk.a.patchStatus.a.get();
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam.a.patchStatus.a.get();
   }
   
   private int b()
   {
-    if (this.jdField_a_of_type_Spk == null) {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Spk.a.patchStatus.b.get();
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam.a.patchStatus.b.get();
   }
   
   private void b(int paramInt)
@@ -86,12 +84,12 @@ public class ReadInJoyPatchAdView
     for (;;)
     {
       return;
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_Unx != null)) {}
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)) {}
       try
       {
-        if (ukv.a(new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo)) == paramInt)
+        if (ReadInJoyPatchAdUtils.a(new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo)) == paramInt)
         {
-          this.jdField_a_of_type_Unx.a(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int);
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1203, 1000L);
         }
         if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
@@ -122,13 +120,13 @@ public class ReadInJoyPatchAdView
   
   private void e()
   {
-    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560099, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)localView.findViewById(2131368539));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377671));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)localView.findViewById(2131362075));
-    this.b = ((TextView)localView.findViewById(2131362238));
-    this.c = ((TextView)localView.findViewById(2131362119));
-    this.d = ((TextView)localView.findViewById(2131372474));
+    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560178, this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)localView.findViewById(2131368769));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378082));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)localView.findViewById(2131362096));
+    this.b = ((TextView)localView.findViewById(2131362257));
+    this.c = ((TextView)localView.findViewById(2131362139));
+    this.d = ((TextView)localView.findViewById(2131372784));
   }
   
   private void f()
@@ -140,7 +138,7 @@ public class ReadInJoyPatchAdView
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new unw(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new ReadInJoyPatchAdView.1(this, Looper.getMainLooper());
   }
   
   private void h()
@@ -148,16 +146,16 @@ public class ReadInJoyPatchAdView
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("0秒");
     }
-    if (this.jdField_a_of_type_Unx != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)
     {
       a();
-      this.jdField_a_of_type_Unx.b(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int, 0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, 0);
     }
   }
   
-  public spk a()
+  public VideoPlayManager.VideoPlayParam a()
   {
-    return this.jdField_a_of_type_Spk;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam;
   }
   
   public void a()
@@ -171,14 +169,14 @@ public class ReadInJoyPatchAdView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Unx != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)
     {
-      this.jdField_a_of_type_Unx.a(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int, paramInt);
-      this.jdField_a_of_type_Unx.b(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int, 1);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, paramInt);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, 1);
     }
   }
   
-  public void a(spk paramspk, AdvertisementInfo paramAdvertisementInfo, int paramInt)
+  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam, AdvertisementInfo paramAdvertisementInfo, int paramInt)
   {
     if (paramAdvertisementInfo == null) {}
     do
@@ -186,44 +184,44 @@ public class ReadInJoyPatchAdView
       return;
       this.jdField_a_of_type_Int = paramInt;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-      this.jdField_a_of_type_Spk = paramspk;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam = paramVideoPlayParam;
       this.c.setText(paramAdvertisementInfo.mTitle);
       this.b.setText(paramAdvertisementInfo.mAdTxt);
-      this.d.setText(uks.a(getContext(), paramAdvertisementInfo));
+      this.d.setText(ReadInJoyAdUtils.a(getContext(), paramAdvertisementInfo));
       try
       {
-        paramspk = new URL(paramAdvertisementInfo.mAdImg);
+        paramVideoPlayParam = new URL(paramAdvertisementInfo.mAdImg);
         URL localURL = new URL(paramAdvertisementInfo.mAdCorporateLogo);
-        pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramspk, getContext(), false);
-        pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, localURL, getContext(), false);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(AIOUtils.dp2px(2.0F, getContext().getResources()));
+        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramVideoPlayParam, getContext(), false);
+        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, localURL, getContext(), false);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(AIOUtils.a(2.0F, getContext().getResources()));
         try
         {
-          paramInt = ukv.a(new JSONObject(paramAdvertisementInfo.mAdExtInfo));
+          paramInt = ReadInJoyPatchAdUtils.a(new JSONObject(paramAdvertisementInfo.mAdExtInfo));
           if (paramInt < 0)
           {
             a();
             return;
           }
         }
-        catch (JSONException paramspk)
+        catch (JSONException paramVideoPlayParam)
         {
-          paramspk.printStackTrace();
+          paramVideoPlayParam.printStackTrace();
           return;
         }
       }
-      catch (Exception paramspk)
+      catch (Exception paramVideoPlayParam)
       {
         for (;;)
         {
-          paramspk.printStackTrace();
+          paramVideoPlayParam.printStackTrace();
         }
       }
     } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    paramspk = new Message();
-    paramspk.what = 1201;
-    paramspk.obj = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramspk);
+    paramVideoPlayParam = new Message();
+    paramVideoPlayParam.what = 1201;
+    paramVideoPlayParam.obj = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramVideoPlayParam);
   }
   
   public boolean a()
@@ -233,22 +231,22 @@ public class ReadInJoyPatchAdView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Unx != null) {
-      this.jdField_a_of_type_Unx.c(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Unx != null) {
-      this.jdField_a_of_type_Unx.d(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Unx != null) {
-      this.jdField_a_of_type_Unx.b(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int, 0);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, 0);
     }
   }
   
@@ -263,11 +261,11 @@ public class ReadInJoyPatchAdView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Unx != null)
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)
       {
         a();
-        this.jdField_a_of_type_Unx.a(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int, i);
-        this.jdField_a_of_type_Unx.b(this.jdField_a_of_type_Spk, this.jdField_a_of_type_Int, 1);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, i);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, 1);
       }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
@@ -279,14 +277,14 @@ public class ReadInJoyPatchAdView
     }
   }
   
-  public void setOnPatchAdListener(unx paramunx)
+  public void setOnPatchAdListener(ReadInJoyPatchAdView.PatchAdListener paramPatchAdListener)
   {
-    this.jdField_a_of_type_Unx = paramunx;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener = paramPatchAdListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView
  * JD-Core Version:    0.7.0.1
  */

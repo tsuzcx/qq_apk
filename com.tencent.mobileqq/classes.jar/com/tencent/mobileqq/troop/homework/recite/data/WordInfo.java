@@ -18,13 +18,13 @@ public class WordInfo
   public int colorPinyin = this.colorsPinyin[0];
   private int[] colors = { COLOR_DEFAULT, COLOR_WRONG, -7829368, -7829368 };
   private int[] colorsPinyin = { COLOR_DEFAULT_PINYIN, COLOR_WRONG, -7829368, -7829368 };
-  public boolean isDetected;
-  public boolean isReminded;
-  public int paragraphPos;
+  public boolean isDetected = false;
+  public boolean isReminded = false;
+  public int paragraphPos = 0;
   public ArrayList<String> pinyin2Detect = new ArrayList();
   public String pinyin2Display;
   public String text;
-  public int wordPos;
+  public int wordPos = 0;
   
   public WordInfo() {}
   

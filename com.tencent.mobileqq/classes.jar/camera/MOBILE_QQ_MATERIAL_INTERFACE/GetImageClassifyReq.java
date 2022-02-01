@@ -8,7 +8,7 @@ public final class GetImageClassifyReq
   extends JceStruct
 {
   static SmartFilterReqItem cache_SinglePic = new SmartFilterReqItem();
-  public SmartFilterReqItem SinglePic;
+  public SmartFilterReqItem SinglePic = null;
   
   public GetImageClassifyReq() {}
   
@@ -31,7 +31,7 @@ public final class GetImageClassifyReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetImageClassifyReq
  * JD-Core Version:    0.7.0.1
  */

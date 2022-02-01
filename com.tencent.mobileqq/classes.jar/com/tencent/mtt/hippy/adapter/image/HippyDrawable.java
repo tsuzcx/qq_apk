@@ -172,7 +172,7 @@ public class HippyDrawable
     //   14: astore_1
     //   15: aload_0
     //   16: aload_3
-    //   17: invokestatic 74	android/graphics/Movie:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Movie;
+    //   17: invokestatic 76	android/graphics/Movie:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Movie;
     //   20: putfield 33	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mGifMovie	Landroid/graphics/Movie;
     //   23: aload_3
     //   24: astore_1
@@ -188,7 +188,7 @@ public class HippyDrawable
     //   40: astore_1
     //   41: aload_0
     //   42: aload_3
-    //   43: invokestatic 79	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   43: invokestatic 81	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   46: putfield 23	com/tencent/mtt/hippy/adapter/image/HippyDrawable:mBitmap	Landroid/graphics/Bitmap;
     //   49: aload_3
     //   50: astore_1
@@ -200,7 +200,7 @@ public class HippyDrawable
     //   61: aload_3
     //   62: astore_1
     //   63: aload 4
-    //   65: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   65: invokevirtual 82	java/lang/OutOfMemoryError:printStackTrace	()V
     //   68: aload_3
     //   69: ifnull -31 -> 38
     //   72: aload_3
@@ -214,52 +214,79 @@ public class HippyDrawable
     //   84: aload_1
     //   85: invokevirtual 67	java/lang/Exception:printStackTrace	()V
     //   88: return
-    //   89: astore_3
-    //   90: aconst_null
-    //   91: astore_1
-    //   92: aload_1
-    //   93: ifnull +7 -> 100
-    //   96: aload_1
-    //   97: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   89: astore 4
+    //   91: aconst_null
+    //   92: astore_3
+    //   93: aload_3
+    //   94: astore_1
+    //   95: aload 4
+    //   97: invokevirtual 67	java/lang/Exception:printStackTrace	()V
     //   100: aload_3
-    //   101: athrow
-    //   102: astore_1
-    //   103: aload_1
-    //   104: invokevirtual 67	java/lang/Exception:printStackTrace	()V
-    //   107: goto -7 -> 100
-    //   110: astore_3
-    //   111: goto -19 -> 92
-    //   114: astore 4
+    //   101: ifnull -63 -> 38
+    //   104: aload_3
+    //   105: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   108: return
+    //   109: astore_1
+    //   110: aload_1
+    //   111: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   114: return
+    //   115: astore_3
     //   116: aconst_null
-    //   117: astore_3
-    //   118: goto -57 -> 61
+    //   117: astore_1
+    //   118: aload_1
+    //   119: ifnull +7 -> 126
+    //   122: aload_1
+    //   123: invokevirtual 64	java/io/FileInputStream:close	()V
+    //   126: aload_3
+    //   127: athrow
+    //   128: astore_1
+    //   129: aload_1
+    //   130: invokevirtual 67	java/lang/Exception:printStackTrace	()V
+    //   133: goto -7 -> 126
+    //   136: astore_3
+    //   137: goto -19 -> 118
+    //   140: astore 4
+    //   142: goto -49 -> 93
+    //   145: astore 4
+    //   147: aconst_null
+    //   148: astore_3
+    //   149: goto -88 -> 61
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	121	0	this	HippyDrawable
-    //   0	121	1	paramFile	File
-    //   0	121	2	paramBoolean	boolean
-    //   8	65	3	localFileInputStream	java.io.FileInputStream
-    //   89	12	3	localObject1	Object
-    //   110	1	3	localObject2	Object
-    //   117	1	3	localObject3	Object
-    //   59	5	4	localException1	Exception
-    //   114	1	4	localException2	Exception
+    //   0	152	0	this	HippyDrawable
+    //   0	152	1	paramFile	File
+    //   0	152	2	paramBoolean	boolean
+    //   8	97	3	localFileInputStream	java.io.FileInputStream
+    //   115	12	3	localObject1	Object
+    //   136	1	3	localObject2	Object
+    //   148	1	3	localObject3	Object
+    //   59	5	4	localOutOfMemoryError1	OutOfMemoryError
+    //   89	7	4	localException1	Exception
+    //   140	1	4	localException2	Exception
+    //   145	1	4	localOutOfMemoryError2	OutOfMemoryError
     // Exception table:
     //   from	to	target	type
-    //   15	23	59	java/lang/Exception
-    //   25	30	59	java/lang/Exception
-    //   41	49	59	java/lang/Exception
-    //   51	56	59	java/lang/Exception
+    //   15	23	59	java/lang/OutOfMemoryError
+    //   25	30	59	java/lang/OutOfMemoryError
+    //   41	49	59	java/lang/OutOfMemoryError
+    //   51	56	59	java/lang/OutOfMemoryError
     //   72	76	77	java/lang/Exception
     //   34	38	83	java/lang/Exception
-    //   0	9	89	finally
-    //   96	100	102	java/lang/Exception
-    //   15	23	110	finally
-    //   25	30	110	finally
-    //   41	49	110	finally
-    //   51	56	110	finally
-    //   63	68	110	finally
-    //   0	9	114	java/lang/Exception
+    //   0	9	89	java/lang/Exception
+    //   104	108	109	java/lang/Exception
+    //   0	9	115	finally
+    //   122	126	128	java/lang/Exception
+    //   15	23	136	finally
+    //   25	30	136	finally
+    //   41	49	136	finally
+    //   51	56	136	finally
+    //   63	68	136	finally
+    //   95	100	136	finally
+    //   15	23	140	java/lang/Exception
+    //   25	30	140	java/lang/Exception
+    //   41	49	140	java/lang/Exception
+    //   51	56	140	java/lang/Exception
+    //   0	9	145	java/lang/OutOfMemoryError
   }
   
   public void setData(String paramString)
@@ -371,13 +398,26 @@ public class HippyDrawable
   
   public void setData(byte[] paramArrayOfByte)
   {
-    this.mGifMovie = Movie.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
-    if (this.mGifMovie == null)
+    try
     {
-      this.mBitmap = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
+      this.mGifMovie = Movie.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
+      if (this.mGifMovie == null)
+      {
+        this.mBitmap = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
+        return;
+      }
+      this.mBitmap = null;
       return;
     }
-    this.mBitmap = null;
+    catch (OutOfMemoryError paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
   
   public void setDataForTarge28Assets(String paramString)
@@ -401,7 +441,7 @@ public class HippyDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.image.HippyDrawable
  * JD-Core Version:    0.7.0.1
  */

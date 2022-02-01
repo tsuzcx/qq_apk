@@ -9,12 +9,12 @@ public final class ReqGetSign
 {
   static byte[] cache_vA2;
   static byte[] cache_vCiphertext;
-  public byte cA2Type;
-  public long lUIN;
-  public long uAppID;
-  public long uSSOVer;
-  public byte[] vA2;
-  public byte[] vCiphertext;
+  public byte cA2Type = 0;
+  public long lUIN = 0L;
+  public long uAppID = 0L;
+  public long uSSOVer = 0L;
+  public byte[] vA2 = null;
+  public byte[] vCiphertext = null;
   
   public ReqGetSign() {}
   

@@ -9,8 +9,8 @@ public final class MobileQbossReportExceptionReq
   extends JceStruct
 {
   static ArrayList<ReportExceptionInfo> cache_vecRepInfo = new ArrayList();
-  public long uiUin;
-  public ArrayList<ReportExceptionInfo> vecRepInfo;
+  public long uiUin = 0L;
+  public ArrayList<ReportExceptionInfo> vecRepInfo = null;
   
   static
   {

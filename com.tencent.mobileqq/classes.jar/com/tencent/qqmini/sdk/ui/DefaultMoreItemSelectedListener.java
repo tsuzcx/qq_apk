@@ -35,6 +35,37 @@ public class DefaultMoreItemSelectedListener
   private static ChannelProxy sChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
   private static MiniAppProxy sMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
   
+  private String onAboutSelect(IMiniAppContext paramIMiniAppContext, Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  {
+    if ((paramActivity != null) && (paramMiniAppInfo != null)) {
+      startAboutPage(paramActivity, paramMiniAppInfo, GetShareState.obtain(paramIMiniAppContext));
+    }
+    return "about";
+  }
+  
+  private String onComplaintSelect(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  {
+    if ((paramActivity != null) && (paramMiniAppInfo != null)) {
+      startComplaintPage(paramActivity, paramMiniAppInfo.appId);
+    }
+    return "report";
+  }
+  
+  private String onFavoriteSelect(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo.topType == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      paramMiniAppInfo.topType = i;
+      sChannelProxy.setUserAppTop(paramMiniAppInfo, null);
+      if (paramMiniAppInfo.topType != 1) {
+        break;
+      }
+      return "settop_on";
+    }
+    return "settop_off";
+  }
+  
   private void reportClick(IMiniAppContext paramIMiniAppContext, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -90,7 +121,7 @@ public class DefaultMoreItemSelectedListener
     {
       localObject = new Bundle();
       ((Bundle)localObject).putInt("key_share_item_id", paramInt);
-      paramIMiniAppContext.performAction(ShareAction.obtain(6, (Bundle)localObject));
+      paramIMiniAppContext.performAction(ShareAction.obtain(7, (Bundle)localObject));
       reportClick(paramIMiniAppContext, "share_" + paramInt);
       return;
     }
@@ -115,15 +146,9 @@ public class DefaultMoreItemSelectedListener
       paramIMiniAppContext.performAction(ShareAction.obtain(4));
       localObject = "share_Moments";
       continue;
-      if ((localActivity != null) && (localMiniAppInfo != null)) {
-        startAboutPage(localActivity, localMiniAppInfo, GetShareState.obtain(paramIMiniAppContext));
-      }
-      localObject = "about";
+      localObject = onAboutSelect(paramIMiniAppContext, localActivity, localMiniAppInfo);
       continue;
-      if ((localActivity != null) && (localMiniAppInfo != null)) {
-        startComplaintPage(localActivity, localMiniAppInfo.appId);
-      }
-      localObject = "report";
+      localObject = onComplaintSelect(localActivity, localMiniAppInfo);
       continue;
       UpdateUIAction.toggleDebugPanel(paramIMiniAppContext);
       MiniToast.makeText(localActivity, "调试面板需重启生效", 1).show();
@@ -132,19 +157,7 @@ public class DefaultMoreItemSelectedListener
       continue;
       RestartAction.restart(paramIMiniAppContext);
       continue;
-      if (localMiniAppInfo.topType == 0) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        localMiniAppInfo.topType = paramInt;
-        sChannelProxy.setUserAppTop(localMiniAppInfo, null);
-        if (localMiniAppInfo.topType != 1) {
-          break label373;
-        }
-        localObject = "settop_on";
-        break;
-      }
-      label373:
-      localObject = "settop_off";
+      localObject = onFavoriteSelect(localMiniAppInfo);
       continue;
       sMiniAppProxy.addShortcut(localActivity, localMiniAppInfo, null);
       localObject = "add_desktop";
@@ -160,7 +173,7 @@ public class DefaultMoreItemSelectedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.DefaultMoreItemSelectedListener
  * JD-Core Version:    0.7.0.1
  */

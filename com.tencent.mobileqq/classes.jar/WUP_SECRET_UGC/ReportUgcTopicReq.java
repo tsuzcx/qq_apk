@@ -8,7 +8,7 @@ public final class ReportUgcTopicReq
   extends JceStruct
 {
   public String content = "";
-  public long time;
+  public long time = 0L;
   public String ugc_id = "";
   public String uid = "";
   

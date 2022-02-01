@@ -15,24 +15,24 @@ public final class GetFriendListReq
   static byte[] cache_vec0xd6bReq;
   static ArrayList<Long> cache_vecSnsTypelist;
   public int eAppType = 0;
-  public short getfriendCount;
-  public byte getgroupCount;
-  public byte groupid;
-  public byte groupstartIndex;
-  public byte ifGetBothFlag;
-  public byte ifGetDOVId;
-  public byte ifGetGroupInfo;
-  public byte ifGetMSFGroup;
-  public byte ifReflush;
-  public byte ifShowTermType;
-  public int reqtype;
-  public short startIndex;
-  public long uin;
-  public ArrayList<Long> uinList;
-  public byte[] vec0xd50Req;
-  public byte[] vec0xd6bReq;
-  public ArrayList<Long> vecSnsTypelist;
-  public long version;
+  public short getfriendCount = 0;
+  public byte getgroupCount = 0;
+  public byte groupid = 0;
+  public byte groupstartIndex = 0;
+  public byte ifGetBothFlag = 0;
+  public byte ifGetDOVId = 0;
+  public byte ifGetGroupInfo = 0;
+  public byte ifGetMSFGroup = 0;
+  public byte ifReflush = 0;
+  public byte ifShowTermType = 0;
+  public int reqtype = 0;
+  public short startIndex = 0;
+  public long uin = 0L;
+  public ArrayList<Long> uinList = null;
+  public byte[] vec0xd50Req = null;
+  public byte[] vec0xd6bReq = null;
+  public ArrayList<Long> vecSnsTypelist = null;
+  public long version = 0L;
   
   static
   {
@@ -127,7 +127,7 @@ public final class GetFriendListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.GetFriendListReq
  * JD-Core Version:    0.7.0.1
  */

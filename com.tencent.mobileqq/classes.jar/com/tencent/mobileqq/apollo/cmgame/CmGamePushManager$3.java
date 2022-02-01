@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import amra;
-import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import com.tencent.mobileqq.apollo.api.model.CmGamePushItem;
 
-public class CmGamePushManager$3
+class CmGamePushManager$3
   implements Runnable
 {
-  public CmGamePushManager$3(amra paramamra, CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2) {}
+  CmGamePushManager$3(CmGamePushManager paramCmGamePushManager, CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2) {}
   
   public void run()
   {
-    amra.a(this.this$0, this.a, this.b);
+    CmGamePushManager.a(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.cmgame.CmGamePushManager.3
  * JD-Core Version:    0.7.0.1
  */

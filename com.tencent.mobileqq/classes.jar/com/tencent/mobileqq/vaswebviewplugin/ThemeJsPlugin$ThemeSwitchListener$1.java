@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import beim;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.theme.SkinEngine;
 
@@ -20,7 +20,7 @@ class ThemeJsPlugin$ThemeSwitchListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.ThemeSwitchListener.1
  * JD-Core Version:    0.7.0.1
  */

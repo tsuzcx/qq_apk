@@ -9,7 +9,7 @@ public final class UniBusiSimpleSigItem
 {
   public String desc = "";
   public String fontColor = "";
-  public int materialVersion;
+  public int materialVersion = 0;
   public String timeAndLocation = "";
   
   public UniBusiSimpleSigItem() {}

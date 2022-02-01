@@ -9,13 +9,13 @@ public final class UploadFriendInfo
 {
   static byte[] cache_vSignature;
   static byte[] cache_vToMID;
-  public long lAppID;
-  public long lFromMID;
-  public long lGroupMID;
-  public int nType;
-  public short shType;
-  public byte[] vSignature;
-  public byte[] vToMID;
+  public long lAppID = 0L;
+  public long lFromMID = 0L;
+  public long lGroupMID = 0L;
+  public int nType = 0;
+  public short shType = 0;
+  public byte[] vSignature = null;
+  public byte[] vToMID = null;
   
   public UploadFriendInfo() {}
   

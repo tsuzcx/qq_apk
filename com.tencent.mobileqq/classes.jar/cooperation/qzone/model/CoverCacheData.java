@@ -15,17 +15,17 @@ public class CoverCacheData
   implements Parcelable
 {
   public static final Parcelable.Creator<CoverCacheData> CREATOR = new CoverCacheData.1();
-  public int alian;
+  public int alian = 0;
   public HashMap<String, String> backupMapExtInfo;
   public String coverId = "";
   public CoverCacheData.GameCoverInfo gameCoverInfo;
-  public int isJigsawOpen;
+  public int isJigsawOpen = 0;
   public String local_url = "";
   public HashMap<String, String> mapExtInfo = new HashMap();
   public CoverCacheData.PackageInfo packageInfo;
   public ArrayList<Map<Integer, String>> photoWall = new ArrayList();
   public String type = "";
-  public long uin;
+  public long uin = 0L;
   public HashMap<String, String> urls = new HashMap();
   
   public static CoverCacheData createFromResponse(long paramLong, feeds_cover paramfeeds_cover)
@@ -141,7 +141,7 @@ public class CoverCacheData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.CoverCacheData
  * JD-Core Version:    0.7.0.1
  */

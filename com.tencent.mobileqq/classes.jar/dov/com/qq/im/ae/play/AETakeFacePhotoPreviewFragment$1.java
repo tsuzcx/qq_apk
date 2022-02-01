@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import bnjs;
+import dov.com.qq.im.ae.config.CameraPeakServiceHandler;
 
 class AETakeFacePhotoPreviewFragment$1
   implements FaceChangeUtils.CropFaceCallback
@@ -12,12 +12,12 @@ class AETakeFacePhotoPreviewFragment$1
   
   public void onSuccess(Bitmap paramBitmap)
   {
-    AETakeFacePhotoPreviewFragment.access$002(bnjs.a(this.this$0.getActivity(), paramBitmap));
+    AETakeFacePhotoPreviewFragment.access$002(CameraPeakServiceHandler.a(this.this$0.getActivity(), paramBitmap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.1
  * JD-Core Version:    0.7.0.1
  */

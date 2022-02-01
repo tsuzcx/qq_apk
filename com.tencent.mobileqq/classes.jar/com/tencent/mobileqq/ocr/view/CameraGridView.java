@@ -12,7 +12,7 @@ public class CameraGridView
   extends View
 {
   private int jdField_a_of_type_Int = 2;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
   private int b = 2;
   private int c;
   private int d;
@@ -38,10 +38,10 @@ public class CameraGridView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(AIOUtils.dp2px(0.5F, getResources()));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(AIOUtils.a(0.5F, getResources()));
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int k = 1;
     super.onDraw(paramCanvas);
@@ -65,7 +65,7 @@ public class CameraGridView
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.c = paramInt1;

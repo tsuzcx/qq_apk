@@ -1,32 +1,48 @@
 package com.tencent.mobileqq.app;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import anvx;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.Constants.LogoutReason;
+import com.tencent.mobileqq.hitrate.PreloadProcHitMgr;
+import com.tencent.mobileqq.notification.modularize.OnlineModulePushReceiverKt;
+import com.tencent.mobileqq.onlinestatus.auto.AutoStatusManager;
 
 class QQAppInterface$7
-  implements Runnable
+  extends BroadcastReceiver
 {
   QQAppInterface$7(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!QQAppInterface.access$2400(this.this$0).verifyAuthentication())
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      QLog.e("QQAppInterface", 1, "", new RuntimeException("WTF"));
-      if (this.this$0.isLogin()) {
-        this.this$0.logout(true);
-      }
-      Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", anvx.a(2131709575));
-      localIntent.putExtra("msg", anvx.a(2131709577));
-      localIntent.putExtra("reason", Constants.LogoutReason.kicked);
-      localIntent.addFlags(268435456);
-      BaseApplicationImpl.sApplication.startActivity(localIntent);
+      do
+      {
+        do
+        {
+          return;
+          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
+          {
+            PreloadProcHitMgr.a();
+            OnlineModulePushReceiverKt.a();
+            AutoStatusManager.c();
+            return;
+          }
+        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
+        paramContext = paramIntent.getStringExtra("kickedUin");
+      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.this$0.getAccount())));
+      paramContext = this.this$0.getKickIntent();
+    } while (paramContext == null);
+    paramContext.putExtra("isSameDevice", false);
+    paramIntent = paramIntent.getStringExtra("msg");
+    if (!TextUtils.isEmpty(paramIntent)) {
+      paramContext.putExtra("msg", paramIntent);
     }
+    this.this$0.setKickIntent(paramContext);
   }
 }
 

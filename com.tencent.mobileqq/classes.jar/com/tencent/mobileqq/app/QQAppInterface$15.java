@@ -1,57 +1,29 @@
 package com.tencent.mobileqq.app;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 class QQAppInterface$15
-  extends Handler
+  implements Runnable
 {
-  QQAppInterface$15(QQAppInterface paramQQAppInterface, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  QQAppInterface$15(QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    try
     {
+      QQAppInterface.access$2400(this.this$0).unregisterReceiver(QQAppInterface.access$2300(this.this$0));
+      try
+      {
+        label17:
+        QQAppInterface.access$2500(this.this$0).unregisterReceiver(QQAppInterface.access$1500(this.this$0));
+        return;
+      }
+      catch (Exception localException1) {}
     }
-    do
+    catch (Exception localException2)
     {
-      return;
-      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
-      if (paramMessage != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQAppInterface", 2, "getOnlineFriend app is null");
-    return;
-    long l1 = QQAppInterface.sNextGetOnlineFriendDelay;
-    long l3 = SystemClock.uptimeMillis();
-    long l2 = Math.abs(l3 - this.this$0.sLastGetOnlineFriendTime);
-    if ((!"0".equals(paramMessage.getCurrentAccountUin())) && (l2 >= QQAppInterface.sNextGetOnlineFriendDelay))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQAppInterface", 2, "getOnlineFriend");
-      }
-      this.this$0.sLastGetOnlineFriendTime = l3;
-      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-      if (localFriendListHandler != null) {
-        localFriendListHandler.getOnlineFriend(paramMessage.getCurrentAccountUin(), (byte)0);
-      }
+      break label17;
     }
-    if (l2 < QQAppInterface.sNextGetOnlineFriendDelay) {
-      l1 = QQAppInterface.sNextGetOnlineFriendDelay - l2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAppInterface", 2, "getOnlineFriend send next msg " + l1);
-    }
-    paramMessage = this.this$0.sGetOnlineFriendHandler.obtainMessage(0, new WeakReference(paramMessage));
-    this.this$0.sGetOnlineFriendHandler.sendMessageDelayed(paramMessage, l1);
   }
 }
 

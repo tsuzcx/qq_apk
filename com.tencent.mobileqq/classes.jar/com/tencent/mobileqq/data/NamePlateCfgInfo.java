@@ -2,12 +2,12 @@ package com.tencent.mobileqq.data;
 
 import MQQ.ItemCfgInfo;
 import android.text.TextUtils;
-import anvk;
-import bdla;
-import bmkb;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.JsonUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -115,7 +115,7 @@ public class NamePlateCfgInfo
   
   public static String getVipNamePlateCfgInfo(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.e(paramString);
@@ -144,7 +144,7 @@ public class NamePlateCfgInfo
     do
     {
       return null;
-      localObject = bmkb.a(paramString);
+      localObject = JsonUtil.a(paramString);
     } while (localObject == null);
     paramString = new HashMap(((Map)localObject).size());
     Object localObject = ((Map)localObject).entrySet().iterator();
@@ -216,7 +216,7 @@ public class NamePlateCfgInfo
     if (QLog.isColorLevel()) {
       QLog.i("QVIP.NamePlateCfgInfo", 2, "NamePlate vipNamePlateClickReport namePlateId = " + paramLong);
     }
-    bdla.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59C", (int)paramLong, 0, "", "", "", "");
+    ReportController.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59C", (int)paramLong, 0, "", "", "", "");
   }
   
   public static void vipNamePlateExposeReport(QQAppInterface paramQQAppInterface, long paramLong)
@@ -226,16 +226,16 @@ public class NamePlateCfgInfo
       if (QLog.isColorLevel()) {
         QLog.i("QVIP.NamePlateCfgInfo", 2, "NamePlate vipNamePlateExposeReport namePlateId = " + paramLong);
       }
-      bdla.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59B", (int)paramLong, 0, "", "", "", "");
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A59B", (int)paramLong, 0, "", "", "", "");
     }
   }
   
   public static void vipNamePlateExposeReport(QQAppInterface paramQQAppInterface, String paramString)
   {
-    anvk localanvk = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localanvk != null)
+    FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localFriendsManager != null)
     {
-      paramString = localanvk.e(paramString);
+      paramString = localFriendsManager.e(paramString);
       if (paramString == null) {}
     }
     for (long l = paramString.bigClubTemplateId;; l = 0L)
@@ -247,7 +247,7 @@ public class NamePlateCfgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.NamePlateCfgInfo
  * JD-Core Version:    0.7.0.1
  */

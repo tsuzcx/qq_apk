@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import anvx;
-import aply;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class ARMarkerResourceManager$2
+class ARMarkerResourceManager$2
   implements Runnable
 {
-  public ARMarkerResourceManager$2(aply paramaply) {}
+  ARMarkerResourceManager$2(ARMarkerResourceManager paramARMarkerResourceManager) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131700228), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131700806), 1).a();
   }
 }
 

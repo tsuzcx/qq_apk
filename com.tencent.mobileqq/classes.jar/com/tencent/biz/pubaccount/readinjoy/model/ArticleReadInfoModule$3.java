@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import qeu;
 
-public class ArticleReadInfoModule$3
+class ArticleReadInfoModule$3
   implements Runnable
 {
-  public ArticleReadInfoModule$3(qeu paramqeu, ArticleReadInfo paramArticleReadInfo) {}
+  ArticleReadInfoModule$3(ArticleReadInfoModule paramArticleReadInfoModule, ArticleReadInfo paramArticleReadInfo) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class ArticleReadInfoModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.3
  * JD-Core Version:    0.7.0.1
  */

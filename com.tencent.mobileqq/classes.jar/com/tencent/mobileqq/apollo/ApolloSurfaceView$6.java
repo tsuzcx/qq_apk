@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo;
 
-import amoo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -25,7 +24,7 @@ class ApolloSurfaceView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloSurfaceView.6
  * JD-Core Version:    0.7.0.1
  */

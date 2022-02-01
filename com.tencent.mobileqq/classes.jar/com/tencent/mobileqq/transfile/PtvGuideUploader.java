@@ -31,7 +31,7 @@ public class PtvGuideUploader
   private PtvGuideUploader.IPtvGuidUpCallback mCallback;
   private int mErrCode;
   private String mErrDesc;
-  private volatile boolean mIsCacheDiff;
+  private volatile boolean mIsCacheDiff = false;
   private HashMap<String, String> mReportInfo = new HashMap();
   private byte[] mSessionKey;
   private byte[] mSigSession;
@@ -42,7 +42,7 @@ public class PtvGuideUploader
   private long mThumbFileSize;
   private int mThumbFileWidth;
   private RandomAccessFile mThumbRaf;
-  private Transaction mTrans;
+  private Transaction mTrans = null;
   private String mTransInfo;
   private String mUUID;
   private String mUin;
@@ -160,32 +160,32 @@ public class PtvGuideUploader
     //   9: aconst_null
     //   10: astore_3
     //   11: aload_0
-    //   12: getfield 64	com/tencent/mobileqq/transfile/PtvGuideUploader:mThumbFileMd5	[B
+    //   12: getfield 68	com/tencent/mobileqq/transfile/PtvGuideUploader:mThumbFileMd5	[B
     //   15: arraylength
     //   16: aload_0
-    //   17: getfield 62	com/tencent/mobileqq/transfile/PtvGuideUploader:mVideoFileMd5	[B
+    //   17: getfield 66	com/tencent/mobileqq/transfile/PtvGuideUploader:mVideoFileMd5	[B
     //   20: arraylength
     //   21: iadd
     //   22: newarray byte
     //   24: astore_2
     //   25: aload_0
-    //   26: getfield 64	com/tencent/mobileqq/transfile/PtvGuideUploader:mThumbFileMd5	[B
+    //   26: getfield 68	com/tencent/mobileqq/transfile/PtvGuideUploader:mThumbFileMd5	[B
     //   29: iconst_0
     //   30: aload_2
     //   31: iconst_0
     //   32: aload_0
-    //   33: getfield 64	com/tencent/mobileqq/transfile/PtvGuideUploader:mThumbFileMd5	[B
+    //   33: getfield 68	com/tencent/mobileqq/transfile/PtvGuideUploader:mThumbFileMd5	[B
     //   36: arraylength
     //   37: invokestatic 262	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   40: aload_0
-    //   41: getfield 62	com/tencent/mobileqq/transfile/PtvGuideUploader:mVideoFileMd5	[B
+    //   41: getfield 66	com/tencent/mobileqq/transfile/PtvGuideUploader:mVideoFileMd5	[B
     //   44: iconst_0
     //   45: aload_2
     //   46: aload_0
-    //   47: getfield 64	com/tencent/mobileqq/transfile/PtvGuideUploader:mThumbFileMd5	[B
+    //   47: getfield 68	com/tencent/mobileqq/transfile/PtvGuideUploader:mThumbFileMd5	[B
     //   50: arraylength
     //   51: aload_0
-    //   52: getfield 62	com/tencent/mobileqq/transfile/PtvGuideUploader:mVideoFileMd5	[B
+    //   52: getfield 66	com/tencent/mobileqq/transfile/PtvGuideUploader:mVideoFileMd5	[B
     //   55: arraylength
     //   56: invokestatic 262	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   59: new 187	java/lang/StringBuilder

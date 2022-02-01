@@ -3,7 +3,7 @@
     <Item cmp="com.tencent.mobileqq.activity.QQBrowserActivity" pkg="com.tencent.mobileqq" />
     <Item cmp="com.tencent.gamecenter.activities.GameCenterActivity" pkg="com.tencent.mobileqq" />
     <Item cmp="com.tencent.mobileqq.troop.activity.TroopBarPageActivity" pkg="com.tencent.mobileqq" />
-    <Item cmp="com.tencent.biz.pubaccount.PublicAccountBrowser" pkg="com.tencent.mobileqq" />
+    <Item cmp="com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl" pkg="com.tencent.mobileqq" />
     <Item cmp="com.tencent.mobileqq.troop.activity.NearbyTroopsActivity" pkg="com.tencent.mobileqq" />
     <Item cmp="com.tencent.mobileqq.activity.HotChatListActivity" pkg="com.tencent.mobileqq" />
     <Item cmp="com.tencent.av.ui.AVActivity" pkg="com.tencent.mobileqq" />

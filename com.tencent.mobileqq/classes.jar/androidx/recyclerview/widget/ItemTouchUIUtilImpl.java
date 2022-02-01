@@ -41,11 +41,11 @@ class ItemTouchUIUtilImpl
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      Object localObject = paramView.getTag(2131369183);
+      Object localObject = paramView.getTag(2131369436);
       if ((localObject instanceof Float)) {
         ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
       }
-      paramView.setTag(2131369183, null);
+      paramView.setTag(2131369436, null);
     }
     paramView.setTranslationX(0.0F);
     paramView.setTranslationY(0.0F);
@@ -53,11 +53,11 @@ class ItemTouchUIUtilImpl
   
   public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (paramBoolean) && (paramView.getTag(2131369183) == null))
+    if ((Build.VERSION.SDK_INT >= 21) && (paramBoolean) && (paramView.getTag(2131369436) == null))
     {
       float f = ViewCompat.getElevation(paramView);
       ViewCompat.setElevation(paramView, 1.0F + findMaxElevation(paramRecyclerView, paramView));
-      paramView.setTag(2131369183, Float.valueOf(f));
+      paramView.setTag(2131369436, Float.valueOf(f));
     }
     paramView.setTranslationX(paramFloat1);
     paramView.setTranslationY(paramFloat2);
@@ -69,7 +69,7 @@ class ItemTouchUIUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.recyclerview.widget.ItemTouchUIUtilImpl
  * JD-Core Version:    0.7.0.1
  */

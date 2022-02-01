@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class ItemBase
   extends JceStruct
 {
-  public int bid;
-  public int ext1;
-  public int isSetUp;
-  public int itemId;
-  public int sourceId;
+  public int bid = 0;
+  public int ext1 = 0;
+  public int isSetUp = 0;
+  public int itemId = 0;
+  public int sourceId = 0;
   
   public ItemBase() {}
   

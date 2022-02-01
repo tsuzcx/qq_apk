@@ -31,12 +31,12 @@ public class OverlapLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.OverlapLayout);
-    this.a = paramAttributeSet.getDimension(1, AIOUtils.dp2px(4.0F, paramContext.getResources()));
-    this.b = paramAttributeSet.getDimension(0, AIOUtils.dp2px(15.0F, paramContext.getResources()));
+    this.a = paramAttributeSet.getDimension(1, AIOUtils.a(4.0F, paramContext.getResources()));
+    this.b = paramAttributeSet.getDimension(0, AIOUtils.a(15.0F, paramContext.getResources()));
     paramAttributeSet.recycle();
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new ViewGroup.MarginLayoutParams(-2, -2);
   }
@@ -46,12 +46,12 @@ public class OverlapLayout
     return new ViewGroup.MarginLayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return new ViewGroup.MarginLayoutParams(paramLayoutParams);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = getPaddingLeft();
     int i = getPaddingTop();
@@ -116,7 +116,7 @@ public class OverlapLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i8 = View.MeasureSpec.getMode(paramInt1);

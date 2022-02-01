@@ -16,18 +16,19 @@ public final class stSimpleGetFeedListReq
   static Map<String, String> cache_request_ext = new HashMap();
   public String attach_info = "";
   public String channel_info = "";
-  public ArrayList<String> context_feedids;
+  public ArrayList<String> context_feedids = null;
   public String gdt_args = "";
-  public byte isfirst;
-  public byte isrefresh;
-  public stLinkStragegyArgs linkStragetyArgs;
-  public ArrayList<String> local_feeds;
+  public byte isfirst = 0;
+  public byte isrefresh = 0;
+  public stLinkStragegyArgs linkStragetyArgs = null;
+  public ArrayList<String> local_feeds = null;
   public String push_info = "";
   public String qqNum = "";
-  public Map<String, String> request_ext;
+  public Map<String, String> request_ext = null;
   public String rowkey = "";
-  public int scene;
+  public int scene = 0;
   public String session = "";
+  public String subTabID = "";
   
   static
   {
@@ -40,7 +41,7 @@ public final class stSimpleGetFeedListReq
   
   public stSimpleGetFeedListReq() {}
   
-  public stSimpleGetFeedListReq(String paramString1, byte paramByte1, byte paramByte2, String paramString2, Map<String, String> paramMap, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, stLinkStragegyArgs paramstLinkStragegyArgs, String paramString7)
+  public stSimpleGetFeedListReq(String paramString1, byte paramByte1, byte paramByte2, String paramString2, Map<String, String> paramMap, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, stLinkStragegyArgs paramstLinkStragegyArgs, String paramString7, String paramString8)
   {
     this.attach_info = paramString1;
     this.isrefresh = paramByte1;
@@ -56,6 +57,7 @@ public final class stSimpleGetFeedListReq
     this.push_info = paramString6;
     this.linkStragetyArgs = paramstLinkStragegyArgs;
     this.qqNum = paramString7;
+    this.subTabID = paramString8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -74,11 +76,7 @@ public final class stSimpleGetFeedListReq
     this.push_info = paramJceInputStream.readString(12, false);
     this.linkStragetyArgs = ((stLinkStragegyArgs)paramJceInputStream.read(cache_linkStragetyArgs, 13, false));
     this.qqNum = paramJceInputStream.readString(14, false);
-  }
-  
-  public String toString()
-  {
-    return "stSimpleGetFeedListReq{attach_info='" + this.attach_info + '\'' + ", isrefresh=" + this.isrefresh + ", isfirst=" + this.isfirst + ", channel_info='" + this.channel_info + '\'' + ", scene=" + this.scene + ", gdt_args='" + this.gdt_args + '\'' + ", rowkey='" + this.rowkey + '\'' + ", session='" + this.session + '\'' + ", push_info='" + this.push_info + '\'' + ", linkStragetyArgs=" + this.linkStragetyArgs + '}';
+    this.subTabID = paramJceInputStream.readString(15, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -118,6 +116,9 @@ public final class stSimpleGetFeedListReq
     }
     if (this.qqNum != null) {
       paramJceOutputStream.write(this.qqNum, 14);
+    }
+    if (this.subTabID != null) {
+      paramJceOutputStream.write(this.subTabID, 15);
     }
   }
 }

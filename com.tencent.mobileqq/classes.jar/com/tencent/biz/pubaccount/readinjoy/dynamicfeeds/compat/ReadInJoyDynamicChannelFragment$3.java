@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat;
 
-import pvj;
-import qew;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.model.BannerInfoModule;
 
 class ReadInJoyDynamicChannelFragment$3
   implements Runnable
@@ -10,15 +10,15 @@ class ReadInJoyDynamicChannelFragment$3
   
   public void run()
   {
-    qew localqew = pvj.a().a();
-    if (localqew != null) {
-      localqew.b(ReadInJoyDynamicChannelFragment.l(this.this$0));
+    BannerInfoModule localBannerInfoModule = ReadInJoyLogicEngine.a().a();
+    if (localBannerInfoModule != null) {
+      localBannerInfoModule.b(ReadInJoyDynamicChannelFragment.l(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment.3
  * JD-Core Version:    0.7.0.1
  */

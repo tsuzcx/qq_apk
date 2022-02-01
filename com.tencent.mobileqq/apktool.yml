@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ-8.4.10-1524-3834.apk
+apkFileName: QQ-8.5.5-1630-3834.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -21,6 +21,7 @@ doNotCompress:
 - assets/jni.ini
 - assets/licence_dual.conf
 - png
+- assets/medialab_audio_3a_license.txt
 - mp4
 - assets/qua.ini
 - assets/revision.txt
@@ -43,6 +44,7 @@ doNotCompress:
 - assets/proteus/default_feeds/pages/daily_large_video_card/manifest
 - assets/proteus/default_feeds/pages/daily_triple_img_card/manifest
 - assets/proteus/default_feeds/pages/horizontal_avatars/manifest
+- assets/proteus/default_feeds/pages/hot_news_sogou/manifest
 - assets/proteus/default_feeds/pages/ugc_account_popup/manifest
 - assets/proteus/default_feeds/styles/globalVar/manifest
 - assets/proteus/native_article/pages/book/manifest
@@ -50,6 +52,8 @@ doNotCompress:
 - assets/proteus/native_article/pages/search_image_column_card/manifest
 - assets/proteus/native_article/pages/search_image_video_card/manifest
 - assets/qfav_editor/qfav_richmedia_detail.css
+- assets/qqcircle/pluginInfo.xml
+- assets/qshadow-plugins/plugins
 - webp
 - r/v/bl9.gif
 - r/v/bl_.gif
@@ -239,6 +243,7 @@ unknownFiles:
   com/steadystate/css/parser/SACParserMessages.properties: '8'
   com/steadystate/css/parser/SACParserMessages_de.properties: '8'
   com/steadystate/css/parser/SACParserMessages_en.properties: '8'
+  com/tencent/mobileqq/engineering/preload/META-INF/MANIFEST.MF: '0'
   com/tencent/mobileqq/pluginsdk/OnPluginInstallListener.aidl: '8'
   com/tencent/mobileqq/pluginsdk/PluginBaseInfo.aidl: '8'
   com/tencent/mobileqq/pluginsdk/RemotePluginManager.aidl: '8'
@@ -256,5 +261,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1524'
-  versionName: 8.4.10
+  versionCode: '1630'
+  versionName: 8.5.5

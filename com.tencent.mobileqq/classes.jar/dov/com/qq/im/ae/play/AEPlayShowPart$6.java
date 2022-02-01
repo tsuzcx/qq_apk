@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bnka;
+import dov.com.qq.im.ae.data.AEMaterialCategory;
 import java.util.List;
 
 class AEPlayShowPart$6
@@ -22,8 +22,8 @@ class AEPlayShowPart$6
         int i = 0;
         while (i < localList.size())
         {
-          bnka localbnka = (bnka)localList.get(i);
-          if ((localbnka != null) && (this.val$tabName != null) && (this.val$tabName.equals(localbnka.b)))
+          AEMaterialCategory localAEMaterialCategory = (AEMaterialCategory)localList.get(i);
+          if ((localAEMaterialCategory != null) && (this.val$tabName != null) && (this.val$tabName.equals(localAEMaterialCategory.b)))
           {
             AEPlayShowPart.access$600(this.this$0, i);
             if (AEPlayShowPart.access$700(this.this$0).getCurrentPageView() != null) {
@@ -38,7 +38,7 @@ class AEPlayShowPart$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEPlayShowPart.6
  * JD-Core Version:    0.7.0.1
  */

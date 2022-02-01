@@ -1,20 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sow;
-
-public class VideoFeedsVideoUIDelegate$4
+class VideoFeedsVideoUIDelegate$4
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$4(sow paramsow) {}
+  VideoFeedsVideoUIDelegate$4(VideoFeedsVideoUIDelegate paramVideoFeedsVideoUIDelegate) {}
   
   public void run()
   {
-    sow.a(this.this$0, 8);
+    VideoFeedsVideoUIDelegate.a(this.this$0, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsVideoUIDelegate.4
  * JD-Core Version:    0.7.0.1
  */

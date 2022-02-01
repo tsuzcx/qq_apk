@@ -10,8 +10,8 @@ public final class BroadcastAudio
 {
   static BroadcastUrl cache_masterUrl = new BroadcastUrl();
   static ArrayList<BroadcastUrl> cache_slaveUrl = new ArrayList();
-  public BroadcastUrl masterUrl;
-  public ArrayList<BroadcastUrl> slaveUrl;
+  public BroadcastUrl masterUrl = null;
+  public ArrayList<BroadcastUrl> slaveUrl = null;
   
   static
   {

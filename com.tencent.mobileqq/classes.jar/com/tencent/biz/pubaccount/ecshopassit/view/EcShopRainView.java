@@ -11,8 +11,6 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import opo;
-import opp;
 
 public class EcShopRainView
   extends View
@@ -20,10 +18,10 @@ public class EcShopRainView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final List<opp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<EcShopRainView.RainIcon> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Random jdField_a_of_type_JavaUtilRandom;
   private boolean jdField_a_of_type_Boolean;
   private float b;
@@ -48,7 +46,7 @@ public class EcShopRainView
   
   private boolean a(int paramInt)
   {
-    return ((opp)this.jdField_a_of_type_JavaUtilList.get(paramInt)).c > getHeight();
+    return ((EcShopRainView.RainIcon)this.jdField_a_of_type_JavaUtilList.get(paramInt)).c > getHeight();
   }
   
   private void b()
@@ -59,36 +57,42 @@ public class EcShopRainView
     d();
   }
   
-  private void b(opo paramopo)
+  private void b(EcShopRainView.Conf paramConf)
   {
-    if (paramopo == null) {}
+    if (paramConf == null) {}
     for (;;)
     {
       return;
-      this.jdField_a_of_type_Float = paramopo.jdField_a_of_type_Int;
-      this.b = paramopo.b;
+      this.jdField_a_of_type_Float = paramConf.jdField_a_of_type_Int;
+      this.b = paramConf.b;
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramopo.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramConf.jdField_a_of_type_AndroidGraphicsBitmap;
       this.jdField_a_of_type_JavaUtilList.clear();
       int i = 0;
       int j = 0;
       while (i < 8)
       {
-        paramopo = new opp(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        int k = (getWidth() - this.jdField_a_of_type_Int * 2) / 4;
-        int m = new int[] { 1, 2, 0, 3, 2, 1, 3, 0 }[i];
-        paramopo.b = (this.jdField_a_of_type_JavaUtilRandom.nextInt(k - (int)this.b) + m * k + this.jdField_a_of_type_Int);
+        paramConf = new EcShopRainView.RainIcon(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        int n = (getWidth() - this.jdField_a_of_type_Int * 2) / 4;
+        int m = n - (int)this.b;
+        int i1 = new int[] { 1, 2, 0, 3, 2, 1, 3, 0 }[i];
+        Random localRandom = this.jdField_a_of_type_JavaUtilRandom;
+        int k = m;
+        if (m <= 0) {
+          k = 1;
+        }
+        paramConf.b = (localRandom.nextInt(k) + n * i1 + this.jdField_a_of_type_Int);
         k = (int)-Math.ceil(this.jdField_a_of_type_Float);
-        paramopo.c = k;
+        paramConf.c = k;
         m = getHeight();
         m = (int)((-k + m) * 16.0F / (this.jdField_a_of_type_JavaUtilRandom.nextInt(501) + 1500));
         k = m;
         if (m == 0) {
           k = 1;
         }
-        paramopo.d = k;
-        paramopo.jdField_a_of_type_Int = j;
-        this.jdField_a_of_type_JavaUtilList.add(paramopo);
+        paramConf.d = k;
+        paramConf.jdField_a_of_type_Int = j;
+        this.jdField_a_of_type_JavaUtilList.add(paramConf);
         j += this.jdField_a_of_type_JavaUtilRandom.nextInt(300);
         i += 1;
       }
@@ -98,7 +102,7 @@ public class EcShopRainView
   private void c()
   {
     this.jdField_a_of_type_JavaUtilRandom = new Random();
-    this.jdField_a_of_type_Int = AIOUtils.dp2px(20.0F, getContext().getResources());
+    this.jdField_a_of_type_Int = AIOUtils.a(20.0F, getContext().getResources());
   }
   
   private void d()
@@ -121,23 +125,23 @@ public class EcShopRainView
     this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
   }
   
-  public void a(opo paramopo)
+  public void a(EcShopRainView.Conf paramConf)
   {
-    if ((paramopo == null) || (paramopo.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
+    if ((paramConf == null) || (paramConf.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
       return;
     }
     a();
     setVisibility(0);
-    post(new EcShopRainView.1(this, paramopo));
+    post(new EcShopRainView.1(this, paramConf));
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     a();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (!this.jdField_a_of_type_Boolean) {
@@ -153,15 +157,15 @@ public class EcShopRainView
       k = i;
       if (j < this.jdField_a_of_type_JavaUtilList.size())
       {
-        opp localopp = (opp)this.jdField_a_of_type_JavaUtilList.get(j);
-        Bitmap localBitmap = localopp.jdField_a_of_type_AndroidGraphicsBitmap;
+        EcShopRainView.RainIcon localRainIcon = (EcShopRainView.RainIcon)this.jdField_a_of_type_JavaUtilList.get(j);
+        Bitmap localBitmap = localRainIcon.jdField_a_of_type_AndroidGraphicsBitmap;
         k = i;
         if (!localBitmap.isRecycled())
         {
           k = i;
           if (!a(j))
           {
-            if (l1 - l2 >= localopp.jdField_a_of_type_Int) {
+            if (l1 - l2 >= localRainIcon.jdField_a_of_type_Int) {
               break label140;
             }
             k = i;
@@ -178,8 +182,8 @@ public class EcShopRainView
           float f1 = this.jdField_a_of_type_Float / localBitmap.getHeight();
           float f2 = this.b / localBitmap.getWidth();
           this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f2, f1);
-          localopp.c += localopp.d;
-          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localopp.b, localopp.c);
+          localRainIcon.c += localRainIcon.d;
+          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localRainIcon.b, localRainIcon.c);
           paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
       }
@@ -198,7 +202,7 @@ public class EcShopRainView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.view.EcShopRainView
  * JD-Core Version:    0.7.0.1
  */

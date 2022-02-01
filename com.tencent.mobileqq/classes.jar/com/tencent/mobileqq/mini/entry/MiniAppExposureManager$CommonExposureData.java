@@ -9,7 +9,7 @@ public class MiniAppExposureManager$CommonExposureData
   private String reserves;
   private String reserves2;
   private String reserves3;
-  private String reserves4;
+  private String reserves4 = null;
   private String subActionType;
   
   public MiniAppExposureManager$CommonExposureData(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)

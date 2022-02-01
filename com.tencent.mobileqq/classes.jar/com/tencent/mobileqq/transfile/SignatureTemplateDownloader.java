@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import bhoh;
-import bhpd;
-import bhpe;
-import bhyo;
-import bhyq;
-import bkwb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig;
+import com.tencent.mobileqq.vas.VasMonitorDT;
+import com.tencent.mobileqq.vas.VasMonitorHandler;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.qqsharpP.QQSharpPUtil;
 import com.tencent.sharpP.SharpPUtil;
 import java.io.File;
 import java.io.OutputStream;
@@ -41,12 +41,12 @@ public class SignatureTemplateDownloader
   public File downLoadImg(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean)
   {
     String str = getSigTplUri(Integer.parseInt(paramString1), paramString2);
-    paramString2 = new File(bhoh.a(paramString1, paramString2));
-    bhyo localbhyo = new bhyo(str, paramString2);
-    localbhyo.k = paramBoolean;
+    paramString2 = new File(SignatureTemplateConfig.a(paramString1, paramString2));
+    DownloadTask localDownloadTask = new DownloadTask(str, paramString2);
+    localDownloadTask.k = paramBoolean;
     if (paramAppRuntime != null)
     {
-      if (bhyq.a(localbhyo, paramAppRuntime) != 0) {
+      if (DownloaderFactory.a(localDownloadTask, paramAppRuntime) != 0) {
         break label102;
       }
       if ((!paramString2.exists()) || (SignatureManager.a(paramString2.getAbsolutePath()))) {
@@ -59,12 +59,12 @@ public class SignatureTemplateDownloader
       return new File(AppConstants.SDCARD_PATH);
       label88:
       if (SharpPUtil.isSharpPFile(paramString2)) {
-        return bkwb.a(paramString2);
+        return QQSharpPUtil.a(paramString2);
       }
       return paramString2;
       label102:
-      bhpe.a(null, "individual_v2_signature_download_fail", "" + localbhyo.a, "error code = " + localbhyo.a + " errorMsg = " + localbhyo.b + "url = " + str, null, 0.0F);
-      bhpd.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localbhyo.a + " errMsg:" + localbhyo.b);
+      VasMonitorHandler.a(null, "individual_v2_signature_download_fail", "" + localDownloadTask.a, "error code = " + localDownloadTask.a + " errorMsg = " + localDownloadTask.b + "url = " + str, null, 0.0F);
+      VasMonitorDT.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localDownloadTask.a + " errMsg:" + localDownloadTask.b);
     }
   }
   
@@ -82,13 +82,13 @@ public class SignatureTemplateDownloader
       paramURLDrawableHandler = ((Header)localObject).getValue();
     }
     paramURLDrawableHandler = BaseApplicationImpl.sApplication.getAppRuntime(paramURLDrawableHandler);
-    localObject = new File(bhoh.a(paramOutputStream, str));
+    localObject = new File(SignatureTemplateConfig.a(paramOutputStream, str));
     if (((File)localObject).exists()) {
       return localObject;
     }
     if (paramDownloadParams.useSharpPImage)
     {
-      localObject = new File(bkwb.a((File)localObject));
+      localObject = new File(QQSharpPUtil.a((File)localObject));
       if (((File)localObject).exists()) {
         return localObject;
       }

@@ -9,10 +9,10 @@ public final class RespGetSign
 {
   static byte[] cache_vKey;
   static byte[] cache_vSign;
-  public int iReplyCode;
-  public long lUIN;
-  public byte[] vKey;
-  public byte[] vSign;
+  public int iReplyCode = 0;
+  public long lUIN = 0L;
+  public byte[] vKey = null;
+  public byte[] vSign = null;
   
   public RespGetSign() {}
   

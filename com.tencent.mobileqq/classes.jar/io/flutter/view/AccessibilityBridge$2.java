@@ -11,25 +11,28 @@ class AccessibilityBridge$2
   
   public void onAccessibilityStateChanged(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      AccessibilityBridge.access$500(this.this$0).setAccessibilityMessageHandler(AccessibilityBridge.access$400(this.this$0));
-      AccessibilityBridge.access$500(this.this$0).onAndroidAccessibilityEnabled();
-    }
+    if (AccessibilityBridge.access$400(this.this$0)) {}
     for (;;)
     {
-      if (AccessibilityBridge.access$600(this.this$0) != null) {
-        AccessibilityBridge.access$600(this.this$0).onAccessibilityChanged(paramBoolean, AccessibilityBridge.access$700(this.this$0).isTouchExplorationEnabled());
-      }
       return;
-      AccessibilityBridge.access$500(this.this$0).setAccessibilityMessageHandler(null);
-      AccessibilityBridge.access$500(this.this$0).onAndroidAccessibilityDisabled();
+      if (paramBoolean)
+      {
+        AccessibilityBridge.access$600(this.this$0).setAccessibilityMessageHandler(AccessibilityBridge.access$500(this.this$0));
+        AccessibilityBridge.access$600(this.this$0).onAndroidAccessibilityEnabled();
+      }
+      while (AccessibilityBridge.access$700(this.this$0) != null)
+      {
+        AccessibilityBridge.access$700(this.this$0).onAccessibilityChanged(paramBoolean, AccessibilityBridge.access$800(this.this$0).isTouchExplorationEnabled());
+        return;
+        AccessibilityBridge.access$600(this.this$0).setAccessibilityMessageHandler(null);
+        AccessibilityBridge.access$600(this.this$0).onAndroidAccessibilityDisabled();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.view.AccessibilityBridge.2
  * JD-Core Version:    0.7.0.1
  */

@@ -55,7 +55,7 @@ public class MiniAppFileManager
   private static String currentAppSdcardDir;
   private static String currentUin;
   private static boolean hasCheckUsrDir;
-  private static boolean isNoMediaCreated;
+  private static boolean isNoMediaCreated = false;
   private static volatile MiniAppFileManager sInstance;
   private WeakReference<Activity> activityWeakReference;
   private ApkgBaseInfo apkgInfo;
@@ -95,14 +95,14 @@ public class MiniAppFileManager
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 190	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:isNoMediaCreated	Z
+    //   3: getstatic 127	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:isNoMediaCreated	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +7 -> 15
     //   11: ldc 2
     //   13: monitorexit
     //   14: return
-    //   15: new 176	java/io/File
+    //   15: new 178	java/io/File
     //   18: dup
     //   19: getstatic 125	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:MINI_FILE_SAVE_PATH	Ljava/lang/String;
     //   22: ldc 192
@@ -114,19 +114,19 @@ public class MiniAppFileManager
     //   33: aload_2
     //   34: ifnull +15 -> 49
     //   37: aload_2
-    //   38: invokevirtual 182	java/io/File:exists	()Z
+    //   38: invokevirtual 184	java/io/File:exists	()Z
     //   41: ifne +8 -> 49
     //   44: aload_2
-    //   45: invokevirtual 185	java/io/File:mkdirs	()Z
+    //   45: invokevirtual 187	java/io/File:mkdirs	()Z
     //   48: pop
     //   49: aload_1
-    //   50: invokevirtual 182	java/io/File:exists	()Z
+    //   50: invokevirtual 184	java/io/File:exists	()Z
     //   53: ifne +8 -> 61
     //   56: aload_1
     //   57: invokevirtual 202	java/io/File:createNewFile	()Z
     //   60: pop
     //   61: iconst_1
-    //   62: putstatic 190	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:isNoMediaCreated	Z
+    //   62: putstatic 127	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:isNoMediaCreated	Z
     //   65: goto -54 -> 11
     //   68: astore_1
     //   69: ldc 204
@@ -164,7 +164,7 @@ public class MiniAppFileManager
   
   private void deleteTmpFolder()
   {
-    FileUtils.delete(getMiniFolderPath(0), false);
+    FileUtils.a(getMiniFolderPath(0), false);
   }
   
   private String getCurAppSdcardDir()
@@ -448,13 +448,13 @@ public class MiniAppFileManager
   {
     String str1 = getMiniFolderPath(0);
     String str2 = str1 + "_del_";
-    FileUtils.rename(str1, str2);
+    FileUtils.c(str1, str2);
     this.mTmpFileNeed2DeleteAsync.add(str2);
   }
   
   public void clearAllCache()
   {
-    FileUtils.delete(MiniAppGlobal.getMiniCacheFilePath(), false);
+    FileUtils.a(MiniAppGlobal.getMiniCacheFilePath(), false);
     this.usrFolderSize.set(0L);
     this.storeFolderSize.set(0L);
     hasCheckUsrDir = false;
@@ -465,7 +465,7 @@ public class MiniAppFileManager
     paramString = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(paramString);
     if (new File(paramString).exists())
     {
-      FileUtils.delete(paramString, false);
+      FileUtils.a(paramString, false);
       this.usrFolderSize.set(0L);
       this.storeFolderSize.set(0L);
     }
@@ -480,17 +480,17 @@ public class MiniAppFileManager
     //   1: istore_3
     //   2: aconst_null
     //   3: astore 8
-    //   5: new 176	java/io/File
+    //   5: new 178	java/io/File
     //   8: dup
     //   9: aload_1
-    //   10: invokespecial 178	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 180	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore 4
-    //   15: new 176	java/io/File
+    //   15: new 178	java/io/File
     //   18: dup
     //   19: aload_0
     //   20: iconst_0
-    //   21: invokespecial 160	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getMiniFolderPath	(I)Ljava/lang/String;
-    //   24: invokespecial 178	java/io/File:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 162	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getMiniFolderPath	(I)Ljava/lang/String;
+    //   24: invokespecial 180	java/io/File:<init>	(Ljava/lang/String;)V
     //   27: invokevirtual 301	java/io/File:getPath	()Ljava/lang/String;
     //   30: astore 5
     //   32: aload 4
@@ -512,13 +512,13 @@ public class MiniAppFileManager
     //   71: invokestatic 250	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   74: aload_1
     //   75: areturn
-    //   76: new 176	java/io/File
+    //   76: new 178	java/io/File
     //   79: dup
     //   80: aload_0
     //   81: aload 4
     //   83: invokestatic 484	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getFileSuffix	(Ljava/io/File;)Ljava/lang/String;
     //   86: invokevirtual 487	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   89: invokespecial 178	java/io/File:<init>	(Ljava/lang/String;)V
+    //   89: invokespecial 180	java/io/File:<init>	(Ljava/lang/String;)V
     //   92: astore 9
     //   94: sipush 8192
     //   97: newarray byte
@@ -713,7 +713,7 @@ public class MiniAppFileManager
         {
           if (localArrayList2.get(i) != null)
           {
-            FileUtils.delete((String)localArrayList2.get(i), false);
+            FileUtils.a((String)localArrayList2.get(i), false);
             localArrayList2.remove(i);
           }
           i -= 1;
@@ -1119,7 +1119,7 @@ public class MiniAppFileManager
       if (TextUtils.isEmpty(paramString)) {
         return null;
       }
-      if (FileUtils.copyFile(str, new File(getMiniFolderPath(1), paramString).getAbsolutePath())) {
+      if (FileUtils.d(str, new File(getMiniFolderPath(1), paramString).getAbsolutePath())) {
         return MiniAppGlobal.STR_WXFILE + "store" + "_" + paramString;
       }
     }
@@ -1153,7 +1153,7 @@ public class MiniAppFileManager
         this.initStoreCountDown.await();
         if (this.storeUpdateCount.incrementAndGet() % 100 == 0)
         {
-          paramLong = FileUtils.getFileOrFolderSize(getMiniFolderPath(1));
+          paramLong = FileUtils.b(getMiniFolderPath(1));
           this.storeFolderSize.set(paramLong);
           QLog.i("MiniAppFileManager", 1, "updateFolderSize fileType=store realSize=" + paramLong);
           return;
@@ -1176,7 +1176,7 @@ public class MiniAppFileManager
       this.initUsrCountDown.await();
       if (this.usrUpdateCount.incrementAndGet() % 100 == 0)
       {
-        paramLong = FileUtils.getFileOrFolderSize(getMiniFolderPath(2));
+        paramLong = FileUtils.b(getMiniFolderPath(2));
         this.usrFolderSize.set(paramLong);
         QLog.i("MiniAppFileManager", 1, "updateFolderSize fileType=usr realSize=" + paramLong);
         return;

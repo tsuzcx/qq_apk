@@ -17,56 +17,50 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anvx;
-import bczy;
-import bdks;
-import bdla;
+import com.tencent.av.AVLog;
+import com.tencent.av.QavABTestUtils;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.doodle.DoodleToolbar;
+import com.tencent.av.gameplay.QavGPDownloadManager;
 import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.av.opengl.effects.AEKitAbilityInfo;
+import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.av.ptu.PtuResChecker;
+import com.tencent.av.recog.AVVoiceRecog;
+import com.tencent.av.redtouch.AVRedTouchUtil;
 import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.av.ui.redbag.AVRedBagConfig.Info;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.Event;
+import com.tencent.av.ui.redbag.RedBagReport;
+import com.tencent.av.ui.redbag.RedBagUtil;
+import com.tencent.av.utils.UITools;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
+import com.tencent.mobileqq.statistics.MultiVideoRichActionReportCollection;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import lbd;
-import lfe;
-import lir;
-import lmp;
-import lot;
-import lph;
-import ltm;
-import lvv;
-import mcd;
-import mdu;
-import mdx;
-import mdy;
-import mdz;
-import mea;
-import meb;
-import mqa;
-import mqb;
-import mqg;
-import mqw;
-import mqx;
-import mvk;
 
 public class EffectSettingUi
   extends QavMenuBaseView
 {
-  public int a;
+  int jdField_a_of_type_Int = -1;
   SparseArray<BaseToolbar> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new mdx(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new EffectSettingUi.1(this);
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+  EffectSettingBtn jdField_a_of_type_ComTencentAvUiEffectSettingBtn;
+  AVRedBagMgr.Event jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = null;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
-  public WeakReference<AVActivity> a;
-  public mdu a;
-  public mqg a;
+  WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference = null;
   boolean jdField_a_of_type_Boolean = false;
   RelativeLayout b;
   RelativeLayout c;
@@ -74,14 +68,11 @@ public class EffectSettingUi
   public EffectSettingUi(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Mqg = null;
     this.jdField_a_of_type_JavaLangString = ("EffectSettingUi" + AudioHelper.b());
     if ((paramContext instanceof AVActivity)) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((AVActivity)paramContext);
     }
-    setId(2131368439);
+    setId(2131368663);
   }
   
   private int a(int paramInt1, int paramInt2)
@@ -203,11 +194,11 @@ public class EffectSettingUi
   {
     boolean bool1 = true;
     boolean bool2 = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, true);
-    boolean bool3 = lir.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (lot.b()) {
-      lot.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    boolean bool3 = PtuResChecker.a().a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (AEKitAbilityInfo.b()) {
+      PtuResChecker.a().a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     }
-    lbd.f(this.jdField_a_of_type_JavaLangString, "initBtn:" + bool2 + "|" + bool3);
+    AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "initBtn:" + bool2 + "|" + bool3);
     boolean bool4 = ZimuToolbar.isShow(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     a(bool3, EffectToolbar.class);
     a(bool2, FaceToolbar.class);
@@ -215,9 +206,13 @@ public class EffectSettingUi
     a(true, BeautyToolbar.class);
     a(true, VoiceChangeToolbar.class);
     int i;
-    if ((bool2) && (bool4))
+    if (!QavABTestUtils.a())
     {
-      a(bool1, ZimuToolbar.class);
+      if ((bool2) && (bool4)) {
+        a(bool1, ZimuToolbar.class);
+      }
+    }
+    else {
       i = 0;
     }
     for (;;)
@@ -225,15 +220,15 @@ public class EffectSettingUi
       if (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
         if (!(this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i) instanceof FaceToolbar)) {
-          break label363;
+          break label375;
         }
         if (((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtnRedTouch == null)
         {
-          ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtnRedTouch = lvv.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtn, 3);
+          ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtnRedTouch = AVRedTouchUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtn, 3);
           if (((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtnRedTouch != null)
           {
-            int j = (int)mvk.b(getContext(), ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtn.getPaddingRight());
-            int k = (int)mvk.b(getContext(), ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtn.getPaddingTop());
+            int j = (int)UITools.b(getContext(), ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtn.getPaddingRight());
+            int k = (int)UITools.b(getContext(), ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtn.getPaddingTop());
             ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).mEffectBtnRedTouch.a(0, j, k, 0).a();
           }
         }
@@ -246,7 +241,7 @@ public class EffectSettingUi
       return;
       bool1 = false;
       break;
-      label363:
+      label375:
       i += 1;
     }
   }
@@ -259,10 +254,10 @@ public class EffectSettingUi
       do
       {
         return;
-      } while ((!mqx.a()) || ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.get(7) != null));
+      } while ((!RedBagUtil.a()) || ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.get(7) != null));
       b();
-      mqa localmqa = mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
-      if ((localmqa != null) && (localmqa.jdField_a_of_type_Boolean))
+      AVRedBagConfig.Info localInfo = RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
+      if ((localInfo != null) && (localInfo.jdField_a_of_type_Boolean))
       {
         c();
         return;
@@ -273,15 +268,15 @@ public class EffectSettingUi
   
   private void i()
   {
-    HorizontalScrollView localHorizontalScrollView = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368316);
+    HorizontalScrollView localHorizontalScrollView = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368534);
     ViewTreeObserver localViewTreeObserver = localHorizontalScrollView.getViewTreeObserver();
-    localViewTreeObserver.addOnGlobalLayoutListener(new mdz(this, localViewTreeObserver, localHorizontalScrollView));
+    localViewTreeObserver.addOnGlobalLayoutListener(new EffectSettingUi.3(this, localViewTreeObserver, localHorizontalScrollView));
   }
   
   private void j()
   {
-    Button localButton = (Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373440);
-    localButton.setOnClickListener(new mea(this));
+    Button localButton = (Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373754);
+    localButton.setOnClickListener(new EffectSettingUi.4(this));
     if (AudioHelper.a(0) == 1) {
       localButton.setBackgroundColor(Color.argb(100, 0, 0, 0));
     }
@@ -301,7 +296,7 @@ public class EffectSettingUi
     return -1;
   }
   
-  public long a()
+  long a()
   {
     if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null)) {
       return 0L;
@@ -368,12 +363,12 @@ public class EffectSettingUi
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "initUI, seq[" + paramLong + "]");
     }
     setGravity(80);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2131559738, this).findViewById(2131373498));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new meb(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2131559814, this).findViewById(2131373812));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new EffectSettingUi.5(this));
     ViewGroup localViewGroup = (ViewGroup)getParent();
-    this.c = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373772));
-    this.b = ((RelativeLayout)findViewById(2131373502));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131370157));
+    this.c = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374086));
+    this.b = ((RelativeLayout)findViewById(2131373816));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131370428));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0, null);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1, null);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2, null);
@@ -387,7 +382,7 @@ public class EffectSettingUi
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-65281);
       this.c.setBackgroundColor(-16711936);
       localViewGroup.setBackgroundColor(-1);
-      findViewById(2131373502).setBackgroundColor(-7829368);
+      findViewById(2131373816).setBackgroundColor(-7829368);
     }
   }
   
@@ -461,26 +456,26 @@ public class EffectSettingUi
     QLog.w(this.jdField_a_of_type_JavaLangString, 1, "show, EffectBtnID 原[" + this.jdField_a_of_type_Int + "], 期望[" + paramInt + "], 最终[" + i + "], seq[" + paramLong + "]");
     if (!this.jdField_a_of_type_Boolean)
     {
-      QQToast.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131695100), 1).a();
-      mcd.a();
+      QQToast.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131695343), 1).a();
+      AVEffectReport.a();
       return isShown();
     }
-    bczy.a().b();
-    lmp.a().c();
-    mcd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, a());
+    GestureMgr.a().b();
+    QavGPDownloadManager.a().c();
+    AVEffectReport.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, a());
     Object localObject = (BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
     if (localObject != null) {
       ((BaseToolbar)localObject).performClick();
     }
-    mqw.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.get(7));
+    RedBagReport.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.get(7));
     localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-    if ((localObject != null) && (((lfe)localObject).h()) && (((lfe)localObject).d == 2)) {
-      bdla.b(null, "dc00898", "", "", "0X8008AD5", "0X8008AD5", 0, 0, "", "", "", "");
+    if ((localObject != null) && (((SessionInfo)localObject).h()) && (((SessionInfo)localObject).d == 2)) {
+      ReportController.b(null, "dc00898", "", "", "0X8008AD5", "0X8008AD5", 0, 0, "", "", "", "");
     }
     return true;
   }
   
-  public boolean a(long paramLong, int paramInt, boolean paramBoolean)
+  boolean a(long paramLong, int paramInt, boolean paramBoolean)
   {
     int j = 1;
     a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramLong);
@@ -502,13 +497,13 @@ public class EffectSettingUi
             ((BaseToolbar)localObject).hideToolbar(paramLong);
           }
           if (this.jdField_a_of_type_Int == 7) {
-            ltm.a().a(8);
+            AVVoiceRecog.a().a(8);
           }
           if (k == 7) {
-            ltm.a().b(8);
+            AVVoiceRecog.a().b(8);
           }
           ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).g(paramLong);
-          localObject = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368316);
+          localObject = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368534);
           if (paramInt == 1) {
             i = j;
           }
@@ -549,7 +544,7 @@ public class EffectSettingUi
         if (!a((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get())) {
           break label502;
         }
-        bdks.a("0X8007F27");
+        MultiVideoRichActionReportCollection.a("0X8007F27");
       }
       for (;;)
       {
@@ -562,14 +557,14 @@ public class EffectSettingUi
           localBaseToolbar.onButtonClick(k, paramBoolean, bool);
           if ((bool) && ((localBaseToolbar instanceof FaceToolbar)) && (localBaseToolbar.mEffectBtnRedTouch != null))
           {
-            lvv.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localBaseToolbar.mEffectBtnRedTouch, 3);
+            AVRedTouchUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localBaseToolbar.mEffectBtnRedTouch, 3);
             localBaseToolbar.mEffectBtnRedTouch = null;
           }
         }
         return bool;
         label502:
         if (b((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get())) {
-          bdks.a("0X8007F2D");
+          MultiVideoRichActionReportCollection.a("0X8007F2D");
         }
       }
     }
@@ -577,24 +572,24 @@ public class EffectSettingUi
   
   void b()
   {
-    if (this.jdField_a_of_type_Mqg != null) {
+    if (this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event != null) {
       return;
     }
-    this.jdField_a_of_type_Mqg = new mdy(this);
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = new EffectSettingUi.2(this);
     if (QLog.isDevelopLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 4, "listenAVRedBagEvent");
     }
-    mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(new WeakReference(this.jdField_a_of_type_Mqg));
+    RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(new WeakReference(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event));
   }
   
   public void b(long paramLong)
   {
     c(paramLong);
-    this.jdField_a_of_type_Mqg = null;
-    if (this.jdField_a_of_type_Mdu != null)
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = null;
+    if (this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn != null)
     {
-      this.jdField_a_of_type_Mdu.c();
-      this.jdField_a_of_type_Mdu = null;
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.c();
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn = null;
     }
     if (this.jdField_a_of_type_JavaLangRunnable != null)
     {
@@ -627,7 +622,7 @@ public class EffectSettingUi
       {
         return;
       } while (!a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, false));
-      if (!lph.g())
+      if (!EffectsRenderController.g())
       {
         QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createRedBagBtn, ptu的so没加载成功, soloadedPTV[" + GraphicRenderMgr.soloadedPTV + "], ptuSoVersion[" + GraphicRenderMgr.ptuSoVersion + "]");
         return;
@@ -636,9 +631,11 @@ public class EffectSettingUi
     if (QLog.isDevelopLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 4, "创建红包入口");
     }
-    a(true, RedbagToolbar.class);
+    if (!QavABTestUtils.b()) {
+      a(true, RedbagToolbar.class);
+    }
     d();
-    mqx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).b("EffectSettingUi");
+    RedBagUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).b("EffectSettingUi");
   }
   
   void c(long paramLong)
@@ -652,15 +649,15 @@ public class EffectSettingUi
     this.jdField_a_of_type_AndroidUtilSparseArray.clear();
   }
   
-  public void c(long paramLong, boolean paramBoolean)
+  void c(long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Mdu != null) {
-      this.jdField_a_of_type_Mdu.b();
+    if (this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn != null) {
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.b();
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(6105), Integer.valueOf(100), Long.valueOf(paramLong) });
   }
   
-  public void d()
+  void d()
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
     Object localObject;
@@ -670,13 +667,13 @@ public class EffectSettingUi
       localObject = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while ((localObject == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null));
     Resources localResources = ((AVActivity)localObject).getResources();
-    HorizontalScrollView localHorizontalScrollView = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368316);
+    HorizontalScrollView localHorizontalScrollView = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368534);
     if (localHorizontalScrollView.getTag() == null)
     {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "adjustScrollView, 等待onGlobalLayout");
       return;
     }
-    int j = ((AVActivity)localObject).getWindow().getDecorView().getWidth() - AIOUtils.dp2px(60.0F, localResources);
+    int j = ((AVActivity)localObject).getWindow().getDecorView().getWidth() - AIOUtils.a(60.0F, localResources);
     if (j == 0)
     {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "adjustScrollView, window没有高度");
@@ -688,7 +685,7 @@ public class EffectSettingUi
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "adjustScrollView, 无需处理2, winShowW[" + j + "], btnsW[" + k + "]");
       return;
     }
-    int m = (int)localResources.getDimension(2131297702);
+    int m = (int)localResources.getDimension(2131297769);
     int n = k - j;
     if (n < m / 2)
     {
@@ -719,7 +716,7 @@ public class EffectSettingUi
     int i;
     if (AudioHelper.a(3) == 1)
     {
-      AudioHelper.a(anvx.a(2131703466));
+      AudioHelper.a(HardCodeUtil.a(2131704014));
       i = 100;
       if ((i < 105) && ((BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null)) {}
     }
@@ -759,7 +756,7 @@ public class EffectSettingUi
       a(4, false);
       return;
     }
-    boolean bool3 = lph.b();
+    boolean bool3 = EffectsRenderController.b();
     BaseToolbar localBaseToolbar = (BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
     if (localBaseToolbar != null) {
       localBaseToolbar.updateBtnStatus();
@@ -836,7 +833,7 @@ public class EffectSettingUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingUi
  * JD-Core Version:    0.7.0.1
  */

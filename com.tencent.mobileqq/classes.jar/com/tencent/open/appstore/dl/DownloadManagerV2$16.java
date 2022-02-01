@@ -1,15 +1,14 @@
 package com.tencent.open.appstore.dl;
 
-import bjjq;
-import bjko;
-import bjog;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.UpdateManager;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
-public class DownloadManagerV2$16
+class DownloadManagerV2$16
   implements Runnable
 {
-  public DownloadManagerV2$16(bjjq parambjjq, DownloadInfo paramDownloadInfo) {}
+  DownloadManagerV2$16(DownloadManagerV2 paramDownloadManagerV2, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -19,19 +18,19 @@ public class DownloadManagerV2$16
       if (localTMAssistantDownloadTaskInfo != null)
       {
         this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        bjog.a().a(this.a);
+        UpdateManager.a().a(this.a);
       }
       return;
     }
     catch (Exception localException)
     {
-      bjko.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+      LogUtility.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.16
  * JD-Core Version:    0.7.0.1
  */

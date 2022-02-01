@@ -2,13 +2,11 @@ package com.tencent.mobileqq.troop.enterEffect;
 
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import bfkl;
-import bfks;
 
-public class TroopEnterEffectController$3$4$1
+class TroopEnterEffectController$3$4$1
   implements Runnable
 {
-  public TroopEnterEffectController$3$4$1(bfks parambfks) {}
+  TroopEnterEffectController$3$4$1(TroopEnterEffectController.3.4 param4) {}
   
   public void run()
   {

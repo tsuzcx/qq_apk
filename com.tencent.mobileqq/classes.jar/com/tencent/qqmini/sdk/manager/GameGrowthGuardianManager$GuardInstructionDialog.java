@@ -29,6 +29,51 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
     this.miniAppInfo = paramMiniAppInfo;
   }
   
+  private static void buildGuardianDialog(Context paramContext, MiniAppInfo paramMiniAppInfo, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp, int paramInt, INTERFACE.GuardInstruction paramGuardInstruction)
+  {
+    Object localObject = null;
+    if (paramGuardInstruction.type.get() == 1) {
+      paramGuardInstruction = new GameGrowthGuardianManager.GuardInstructionDialogTips(paramGuardInstruction, paramContext, paramMiniAppInfo);
+    }
+    for (;;)
+    {
+      if (paramGuardInstruction != null)
+      {
+        paramGuardInstruction.setJudgeTimingRsp(paramStJudgeTimingRsp);
+        paramGuardInstruction.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.1(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt));
+        paramGuardInstruction.buildAndShow();
+      }
+      return;
+      if (paramGuardInstruction.type.get() == 2)
+      {
+        paramGuardInstruction = new GameGrowthGuardianManager.GuardInstructionDialogLogout(paramGuardInstruction, paramContext, paramMiniAppInfo);
+      }
+      else if (paramGuardInstruction.type.get() == 3)
+      {
+        paramGuardInstruction = new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl(paramGuardInstruction, paramContext, paramMiniAppInfo);
+      }
+      else if (paramGuardInstruction.type.get() == 6)
+      {
+        paramGuardInstruction = new GameGrowthGuardianManager.GuardInstructionDialogIncomeTips(paramGuardInstruction, paramContext, paramMiniAppInfo);
+      }
+      else if (paramGuardInstruction.type.get() == 7)
+      {
+        QMLog.d("GameGrowthGuardianManager", "tryBuildAndShow() called with: modal = " + paramGuardInstruction.modal.get());
+        if (paramGuardInstruction.modal.get() == 0) {
+          paramGuardInstruction = new GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate(paramGuardInstruction, paramContext, paramMiniAppInfo);
+        } else {
+          paramGuardInstruction = new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate(paramGuardInstruction, paramContext, paramMiniAppInfo);
+        }
+      }
+      else
+      {
+        QMLog.w("GameGrowthGuardianManager", "tryBuildAndShow not create and show dialog for " + paramGuardInstruction.type.get());
+        tryBuildAndShow(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt + 1);
+        paramGuardInstruction = localObject;
+      }
+    }
+  }
+  
   static void tryBuildAndShow(Context paramContext, MiniAppInfo paramMiniAppInfo, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp, int paramInt)
   {
     if ((paramContext == null) || (paramStJudgeTimingRsp == null) || (paramStJudgeTimingRsp.timingInstructions.isEmpty())) {}
@@ -40,56 +85,19 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
         if (paramInt >= paramStJudgeTimingRsp.timingInstructions.size()) {
           continue;
         }
-        Object localObject1 = (INTERFACE.GuardInstruction)paramStJudgeTimingRsp.timingInstructions.get(paramInt);
-        if (localObject1 == null) {
+        INTERFACE.GuardInstruction localGuardInstruction = (INTERFACE.GuardInstruction)paramStJudgeTimingRsp.timingInstructions.get(paramInt);
+        if (localGuardInstruction == null) {
           continue;
         }
-        if (((INTERFACE.GuardInstruction)localObject1).type.get() == 1)
-        {
-          localObject1 = new GameGrowthGuardianManager.GuardInstructionDialogTips((INTERFACE.GuardInstruction)localObject1, paramContext, paramMiniAppInfo);
-          if (localObject1 == null) {
-            continue;
-          }
-          ((GuardInstructionDialog)localObject1).setJudgeTimingRsp(paramStJudgeTimingRsp);
-          ((GuardInstructionDialog)localObject1).setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.1(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt));
-          ((GuardInstructionDialog)localObject1).buildAndShow();
-          return;
-        }
+        buildGuardianDialog(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt, localGuardInstruction);
+        return;
       }
       catch (Exception localException)
       {
         for (;;)
         {
           QMLog.e("GameGrowthGuardianManager", "tryBuildAndShow", localException);
-          Object localObject2 = null;
-          continue;
-          if (((INTERFACE.GuardInstruction)localObject2).type.get() == 2)
-          {
-            localObject2 = new GameGrowthGuardianManager.GuardInstructionDialogLogout((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-          }
-          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 3)
-          {
-            localObject2 = new GameGrowthGuardianManager.GuardInstructionDialogOpenUrl((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-          }
-          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 6)
-          {
-            localObject2 = new GameGrowthGuardianManager.GuardInstructionDialogIncomeTips((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-          }
-          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 7)
-          {
-            QMLog.d("GameGrowthGuardianManager", "tryBuildAndShow() called with: modal = " + ((INTERFACE.GuardInstruction)localObject2).modal.get());
-            if (((INTERFACE.GuardInstruction)localObject2).modal.get() == 0) {
-              localObject2 = new GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-            } else {
-              localObject2 = new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
-            }
-          }
-          else
-          {
-            QMLog.w("GameGrowthGuardianManager", "tryBuildAndShow not create and show dialog for " + ((INTERFACE.GuardInstruction)localObject2).type.get());
-            tryBuildAndShow(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt + 1);
-            localObject2 = null;
-          }
+          Object localObject = null;
         }
       }
     }
@@ -203,7 +211,7 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager.GuardInstructionDialog
  * JD-Core Version:    0.7.0.1
  */

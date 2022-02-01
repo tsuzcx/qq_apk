@@ -10,12 +10,12 @@ public final class QQValueInfoItem
   extends JceStruct
 {
   static Map<String, String> cache_qqvalue_ext_info = new HashMap();
-  public int level;
+  public int level = 0;
   public String material_id = "";
-  public int on_off;
-  public Map<String, String> qqvalue_ext_info;
-  public int score;
-  public int trend;
+  public int on_off = 0;
+  public Map<String, String> qqvalue_ext_info = null;
+  public int score = 0;
+  public int trend = 0;
   public String url = "";
   
   static

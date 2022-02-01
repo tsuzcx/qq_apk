@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.app;
 
 import android.util.Pair;
-import anzc;
 import java.util.Calendar;
 import java.util.List;
 
-public class MessageRoamManager$5
+class MessageRoamManager$5
   implements Runnable
 {
-  public MessageRoamManager$5(anzc paramanzc, int paramInt) {}
+  MessageRoamManager$5(MessageRoamManager paramMessageRoamManager, int paramInt) {}
   
   public void run()
   {
@@ -32,7 +31,7 @@ public class MessageRoamManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.5
  * JD-Core Version:    0.7.0.1
  */

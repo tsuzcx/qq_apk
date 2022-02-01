@@ -9,17 +9,17 @@ import java.util.ArrayList;
 public final class SvcRespParam
   extends JceStruct
 {
-  public static ArrayList<OnlineInfos> cache_vOnlineInfo;
-  public int PCstat;
-  public int iIsSupportC2CRoamMsg;
-  public int iIsSupportDataLine;
-  public int iIsSupportPrintable;
-  public int iIsSupportViewPCFile;
-  public int iPCClientType;
-  public int iPcVersion;
-  public ArrayList<OnlineInfo> onlineInfos;
+  public static ArrayList<OnlineInfos> cache_vOnlineInfo = null;
+  public int PCstat = 0;
+  public int iIsSupportC2CRoamMsg = 0;
+  public int iIsSupportDataLine = 0;
+  public int iIsSupportPrintable = 0;
+  public int iIsSupportViewPCFile = 0;
+  public int iPCClientType = 0;
+  public int iPcVersion = 0;
+  public ArrayList<OnlineInfo> onlineInfos = null;
   public ArrayList<OnlineInfos> onlineinfos;
-  public long uRoamFlag;
+  public long uRoamFlag = 0L;
   
   public SvcRespParam() {}
   

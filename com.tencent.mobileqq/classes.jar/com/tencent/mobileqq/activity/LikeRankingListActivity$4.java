@@ -1,29 +1,32 @@
 package com.tencent.mobileqq.activity;
 
-import anvk;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
 class LikeRankingListActivity$4
   implements Runnable
 {
-  LikeRankingListActivity$4(LikeRankingListActivity paramLikeRankingListActivity, String paramString) {}
+  LikeRankingListActivity$4(LikeRankingListActivity paramLikeRankingListActivity) {}
   
   public void run()
   {
-    Card localCard = this.this$0.a.b(this.a);
-    if (localCard != null) {
-      this.this$0.a(localCard);
+    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.this$0.app.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(100601);
+    if (localLocalRedTouchManager.a(localRedTouchItem1, false))
+    {
+      RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(-7);
+      if ((localLocalRedTouchManager.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
+        localRedTouchItem2.unReadFlag = false;
+      }
+      localLocalRedTouchManager.a(100601);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListActivity", 2, "update cover card = null");
-    }
-    LikeRankingListActivity.a(this.this$0.app, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -77,10 +77,10 @@ public class ThumbWidthHeightDP
       m = CommonImgThumbHelper.getImgThumbMaxPx(paramBoolean);
       if (paramThumbWidthHeightDP != null)
       {
-        j = AIOUtils.dp2px(paramThumbWidthHeightDP.mMinWidth, BaseApplicationImpl.getApplication().getResources());
-        i = AIOUtils.dp2px(paramThumbWidthHeightDP.mMinHeight, BaseApplicationImpl.getApplication().getResources());
-        k = AIOUtils.dp2px(paramThumbWidthHeightDP.mMaxWidth, BaseApplicationImpl.getApplication().getResources());
-        m = AIOUtils.dp2px(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
+        j = AIOUtils.a(paramThumbWidthHeightDP.mMinWidth, BaseApplicationImpl.getApplication().getResources());
+        i = AIOUtils.a(paramThumbWidthHeightDP.mMinHeight, BaseApplicationImpl.getApplication().getResources());
+        k = AIOUtils.a(paramThumbWidthHeightDP.mMaxWidth, BaseApplicationImpl.getApplication().getResources());
+        m = AIOUtils.a(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
       }
       i6 = paramBitmap.getWidth();
       i7 = paramBitmap.getHeight();
@@ -182,12 +182,12 @@ public class ThumbWidthHeightDP
   
   public int maxPx()
   {
-    return AIOUtils.dp2px((this.mMaxWidth + this.mMaxHeight) / 2, BaseApplicationImpl.getContext().getResources());
+    return AIOUtils.a((this.mMaxWidth + this.mMaxHeight) / 2, BaseApplicationImpl.getContext().getResources());
   }
   
   public int minPx()
   {
-    return AIOUtils.dp2px((this.mMinWidth + this.mMinHeight) / 2, BaseApplicationImpl.getContext().getResources());
+    return AIOUtils.a((this.mMinWidth + this.mMinHeight) / 2, BaseApplicationImpl.getContext().getResources());
   }
   
   public String toString()
@@ -202,7 +202,7 @@ public class ThumbWidthHeightDP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ThumbWidthHeightDP
  * JD-Core Version:    0.7.0.1
  */

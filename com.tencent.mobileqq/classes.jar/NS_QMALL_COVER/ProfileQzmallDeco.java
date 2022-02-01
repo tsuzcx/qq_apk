@@ -23,22 +23,22 @@ public final class ProfileQzmallDeco
   static PolymorphicPraise cache_stPolymorphicPraise;
   static DataForQboss cache_stQbossData;
   static ActYellowDiamond cache_stYellowDiamond;
-  public QzmallAvatar stAvatar;
-  public UserCmShowQzoneTrack stCmShowQzoneTrack;
-  public QzmallCustomBanner stCustomBanner;
-  public QzmallCustomNavi stCustomNavi;
-  public QzmallCustomPlayer stCustomPlayer;
-  public QzmallCustomPraise stCustomPraise;
-  public CustomTrackDeco stCustomTrack;
-  public QzmallCustomVip stCustomVip;
-  public QzmallFacade stFacade;
-  public FacadeDIY stFacadeDIY;
-  public FeedNavi stFeedNavi;
-  public QzmallFeedSkin stFeedSkin;
-  public QzmallFloat stFloat;
-  public PolymorphicPraise stPolymorphicPraise;
-  public DataForQboss stQbossData;
-  public ActYellowDiamond stYellowDiamond;
+  public QzmallAvatar stAvatar = null;
+  public UserCmShowQzoneTrack stCmShowQzoneTrack = null;
+  public QzmallCustomBanner stCustomBanner = null;
+  public QzmallCustomNavi stCustomNavi = null;
+  public QzmallCustomPlayer stCustomPlayer = null;
+  public QzmallCustomPraise stCustomPraise = null;
+  public CustomTrackDeco stCustomTrack = null;
+  public QzmallCustomVip stCustomVip = null;
+  public QzmallFacade stFacade = null;
+  public FacadeDIY stFacadeDIY = null;
+  public FeedNavi stFeedNavi = null;
+  public QzmallFeedSkin stFeedSkin = null;
+  public QzmallFloat stFloat = null;
+  public PolymorphicPraise stPolymorphicPraise = null;
+  public DataForQboss stQbossData = null;
+  public ActYellowDiamond stYellowDiamond = null;
   
   static
   {

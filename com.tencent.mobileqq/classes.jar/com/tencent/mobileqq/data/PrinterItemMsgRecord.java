@@ -19,10 +19,10 @@ public class PrinterItemMsgRecord
   public static final int status_transfer_fail = 12;
   public String filename;
   @notColumn
-  public Timer mTimer_for_Print;
-  public double progress;
+  public Timer mTimer_for_Print = null;
+  public double progress = 0.0D;
   public int status = 1;
-  public long uSessionID;
+  public long uSessionID = 0L;
   
   public PrinterItemMsgRecord()
   {
@@ -68,7 +68,7 @@ public class PrinterItemMsgRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrinterItemMsgRecord
  * JD-Core Version:    0.7.0.1
  */

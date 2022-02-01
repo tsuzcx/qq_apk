@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class SummaryCard
   extends JceStruct
 {
-  public int bgid;
-  public int color;
-  public int styleid;
+  public int bgid = 0;
+  public int color = 0;
+  public int styleid = 0;
   public String url = "";
   
   public SummaryCard() {}

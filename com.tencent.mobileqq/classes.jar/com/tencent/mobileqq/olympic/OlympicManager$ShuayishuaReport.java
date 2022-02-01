@@ -2,9 +2,9 @@ package com.tencent.mobileqq.olympic;
 
 import android.os.Handler;
 import android.support.v4.util.SparseArrayCompat;
-import bdla;
-import bkyb;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.util.LongSparseArray;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.AppRuntime;
@@ -51,12 +51,12 @@ public class OlympicManager$ShuayishuaReport
         localArrayList2 = new ArrayList(60);
         localArrayList3 = new ArrayList(1);
         localArrayList4 = new ArrayList(1);
-        Object localObject1 = new bkyb(60);
+        Object localObject1 = new LongSparseArray(60);
         k = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i);
         Object localObject2 = (ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(k);
         if (localObject2 != null)
         {
-          bdla.b(this.this$0.a, "CliOper", "", "", "0X80069C7", "0X80069C7", 0, 0, this.this$0.a.getCurrentAccountUin(), String.valueOf(((ArrayList)localObject2).size()), "", "");
+          ReportController.b(this.this$0.a, "CliOper", "", "", "0X80069C7", "0X80069C7", 0, 0, this.this$0.a.getCurrentAccountUin(), String.valueOf(((ArrayList)localObject2).size()), "", "");
           localObject2 = ((ArrayList)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
@@ -65,23 +65,23 @@ public class OlympicManager$ShuayishuaReport
             for (j = 1000;; j = 60000)
             {
               l = localLong.longValue() / j * j;
-              if (((bkyb)localObject1).a(l) == null) {
+              if (((LongSparseArray)localObject1).a(l) == null) {
                 break label253;
               }
-              ((bkyb)localObject1).a(l, Integer.valueOf(((Integer)((bkyb)localObject1).a(l)).intValue() + 1));
+              ((LongSparseArray)localObject1).a(l, Integer.valueOf(((Integer)((LongSparseArray)localObject1).a(l)).intValue() + 1));
               break;
             }
             label253:
-            ((bkyb)localObject1).a(l, Integer.valueOf(1));
+            ((LongSparseArray)localObject1).a(l, Integer.valueOf(1));
           }
         }
         j = 0;
-        if (j < ((bkyb)localObject1).a())
+        if (j < ((LongSparseArray)localObject1).a())
         {
           localObject2 = new OlympicServlet.ReportRecord();
-          l = ((bkyb)localObject1).a(j);
+          l = ((LongSparseArray)localObject1).a(j);
           ((OlympicServlet.ReportRecord)localObject2).time_stamp = l;
-          ((OlympicServlet.ReportRecord)localObject2).count = ((int)((Integer)((bkyb)localObject1).a(l)).intValue());
+          ((OlympicServlet.ReportRecord)localObject2).count = ((int)((Integer)((LongSparseArray)localObject1).a(l)).intValue());
           if (this.jdField_a_of_type_Int == 1) {
             localArrayList2.add(localObject2);
           }

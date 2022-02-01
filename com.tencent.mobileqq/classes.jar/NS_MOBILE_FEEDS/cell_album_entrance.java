@@ -10,13 +10,13 @@ public final class cell_album_entrance
   extends JceStruct
 {
   static Map<String, String> cache_busi_param = new HashMap();
-  public Map<String, String> busi_param;
+  public Map<String, String> busi_param = null;
   public int button_actiontype = -1;
   public String button_title = "";
   public String guide_icon = "";
   public String guide_title = "";
   public String guide_url = "";
-  public int iAttr;
+  public int iAttr = 0;
   public String strButtonColor = "";
   
   static

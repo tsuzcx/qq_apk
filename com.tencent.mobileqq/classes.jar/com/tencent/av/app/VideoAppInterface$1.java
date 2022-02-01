@@ -1,7 +1,7 @@
 package com.tencent.av.app;
 
+import com.tencent.av.business.config.MediaCodecChipConfigManager;
 import com.tencent.qphone.base.util.QLog;
-import lfw;
 
 class VideoAppInterface$1
   implements Runnable
@@ -13,12 +13,12 @@ class VideoAppInterface$1
     if (QLog.isColorLevel()) {
       QLog.i(VideoAppInterface.c(), 2, "Async load mediaCodecChipConfig.");
     }
-    lfw.a().a();
+    MediaCodecChipConfigManager.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface.1
  * JD-Core Version:    0.7.0.1
  */

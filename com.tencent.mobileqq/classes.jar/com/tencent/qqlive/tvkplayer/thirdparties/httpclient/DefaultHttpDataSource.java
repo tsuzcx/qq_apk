@@ -3,7 +3,7 @@ package com.tencent.qqlive.tvkplayer.thirdparties.httpclient;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -117,7 +117,7 @@ public class DefaultHttpDataSource
     {
       for (;;)
       {
-        Log.e("DefaultHttpDataSource", "Unexpected error while disconnecting", localException);
+        TVKLogUtil.e("DefaultHttpDataSource", localException, "Unexpected error while disconnecting");
       }
     }
   }
@@ -177,7 +177,7 @@ public class DefaultHttpDataSource
     //   92: lload_1
     //   93: lconst_0
     //   94: lcmp
-    //   95: ifge +46 -> 141
+    //   95: ifge +45 -> 140
     //   98: lload 5
     //   100: lstore_3
     //   101: lload_3
@@ -194,71 +194,68 @@ public class DefaultHttpDataSource
     //   124: ldc 197
     //   126: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 204	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   135: pop
-    //   136: lload_3
-    //   137: lstore_1
-    //   138: goto -110 -> 28
-    //   141: lload_1
-    //   142: lstore_3
-    //   143: lload_1
-    //   144: lload 5
-    //   146: lcmp
-    //   147: ifeq -46 -> 101
-    //   150: ldc 26
-    //   152: new 188	java/lang/StringBuilder
-    //   155: dup
-    //   156: invokespecial 189	java/lang/StringBuilder:<init>	()V
-    //   159: ldc 206
-    //   161: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: aload 7
-    //   166: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: ldc 208
-    //   171: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: aload_0
-    //   175: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: ldc 197
-    //   180: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: invokestatic 211	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   189: pop
-    //   190: lload_1
-    //   191: lload 5
-    //   193: invokestatic 217	java/lang/Math:max	(JJ)J
-    //   196: lstore_3
-    //   197: lload_3
-    //   198: lreturn
-    //   199: astore 7
-    //   201: ldc 26
-    //   203: new 188	java/lang/StringBuilder
-    //   206: dup
-    //   207: invokespecial 189	java/lang/StringBuilder:<init>	()V
-    //   210: ldc 219
-    //   212: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: aload_0
-    //   216: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: ldc 197
-    //   221: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokestatic 204	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   230: pop
-    //   231: lload_1
-    //   232: lreturn
+    //   132: invokestatic 204	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: lload_3
+    //   136: lstore_1
+    //   137: goto -109 -> 28
+    //   140: lload_1
+    //   141: lstore_3
+    //   142: lload_1
+    //   143: lload 5
+    //   145: lcmp
+    //   146: ifeq -45 -> 101
+    //   149: ldc 26
+    //   151: new 188	java/lang/StringBuilder
+    //   154: dup
+    //   155: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   158: ldc 206
+    //   160: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: aload 7
+    //   165: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: ldc 208
+    //   170: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: aload_0
+    //   174: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: ldc 197
+    //   179: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   185: invokestatic 211	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   188: lload_1
+    //   189: lload 5
+    //   191: invokestatic 217	java/lang/Math:max	(JJ)J
+    //   194: lstore_3
+    //   195: lload_3
+    //   196: lreturn
+    //   197: astore 7
+    //   199: ldc 26
+    //   201: new 188	java/lang/StringBuilder
+    //   204: dup
+    //   205: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   208: ldc 219
+    //   210: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   213: aload_0
+    //   214: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: ldc 197
+    //   219: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   225: invokestatic 204	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   228: lload_1
+    //   229: lreturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	233	0	paramHttpURLConnection	HttpURLConnection
-    //   13	219	1	l1	long
-    //   3	195	3	l2	long
-    //   82	110	5	l3	long
-    //   10	155	7	str	String
-    //   199	1	7	localNumberFormatException1	java.lang.NumberFormatException
+    //   0	230	0	paramHttpURLConnection	HttpURLConnection
+    //   13	216	1	l1	long
+    //   3	193	3	l2	long
+    //   82	108	5	l3	long
+    //   10	154	7	str	String
+    //   197	1	7	localNumberFormatException1	java.lang.NumberFormatException
     //   51	23	8	localMatcher	java.util.regex.Matcher
     //   103	1	8	localNumberFormatException2	java.lang.NumberFormatException
     // Exception table:
     //   from	to	target	type
     //   22	28	103	java/lang/NumberFormatException
-    //   63	84	199	java/lang/NumberFormatException
-    //   150	197	199	java/lang/NumberFormatException
+    //   63	84	197	java/lang/NumberFormatException
+    //   149	195	197	java/lang/NumberFormatException
   }
   
   private static URL handleRedirect(URL paramURL, String paramString)
@@ -509,53 +506,53 @@ public class DefaultHttpDataSource
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 453	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
+    //   1: getfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
     //   4: ifnull +21 -> 25
     //   7: aload_0
     //   8: getfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
     //   11: aload_0
-    //   12: invokevirtual 504	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesRemaining	()J
-    //   15: invokestatic 506	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:maybeTerminateInputStream	(Ljava/net/HttpURLConnection;J)V
+    //   12: invokevirtual 503	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesRemaining	()J
+    //   15: invokestatic 505	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:maybeTerminateInputStream	(Ljava/net/HttpURLConnection;J)V
     //   18: aload_0
-    //   19: getfield 453	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   22: invokevirtual 507	java/io/InputStream:close	()V
+    //   19: getfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
+    //   22: invokevirtual 506	java/io/InputStream:close	()V
     //   25: aload_0
     //   26: aconst_null
-    //   27: putfield 453	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
+    //   27: putfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
     //   30: aload_0
-    //   31: invokespecial 509	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   31: invokespecial 508	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
     //   34: aload_0
-    //   35: getfield 511	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
+    //   35: getfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
     //   38: ifeq +12 -> 50
     //   41: aload_0
     //   42: iconst_0
-    //   43: putfield 511	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
+    //   43: putfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
     //   46: aload_0
-    //   47: invokevirtual 514	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:transferEnded	()V
+    //   47: invokevirtual 513	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:transferEnded	()V
     //   50: return
     //   51: astore_1
-    //   52: new 516	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException
+    //   52: new 515	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException
     //   55: dup
     //   56: aload_1
     //   57: aload_0
-    //   58: getfield 518	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:dataSpec	Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;
+    //   58: getfield 517	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:dataSpec	Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;
     //   61: iconst_3
-    //   62: invokespecial 521	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException:<init>	(Ljava/io/IOException;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;I)V
+    //   62: invokespecial 520	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException:<init>	(Ljava/io/IOException;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;I)V
     //   65: athrow
     //   66: astore_1
     //   67: aload_0
     //   68: aconst_null
-    //   69: putfield 453	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
+    //   69: putfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
     //   72: aload_0
-    //   73: invokespecial 509	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   73: invokespecial 508	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
     //   76: aload_0
-    //   77: getfield 511	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
+    //   77: getfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
     //   80: ifeq +12 -> 92
     //   83: aload_0
     //   84: iconst_0
-    //   85: putfield 511	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
+    //   85: putfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
     //   88: aload_0
-    //   89: invokevirtual 514	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:transferEnded	()V
+    //   89: invokevirtual 513	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:transferEnded	()V
     //   92: aload_1
     //   93: athrow
     // Local variable table:
@@ -712,7 +709,7 @@ public class DefaultHttpDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.DefaultHttpDataSource
  * JD-Core Version:    0.7.0.1
  */

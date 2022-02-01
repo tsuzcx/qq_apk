@@ -41,9 +41,11 @@ public class MiniLoadingAdManager
   private static final String PRELOAD_PREFIX = "mini_loading_ad_preload_";
   private static final String SELECT_PREFIX = "mini_loading_ad_select_";
   public static final String TAG = "MiniLoadingAdManager";
+  public static final int TYPE_CLICK_BAR = 1;
+  public static final int TYPE_CLICK_IMG = 0;
   private static final String VIA_AD_PREFIX = "2054_";
   private static HashMap<Long, String> cachedAidFilePathMap = new HashMap();
-  private static final String defaultViaListStr = "2054_1,2054_2,2054_3,2054_4,2054_5,2054_6,2054_7,2054_8,2054_9,2054_10,2054_11,2054_12,2054_13,2054_14,2054_15,2054_17,2054_18,2054_19";
+  private static final String defaultViaListStr = "2054_1,2054_2,2054_3,2054_4,2054_5,2054_6,2054_7,2054_8,2054_9,2054_10,2054_11,2054_12,2054_13,2054_14,2054_15,2054_17,2054_18,2054_19,2014_31,4017_1,2016_72,2016_74";
   private static long maxAdCachedSize = 20971520L;
   private static volatile MiniLoadingAdManager sInstance;
   private int extraPreloadInterval = WnsConfig.getConfig("qqminiapp", "launch_adv_app_preload_interval", 0);
@@ -52,7 +54,7 @@ public class MiniLoadingAdManager
   private int maxSelectCountForUin = WnsConfig.getConfig("qqminiapp", "launch_adv_user_select_limit", 5);
   private int maxSelectCountForUinAndAppid = WnsConfig.getConfig("qqminiapp", "launch_adv_app_select_limit", 2);
   private long requestAdTimeStamp;
-  private String unsupportedViaList = WnsConfig.getConfig("qqminiapp", "launch_adv_unsupport_via_list", "2054_1,2054_2,2054_3,2054_4,2054_5,2054_6,2054_7,2054_8,2054_9,2054_10,2054_11,2054_12,2054_13,2054_14,2054_15,2054_17,2054_18,2054_19");
+  private String unsupportedViaList = WnsConfig.getConfig("qqminiapp", "launch_adv_unsupport_via_list", "2054_1,2054_2,2054_3,2054_4,2054_5,2054_6,2054_7,2054_8,2054_9,2054_10,2054_11,2054_12,2054_13,2054_14,2054_15,2054_17,2054_18,2054_19,2014_31,4017_1,2016_72,2016_74");
   
   private static ArrayList<MiniAppAd.SpecifiedAdsItem> assembleCachedAidMap(String paramString1, String paramString2)
   {
@@ -143,6 +145,7 @@ public class MiniLoadingAdManager
     if (isViaUnsupported(paramMiniAppInfo.via))
     {
       QMLog.d("MiniLoadingAdManager", "checkSelectAdNecessity via不支持");
+      SDKMiniProgramLpReportDC04239.reportMiniAppEvent(paramMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(paramMiniAppInfo), null, "ad", "ad_loading", "request_shield", paramMiniAppInfo.via);
       return false;
     }
     if (!checkLoadingAdFrequencyLimitation(paramMiniAppInfo.appId, paramString, 0))
@@ -423,7 +426,7 @@ public class MiniLoadingAdManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadingAdManager
  * JD-Core Version:    0.7.0.1
  */

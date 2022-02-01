@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import admh;
-import aido;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 
-public class PublicAccountChatPie$47
+class PublicAccountChatPie$47
   implements Runnable
 {
-  public PublicAccountChatPie$47(aido paramaido) {}
+  PublicAccountChatPie$47(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    admh.a(this.this$0.app, this.this$0.sessionInfo);
+    ChatActivityFacade.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.47
  * JD-Core Version:    0.7.0.1
  */

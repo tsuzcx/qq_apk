@@ -1,35 +1,31 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.app.Activity;
-import bfif;
-import bfis;
-import bfiu;
-import bfiv;
-import bgke;
-import bhdj;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class TroopFileItemOperation$10$1
+class TroopFileItemOperation$10$1
   implements Runnable
 {
-  public TroopFileItemOperation$10$1(bfiu parambfiu) {}
+  TroopFileItemOperation$10$1(TroopFileItemOperation.10 param10) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Bfif.a);
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
     if ((localObject != null) && (((TroopFileTransferManager.Item)localObject).ErrorCode == -136))
     {
-      this.a.jdField_a_of_type_Bfis.a(this.a.jdField_a_of_type_Bfif, this.a.jdField_a_of_type_Bfis.a.getString(2131697512), this.a.jdField_a_of_type_Bfis.a.getString(2131697513));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a.getString(2131697766), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a.getString(2131697767));
       return;
     }
-    int i = bfis.a(this.a.jdField_a_of_type_Bfis, false);
-    bfiv localbfiv = new bfiv(this);
+    int i = TroopFileItemOperation.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation, false);
+    TroopFileItemOperation.10.1.1 local1 = new TroopFileItemOperation.10.1.1(this);
     if (i == 1) {}
-    for (localObject = bfis.a(2131697129, new Object[] { bgke.a(this.a.jdField_a_of_type_Bfif.c), this.a.jdField_a_of_type_Bfif.a() });; localObject = bfis.a(2131697445, new Object[] { bgke.a(this.a.jdField_a_of_type_Bfif.c) }))
+    for (localObject = TroopFileItemOperation.a(2131697383, new Object[] { TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.c), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a() });; localObject = TroopFileItemOperation.a(2131697699, new Object[] { TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.c) }))
     {
-      bhdj.a(this.a.jdField_a_of_type_Bfis.a, 230, bfis.a(2131697447), (String)localObject, 2131690697, 2131697446, localbfiv, localbfiv).show();
+      DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, 230, TroopFileItemOperation.a(2131697701), (String)localObject, 2131690800, 2131697700, local1, local1).show();
       return;
     }
   }

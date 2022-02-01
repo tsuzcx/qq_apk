@@ -15,11 +15,11 @@ public final class mobile_video_layer_adv_rsp
   static ArrayList<s_premovie_adv> cache_all_premovie_adv;
   static Map<String, single_feed> cache_all_tips_adv;
   static Map<String, String> cache_mapExt;
-  public ArrayList<single_feed> all_feeds_adv;
-  public ArrayList<single_feed> all_pop_adv;
-  public ArrayList<s_premovie_adv> all_premovie_adv;
-  public Map<String, single_feed> all_tips_adv;
-  public Map<String, String> mapExt;
+  public ArrayList<single_feed> all_feeds_adv = null;
+  public ArrayList<single_feed> all_pop_adv = null;
+  public ArrayList<s_premovie_adv> all_premovie_adv = null;
+  public Map<String, single_feed> all_tips_adv = null;
+  public Map<String, String> mapExt = null;
   
   static
   {

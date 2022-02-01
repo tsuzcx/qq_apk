@@ -1,10 +1,13 @@
 package com.tencent.hippy.qq.update;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class UpdateSetting
 {
@@ -31,10 +34,28 @@ public class UpdateSetting
   
   private void initSharedPreferences()
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if (localBaseApplication != null) {
-      this.mSharedPreferences = localBaseApplication.getSharedPreferences("hippyConfig", 0);
+    this.mSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("hippyConfig", 4);
+  }
+  
+  public Map<String, Integer> getAllModuleVersion()
+  {
+    if (this.mSharedPreferences == null) {
+      initSharedPreferences();
     }
+    HashMap localHashMap = new HashMap();
+    if (this.mSharedPreferences != null)
+    {
+      Map localMap = this.mSharedPreferences.getAll();
+      Iterator localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if ((localMap.get(str) instanceof Integer)) {
+          localHashMap.put(str, (Integer)localMap.get(str));
+        }
+      }
+    }
+    return localHashMap;
   }
   
   public boolean getCDNUpdateFlag()
@@ -51,14 +72,35 @@ public class UpdateSetting
   
   public int getModuleVersion(String paramString)
   {
-    int i = -1;
     if (this.mSharedPreferences == null) {
       initSharedPreferences();
     }
-    if (this.mSharedPreferences != null) {
-      i = this.mSharedPreferences.getInt(paramString, -1);
+    if (this.mSharedPreferences != null) {}
+    for (int i = this.mSharedPreferences.getInt(paramString, -1);; i = -1)
+    {
+      if ((i != -1) && (!HippyQQFileUtil.getModuleIndex(paramString, i).exists()))
+      {
+        if (this.mSharedPreferences != null) {
+          this.mSharedPreferences.edit().putInt(paramString, -1);
+        }
+        return -1;
+      }
+      return i;
     }
-    return i;
+  }
+  
+  public boolean isModuleVersionFileExists(String paramString, int paramInt)
+  {
+    if (this.mSharedPreferences == null) {
+      initSharedPreferences();
+    }
+    if (paramInt < 0) {}
+    do
+    {
+      return false;
+      paramString = HippyQQFileUtil.getModuleIndex(paramString, paramInt);
+    } while ((!paramString.exists()) || (paramString.length() <= 0L));
+    return true;
   }
   
   public void setCDNUpdateFlag(boolean paramBoolean)
@@ -83,7 +125,7 @@ public class UpdateSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.update.UpdateSetting
  * JD-Core Version:    0.7.0.1
  */

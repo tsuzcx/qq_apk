@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import axnn;
-import axno;
-import ayjc;
+import com.tencent.mobileqq.nearby.FaceScoreConfig;
+import com.tencent.mobileqq.nearby.FaceScoreUtils;
 
-public class NearbyProfileFragment$2$1
+class NearbyProfileFragment$2$1
   implements Runnable
 {
-  public NearbyProfileFragment$2$1(ayjc paramayjc, axnn paramaxnn) {}
+  NearbyProfileFragment$2$1(NearbyProfileFragment.2 param2, FaceScoreConfig paramFaceScoreConfig) {}
   
   public void run()
   {
-    axno.a(this.jdField_a_of_type_Ayjc.a.a.getAppInterface(), this.jdField_a_of_type_Axnn);
+    FaceScoreUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment$2.a.a.getAppInterface(), this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreConfig);
   }
 }
 

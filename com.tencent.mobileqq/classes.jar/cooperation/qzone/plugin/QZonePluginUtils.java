@@ -4,12 +4,12 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.text.TextUtils;
-import blwq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.plugin.PluginInfoUtil;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
 import java.util.Iterator;
@@ -299,7 +299,7 @@ public class QZonePluginUtils
     int j = 0;
     int i = 0;
     Object localObject = paramContext.getDir("qzone_plugin_info", 0);
-    boolean bool = blwq.a((File)localObject);
+    boolean bool = PluginInfoUtil.a((File)localObject);
     paramContext = getPluginInfoFileList((File)localObject);
     if (paramContext != null)
     {
@@ -315,7 +315,7 @@ public class QZonePluginUtils
         }
         i += 1;
       }
-      blwq.a((File)localObject);
+      PluginInfoUtil.a((File)localObject);
     }
     for (;;)
     {
@@ -366,7 +366,7 @@ public class QZonePluginUtils
     //   32: dup
     //   33: aload_0
     //   34: iconst_0
-    //   35: invokestatic 349	bhcu:decode	([BI)[B
+    //   35: invokestatic 349	com/tencent/mobileqq/utils/Base64Util:decode	([BI)[B
     //   38: invokespecial 352	java/lang/String:<init>	([B)V
     //   41: astore_3
     //   42: aload_2
@@ -580,7 +580,7 @@ public class QZonePluginUtils
     //   46: aload 6
     //   48: invokevirtual 395	java/lang/String:getBytes	()[B
     //   51: iconst_0
-    //   52: invokestatic 398	bhcu:encode	([BI)[B
+    //   52: invokestatic 398	com/tencent/mobileqq/utils/Base64Util:encode	([BI)[B
     //   55: astore_1
     //   56: new 400	java/io/FileOutputStream
     //   59: dup
@@ -670,7 +670,7 @@ public class QZonePluginUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginUtils
  * JD-Core Version:    0.7.0.1
  */

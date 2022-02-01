@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 
 import android.view.View;
-import sbg;
 
-public class SelectMemberBuddyListAdapter$1$1
+class SelectMemberBuddyListAdapter$1$1
   implements Runnable
 {
-  public SelectMemberBuddyListAdapter$1$1(sbg paramsbg, View paramView) {}
+  SelectMemberBuddyListAdapter$1$1(SelectMemberBuddyListAdapter.1 param1, View paramView) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class SelectMemberBuddyListAdapter$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.SelectMemberBuddyListAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

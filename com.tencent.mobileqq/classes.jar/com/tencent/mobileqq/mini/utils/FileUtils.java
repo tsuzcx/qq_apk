@@ -107,7 +107,7 @@ public class FileUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("/", getStats(paramString));
-      Object localObject = com.tencent.mobileqq.utils.FileUtils.getChildFiles(paramString, true);
+      Object localObject = com.tencent.mobileqq.utils.FileUtils.a(paramString, true);
       paramString = new File(paramString);
       paramString = paramString.getCanonicalPath() + "/";
       localObject = ((ArrayList)localObject).iterator();

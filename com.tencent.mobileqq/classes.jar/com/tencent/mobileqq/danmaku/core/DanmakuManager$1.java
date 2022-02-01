@@ -1,35 +1,33 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import arqz;
-import arrh;
-import arrl;
-import arsy;
-import arti;
+import com.tencent.mobileqq.danmaku.data.BaseDanmaku;
+import com.tencent.mobileqq.danmaku.tool.ClickResult;
+import com.tencent.mobileqq.danmaku.tool.TouchPoint;
 
-public class DanmakuManager$1
+class DanmakuManager$1
   implements Runnable
 {
-  DanmakuManager$1(DanmakuManager paramDanmakuManager, arrl paramarrl, arti paramarti) {}
+  DanmakuManager$1(DanmakuManager paramDanmakuManager, BaseDanmaku paramBaseDanmaku, TouchPoint paramTouchPoint) {}
   
   public void run()
   {
     if (DanmakuManager.a(this.this$0) == null) {
       return;
     }
-    if (this.jdField_a_of_type_Arrl == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku == null)
     {
       DanmakuManager.a(this.this$0).a(false);
       return;
     }
-    this.jdField_a_of_type_Arti.a(this.jdField_a_of_type_Arrl.h(), this.jdField_a_of_type_Arrl.i());
-    arsy localarsy = this.jdField_a_of_type_Arrl.a(this.jdField_a_of_type_Arti);
-    if (DanmakuManager.a(this.this$0, localarsy))
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint.a(this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku.h(), this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku.i());
+    ClickResult localClickResult = this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku.a(this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint);
+    if (DanmakuManager.a(this.this$0, localClickResult))
     {
       DanmakuManager.a(this.this$0).a(true);
-      if (localarsy.a) {
-        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Arrl);
+      if (localClickResult.a) {
+        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku);
       }
-      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Arrl, this.jdField_a_of_type_Arti, localarsy);
+      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku, this.jdField_a_of_type_ComTencentMobileqqDanmakuToolTouchPoint, localClickResult);
       return;
     }
     DanmakuManager.a(this.this$0).a(false);
@@ -37,7 +35,7 @@ public class DanmakuManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public class QZoneCountUserInfo
   public String nickName;
   public PassiveFeedsPush pushData;
   public long uin;
-  public ArrayList<feed_info> vec_feedInfos;
+  public ArrayList<feed_info> vec_feedInfos = null;
   
   public QZoneCountUserInfo() {}
   
@@ -123,7 +123,7 @@ public class QZoneCountUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.UndealCount.QZoneCountUserInfo
  * JD-Core Version:    0.7.0.1
  */

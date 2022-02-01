@@ -4,12 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import ayym;
-import bgvo;
-import bgwb;
-import bgwc;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.olympic.utils.OlympicUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import org.xmlpull.v1.XmlPullParser;
@@ -18,17 +15,18 @@ import protocol.KQQConfig.UpgradeInfo;
 public class UpgradeDetailWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpgradeDetailWrapper> CREATOR = new bgwb();
+  public static final Parcelable.Creator<UpgradeDetailWrapper> CREATOR = new UpgradeDetailWrapper.1();
   static String a;
   public int a;
-  public bgwc a;
   public ApkUpdateDetail a;
   public NewUpgradeConfig a;
+  public UpgradeDetailWrapper.NewApkInfo a;
   public UpgradeInfo a;
   public boolean a;
   public int b;
   public String b;
   public UpgradeInfo b;
+  public boolean b;
   
   static
   {
@@ -37,6 +35,10 @@ public class UpgradeDetailWrapper
   
   public UpgradeDetailWrapper(UpgradeInfo paramUpgradeInfo, ApkUpdateDetail paramApkUpdateDetail)
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo = paramUpgradeInfo;
     this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail = paramApkUpdateDetail;
@@ -64,12 +66,12 @@ public class UpgradeDetailWrapper
     }
     if (paramString.equalsIgnoreCase("taskTime"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long = ayym.a(paramXmlPullParser.nextText());
+      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long = OlympicUtil.a(paramXmlPullParser.nextText());
       return true;
     }
     if (paramString.equalsIgnoreCase("showTime"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long = ayym.a(paramXmlPullParser.nextText());
+      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long = OlympicUtil.a(paramXmlPullParser.nextText());
       return true;
     }
     if (paramString.equalsIgnoreCase("title"))

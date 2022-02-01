@@ -1,21 +1,20 @@
 package com.tencent.avgame.floatwindow;
 
 import com.tencent.qphone.base.util.QLog;
-import ndx;
 
-public class FloatWindowController$1
+class FloatWindowController$1
   implements Runnable
 {
-  public FloatWindowController$1(ndx paramndx) {}
+  FloatWindowController$1(FloatWindowController paramFloatWindowController) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FloatWindowController", 2, "mDelayCheckPermissionShowFloatRunnable callback");
     }
-    ndx localndx = this.this$0;
-    localndx.a += 1;
-    if (ndx.a(this.this$0)) {
+    FloatWindowController localFloatWindowController = this.this$0;
+    localFloatWindowController.a += 1;
+    if (FloatWindowController.a(this.this$0)) {
       this.this$0.a(null, false, this.this$0.d);
     }
     if (this.this$0.a >= 3)
@@ -27,7 +26,7 @@ public class FloatWindowController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.floatwindow.FloatWindowController.1
  * JD-Core Version:    0.7.0.1
  */

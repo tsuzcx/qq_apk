@@ -5,10 +5,10 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mqq.app.MobileQQ;
 
 public class WebpSoLoader
 {
@@ -21,7 +21,7 @@ public class WebpSoLoader
     do
     {
       return -2;
-      str = a(BaseApplicationImpl.getContext());
+      str = a(BaseApplication.getContext());
       if (str == null) {
         break;
       }
@@ -81,10 +81,10 @@ public class WebpSoLoader
   {
     if ((a != null) && (paramString != null) && ((paramString.contains("libwebp-")) || (paramString.contains("libskia"))))
     {
-      BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putBoolean("WebpHookSupported", false).commit();
+      BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).edit().putBoolean("WebpHookSupported", false).commit();
       a = null;
       if (QLog.isColorLevel()) {
-        QLog.d("WebpSoLoader", 2, String.format("Crash in libwebp support library at %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getQQProcessName() }));
+        QLog.d("WebpSoLoader", 2, String.format("Crash in libwebp support library at %s process!", new Object[] { MsfSdkUtils.getProcessName(BaseApplication.getContext()) }));
       }
     }
   }
@@ -93,7 +93,7 @@ public class WebpSoLoader
   {
     if ((Build.VERSION.SDK_INT >= 8) && (Build.VERSION.SDK_INT < 17))
     {
-      BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putBoolean("WebpHookEnabled", paramBoolean).commit();
+      BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).edit().putBoolean("WebpHookEnabled", paramBoolean).commit();
       if (QLog.isColorLevel()) {
         if (!paramBoolean) {
           break label77;
@@ -113,7 +113,7 @@ public class WebpSoLoader
     SharedPreferences localSharedPreferences;
     if (a == null)
     {
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+      localSharedPreferences = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
       if ((localSharedPreferences.getBoolean("WebpHookEnabled", true)) && (localSharedPreferences.getBoolean("WebpHookSupported", true)))
       {
         int i = a();
@@ -188,7 +188,7 @@ public class WebpSoLoader
   {
     if ((Build.VERSION.SDK_INT >= 8) && (Build.VERSION.SDK_INT < 17))
     {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+      SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
       if ((localSharedPreferences.getBoolean("WebpHookEnabled", false)) && (localSharedPreferences.getBoolean("WebpHookSupported", true))) {
         return true;
       }

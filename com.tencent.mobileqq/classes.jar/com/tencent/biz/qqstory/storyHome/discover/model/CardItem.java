@@ -8,14 +8,10 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.OperationCardInfo;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
-import xyu;
-import xyw;
-import xyx;
-import xyy;
-import zdl;
 
 public class CardItem
   extends BaseUIItem
@@ -26,11 +22,11 @@ public class CardItem
   public static final int CARD_TYPE_OPERATION = 3;
   public String cardId;
   public int cardType;
-  public xyu gatherCardInfo;
-  public boolean hasReportExp;
-  public xyw nearByCardInfo;
-  public xyx normalCardInfo;
-  public xyy operationCardInfo;
+  public CardItem.ActivityCardInfo gatherCardInfo;
+  public boolean hasReportExp = false;
+  public CardItem.NearbyCardInfo nearByCardInfo;
+  public CardItem.NormalCardInfo normalCardInfo;
+  public CardItem.OperationCardInfo operationCardInfo;
   
   public CardItem(CardEntry paramCardEntry)
   {
@@ -39,19 +35,19 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      zdl.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      AssertUtils.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return;
     case 1: 
-      this.normalCardInfo = new xyx(paramCardEntry.PBData);
+      this.normalCardInfo = new CardItem.NormalCardInfo(paramCardEntry.PBData);
       return;
     case 2: 
-      this.nearByCardInfo = new xyw(paramCardEntry.PBData);
+      this.nearByCardInfo = new CardItem.NearbyCardInfo(paramCardEntry.PBData);
       return;
     case 3: 
-      this.operationCardInfo = new xyy(paramCardEntry.PBData);
+      this.operationCardInfo = new CardItem.OperationCardInfo(paramCardEntry.PBData);
       return;
     }
-    this.gatherCardInfo = new xyu(paramCardEntry.PBData);
+    this.gatherCardInfo = new CardItem.ActivityCardInfo(paramCardEntry.PBData);
   }
   
   public CardItem(qqstory_struct.CardInfo paramCardInfo)
@@ -61,29 +57,29 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      zdl.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      AssertUtils.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return;
     case 1: 
-      this.normalCardInfo = new xyx(paramCardInfo.normal_card);
+      this.normalCardInfo = new CardItem.NormalCardInfo(paramCardInfo.normal_card);
       return;
     case 2: 
-      this.nearByCardInfo = new xyw(paramCardInfo.nearby_card);
+      this.nearByCardInfo = new CardItem.NearbyCardInfo(paramCardInfo.nearby_card);
       return;
     case 3: 
-      this.operationCardInfo = new xyy(paramCardInfo.operation_card);
+      this.operationCardInfo = new CardItem.OperationCardInfo(paramCardInfo.operation_card);
       return;
     }
-    this.gatherCardInfo = new xyu(paramCardInfo.gather_card);
+    this.gatherCardInfo = new CardItem.ActivityCardInfo(paramCardInfo.gather_card);
   }
   
-  public CardItem(String paramString, xyx paramxyx)
+  public CardItem(String paramString, CardItem.NormalCardInfo paramNormalCardInfo)
   {
-    if ((paramString == null) || (paramxyx == null)) {
+    if ((paramString == null) || (paramNormalCardInfo == null)) {
       throw new IllegalArgumentException("parameter should not be null");
     }
     this.cardId = paramString;
     this.cardType = 1;
-    this.normalCardInfo = paramxyx;
+    this.normalCardInfo = paramNormalCardInfo;
   }
   
   @Nullable
@@ -119,19 +115,19 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      zdl.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      AssertUtils.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return localCardEntry;
     case 1: 
-      localCardEntry.PBData = xyx.a(this.normalCardInfo).toByteArray();
+      localCardEntry.PBData = CardItem.NormalCardInfo.a(this.normalCardInfo).toByteArray();
       return localCardEntry;
     case 2: 
-      localCardEntry.PBData = xyw.a(this.nearByCardInfo).toByteArray();
+      localCardEntry.PBData = CardItem.NearbyCardInfo.a(this.nearByCardInfo).toByteArray();
       return localCardEntry;
     case 3: 
-      localCardEntry.PBData = xyy.a(this.operationCardInfo).toByteArray();
+      localCardEntry.PBData = CardItem.OperationCardInfo.a(this.operationCardInfo).toByteArray();
       return localCardEntry;
     }
-    localCardEntry.PBData = xyu.a(this.gatherCardInfo).toByteArray();
+    localCardEntry.PBData = CardItem.ActivityCardInfo.a(this.gatherCardInfo).toByteArray();
     return localCardEntry;
   }
   
@@ -142,7 +138,7 @@ public class CardItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.discover.model.CardItem
  * JD-Core Version:    0.7.0.1
  */

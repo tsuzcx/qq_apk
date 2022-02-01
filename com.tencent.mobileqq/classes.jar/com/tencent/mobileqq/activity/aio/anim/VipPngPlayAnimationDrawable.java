@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import afwc;
-import afwd;
 import android.annotation.TargetApi;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -17,8 +15,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import bhbx;
-import bhub;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.vas.ui.INinePathBitmap;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,13 +28,13 @@ public class VipPngPlayAnimationDrawable
   implements Runnable
 {
   public int a;
-  public afwd a;
   public Resources a;
   public Bitmap a;
   protected Paint a;
   private Rect a;
   public Handler a;
-  public bhub a;
+  public VipPngPlayAnimationDrawable.DecodeNextFrameTask a;
+  public INinePathBitmap a;
   public Object a;
   public boolean a;
   public int b;
@@ -46,11 +44,11 @@ public class VipPngPlayAnimationDrawable
   public int d;
   public boolean d;
   public int e;
-  public int f;
+  public int f = 0;
   public int g;
   public int h;
   private int i = -1;
-  private int j;
+  private int j = 0;
   
   public VipPngPlayAnimationDrawable(Resources paramResources)
   {
@@ -60,8 +58,11 @@ public class VipPngPlayAnimationDrawable
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Bhub = new afwc();
+    this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap = new VipPngBitmap();
     this.jdField_a_of_type_AndroidContentResResources = paramResources;
   }
   
@@ -76,7 +77,7 @@ public class VipPngPlayAnimationDrawable
   }
   
   @TargetApi(11)
-  public Bitmap a(int paramInt1, Object paramObject, int paramInt2)
+  protected Bitmap a(int paramInt1, Object paramObject, int paramInt2)
   {
     Object localObject = new BitmapFactory.Options();
     switch (paramInt1)
@@ -120,18 +121,18 @@ public class VipPngPlayAnimationDrawable
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bhub != null) {
-      this.jdField_a_of_type_Bhub.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap != null) {
+      this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap.a();
     }
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    if (this.jdField_a_of_type_Afwd != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable$DecodeNextFrameTask != null)
     {
-      this.jdField_a_of_type_Afwd.cancel(false);
-      this.jdField_a_of_type_Afwd = null;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable$DecodeNextFrameTask.cancel(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable$DecodeNextFrameTask = null;
     }
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_Boolean = true;
@@ -174,8 +175,8 @@ public class VipPngPlayAnimationDrawable
       try
       {
         paramArrayOfString.close();
-        this.jdField_d_of_type_Int = bhbx.a(localOptions.outWidth, 320, this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi);
-        this.e = bhbx.a(localOptions.outHeight, 320, this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi);
+        this.jdField_d_of_type_Int = Utils.a(localOptions.outWidth, 320, this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi);
+        this.e = Utils.a(localOptions.outHeight, 320, this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi);
         this.g = this.jdField_d_of_type_Int;
         this.h = this.e;
         return;
@@ -193,7 +194,7 @@ public class VipPngPlayAnimationDrawable
   
   public void a(String[] paramArrayOfString, int paramInt)
   {
-    if ((this.jdField_a_of_type_Int == 0) && (Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString))) {
+    if ((paramArrayOfString == null) || ((this.jdField_a_of_type_Int == 0) && (Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString)))) {
       return;
     }
     a();
@@ -220,8 +221,8 @@ public class VipPngPlayAnimationDrawable
     this.jdField_a_of_type_Boolean = false;
     long l1 = SystemClock.uptimeMillis();
     long l2 = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Afwd = new afwd(this, this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_Afwd.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable$DecodeNextFrameTask = new VipPngPlayAnimationDrawable.DecodeNextFrameTask(this, this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable$DecodeNextFrameTask.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Int) });
   }
   
   public void draw(Canvas paramCanvas)
@@ -244,7 +245,7 @@ public class VipPngPlayAnimationDrawable
     {
       if (this.jdField_a_of_type_Int == 1) {}
       label100:
-      while (((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 2)) || (this.jdField_a_of_type_Bhub == null))
+      while (((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 2)) || (this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap == null))
       {
         if (this.jdField_c_of_type_Boolean) {
           paramCanvas.restoreToCount(k);
@@ -262,7 +263,7 @@ public class VipPngPlayAnimationDrawable
       if (this.g > 0) {}
       for (Rect localRect1 = new Rect(0, 0, this.g, getIntrinsicHeight());; localRect1 = null)
       {
-        this.jdField_a_of_type_Bhub.a(paramCanvas, localRect1, localRect2, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap.a(paramCanvas, localRect1, localRect2, this.jdField_a_of_type_AndroidGraphicsPaint);
         break;
         a();
         break label100;
@@ -298,9 +299,9 @@ public class VipPngPlayAnimationDrawable
       return;
       this.jdField_a_of_type_Boolean = true;
       this.jdField_b_of_type_Int = a(this.jdField_b_of_type_Int);
-    } while ((this.jdField_a_of_type_Int == -1) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_Bhub.a() == this.jdField_a_of_type_AndroidGraphicsBitmap));
-    this.jdField_a_of_type_Bhub.a();
-    this.jdField_a_of_type_Bhub.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    } while ((this.jdField_a_of_type_Int == -1) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap.a() == this.jdField_a_of_type_AndroidGraphicsBitmap));
+    this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap.a();
+    this.jdField_a_of_type_ComTencentMobileqqVasUiINinePathBitmap.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
     this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     super.invalidateSelf();
   }
@@ -328,7 +329,7 @@ public class VipPngPlayAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

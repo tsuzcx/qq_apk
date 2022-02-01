@@ -19,7 +19,7 @@ public class StrokeTextView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private float jdField_c_of_type_Float;
@@ -43,7 +43,7 @@ public class StrokeTextView
   {
     this.jdField_a_of_type_AndroidTextTextPaint = getPaint();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = AIOUtils.dp2px(2.0F, getResources());
+    this.jdField_c_of_type_Int = AIOUtils.a(2.0F, getResources());
     if (Build.VERSION.SDK_INT > 11) {
       setLayerType(1, null);
     }
@@ -82,7 +82,7 @@ public class StrokeTextView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Boolean)
     {

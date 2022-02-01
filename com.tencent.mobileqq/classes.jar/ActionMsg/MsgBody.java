@@ -10,7 +10,7 @@ public final class MsgBody
   public String actMsgContentValue = "";
   public String action = "";
   public String msg = "";
-  public long shareAppID;
+  public long shareAppID = 0L;
   
   public MsgBody() {}
   
@@ -42,7 +42,7 @@ public final class MsgBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ActionMsg.MsgBody
  * JD-Core Version:    0.7.0.1
  */

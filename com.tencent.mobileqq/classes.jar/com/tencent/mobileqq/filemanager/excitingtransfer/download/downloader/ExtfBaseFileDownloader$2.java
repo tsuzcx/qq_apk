@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader;
 
-import atsa;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
 
-public class ExtfBaseFileDownloader$2
+class ExtfBaseFileDownloader$2
   implements Runnable
 {
-  public ExtfBaseFileDownloader$2(atsa paramatsa, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo) {}
+  ExtfBaseFileDownloader$2(ExtfBaseFileDownloader paramExtfBaseFileDownloader, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class ExtfBaseFileDownloader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.2
  * JD-Core Version:    0.7.0.1
  */

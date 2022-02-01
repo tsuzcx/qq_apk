@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
-import bdfk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
 import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PeakFragmentActivity
@@ -24,7 +23,7 @@ public class PeakFragmentActivity
   
   protected void adjustStatusBar()
   {
-    bdfk.a(this.mSystemBarComp, getWindow());
+    SimpleUIUtil.a(this.mSystemBarComp, getWindow());
   }
   
   @Override
@@ -91,7 +90,7 @@ public class PeakFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

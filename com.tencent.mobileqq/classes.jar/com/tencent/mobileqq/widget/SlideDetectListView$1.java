@@ -11,41 +11,41 @@ class SlideDetectListView$1
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (!this.this$0.mCanSlide) {}
+    if (!this.a.jdField_c_of_type_Boolean) {}
     do
     {
       return false;
-      if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.this$0.mScrollState == 0) || (this.this$0.mNotCheckStateWhenSlide)) && (!this.this$0.mHasSlide) && (Math.abs(paramFloat1) > this.this$0.mSlideSlop))
+      if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.jdField_c_of_type_Int == 0) || (this.a.d)) && (!this.a.jdField_a_of_type_Boolean) && (Math.abs(paramFloat1) > this.a.f))
       {
-        this.this$0.mMotionViewPosition = this.this$0.findMotionViewPosition(this.this$0.mDownY);
-        this.this$0.mMotionView = this.this$0.findMotionView(this.this$0.mMotionViewPosition);
-        if (this.this$0.mMotionView != null)
+        this.a.jdField_b_of_type_Int = this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_AndroidViewView = this.a.a(this.a.jdField_b_of_type_Int);
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
         {
-          this.this$0.mHasSlide = true;
-          this.this$0.setPressed(false);
-          this.this$0.mMotionView.setPressed(false);
-          if (SlideDetectListView.access$000(this.this$0) != null)
+          this.a.jdField_a_of_type_Boolean = true;
+          this.a.setPressed(false);
+          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+          if (SlideDetectListView.a(this.a) != null)
           {
-            int i = this.this$0.mMotionViewPosition;
-            int j = this.this$0.getHeaderViewsCount();
-            SlideDetectListView.access$000(this.this$0).onSlideStarted(this.this$0, this.this$0.mMotionView, i - j);
+            int i = this.a.jdField_b_of_type_Int;
+            int j = this.a.getHeaderViewsCount();
+            SlideDetectListView.a(this.a).a(this.a, this.a.jdField_a_of_type_AndroidViewView, i - j);
           }
-          this.this$0.mDownY = 0;
+          this.a.jdField_a_of_type_Int = 0;
         }
         for (;;)
         {
           return true;
-          this.this$0.mHasSlideBanner = true;
+          this.a.jdField_b_of_type_Boolean = true;
         }
       }
     } while (Math.abs(paramFloat1) <= Math.abs(paramFloat2) * 2.0F);
-    this.this$0.mHasSlideBanner = true;
+    this.a.jdField_b_of_type_Boolean = true;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDetectListView.1
  * JD-Core Version:    0.7.0.1
  */

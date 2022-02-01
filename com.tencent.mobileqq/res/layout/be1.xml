@@ -10,12 +10,12 @@
     <com.tencent.mobileqq.widget.VoteViewV2 android:gravity="center" android:id="@id/l0b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="5.0dip" android:minWidth="24.0dip" android:layout_alignBottom="@id/d38" android:layout_alignParentRight="true" />
     <LinearLayout android:orientation="vertical" android:id="@id/gru" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="@dimen/a0c" android:layout_toLeftOf="@id/l0b" android:layout_toRightOf="@id/dk3" android:layout_alignBottom="@id/d38">
         <com.tencent.mobileqq.widget.ProfileNameView android:id="@id/f9c" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/nmk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/o00" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
     <LinearLayout android:id="@id/gmy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a0e" android:layout_below="@id/d38" android:layout_alignLeft="@id/gru">
         <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:id="@id/gmx" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
-    <com.tencent.mobileqq.vas.QidCoolTextView android:textColor="@color/skin_black" android:id="@id/nj9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/gmy" android:layout_alignBottom="@id/gmy" />
-    <FrameLayout android:id="@id/nic" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="@dimen/a03" android:layout_below="@id/gmy" android:layout_alignLeft="@id/gmy" />
-    <FrameLayout android:id="@id/nid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/gmy" android:layout_alignLeft="@id/gmy" />
+    <com.tencent.mobileqq.vas.QidCoolTextView android:textColor="@color/skin_black" android:id="@id/nv8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/gmy" android:layout_alignBottom="@id/gmy" />
+    <FrameLayout android:id="@id/ntl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="@dimen/a03" android:layout_below="@id/gmy" android:layout_alignLeft="@id/gmy" />
+    <FrameLayout android:id="@id/ntm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/gmy" android:layout_alignLeft="@id/gmy" />
 </RelativeLayout>

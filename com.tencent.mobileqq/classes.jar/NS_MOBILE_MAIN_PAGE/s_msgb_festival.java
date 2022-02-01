@@ -11,7 +11,7 @@ public final class s_msgb_festival
 {
   static Map<String, String> cache_extendinfo = new HashMap();
   public String content = "";
-  public Map<String, String> extendinfo;
+  public Map<String, String> extendinfo = null;
   public boolean is_festival = true;
   
   static

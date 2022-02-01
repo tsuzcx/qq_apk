@@ -9,8 +9,8 @@ public final class GetItemWatchWordReq
 {
   static LoginInfo cache_stLogin = new LoginInfo();
   static UniBusinessItem cache_stUniBusinessItem = new UniBusinessItem();
-  public LoginInfo stLogin;
-  public UniBusinessItem stUniBusinessItem;
+  public LoginInfo stLogin = null;
+  public UniBusinessItem stUniBusinessItem = null;
   
   public GetItemWatchWordReq() {}
   

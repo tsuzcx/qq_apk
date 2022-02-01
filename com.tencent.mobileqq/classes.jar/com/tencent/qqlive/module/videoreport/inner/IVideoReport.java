@@ -15,12 +15,16 @@ import com.tencent.qqlive.module.videoreport.ISessionChangeListener;
 import com.tencent.qqlive.module.videoreport.IVideoReportComponent;
 import com.tencent.qqlive.module.videoreport.PageParams;
 import com.tencent.qqlive.module.videoreport.SessionChangeReason;
+import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
+import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
+import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
 import com.tencent.qqlive.module.videoreport.data.IElementDynamicParams;
 import com.tencent.qqlive.module.videoreport.dtreport.api.DTConfig;
 import com.tencent.qqlive.module.videoreport.dtreport.api.PageSearchMode;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuilder;
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
+import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoBaseEntity;
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity;
 import com.tencent.qqlive.module.videoreport.page.IScrollReader;
 import com.tencent.qqlive.module.videoreport.page.PageInfo;
@@ -48,8 +52,15 @@ public abstract interface IVideoReport
   
   public abstract PageInfo findOwnerPage(View paramView);
   
+  public abstract ClickPolicy getElementClickPolicy(Object paramObject);
+  
+  public abstract EndExposurePolicy getElementEndExposePolicy(Object paramObject);
+  
+  public abstract ExposurePolicy getElementExposePolicy(Object paramObject);
+  
   public abstract Map<String, ?> getElementParams(Object paramObject);
   
+  @Deprecated
   public abstract ReportPolicy getElementReportPolicy(Object paramObject);
   
   @PageSearchMode
@@ -112,7 +123,13 @@ public abstract interface IVideoReport
   
   public abstract void setDetectionMode(@DetectionMode int paramInt);
   
+  public abstract void setElementClickPolicy(Object paramObject, ClickPolicy paramClickPolicy);
+  
   public abstract void setElementDynamicParams(Object paramObject, IElementDynamicParams paramIElementDynamicParams);
+  
+  public abstract void setElementEndExposePolicy(Object paramObject, EndExposurePolicy paramEndExposurePolicy);
+  
+  public abstract void setElementExposePolicy(Object paramObject, ExposurePolicy paramExposurePolicy);
   
   public abstract void setElementExposureDetectionEnabled(Object paramObject, boolean paramBoolean);
   
@@ -126,6 +143,7 @@ public abstract interface IVideoReport
   
   public abstract void setElementParams(Object paramObject, Map<String, ?> paramMap);
   
+  @Deprecated
   public abstract void setElementReportPolicy(Object paramObject, ReportPolicy paramReportPolicy);
   
   public abstract void setElementReuseIdentifier(Object paramObject, String paramString);
@@ -173,6 +191,8 @@ public abstract interface IVideoReport
   public abstract void triggerExposureInCurrentPage(List<Map<String, Object>> paramList);
   
   public abstract void unbindVideoPlayerInfo(@NonNull Object paramObject);
+  
+  public abstract void updateVideoPlayerInfo(@NonNull Object paramObject, @NonNull VideoBaseEntity paramVideoBaseEntity);
   
   @Nullable
   public abstract Map<String, Object> viewTreeParamsForView(View paramView);

@@ -1,46 +1,45 @@
 package com.tencent.mobileqq.enterpriseqq;
 
-import aslc;
-import asle;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class EnterpriseQQManager$1
+class EnterpriseQQManager$1
   implements Runnable
 {
-  public EnterpriseQQManager$1(aslc paramaslc) {}
+  EnterpriseQQManager$1(EnterpriseQQManager paramEnterpriseQQManager) {}
   
   public void run()
   {
-    if ((aslc.a(this.this$0) != null) && (aslc.a(this.this$0) != null))
+    if ((EnterpriseQQManager.a(this.this$0) != null) && (EnterpriseQQManager.a(this.this$0) != null))
     {
-      SosoInterface.startLocation(this.this$0.a);
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.this$0.a);
       return;
     }
-    synchronized (aslc.a())
+    synchronized (EnterpriseQQManager.a())
     {
-      if ((aslc.a(this.this$0) == null) || (aslc.a(this.this$0).size() <= 0)) {
-        break label144;
+      if ((EnterpriseQQManager.a(this.this$0) == null) || (EnterpriseQQManager.a(this.this$0).size() <= 0)) {
+        break label154;
       }
-      Iterator localIterator = aslc.a(this.this$0).iterator();
+      Iterator localIterator = EnterpriseQQManager.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        asle localasle = (asle)localIterator.next();
-        if (localasle != null) {
-          this.this$0.a(aslc.a(this.this$0), aslc.a(this.this$0), localasle.a, localasle.b, false, 0.0D, 0.0D);
+        EnterpriseQQManager.EventRequest localEventRequest = (EnterpriseQQManager.EventRequest)localIterator.next();
+        if (localEventRequest != null) {
+          this.this$0.a(EnterpriseQQManager.a(this.this$0), EnterpriseQQManager.a(this.this$0), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
         }
       }
     }
-    aslc.a(this.this$0).clear();
-    label144:
-    aslc.a(this.this$0, null);
-    aslc.a(this.this$0, null);
+    EnterpriseQQManager.a(this.this$0).clear();
+    label154:
+    EnterpriseQQManager.a(this.this$0, null);
+    EnterpriseQQManager.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager.1
  * JD-Core Version:    0.7.0.1
  */

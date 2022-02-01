@@ -1,21 +1,20 @@
 package com.tencent.open.downloadnew;
 
-import bjlu;
-import bjnn;
+import com.tencent.open.business.base.StaticAnalyz;
 
-public class MyAppApi$5
+class MyAppApi$5
   implements Runnable
 {
-  public MyAppApi$5(bjnn parambjnn, String paramString1, String paramString2) {}
+  MyAppApi$5(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bjlu.a("202", bjlu.a(this.a, "NEWYYB"), this.b);
+    StaticAnalyz.a("202", StaticAnalyz.a(this.a, "NEWYYB"), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.5
  * JD-Core Version:    0.7.0.1
  */

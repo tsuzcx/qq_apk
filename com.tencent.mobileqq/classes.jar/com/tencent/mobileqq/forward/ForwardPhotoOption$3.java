@@ -2,11 +2,9 @@ package com.tencent.mobileqq.forward;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import ausg;
-import aush;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ForwardPhotoOption$3
+class ForwardPhotoOption$3
   implements Runnable
 {
   ForwardPhotoOption$3(ForwardPhotoOption paramForwardPhotoOption, Drawable paramDrawable, boolean paramBoolean, int paramInt) {}
@@ -24,12 +22,12 @@ public class ForwardPhotoOption$3
     {
       return;
     }
-    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new ausg(this));
+    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new ForwardPhotoOption.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPhotoOption.3
  * JD-Core Version:    0.7.0.1
  */

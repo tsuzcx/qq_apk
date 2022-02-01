@@ -1,10 +1,11 @@
 package cooperation.qqcircle.report.outbox;
 
-import bizw;
-import bjmk;
-import bjmn;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.qcircle.api.db.DbCacheManager;
+import com.tencent.mobileqq.qcircle.api.db.DbCacheService;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class QCircleReportOutboxTaskCacheManager
 {
@@ -30,42 +31,34 @@ public class QCircleReportOutboxTaskCacheManager
     do
     {
       return;
-      l = bizw.a().a();
-    } while ((l == paramCacheHolder.uin) && (paramCacheHolder.cache != null) && (!paramCacheHolder.cache.a()));
+      l = MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin();
+    } while ((l == paramCacheHolder.uin) && (paramCacheHolder.cache != null) && (!paramCacheHolder.cache.isClosed()));
     paramCacheHolder.uin = l;
-    paramCacheHolder.cache = bjmn.a(bizw.a().a()).a(QCircleReportOutboxTaskCacheData.class, l, this.mCacheName);
+    paramCacheHolder.cache = DbCacheService.getInstance().getCacheManager(QCircleReportOutboxTaskCacheData.class, l, this.mCacheName);
   }
   
   public void release()
   {
-    this.mSenderQueueCache.cache.a();
+    this.mSenderQueueCache.cache.close();
     this.mSenderQueueCache.cache = null;
   }
   
   public void removeTask(QCircleReportOutboxTask paramQCircleReportOutboxTask)
   {
-    QLog.i("QCircleReportOutboxTaskCacheManager", 1, "removeTask id:" + paramQCircleReportOutboxTask.getTaskId());
+    RFLog.i("QCircleReportOutboxTaskCacheManager", RFLog.USR, "removeTask id:" + paramQCircleReportOutboxTask.getTaskId());
     ensureCacheHolder(this.mSenderQueueCache);
-    this.mSenderQueueCache.cache.b("cache_key='" + paramQCircleReportOutboxTask.getCacheKey() + "'");
+    this.mSenderQueueCache.cache.deleteData("cache_key=?", new String[] { paramQCircleReportOutboxTask.getCacheKey() });
   }
   
   public ArrayList<QCircleReportOutboxTask> restoreTasks()
   {
-    int j = 0;
     ensureCacheHolder(this.mSenderQueueCache);
-    int k = this.mSenderQueueCache.cache.a();
-    ArrayList localArrayList1 = new ArrayList(k);
-    int i = 0;
-    while (i < k)
-    {
-      localArrayList1.add((QCircleReportOutboxTaskCacheData)this.mSenderQueueCache.cache.a(i));
-      i += 1;
-    }
+    ArrayList localArrayList1 = this.mSenderQueueCache.cache.queryData();
     ArrayList localArrayList2 = new ArrayList();
     if (localArrayList1.size() > 0)
     {
-      i = j;
-      if (i < k)
+      int i = 0;
+      if (i < localArrayList1.size())
       {
         QCircleReportOutboxTaskCacheData localQCircleReportOutboxTaskCacheData = (QCircleReportOutboxTaskCacheData)localArrayList1.get(i);
         QCircleReportOutboxTask localQCircleReportOutboxTask;
@@ -73,7 +66,7 @@ public class QCircleReportOutboxTaskCacheManager
         {
           localQCircleReportOutboxTask = localQCircleReportOutboxTaskCacheData.getQueueTask();
           if (localQCircleReportOutboxTask.isNullTask()) {
-            break label161;
+            break label114;
           }
           localQCircleReportOutboxTask.printTaskInfo("QCircleReportOutboxTaskCacheManager", "restoreTask");
           localQCircleReportOutboxTask.setState(2);
@@ -83,9 +76,9 @@ public class QCircleReportOutboxTaskCacheManager
         {
           i += 1;
           break;
-          label161:
+          label114:
           removeTask(localQCircleReportOutboxTask);
-          QLog.w("QCircleReportOutboxTaskCacheManager", 1, "remove null task, id:" + localQCircleReportOutboxTask.getTaskId());
+          RFLog.w("QCircleReportOutboxTaskCacheManager", RFLog.USR, "remove null task, id:" + localQCircleReportOutboxTask.getTaskId());
         }
       }
     }
@@ -96,23 +89,23 @@ public class QCircleReportOutboxTaskCacheManager
   {
     if (!paramQCircleReportOutboxTask.isNullTask())
     {
-      QLog.i("QCircleReportOutboxTaskCacheManager", 1, "saveTask id:" + paramQCircleReportOutboxTask.getTaskId());
+      RFLog.i("QCircleReportOutboxTaskCacheManager", RFLog.USR, "saveTask id:" + paramQCircleReportOutboxTask.getTaskId());
       ensureCacheHolder(this.mSenderQueueCache);
-      this.mSenderQueueCache.cache.a(new QCircleReportOutboxTaskCacheData(paramQCircleReportOutboxTask), 1);
+      this.mSenderQueueCache.cache.saveData(new QCircleReportOutboxTaskCacheData(paramQCircleReportOutboxTask), 1);
       return;
     }
-    QLog.w("QCircleReportOutboxTaskCacheManager", 1, "save null task, id:" + paramQCircleReportOutboxTask.getTaskId());
+    RFLog.w("QCircleReportOutboxTaskCacheManager", RFLog.USR, "save null task, id:" + paramQCircleReportOutboxTask.getTaskId());
   }
   
   public void updateTask(QCircleReportOutboxTask paramQCircleReportOutboxTask)
   {
     ensureCacheHolder(this.mSenderQueueCache);
-    this.mSenderQueueCache.cache.b(new QCircleReportOutboxTaskCacheData(paramQCircleReportOutboxTask), "cache_key='" + paramQCircleReportOutboxTask.getCacheKey() + "'");
+    this.mSenderQueueCache.cache.updateData(new QCircleReportOutboxTaskCacheData(paramQCircleReportOutboxTask), "cache_key='" + paramQCircleReportOutboxTask.getCacheKey() + "'");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskCacheManager
  * JD-Core Version:    0.7.0.1
  */

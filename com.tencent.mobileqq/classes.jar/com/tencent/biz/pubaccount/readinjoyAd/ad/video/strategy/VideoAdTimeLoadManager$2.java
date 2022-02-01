@@ -1,22 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy;
 
-import oha;
-import pvj;
-import ult;
+import com.tencent.biz.pubaccount.NativeAd.data.AdRequestData;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 
-public class VideoAdTimeLoadManager$2
+class VideoAdTimeLoadManager$2
   implements Runnable
 {
-  public VideoAdTimeLoadManager$2(ult paramult, oha paramoha) {}
+  VideoAdTimeLoadManager$2(VideoAdTimeLoadManager paramVideoAdTimeLoadManager, AdRequestData paramAdRequestData) {}
   
   public void run()
   {
-    pvj.a().a(88888888, 5, 0, 10000, this.a);
+    ReadInJoyAdLog.a("VideoAdTimeLoadManager", "preLoadAd refreshChannelAdvertisementFormServer");
+    ReadInJoyLogicEngine.a().a(88888888, 5, 0, 10000, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdTimeLoadManager.2
  * JD-Core Version:    0.7.0.1
  */

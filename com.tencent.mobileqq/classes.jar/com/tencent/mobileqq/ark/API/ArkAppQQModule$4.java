@@ -4,26 +4,24 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import apsl;
-import aptb;
-import aupt;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class ArkAppQQModule$4
+class ArkAppQQModule$4
   implements Runnable
 {
-  public ArkAppQQModule$4(aptb paramaptb, ArkAppMessage paramArkAppMessage) {}
+  ArkAppQQModule$4(ArkAppQQModule paramArkAppQQModule, ArkAppMessage paramArkAppMessage) {}
   
   public void run()
   {
-    Activity localActivity = apsl.a();
+    Activity localActivity = ArkAppModuleBase.a();
     if ((localActivity instanceof FragmentActivity))
     {
-      Bundle localBundle = QQCustomArkDialog.AppInfo.zipArgs(this.a.appName, this.a.appView, this.a.appMinVersion, this.a.metaList, ArkAppCenterUtil.getDensity(), null, null);
+      Bundle localBundle = QQCustomArkDialog.AppInfo.a(this.a.appName, this.a.appView, this.a.appMinVersion, this.a.metaList, ArkAppCenterUtil.a(), null, null);
       localBundle.putBoolean("forward_ark_app_direct", false);
       localBundle.putString("forward_ark_app_name", this.a.appName);
       localBundle.putString("forward_ark_app_view", this.a.appView);
@@ -40,7 +38,7 @@ public class ArkAppQQModule$4
       if (QLog.isColorLevel()) {
         QLog.i("ArkApp.ArkAppQQModule", 2, "multiAio.buildForwardIntent: " + localBundle);
       }
-      aupt.a(localActivity, localIntent);
+      ForwardBaseOption.a(localActivity, localIntent);
     }
   }
 }

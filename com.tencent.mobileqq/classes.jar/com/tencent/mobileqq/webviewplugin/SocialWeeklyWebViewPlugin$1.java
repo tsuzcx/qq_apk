@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import bijw;
-
-public class SocialWeeklyWebViewPlugin$1
+class SocialWeeklyWebViewPlugin$1
   implements Runnable
 {
-  public SocialWeeklyWebViewPlugin$1(bijw parambijw, String paramString) {}
+  SocialWeeklyWebViewPlugin$1(SocialWeeklyWebViewPlugin paramSocialWeeklyWebViewPlugin, String paramString) {}
   
   public void run()
   {
-    bijw.a(this.this$0, bijw.b(this.this$0, this.a));
+    SocialWeeklyWebViewPlugin.a(this.this$0, SocialWeeklyWebViewPlugin.b(this.this$0, this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.SocialWeeklyWebViewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

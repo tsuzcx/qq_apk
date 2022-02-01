@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
-import akrl;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
@@ -20,6 +18,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
@@ -135,7 +134,7 @@ public class QQLSUnlockActivity
         QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
         paramBundle = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramBundle instanceof QQAppInterface)) {
-          akrl.a((QQAppInterface)paramBundle, false);
+          QWalletPushManager.a((QQAppInterface)paramBundle, false);
         }
       }
       return;
@@ -174,7 +173,7 @@ public class QQLSUnlockActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

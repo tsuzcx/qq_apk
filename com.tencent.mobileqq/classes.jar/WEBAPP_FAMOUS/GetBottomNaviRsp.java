@@ -13,9 +13,9 @@ public final class GetBottomNaviRsp
 {
   static Map<String, ArrayList<SchoolSingleGameItem>> cache_app_list;
   static ArrayList<ActInfo> cache_vec_out_app = new ArrayList();
-  public Map<String, ArrayList<SchoolSingleGameItem>> app_list;
-  public int bitmap_flag;
-  public ArrayList<ActInfo> vec_out_app;
+  public Map<String, ArrayList<SchoolSingleGameItem>> app_list = null;
+  public int bitmap_flag = 0;
+  public ArrayList<ActInfo> vec_out_app = null;
   
   static
   {

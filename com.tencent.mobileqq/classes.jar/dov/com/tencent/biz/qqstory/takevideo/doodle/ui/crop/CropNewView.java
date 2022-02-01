@@ -16,26 +16,23 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
 import android.view.View;
-import boyh;
-import boyi;
-import boyk;
-import boym;
-import boyn;
 import com.tencent.TMG.utils.QLog;
-import ykw;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.CropHomeing;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.CropHomingAnimator;
 
 public class CropNewView
   extends View
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, ScaleGestureDetector.OnScaleGestureListener, Runnable
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private boyi jdField_a_of_type_Boyi;
-  private boyk jdField_a_of_type_Boyk = new boyk();
-  private boym jdField_a_of_type_Boym;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private CropHomingAnimator jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator;
+  private CropNewImage jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage = new CropNewImage();
+  private CropNewView.CropListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView$CropListener;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public CropNewView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,59 +47,59 @@ public class CropNewView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new boyn(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new CropNewView.MoveAdapter(this, null));
     this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, this);
   }
   
   private void a(Canvas paramCanvas, boolean paramBoolean)
   {
     paramCanvas.save();
-    RectF localRectF = this.jdField_a_of_type_Boyk.a();
-    paramCanvas.rotate(this.jdField_a_of_type_Boyk.b(), localRectF.centerX(), localRectF.centerY());
-    this.jdField_a_of_type_Boyk.a(paramCanvas);
-    this.jdField_a_of_type_Boyk.b(paramCanvas);
+    RectF localRectF = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a();
+    paramCanvas.rotate(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(), localRectF.centerX(), localRectF.centerY());
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(paramCanvas);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(paramCanvas);
     paramCanvas.restore();
     if (paramBoolean)
     {
       paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      this.jdField_a_of_type_Boyk.a(paramCanvas, getScrollX(), getScrollY());
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(paramCanvas, getScrollX(), getScrollY());
       paramCanvas.restore();
     }
   }
   
-  private void a(boyh paramboyh)
+  private void a(CropHomeing paramCropHomeing)
   {
-    this.jdField_a_of_type_Boyk.c(paramboyh.c);
-    this.jdField_a_of_type_Boyk.b(paramboyh.d);
-    if (!a(Math.round(paramboyh.a), Math.round(paramboyh.b))) {
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.c(paramCropHomeing.c);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(paramCropHomeing.d);
+    if (!a(Math.round(paramCropHomeing.a), Math.round(paramCropHomeing.b))) {
       invalidate();
     }
   }
   
-  private void a(boyh paramboyh1, boyh paramboyh2)
+  private void a(CropHomeing paramCropHomeing1, CropHomeing paramCropHomeing2)
   {
-    if (this.jdField_a_of_type_Boyi == null)
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator == null)
     {
-      this.jdField_a_of_type_Boyi = new boyi();
-      this.jdField_a_of_type_Boyi.addUpdateListener(this);
-      this.jdField_a_of_type_Boyi.addListener(this);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator = new CropHomingAnimator();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.addUpdateListener(this);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.addListener(this);
     }
-    this.jdField_a_of_type_Boyi.a(paramboyh1, paramboyh2);
-    this.jdField_a_of_type_Boyi.start();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.a(paramCropHomeing1, paramCropHomeing2);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.start();
   }
   
   private boolean a(float paramFloat1, float paramFloat2)
   {
-    boyh localboyh = this.jdField_a_of_type_Boyk.a(getScrollX(), getScrollY(), -paramFloat1, -paramFloat2);
-    if (localboyh != null)
+    CropHomeing localCropHomeing = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(getScrollX(), getScrollY(), -paramFloat1, -paramFloat2);
+    if (localCropHomeing != null)
     {
-      if ((this.jdField_a_of_type_Boym != null) && (!this.b))
+      if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView$CropListener != null) && (!this.b))
       {
-        this.jdField_a_of_type_Boym.b();
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView$CropListener.b();
         setCrop(true);
       }
-      a(localboyh);
+      a(localCropHomeing);
       return true;
     }
     return a(getScrollX() + Math.round(paramFloat1), getScrollY() + Math.round(paramFloat2));
@@ -127,34 +124,39 @@ public class CropNewView
   {
     invalidate();
     f();
-    boyh localboyh1 = this.jdField_a_of_type_Boyk.b(getScrollX(), getScrollY());
-    boyh localboyh2 = this.jdField_a_of_type_Boyk.c(getScrollX(), getScrollY());
+    CropHomeing localCropHomeing1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(getScrollX(), getScrollY());
+    CropHomeing localCropHomeing2 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.c(getScrollX(), getScrollY());
     if (this.jdField_a_of_type_Boolean)
     {
       setResetHome(false);
-      localboyh2.a = 0.0F;
-      localboyh2.b = 0.0F;
+      localCropHomeing2.a = 0.0F;
+      localCropHomeing2.b = 0.0F;
     }
-    a(localboyh1, localboyh2);
+    a(localCropHomeing1, localCropHomeing2);
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Boyi != null) {
-      this.jdField_a_of_type_Boyi.cancel();
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.cancel();
     }
   }
   
   public Bitmap a()
   {
-    float f = 1.0F / this.jdField_a_of_type_Boyk.c();
-    RectF localRectF = new RectF(this.jdField_a_of_type_Boyk.a());
+    float f = 1.0F / this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.c();
+    RectF localRectF = new RectF(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a());
     Object localObject = new Matrix();
-    ((Matrix)localObject).setRotate(this.jdField_a_of_type_Boyk.b(), localRectF.centerX(), localRectF.centerY());
+    ((Matrix)localObject).setRotate(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(), localRectF.centerX(), localRectF.centerY());
     ((Matrix)localObject).mapRect(localRectF);
     ((Matrix)localObject).setScale(f, f, localRectF.left, localRectF.top);
     ((Matrix)localObject).mapRect(localRectF);
-    localObject = Bitmap.createBitmap(Math.round(localRectF.width()), Math.round(localRectF.height()), Bitmap.Config.ARGB_8888);
+    int i = Math.round(localRectF.width());
+    int j = Math.round(localRectF.height());
+    if ((i <= 0) || (j <= 0)) {
+      return null;
+    }
+    localObject = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas((Bitmap)localObject);
     localCanvas.translate(-localRectF.left, -localRectF.top);
     localCanvas.scale(f, f, localRectF.left, localRectF.top);
@@ -164,15 +166,15 @@ public class CropNewView
   
   public void a()
   {
-    this.jdField_a_of_type_Boyk.c();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.c();
     e();
     setCrop(false);
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Boym != null) {
-      this.jdField_a_of_type_Boym.a(paramInt);
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView$CropListener != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView$CropListener.a(paramInt);
     }
   }
   
@@ -184,10 +186,10 @@ public class CropNewView
     }
     if (!b())
     {
-      this.jdField_a_of_type_Boyk.d(getScrollX(), getScrollY());
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.d(getScrollX(), getScrollY());
       e();
-      if (this.jdField_a_of_type_Boym != null) {
-        this.jdField_a_of_type_Boym.b();
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView$CropListener != null) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView$CropListener.b();
       }
       bool = true;
     }
@@ -207,11 +209,11 @@ public class CropNewView
     default: 
       return bool;
     case 0: 
-      this.jdField_a_of_type_Boyk.b(paramMotionEvent.getX(), paramMotionEvent.getY());
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(paramMotionEvent.getX(), paramMotionEvent.getY());
       a(1);
       return bool;
     }
-    this.jdField_a_of_type_Boyk.c(getScrollX(), getScrollY());
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.c(getScrollX(), getScrollY());
     a(2);
     e();
     return bool;
@@ -221,28 +223,28 @@ public class CropNewView
   {
     if (!b())
     {
-      this.jdField_a_of_type_Boyk.a(-90);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(-90);
       e();
     }
   }
   
   boolean b()
   {
-    return (this.jdField_a_of_type_Boyi != null) && (this.jdField_a_of_type_Boyi.isRunning());
+    return (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.isRunning());
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Boyk.b();
-    this.jdField_a_of_type_Boyk.b(true);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(true);
     setResetHome(true);
     e();
   }
   
   public boolean c()
   {
-    this.jdField_a_of_type_Boyk.a(getScrollX(), getScrollY());
-    this.jdField_a_of_type_Boyk.b(true);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(getScrollX(), getScrollY());
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(true);
     setResetHome(true);
     e();
     return true;
@@ -250,7 +252,7 @@ public class CropNewView
   
   public void d()
   {
-    this.jdField_a_of_type_Boyk.a();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a();
     e();
   }
   
@@ -259,7 +261,7 @@ public class CropNewView
     if (QLog.isColorLevel()) {
       QLog.i("CropNewView", 0, "onAnimationCancel!");
     }
-    this.jdField_a_of_type_Boyk.c(this.jdField_a_of_type_Boyi.a());
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.a());
   }
   
   public void onAnimationEnd(Animator paramAnimator)
@@ -267,8 +269,8 @@ public class CropNewView
     if (QLog.isColorLevel()) {
       QLog.i("CropNewView", 0, "onAnimationEnd!");
     }
-    if (this.jdField_a_of_type_Boyk.a(getScrollX(), getScrollY(), this.jdField_a_of_type_Boyi.a())) {
-      a(this.jdField_a_of_type_Boyk.a(getScrollX(), getScrollY()));
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(getScrollX(), getScrollY(), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.a())) {
+      a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(getScrollX(), getScrollY()));
     }
   }
   
@@ -279,31 +281,31 @@ public class CropNewView
     if (QLog.isColorLevel()) {
       QLog.i("CropNewView", 0, "onAnimationStart!");
     }
-    this.jdField_a_of_type_Boyk.a(this.jdField_a_of_type_Boyi.a());
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationCropHomingAnimator.a());
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Boyk.d(paramValueAnimator.getAnimatedFraction());
-    a((boyh)paramValueAnimator.getAnimatedValue());
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.d(paramValueAnimator.getAnimatedFraction());
+    a((CropHomeing)paramValueAnimator.getAnimatedValue());
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     removeCallbacks(this);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     a(paramCanvas, true);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean) {
-      this.jdField_a_of_type_Boyk.a(paramInt3 - paramInt1, paramInt4 - paramInt2);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(paramInt3 - paramInt1, paramInt4 - paramInt2);
     }
   }
   
@@ -311,7 +313,7 @@ public class CropNewView
   {
     if (this.jdField_a_of_type_Int > 1)
     {
-      this.jdField_a_of_type_Boyk.b(paramScaleGestureDetector.getScaleFactor(), getScrollX() + paramScaleGestureDetector.getFocusX(), getScrollY() + paramScaleGestureDetector.getFocusY());
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.b(paramScaleGestureDetector.getScaleFactor(), getScrollX() + paramScaleGestureDetector.getFocusX(), getScrollY() + paramScaleGestureDetector.getFocusY());
       invalidate();
       return true;
     }
@@ -322,7 +324,7 @@ public class CropNewView
   {
     if (this.jdField_a_of_type_Int > 1)
     {
-      this.jdField_a_of_type_Boyk.d();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.d();
       return true;
     }
     return false;
@@ -330,8 +332,8 @@ public class CropNewView
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.jdField_a_of_type_Boyk.e();
-    ykw.b("0X800A9AB");
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.e();
+    VideoEditReport.b("0X800A9AB");
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -360,15 +362,15 @@ public class CropNewView
     this.b = paramBoolean;
   }
   
-  public void setCropListener(boym paramboym)
+  public void setCropListener(CropNewView.CropListener paramCropListener)
   {
-    this.jdField_a_of_type_Boym = paramboym;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView$CropListener = paramCropListener;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Boyk.a(this);
-    this.jdField_a_of_type_Boyk.a(paramBitmap);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewImage.a(paramBitmap);
     setResetHome(false);
     setCrop(false);
     invalidate();
@@ -381,7 +383,7 @@ public class CropNewView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.crop.CropNewView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ class QZLog$LogBuilder
 {
   private static final int MAX_POOL_SIZE = 50;
   private static LogBuilder sPool;
-  private static int sPoolSize;
+  private static int sPoolSize = 0;
   private static final Object sPoolSync = new Object();
   private LogBuilder next;
   private StringBuilder stringBuilder = new StringBuilder(128);

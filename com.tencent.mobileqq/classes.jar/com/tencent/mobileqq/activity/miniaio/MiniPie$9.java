@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import akfg;
-
-public class MiniPie$9
+class MiniPie$9
   implements Runnable
 {
-  public MiniPie$9(akfg paramakfg) {}
+  MiniPie$9(MiniPie paramMiniPie) {}
   
   public void run()
   {
@@ -15,7 +13,7 @@ public class MiniPie$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.9
  * JD-Core Version:    0.7.0.1
  */

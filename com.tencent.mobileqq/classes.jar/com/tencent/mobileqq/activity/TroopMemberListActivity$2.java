@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
-import anvk;
-import bhdf;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.util.api.ITroopDBUtilsApi;
 import java.util.List;
 
 class TroopMemberListActivity$2
   implements Runnable
 {
-  TroopMemberListActivity$2(TroopMemberListActivity paramTroopMemberListActivity, anvk paramanvk) {}
+  TroopMemberListActivity$2(TroopMemberListActivity paramTroopMemberListActivity, FriendsManager paramFriendsManager) {}
   
   public void run()
   {
-    Object localObject1 = bhdf.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
-    bhdf.a().a(this.this$0.app, this.this$0.b, this.this$0.v);
+    Object localObject1 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.this$0.app, this.this$0.b, this.this$0.v);
+    ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberCardInfo(this.this$0.app, this.this$0.b, this.this$0.v);
     if ((localObject1 != null) && (this.a != null))
     {
       this.this$0.a(this.this$0.v);
@@ -30,7 +31,7 @@ class TroopMemberListActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.2
  * JD-Core Version:    0.7.0.1
  */

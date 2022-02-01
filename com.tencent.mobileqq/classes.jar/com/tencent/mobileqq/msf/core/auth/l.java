@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.w;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.service.u;
@@ -137,7 +136,7 @@ public class l
   
   private void a(ToServiceMsg paramToServiceMsg, String paramString)
   {
-    FromServiceMsg localFromServiceMsg = w.a(paramToServiceMsg);
+    FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.o.a(paramToServiceMsg);
     QLog.d("MSF.C.WTLoginCenter", 1, Thread.currentThread().getName() + " createNeedLoginRespByWt setAccountNoLogin uin=" + MsfSdkUtils.getShortUin(localFromServiceMsg.getUin()));
     d.getAccountCenter().k(localFromServiceMsg.getUin());
     localFromServiceMsg.setBusinessFail(2001, localFromServiceMsg.getBusinessFailMsg());
@@ -283,9 +282,17 @@ public class l
     n.a(paramToServiceMsg);
     WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
     localWUserSigInfo._seqence = localp.f;
+    Object localObject = paramToServiceMsg.getAttribute("key_business_seq");
+    if ((localObject != null) && ((localObject instanceof Integer))) {
+      localWUserSigInfo._seqence = ((Integer)localObject).intValue();
+    }
+    localObject = paramToServiceMsg.getAttribute("businessType");
+    if ((localObject != null) && ((localObject instanceof Integer))) {
+      localWUserSigInfo.businessType = ((Integer)localObject).intValue();
+    }
     a(paramToServiceMsg, localWUserSigInfo);
-    byte[] arrayOfByte = (byte[])paramToServiceMsg.getAttribute("smsExtraData");
-    a(paramToServiceMsg, localp, e.RefreshSMSData(paramToServiceMsg.getUin(), 9L, localWUserSigInfo, arrayOfByte), "wt_RefreshSMSData");
+    localObject = (byte[])paramToServiceMsg.getAttribute("smsExtraData");
+    a(paramToServiceMsg, localp, e.RefreshSMSData(paramToServiceMsg.getUin(), 9L, localWUserSigInfo, (byte[])localObject), "wt_RefreshSMSData");
   }
   
   public void F(ToServiceMsg paramToServiceMsg)
@@ -296,8 +303,20 @@ public class l
     WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
     a(paramToServiceMsg, localWUserSigInfo);
     localWUserSigInfo._seqence = localp.f;
-    byte[] arrayOfByte = (byte[])paramToServiceMsg.getAttribute("smsExtraData");
-    a(paramToServiceMsg, localp, e.CheckSMSAndGetSt(paramToServiceMsg.getUin(), (byte[])paramToServiceMsg.getAttribute("userInput"), localWUserSigInfo, (byte[][])null, arrayOfByte), "wt_CheckSMSAndGetSt");
+    Object localObject = paramToServiceMsg.getAttribute("key_business_seq");
+    if ((localObject != null) && ((localObject instanceof Integer))) {
+      localWUserSigInfo._seqence = ((Integer)localObject).intValue();
+    }
+    localObject = paramToServiceMsg.getAttribute("businessType");
+    if ((localObject != null) && ((localObject instanceof Integer))) {
+      localWUserSigInfo.businessType = ((Integer)localObject).intValue();
+    }
+    localObject = paramToServiceMsg.getAttribute("phoneToken");
+    if (localObject != null) {
+      WtloginHelper.setExtraLoginTlvValue(localWUserSigInfo, 1346, (byte[])localObject);
+    }
+    localObject = (byte[])paramToServiceMsg.getAttribute("smsExtraData");
+    a(paramToServiceMsg, localp, e.CheckSMSAndGetSt(paramToServiceMsg.getUin(), (byte[])paramToServiceMsg.getAttribute("userInput"), localWUserSigInfo, (byte[][])null, (byte[])localObject), "wt_CheckSMSAndGetSt");
   }
   
   public void G(ToServiceMsg paramToServiceMsg)
@@ -398,6 +417,20 @@ public class l
   }
   
   public void L(ToServiceMsg paramToServiceMsg)
+  {
+    p localp = n.a(d, paramToServiceMsg);
+    localp.g = true;
+    n.a(paramToServiceMsg);
+    WUserSigInfo localWUserSigInfo = n.b(paramToServiceMsg.getRequestSsoSeq());
+    localWUserSigInfo._seqence = localp.f;
+    Object localObject = paramToServiceMsg.getAttribute("phoneToken");
+    if (localObject != null) {
+      WtloginHelper.setExtraLoginTlvValue(localWUserSigInfo, 1346, (byte[])localObject);
+    }
+    a(paramToServiceMsg, localp, e.quickLoginByGateway(16L, 34869344L, paramToServiceMsg.getAppId(), localWUserSigInfo), "wt_QuickLoginByGateway");
+  }
+  
+  public void M(ToServiceMsg paramToServiceMsg)
   {
     p localp = n.a(d, paramToServiceMsg);
     n.a(paramToServiceMsg);
@@ -501,7 +534,7 @@ public class l
       return 0;
     }
     QLog.d("MSF.C.WTLoginCenter", 1, "checkIsNeedLoginWithPasswd " + MD5.toMD5(paramToServiceMsg.getUin()) + " IsNeedLoginWithPasswd");
-    paramWtloginHelper = w.a(paramToServiceMsg);
+    paramWtloginHelper = com.tencent.mobileqq.msf.core.o.a(paramToServiceMsg);
     paramWtloginHelper.setBusinessFail(2001, paramToServiceMsg.getUin() + " not login");
     MsfSdkUtils.addFromMsgProcessName("*", paramWtloginHelper);
     d.addRespToQuque(paramToServiceMsg, paramWtloginHelper);
@@ -538,10 +571,18 @@ public class l
         if (localObject2 != null) {
           WtloginHelper.setExtraLoginTlvValue(localWUserSigInfo, 1346, (byte[])localObject2);
         }
+        localObject2 = paramToServiceMsg.getAttribute("sigSession");
+        if (localObject2 != null) {
+          WtloginHelper.setExtraLoginTlvValue(localWUserSigInfo, 260, (byte[])localObject2);
+        }
+        localObject2 = paramToServiceMsg.getAttribute("businessType");
+        if ((localObject2 != null) && ((localObject2 instanceof Integer))) {
+          localWUserSigInfo.businessType = ((Integer)localObject2).intValue();
+        }
         long l1 = 16L;
         localObject2 = (String)paramToServiceMsg.getAttribute("process", null);
         if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals("com.tencent.mobileqq:openSdk"))) {
-          break label438;
+          break label503;
         }
         m = ((Integer)paramToServiceMsg.getAttribute("puzzle_verify_code", Integer.valueOf(0))).intValue();
         l1 = 1600001540L;
@@ -572,7 +613,7 @@ public class l
         continue;
         localWUserSigInfo._login_bitmap = 0;
         continue;
-        label438:
+        label503:
         int m = 130;
       }
     }
@@ -599,6 +640,44 @@ public class l
     paramMsfCore = new o(paramMsfCore);
     e.SetListener(paramMsfCore);
     com.tencent.mobileqq.msf.core.NetConnInfoCenter.GUID = e.GetGuid();
+  }
+  
+  public void a(WUserSigInfo paramWUserSigInfo, HashMap paramHashMap)
+  {
+    byte[] arrayOfByte1 = null;
+    StringBuilder localStringBuilder = new StringBuilder("regAddFaceParam analysisExtraMap");
+    if (paramHashMap != null)
+    {
+      byte[] arrayOfByte2 = (byte[])paramHashMap.get("face_reg_sig");
+      arrayOfByte1 = (byte[])paramHashMap.get("face_result");
+      paramHashMap = arrayOfByte2;
+      localStringBuilder.append(",byteFaceRegSig = ");
+      if (paramHashMap == null) {
+        break label132;
+      }
+      localStringBuilder.append(paramHashMap.length);
+      WtloginHelper.setExtraRegTlvValue(paramWUserSigInfo, 54, paramHashMap);
+      label78:
+      localStringBuilder.append(",byteFaceResult = ");
+      if (arrayOfByte1 == null) {
+        break label144;
+      }
+      localStringBuilder.append(arrayOfByte1.length);
+      WtloginHelper.setExtraRegTlvValue(paramWUserSigInfo, 55, arrayOfByte1);
+    }
+    for (;;)
+    {
+      QLog.i("MSF.C.WTLoginCenter", 1, localStringBuilder.toString());
+      return;
+      localStringBuilder.append(",extraMap = null");
+      paramHashMap = null;
+      break;
+      label132:
+      localStringBuilder.append("null");
+      break label78;
+      label144:
+      localStringBuilder.append("null");
+    }
   }
   
   public int b(ToServiceMsg paramToServiceMsg)
@@ -881,7 +960,9 @@ public class l
       }
       WtloginHelper.setExtraRegTlvValue((WUserSigInfo)localObject2, 49, ((String)localObject3).getBytes());
     }
-    m = e.RegSubmitMobile(str3, str2.getBytes(), str1.getBytes(), localByte1.byteValue(), localByte2.byteValue(), localByte3.byteValue(), 16L, l, (WUserSigInfo)localObject2);
+    localObject3 = (HashMap)paramToServiceMsg.getAttributes().get("To_register_map_param");
+    a((WUserSigInfo)localObject2, (HashMap)localObject3);
+    m = e.RegSubmitMobile(str3, str2.getBytes(), str1.getBytes(), localByte1.byteValue(), localByte2.byteValue(), localByte3.byteValue(), 16L, l, (WUserSigInfo)localObject2, (Map)localObject3);
     a(paramToServiceMsg, (p)localObject1, m, "RegSubmitMobile");
     return m;
   }
@@ -950,6 +1031,7 @@ public class l
     }
     for (;;)
     {
+      a(localWUserSigInfo, (HashMap)paramToServiceMsg.getAttributes().get("To_register_map_param"));
       m = e.RegGetAccount(str1.getBytes(), "qqpassport".getBytes(), str2.getBytes(), str3.getBytes(), str6.getBytes(), m, localWUserSigInfo);
       a(paramToServiceMsg, localp, m, "RegGetAccount");
       return m;

@@ -8,8 +8,8 @@ public final class StExtInfo
   extends JceStruct
 {
   public String logDepth = "";
-  public int logLevel;
-  public int logSeq;
+  public int logLevel = 0;
+  public int logSeq = 0;
   
   public StExtInfo() {}
   

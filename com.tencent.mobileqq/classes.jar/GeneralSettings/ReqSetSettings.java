@@ -9,7 +9,7 @@ public final class ReqSetSettings
   extends JceStruct
 {
   static ArrayList<Setting> cache_Settings;
-  public ArrayList<Setting> Settings;
+  public ArrayList<Setting> Settings = null;
   
   public ReqSetSettings() {}
   

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
 import com.tencent.qphone.base.util.QLog;
 
-public class BaseActivity2$1
+class BaseActivity2$1
   implements TeleScreenRunnable
 {
   BaseActivity2$1(BaseActivity2 paramBaseActivity2, Intent paramIntent, int paramInt, Bundle paramBundle) {}

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import avec;
+import com.tencent.mobileqq.gamecenter.protocol.GameCenterUnissoHandler;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GameSwitchConfig
   extends Entity
 {
-  public static final String TAG = avec.a + "GameSwitchConfig";
+  public static final String TAG = GameCenterUnissoHandler.a + "GameSwitchConfig";
   @unique
   public String mAppId;
   public int mBlockSwitch;
@@ -25,7 +25,7 @@ public class GameSwitchConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.GameSwitchConfig
  * JD-Core Version:    0.7.0.1
  */

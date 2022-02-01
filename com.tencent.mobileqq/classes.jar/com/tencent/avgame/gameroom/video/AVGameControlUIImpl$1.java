@@ -1,7 +1,7 @@
 package com.tencent.avgame.gameroom.video;
 
-import bjtp;
-import bjty;
+import com.tencent.qav.QavSDK;
+import com.tencent.qav.controller.multi.IMultiOperator;
 
 class AVGameControlUIImpl$1
   implements Runnable
@@ -10,12 +10,12 @@ class AVGameControlUIImpl$1
   
   public void run()
   {
-    bjtp.a().a().c();
+    QavSDK.a().a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.1
  * JD-Core Version:    0.7.0.1
  */

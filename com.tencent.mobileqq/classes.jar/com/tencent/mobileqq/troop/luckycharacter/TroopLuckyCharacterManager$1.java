@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.troop.luckycharacter;
 
 import android.content.SharedPreferences;
-import aoep;
-import aqxe;
-import bfya;
-import bfyc;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.service.troop.TroopNotificationConstants;
+import com.tencent.mobileqq.troop.handler.TroopListHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class TroopLuckyCharacterManager$1
+class TroopLuckyCharacterManager$1
   implements Runnable
 {
-  public TroopLuckyCharacterManager$1(bfyc parambfyc) {}
+  TroopLuckyCharacterManager$1(TroopLuckyCharacterManager paramTroopLuckyCharacterManager) {}
   
   public void run()
   {
-    bfyc.a(this.this$0, (bfya)aqxe.a().a(696));
-    String str = bfyc.a(this.this$0).getCurrentAccountUin();
+    TroopLuckyCharacterManager.a(this.this$0, (TroopLuckyCharacterConfig)QConfigManager.a().a(696));
+    String str = TroopLuckyCharacterManager.a(this.this$0).getCurrentAccountUin();
     boolean bool = BaseApplication.getContext().getSharedPreferences(str, 0).getBoolean(str + "self_troop_lucky_character_switch", true);
     this.this$0.a(bool);
-    ((aoep)bfyc.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).notifyUI(80, true, null);
+    ((TroopListHandler)TroopLuckyCharacterManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).notifyUI(TroopNotificationConstants.aC, true, null);
   }
 }
 

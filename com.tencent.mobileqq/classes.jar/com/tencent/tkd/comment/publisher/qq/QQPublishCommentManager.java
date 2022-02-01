@@ -59,6 +59,11 @@ public class QQPublishCommentManager
     return this.viewBridge;
   }
   
+  public boolean isBridgeNotAvailable()
+  {
+    return (this.publisherBridge == null) || (this.reportBridge == null) || (this.spBridge == null) || (this.viewBridge == null) || (this.logBridge == null) || (this.lifecycleBridge == null) || (this.urlImageBridge == null);
+  }
+  
   public void reset()
   {
     this.publisherBridge = null;
@@ -66,6 +71,7 @@ public class QQPublishCommentManager
     this.spBridge = null;
     this.viewBridge = null;
     this.logBridge = null;
+    this.lifecycleBridge = null;
     this.urlImageBridge = null;
   }
   
@@ -106,7 +112,7 @@ public class QQPublishCommentManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentManager
  * JD-Core Version:    0.7.0.1
  */

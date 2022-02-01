@@ -10,12 +10,15 @@ class GameCenterVideoView$VideoViewWrapper$setMutedFunction
   
   public void execute(HippyArray paramHippyArray, Promise paramPromise)
   {
+    if (GameCenterVideoView.VideoViewWrapper.access$1800(this.this$1)) {
+      return;
+    }
     this.this$1.setMute(paramHippyArray.getBoolean(0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView.VideoViewWrapper.setMutedFunction
  * JD-Core Version:    0.7.0.1
  */

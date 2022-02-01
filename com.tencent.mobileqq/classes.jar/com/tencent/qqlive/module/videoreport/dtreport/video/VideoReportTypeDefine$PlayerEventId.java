@@ -9,6 +9,8 @@ public @interface VideoReportTypeDefine$PlayerEventId
 {
   public static final int BUFFER_END = 2;
   public static final int BUFFER_START = 1;
+  public static final int LOOP_END = 6;
+  public static final int LOOP_START = 5;
   public static final int PARAM_TYPE_LONG = 4;
   public static final int SET_START_POSITION = 3;
 }

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.statistics;
 
-import bdjx;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public final class CrashUtils$1
+final class CrashUtils$1
   implements Runnable
 {
-  public CrashUtils$1(BaseApplication paramBaseApplication) {}
+  CrashUtils$1(BaseApplication paramBaseApplication) {}
   
   public void run()
   {
-    bdjx.a(this.a);
+    CrashUtils.a(this.a);
   }
 }
 

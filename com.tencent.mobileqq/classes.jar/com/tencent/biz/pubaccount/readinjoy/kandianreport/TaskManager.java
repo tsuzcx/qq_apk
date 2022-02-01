@@ -4,9 +4,12 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
-import bmhv;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
+import com.tencent.biz.common.util.OfflineSecurity;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -14,11 +17,13 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,14 +35,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nvf;
-import nwj;
-import olh;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pkh;
 
 public class TaskManager
 {
@@ -58,18 +59,21 @@ public class TaskManager
   private static boolean isStarted;
   private static long lastTime;
   public static int scriptVersion = -1;
-  private static long timeLimit = 3600000L;
-  private boolean isNetWorkStateRegistered;
+  private static long timeLimit;
+  private boolean isNetWorkStateRegistered = false;
   private INetInfoHandler netHandler = new TaskManager.1(this);
   private ArrayList<Task> taskList = new ArrayList();
   
   static
   {
+    isStarted = false;
+    lastTime = 0L;
+    timeLimit = 3600000L;
     _instance = new TaskManager();
     try
     {
       isConfigureOn = getConfigOn();
-      SCRIPT_ROOT_PATH = nvf.a("3412") + "3412";
+      SCRIPT_ROOT_PATH = OfflineEnvHelper.a("3412") + "3412";
       JSSCRIPT_EXTRACTION_DIR = SCRIPT_ROOT_PATH + "/extraction";
       JSSCRIPT_PROCESS_DIR = SCRIPT_ROOT_PATH + "/process";
       JSSCRIPT_DISTRIBUTION_DIR = SCRIPT_ROOT_PATH + "/distribution";
@@ -327,7 +331,7 @@ public class TaskManager
   
   public static boolean getConfigOn()
   {
-    return ((Integer)bmhv.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
+    return ((Integer)ReadInJoyHelper.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
   }
   
   public static TaskManager getInstance()
@@ -337,7 +341,7 @@ public class TaskManager
   
   private String getMmapUtilsName(String paramString)
   {
-    String str = pkh.a().getAccount();
+    String str = ReadInJoyUtils.a().getAccount();
     return str + "_" + paramString;
   }
   
@@ -485,7 +489,7 @@ public class TaskManager
           if (((File)localObject1).exists())
           {
             localObject2 = new StringBuffer();
-            localObject1 = FileUtils.readFileToString((File)localObject1);
+            localObject1 = FileUtils.b((File)localObject1);
             if (localJSContext == null) {
               continue;
             }
@@ -566,7 +570,7 @@ public class TaskManager
   
   private boolean isTaskAvailable(Task paramTask)
   {
-    int i = ((Integer)bmhv.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
+    int i = ((Integer)ReadInJoyHelper.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
     return (i != Task.STATUS_FAIL) && (i != Task.STATUS_QUIT);
   }
   
@@ -618,7 +622,7 @@ public class TaskManager
   
   private Task readTaskConfigFile(File paramFile)
   {
-    return readTaskConfigJson(FileUtils.readFileContent(paramFile));
+    return readTaskConfigJson(FileUtils.a(paramFile));
   }
   
   private Task readTaskConfigJson(String paramString)
@@ -690,7 +694,7 @@ public class TaskManager
   private void readTasksFromConfigFile()
   {
     QLog.d("kandianreport.taskmanager", 1, "readTasksFromConfigFile...");
-    if (FileUtils.fileExists(TASK_CONFIG_DIR))
+    if (FileUtils.a(TASK_CONFIG_DIR))
     {
       Object localObject1 = new File(TASK_CONFIG_DIR).listFiles();
       this.taskList.clear();
@@ -793,10 +797,10 @@ public class TaskManager
     paramString1.put("version", scriptVersion + "");
     paramString1.put("so_version", KandianReportSoLoader.getSoVersion() + "");
     paramString1.put("phone", Build.MODEL);
-    paramString1.put("sys_version", DeviceInfoUtil.getDeviceOSVersion());
-    paramString1.put("qq_version", DeviceInfoUtil.getQQVersion());
+    paramString1.put("sys_version", DeviceInfoUtil.e());
+    paramString1.put("qq_version", DeviceInfoUtil.c());
     paramString1.put("appid", AppSetting.a() + "");
-    olh.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
   }
   
   @NotNull
@@ -844,7 +848,7 @@ public class TaskManager
       if (isStarted) {
         return;
       }
-      if (FileUtils.fileExists(SCRIPT_ROOT_PATH)) {
+      if (FileUtils.a(SCRIPT_ROOT_PATH)) {
         break label124;
       }
       QLog.d("kandianreport.taskmanager", 1, "startTasksIfExist: offline root dir is null");
@@ -858,7 +862,7 @@ public class TaskManager
         return;
         try
         {
-          if (nwj.a(SCRIPT_ROOT_PATH, "3412")) {
+          if (OfflineSecurity.a(SCRIPT_ROOT_PATH, "3412")) {
             continue;
           }
           KandianReportSoLoader.logAndReport("startTasksIfExist: verification failed");
@@ -996,7 +1000,7 @@ public class TaskManager
   {
     QLog.d("kandianreport.taskmanager", 2, "mark task fail " + paramTask.id);
     paramTask.status = Task.STATUS_FAIL;
-    bmhv.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
+    ReadInJoyHelper.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
   }
   
   public void qlog(int paramInt, String paramString)
@@ -1017,7 +1021,7 @@ public class TaskManager
           initTask(localTask);
           startTask(localTask);
           localTask.status = Task.STATUS_ACCEPT;
-          bmhv.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
+          ReadInJoyHelper.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
         }
         catch (Exception localException)
         {
@@ -1050,7 +1054,7 @@ public class TaskManager
   public void restore()
   {
     QLog.d("kandianreport.taskmanager", 1, "restore");
-    bmhv.a("kandianreport_ON", Integer.valueOf(1));
+    ReadInJoyHelper.a("kandianreport_ON", Integer.valueOf(1));
   }
   
   public void startAllTasks()
@@ -1130,7 +1134,7 @@ public class TaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager
  * JD-Core Version:    0.7.0.1
  */

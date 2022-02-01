@@ -8,7 +8,7 @@ import com.tencent.widget.ScrollView;
 public class QwScrollView
   extends ScrollView
 {
-  private boolean isTouchMove;
+  private boolean isTouchMove = false;
   private QwScrollView.OnQwScrollListener listener;
   
   public QwScrollView(Context paramContext)
@@ -58,7 +58,7 @@ public class QwScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.QwScrollView
  * JD-Core Version:    0.7.0.1
  */

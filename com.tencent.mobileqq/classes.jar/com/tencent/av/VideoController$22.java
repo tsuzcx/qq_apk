@@ -1,34 +1,17 @@
 package com.tencent.av;
 
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import lfe;
-import mqq.app.MobileQQ;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
 class VideoController$22
-  implements Runnable
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  VideoController$22(VideoController paramVideoController, int paramInt, long paramLong) {}
+  VideoController$22(VideoController paramVideoController) {}
   
-  public void run()
-  {
-    this.this$0.j = null;
-    this.this$0.a().a("startGAudioChat.1", 0);
-    boolean bool = NetworkUtil.isNetworkAvailable(this.this$0.a.getApplication().getApplicationContext());
-    VideoController localVideoController = this.this$0;
-    int j = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_Long;
-    if (bool) {}
-    for (int i = 71;; i = 70)
-    {
-      localVideoController.a(j, l, i, 0);
-      return;
-    }
-  }
+  public void onAudioFocusChange(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.VideoController.22
  * JD-Core Version:    0.7.0.1
  */

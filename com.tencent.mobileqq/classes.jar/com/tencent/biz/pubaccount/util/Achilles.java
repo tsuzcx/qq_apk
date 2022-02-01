@@ -1,19 +1,20 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.text.TextUtils;
-import aqgj;
-import arqj;
-import bifw;
-import bmhv;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderProxy;
+import com.tencent.mobileqq.cooperation.ApkUtils;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,7 +23,6 @@ import java.util.Map;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import pkh;
 
 public class Achilles
 {
@@ -33,39 +33,6 @@ public class Achilles
   static
   {
     jdField_a_of_type_JavaLangString = "biz_src_feeds_kandian_tab";
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    paramString1 = paramString1.split("\\.");
-    paramString2 = paramString2.split("\\.");
-    int i;
-    int j;
-    if (paramString1.length < paramString2.length)
-    {
-      i = paramString1.length;
-      j = 0;
-    }
-    for (;;)
-    {
-      if (j >= i) {
-        break label78;
-      }
-      int k = Integer.parseInt(paramString1[j]);
-      int m = Integer.parseInt(paramString2[j]);
-      if (k > m)
-      {
-        return 1;
-        i = paramString2.length;
-        break;
-      }
-      if (k < m) {
-        return -1;
-      }
-      j += 1;
-    }
-    label78:
-    return 0;
   }
   
   public static RockDownloadInfo a(String paramString)
@@ -109,7 +76,7 @@ public class Achilles
     {
       try
       {
-        bmhv.f();
+        ReadInJoyHelper.f();
         Object localObject2 = a();
         if ((localObject2 == null) || (((Set)localObject2).isEmpty()))
         {
@@ -196,7 +163,7 @@ public class Achilles
     RockDownloadInfo localRockDownloadInfo = new RockDownloadInfo();
     localRockDownloadInfo.packageName = paramString;
     localRockDownloadInfo.businessName = "biz_src_feeds_kandian_tab";
-    paramString = aqgj.a(localRockDownloadInfo);
+    paramString = RockDownloaderProxy.a(localRockDownloadInfo);
     if ((paramString != null) && (paramString.size() > 0)) {}
     ArrayList localArrayList;
     do
@@ -205,14 +172,14 @@ public class Achilles
       {
         return paramString;
         localRockDownloadInfo.businessName = "biz_src_feeds_kandian_news";
-        localArrayList = aqgj.a(localRockDownloadInfo);
+        localArrayList = RockDownloaderProxy.a(localRockDownloadInfo);
         if (localArrayList == null) {
           break;
         }
         paramString = localArrayList;
       } while (localArrayList.size() > 0);
       localRockDownloadInfo.businessName = "biz_src_feeds_kandian_daily";
-      localArrayList = aqgj.a(localRockDownloadInfo);
+      localArrayList = RockDownloaderProxy.a(localRockDownloadInfo);
       if (localArrayList == null) {
         break;
       }
@@ -237,7 +204,7 @@ public class Achilles
   {
     try
     {
-      if (arqj.a(paramString, BaseApplicationImpl.getContext()))
+      if (ApkUtils.a(paramString, BaseApplicationImpl.getContext()))
       {
         QLog.e("Achilles", 1, "[isInstalled] true");
         return true;
@@ -252,13 +219,13 @@ public class Achilles
     return false;
   }
   
-  public static boolean a(String paramString1, String paramString2, bifw parambifw, boolean paramBoolean)
+  public static boolean a(String paramString1, String paramString2, WebViewPlugin.PluginRuntime paramPluginRuntime, boolean paramBoolean)
   {
     for (;;)
     {
       try
       {
-        bmhv.f();
+        ReadInJoyHelper.f();
         localObject = a();
         if ((localObject == null) || (((Set)localObject).isEmpty()))
         {
@@ -282,7 +249,7 @@ public class Achilles
             QLog.e("Achilles", 1, "[installIfDownloaded] installIfJump is false " + paramString2);
             return false;
           }
-          paramBoolean = AchillesFragmentUtils.a(paramString1, paramString2, parambifw);
+          paramBoolean = AchillesFragmentUtils.a(paramString1, paramString2, paramPluginRuntime);
           return paramBoolean;
         }
       }
@@ -315,7 +282,7 @@ public class Achilles
   {
     QLog.d("Achilles", 1, "start download " + paramAchillesParams);
     AchillesFragmentUtils.a("download", "1", paramAchillesParams.getPackageName(), paramAchillesParams);
-    aqgj.a(paramRockDownloadInfo, new Achilles.AchilesRockDownloadListener(null));
+    RockDownloaderProxy.a(paramRockDownloadInfo, new Achilles.AchilesRockDownloadListener(null));
   }
   
   private static void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
@@ -326,12 +293,12 @@ public class Achilles
     if (localObject == null)
     {
       l1 = 0L;
-      localObject = pkh.a();
+      localObject = ReadInJoyUtils.a();
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt));
       localHashMap.put("param_FailMsg", paramString2);
       localHashMap.put("uin", localObject);
-      StatisticCollector.getInstance(pkh.a().getApplication()).collectPerformance((String)localObject, "actAchilles", paramBoolean, l2 - l1, 0L, localHashMap, null, false);
+      StatisticCollector.getInstance(ReadInJoyUtils.a().getApplication()).collectPerformance((String)localObject, "actAchilles", paramBoolean, l2 - l1, 0L, localHashMap, null, false);
       if (!paramBoolean) {
         break label130;
       }
@@ -353,7 +320,7 @@ public class Achilles
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.Achilles
  * JD-Core Version:    0.7.0.1
  */

@@ -44,11 +44,11 @@ public class CircleProgress
   private void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = getResources().getColor(2131165669);
-    this.f = getResources().getColor(2131165622);
+    this.jdField_b_of_type_Int = getResources().getColor(2131165671);
+    this.f = getResources().getColor(2131165624);
     this.e = 51;
     this.g = 255;
-    this.c = getResources().getColor(2131165658);
+    this.c = getResources().getColor(2131165660);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -71,7 +71,7 @@ public class CircleProgress
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, (float)(3.6D * this.jdField_b_of_type_Float), false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.h = getWidth();
@@ -130,7 +130,7 @@ public class CircleProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgress
  * JD-Core Version:    0.7.0.1
  */

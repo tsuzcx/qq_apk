@@ -2,18 +2,18 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.content.Context;
 import android.view.View;
-import awvo;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVFloatingScreenManagerInterface;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IFullScreenEnterListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.mediafocus.MediaFocusManager.OnMediaFocusChangeListener;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IFullScreenEnterListener;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoInnerStatusListener;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoOuterStatusListener;
 
 public class IVFloatingScreenManager
   implements IVFloatingScreenManagerInterface
 {
-  public int abandonMediaFocus(awvo paramawvo)
+  public int abandonMediaFocus(MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    return IVFloatingScreenManagerInterfaceImpl.getInstance().abandonMediaFocus(paramawvo);
+    return IVFloatingScreenManagerInterfaceImpl.getInstance().abandonMediaFocus(paramOnMediaFocusChangeListener);
   }
   
   public int enterFloatingScreen(Context paramContext, View paramView)
@@ -26,9 +26,9 @@ public class IVFloatingScreenManager
     IVFloatingScreenManagerInterfaceImpl.getInstance().quitFloatingScreen();
   }
   
-  public int requestMediaFocus(int paramInt, awvo paramawvo)
+  public int requestMediaFocus(int paramInt, MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    return IVFloatingScreenManagerInterfaceImpl.getInstance().requestMediaFocus(paramInt, paramawvo);
+    return IVFloatingScreenManagerInterfaceImpl.getInstance().requestMediaFocus(paramInt, paramOnMediaFocusChangeListener);
   }
   
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)
@@ -43,7 +43,7 @@ public class IVFloatingScreenManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVFloatingScreenManager
  * JD-Core Version:    0.7.0.1
  */

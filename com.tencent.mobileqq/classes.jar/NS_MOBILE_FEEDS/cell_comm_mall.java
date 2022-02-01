@@ -8,7 +8,7 @@ public final class cell_comm_mall
   extends JceStruct
 {
   static byte[] cache_busi_buff = (byte[])new byte[1];
-  public byte[] busi_buff;
+  public byte[] busi_buff = null;
   
   static
   {

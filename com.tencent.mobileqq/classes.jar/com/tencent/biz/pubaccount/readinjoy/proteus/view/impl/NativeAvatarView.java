@@ -12,40 +12,41 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import androidx.annotation.UiThread;
-import bhcu;
-import bjum;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJItemViewType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.RefreshUserInfoCallBack;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
+import com.tencent.biz.pubaccount.readinjoy.vicon.ReadInJoyVIconHelper;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
+import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.qav.thread.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import olh;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pjj;
-import pkh;
-import ppe;
-import pqf;
-import pqu;
-import pqw;
-import qfw;
-import qhl;
-import rfw;
-import rqy;
-import ser;
 import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
-import uvs;
 
 public class NativeAvatarView
   extends RingAvatarView
-  implements IView, qhl
+  implements ReadInJoyUserInfoModule.RefreshUserInfoCallBack, IView
 {
   public static final String TAG = "NativeAvatarView";
   private ReadInJoyHeadImageView avatar;
@@ -60,7 +61,7 @@ public class NativeAvatarView
   private NativeReadInjoyImageView liveStatus;
   private Drawable liveStatusPlaceHolder = new ColorDrawable(0);
   private String liveStatusUrl;
-  private rfw mCtxt = new rfw();
+  private CmpCtxt mCtxt = new CmpCtxt();
   private long refreshMinInterval = 1000L;
   private long uin;
   private ReadInJoyUserInfo userInfo;
@@ -103,30 +104,30 @@ public class NativeAvatarView
       return;
     }
     Object localObject1 = "1";
-    if (ppe.g((BaseArticleInfo)localObject2))
+    if (RIJItemViewType.g((BaseArticleInfo)localObject2))
     {
       localObject1 = "3";
-      String str = pqf.a((String)localObject1, (ArticleInfo)localObject2, this.uin);
-      if (!uvs.a(((ArticleInfo)localObject2).mChannelID)) {
-        break label213;
+      String str = RIJTransMergeKanDianReport.a((String)localObject1, (ArticleInfo)localObject2, this.uin);
+      if (!ReadinjoyReportUtils.a(((ArticleInfo)localObject2).mChannelID)) {
+        break label233;
       }
       localObject1 = "0X800935C";
       label55:
-      olh.a(null, String.valueOf(this.uin), (String)localObject1, (String)localObject1, 0, 0, String.valueOf(((ArticleInfo)localObject2).mFeedId), String.valueOf(((ArticleInfo)localObject2).mArticleID), "" + ((ArticleInfo)localObject2).mStrategyId, str, false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, String.valueOf(this.uin), (String)localObject1, (String)localObject1, 0, 0, String.valueOf(((ArticleInfo)localObject2).mFeedId), String.valueOf(((ArticleInfo)localObject2).mArticleID), "" + ((ArticleInfo)localObject2).mStrategyId, str, false);
     }
     for (;;)
     {
       try
       {
-        localObject1 = pqf.a();
+        localObject1 = RIJTransMergeKanDianReport.a();
         ((JSONObject)localObject1).put("feeds_source", paramString);
-        ((JSONObject)localObject1).put("kandian_mode", pqu.a());
-        localObject2 = pqw.c(this.mCtxt.a.a());
-        if (!uvs.a(this.mCtxt.a.e())) {
-          break label219;
+        ((JSONObject)localObject1).put("kandian_mode", RIJAppSetting.a());
+        localObject2 = RIJFeedsType.c(this.mCtxt.a.a());
+        if (!ReadinjoyReportUtils.a(this.mCtxt.a.e())) {
+          break label239;
         }
         paramString = "0X8009357";
-        olh.a(null, "CliOper", "", "", paramString, paramString, 0, 0, (String)localObject2, "", "", ((JSONObject)localObject1).toString(), false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", paramString, paramString, 0, 0, (String)localObject2, "", "", ((JSONObject)localObject1).toString(), false);
         return;
       }
       catch (JSONException paramString)
@@ -134,15 +135,15 @@ public class NativeAvatarView
         paramString.printStackTrace();
         return;
       }
-      if (!ppe.a((ArticleInfo)localObject2)) {
+      if (!RIJItemViewType.a((ArticleInfo)localObject2)) {
         break;
       }
       localObject1 = "4";
       break;
-      label213:
+      label233:
       localObject1 = "0X8007BA3";
       break label55;
-      label219:
+      label239:
       paramString = "0X800744D";
     }
   }
@@ -158,22 +159,22 @@ public class NativeAvatarView
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560132, this);
-    this.background = ((ImageView)paramContext.findViewById(2131363339));
-    this.background.setImageResource(2130849481);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560211, this);
+    this.background = ((ImageView)paramContext.findViewById(2131363419));
+    this.background.setImageResource(2130849865);
     this.background.setScaleType(ImageView.ScaleType.FIT_CENTER);
     this.background.setVisibility(8);
-    this.liveRing = ((NativeReadInjoyImageView)paramContext.findViewById(2131376734));
+    this.liveRing = ((NativeReadInjoyImageView)paramContext.findViewById(2131377130));
     this.liveRing.setScaleType(ImageView.ScaleType.FIT_CENTER);
     this.liveRing.setImagePlaceHolder(this.liveRingPlaceHolder);
     this.liveRing.setVisibility(8);
-    this.avatar = ((ReadInJoyHeadImageView)paramContext.findViewById(2131363145));
+    this.avatar = ((ReadInJoyHeadImageView)paramContext.findViewById(2131363196));
     this.avatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.iconV = ((NativeReadInjoyImageView)paramContext.findViewById(2131368432));
-    this.iconV.setImageResource(2130842933);
+    this.iconV = ((NativeReadInjoyImageView)paramContext.findViewById(2131368656));
+    this.iconV.setImageResource(2130843088);
     this.iconV.setVisibility(8);
     this.iconV.setImagePlaceHolder(this.iconVPlaceHolder);
-    this.liveStatus = ((NativeReadInjoyImageView)paramContext.findViewById(2131370269));
+    this.liveStatus = ((NativeReadInjoyImageView)paramContext.findViewById(2131370542));
     this.liveStatus.setImagePlaceHolder(this.liveStatusPlaceHolder);
     this.liveStatus.setVisibility(8);
     setLayerType(1, null);
@@ -256,15 +257,15 @@ public class NativeAvatarView
     this.liveStatus.setVisibility(8);
   }
   
-  public void bindStarStyle(qfw paramqfw)
+  public void bindStarStyle(IReadInJoyModel paramIReadInJoyModel)
   {
-    if (paramqfw == null) {}
+    if (paramIReadInJoyModel == null) {}
     do
     {
       return;
-      paramqfw = paramqfw.a();
-    } while ((paramqfw == null) || (paramqfw.mSocialFeedInfo == null) || (paramqfw.mSocialFeedInfo.a == null));
-    if (paramqfw.mSocialFeedInfo.a.a())
+      paramIReadInJoyModel = paramIReadInJoyModel.a();
+    } while ((paramIReadInJoyModel == null) || (paramIReadInJoyModel.mSocialFeedInfo == null) || (paramIReadInJoyModel.mSocialFeedInfo.a == null));
+    if (paramIReadInJoyModel.mSocialFeedInfo.a.a())
     {
       this.background.setVisibility(0);
       return;
@@ -307,20 +308,20 @@ public class NativeAvatarView
     String str;
     if ((this.mCtxt.a != null) && (this.mCtxt.a.a() != null))
     {
-      pqx.a = this.mCtxt.a.a();
+      com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJJumpUtils.a = this.mCtxt.a.a();
       if (this.mCtxt.a.a() != 34) {
         break label120;
       }
-      str = pjj.k + bhcu.encodeToString(String.valueOf(this.uin).getBytes(), 2);
-      pkh.a(getContext(), str);
+      str = ReadInJoyConstants.k + Base64Util.encodeToString(String.valueOf(this.uin).getBytes(), 2);
+      ReadInJoyUtils.a(getContext(), str);
     }
     for (;;)
     {
-      doReport(pqw.b(this.mCtxt.a.a()));
+      doReport(RIJFeedsType.b(this.mCtxt.a.a()));
       return;
       label120:
-      str = pjj.g + bhcu.encodeToString(String.valueOf(this.uin).getBytes(), 2);
-      pkh.a(getContext(), str);
+      str = ReadInJoyConstants.g + Base64Util.encodeToString(String.valueOf(this.uin).getBytes(), 2);
+      ReadInJoyUtils.a(getContext(), str);
     }
   }
   
@@ -336,7 +337,7 @@ public class NativeAvatarView
     if (paramReadInJoyUserInfo != null) {
       this.isLive = paramReadInJoyUserInfo.isLiving();
     }
-    bjum.a().post(new NativeAvatarView.1(this));
+    ThreadManager.a().post(new NativeAvatarView.1(this));
   }
   
   public void refresh(boolean paramBoolean)
@@ -354,24 +355,24 @@ public class NativeAvatarView
   public void setLiveRingUrl(String paramString)
   {
     this.liveRingUrl = paramString;
-    bjum.a().post(new NativeAvatarView.2(this));
+    ThreadManager.a().post(new NativeAvatarView.2(this));
   }
   
   public void setLiveStatusUrl(String paramString)
   {
     this.liveStatusUrl = paramString;
-    bjum.a().post(new NativeAvatarView.3(this));
+    ThreadManager.a().post(new NativeAvatarView.3(this));
   }
   
-  public void setModel(qfw paramqfw)
+  public void setModel(IReadInJoyModel paramIReadInJoyModel)
   {
-    setModel(paramqfw, true);
+    setModel(paramIReadInJoyModel, true);
   }
   
-  public void setModel(qfw paramqfw, boolean paramBoolean)
+  public void setModel(IReadInJoyModel paramIReadInJoyModel, boolean paramBoolean)
   {
-    this.mCtxt.a(paramqfw);
-    if ((paramqfw != null) && (canRefreshInTimeLimit())) {
+    this.mCtxt.a(paramIReadInJoyModel);
+    if ((paramIReadInJoyModel != null) && (canRefreshInTimeLimit())) {
       refresh(paramBoolean);
     }
   }
@@ -403,7 +404,7 @@ public class NativeAvatarView
     {
       return;
     }
-    this.iconV.setImageResource(2130842933);
+    this.iconV.setImageResource(2130843088);
     if (localArticleInfo.isAccountShown) {
       setIConVUrl(getIConVUrl(localArticleInfo));
     }
@@ -411,7 +412,7 @@ public class NativeAvatarView
     {
       bindStarStyle(this.mCtxt.a);
       label101:
-      ser.a(this.userInfo, this.iconV);
+      ReadInJoyVIconHelper.a(this.userInfo, this.iconV);
       return;
       if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.a != null)) {
         setIConVType(localArticleInfo);
@@ -423,7 +424,7 @@ public class NativeAvatarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView
  * JD-Core Version:    0.7.0.1
  */

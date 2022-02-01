@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.onlinestatus.location;
 
-import azey;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public class LocationHandler$1
+class LocationHandler$1
   implements Runnable
 {
-  public LocationHandler$1(azey paramazey, boolean paramBoolean) {}
+  LocationHandler$1(LocationHandler paramLocationHandler, boolean paramBoolean) {}
   
   public void run()
   {

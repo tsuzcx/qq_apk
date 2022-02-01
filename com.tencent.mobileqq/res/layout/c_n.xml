@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/o4c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/oj9" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ViewStub android:id="@id/o5c" android:visibility="gone" android:layout="@layout/coe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
-    <ViewStub android:id="@id/o5b" android:visibility="gone" android:layout="@layout/cod" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/okh" android:visibility="gone" android:layout="@layout/cqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/okg" android:visibility="gone" android:layout="@layout/cqp" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginBottom="8.0dip" />
 </LinearLayout>

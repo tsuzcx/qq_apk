@@ -13,11 +13,12 @@ final class VasPagView$refresh$$inlined$run$lambda$1
   public final void run()
   {
     this.this$0.a().invoke(this.a);
+    VasPagView.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.VasPagView.refresh..inlined.run.lambda.1
  * JD-Core Version:    0.7.0.1
  */

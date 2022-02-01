@@ -14,6 +14,8 @@ public final class oidb_0xcf4$PrefetchMutualMarkInfo
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_grade_resource_info = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_max_ver = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_min_ver = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField eMutualMarkNewType = PBField.initEnum(1);
   public final PBEnumField eMutualMarkType = PBField.initEnum(0);
   public final PBUInt32Field uint32_current_days = PBField.initUInt32(0);
@@ -23,8 +25,10 @@ public final class oidb_0xcf4$PrefetchMutualMarkInfo
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58 }, new String[] { "eMutualMarkType", "uint32_level", "uint32_days", "uint32_current_days", "eMutualMarkNewType", "uint64_sub_level", "bytes_grade_resource_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro }, PrefetchMutualMarkInfo.class);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 1602, 1610 }, new String[] { "eMutualMarkType", "uint32_level", "uint32_days", "uint32_current_days", "eMutualMarkNewType", "uint64_sub_level", "bytes_grade_resource_info", "bytes_min_ver", "bytes_max_ver" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, PrefetchMutualMarkInfo.class);
   }
 }
 

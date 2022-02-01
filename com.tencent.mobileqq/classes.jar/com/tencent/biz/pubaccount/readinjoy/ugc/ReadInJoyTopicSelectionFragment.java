@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import aeow;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +9,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtReportHelper;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ReadInJoyTopicListAdapter;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
@@ -23,15 +29,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import pkh;
-import ptj;
-import pvj;
-import pvm;
-import pvq;
-import rtg;
-import rvb;
-import rvy;
-import rxy;
 
 public class ReadInJoyTopicSelectionFragment
   extends IphoneTitleBarFragment
@@ -39,15 +36,10 @@ public class ReadInJoyTopicSelectionFragment
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  public List<Map<String, CharSequence>> a;
-  private pvq jdField_a_of_type_Pvq = new rvb(this);
-  private rxy jdField_a_of_type_Rxy;
+  private ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new ReadInJoyTopicSelectionFragment.1(this);
+  private ReadInJoyTopicListAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter;
+  List<Map<String, CharSequence>> jdField_a_of_type_JavaUtilList = new ArrayList();
   private List<TopicInfo> b = new ArrayList();
-  
-  public ReadInJoyTopicSelectionFragment()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
   
   private void a()
   {
@@ -56,14 +48,14 @@ public class ReadInJoyTopicSelectionFragment
   
   private void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131378485);
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131378916);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_Rxy = new rxy(getActivity(), this.jdField_a_of_type_JavaUtilList);
-    paramViewGroup = (ListView)this.mContentView.findViewById(2131370232);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter = new ReadInJoyTopicListAdapter(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    paramViewGroup = (ListView)this.mContentView.findViewById(2131370504);
     paramViewGroup.setOnItemClickListener(this);
-    paramViewGroup.addFooterView(paramLayoutInflater.inflate(2131560341, paramViewGroup, false));
-    paramViewGroup.setAdapter(this.jdField_a_of_type_Rxy);
-    pvj.a().h(null);
+    paramViewGroup.addFooterView(paramLayoutInflater.inflate(2131560410, paramViewGroup, false));
+    paramViewGroup.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingReadInJoyTopicListAdapter);
+    ReadInJoyLogicEngine.a().g(null);
   }
   
   private void a(TopicInfo paramTopicInfo)
@@ -93,9 +85,9 @@ public class ReadInJoyTopicSelectionFragment
   private void b()
   {
     this.vg.changeBg(true);
-    setTitle(getString(2131717776));
-    this.leftView.setText(2131690499);
-    rvy.a(this);
+    setTitle(getString(2131718279));
+    this.leftView.setText(2131690601);
+    Utils.a(this);
   }
   
   private void c()
@@ -103,7 +95,7 @@ public class ReadInJoyTopicSelectionFragment
     Intent localIntent = new Intent();
     localIntent.putExtra("searchTopicFrom", this.jdField_a_of_type_Int);
     localIntent.putExtra("public_fragment_window_feature", 1);
-    aeow.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyUgcSearchTopicFragment.class, 1000);
+    PublicFragmentActivity.Launcher.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyUgcSearchTopicFragment.class, 1000);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -114,12 +106,12 @@ public class ReadInJoyTopicSelectionFragment
     if (paramLayoutInflater != null) {
       this.jdField_a_of_type_Int = paramLayoutInflater.getInt("searchTopicFrom");
     }
-    ptj.a.a(getActivity());
+    RIJDtReportHelper.a.a(getActivity());
   }
   
   public int getContentLayoutId()
   {
-    return 2131560340;
+    return 2131560409;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -161,8 +153,8 @@ public class ReadInJoyTopicSelectionFragment
     label81:
     for (paramLong = paramAdapterView.a();; paramLong = -1L)
     {
-      pkh.a("0X800980A", this.jdField_a_of_type_Int, paramLong, "0");
-      rtg.a(String.valueOf(paramLong), "0");
+      ReadInJoyUtils.a("0X800980A", this.jdField_a_of_type_Int, paramLong, "0");
+      RIJDeliverUGCReportUtil.a(String.valueOf(paramLong), "0");
       return;
     }
   }
@@ -170,7 +162,7 @@ public class ReadInJoyTopicSelectionFragment
   public void onPause()
   {
     super.onPause();
-    pvm.a().b(this.jdField_a_of_type_Pvq);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
   }
   
   public void onResume()
@@ -178,12 +170,12 @@ public class ReadInJoyTopicSelectionFragment
     super.onResume();
     b();
     a();
-    pvm.a().a(this.jdField_a_of_type_Pvq);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -29,6 +29,23 @@ class TPDownloadProxyService$DownloadProxy$2
     return -1L;
   }
   
+  public String getContentType(int paramInt, String paramString)
+  {
+    try
+    {
+      if (this.val$playListener != null)
+      {
+        paramString = this.val$playListener.getContentType(paramInt, paramString);
+        return paramString;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "getContentType key failed, error:" + paramString.toString());
+    }
+    return "";
+  }
+  
   public int getCurrentPlayClipNo()
   {
     try
@@ -59,6 +76,40 @@ class TPDownloadProxyService$DownloadProxy$2
     catch (Throwable localThrowable)
     {
       TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "getCurrentPosition failed, error:" + localThrowable.toString());
+    }
+    return -1L;
+  }
+  
+  public String getDataFilePath(int paramInt, String paramString)
+  {
+    try
+    {
+      if (this.val$playListener != null)
+      {
+        paramString = this.val$playListener.getDataFilePath(paramInt, paramString);
+        return paramString;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "getDataFilePath key failed, error:" + paramString.toString());
+    }
+    return "";
+  }
+  
+  public long getDataTotalSize(int paramInt, String paramString)
+  {
+    try
+    {
+      if (this.val$playListener != null)
+      {
+        long l = this.val$playListener.getDataTotalSize(paramInt, paramString);
+        return l;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "getDataTotalSize key failed, error:" + paramString.toString());
     }
     return -1L;
   }
@@ -261,10 +312,76 @@ class TPDownloadProxyService$DownloadProxy$2
     }
     return null;
   }
+  
+  public void onQuicDownloadStatusUpdate(String paramString)
+  {
+    try
+    {
+      if (this.val$playListener != null) {
+        this.val$playListener.onQuicDownloadStatusUpdate(paramString);
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onQuicDownloadStatusUpdate failed, error:" + paramString.toString());
+    }
+  }
+  
+  public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    try
+    {
+      if (this.val$playListener != null)
+      {
+        paramInt = this.val$playListener.onReadData(paramInt, paramString, paramLong1, paramLong2);
+        return paramInt;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onReadData key failed, error:" + paramString.toString());
+    }
+    return -1;
+  }
+  
+  public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    try
+    {
+      if (this.val$playListener != null)
+      {
+        paramInt = this.val$playListener.onStartReadData(paramInt, paramString, paramLong1, paramLong2);
+        return paramInt;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onStartReadData key failed, error:" + paramString.toString());
+    }
+    return -1;
+  }
+  
+  public int onStopReadData(int paramInt1, String paramString, int paramInt2)
+  {
+    try
+    {
+      if (this.val$playListener != null)
+      {
+        paramInt1 = this.val$playListener.onStopReadData(paramInt1, paramString, paramInt2);
+        return paramInt1;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onStopReadData key failed, error:" + paramString.toString());
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.service.TPDownloadProxyService.DownloadProxy.2
  * JD-Core Version:    0.7.0.1
  */

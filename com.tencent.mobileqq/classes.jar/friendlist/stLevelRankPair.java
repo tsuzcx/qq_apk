@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stLevelRankPair
   extends JceStruct
 {
-  public long dwLevel;
+  public long dwLevel = 0L;
   public String strRank = "";
   
   public stLevelRankPair() {}
@@ -34,7 +34,7 @@ public final class stLevelRankPair
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.stLevelRankPair
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,6 @@
 package io.flutter.embedding.engine.loader;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -12,94 +8,49 @@ import android.util.Log;
 import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import io.flutter.FlutterInjector;
 import io.flutter.embedding.engine.FlutterJNI;
-import io.flutter.util.PathUtils;
 import io.flutter.view.VsyncWaiter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class FlutterLoader
 {
-  private static final String AOT_SHARED_LIBRARY_NAME = "aot-shared-library-name";
-  private static final String DEFAULT_AOT_SHARED_LIBRARY_NAME = "libapp.so";
-  private static final String DEFAULT_FLUTTER_ASSETS_DIR = "flutter_assets";
-  private static final String DEFAULT_ISOLATE_SNAPSHOT_DATA = "isolate_snapshot_data";
+  static final String AOT_SHARED_LIBRARY_NAME = "aot-shared-library-name";
   private static final String DEFAULT_KERNEL_BLOB = "kernel_blob.bin";
   private static final String DEFAULT_LIBRARY = "libflutter.so";
-  private static final String DEFAULT_VM_SNAPSHOT_DATA = "vm_snapshot_data";
-  private static final String FLUTTER_ASSETS_DIR_KEY = "flutter-assets-dir";
-  private static final String ISOLATE_SNAPSHOT_DATA_KEY = "isolate-snapshot-data";
-  private static final String PUBLIC_AOT_SHARED_LIBRARY_NAME;
-  private static final String PUBLIC_FLUTTER_ASSETS_DIR_KEY;
-  private static final String PUBLIC_ISOLATE_SNAPSHOT_DATA_KEY;
-  private static final String PUBLIC_VM_SNAPSHOT_DATA_KEY;
-  private static final String SNAPSHOT_ASSET_PATH_KEY = "snapshot-asset-path";
+  static final String FLUTTER_ASSETS_DIR_KEY = "flutter-assets-dir";
+  static final String ISOLATE_SNAPSHOT_DATA_KEY = "isolate-snapshot-data";
+  static final String SNAPSHOT_ASSET_PATH_KEY = "snapshot-asset-path";
   private static final String TAG = "FlutterLoader";
-  private static final String VM_SNAPSHOT_DATA_KEY = "vm-snapshot-data";
+  static final String VM_SNAPSHOT_DATA_KEY = "vm-snapshot-data";
   private static FlutterLoader instance;
-  private static String sAotSharedLibraryPath = null;
+  private static String sAotSharedLibraryPath;
   private static String sNativeLibDir;
-  private String aotSharedLibraryName = "libapp.so";
-  private String flutterAssetsDir = "flutter_assets";
-  private boolean initialized = false;
-  private String isolateSnapshotData = "isolate_snapshot_data";
+  private FlutterApplicationInfo flutterApplicationInfo;
   @Nullable
-  private ResourceExtractor resourceExtractor;
+  Future<FlutterLoader.InitResult> initResultFuture;
+  private long initStartTimestampMillis;
+  private boolean initialized = false;
   @Nullable
   private FlutterLoader.Settings settings;
-  private String vmSnapshotData = "vm_snapshot_data";
-  
-  static
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(FlutterLoader.class.getName());
-    localStringBuilder.append('.');
-    localStringBuilder.append("aot-shared-library-name");
-    PUBLIC_AOT_SHARED_LIBRARY_NAME = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(FlutterLoader.class.getName());
-    localStringBuilder.append('.');
-    localStringBuilder.append("vm-snapshot-data");
-    PUBLIC_VM_SNAPSHOT_DATA_KEY = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(FlutterLoader.class.getName());
-    localStringBuilder.append('.');
-    localStringBuilder.append("isolate-snapshot-data");
-    PUBLIC_ISOLATE_SNAPSHOT_DATA_KEY = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(FlutterLoader.class.getName());
-    localStringBuilder.append('.');
-    localStringBuilder.append("flutter-assets-dir");
-    PUBLIC_FLUTTER_ASSETS_DIR_KEY = localStringBuilder.toString();
-    sNativeLibDir = null;
-  }
   
   @NonNull
   private String fullAssetPathFrom(@NonNull String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.flutterAssetsDir);
+    localStringBuilder.append(this.flutterApplicationInfo.flutterAssetsDir);
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString);
     return localStringBuilder.toString();
   }
   
-  @NonNull
-  private ApplicationInfo getApplicationInfo(@NonNull Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
-      return paramContext;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      throw new RuntimeException(paramContext);
-    }
-  }
-  
+  @Deprecated
   @NonNull
   public static FlutterLoader getInstance()
   {
@@ -109,21 +60,9 @@ public class FlutterLoader
     return instance;
   }
   
-  private void initConfig(@NonNull Context paramContext)
+  private ResourceExtractor initResources(@NonNull Context paramContext)
   {
-    paramContext = getApplicationInfo(paramContext).metaData;
-    if (paramContext == null) {
-      return;
-    }
-    this.aotSharedLibraryName = paramContext.getString(PUBLIC_AOT_SHARED_LIBRARY_NAME, "libapp.so");
-    this.flutterAssetsDir = paramContext.getString(PUBLIC_FLUTTER_ASSETS_DIR_KEY, "flutter_assets");
-    this.vmSnapshotData = paramContext.getString(PUBLIC_VM_SNAPSHOT_DATA_KEY, "vm_snapshot_data");
-    this.isolateSnapshotData = paramContext.getString(PUBLIC_ISOLATE_SNAPSHOT_DATA_KEY, "isolate_snapshot_data");
-  }
-  
-  private void initResources(@NonNull Context paramContext)
-  {
-    new ResourceCleaner(paramContext).start();
+    return null;
   }
   
   public static void setNativeLibDir(String paramString)
@@ -144,17 +83,14 @@ public class FlutterLoader
           ArrayList localArrayList;
           try
           {
-            if (this.resourceExtractor != null) {
-              this.resourceExtractor.waitForCompletion();
-            }
+            FlutterLoader.InitResult localInitResult = (FlutterLoader.InitResult)this.initResultFuture.get();
             localArrayList = new ArrayList();
             localArrayList.add("--icu-symbol-prefix=_binary_icudtl_dat");
-            Object localObject = getApplicationInfo(paramContext);
             if (sNativeLibDir == null)
             {
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("--icu-native-lib-path=");
-              localStringBuilder.append(((ApplicationInfo)localObject).nativeLibraryDir);
+              localStringBuilder.append(this.flutterApplicationInfo.nativeLibraryDir);
               localStringBuilder.append(File.separator);
               localStringBuilder.append("libflutter.so");
               localArrayList.add(localStringBuilder.toString());
@@ -162,22 +98,32 @@ public class FlutterLoader
                 Collections.addAll(localArrayList, paramArrayOfString);
               }
               if (sNativeLibDir != null) {
-                break label427;
+                break label529;
               }
               paramArrayOfString = new StringBuilder();
               paramArrayOfString.append("--aot-shared-library-name=");
-              paramArrayOfString.append(this.aotSharedLibraryName);
+              paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
               localArrayList.add(paramArrayOfString.toString());
               paramArrayOfString = new StringBuilder();
               paramArrayOfString.append("--aot-shared-library-name=");
-              paramArrayOfString.append(((ApplicationInfo)localObject).nativeLibraryDir);
+              paramArrayOfString.append(this.flutterApplicationInfo.nativeLibraryDir);
               paramArrayOfString.append(File.separator);
-              paramArrayOfString.append(this.aotSharedLibraryName);
+              paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
               localArrayList.add(paramArrayOfString.toString());
               paramArrayOfString = new StringBuilder();
               paramArrayOfString.append("--cache-dir-path=");
-              paramArrayOfString.append(PathUtils.getCacheDirectory(paramContext));
+              paramArrayOfString.append(localInitResult.engineCachesPath);
               localArrayList.add(paramArrayOfString.toString());
+              if (!this.flutterApplicationInfo.clearTextPermitted) {
+                localArrayList.add("--disallow-insecure-connections");
+              }
+              if (this.flutterApplicationInfo.domainNetworkPolicy != null)
+              {
+                paramArrayOfString = new StringBuilder();
+                paramArrayOfString.append("--domain-network-policy=");
+                paramArrayOfString.append(this.flutterApplicationInfo.domainNetworkPolicy);
+                localArrayList.add(paramArrayOfString.toString());
+              }
               if (this.settings.getLogTag() != null)
               {
                 paramArrayOfString = new StringBuilder();
@@ -185,9 +131,11 @@ public class FlutterLoader
                 paramArrayOfString.append(this.settings.getLogTag());
                 localArrayList.add(paramArrayOfString.toString());
               }
-              paramArrayOfString = PathUtils.getFilesDir(paramContext);
-              localObject = PathUtils.getCacheDirectory(paramContext);
-              FlutterJNI.nativeInit(paramContext, (String[])localArrayList.toArray(new String[0]), null, paramArrayOfString, (String)localObject);
+              long l1 = SystemClock.uptimeMillis();
+              long l2 = this.initStartTimestampMillis;
+              if (FlutterInjector.instance().shouldLoadNative()) {
+                FlutterJNI.nativeInit(paramContext, (String[])localArrayList.toArray(new String[0]), null, localInitResult.appStoragePath, localInitResult.engineCachesPath, l1 - l2);
+              }
               this.initialized = true;
               return;
             }
@@ -204,12 +152,12 @@ public class FlutterLoader
           localStringBuilder.append("libflutter.so");
           localArrayList.add(localStringBuilder.toString());
           continue;
-          label427:
+          label529:
           paramArrayOfString = new StringBuilder();
           paramArrayOfString.append("--aot-shared-library-name=");
           paramArrayOfString.append(sNativeLibDir);
           paramArrayOfString.append(File.separator);
-          paramArrayOfString.append(this.aotSharedLibraryName);
+          paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
           localArrayList.add(paramArrayOfString.toString());
         }
       }
@@ -224,10 +172,12 @@ public class FlutterLoader
     {
       if (this.settings != null)
       {
-        if (this.initialized) {
+        if (this.initialized)
+        {
+          paramHandler.post(paramRunnable);
           return;
         }
-        new Thread(new FlutterLoader.1(this, paramContext, paramArrayOfString, paramHandler, paramRunnable)).start();
+        Executors.newSingleThreadExecutor().execute(new FlutterLoader.2(this, paramContext, paramArrayOfString, paramHandler, paramRunnable));
         return;
       }
       throw new IllegalStateException("ensureInitializationComplete must be called after startInitialization");
@@ -238,7 +188,7 @@ public class FlutterLoader
   @NonNull
   public String findAppBundlePath()
   {
-    return this.flutterAssetsDir;
+    return this.flutterApplicationInfo.flutterAssetsDir;
   }
   
   @NonNull
@@ -259,6 +209,11 @@ public class FlutterLoader
     return getLookupKeyForAsset(localStringBuilder.toString());
   }
   
+  public boolean initialized()
+  {
+    return this.initialized;
+  }
+  
   public void startInitialization(@NonNull Context paramContext)
   {
     startInitialization(paramContext, new FlutterLoader.Settings());
@@ -271,31 +226,21 @@ public class FlutterLoader
     }
     if (Looper.myLooper() == Looper.getMainLooper())
     {
+      paramContext = paramContext.getApplicationContext();
       this.settings = paramSettings;
-      long l = SystemClock.uptimeMillis();
-      initConfig(paramContext);
-      initResources(paramContext);
-      if (sNativeLibDir == null) {
-        System.loadLibrary("flutter");
-      }
-      for (;;)
-      {
-        VsyncWaiter.getInstance((WindowManager)paramContext.getSystemService("window")).init();
-        FlutterJNI.nativeRecordStartTimestamp(SystemClock.uptimeMillis() - l);
-        return;
-        paramSettings = new StringBuilder();
-        paramSettings.append(sNativeLibDir);
-        paramSettings.append(File.separator);
-        paramSettings.append("libflutter.so");
-        System.load(paramSettings.toString());
-      }
+      this.initStartTimestampMillis = SystemClock.uptimeMillis();
+      this.flutterApplicationInfo = ApplicationInfoLoader.load(paramContext);
+      VsyncWaiter.getInstance((WindowManager)paramContext.getSystemService("window")).init();
+      paramContext = new FlutterLoader.1(this, paramContext);
+      this.initResultFuture = Executors.newSingleThreadExecutor().submit(paramContext);
+      return;
     }
     throw new IllegalStateException("startInitialization must be called on the main thread");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.loader.FlutterLoader
  * JD-Core Version:    0.7.0.1
  */

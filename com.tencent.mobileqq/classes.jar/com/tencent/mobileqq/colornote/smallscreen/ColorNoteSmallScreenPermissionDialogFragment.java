@@ -7,12 +7,10 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aqny;
-import aqqv;
-import aqqw;
-import bdla;
-import bhdj;
+import com.tencent.mobileqq.colornote.ColorNoteRecentView;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -20,7 +18,7 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 public class ColorNoteSmallScreenPermissionDialogFragment
   extends PublicBaseFragment
 {
-  public static boolean a;
+  public static boolean a = false;
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
@@ -48,15 +46,15 @@ public class ColorNoteSmallScreenPermissionDialogFragment
     if (localObject != null) {}
     for (int i = ((Intent)localObject).getIntExtra("key_permission_from", 1);; i = 1)
     {
-      int m = 2131690877;
+      int m = 2131690978;
       int j;
       if (i == 2)
       {
-        j = 2131690878;
-        localObject = bhdj.a(getActivity(), 230).setMessage(j).setPositiveButton(2131690879, new aqqv(this));
-        ((QQCustomDialog)localObject).setTitle(2131690880);
+        j = 2131690979;
+        localObject = DialogUtil.a(getActivity(), 230).setMessage(j).setPositiveButton(2131690980, new ColorNoteSmallScreenPermissionDialogFragment.1(this));
+        ((QQCustomDialog)localObject).setTitle(2131690981);
         ((QQCustomDialog)localObject).setCancelable(true);
-        ((QQCustomDialog)localObject).setOnCancelListener(new aqqw(this));
+        ((QQCustomDialog)localObject).setOnCancelListener(new ColorNoteSmallScreenPermissionDialogFragment.2(this));
         ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
         ((QQCustomDialog)localObject).show();
         a = true;
@@ -67,7 +65,7 @@ public class ColorNoteSmallScreenPermissionDialogFragment
       label197:
       for (i = k;; i = 2)
       {
-        bdla.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", i, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", i, 0, "", "", "", "");
         paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
         V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
         return paramLayoutInflater;
@@ -75,7 +73,7 @@ public class ColorNoteSmallScreenPermissionDialogFragment
         if (i != 3) {
           break;
         }
-        aqny.b(true);
+        ColorNoteRecentView.b(true);
         j = m;
         break;
       }

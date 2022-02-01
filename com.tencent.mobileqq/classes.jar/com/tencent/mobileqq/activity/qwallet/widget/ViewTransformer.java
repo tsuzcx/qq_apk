@@ -16,7 +16,7 @@ public class ViewTransformer
   implements Animation.AnimationListener
 {
   Animation anim;
-  private ViewTransformer.ViewTransformerListener lisener;
+  private ViewTransformer.ViewTransformerListener lisener = null;
   private Context mContext;
   private View mHeadView;
   private View mSubView;
@@ -87,7 +87,7 @@ public class ViewTransformer
     this.mSubView.setVisibility(0);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt3 = getChildCount();
     paramInt1 = 0;
@@ -106,7 +106,7 @@ public class ViewTransformer
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i1 = getChildCount();
@@ -167,7 +167,7 @@ public class ViewTransformer
       this.mHeadView = getChildAt(0);
       this.mSubView = getChildAt(1);
     }
-    this.anim = AnimationUtils.loadAnimation(this.mContext, 2130772213);
+    this.anim = AnimationUtils.loadAnimation(this.mContext, 2130772228);
     this.anim.setAnimationListener(this);
     setAnimation(this.anim);
     startAnimation(this.anim);
@@ -175,7 +175,7 @@ public class ViewTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import qga;
 
-public class RIJArticleInfoRepo$5
+class RIJArticleInfoRepo$5
   implements Runnable
 {
-  public RIJArticleInfoRepo$5(qga paramqga, int paramInt) {}
+  RIJArticleInfoRepo$5(RIJArticleInfoRepo paramRIJArticleInfoRepo, int paramInt) {}
   
   public void run()
   {
-    List localList = qga.a(this.this$0).query(ArticleExposureInfo.class, true, "channelID = ?", new String[] { String.valueOf(this.a) }, null, null, "exposureTime desc", String.valueOf(100));
+    List localList = RIJArticleInfoRepo.a(this.this$0).query(ArticleExposureInfo.class, true, "channelID = ?", new String[] { String.valueOf(this.a) }, null, null, "exposureTime desc", String.valueOf(100));
     if (localList != null)
     {
       ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
@@ -31,18 +30,18 @@ public class RIJArticleInfoRepo$5
           localConcurrentHashMap.put(localArticleExposureInfo.rowkey, localArticleExposureInfo);
         }
       }
-      localObject = (ConcurrentMap)qga.a(this.this$0).get(Integer.valueOf(this.a));
+      localObject = (ConcurrentMap)RIJArticleInfoRepo.a(this.this$0).get(Integer.valueOf(this.a));
       if ((localObject != null) && (((ConcurrentMap)localObject).size() > 0)) {
         localConcurrentHashMap.putAll((Map)localObject);
       }
-      qga.a(this.this$0).put(Integer.valueOf(this.a), localConcurrentHashMap);
+      RIJArticleInfoRepo.a(this.this$0).put(Integer.valueOf(this.a), localConcurrentHashMap);
     }
     QLog.d("RIJArticleInfoRepo", 1, "loadFeedsExposureInfo from db , channelID : " + this.a + ", result : " + localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.RIJArticleInfoRepo.5
  * JD-Core Version:    0.7.0.1
  */

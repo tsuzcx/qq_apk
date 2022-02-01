@@ -9,7 +9,7 @@ public class CustomEmotionData
   public int clickNum;
   public String eId;
   public int exposeNum;
-  public boolean isMarkFace;
+  public boolean isMarkFace = false;
   public String modifyWord;
   public String ocrWord;
   
@@ -25,7 +25,7 @@ public class CustomEmotionData
       }
       else
       {
-        QLog.e("FavroamingDBManager", 1, "error MarketFace from " + paramString + ", " + toString());
+        QLog.e("CustomEmotionData", 1, "error MarketFace from " + paramString + ", " + toString());
         bool1 = false;
       }
     }
@@ -92,7 +92,7 @@ public class CustomEmotionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.CustomEmotionData
  * JD-Core Version:    0.7.0.1
  */

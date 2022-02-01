@@ -1,42 +1,40 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
 import android.text.TextUtils;
-import bedr;
-import bfif;
-import bfmd;
-import bfmf;
-import bfoe;
-import bfof;
-import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils;
+import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
 
-public class TroopFileUploadFeedsSender$1$1
+class TroopFileUploadFeedsSender$1$1
   implements Runnable
 {
-  public TroopFileUploadFeedsSender$1$1(bfof parambfof, String paramString, bfif parambfif) {}
+  TroopFileUploadFeedsSender$1$1(TroopFileUploadFeedsSender.1 param1, String paramString, TroopFileInfo paramTroopFileInfo) {}
   
   public void run()
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bfif.b)) {
-      localObject = this.jdField_a_of_type_Bfif.b;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b)) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b;
     }
-    QQAppInterface localQQAppInterface = bfmd.a();
+    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
     if (localQQAppInterface == null)
     {
-      bfmf.a("TroopFileUploadFeedsSender", bfmf.a, "[" + this.jdField_a_of_type_Bfof.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
+      TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadFeedsSender$1.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
       return;
     }
-    localObject = (MessageForTroopFile)localQQAppInterface.getMessageFacade().queryMsgItemByFilePath(String.valueOf(this.jdField_a_of_type_Bfof.a.d), 1, (String)localObject);
+    localObject = (MessageForTroopFile)FileOperaterUtils.a(localQQAppInterface.getMessageFacade(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadFeedsSender$1.a.e), 1, (String)localObject);
     if (localObject != null)
     {
-      ((bedr)localQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a((MessageRecord)localObject);
+      ((AIOMessageSpreadManager)localQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a((MessageRecord)localObject);
       return;
     }
-    bfmf.a("TroopFileUploadFeedsSender", bfmf.a, "[" + this.jdField_a_of_type_Bfof.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Bfof.a.d + "], id:" + this.jdField_a_of_type_Bfif.b);
+    TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadFeedsSender$1.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadFeedsSender$1.a.e + "], id:" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
   }
 }
 

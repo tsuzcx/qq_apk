@@ -10,9 +10,9 @@ public final class Media_Data
   extends JceStruct
 {
   static Map<String, String> cache_extendInfo = new HashMap();
-  public Map<String, String> extendInfo;
+  public Map<String, String> extendInfo = null;
   public String strImgUrl = "";
-  public int uType;
+  public int uType = 0;
   
   static
   {

@@ -4,20 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.Serializable;
-import rrt;
 
 public class SocializeFeedsInfo$UGCVoiceInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<UGCVoiceInfo> CREATOR = new rrt();
+  public static final Parcelable.Creator<UGCVoiceInfo> CREATOR = new SocializeFeedsInfo.UGCVoiceInfo.1();
   public int duration;
   public int fileSize;
-  public boolean isPlaying;
+  public boolean isPlaying = false;
   public String voiceUrl;
   
-  public SocializeFeedsInfo$UGCVoiceInfo() {}
+  protected SocializeFeedsInfo$UGCVoiceInfo() {}
   
-  public SocializeFeedsInfo$UGCVoiceInfo(Parcel paramParcel)
+  protected SocializeFeedsInfo$UGCVoiceInfo(Parcel paramParcel)
   {
     this.voiceUrl = paramParcel.readString();
     this.duration = paramParcel.readInt();
@@ -38,7 +37,7 @@ public class SocializeFeedsInfo$UGCVoiceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo
  * JD-Core Version:    0.7.0.1
  */

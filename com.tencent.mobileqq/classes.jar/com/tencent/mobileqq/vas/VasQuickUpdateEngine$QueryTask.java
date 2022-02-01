@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.vas;
 
+import com.tencent.mobileqq.vas.updatesystem.callback.QueryItemVersionCallback;
+
 public class VasQuickUpdateEngine$QueryTask
   extends VasQuickUpdateEngine.PendingTask
 {
-  private VasQuickUpdateManager.QueryItemVersionCallback callback;
+  private QueryItemVersionCallback callback;
   private boolean isCfg;
   
-  public VasQuickUpdateEngine$QueryTask(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
+  public VasQuickUpdateEngine$QueryTask(int paramInt, String paramString, boolean paramBoolean, QueryItemVersionCallback paramQueryItemVersionCallback)
   {
     this.bid = paramInt;
     this.scid = paramString;
@@ -27,7 +29,7 @@ public class VasQuickUpdateEngine$QueryTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateEngine.QueryTask
  * JD-Core Version:    0.7.0.1
  */

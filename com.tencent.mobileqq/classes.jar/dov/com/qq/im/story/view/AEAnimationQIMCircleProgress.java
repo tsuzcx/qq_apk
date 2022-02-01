@@ -66,7 +66,7 @@ class AEAnimationQIMCircleProgress
     }
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.c + this.jdField_f_of_type_Float, this.c + this.jdField_f_of_type_Float, paramInt1 - this.c - this.jdField_f_of_type_Float, paramInt2 - this.c - this.jdField_f_of_type_Float);
@@ -84,7 +84,7 @@ class AEAnimationQIMCircleProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.qq.im.story.view.AEAnimationQIMCircleProgress
  * JD-Core Version:    0.7.0.1
  */

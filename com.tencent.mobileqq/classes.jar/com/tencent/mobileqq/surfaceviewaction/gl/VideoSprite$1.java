@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-public class VideoSprite$1
+class VideoSprite$1
   implements Runnable
 {
   VideoSprite$1(VideoSprite paramVideoSprite) {}

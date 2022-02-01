@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahre;
-import ahtm;
-import akln;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -16,6 +13,7 @@ import android.view.View;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.VideoDrawable;
+import com.tencent.mobileqq.activity.photo.TroopPhotoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 
@@ -23,7 +21,7 @@ public class AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView
   extends AbstractImageAdapter.URLImageView2
 {
   int jdField_a_of_type_Int;
-  public ahtm a;
+  public AIORichMediaInfo a;
   boolean b = false;
   
   public AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView(AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, Context paramContext)
@@ -46,7 +44,7 @@ public class AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView
     }
     float f = paramMatrix.width() / paramMatrix.height();
     int j = (int)(paramInt1 / f);
-    int k = akln.a(1280, 1280, paramInt1, j);
+    int k = TroopPhotoUtil.a(1280, 1280, paramInt1, j);
     int i = j;
     paramInt2 = paramInt1;
     if (k > 1)
@@ -98,23 +96,23 @@ public class AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView
       if ((localObject == null) || (!((String)localObject).equals("DISPLAY"))) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a.a(this.jdField_a_of_type_Int, true);
       }
-      if (this.jdField_a_of_type_Ahtm != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo != null)
       {
-        if (this.jdField_a_of_type_Ahtm.b == -2) {
-          this.jdField_a_of_type_Ahtm.b = paramURLDrawable.getExifOrientation();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.b == -2) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.b = paramURLDrawable.getExifOrientation();
         }
-        AIOGalleryAdapter.a((View)getParent(), paramURLDrawable, this.jdField_a_of_type_Ahtm.b);
+        AIOGalleryAdapter.a((View)getParent(), paramURLDrawable, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.b);
       }
       localObject = paramURLDrawable.getCurrDrawable();
       if (VideoDrawable.class.isInstance(localObject)) {
-        ((VideoDrawable)localObject).setOnPlayRepeatListener(new ahre(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a));
+        ((VideoDrawable)localObject).setOnPlayRepeatListener(new AIOGalleryAdapter.VideoListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct.GalleryUrlImageView
  * JD-Core Version:    0.7.0.1
  */

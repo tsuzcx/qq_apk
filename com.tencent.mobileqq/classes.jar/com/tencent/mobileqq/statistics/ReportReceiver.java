@@ -3,7 +3,6 @@ package com.tencent.mobileqq.statistics;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
@@ -13,7 +12,7 @@ public class ReportReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {
+    if (!"Success".equals(MobileQQ.sInjectResult)) {
       return;
     }
     MobileQQ.sMobileQQ.onActivityCreate(this, paramIntent);

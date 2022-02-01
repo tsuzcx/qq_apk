@@ -8,8 +8,8 @@ public final class ClientOnlineNotfiyReq
   extends JceStruct
 {
   static byte[] cache_AttachInfo = (byte[])new byte[1];
-  public byte[] AttachInfo;
-  public long LastMsgTime;
+  public byte[] AttachInfo = null;
+  public long LastMsgTime = 0L;
   
   static
   {

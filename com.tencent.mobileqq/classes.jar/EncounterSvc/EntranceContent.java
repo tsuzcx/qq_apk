@@ -8,8 +8,8 @@ public final class EntranceContent
   extends JceStruct
 {
   static byte[] cache_content_buff = (byte[])new byte[1];
-  public byte[] content_buff;
-  public int type;
+  public byte[] content_buff = null;
+  public int type = 0;
   
   static
   {

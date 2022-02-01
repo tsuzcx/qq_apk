@@ -9,8 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import anvx;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -18,7 +18,6 @@ import com.tencent.mobileqq.mini.entry.desktop.item.DesktopSearchInfo;
 import com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
 import java.lang.ref.WeakReference;
 
@@ -30,38 +29,36 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
   public void onClick(View paramView)
   {
     int i;
-    Object localObject;
     if (QzoneConfig.getInstance().getConfig("qqminiapp", "SearchUseNative", 1) == 1)
     {
       i = 1;
       if (i == 0) {
-        break label252;
+        break label242;
       }
-      localObject = new Intent();
+      paramView = new Intent();
       if ((MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0) != null) && (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo != null) && (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo.firstPage != null))
       {
         String str = Uri.decode(MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo.firstPage.pagePath);
         if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject).putExtra("recommend_word", Uri.parse(str).getQueryParameter("w"));
+          paramView.putExtra("recommend_word", Uri.parse(str).getQueryParameter("w"));
         }
       }
-      PublicFragmentActivity.a((Context)this.val$activity.get(), (Intent)localObject, MiniAppSearchFragment.class);
+      PublicFragmentActivity.a((Context)this.val$activity.get(), paramView, MiniAppSearchFragment.class);
     }
     for (;;)
     {
-      localObject = anvx.a(2131706267);
+      paramView = HardCodeUtil.a(2131706807);
       if (MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText() != null) {
-        localObject = MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText().toString();
+        paramView = MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText().toString();
       }
-      MiniProgramLpReportDC04239.reportAsync("desktop", "search", "click_search", (String)localObject);
+      MiniProgramLpReportDC04239.reportAsync("desktop", "search", "click_search", paramView);
       if ((MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0) != null) && (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo != null) && (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo.tianshuAdId > 0)) {
         MiniAppUtils.miniAppTianShuReport("tianshu.78", "tianshu.78", String.valueOf(MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo.tianshuAdId), 102);
       }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
       i = 0;
       break;
-      label252:
+      label242:
       if ((MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0) == null) || (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo == null)) {
         QLog.e("MiniAppDesktopAdapter", 1, "click search bar searchInfo is null");
       }
@@ -69,9 +66,9 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
       {
         MiniAppDesktopAdapter.startMiniApp((Activity)this.val$activity.get(), MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo, 3006);
       }
-      catch (Exception localException)
+      catch (Exception paramView)
       {
-        QLog.e("MiniAppDesktopAdapter", 1, "click search bar exception: " + Log.getStackTraceString(localException));
+        QLog.e("MiniAppDesktopAdapter", 1, "click search bar exception: " + Log.getStackTraceString(paramView));
       }
     }
   }

@@ -11,9 +11,9 @@ public final class sweet_upgrade_key_notify_rsp
 {
   static sweet_req_comm cache_req_comm = new sweet_req_comm();
   static sweet_rsp_comm cache_rsp_comm = new sweet_rsp_comm();
-  public long host_state;
-  public sweet_req_comm req_comm;
-  public sweet_rsp_comm rsp_comm;
+  public long host_state = 0L;
+  public sweet_req_comm req_comm = null;
+  public sweet_rsp_comm rsp_comm = null;
   
   public sweet_upgrade_key_notify_rsp() {}
   

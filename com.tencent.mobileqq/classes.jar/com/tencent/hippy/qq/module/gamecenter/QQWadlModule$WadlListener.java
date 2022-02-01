@@ -1,13 +1,13 @@
 package com.tencent.hippy.qq.module.gamecenter;
 
-import bmqi;
+import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
+import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
 import com.tencent.mtt.hippy.common.HippyArray;
-import cooperation.wadl.ipc.WadlResult;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 abstract class QQWadlModule$WadlListener
-  implements bmqi
+  implements WadlProxyServiceCallBackInterface
 {
   protected abstract void onCallback(String paramString, Object paramObject);
   
@@ -35,7 +35,7 @@ abstract class QQWadlModule$WadlListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.gamecenter.QQWadlModule.WadlListener
  * JD-Core Version:    0.7.0.1
  */

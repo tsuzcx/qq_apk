@@ -10,15 +10,15 @@ public final class stWxMiniProg
   public String appThumbUrl = "";
   public String appid = "";
   public String hdImageDataURL = "";
-  public int miniProgramType;
+  public int miniProgramType = 0;
   public String path = "";
   public String userName = "";
-  public int videoCoverHeight;
-  public int videoCoverWidth;
+  public int videoCoverHeight = 0;
+  public int videoCoverWidth = 0;
   public String videoSource = "";
   public String videoUserName = "";
   public String webpageUrl = "";
-  public int withShareTicket;
+  public int withShareTicket = 0;
   
   public stWxMiniProg() {}
   

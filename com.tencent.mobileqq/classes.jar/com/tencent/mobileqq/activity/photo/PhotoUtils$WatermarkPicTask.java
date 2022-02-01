@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.photo;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import bheg;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import zdr;
 
 public class PhotoUtils$WatermarkPicTask
   implements Runnable
@@ -40,7 +40,7 @@ public class PhotoUtils$WatermarkPicTask
     Bitmap localBitmap2;
     try
     {
-      localBitmap2 = bheg.a(this.mSrcPath, null);
+      localBitmap2 = ImageUtil.a(this.mSrcPath, null);
       if (localBitmap2 == null)
       {
         if (QLog.isColorLevel()) {
@@ -60,11 +60,11 @@ public class PhotoUtils$WatermarkPicTask
     }
     int n = localBitmap2.getWidth();
     int m = localBitmap2.getHeight();
-    int k = bheg.d(this.mSrcPath);
+    int k = ImageUtil.e(this.mSrcPath);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoUtils", 2, "watermark pic task, w=" + n + ", h=" + m + ", r=" + k);
     }
-    Object localObject4 = bheg.a(BaseApplication.getContext().getResources(), 2130845999);
+    Object localObject4 = ImageUtil.a(BaseApplication.getContext().getResources(), 2130846320);
     if (n != 576)
     {
       float f = n / 576.0F;
@@ -160,7 +160,7 @@ public class PhotoUtils$WatermarkPicTask
       }
       if (localObject1 != null)
       {
-        bool = zdr.a((Bitmap)localObject1, this.mDstPath);
+        bool = BitmapUtils.a((Bitmap)localObject1, this.mDstPath);
         ((Bitmap)localObject1).recycle();
       }
       localBitmap2.recycle();
@@ -185,7 +185,7 @@ public class PhotoUtils$WatermarkPicTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoUtils.WatermarkPicTask
  * JD-Core Version:    0.7.0.1
  */

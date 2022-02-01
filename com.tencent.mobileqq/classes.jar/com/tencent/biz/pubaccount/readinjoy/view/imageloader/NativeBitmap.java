@@ -8,7 +8,6 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import tmd;
 
 public class NativeBitmap
 {
@@ -25,7 +24,7 @@ public class NativeBitmap
     {
       a = false;
       if (QLog.isColorLevel()) {
-        tmd.a("NativeBitmap", "load so fail");
+        Utils.a("NativeBitmap", "load so fail");
       }
       if (BaseApplicationImpl.sProcessId == 1)
       {
@@ -40,7 +39,7 @@ public class NativeBitmap
     finally
     {
       if (QLog.isColorLevel()) {
-        tmd.a("NativeBitmap", "canUseNativeBitmap:" + a);
+        Utils.a("NativeBitmap", "canUseNativeBitmap:" + a);
       }
     }
   }
@@ -49,7 +48,7 @@ public class NativeBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.NativeBitmap
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,9 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.DownloadEncryptConf;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.C2CPicDownReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -27,9 +30,9 @@ public class C2CPicDownloadProcessor
 {
   public C2CPicDownloadProcessor() {}
   
-  public C2CPicDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public C2CPicDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.file.fileType = this.mUiRequest.mFileType;
     this.file.uniseq = this.mUiRequest.mUniseq;
     this.file.mSubMsgId = this.mUiRequest.mSubMsgId;
@@ -39,7 +42,7 @@ public class C2CPicDownloadProcessor
   {
     logRichMediaEvent("uiParam", this.mUiRequest.toString());
     String str = this.mUiRequest.mServerPath;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (FileUtils.isLocalPath(str)) || (str.startsWith("http")))
+    if ((str == null) || (str.equals("")) || (str.equals("null")) || (FileUtils.c(str)) || (str.startsWith("http")))
     {
       setError(9302, getExpStackString(new Exception("uuid illegal " + str)));
       onError();
@@ -68,7 +71,7 @@ public class C2CPicDownloadProcessor
     Object localObject2;
     if (!paramBoolean)
     {
-      localObject1 = "Q.richmedia." + RichMediaUtil.getUinDesc(this.mUiRequest.mUinType) + "." + RichMediaUtil.getFileType(this.mUiRequest.mFileType);
+      localObject1 = "Q.richmedia." + TransFileUtil.getUinDesc(this.mUiRequest.mUinType) + "." + RichMediaUtil.getFileType(this.mUiRequest.mFileType);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("id:" + this.mUiRequest.mUniseq + "  ");
       ((StringBuilder)localObject2).append("errCode:" + this.errCode + "  ");
@@ -92,7 +95,7 @@ public class C2CPicDownloadProcessor
       this.mReportInfo.put("param_step", localObject1);
       localObject1 = this.mReportInfo;
       if (!this.mDirectMsgUrlDown) {
-        break label934;
+        break label935;
       }
       l1 = this.mStepDirectDown.getTimeConsume();
       label361:
@@ -105,10 +108,10 @@ public class C2CPicDownloadProcessor
       localObject1 = this.mReportInfo;
       l1 = this.mRecvLen;
       if (this.mPicDownExtra != null) {
-        break label946;
+        break label947;
       }
       i = 0;
-      label489:
+      label490:
       ((HashMap)localObject1).put("param_recvDataLen", String.valueOf(l1 - i));
       this.mReportInfo.put("param_directFailCode", String.valueOf(this.mSSORequestReason));
       this.mReportInfo.put("param_directFailDesc", "" + this.mDirectDownFailReason);
@@ -117,17 +120,17 @@ public class C2CPicDownloadProcessor
       this.mReportInfo.put("param_encryptRollback", "" + this.mPicEncryptRollback + ",decryptErrorMsg:" + this.mDecryptErrorMsg);
       localObject2 = this.mReportInfo;
       if (!this.mPicEncryptRollback) {
-        break label957;
+        break label958;
       }
       localObject1 = "1";
-      label687:
+      label688:
       ((HashMap)localObject2).put("param_encRetry", localObject1);
       localObject2 = this.mReportInfo;
       if (!this.mIsHttpsDownload) {
-        break label965;
+        break label966;
       }
       localObject1 = "1";
-      label716:
+      label717:
       ((HashMap)localObject2).put("param_isHttps", localObject1);
       if ((this.mNetReq != null) && (((HttpNetReq)this.mNetReq).decoder != null))
       {
@@ -137,14 +140,14 @@ public class C2CPicDownloadProcessor
       localObject2 = this.mUiRequest.mRec;
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+        localObject1 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
       }
       if ((localObject1 != null) && ((localObject1 instanceof MessageForPic))) {
         this.mReportInfo.put("param_imgType", String.valueOf(((MessageForPic)localObject1).imageType));
       }
       checkFailCodeReport(paramBoolean);
       if (!paramBoolean) {
-        break label973;
+        break label974;
       }
       reportForIpv6(true, l2);
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), true, l2, this.mTotolLen, this.mReportInfo, "");
@@ -156,19 +159,19 @@ public class C2CPicDownloadProcessor
       return;
       i = 1;
       break;
-      label934:
+      label935:
       l1 = this.mStepTrans.getTimeConsume();
       break label361;
-      label946:
+      label947:
       i = this.mPicDownExtra.mStartDownOffset;
-      break label489;
-      label957:
+      break label490;
+      label958:
       localObject1 = "0";
-      break label687;
-      label965:
+      break label688;
+      label966:
       localObject1 = "0";
-      break label716;
-      label973:
+      break label717;
+      label974:
       if (this.errCode != -9527) {
         this.mReportInfo.remove("param_rspHeader");
       }
@@ -250,7 +253,7 @@ public class C2CPicDownloadProcessor
     {
       localObject = "https://";
       if (!this.isDomainTest) {
-        break label699;
+        break label697;
       }
       this.mIpList.clear();
       localHttpNetReq.mIsHostIP = false;
@@ -276,7 +279,7 @@ public class C2CPicDownloadProcessor
       localHttpNetReq.mIsNetChgAsError = true;
       i = getDownloadStatus(this.mUiRequest);
       if (i != 4) {
-        break label897;
+        break label895;
       }
       localHttpNetReq.mStartDownOffset = this.mUiRequest.mRequestOffset;
       localHttpNetReq.mEndDownOffset = 0L;
@@ -290,7 +293,7 @@ public class C2CPicDownloadProcessor
       localHttpNetReq.mReqProperties.put("Accept-Encoding", "identity");
       localHttpNetReq.mReqProperties.put("mType", "picCd");
       localHttpNetReq.mReqProperties.put("Referer", "http://im.qq.com/mobileqq");
-      localHttpNetReq.mBreakDownFix = mPicBreakDownFixForOldHttpEngine;
+      localHttpNetReq.mSupportBreakResume = true;
       localHttpNetReq.mPrioty = this.mUiRequest.mPrioty;
       if (this.mTimeoutProfile != null) {
         localHttpNetReq.mTimeoutParam = this.mTimeoutProfile.getTimeoutParam();
@@ -319,7 +322,7 @@ public class C2CPicDownloadProcessor
       return;
       localObject = "http://";
       break label62;
-      label699:
+      label697:
       if ((this.mIpList != null) && (this.mIpList.size() > 0))
       {
         localHttpNetReq.mIsHostIP = true;
@@ -338,7 +341,7 @@ public class C2CPicDownloadProcessor
       localHttpNetReq.mIsHostIP = false;
       localObject = (String)localObject + this.mDownDomain;
       break label111;
-      label897:
+      label895:
       if ((i == 3) || (i == 2))
       {
         localHttpNetReq.mStartDownOffset = this.mUiRequest.mRequestOffset;
@@ -370,7 +373,7 @@ public class C2CPicDownloadProcessor
     MessageRecord localMessageRecord2 = this.mUiRequest.mRec;
     MessageRecord localMessageRecord1 = localMessageRecord2;
     if (localMessageRecord2 == null) {
-      localMessageRecord1 = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+      localMessageRecord1 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
     }
     boolean bool;
     if ((localMessageRecord1 != null) && ((localMessageRecord1 instanceof MessageForPic)))
@@ -379,7 +382,7 @@ public class C2CPicDownloadProcessor
       localC2CPicDownReq.storageSource = this.mStorageSource;
       localC2CPicDownReq.fileType = this.mUiRequest.mFileType;
       if (this.mUiRequest.mUinType != 1006) {
-        break label305;
+        break label313;
       }
       bool = true;
       label207:
@@ -388,15 +391,15 @@ public class C2CPicDownloadProcessor
       localRichProtoReq.callback = this;
       localRichProtoReq.protoKey = "c2c_pic_dw";
       localRichProtoReq.reqs.add(localC2CPicDownReq);
-      localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+      localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
       if (isAppValid()) {
-        break label310;
+        break label318;
       }
       setError(9366, "illegal app", null, this.mStepUrl);
       onError();
     }
-    label305:
-    label310:
+    label313:
+    label318:
     do
     {
       return;
@@ -430,7 +433,7 @@ public class C2CPicDownloadProcessor
     }
     catch (Exception localException)
     {
-      logRichMediaEvent("reportFailed", ChatImageDownloader.getExceptionMessage(localException));
+      logRichMediaEvent("reportFailed", BaseTransProcessor.getExceptionMessage(localException));
     }
   }
 }

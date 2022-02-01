@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.data;
 
 import QQService.EVIPSPEC;
-import ajlh;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.mobileqq.persistence.Entity;
@@ -9,7 +8,6 @@ import com.tencent.mobileqq.persistence.PrimaryKeyJoinColumn;
 import com.tencent.mobileqq.persistence.defaultValue;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
-import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 
 @PrimaryKeyJoinColumn(name="uin")
@@ -58,18 +56,16 @@ public class Friends
   public static final int TERM_TYPE_TV_QQ = 69130;
   public static final int TERM_TYPE_WIN8 = 69899;
   public static final int TERM_TYPE_WINPHONE = 65804;
-  public long abilityBits;
+  public long abilityBits = 0L;
   public String adCode;
   public int age;
   public String alias;
   public String area;
   public long autoStatusUpdateSecond;
-  public int bigClubExtTemplateId;
-  public int bigClubInfo;
-  public int bigClubTemplateId;
-  @Deprecated
-  public byte cNetwork = 0;
-  public int cNewLoverDiamondFlag;
+  public int bigClubExtTemplateId = 0;
+  public int bigClubInfo = 0;
+  public int bigClubTemplateId = 0;
+  public int cNewLoverDiamondFlag = 0;
   public byte cSpecialFlag;
   public String city;
   public String constellationBgImageUrl;
@@ -85,17 +81,18 @@ public class Friends
   public int customOnlineStatusType;
   public long datetime;
   public byte detalStatusFlag;
+  public int diyFontId = 0;
   public int eNetwork = 0;
   @Deprecated
   public short faceid;
-  public int friendType;
+  public int friendType = 0;
   public byte gathtertype = 0;
   public byte gender;
-  public int grayNameplateFlag;
+  public int grayNameplateFlag = 0;
   public int groupid = -1;
   @Deprecated
-  public int hollywoodVipInfo;
-  public int iBatteryStatus;
+  public int hollywoodVipInfo = 0;
+  public int iBatteryStatus = 0;
   public int iTermType;
   @Deprecated
   public byte isIphoneOnline;
@@ -111,30 +108,23 @@ public class Friends
   public String medalsInfo;
   @Deprecated
   public byte memberLevel;
-  public int multiFlags;
+  public int multiFlags = 0;
   public volatile String name;
   public int namePlateOfKingDan;
   public boolean namePlateOfKingDanDisplatSwitch;
   public long namePlateOfKingGameId;
   public long namePlateOfKingLoginTime;
   public String nameplateCfgInfo;
-  public int nameplateVipType;
+  public int nameplateVipType = 0;
   @notColumn
   public int netTypeIconId;
   public int poiFlag;
   public String poiName;
   public long poiUpdateTime;
-  public int qqVipInfo;
+  public int qqVipInfo = 0;
   public String recommReason;
-  public int relationIconFlag;
+  public int relationIconFlag = 0;
   public String remark;
-  @Deprecated
-  public byte[] richBuffer;
-  @notColumn
-  @Deprecated
-  public RichStatus richStatus;
-  @Deprecated
-  public long richTime;
   public long showLoginClient;
   @Deprecated
   public String signature;
@@ -157,11 +147,11 @@ public class Friends
   public String strMasterUin = "";
   @notColumn
   public String strTermDesc;
-  public int superQqInfo;
-  public int superVipInfo;
-  public int superVipTemplateId;
+  public int superQqInfo = 0;
+  public int superVipInfo = 0;
+  public int superVipTemplateId = 0;
   public String temper;
-  public long uExtOnlineStatus;
+  public long uExtOnlineStatus = 0L;
   @unique
   public String uin;
   @defaultValue(defaultInteger=1)
@@ -204,7 +194,7 @@ public class Friends
       {
         Object localObject = this;
       } while (!QLog.isColorLevel());
-      QLog.d("Q.contacttab.", 2, "Friends clone failed." + localCloneNotSupportedException.toString());
+      QLog.d("FriendsManager", 2, "Friends clone failed." + localCloneNotSupportedException.toString());
     }
     return this;
   }
@@ -241,6 +231,7 @@ public class Friends
     this.superVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("superVipTemplateId"));
     this.bigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubTemplateId"));
     this.bigClubExtTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubExtTemplateId"));
+    this.diyFontId = paramCursor.getInt(paramCursor.getColumnIndex("diyFontId"));
     this.nameplateVipType = paramCursor.getInt(paramCursor.getColumnIndex("nameplateVipType"));
     this.grayNameplateFlag = paramCursor.getInt(paramCursor.getColumnIndex("grayNameplateFlag"));
     this.cNewLoverDiamondFlag = paramCursor.getInt(paramCursor.getColumnIndex("cNewLoverDiamondFlag"));
@@ -334,58 +325,6 @@ public class Friends
     return this.lastLoginType;
   }
   
-  public int getNetWorkType()
-  {
-    int j = 2;
-    ajlh localajlh = ajlh.a();
-    int i;
-    if (this.eNetwork == 0)
-    {
-      if ((this.iTermType == 69378) || (this.iTermType == 73474) || (this.iTermType == 73730)) {
-        i = 0;
-      }
-      do
-      {
-        return i;
-        i = j;
-      } while (1 != localajlh.a(this.iTermType, 1));
-    }
-    if (1 != localajlh.a(this.iTermType, 1)) {
-      i = j;
-    }
-    switch (this.netTypeIconId)
-    {
-    case 2: 
-    case 5: 
-    case 6: 
-    case 10: 
-    case 11: 
-    default: 
-      if ((this.netTypeIconId == 7) || (this.netTypeIconId == 8) || (this.netTypeIconId == 9)) {}
-      switch (this.netTypeIconId)
-      {
-      default: 
-        return this.eNetwork;
-      }
-    case 1: 
-      return 1;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
-    case 12: 
-      return 5;
-    case 7: 
-      return 7;
-    case 8: 
-      return 8;
-    }
-    return 9;
-    return 7;
-    return 8;
-    return 9;
-  }
-  
   public int getServiceLevel(EVIPSPEC paramEVIPSPEC)
   {
     switch (paramEVIPSPEC.value())
@@ -469,16 +408,6 @@ public class Friends
     return (this.multiFlags & MULTI_FLAGS_MASK_SHIELD) > 0;
   }
   
-  public void setOlympicTorchFlag(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.multiFlags |= MULTI_FLAGS_MASK_OLYMPICTORCH;
-      return;
-    }
-    this.multiFlags &= (MULTI_FLAGS_MASK_OLYMPICTORCH ^ 0xFFFFFFFF);
-  }
-  
   public void setShieldFlag(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -487,6 +416,11 @@ public class Friends
       return;
     }
     this.multiFlags &= (MULTI_FLAGS_MASK_SHIELD ^ 0xFFFFFFFF);
+  }
+  
+  public String toString()
+  {
+    return "Friends{uin='" + this.uin + '\'' + ", remark='" + this.remark + '\'' + ", name='" + this.name + '\'' + ", groupid=" + this.groupid + '\'' + ", gathtertype=" + this.gathtertype + '}';
   }
 }
 

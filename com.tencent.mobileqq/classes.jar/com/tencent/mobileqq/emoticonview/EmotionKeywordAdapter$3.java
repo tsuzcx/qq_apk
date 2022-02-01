@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import asih;
-import awyr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -10,6 +8,8 @@ import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonKeywords;
 import com.tencent.mobileqq.data.EmoticonResp;
 import com.tencent.mobileqq.data.EmotionKeyword;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -74,7 +74,7 @@ class EmotionKeywordAdapter$3
     for (;;)
     {
       if (EmotionKeywordAdapter.access$200(this.this$0).a(localEmoticon.epId) == null) {
-        ((asih)EmotionKeywordAdapter.access$400(this.this$0).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER)).a(localEmoticon.epId, asih.c);
+        ((EmojiManager)EmotionKeywordAdapter.access$400(this.this$0).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER)).a(localEmoticon.epId, EmojiManager.c);
       }
       label473:
       int i;
@@ -170,7 +170,7 @@ class EmotionKeywordAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter.3
  * JD-Core Version:    0.7.0.1
  */

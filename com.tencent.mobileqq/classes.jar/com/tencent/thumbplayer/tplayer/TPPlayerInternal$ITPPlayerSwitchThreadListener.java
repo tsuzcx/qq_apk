@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.tplayer;
 
 import android.view.Surface;
 import android.view.SurfaceHolder;
+import com.tencent.thumbplayer.api.ITPSurface;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
@@ -24,9 +25,17 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract int handleGetBufferPercent();
   
+  public abstract String handleGetContentType(int paramInt, String paramString);
+  
   public abstract int handleGetCurrentPlayClipNo();
   
   public abstract long handleGetCurrentPositionMs();
+  
+  public abstract int handleGetCurrentState();
+  
+  public abstract String handleGetDataFilePath(int paramInt, String paramString);
+  
+  public abstract long handleGetDataTotalSize(int paramInt, String paramString);
   
   public abstract long handleGetDurationMs();
   
@@ -68,6 +77,8 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract void handleOnDownloadProtocolUpdate(String paramString1, String paramString2);
   
+  public abstract void handleOnDownloadQuicStatusUpdate(String paramString);
+  
   public abstract void handleOnDownloadStatusUpdate(int paramInt);
   
   public abstract Object handleOnPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4);
@@ -77,6 +88,8 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   public abstract void handlePauseDownload();
   
   public abstract void handlePrepareAsync();
+  
+  public abstract int handleReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
   
   public abstract void handleRelease();
   
@@ -110,11 +123,17 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract void handleSetSurfaceHolder(SurfaceHolder paramSurfaceHolder);
   
+  public abstract void handleSetTPSurface(ITPSurface paramITPSurface);
+  
   public abstract void handleStart();
+  
+  public abstract int handleStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2);
   
   public abstract void handleStop();
   
   public abstract void handleStopAsync();
+  
+  public abstract int handleStopReadData(int paramInt1, String paramString, int paramInt2);
   
   public abstract void handleSwitchDef(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt);
   
@@ -126,7 +145,7 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerInternal.ITPPlayerSwitchThreadListener
  * JD-Core Version:    0.7.0.1
  */

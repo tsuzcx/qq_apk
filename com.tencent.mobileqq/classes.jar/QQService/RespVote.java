@@ -8,8 +8,8 @@ public final class RespVote
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  public long lMID;
-  public RespHead stHeader;
+  public long lMID = 0L;
+  public RespHead stHeader = null;
   
   public RespVote() {}
   

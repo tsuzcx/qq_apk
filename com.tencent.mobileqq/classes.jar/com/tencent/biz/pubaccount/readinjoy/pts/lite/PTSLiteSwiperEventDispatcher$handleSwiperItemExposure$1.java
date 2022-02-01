@@ -4,49 +4,49 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Pair;
-import bmhv;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.ChannelListDynamicOrderConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.config.handlers.DailyModeConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJAppSetting;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSRijReport;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.HashMap;
 import java.util.Map;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pkh;
-import plh;
-import plm;
-import pqf;
-import pqu;
-import pqw;
-import qyr;
-import rai;
-import szd;
-import uvs;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1
+final class PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1
   implements Runnable
 {
-  public PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1(qyr paramqyr, String paramString1, String paramString2, HashMap paramHashMap) {}
+  PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1(PTSLiteSwiperEventDispatcher paramPTSLiteSwiperEventDispatcher, String paramString1, String paramString2, HashMap paramHashMap) {}
   
   public final void run()
   {
     if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
       QLog.i("PTSLiteSwiperEventDispatcher", 1, "[handleSwiperItemExposure] identifier is null.");
     }
-    ArticleInfo localArticleInfo = (ArticleInfo)((Map)qyr.a(this.this$0)).get(this.jdField_a_of_type_JavaLangString);
+    ArticleInfo localArticleInfo = (ArticleInfo)((Map)PTSLiteSwiperEventDispatcher.a(this.this$0)).get(this.jdField_a_of_type_JavaLangString);
     if (localArticleInfo == null)
     {
       QLog.i("PTSLiteSwiperEventDispatcher", 1, "[handleSwiperItemExposure] error, articleInfo is null.");
       return;
     }
     long l1 = localArticleInfo.mChannelID;
-    Object localObject2 = qyr.a(this.this$0, (int)l1);
+    Object localObject2 = PTSLiteSwiperEventDispatcher.a(this.this$0, (int)l1);
     if (localObject2 == null) {
       Intrinsics.throwNpe();
     }
@@ -63,18 +63,18 @@ public final class PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1
     {
       i = localArticleInfo.mChannelInfoId;
       if (!TextUtils.isEmpty((CharSequence)localArticleInfo.mArticleFriendLikeText)) {
-        break label522;
+        break label532;
       }
       j = 0;
-      boolean bool = NetworkUtil.isWifiConnected(null);
-      localObject3 = pqw.b((BaseArticleInfo)localArticleInfo);
+      boolean bool = NetworkUtil.h(null);
+      localObject3 = RIJFeedsType.b((BaseArticleInfo)localArticleInfo);
       String str2 = localArticleInfo.mStrCircleId;
       String str3 = localArticleInfo.innerUniqueID;
-      String str4 = pqw.d((BaseArticleInfo)localArticleInfo);
+      String str4 = RIJFeedsType.d((BaseArticleInfo)localArticleInfo);
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "totalTimeMillis");
       long l3 = ((Long)localObject1).longValue();
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "behaviorType");
-      localObject2 = pqf.a(l2, k, m, i, j, bool, (String)localObject3, str2, str3, str4, localArticleInfo, l3, ((Integer)localObject2).intValue(), pqf.a(), pqu.a(), 0, false, localArticleInfo.mVideoAdsJumpType, localArticleInfo.mVideoAdsSource, ReadInJoyBaseFragment.a((int)l1));
+      localObject2 = RIJTransMergeKanDianReport.a(l2, k, m, i, j, bool, (String)localObject3, str2, str3, str4, localArticleInfo, l3, ((Integer)localObject2).intValue(), RIJTransMergeKanDianReport.a(), RIJAppSetting.a(), 0, false, localArticleInfo.mVideoAdsJumpType, localArticleInfo.mVideoAdsSource, ReadInJoyBaseFragment.a((int)l1));
     }
     for (;;)
     {
@@ -82,12 +82,12 @@ public final class PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1
       {
         localObject3 = new JSONObject((String)localObject2);
         ((JSONObject)localObject3).put("folder_status", this.b);
-        ((JSONObject)localObject3).put("is_change", plh.a(pkh.a(), (int)l1));
-        localObject1 = qyr.a(this.this$0);
+        ((JSONObject)localObject3).put("is_change", ChannelListDynamicOrderConfigHandler.a(ReadInJoyUtils.a(), (int)l1));
+        localObject1 = PTSLiteSwiperEventDispatcher.a(this.this$0);
         if (localObject1 == null) {
           continue;
         }
-        localObject1 = ((szd)localObject1).a();
+        localObject1 = ((ReadInJoyBaseAdapter)localObject1).a();
         if (localObject1 == null) {
           continue;
         }
@@ -102,7 +102,7 @@ public final class PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1
       }
       catch (JSONException localJSONException)
       {
-        label522:
+        label532:
         QLog.i("PTSLiteSwiperEventDispatcher", 1, "[handleSwiperItemExposure] e = " + localJSONException);
         continue;
         String str1 = "0X8007626";
@@ -117,16 +117,16 @@ public final class PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1
       ((JSONObject)localObject3).put("from_aio", i);
       localObject1 = ((JSONObject)localObject3).toString();
       localObject2 = localObject1;
-      if (!uvs.a(l1)) {
+      if (!ReadinjoyReportUtils.a(l1)) {
         continue;
       }
       localObject1 = "0X8009354";
-      if ((!plm.a((int)l1)) && (!bmhv.a(l1))) {
+      if ((!DailyModeConfigHandler.a((int)l1)) && (!ReadInJoyHelper.a(l1))) {
         continue;
       }
       localObject1 = "0X8009CC8";
-      localObject2 = rai.a((String)localObject2, this.jdField_a_of_type_JavaUtilHashMap);
-      olh.a(null, localArticleInfo.mSubscribeID, (String)localObject1, (String)localObject1, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), String.valueOf(localArticleInfo.mStrategyId), (String)localObject2, false);
+      localObject2 = PTSRijReport.a((String)localObject2, this.jdField_a_of_type_JavaUtilHashMap);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, localArticleInfo.mSubscribeID, (String)localObject1, (String)localObject1, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), String.valueOf(localArticleInfo.mStrategyId), (String)localObject2, false);
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -146,7 +146,7 @@ public final class PTSLiteSwiperEventDispatcher$handleSwiperItemExposure$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLiteSwiperEventDispatcher.handleSwiperItemExposure.1
  * JD-Core Version:    0.7.0.1
  */

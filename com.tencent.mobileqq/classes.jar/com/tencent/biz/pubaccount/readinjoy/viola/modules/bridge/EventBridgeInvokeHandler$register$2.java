@@ -7,14 +7,13 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tyq;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "param", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
-public final class EventBridgeInvokeHandler$register$2
+final class EventBridgeInvokeHandler$register$2
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public EventBridgeInvokeHandler$register$2(tyq paramtyq)
+  EventBridgeInvokeHandler$register$2(EventBridgeInvokeHandler paramEventBridgeInvokeHandler)
   {
     super(2);
   }
@@ -26,7 +25,7 @@ public final class EventBridgeInvokeHandler$register$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.EventBridgeInvokeHandler.register.2
  * JD-Core Version:    0.7.0.1
  */

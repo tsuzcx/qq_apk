@@ -9,16 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bcct;
-import bccu;
-import bccv;
-import bccx;
-import bccz;
-import bcdc;
-import bclx;
-import bcml;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.avatar.api.IQQAvatarService;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRespData;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.ListView;
@@ -26,20 +23,20 @@ import java.util.List;
 
 public class FTSEntitySearchDetailFragment
   extends Fragment
-  implements Handler.Callback, bclx<bccx>
+  implements Handler.Callback, ISearchListener<FTSEntitySearchResultDetailModel>
 {
   private static List<FTSEntity> jdField_a_of_type_JavaUtilList;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcct jdField_a_of_type_Bcct;
-  bccv jdField_a_of_type_Bccv;
-  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+  private BaseMvpFTSEntityAdapter jdField_a_of_type_ComTencentMobileqqSearchFtsentityBaseMvpFTSEntityAdapter;
   FTSEntitySearchDetailActivity jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity;
+  FTSEntitySearchEngine jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchEngine;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private String jdField_b_of_type_JavaLangString;
   private List<FTSEntity> jdField_b_of_type_JavaUtilList;
-  private List<bccx> c;
+  private List<FTSEntitySearchResultDetailModel> c;
   
   public static FTSEntitySearchDetailFragment a(String paramString1, String paramString2, List<FTSEntity> paramList)
   {
@@ -52,29 +49,29 @@ public class FTSEntitySearchDetailFragment
     return paramList;
   }
   
-  private void b(List<bccx> paramList)
+  private void b(List<FTSEntitySearchResultDetailModel> paramList)
   {
-    this.jdField_a_of_type_Bcct.a(paramList);
+    this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityBaseMvpFTSEntityAdapter.a(paramList);
   }
   
-  public void a(List<bccx> paramList) {}
+  public void a(List<FTSEntitySearchResultDetailModel> paramList) {}
   
-  public void a(List<bccx> paramList, int paramInt)
+  public void a(List<FTSEntitySearchResultDetailModel> paramList, int paramInt)
   {
     this.c = paramList;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-1);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-1);
   }
   
-  public void a(List<bccx> paramList, bcml parambcml)
+  public void a(List<FTSEntitySearchResultDetailModel> paramList, SearchRespData paramSearchRespData)
   {
-    if (parambcml.a(this.jdField_a_of_type_JavaLangString)) {
-      a(paramList, parambcml.jdField_a_of_type_Int);
+    if (paramSearchRespData.a(this.jdField_a_of_type_JavaLangString)) {
+      a(paramList, paramSearchRespData.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", parambcml.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_a_of_type_JavaLangString });
+    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramSearchRespData.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_a_of_type_JavaLangString });
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -98,14 +95,14 @@ public class FTSEntitySearchDetailFragment
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("original_keyword");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("segment_keyword");
     this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity = ((FTSEntitySearchDetailActivity)getActivity());
-    this.jdField_a_of_type_Bccv = bccz.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchEngine = FTSEntitySearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559390, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131368115));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131370180));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559457, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131368336));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131370452));
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -113,8 +110,8 @@ public class FTSEntitySearchDetailFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
     }
     jdField_a_of_type_JavaUtilList = null;
   }
@@ -124,18 +121,18 @@ public class FTSEntitySearchDetailFragment
     super.onViewCreated(paramView, paramBundle);
     try
     {
-      paramView = bccz.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_b_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
+      paramView = FTSEntitySearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_b_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app);
-      this.jdField_a_of_type_Bcct = new bccu(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bcct);
-      this.jdField_a_of_type_Bccv.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilList);
-      this.jdField_a_of_type_Bcct.a();
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && (!bcdc.a(this.jdField_a_of_type_JavaLangString)))
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app);
+      this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityBaseMvpFTSEntityAdapter = new FTSEntitySearchDetailFragment.1(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityBaseMvpFTSEntityAdapter);
+      this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchEngine.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityBaseMvpFTSEntityAdapter.a();
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && (!FTSMessageSearchEngine.a(this.jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_Bccv.a();
-        paramView = bccz.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(0));
-        this.jdField_a_of_type_Bccv.b(paramView, this);
+        this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchEngine.a();
+        paramView = FTSEntitySearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(0));
+        this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchEngine.b(paramView, this);
       }
       return;
     }
@@ -148,7 +145,7 @@ public class FTSEntitySearchDetailFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment
  * JD-Core Version:    0.7.0.1
  */

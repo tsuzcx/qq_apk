@@ -4,19 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import apsl;
-import aptb;
-import aupt;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.qphone.base.util.QLog;
 
-public class ArkAppQQModule$5
+class ArkAppQQModule$5
   implements Runnable
 {
-  public ArkAppQQModule$5(aptb paramaptb, String paramString) {}
+  ArkAppQQModule$5(ArkAppQQModule paramArkAppQQModule, String paramString) {}
   
   public void run()
   {
-    Activity localActivity = apsl.a();
+    Activity localActivity = ArkAppModuleBase.a();
     if ((localActivity instanceof FragmentActivity))
     {
       Bundle localBundle = new Bundle();
@@ -24,7 +22,7 @@ public class ArkAppQQModule$5
       Intent localIntent = new Intent();
       localIntent.putExtras(localBundle);
       localIntent.putExtra("direct_send_if_dataline_forward", true);
-      aupt.a(localActivity, localIntent, 21);
+      ForwardBaseOption.a(localActivity, localIntent, 21);
       if (QLog.isColorLevel()) {
         QLog.i("ArkApp", 1, "multiAio.QQ.SendMessage text success.");
       }

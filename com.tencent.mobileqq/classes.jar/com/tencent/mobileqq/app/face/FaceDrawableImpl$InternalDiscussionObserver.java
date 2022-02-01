@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.face;
 
+import com.tencent.mobileqq.avatar.utils.AvatarUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class FaceDrawableImpl$InternalDiscussionObserver
@@ -17,10 +18,10 @@ public class FaceDrawableImpl$InternalDiscussionObserver
   public void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     int i;
-    if (GroupIconHelper.a(paramString)) {
+    if (AvatarUtil.a(paramString)) {
       i = 1001;
     }
-    for (String str = GroupIconHelper.b(paramString);; str = paramString)
+    for (String str = AvatarUtil.b(paramString);; str = paramString)
     {
       if (paramBoolean2) {
         this.this$0.onUpdateHead(paramBoolean1, i, str, this.this$0.mDisObserver);
@@ -39,7 +40,7 @@ public class FaceDrawableImpl$InternalDiscussionObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawableImpl.InternalDiscussionObserver
  * JD-Core Version:    0.7.0.1
  */

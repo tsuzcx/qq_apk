@@ -1,44 +1,36 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.os.Message;
-import awzf;
-import bfhz;
-import bgll;
-import bglm;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 class TroopChatPie$24
-  implements Runnable
+  implements Animation.AnimationListener
 {
   TroopChatPie$24(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.this$0.hasDestory) {}
-    do
-    {
-      return;
-      localObject = bglm.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin);
-    } while ((localObject == null) || (((bgll)localObject).a.isEmpty()));
-    Object localObject = (awzf)this.this$0.app.getManager(QQManagerFactory.TROOPINFO_MANAGER);
-    if (localObject != null) {
-      ((awzf)localObject).a(Long.valueOf(Long.parseLong(this.this$0.sessionInfo.curFriendUin)), true).a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.tag, 2, "handleTroopNotificationMsg. sendMessage = MSG_SHOW_TROOP_FEEDS");
-    }
-    localObject = this.this$0.uiHandler.obtainMessage(29);
-    ((Message)localObject).arg1 = 1;
-    this.this$0.uiHandler.sendMessage((Message)localObject);
+    this.a.d.setBackgroundResource(2130843878);
+    this.a.a.setBackgroundResource(2130843884);
+    this.a.o.setVisibility(8);
+    this.a.p.setVisibility(8);
+    this.a.m.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.o.setVisibility(0);
+    this.a.p.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.24
  * JD-Core Version:    0.7.0.1
  */

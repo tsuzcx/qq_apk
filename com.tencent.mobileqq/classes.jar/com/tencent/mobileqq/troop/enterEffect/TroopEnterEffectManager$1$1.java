@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import bfkw;
-
 class TroopEnterEffectManager$1$1
   implements Runnable
 {

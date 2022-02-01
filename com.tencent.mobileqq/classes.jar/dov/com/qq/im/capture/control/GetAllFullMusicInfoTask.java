@@ -1,8 +1,6 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import bofz;
-import bogd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,6 +9,8 @@ import com.tencent.mobileqq.data.FlowMusic;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.CaptureContext;
+import dov.com.qq.im.capture.QIMManager;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,8 +25,8 @@ import org.json.JSONObject;
 public class GetAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bogd.a(2);
-  private List<FlowMusic> jdField_a_of_type_JavaUtilList;
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)QIMManager.a(2);
+  private List<FlowMusic> jdField_a_of_type_JavaUtilList = null;
   private List<FlowMusic> b = new ArrayList();
   private String jdField_c_of_type_JavaLangString;
   private List<FlowMusic> jdField_c_of_type_JavaUtilList = new ArrayList();
@@ -159,7 +159,7 @@ public class GetAllFullMusicInfoTask
       this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(4, true, this.b);
     }
     Object localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
-    QIMMusicConfigManager.b(bofz.a().getCurrentAccountUin());
+    QIMMusicConfigManager.b(CaptureContext.a().getCurrentAccountUin());
   }
   
   public int a()
@@ -208,7 +208,7 @@ public class GetAllFullMusicInfoTask
     //   25: getfield 306	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:a	Lcom/tencent/mobileqq/data/FlowMusic;
     //   28: astore_1
     //   29: aload_0
-    //   30: getfield 20	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:b	Ljava/util/List;
+    //   30: getfield 22	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:b	Ljava/util/List;
     //   33: aload_1
     //   34: invokeinterface 307 2 0
     //   39: pop
@@ -290,7 +290,7 @@ public class GetAllFullMusicInfoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.control.GetAllFullMusicInfoTask
  * JD-Core Version:    0.7.0.1
  */

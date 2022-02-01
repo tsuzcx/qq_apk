@@ -14,14 +14,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import axhl;
-import axhm;
-import axhn;
-import axho;
-import blcb;
-import blcc;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.widget.FitSystemWindowsRelativeLayout;
+import com.tencent.widget.FitSystemWindowsRelativeLayout.DispatchTouchEventListener;
+import com.tencent.widget.FitSystemWindowsRelativeLayout.OnInterceptTouchEventListener;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
@@ -29,18 +25,18 @@ public class MultiCardRootLayout
   extends FitSystemWindowsRelativeLayout
 {
   private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float jdField_a_of_type_Float = ViewUtils.dpToPx(18.0F);
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private float jdField_a_of_type_Float = ViewUtils.b(18.0F);
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private blcb jdField_a_of_type_Blcb;
-  private blcc jdField_a_of_type_Blcc;
-  private WeakReference<axho> jdField_a_of_type_JavaLangRefWeakReference;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private FitSystemWindowsRelativeLayout.DispatchTouchEventListener jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout$DispatchTouchEventListener;
+  private FitSystemWindowsRelativeLayout.OnInterceptTouchEventListener jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout$OnInterceptTouchEventListener;
+  private WeakReference<MultiCardRootLayout.MultiCardRootLayoutListener> jdField_a_of_type_JavaLangRefWeakReference;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint = null;
   private boolean jdField_b_of_type_Boolean = true;
   private boolean c = true;
-  private boolean d;
+  private boolean d = false;
   
   static
   {
@@ -71,10 +67,10 @@ public class MultiCardRootLayout
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     if (this.jdField_a_of_type_AndroidViewGestureDetector == null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new axhl(this), new Handler(Looper.getMainLooper()));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new MultiCardRootLayout.1(this), new Handler(Looper.getMainLooper()));
     }
-    this.jdField_a_of_type_Blcb = new axhm(this);
-    this.jdField_a_of_type_Blcc = new axhn(this);
+    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout$DispatchTouchEventListener = new MultiCardRootLayout.2(this);
+    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout$OnInterceptTouchEventListener = new MultiCardRootLayout.3(this);
     a(true);
   }
   
@@ -87,13 +83,13 @@ public class MultiCardRootLayout
       if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
       {
         this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167073));
+        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167080));
         this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       }
       if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
         this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167074));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167081));
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       }
       if (this.jdField_b_of_type_Boolean)
@@ -153,8 +149,8 @@ public class MultiCardRootLayout
   {
     if (paramBoolean)
     {
-      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_Blcc);
-      super.setDispatchTouchEventListener(this.jdField_a_of_type_Blcb);
+      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout$OnInterceptTouchEventListener);
+      super.setDispatchTouchEventListener(this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout$DispatchTouchEventListener);
       return;
     }
     super.setOnInterceptTouchEventListener(null);
@@ -186,14 +182,14 @@ public class MultiCardRootLayout
     super.onDraw(paramCanvas);
   }
   
-  public void setListener(axho paramaxho)
+  public void setListener(MultiCardRootLayout.MultiCardRootLayoutListener paramMultiCardRootLayoutListener)
   {
-    if (paramaxho == null)
+    if (paramMultiCardRootLayoutListener == null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxho);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMultiCardRootLayoutListener);
   }
 }
 

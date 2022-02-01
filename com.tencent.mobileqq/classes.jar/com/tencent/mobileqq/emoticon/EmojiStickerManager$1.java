@@ -5,7 +5,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import java.io.File;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ class EmojiStickerManager$1
         }
       }
       if (this.jdField_a_of_type_JavaUtilList != null) {}
-      for (localObject1 = this.jdField_a_of_type_JavaUtilList;; localObject1 = localQQAppInterface.getMessageFacade().getAIOList(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean))
+      for (localObject1 = this.jdField_a_of_type_JavaUtilList;; localObject1 = localQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean))
       {
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
@@ -80,17 +80,17 @@ class EmojiStickerManager$1
     label347:
     for (boolean bool = true;; bool = false)
     {
-      EmojiStickerManager.g = bool;
+      EmojiStickerManager.h = bool;
       return;
     }
     label352:
-    VasQuickUpdateManager.getFileFromLocal(localQQAppInterface, 1004L, "emojiStickerGuideZip_v2", EmojiStickerManager.a() + "emojiStickerGuideZip_v2.zip", true, null);
-    EmojiStickerManager.g = false;
+    VasUpdateUtil.a(localQQAppInterface, 1004L, "emojiStickerGuideZip_v2", EmojiStickerManager.a() + "emojiStickerGuideZip_v2.zip", true, null);
+    EmojiStickerManager.h = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.1
  * JD-Core Version:    0.7.0.1
  */

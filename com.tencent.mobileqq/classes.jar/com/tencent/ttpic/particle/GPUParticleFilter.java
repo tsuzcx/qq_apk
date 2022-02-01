@@ -12,7 +12,7 @@ import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FrameUtil;
 import java.io.File;
 import java.util.List;
@@ -172,7 +172,7 @@ public class GPUParticleFilter
         label704:
         Object localObject2 = (PointF)paramList.get(i);
         PointF localPointF = new PointF((((PointF)localObject1).x + ((PointF)localObject2).x) / 2.0F, (((PointF)localObject1).y + ((PointF)localObject2).y) / 2.0F);
-        if (VideoMaterialUtil.isFaceItem(this.item))
+        if (VideoMaterial.isFaceItem(this.item))
         {
           localPointF.x = ((float)(localPointF.x / this.mFaceDetScale));
           localPointF.y = ((float)(localPointF.y / this.mFaceDetScale));
@@ -209,13 +209,13 @@ public class GPUParticleFilter
         localVector31.x = localPointF.x;
         localVector31.y = localPointF.y;
         localObject1 = new PointF(((PointF)paramList.get(this.item.scalePivots[0])).x, ((PointF)paramList.get(this.item.scalePivots[0])).y);
-        if (VideoMaterialUtil.isFaceItem(this.item))
+        if (VideoMaterial.isFaceItem(this.item))
         {
           ((PointF)localObject1).x = ((float)(((PointF)localObject1).x / this.mFaceDetScale));
           ((PointF)localObject1).y = ((float)(((PointF)localObject1).y / this.mFaceDetScale));
         }
         paramList = new PointF(((PointF)paramList.get(this.item.scalePivots[1])).x, ((PointF)paramList.get(this.item.scalePivots[1])).y);
-        if (VideoMaterialUtil.isFaceItem(this.item))
+        if (VideoMaterial.isFaceItem(this.item))
         {
           paramList.x = ((float)(paramList.x / this.mFaceDetScale));
           paramList.y = ((float)(paramList.y / this.mFaceDetScale));
@@ -393,7 +393,7 @@ public class GPUParticleFilter
       if (this.fromUnTrigger2Trigger) {
         this.triggerStartTime = System.currentTimeMillis();
       }
-      if (!VideoMaterialUtil.isGestureItem(this.item)) {
+      if (!VideoMaterial.isGestureItem(this.item)) {
         break label165;
       }
       if ((!this.needRender) || (CollectionUtils.isEmpty(paramObject.handPoints))) {
@@ -424,9 +424,9 @@ public class GPUParticleFilter
       bool1 = false;
       break label124;
       label165:
-      if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
+      if (VideoMaterial.isBodyDetectItem(this.item)) {
         update(paramObject.bodyPoints, paramObject.faceAngles);
-      } else if (VideoMaterialUtil.isStarItem(this.item)) {
+      } else if (VideoMaterial.isStarItem(this.item)) {
         update(paramObject.starPoints, paramObject.faceAngles);
       } else {
         update(paramObject.facePoints, paramObject.faceAngles);
@@ -445,7 +445,7 @@ public class GPUParticleFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.particle.GPUParticleFilter
  * JD-Core Version:    0.7.0.1
  */

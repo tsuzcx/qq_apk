@@ -2,11 +2,11 @@ package com.tencent.mobileqq.troop.homework.recite.data;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgzr;
-import bgzs;
-import bgzt;
-import bhbu;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.util.JSONUtils;
+import com.tencent.mobileqq.util.JSONUtils.FieldName;
+import com.tencent.mobileqq.util.JSONUtils.GenericType;
+import com.tencent.mobileqq.util.TroopReportor;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -22,22 +22,22 @@ public class ArticleInfo
   public static final int TYPE_GUSHI = 2;
   public static final int TYPE_SANWEN = 1;
   private static final String a = ArticleInfo.class.getSimpleName();
-  @bgzs(a="author")
+  @JSONUtils.FieldName(a="author")
   public String author;
-  @bgzs(a="grade")
+  @JSONUtils.FieldName(a="grade")
   public int grade;
-  @bgzs(a="kid")
+  @JSONUtils.FieldName(a="kid")
   public String kid;
-  @bgzs(a="level")
+  @JSONUtils.FieldName(a="level")
   public int level;
-  @bgzs(a="paragraphs")
-  @bgzt(a=ParagraphInfo.class)
+  @JSONUtils.FieldName(a="paragraphs")
+  @JSONUtils.GenericType(a=ParagraphInfo.class)
   public List<ParagraphInfo> paragraphs;
-  @bgzs(a="title")
+  @JSONUtils.FieldName(a="title")
   public String title;
-  @bgzs(a="type")
+  @JSONUtils.FieldName(a="type")
   public int type;
-  @bgzs(a="version")
+  @JSONUtils.FieldName(a="version")
   public String version;
   
   public static ArticleInfo onHandleGetArticleDetail(Bundle paramBundle, JSONObject paramJSONObject)
@@ -72,7 +72,7 @@ public class ArticleInfo
         if (((JSONArray)localObject1).length() <= 0) {
           break label397;
         }
-        localObject1 = (ArticleInfo)bgzr.b(((JSONArray)localObject1).getJSONObject(0), ArticleInfo.class);
+        localObject1 = (ArticleInfo)JSONUtils.b(((JSONArray)localObject1).getJSONObject(0), ArticleInfo.class);
         str = "0";
         i = 1;
         localObject2 = localObject1;
@@ -102,7 +102,7 @@ public class ArticleInfo
           if (i != 0)
           {
             i = 1;
-            bhbu.a("Grp_edu", "publish_homework", "get_kewen_info", 0, i, new String[] { localObject2, paramBundle, localObject1 });
+            TroopReportor.a("Grp_edu", "publish_homework", "get_kewen_info", 0, i, new String[] { localObject2, paramBundle, localObject1 });
           }
         }
         else

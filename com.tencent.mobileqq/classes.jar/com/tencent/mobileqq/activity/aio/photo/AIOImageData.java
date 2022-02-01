@@ -54,8 +54,13 @@ public class AIOImageData
     this.jdField_b_of_type_JavaLangString = "I:N";
     this.jdField_c_of_type_JavaLangString = "I:N";
     this.jdField_d_of_type_JavaLangString = "I:N";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
     this.jdField_e_of_type_JavaLangString = "I:N";
     this.jdField_b_of_type_Int = 0;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_h_of_type_Boolean = false;
   }
   
   public int a(String paramString)
@@ -394,7 +399,7 @@ public class AIOImageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageData
  * JD-Core Version:    0.7.0.1
  */

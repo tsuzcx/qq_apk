@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.log;
 
-import awoi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
-public class ReportLog$3
+class ReportLog$3
   implements Runnable
 {
-  public ReportLog$3(awoi paramawoi, MobileQQ paramMobileQQ) {}
+  ReportLog$3(ReportLog paramReportLog, MobileQQ paramMobileQQ) {}
   
   public void run()
   {

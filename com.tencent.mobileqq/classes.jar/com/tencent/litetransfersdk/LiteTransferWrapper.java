@@ -2,14 +2,14 @@ package com.tencent.litetransfersdk;
 
 import android.os.Handler;
 import android.os.Looper;
-import audf;
+import com.dataline.util.HttpUtil;
+import com.dataline.util.HttpUtil.NetworkProxy;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
-import eh;
-import ej;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class LiteTransferWrapper
   static final int Business_ID_Group = 102;
   public static final String sTagName = "dataline.LiteTTransferWrapper";
   private LiteTransferListenerCallback mListener;
-  private long mLiteTransferOperator;
+  private long mLiteTransferOperator = 0L;
   private LiteTransferOperatorCallback mOperator;
   
   static
@@ -263,11 +263,11 @@ public class LiteTransferWrapper
   
   public void SetProxyToJni()
   {
-    ej localej = eh.a();
-    if (localej != null) {
+    HttpUtil.NetworkProxy localNetworkProxy = HttpUtil.a();
+    if (localNetworkProxy != null) {
       try
       {
-        setGlobalProxyInfo(1, localej.jdField_a_of_type_JavaLangString, (short)localej.jdField_a_of_type_Int, "", "");
+        setGlobalProxyInfo(1, localNetworkProxy.jdField_a_of_type_JavaLangString, (short)localNetworkProxy.jdField_a_of_type_Int, "", "");
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
@@ -411,26 +411,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(audf.a().b());
+      File localFile = new File(FMSettings.a().b());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(audf.a().b());
-      localFile = new File(audf.a().d());
+      SetDefaultPath(FMSettings.a().b());
+      localFile = new File(FMSettings.a().d());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(audf.a().d());
-      localFile = new File(audf.a().c());
+      SetThumbPath(FMSettings.a().d());
+      localFile = new File(FMSettings.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(audf.a().c());
-      localFile = new File(audf.a().c());
+      SetTempPath(FMSettings.a().c());
+      localFile = new File(FMSettings.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(audf.a().c());
+      SetThumbTempPath(FMSettings.a().c());
       return;
     }
     catch (Exception localException) {}
@@ -502,7 +502,7 @@ public class LiteTransferWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.LiteTransferWrapper
  * JD-Core Version:    0.7.0.1
  */

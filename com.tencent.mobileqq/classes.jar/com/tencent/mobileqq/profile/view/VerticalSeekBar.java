@@ -69,10 +69,10 @@ public class VerticalSeekBar
     localOptions.inTargetDensity = localResources.getDisplayMetrics().densityDpi;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130847422, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130847779, localOptions);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.b = DisplayUtil.dip2px(getContext(), 5.0F);
-      this.c = DisplayUtil.dip2px(getContext(), 30.0F);
+      this.b = DisplayUtil.a(getContext(), 5.0F);
+      this.c = DisplayUtil.a(getContext(), 30.0F);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -84,7 +84,7 @@ public class VerticalSeekBar
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int j = getMeasuredWidth();
@@ -115,7 +115,7 @@ public class VerticalSeekBar
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt2 = getMeasuredWidth();

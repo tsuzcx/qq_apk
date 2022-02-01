@@ -21,7 +21,7 @@ public class HippyTKDViewGroup
   extends HippyViewGroup
   implements HippyTKDCommonBorderHandler.HippyQBCommonBorder, HippyTKDSkinHandler.HippyQBCommonSkin
 {
-  private int disableExternalScoll;
+  private int disableExternalScoll = 0;
   HippyTKDSkinHandler mHippyTKDSkinHandler = new HippyTKDSkinHandler();
   private HippyTKDViewGroup.OnSizeChangeListener mOnSizeChangeListener;
   
@@ -86,7 +86,7 @@ public class HippyTKDViewGroup
     this.mHippyTKDSkinHandler.switchSkin(this);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mOnSizeChangeListener != null) {
@@ -161,7 +161,7 @@ public class HippyTKDViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.view.HippyTKDViewGroup
  * JD-Core Version:    0.7.0.1
  */

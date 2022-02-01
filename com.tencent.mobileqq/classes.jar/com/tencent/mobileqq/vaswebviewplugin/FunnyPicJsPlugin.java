@@ -6,18 +6,18 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
-import anvx;
-import ascz;
-import asdd;
-import awcn;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.jsp.WebSSOAgentServlet;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
@@ -78,7 +78,7 @@ public class FunnyPicJsPlugin
         paramJsBridgeListener = paramString1;
         this.mReqBundle.putString("jsonContent", paramVarArgs.toString());
         paramJsBridgeListener = paramString1;
-        super.sendRemoteReq(asdd.a("ipc_funnypic_query_info", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+        super.sendRemoteReq(DataFactory.a("ipc_funnypic_query_info", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
       }
       else
       {
@@ -90,7 +90,7 @@ public class FunnyPicJsPlugin
           if (paramString2 != null)
           {
             paramJsBridgeListener = paramString1;
-            if (!NetworkUtil.isNetworkAvailable(paramString2))
+            if (!NetworkUtil.g(paramString2))
             {
               paramJsBridgeListener = paramString1;
               paramString2 = new JSONObject();
@@ -105,7 +105,7 @@ public class FunnyPicJsPlugin
           if (!"mounted".equals(Environment.getExternalStorageState()))
           {
             paramJsBridgeListener = paramString1;
-            QQToast.a(paramString2, anvx.a(2131704469), 0).a();
+            QQToast.a(paramString2, HardCodeUtil.a(2131705017), 0).a();
             paramJsBridgeListener = paramString1;
             paramString2 = new JSONObject();
             paramJsBridgeListener = paramString1;
@@ -133,7 +133,7 @@ public class FunnyPicJsPlugin
           paramJsBridgeListener = paramString1;
           paramString3.osver.set(Build.VERSION.RELEASE);
           paramJsBridgeListener = paramString1;
-          paramString3.mqqver.set("8.4.10");
+          paramString3.mqqver.set("8.5.5");
           paramJsBridgeListener = paramString1;
           paramString2 = new WebSSOAgent.UniSsoServerReq();
           paramJsBridgeListener = paramString1;
@@ -165,7 +165,7 @@ public class FunnyPicJsPlugin
           if (paramVarArgs != null)
           {
             paramJsBridgeListener = paramString1;
-            localObject = new NewIntent(this.mRuntime.a().getApp(), awcn.class);
+            localObject = new NewIntent(this.mRuntime.a().getApp(), WebSSOAgentServlet.class);
             paramJsBridgeListener = paramString1;
             ((NewIntent)localObject).putExtra("extra_cmd", "AuthProxy.check");
             paramJsBridgeListener = paramString1;
@@ -301,7 +301,7 @@ public class FunnyPicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.FunnyPicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

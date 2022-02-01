@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import awzh;
-import axcm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class MsgBackupTransportProcessor$4
+class MsgBackupTransportProcessor$4
   implements Runnable
 {
-  public MsgBackupTransportProcessor$4(axcm paramaxcm, String paramString) {}
+  MsgBackupTransportProcessor$4(MsgBackupTransportProcessor paramMsgBackupTransportProcessor, String paramString) {}
   
   public void run()
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    axcm.a(this.this$0, localBaseApplication);
+    MsgBackupTransportProcessor.a(this.this$0, localBaseApplication);
     this.this$0.jdField_a_of_type_Int = 1;
     int i = NetConnInfoCenter.getActiveNetIpFamily(true);
     this.this$0.jdField_a_of_type_Long = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.createSession(1, Long.parseLong(this.a), i, this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupNotifier);
@@ -33,7 +32,7 @@ public class MsgBackupTransportProcessor$4
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "confirmOnlinePush11b: restore start ret = " + i + ", ip = " + this.this$0.jdField_a_of_type_ArrayOfJavaLangString[0] + ", udpport = " + this.this$0.jdField_a_of_type_JavaLangInteger + ", tcpport = " + this.this$0.b);
     }
-    awzh.a().a();
+    MsgBackupAuthProcessor.a().a();
   }
 }
 

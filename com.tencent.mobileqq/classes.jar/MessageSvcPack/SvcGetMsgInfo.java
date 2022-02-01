@@ -10,20 +10,20 @@ public final class SvcGetMsgInfo
   static byte[] cache_vAppShareCookie;
   static byte[] cache_vMsg;
   static byte[] cache_vReserved;
-  public byte cFlag;
-  public long lFromUin;
+  public byte cFlag = 0;
+  public long lFromUin = 0L;
   public long lLastChangeTime = 1L;
-  public long lMsgUid;
-  public long lToUin;
-  public short shMsgSeq;
-  public short shMsgType;
+  public long lMsgUid = 0L;
+  public long lToUin = 0L;
+  public short shMsgSeq = 0;
+  public short shMsgType = 0;
   public String strMsg = "";
-  public long uAppShareID;
-  public int uMsgTime;
-  public int uRealMsgTime;
-  public byte[] vAppShareCookie;
-  public byte[] vMsg;
-  public byte[] vReserved;
+  public long uAppShareID = 0L;
+  public int uMsgTime = 0;
+  public int uRealMsgTime = 0;
+  public byte[] vAppShareCookie = null;
+  public byte[] vMsg = null;
+  public byte[] vReserved = null;
   
   public SvcGetMsgInfo() {}
   

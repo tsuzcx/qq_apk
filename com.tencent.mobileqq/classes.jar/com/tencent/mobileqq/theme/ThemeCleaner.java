@@ -7,11 +7,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Process;
 import android.text.TextUtils;
-import asdi;
-import beik;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeLocator;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -109,7 +109,7 @@ public class ThemeCleaner
   
   private static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!asdi.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
+    if ((TextUtils.isEmpty(paramString)) || (!EmosmUtils.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
     for (;;)
     {
       return false;
@@ -149,7 +149,7 @@ public class ThemeCleaner
   
   private static void b(File paramFile)
   {
-    VasQuickUpdateEngine.safeDeleteFile(paramFile, "theme_move_");
+    VasUpdateUtil.a(paramFile, "theme_move_");
     int i = ThemeUtil.getFileNumInFile(paramFile);
     QLog.e("ThemeCleaner", 1, "clean " + paramFile.getName() + ", remain " + i);
   }
@@ -166,7 +166,7 @@ public class ThemeCleaner
   
   private static void b(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!asdi.a(paramString)))
+    if ((TextUtils.isEmpty(paramString)) || (!EmosmUtils.a(paramString)))
     {
       QLog.e("ThemeCleaner", 1, "cleanTheme error id: " + paramString);
       return;
@@ -176,7 +176,7 @@ public class ThemeCleaner
       QLog.e("ThemeCleaner", 1, paramString + " is current, should not clean");
       return;
     }
-    b(new File(new beik().a(paramString).a(paramAppRuntime.getApplication())));
+    b(new File(new ThemeLocator().a(paramString).a(paramAppRuntime.getApplication())));
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)

@@ -5,14 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 
 public class AEEditorUIBroadcastReceiver
   extends BroadcastReceiver
 {
   private static final String TAG = "AEEditorUIBroadcastReceiver";
   private AEEditorUIBroadcastReceiver.AEEditorUIListener mAEUIListener;
-  private boolean mReceiverActive;
+  private boolean mReceiverActive = false;
   
   public AEEditorUIBroadcastReceiver(AEEditorUIBroadcastReceiver.AEEditorUIListener paramAEEditorUIListener)
   {
@@ -30,7 +30,7 @@ public class AEEditorUIBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bnrh.d("AEEditorUIBroadcastReceiver", "[onReceive] : action is null");
+      AEQLog.d("AEEditorUIBroadcastReceiver", "[onReceive] : action is null");
     }
     while (!"AEEDITOR_GENERATE_STATUS_DELETE".equals(paramContext)) {
       return;
@@ -59,7 +59,7 @@ public class AEEditorUIBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AEEditorUIBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

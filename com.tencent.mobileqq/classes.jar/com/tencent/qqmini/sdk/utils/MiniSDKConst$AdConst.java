@@ -25,15 +25,15 @@ public class MiniSDKConst$AdConst
   public static final String ERROR_MSG_PARAM_ERROR = "参数错误";
   public static final String ERROR_MSG_REJECTED = "广告组件被驳回";
   public static final String ERROR_MSG_SERVICE_FAIL = "后端接口调用失败";
-  public static final int KErrAdBlocked = -100100009;
-  public static final int KErrAdDeleted = -100100002;
-  public static final int KErrAdGdtNoData = -100100008;
-  public static final int KErrAdNotFound = -100100007;
-  public static final int KErrAdPositionExtIsNil = -100100005;
-  public static final int KErrAdPositionIsNil = -100100004;
-  public static final int KErrAdShutdown = -100100001;
-  public static final int KErrAdStatusUnkown = -100100003;
-  public static final int KErrAppNotFound = -100100006;
+  public static final int KERRADBLOCKED = -100100009;
+  public static final int KERRADDELETED = -100100002;
+  public static final int KERRADGDTNODATA = -100100008;
+  public static final int KERRADNOTFOUND = -100100007;
+  public static final int KERRADPOSITIONEXTISNIL = -100100005;
+  public static final int KERRADPOSITIONISNIL = -100100004;
+  public static final int KERRADSHUTDOWN = -100100001;
+  public static final int KERRADSTATUSUNKOWN = -100100003;
+  public static final int KERRAPPNOTFOUND = -100100006;
   
   public static int getRetCodeByServerResult(int paramInt)
   {
@@ -62,7 +62,7 @@ public class MiniSDKConst$AdConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniSDKConst.AdConst
  * JD-Core Version:    0.7.0.1
  */

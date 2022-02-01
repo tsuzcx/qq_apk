@@ -14,7 +14,7 @@ import java.util.List;
 
 public class YtCameraSetting
 {
-  private static final String TAG = "YtCameraSetting";
+  private static final String TAG = YtCameraSetting.class.getSimpleName();
   public static int mCameraFacing = 1;
   static int mDesiredPreviewHeight = 480;
   static int mDesiredPreviewWidth;
@@ -32,11 +32,11 @@ public class YtCameraSetting
     while (((Iterator)localObject).hasNext())
     {
       int[] arrayOfInt = (int[])((Iterator)localObject).next();
-      YtLogger.d("YtCameraSetting", "entry: " + arrayOfInt[0] + " - " + arrayOfInt[1]);
+      YtLogger.d(TAG, "entry: " + arrayOfInt[0] + " - " + arrayOfInt[1]);
       if ((arrayOfInt[0] == arrayOfInt[1]) && (arrayOfInt[0] == paramInt))
       {
         paramParameters.setPreviewFpsRange(arrayOfInt[0], arrayOfInt[1]);
-        YtLogger.d("YtCameraSetting", "use preview fps range: " + arrayOfInt[0] + " " + arrayOfInt[1]);
+        YtLogger.d(TAG, "use preview fps range: " + arrayOfInt[0] + " " + arrayOfInt[1]);
         return arrayOfInt[0];
       }
     }
@@ -65,7 +65,7 @@ public class YtCameraSetting
       for (;;)
       {
         if (i >= k) {
-          break label320;
+          break label322;
         }
         j = Integer.parseInt(localObject[i]) * 1000;
         if (paramInt < j)
@@ -85,7 +85,7 @@ public class YtCameraSetting
         }
         i += 1;
       }
-      label320:
+      label322:
       i = paramInt;
       if (localObject.length > 0)
       {
@@ -123,27 +123,27 @@ public class YtCameraSetting
     int i = Math.max(paramInt1, paramInt2);
     paramInt1 = Math.min(paramInt1, paramInt2);
     double d2 = i / paramInt1;
-    YtLogger.d("YtCameraSetting", "sizes size=" + paramList.size());
+    YtLogger.d(TAG, "sizes size=" + paramList.size());
     Iterator localIterator = paramList.iterator();
-    label75:
+    label76:
     if (localIterator.hasNext())
     {
       localObject2 = (Camera.Size)localIterator.next();
       if ((Math.abs(((Camera.Size)localObject2).width / ((Camera.Size)localObject2).height - d2) > 0.001D) || (Math.abs(((Camera.Size)localObject2).height - paramInt1) >= d1)) {
-        break label243;
+        break label245;
       }
       d1 = Math.abs(((Camera.Size)localObject2).height - paramInt1);
       localObject1 = localObject2;
     }
-    label243:
+    label245:
     for (;;)
     {
-      break label75;
+      break label76;
       localObject2 = localObject1;
       if (localObject1 != null) {
         break;
       }
-      YtLogger.d("YtCameraSetting", "No preview size match the aspect ratio");
+      YtLogger.d(TAG, "No preview size match the aspect ratio");
       d1 = 1.7976931348623157E+308D;
       localIterator = paramList.iterator();
       for (;;)
@@ -185,7 +185,7 @@ public class YtCameraSetting
       }
       else
       {
-        YtLogger.i("YtCameraSetting", "camera rotate not 90degree or 180degree, input: " + paramInt1);
+        YtLogger.i(TAG, "camera rotate not 90degree or 180degree, input: " + paramInt1);
         paramInt1 = 1;
       }
     }
@@ -206,7 +206,7 @@ public class YtCameraSetting
     }
     for (int i = (360 - (localCameraInfo.orientation + paramInt) % 360) % 360;; i = (localCameraInfo.orientation - paramInt + 360) % 360)
     {
-      YtLogger.i("YtCameraSetting", "debug camera orientation is " + localCameraInfo.orientation + " ui degrees is " + paramInt);
+      YtLogger.i(TAG, "debug camera orientation is " + localCameraInfo.orientation + " ui degrees is " + paramInt);
       return i;
       paramInt = 0;
       break;
@@ -221,8 +221,7 @@ public class YtCameraSetting
   
   public static int initCamera(Context paramContext, Camera paramCamera, int paramInt)
   {
-    initCamera(paramContext, paramCamera, paramInt, 4);
-    return 0;
+    return initCamera(paramContext, paramCamera, paramInt, 4);
   }
   
   public static int initCamera(Context paramContext, Camera paramCamera, int paramInt1, int paramInt2)
@@ -236,22 +235,22 @@ public class YtCameraSetting
       i = 0;
       while (i < localList.size())
       {
-        YtLogger.v("YtCameraSetting", "suporrtedFocusModes " + i + " :" + (String)localList.get(i));
+        YtLogger.v(TAG, "suporrtedFocusModes " + i + " :" + (String)localList.get(i));
         i += 1;
       }
       if (localList == null) {
-        break label319;
+        break label326;
       }
     }
     catch (Exception paramContext)
     {
-      YtLogger.e("YtCameraSetting", "get camera parameters failed. 1. Check Camera.getParameters() interface. 2. Get logs for more detail.");
+      YtLogger.e(TAG, "get camera parameters failed. 1. Check Camera.getParameters() interface. 2. Get logs for more detail.");
       return 1;
     }
     if (localList.indexOf("continuous-video") >= 0)
     {
       localParameters1.setFocusMode("continuous-video");
-      YtLogger.d("YtCameraSetting", "set camera focus mode continuous video");
+      YtLogger.d(TAG, "set camera focus mode continuous video");
     }
     try
     {
@@ -262,7 +261,7 @@ public class YtCameraSetting
     {
       for (;;)
       {
-        YtLogger.e("YtCameraSetting", "Camera.setParameters.setPreviewSize failed!!: " + localException.getLocalizedMessage());
+        YtLogger.e(TAG, "Camera.setParameters.setPreviewSize failed!!: " + localException.getLocalizedMessage());
         localParameters2 = paramCamera.getParameters();
       }
     }
@@ -272,14 +271,14 @@ public class YtCameraSetting
     }
     int i = getVideoRotate(paramContext, paramInt1);
     paramCamera.setDisplayOrientation(i);
-    YtLogger.d("YtCameraSetting", "videoOrietation is" + i);
+    YtLogger.d(TAG, "videoOrietation is" + i);
     if (CamcorderProfile.hasProfile(paramInt1, paramInt2))
     {
       paramContext = CamcorderProfile.get(paramInt1, paramInt2);
-      YtLogger.d("YtCameraSetting", "custom camcorderProfile:" + paramContext.videoFrameWidth + "x" + paramContext.videoFrameHeight);
+      YtLogger.d(TAG, "custom camcorderProfile:" + paramContext.videoFrameWidth + "x" + paramContext.videoFrameHeight);
     }
     Object localObject;
-    label319:
+    label326:
     Camera.Parameters localParameters2;
     for (;;)
     {
@@ -295,25 +294,25 @@ public class YtCameraSetting
       if ((localList != null) && (localList.indexOf("auto") >= 0))
       {
         localParameters1.setFocusMode("auto");
-        YtLogger.d("YtCameraSetting", "set camera focus mode auto");
+        YtLogger.d(TAG, "set camera focus mode auto");
         break;
       }
-      YtLogger.d("YtCameraSetting", "NOT set camera focus mode");
+      YtLogger.d(TAG, "NOT set camera focus mode");
       break;
       if (CamcorderProfile.hasProfile(paramInt1, 4))
       {
         paramContext = CamcorderProfile.get(paramInt1, 4);
-        YtLogger.d("YtCameraSetting", "480P camcorderProfile:" + paramContext.videoFrameWidth + "x" + paramContext.videoFrameHeight);
+        YtLogger.d(TAG, "480P camcorderProfile:" + paramContext.videoFrameWidth + "x" + paramContext.videoFrameHeight);
       }
       else if (CamcorderProfile.hasProfile(paramInt1, 5))
       {
         paramContext = CamcorderProfile.get(paramInt1, 5);
-        YtLogger.d("YtCameraSetting", "720P camcorderProfile:" + paramContext.videoFrameWidth + "x" + paramContext.videoFrameHeight);
+        YtLogger.d(TAG, "720P camcorderProfile:" + paramContext.videoFrameWidth + "x" + paramContext.videoFrameHeight);
       }
       else
       {
         paramContext = CamcorderProfile.get(paramInt1, 1);
-        YtLogger.d("YtCameraSetting", "High camcorderProfile:" + paramContext.videoFrameWidth + "x" + paramContext.videoFrameHeight);
+        YtLogger.d(TAG, "High camcorderProfile:" + paramContext.videoFrameWidth + "x" + paramContext.videoFrameHeight);
       }
     }
     paramInt1 = 0;
@@ -324,7 +323,7 @@ public class YtCameraSetting
       paramInt1 += 1;
     }
     setVideoSize(localParameters2, paramContext);
-    YtLogger.d("YtCameraSetting", "mDesiredPreviewWidth: " + mDesiredPreviewWidth + ", mDesiredPreviewHeight: " + mDesiredPreviewHeight);
+    YtLogger.d(TAG, "mDesiredPreviewWidth: " + mDesiredPreviewWidth + ", mDesiredPreviewHeight: " + mDesiredPreviewHeight);
     localParameters2.setPreviewSize(mDesiredPreviewWidth, mDesiredPreviewHeight);
     localParameters2.setPreviewFormat(17);
     try
@@ -332,7 +331,7 @@ public class YtCameraSetting
       paramCamera.setParameters(localParameters2);
       paramContext = paramCamera.getParameters();
       paramInt1 = chooseFixedPreviewFps(paramContext, 30000);
-      YtLogger.d("YtCameraSetting", "choose camera fps is : " + paramInt1);
+      YtLogger.d(TAG, "choose camera fps is : " + paramInt1);
     }
     catch (Exception paramContext)
     {
@@ -343,18 +342,18 @@ public class YtCameraSetting
         paramCamera = new int[2];
         paramContext.getPreviewFpsRange(paramCamera);
         paramInt1 = paramContext.getPreviewFrameRate();
-        YtLogger.d("YtCameraSetting", "after set parameters getPreviewFpsRange=" + paramCamera[0] + "-" + paramCamera[1] + " ;after set parameter fps=" + paramInt1);
+        YtLogger.d(TAG, "after set parameters getPreviewFpsRange=" + paramCamera[0] + "-" + paramCamera[1] + " ;after set parameter fps=" + paramInt1);
         paramContext = paramContext.getPreviewSize();
-        YtLogger.d("YtCameraSetting", "camera preview size is " + paramContext.width + " " + paramContext.height);
+        YtLogger.d(TAG, "camera preview size is " + paramContext.width + " " + paramContext.height);
         return 0;
         paramContext = paramContext;
-        YtLogger.e("YtCameraSetting", "Camera.setParameters.setPreviewSize failed!!: " + paramContext.getLocalizedMessage());
+        YtLogger.e(TAG, "Camera.setParameters.setPreviewSize failed!!: " + paramContext.getLocalizedMessage());
       }
       catch (Exception paramContext)
       {
         for (;;)
         {
-          YtLogger.e("YtCameraSetting", "Camera.setParameters.preview fps failed!!: " + paramContext.getLocalizedMessage());
+          YtLogger.e(TAG, "Camera.setParameters.preview fps failed!!: " + paramContext.getLocalizedMessage());
         }
       }
     }
@@ -375,10 +374,10 @@ public class YtCameraSetting
     Object localObject = paramParameters.getSupportedPreviewSizes();
     if (paramParameters.getSupportedVideoSizes() == null)
     {
-      YtLogger.d("YtCameraSetting", "video size from profile is : " + paramCamcorderProfile.videoFrameWidth + " " + paramCamcorderProfile.videoFrameHeight);
+      YtLogger.d(TAG, "video size from profile is : " + paramCamcorderProfile.videoFrameWidth + " " + paramCamcorderProfile.videoFrameHeight);
       if (getOptimalPreviewSize((List)localObject, paramCamcorderProfile.videoFrameWidth, paramCamcorderProfile.videoFrameHeight) == null)
       {
-        YtLogger.d("YtCameraSetting", "do not find proper preview size, use default");
+        YtLogger.d(TAG, "do not find proper preview size, use default");
         paramCamcorderProfile.videoFrameWidth = 640;
         paramCamcorderProfile.videoFrameHeight = 480;
       }
@@ -407,7 +406,7 @@ public class YtCameraSetting
         paramCamcorderProfile.videoFrameHeight = 480;
       }
     }
-    YtLogger.d("YtCameraSetting", "select video size camcorderProfile:" + paramCamcorderProfile.videoFrameWidth + "x" + paramCamcorderProfile.videoFrameHeight);
+    YtLogger.d(TAG, "select video size camcorderProfile:" + paramCamcorderProfile.videoFrameWidth + "x" + paramCamcorderProfile.videoFrameHeight);
   }
   
   public static int transBackFacingCameraRatateTag(int paramInt)
@@ -436,13 +435,13 @@ public class YtCameraSetting
     if (paramInt == 8) {
       return 5;
     }
-    YtLogger.w("YtCameraSetting", "[YtCameraSetting.transBackFacingCameraRatateTag] unsurported rotateTag: " + paramInt);
+    YtLogger.w(TAG, "[YtCameraSetting.transBackFacingCameraRatateTag] unsurported rotateTag: " + paramInt);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtCameraSetting
  * JD-Core Version:    0.7.0.1
  */

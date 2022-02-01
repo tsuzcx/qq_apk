@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.pic;
 
-import bcxj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
 
 class PicPreDownloader$ScreenBroadcastReceiver$1
   implements Runnable
@@ -18,14 +18,14 @@ class PicPreDownloader$ScreenBroadcastReceiver$1
       if (localObject1 != null)
       {
         PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).getPicPreDownloader();
-        localObject1 = (bcxj)((QQAppInterface)localObject1).getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER);
+        localObject1 = (ShortVideoPreDownloader)((QQAppInterface)localObject1).getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER);
         if (localPicPreDownloader != null)
         {
           localPicPreDownloader.d();
           PicPreDownloader.a(localPicPreDownloader);
         }
         if (localObject1 != null) {
-          ((bcxj)localObject1).d();
+          ((ShortVideoPreDownloader)localObject1).d();
         }
       }
       return;

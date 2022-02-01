@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import bgzy;
+import com.tencent.mobileqq.util.OrientationUtil;
 import java.lang.ref.WeakReference;
 
 public class FlingTrackerHandler
@@ -191,7 +191,7 @@ public class FlingTrackerHandler
   
   public void cancelDrag()
   {
-    bgzy.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    OrientationUtil.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
   
   public Bitmap decodeSampledBitmapFromFile(String paramString, int paramInt1, int paramInt2)
@@ -215,9 +215,9 @@ public class FlingTrackerHandler
     Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localActivity != null)
     {
-      bgzy.b(localActivity);
+      OrientationUtil.b(localActivity);
       localActivity.onBackPressed();
-      localActivity.overridePendingTransition(2130772045, 2130772045);
+      localActivity.overridePendingTransition(2130772049, 2130772049);
     }
   }
   
@@ -231,12 +231,12 @@ public class FlingTrackerHandler
   
   public void startDrag()
   {
-    bgzy.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    OrientationUtil.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.FlingTrackerHandler
  * JD-Core Version:    0.7.0.1
  */

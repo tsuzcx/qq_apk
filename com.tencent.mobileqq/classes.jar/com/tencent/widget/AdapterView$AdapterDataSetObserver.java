@@ -7,7 +7,7 @@ import android.widget.Adapter;
 public class AdapterView$AdapterDataSetObserver
   extends DataSetObserver
 {
-  private Parcelable mInstanceState;
+  private Parcelable mInstanceState = null;
   
   public AdapterView$AdapterDataSetObserver(AdapterView paramAdapterView) {}
   

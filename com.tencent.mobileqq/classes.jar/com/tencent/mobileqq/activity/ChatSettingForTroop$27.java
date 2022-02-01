@@ -1,27 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Handler;
-import android.os.Message;
-import bhdf;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ChatSettingForTroop$27
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   ChatSettingForTroop$27(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = bhdf.a(this.this$0.app.getCurrentAccountUin(), "troop_game_feed", this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    Message localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(19);
-    localMessage.arg1 = i;
-    localMessage.sendToTarget();
+    ChatSettingForTroop.i(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.27
  * JD-Core Version:    0.7.0.1
  */

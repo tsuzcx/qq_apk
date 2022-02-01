@@ -9,9 +9,8 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import blfz;
-import ykl;
-import ykq;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.widget.TraceUtils;
 
 public class TagFlowLayout
   extends RelativeLayout
@@ -34,7 +33,7 @@ public class TagFlowLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
+  protected void a()
   {
     int j = getChildCount();
     int i = 0;
@@ -42,7 +41,7 @@ public class TagFlowLayout
     {
       int k = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(i);
       View localView = getChildAt(i);
-      if ((k == ((Integer)localView.getTag(2131374726)).intValue()) && (k == 0)) {
+      if ((k == ((Integer)localView.getTag(2131375097)).intValue()) && (k == 0)) {
         this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, localView, this);
       }
       for (;;)
@@ -70,21 +69,21 @@ public class TagFlowLayout
     return (RelativeLayout.LayoutParams)new ViewGroup.MarginLayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    ykq.b("attach", "attach");
+    SLog.b("attach", "attach");
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    ykq.b("detach", "detach");
+    SLog.b("detach", "detach");
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    blfz.a("TagFlowLayout.onLayout");
+    TraceUtils.traceBegin("TagFlowLayout.onLayout");
     int j = getWidth();
     paramInt3 = 0;
     paramInt2 = 0;
@@ -118,12 +117,12 @@ public class TagFlowLayout
         paramInt3 = i + (localMarginLayoutParams.rightMargin + (paramInt2 + m));
       }
     }
-    blfz.a();
+    TraceUtils.traceEnd();
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
-    blfz.a("TagFlowLayout.onMeasure");
+    TraceUtils.traceBegin("TagFlowLayout.onMeasure");
     super.onMeasure(paramInt1, paramInt2);
     int i6 = View.MeasureSpec.getSize(paramInt1);
     int i5 = View.MeasureSpec.getSize(paramInt2);
@@ -192,7 +191,7 @@ public class TagFlowLayout
       i = i5;
     }
     setMeasuredDimension(j, i);
-    blfz.a();
+    TraceUtils.traceEnd();
   }
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
@@ -204,7 +203,7 @@ public class TagFlowLayout
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
     if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null)
     {
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new ykl(this);
+      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new TagFlowLayout.AdapterDataSetObserver(this);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
     }
@@ -212,7 +211,7 @@ public class TagFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout
  * JD-Core Version:    0.7.0.1
  */

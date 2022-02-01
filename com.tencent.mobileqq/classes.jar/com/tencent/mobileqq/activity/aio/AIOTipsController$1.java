@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afoi;
-import afoj;
-import ailp;
+import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
 
-public class AIOTipsController$1
+class AIOTipsController$1
   implements Runnable
 {
-  public AIOTipsController$1(afoi paramafoi, ailp paramailp1, ailp paramailp2) {}
+  AIOTipsController$1(AIOTipsController paramAIOTipsController, TipsBarTask paramTipsBarTask1, TipsBarTask paramTipsBarTask2) {}
   
   public void run()
   {
@@ -18,7 +16,7 @@ public class AIOTipsController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTipsController.1
  * JD-Core Version:    0.7.0.1
  */

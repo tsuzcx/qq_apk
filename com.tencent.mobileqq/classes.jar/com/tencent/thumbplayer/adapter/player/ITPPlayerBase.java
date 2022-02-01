@@ -5,10 +5,13 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
+import com.tencent.thumbplayer.api.TPCommonEnum.TPSeekMode;
+import com.tencent.thumbplayer.api.TPCommonEnum.TPSwitchDefMode;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
+import com.tencent.thumbplayer.log.TPLoggerContext;
 import java.util.List;
 import java.util.Map;
 
@@ -54,7 +57,7 @@ public abstract interface ITPPlayerBase
   
   public abstract void seekTo(int paramInt);
   
-  public abstract void seekTo(int paramInt1, int paramInt2);
+  public abstract void seekTo(int paramInt1, @TPCommonEnum.TPSeekMode int paramInt2);
   
   public abstract void selectProgram(int paramInt, long paramLong);
   
@@ -114,13 +117,15 @@ public abstract interface ITPPlayerBase
   
   public abstract void stop();
   
-  public abstract void switchDefinition(ITPMediaAsset paramITPMediaAsset, int paramInt, long paramLong);
+  public abstract void switchDefinition(ITPMediaAsset paramITPMediaAsset, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
   
-  public abstract void switchDefinition(String paramString, int paramInt, long paramLong);
+  public abstract void switchDefinition(String paramString, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
+  
+  public abstract void updateLoggerContext(TPLoggerContext paramTPLoggerContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.ITPPlayerBase
  * JD-Core Version:    0.7.0.1
  */

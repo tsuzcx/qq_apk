@@ -4,18 +4,15 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.Button;
 import com.tencent.av.VideoController;
+import com.tencent.av.VideoRecoveryMonitor;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import java.lang.ref.WeakReference;
-import lda;
-import lfe;
-import mtr;
-import muy;
-import mvk;
 
-public class TraeHelper$4
+class TraeHelper$4
   implements Runnable
 {
-  public TraeHelper$4(muy parammuy) {}
+  TraeHelper$4(TraeHelper paramTraeHelper) {}
   
   public void run()
   {
@@ -30,32 +27,32 @@ public class TraeHelper$4
         if (localObject != null)
         {
           ((Button)localObject).setClickable(true);
-          if ((!muy.a(this.this$0)) || (!mtr.a())) {
+          if ((!TraeHelper.a(this.this$0)) || (!QAVConfigUtils.a())) {
             break;
           }
           ((Button)localObject).setSelected(true);
-          mvk.a((View)localObject, ((Button)localObject).getResources().getString(2131690233));
+          UITools.a((View)localObject, ((Button)localObject).getResources().getString(2131690297));
         }
       }
-      this.this$0.a.a().b("handFreeJob", muy.a(this.this$0).P);
-      muy.a(this.this$0);
+      this.this$0.a.a().b("handFreeJob", TraeHelper.a(this.this$0).P);
+      TraeHelper.a(this.this$0);
       localObject = this.this$0.a.a.a();
     } while (localObject == null);
-    ((lda)localObject).b();
+    ((VideoRecoveryMonitor)localObject).b();
     return;
-    ((Button)localObject).setSelected(muy.a(this.this$0).P);
+    ((Button)localObject).setSelected(TraeHelper.a(this.this$0).P);
     Resources localResources = ((Button)localObject).getResources();
-    if (muy.a(this.this$0).P) {}
-    for (int i = 2131690234;; i = 2131690235)
+    if (TraeHelper.a(this.this$0).P) {}
+    for (int i = 2131690298;; i = 2131690299)
     {
-      mvk.a((View)localObject, localResources.getString(i));
+      UITools.a((View)localObject, localResources.getString(i));
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper.4
  * JD-Core Version:    0.7.0.1
  */

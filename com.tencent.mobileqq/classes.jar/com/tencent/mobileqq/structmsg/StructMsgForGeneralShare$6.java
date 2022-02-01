@@ -12,7 +12,7 @@ class StructMsgForGeneralShare$6
   
   public void run()
   {
-    ((QQAppInterface)this.a).getMessageFacade().updateMsgFieldByUniseq(this.this$0.message.frienduin, this.this$0.message.msgtype, this.this$0.message.uniseq, "extStr", this.this$0.message.extStr);
+    ((QQAppInterface)this.a).getMessageFacade().a(this.this$0.message.frienduin, this.this$0.message.msgtype, this.this$0.message.uniseq, "extStr", this.this$0.message.extStr);
   }
 }
 

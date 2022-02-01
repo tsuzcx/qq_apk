@@ -12,13 +12,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class Lifecycling
 {
   private static final int GENERATED_CALLBACK = 2;
   private static final int REFLECTIVE_CALLBACK = 1;
-  private static Map<Class, Integer> sCallbackCache = new HashMap();
-  private static Map<Class, List<Constructor<? extends GeneratedAdapter>>> sClassToAdapters = new HashMap();
+  private static Map<Class<?>, Integer> sCallbackCache = new HashMap();
+  private static Map<Class<?>, List<Constructor<? extends GeneratedAdapter>>> sClassToAdapters = new HashMap();
   
   private static GeneratedAdapter createGeneratedAdapter(Constructor<? extends GeneratedAdapter> paramConstructor, Object paramObject)
   {
@@ -95,14 +95,42 @@ public class Lifecycling
     return paramString.replace(".", "_") + "_LifecycleAdapter";
   }
   
+  @Deprecated
   @NonNull
   static GenericLifecycleObserver getCallback(Object paramObject)
   {
-    if ((paramObject instanceof FullLifecycleObserver)) {
-      return new FullLifecycleObserverAdapter((FullLifecycleObserver)paramObject);
+    return new Lifecycling.1(lifecycleEventObserver(paramObject));
+  }
+  
+  private static int getObserverConstructorType(Class<?> paramClass)
+  {
+    Integer localInteger = (Integer)sCallbackCache.get(paramClass);
+    if (localInteger != null) {
+      return localInteger.intValue();
     }
-    if ((paramObject instanceof GenericLifecycleObserver)) {
-      return (GenericLifecycleObserver)paramObject;
+    int i = resolveObserverCallbackType(paramClass);
+    sCallbackCache.put(paramClass, Integer.valueOf(i));
+    return i;
+  }
+  
+  private static boolean isLifecycleParent(Class<?> paramClass)
+  {
+    return (paramClass != null) && (LifecycleObserver.class.isAssignableFrom(paramClass));
+  }
+  
+  @NonNull
+  static LifecycleEventObserver lifecycleEventObserver(Object paramObject)
+  {
+    boolean bool1 = paramObject instanceof LifecycleEventObserver;
+    boolean bool2 = paramObject instanceof FullLifecycleObserver;
+    if ((bool1) && (bool2)) {
+      return new FullLifecycleObserverAdapter((FullLifecycleObserver)paramObject, (LifecycleEventObserver)paramObject);
+    }
+    if (bool2) {
+      return new FullLifecycleObserverAdapter((FullLifecycleObserver)paramObject, null);
+    }
+    if (bool1) {
+      return (LifecycleEventObserver)paramObject;
     }
     Object localObject = paramObject.getClass();
     if (getObserverConstructorType((Class)localObject) == 2)
@@ -121,21 +149,6 @@ public class Lifecycling
       return new CompositeGeneratedAdaptersObserver(arrayOfGeneratedAdapter);
     }
     return new ReflectiveGenericLifecycleObserver(paramObject);
-  }
-  
-  private static int getObserverConstructorType(Class<?> paramClass)
-  {
-    if (sCallbackCache.containsKey(paramClass)) {
-      return ((Integer)sCallbackCache.get(paramClass)).intValue();
-    }
-    int i = resolveObserverCallbackType(paramClass);
-    sCallbackCache.put(paramClass, Integer.valueOf(i));
-    return i;
-  }
-  
-  private static boolean isLifecycleParent(Class<?> paramClass)
-  {
-    return (paramClass != null) && (LifecycleObserver.class.isAssignableFrom(paramClass));
   }
   
   private static int resolveObserverCallbackType(Class<?> paramClass)
@@ -199,7 +212,7 @@ public class Lifecycling
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     androidx.lifecycle.Lifecycling
  * JD-Core Version:    0.7.0.1
  */

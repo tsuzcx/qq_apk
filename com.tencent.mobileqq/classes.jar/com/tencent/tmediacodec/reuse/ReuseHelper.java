@@ -20,10 +20,10 @@ public final class ReuseHelper
   @NonNull
   public static ReuseHelper.AdaptationWorkaroundMode codecAdaptationWorkaroundMode(@NonNull String paramString)
   {
-    if ((Build.VERSION.SDK_INT <= 25) && ("OMX.Exynos.avc.dec.secure" == paramString) && ((Build.MODEL.startsWith("SM-T585")) || (Build.MODEL.startsWith("SM-A510")) || (Build.MODEL.startsWith("SM-A520")) || (Build.MODEL.startsWith("SM-J700")))) {
+    if ((Build.VERSION.SDK_INT <= 25) && ("OMX.Exynos.avc.dec.secure".equals(paramString)) && ((Build.MODEL.startsWith("SM-T585")) || (Build.MODEL.startsWith("SM-A510")) || (Build.MODEL.startsWith("SM-A520")) || (Build.MODEL.startsWith("SM-J700")))) {
       return ReuseHelper.AdaptationWorkaroundMode.ADAPTATION_WORKAROUND_MODE_ALWAYS;
     }
-    if ((Build.VERSION.SDK_INT < 24) && (("OMX.Nvidia.h264.decode" == paramString) || ("OMX.Nvidia.h264.decode.secure" == paramString)) && (("flounder" == Build.DEVICE) || ("flounder_lte" == Build.DEVICE) || ("grouper" == Build.DEVICE) || ("tilapia" == Build.DEVICE))) {
+    if ((Build.VERSION.SDK_INT < 24) && (("OMX.Nvidia.h264.decode".equals(paramString)) || ("OMX.Nvidia.h264.decode.secure".equals(paramString))) && (("flounder".equals(Build.DEVICE)) || ("flounder_lte".equals(Build.DEVICE)) || ("grouper".equals(Build.DEVICE)) || ("tilapia".equals(Build.DEVICE)))) {
       return ReuseHelper.AdaptationWorkaroundMode.ADAPTATION_WORKAROUND_MODE_SAME_RESOLUTION;
     }
     return ReuseHelper.AdaptationWorkaroundMode.ADAPTATION_WORKAROUND_MODE_NEVER;
@@ -75,7 +75,7 @@ public final class ReuseHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tmediacodec.reuse.ReuseHelper
  * JD-Core Version:    0.7.0.1
  */

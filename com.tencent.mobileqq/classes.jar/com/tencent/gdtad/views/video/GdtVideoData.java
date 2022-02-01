@@ -9,14 +9,14 @@ public class GdtVideoData
 {
   private Ad ad;
   private String coverURL;
-  private boolean directPlay;
-  private long durationMillis;
+  private boolean directPlay = false;
+  private long durationMillis = 0L;
   private boolean forceNotShowControllerView;
   private boolean isVolumOpen = true;
   private boolean loop = true;
   private boolean needReport = true;
   private int playScene = -1;
-  private long startPositionMillis;
+  private long startPositionMillis = 0L;
   private String url;
   private int videoDefaultBackgroundColor = -16777216;
   
@@ -163,7 +163,7 @@ public class GdtVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoData
  * JD-Core Version:    0.7.0.1
  */

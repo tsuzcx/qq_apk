@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class Concise
   extends JceStruct
 {
-  public int isSwitch;
+  public int isSwitch = 0;
   
   public Concise() {}
   

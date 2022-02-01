@@ -1,11 +1,11 @@
 package cooperation.qqreader.host.advertisement;
 
-import acaf;
-import acag;
-import acah;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtAdLoader;
+import com.tencent.gdtad.aditem.GdtAdLoader.Listener;
+import com.tencent.gdtad.aditem.GdtAdLoader.Session;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -20,22 +20,22 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
 
 public abstract class ReaderGdtSdk$RequestListener
-  implements acag
+  implements GdtAdLoader.Listener
 {
-  public void onResponse(acaf paramacaf)
+  public void onResponse(GdtAdLoader paramGdtAdLoader)
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = null;
-    paramacaf = paramacaf.a().a;
-    if (paramacaf == null) {
-      paramacaf = (acaf)localObject;
+    paramGdtAdLoader = paramGdtAdLoader.a().a;
+    if (paramGdtAdLoader == null) {
+      paramGdtAdLoader = (GdtAdLoader)localObject;
     }
     for (;;)
     {
-      onResult(localArrayList, paramacaf);
+      onResult(localArrayList, paramGdtAdLoader);
       return;
-      localObject = paramacaf.pos_ads_info.get();
-      paramacaf = paramacaf.gdt_cookie.get();
+      localObject = paramGdtAdLoader.pos_ads_info.get();
+      paramGdtAdLoader = paramGdtAdLoader.gdt_cookie.get();
       if (localObject != null) {
         if (!((List)localObject).isEmpty())
         {
@@ -61,7 +61,7 @@ public abstract class ReaderGdtSdk$RequestListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderGdtSdk.RequestListener
  * JD-Core Version:    0.7.0.1
  */

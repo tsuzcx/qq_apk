@@ -7,24 +7,24 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfSmpInfoRes
   extends JceStruct
 {
-  public boolean bOpenLoginDays;
-  public boolean bXManIconClick;
+  public boolean bOpenLoginDays = false;
+  public boolean bXManIconClick = false;
   public byte cBusiCardFlag = -1;
-  public byte cResult;
-  public byte cSex;
+  public byte cResult = 0;
+  public byte cSex = 0;
   public byte cSpecialFlag = -1;
-  public long dwBirthday;
-  public long dwCityID;
-  public long dwCounrtyID;
-  public int dwLevelOnline;
-  public int dwLevelRemain;
-  public long dwLoginDay;
-  public long dwPhoneQQXManDay;
-  public long dwProvinceID;
-  public long dwUin;
-  public long dwZoneID;
-  public int iXManScene1DelayTime;
-  public int iXManScene2DelayTime;
+  public long dwBirthday = 0L;
+  public long dwCityID = 0L;
+  public long dwCounrtyID = 0L;
+  public int dwLevelOnline = 0;
+  public int dwLevelRemain = 0;
+  public long dwLoginDay = 0L;
+  public long dwPhoneQQXManDay = 0L;
+  public long dwProvinceID = 0L;
+  public long dwUin = 0L;
+  public long dwZoneID = 0L;
+  public int iXManScene1DelayTime = 0;
+  public int iXManScene2DelayTime = 0;
   public int isShowXMan = -1;
   public String sCity = "";
   public String sCountry = "";
@@ -32,9 +32,9 @@ public final class ProfSmpInfoRes
   public String sProvince = "";
   public String strNick = "";
   public String strSignature = "";
-  public byte wAge;
-  public short wFace;
-  public short wLevel;
+  public byte wAge = 0;
+  public short wFace = 0;
+  public short wLevel = 0;
   
   public ProfSmpInfoRes() {}
   

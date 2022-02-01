@@ -9,7 +9,7 @@ public final class SvcRspBindUin
   extends JceStruct
 {
   static ArrayList<BindUinResult> cache_vecResult;
-  public ArrayList<BindUinResult> vecResult;
+  public ArrayList<BindUinResult> vecResult = null;
   
   public SvcRspBindUin() {}
   

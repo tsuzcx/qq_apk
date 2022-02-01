@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.transfile.ipv6;
 
-import aqxe;
-import arfv;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.RichmediaIpv6ConifgBean;
 import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
 import com.tencent.mobileqq.highway.ipv6.Ipv6Flags;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
+import com.tencent.qphone.base.util.QLog;
 
 public class IpStrategyFactory
 {
@@ -30,7 +30,7 @@ public class IpStrategyFactory
   public static boolean createIpv6Flag()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("IpStrategyFactory", 0, "isIpv6Selected ");
+      QLog.d("IpStrategyFactory", 2, "isIpv6Selected ");
     }
     int i = NetConnInfoCenter.getActiveNetIpFamily(true);
     if (i == 2) {
@@ -44,9 +44,9 @@ public class IpStrategyFactory
   
   private static boolean getRichmediaIpv6Switch()
   {
-    arfv localarfv = (arfv)aqxe.a().a(538);
-    if (localarfv != null) {
-      return localarfv.c;
+    RichmediaIpv6ConifgBean localRichmediaIpv6ConifgBean = (RichmediaIpv6ConifgBean)QConfigManager.a().a(538);
+    if (localRichmediaIpv6ConifgBean != null) {
+      return localRichmediaIpv6ConifgBean.c;
     }
     return false;
   }
@@ -56,7 +56,7 @@ public class IpStrategyFactory
     boolean bool = true;
     if (!getRichmediaIpv6Switch()) {
       if (QLog.isColorLevel()) {
-        QLog.d("IpStrategyFactory", 0, "isIpv6DownFirst, getRichmediaIpv6Switch is false");
+        QLog.d("IpStrategyFactory", 2, "isIpv6DownFirst, getRichmediaIpv6Switch is false");
       }
     }
     do

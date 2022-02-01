@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.applets;
 
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class PublicAccountEventReport$12
+final class PublicAccountEventReport$12
   implements Runnable
 {
-  public PublicAccountEventReport$12(String paramString, long paramLong) {}
+  PublicAccountEventReport$12(String paramString, long paramLong) {}
   
   public void run()
   {
-    bdla.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
+    ReportController.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.12
  * JD-Core Version:    0.7.0.1
  */

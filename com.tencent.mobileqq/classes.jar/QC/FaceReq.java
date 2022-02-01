@@ -8,8 +8,8 @@ public final class FaceReq
   extends JceStruct
 {
   static LoginInfo cache_stLogin = new LoginInfo();
-  public int faceID;
-  public LoginInfo stLogin;
+  public int faceID = 0;
+  public LoginInfo stLogin = null;
   
   public FaceReq() {}
   

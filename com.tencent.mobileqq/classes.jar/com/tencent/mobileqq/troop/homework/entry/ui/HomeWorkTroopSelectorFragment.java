@@ -9,10 +9,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anvx;
-import bfqb;
-import bfqc;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,12 +28,12 @@ public class HomeWorkTroopSelectorFragment
   extends IphoneTitleBarFragment
   implements Runnable
 {
-  private bfqc jdField_a_of_type_Bfqc;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = null;
+  private HomeWorkTroopSelectorFragment.HwTroopAdapter jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$HwTroopAdapter = null;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString = "";
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private List<String> jdField_a_of_type_JavaUtilList = null;
   private boolean jdField_a_of_type_Boolean;
   
   public static void a(Activity paramActivity, String paramString, ArrayList<String> paramArrayList)
@@ -54,15 +52,15 @@ public class HomeWorkTroopSelectorFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      this.jdField_a_of_type_Bfqc = new bfqc(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bfqc);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$HwTroopAdapter = new HomeWorkTroopSelectorFragment.HwTroopAdapter(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$HwTroopAdapter);
     }
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131368273));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131368487));
     this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetListView.setDividerHeight(0);
     if (getActivity() == null) {}
@@ -76,8 +74,8 @@ public class HomeWorkTroopSelectorFragment
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    setRightButton(2131697188, new bfqb(this));
-    setTitle(anvx.a(2131704987));
+    setRightButton(2131697442, new HomeWorkTroopSelectorFragment.1(this));
+    setTitle(HardCodeUtil.a(2131705530));
     paramLayoutInflater = getArguments();
     if (paramLayoutInflater != null)
     {
@@ -95,7 +93,7 @@ public class HomeWorkTroopSelectorFragment
   
   public int getContentLayoutId()
   {
-    return 2131560699;
+    return 2131560789;
   }
   
   public boolean onBackEvent()

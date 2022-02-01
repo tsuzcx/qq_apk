@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import ascr;
-
 public class AppleEmojiData
   extends XmlData
 {
-  @ascr(a=true, b=false)
+  @saveInSP(a=true, b=false)
   public String v7a_MD5;
   
   public String getSharedPreferencesName()
@@ -20,7 +18,7 @@ public class AppleEmojiData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData
  * JD-Core Version:    0.7.0.1
  */

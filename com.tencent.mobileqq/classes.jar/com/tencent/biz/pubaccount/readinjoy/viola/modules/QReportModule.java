@@ -6,8 +6,12 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import com.dataline.util.DatalineMathUtil;
 import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -15,13 +19,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.commons.Destroyable;
 import com.tencent.viola.module.BaseModule;
-import dw;
 import java.util.HashMap;
 import java.util.Iterator;
-import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pkh;
 
 public class QReportModule
   extends BaseModule
@@ -33,7 +34,7 @@ public class QReportModule
   private HashMap getDTBase()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject = (QQAppInterface)pkh.a();
+    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
     if (localObject != null)
     {
       localObject = ((QQAppInterface)localObject).getAccount();
@@ -42,13 +43,13 @@ public class QReportModule
       }
     }
     localHashMap.put("app", "qq");
-    localHashMap.put("av", "8.4.10");
-    localHashMap.put("imei", DeviceInfoUtil.getIMEI());
+    localHashMap.put("av", "8.5.5");
+    localHashMap.put("imei", DeviceInfoUtil.a());
     localHashMap.put("oper_time", Long.toString(System.currentTimeMillis()));
     localHashMap.put("domain", "1");
     localHashMap.put("md", Build.MODEL);
     localHashMap.put("net_type", Integer.toString(HttpUtil.getNetWorkType()));
-    localHashMap.put("client_ip", dw.a(dw.a()));
+    localHashMap.put("client_ip", DatalineMathUtil.a(DatalineMathUtil.a()));
     if (BaseApplication.getContext() != null)
     {
       localObject = BaseApplication.getContext().getResources().getDisplayMetrics();
@@ -116,17 +117,18 @@ public class QReportModule
     String str2 = paramJSONObject.optString("r3", "");
     String str3 = paramJSONObject.optString("r4", "");
     paramJSONObject = paramJSONObject.optJSONObject("r5");
+    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     if (paramJSONObject != null) {}
     for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
     {
-      olh.a(null, null, paramString, paramString, 0, 0, str1, str2, str3, paramJSONObject, false);
+      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, null, paramString, paramString, 0, 0, str1, str2, str3, paramJSONObject, false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.QReportModule
  * JD-Core Version:    0.7.0.1
  */

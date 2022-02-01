@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atfq;
-import atqb;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 
-public class FMObserver$43
+class FMObserver$43
   implements Runnable
 {
-  public FMObserver$43(atfq paramatfq, atqb paramatqb) {}
+  FMObserver$43(FMObserver paramFMObserver, ThumbnailInfo paramThumbnailInfo) {}
   
   public void run()
   {

@@ -19,8 +19,8 @@ class QzoneGiftFullScreenActionManager$1
     //   13: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
     //   16: aload_0
     //   17: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   20: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lawrn;
-    //   23: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:access$300	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lawrn;)V
+    //   20: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   23: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:access$300	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   26: return
     //   27: aload_0
     //   28: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
@@ -29,9 +29,9 @@ class QzoneGiftFullScreenActionManager$1
     //   35: invokestatic 40	cooperation/qzone/QzoneGiftFullScreenActionManager:access$000	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Ljava/lang/String;)V
     //   38: aload_0
     //   39: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   42: getfield 44	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfaceResLoader	Lawsc;
+    //   42: getfield 44	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfaceResLoader	Lcom/tencent/mobileqq/magicface/model/MagicfaceResLoader;
     //   45: ldc 46
-    //   47: invokevirtual 52	awsc:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   47: invokevirtual 52	com/tencent/mobileqq/magicface/model/MagicfaceResLoader:a	(Ljava/lang/String;)Ljava/lang/String;
     //   50: astore_3
     //   51: aload_3
     //   52: ifnull +144 -> 196
@@ -39,23 +39,23 @@ class QzoneGiftFullScreenActionManager$1
     //   56: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
     //   59: aload_0
     //   60: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   63: getfield 56	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfaceActionDecoder	Lawrq;
+    //   63: getfield 56	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfaceActionDecoder	Lcom/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder;
     //   66: aload_3
-    //   67: invokevirtual 61	awrq:a	(Ljava/lang/String;)Lawrn;
-    //   70: putfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lawrn;
+    //   67: invokevirtual 61	com/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   70: putfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
     //   73: aload_0
     //   74: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
     //   77: aload_0
     //   78: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   81: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lawrn;
-    //   84: invokestatic 64	cooperation/qzone/QzoneGiftFullScreenActionManager:access$100	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lawrn;)V
+    //   81: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   84: invokestatic 64	cooperation/qzone/QzoneGiftFullScreenActionManager:access$100	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   87: aload_0
     //   88: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
     //   91: aload_0
     //   92: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   95: getfield 56	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfaceActionDecoder	Lawrq;
+    //   95: getfield 56	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfaceActionDecoder	Lcom/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder;
     //   98: aload_3
-    //   99: invokevirtual 67	awrq:a	(Ljava/lang/String;)Ljava/util/List;
+    //   99: invokevirtual 67	com/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder:a	(Ljava/lang/String;)Ljava/util/List;
     //   102: putfield 71	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfaceActions	Ljava/util/List;
     //   105: aload_0
     //   106: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
@@ -70,24 +70,24 @@ class QzoneGiftFullScreenActionManager$1
     //   131: ifeq +65 -> 196
     //   134: aload_3
     //   135: invokeinterface 91 1 0
-    //   140: checkcast 93	awrl
+    //   140: checkcast 93	com/tencent/mobileqq/magicface/magicfaceaction/Action
     //   143: astore 4
     //   145: aload_0
     //   146: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
     //   149: aload 4
-    //   151: putfield 97	cooperation/qzone/QzoneGiftFullScreenActionManager:currentMagicfaceAction	Lawrl;
+    //   151: putfield 97	cooperation/qzone/QzoneGiftFullScreenActionManager:currentMagicfaceAction	Lcom/tencent/mobileqq/magicface/magicfaceaction/Action;
     //   154: aload 4
     //   156: aload_0
     //   157: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   160: getfield 101	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfacePlayManager	Lawsn;
-    //   163: putfield 103	awrl:jdField_a_of_type_Awsn	Lawsn;
+    //   160: getfield 101	cooperation/qzone/QzoneGiftFullScreenActionManager:magicfacePlayManager	Lcom/tencent/mobileqq/magicface/service/MagicfacePlayManager;
+    //   163: putfield 103	com/tencent/mobileqq/magicface/magicfaceaction/Action:jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager	Lcom/tencent/mobileqq/magicface/service/MagicfacePlayManager;
     //   166: aload 4
     //   168: aload_0
     //   169: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   172: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lawrn;
-    //   175: putfield 105	awrl:jdField_a_of_type_Awrn	Lawrn;
+    //   172: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   175: putfield 105	com/tencent/mobileqq/magicface/magicfaceaction/Action:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
     //   178: aload 4
-    //   180: invokevirtual 107	awrl:a	()Z
+    //   180: invokevirtual 107	com/tencent/mobileqq/magicface/magicfaceaction/Action:a	()Z
     //   183: istore_1
     //   184: aload_0
     //   185: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
@@ -99,8 +99,8 @@ class QzoneGiftFullScreenActionManager$1
     //   197: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
     //   200: aload_0
     //   201: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   204: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lawrn;
-    //   207: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:access$300	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lawrn;)V
+    //   204: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   207: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:access$300	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   210: return
     //   211: iload_1
     //   212: ifeq -16 -> 196
@@ -130,16 +130,16 @@ class QzoneGiftFullScreenActionManager$1
     //   266: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
     //   269: aload_0
     //   270: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   273: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lawrn;
-    //   276: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:access$300	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lawrn;)V
+    //   273: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   276: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:access$300	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   279: return
     //   280: astore_3
     //   281: aload_0
     //   282: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
     //   285: aload_0
     //   286: getfield 14	cooperation/qzone/QzoneGiftFullScreenActionManager$1:this$0	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   289: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lawrn;
-    //   292: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:access$300	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lawrn;)V
+    //   289: getfield 33	cooperation/qzone/QzoneGiftFullScreenActionManager:actionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   292: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:access$300	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   295: aload_3
     //   296: athrow
     // Local variable table:
@@ -150,7 +150,7 @@ class QzoneGiftFullScreenActionManager$1
     //   50	85	3	localObject1	Object
     //   230	23	3	localException	java.lang.Exception
     //   280	16	3	localObject2	Object
-    //   143	36	4	localawrl	awrl
+    //   143	36	4	localAction	com.tencent.mobileqq.magicface.magicfaceaction.Action
     // Exception table:
     //   from	to	target	type
     //   0	8	230	java/lang/Exception
@@ -168,7 +168,7 @@ class QzoneGiftFullScreenActionManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenActionManager.1
  * JD-Core Version:    0.7.0.1
  */

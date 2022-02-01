@@ -18,32 +18,29 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.tips.TipsUtil;
 import com.tencent.av.utils.AVColorStateList;
+import com.tencent.av.utils.TintStateDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
-import lfe;
-import mbf;
-import mck;
-import mcl;
-import mhn;
-import mux;
 
 public abstract class BaseToolbar
 {
   public final String TAG = "EffectSettingUi." + getClass().getSimpleName();
-  public WeakReference<AVActivity> mActivity;
+  protected WeakReference<AVActivity> mActivity = null;
   public VideoAppInterface mApp;
-  protected Button mEffectBtn;
+  protected Button mEffectBtn = null;
   RedTouch mEffectBtnRedTouch = null;
-  private boolean mIsCreated;
+  private boolean mIsCreated = false;
   protected View toolbarView;
   
   public BaseToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
@@ -52,27 +49,27 @@ public abstract class BaseToolbar
     this.mActivity = new WeakReference(paramAVActivity);
   }
   
-  private static Button CreateImageButton(LinearLayout paramLinearLayout, int paramInt, mcl parammcl)
+  private static Button CreateImageButton(LinearLayout paramLinearLayout, int paramInt, BaseToolbar.UIInfo paramUIInfo)
   {
-    if ((paramLinearLayout == null) || (parammcl == null)) {
+    if ((paramLinearLayout == null) || (paramUIInfo == null)) {
       return null;
     }
     Button localButton = new Button(paramLinearLayout.getContext());
     Object localObject = paramLinearLayout.getResources();
-    int i = (int)((Resources)localObject).getDimension(2131297702);
+    int i = (int)((Resources)localObject).getDimension(2131297769);
     localButton.setId(paramInt);
     localButton.setGravity(17);
     localButton.setSingleLine();
-    localButton.setContentDescription(parammcl.jdField_a_of_type_JavaLangString);
+    localButton.setContentDescription(paramUIInfo.jdField_a_of_type_JavaLangString);
     localButton.setBackgroundDrawable(null);
-    localButton.setCompoundDrawablePadding(AIOUtils.dp2px(5.0F, (Resources)localObject));
-    localButton.setText(parammcl.jdField_a_of_type_JavaLangString);
-    localButton.setTextSize(ViewUtils.pxTosp(AIOUtils.dp2px(12.0F, (Resources)localObject)));
-    parammcl = parammcl.jdField_a_of_type_JavaLangString;
+    localButton.setCompoundDrawablePadding(AIOUtils.a(5.0F, (Resources)localObject));
+    localButton.setText(paramUIInfo.jdField_a_of_type_JavaLangString);
+    localButton.setTextSize(ViewUtils.e(AIOUtils.a(12.0F, (Resources)localObject)));
+    paramUIInfo = paramUIInfo.jdField_a_of_type_JavaLangString;
     localObject = localButton.getPaint();
-    if ((localObject != null) && (!TextUtils.isEmpty(parammcl)))
+    if ((localObject != null) && (!TextUtils.isEmpty(paramUIInfo)))
     {
-      paramInt = (int)(((TextPaint)localObject).measureText(parammcl) + 0.5F);
+      paramInt = (int)(((TextPaint)localObject).measureText(paramUIInfo) + 0.5F);
       if (QLog.isColorLevel()) {
         QLog.i("", 2, "CreateImageButton textWidth[" + paramInt + "], btn_width[" + i + "]");
       }
@@ -80,9 +77,9 @@ public abstract class BaseToolbar
     }
     for (;;)
     {
-      parammcl = new LinearLayout.LayoutParams(paramInt, -2);
-      parammcl.weight = 1.0F;
-      localButton.setLayoutParams(parammcl);
+      paramUIInfo = new LinearLayout.LayoutParams(paramInt, -2);
+      paramUIInfo.weight = 1.0F;
+      localButton.setLayoutParams(paramUIInfo);
       paramLinearLayout.addView(localButton);
       return localButton;
       paramInt = i;
@@ -100,9 +97,9 @@ public abstract class BaseToolbar
       return;
     }
     Object localObject = paramButton.getResources();
-    int i = (int)((Resources)localObject).getDimension(2131297698);
+    int i = (int)((Resources)localObject).getDimension(2131297765);
     if (paramInt2 > 0) {}
-    for (localObject = mux.a((Resources)localObject, paramInt1, paramInt2);; localObject = ((Resources)localObject).getDrawable(paramInt1))
+    for (localObject = TintStateDrawable.a((Resources)localObject, paramInt1, paramInt2);; localObject = ((Resources)localObject).getDrawable(paramInt1))
     {
       ((Drawable)localObject).setBounds(0, 0, i, i);
       paramButton.setCompoundDrawables(null, (Drawable)localObject, null, null);
@@ -133,9 +130,9 @@ public abstract class BaseToolbar
     }
   }
   
-  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mhn parammhn, int paramInt)
+  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter, int paramInt)
   {
-    if ((!parammhn.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
+    if ((!paramQAVPtvTemplateAdapter.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
       return;
     }
     int j = 0;
@@ -143,8 +140,8 @@ public abstract class BaseToolbar
     if (paramInt > 0)
     {
       i = j;
-      if (paramInt > parammhn.a()) {
-        i = mhn.jdField_a_of_type_Int * (paramInt - 1);
+      if (paramInt > paramQAVPtvTemplateAdapter.a()) {
+        i = QAVPtvTemplateAdapter.jdField_a_of_type_Int * (paramInt - 1);
       }
     }
     paramHorizontalListView.resetCurrentX(i);
@@ -166,14 +163,14 @@ public abstract class BaseToolbar
   
   public final void create(long paramLong, RelativeLayout paramRelativeLayout)
   {
-    if (getUIInfo().f == 0) {
+    if (getUIInfo().g == 0) {
       throw new IllegalArgumentException("create Toolbar fail, Illegal toolbarLayout id。" + this.TAG + "_" + paramLong);
     }
     if (this.mIsCreated) {
       return;
     }
     this.mIsCreated = true;
-    this.toolbarView = LayoutInflater.from((Context)this.mActivity.get()).inflate(getUIInfo().f, null);
+    this.toolbarView = LayoutInflater.from((Context)this.mActivity.get()).inflate(getUIInfo().g, null);
     paramRelativeLayout.addView(this.toolbarView, new ViewGroup.LayoutParams(-1, -2));
     onCreate(paramLong, (AVActivity)this.mActivity.get());
   }
@@ -204,7 +201,7 @@ public abstract class BaseToolbar
     return getUIInfo().d;
   }
   
-  protected abstract mcl getUIInfo();
+  protected abstract BaseToolbar.UIInfo getUIInfo();
   
   public String getUnableInfo()
   {
@@ -279,9 +276,9 @@ public abstract class BaseToolbar
   {
     if (this.mEffectBtn != null)
     {
-      this.mEffectBtn.setTag(2131378456, Boolean.valueOf(true));
+      this.mEffectBtn.setTag(2131378887, Boolean.valueOf(true));
       this.mEffectBtn.performClick();
-      this.mEffectBtn.setTag(2131378456, null);
+      this.mEffectBtn.setTag(2131378887, null);
     }
   }
   
@@ -339,7 +336,7 @@ public abstract class BaseToolbar
       }
     } while (((EffectOperateManager)localObject).a() != getEffectBtnId());
     localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).addListener(new mck(this));
+    ((AnimatorSet)localObject).addListener(new BaseToolbar.1(this));
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.56F, 1.0F });
     localObjectAnimator1.setDuration(400L);
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.56F, 1.0F });
@@ -361,7 +358,7 @@ public abstract class BaseToolbar
     {
       paramRelativeLayout = getUnableInfo();
       if (!TextUtils.isEmpty(paramRelativeLayout)) {
-        mbf.a(this.mApp, 1010, paramRelativeLayout);
+        TipsUtil.a(this.mApp, 1010, paramRelativeLayout);
       }
       QLog.w(this.TAG, 1, "tryShowToolbar, 失败[" + paramRelativeLayout + "], seq[" + paramLong + "]");
       return false;
@@ -394,21 +391,21 @@ public abstract class BaseToolbar
       if (localObject == null) {
         break;
       }
-      int j = ((mcl)localObject).e;
-      int k = ((mcl)localObject).b;
+      int j = ((BaseToolbar.UIInfo)localObject).f;
+      int k = ((BaseToolbar.UIInfo)localObject).b;
       if ((bool) && (isEffectBtnEnable())) {
-        if ((((mcl)localObject).c == 0) || (!this.mEffectBtn.isSelected())) {
+        if ((((BaseToolbar.UIInfo)localObject).c == 0) || (!this.mEffectBtn.isSelected())) {
           break label270;
         }
       }
       label270:
-      for (int i = ((mcl)localObject).c;; i = j)
+      for (int i = ((BaseToolbar.UIInfo)localObject).c;; i = j)
       {
-        k = ((mcl)localObject).jdField_a_of_type_Int;
+        k = ((BaseToolbar.UIInfo)localObject).jdField_a_of_type_Int;
         if (this.mEffectBtnRedTouch != null)
         {
           this.mEffectBtnRedTouch.setHostEnable(true);
-          int m = 2131165972;
+          int m = 2131165976;
           j = i;
           i = m;
         }
@@ -421,10 +418,10 @@ public abstract class BaseToolbar
           if (this.mEffectBtnRedTouch != null) {
             this.mEffectBtnRedTouch.setHostEnable(false);
           }
-          i = ((mcl)localObject).b;
+          i = ((BaseToolbar.UIInfo)localObject).b;
           continue;
           j = i;
-          i = 2131165972;
+          i = 2131165976;
         }
       }
     }
@@ -432,7 +429,7 @@ public abstract class BaseToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.BaseToolbar
  * JD-Core Version:    0.7.0.1
  */

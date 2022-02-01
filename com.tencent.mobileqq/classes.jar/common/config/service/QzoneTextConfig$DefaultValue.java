@@ -34,7 +34,7 @@ public class QzoneTextConfig$DefaultValue
   public static final String DEFAULT_ALBUM_DRESS_UP = "装扮相册";
   public static final String DEFAULT_ALBUM_DYNAMIC_PHOTO = "动感影集";
   public static final String DEFAULT_ALBUM_EDIT = "编辑相册";
-  public static final String DEFAULT_ALBUM_EDIT_AIO_SEND_PHOTO_NO_MD5 = "无法发送该照片，请稍候重试。";
+  public static final String DEFAULT_ALBUM_EDIT_AIO_SEND_PHOTO_NO_MD5 = "无法发送该照片，请稍后重试。";
   public static final String DEFAULT_ALBUM_EDIT_LOCATION = "编辑地点";
   public static final String DEFAULT_ALBUM_GUESS_WHAT_YOU_WANT_TO_UPLOAD = "猜你想传 (上传前仅自己可见)";
   public static final String DEFAULT_ALBUM_INVITE_MEMBER = "邀请好友 一起上传照片";
@@ -641,7 +641,7 @@ public class QzoneTextConfig$DefaultValue
   public static final String DEFAULT_TOAST_FILE_NOT_EXIST = "文件不存在";
   public static final String DEFAULT_TOAST_FILE_NOT_EXIST_OR_MEMORY_NOT_ENOUGH = "抱歉，文件不存在或存储空间不足";
   public static final String DEFAULT_TOAST_FONT_LOADING_FAIL = "字体下载失败，请稍后重试";
-  public static final String DEFAULT_TOAST_FORWARD_FAIL_WAIT = "转发失败,请稍候再试";
+  public static final String DEFAULT_TOAST_FORWARD_FAIL_WAIT = "转发失败,请稍后重试。";
   public static final String DEFAULT_TOAST_FORWARD_SUCCESS = "转发成功";
   public static final String DEFAULT_TOAST_FORWARD_YET = "已转发";
   public static final String DEFAULT_TOAST_GENERATE_QR_CODE_FAIL = "生成二维码图片失败，默认使用链接分享形式";
@@ -677,7 +677,7 @@ public class QzoneTextConfig$DefaultValue
   public static final String DEFAULT_TOAST_MODIFY_REMARK_FAIL = "修改备注失败";
   public static final String DEFAULT_TOAST_MUSIC_PLAYING = "音乐播放:";
   public static final String DEFAULT_TOAST_NET_WORK_TIME_OUT = "网络请求超时";
-  public static final String DEFAULT_TOAST_NET_WORK_TOO_SLOW = "网速太慢了，建议稍候重试";
+  public static final String DEFAULT_TOAST_NET_WORK_TOO_SLOW = "网速太慢了，建议稍后重试。";
   public static final String DEFAULT_TOAST_NONSUPPORT_TO_COLLECT = "该内容暂时不支持收藏";
   public static final String DEFAULT_TOAST_NONSUPPORT_TO_EDIT = "该说说内容暂时不支持编辑";
   public static final String DEFAULT_TOAST_NONSUPPORT_TO_SHARE = "此秘密暂不支持分享哦";
@@ -700,7 +700,7 @@ public class QzoneTextConfig$DefaultValue
   public static final String DEFAULT_TOAST_PLUGIN_DOWNLOAD_ERROR = "插件下载失败";
   public static final String DEFAULT_TOAST_PLUGIN_DOWNLOAD_ERROR_NO_SPACE = "内部存储空间不足，下载失败";
   public static final String DEFAULT_TOAST_PRIVARE_SETTING = "私密回复不可设置公开";
-  public static final String DEFAULT_TOAST_PROCESS_PHOTO_AND_WAIT = "图片正在处理，请稍候再试";
+  public static final String DEFAULT_TOAST_PROCESS_PHOTO_AND_WAIT = "图片正在处理，请稍后重试。";
   public static final String DEFAULT_TOAST_QUOTE_FAIL = "转载失败";
   public static final String DEFAULT_TOAST_QUOTE_NULL_PICTURE = "转载图片为空";
   public static final String DEFAULT_TOAST_QUOTE_YET = "已转载";
@@ -768,7 +768,7 @@ public class QzoneTextConfig$DefaultValue
   public static final String DEFAULT_TOAST_VOICE_RECORD_FAIL = "录音失败，请稍后重试";
   public static final String DEFAULT_TOAST_VOICE_RECORD_TOO_LOOG = "超过录音时长限制，已自动结束";
   public static final String DEFAULT_TOAST_VOICE_RECORD_TOO_SHORT = "录音时间过短";
-  public static final String DEFAULT_TOAST_WEAK_NET_WORK = "网络不佳，请稍候重试";
+  public static final String DEFAULT_TOAST_WEAK_NET_WORK = "网络不佳，请稍后重试。";
   public static final String DEFAULT_TOAST_WIDGET_ID_ERROR = "挂件ID错误";
   public static final String DEFAULT_TOAST_WILL_BE_DELETED_NOT_FORWARD = "该内容为定时删除内容，无法转发";
   public static final String DEFAULT_TOAST_WORD_EXCEED_LIMIT = "字数超出了限制";
@@ -834,7 +834,7 @@ public class QzoneTextConfig$DefaultValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     common.config.service.QzoneTextConfig.DefaultValue
  * JD-Core Version:    0.7.0.1
  */

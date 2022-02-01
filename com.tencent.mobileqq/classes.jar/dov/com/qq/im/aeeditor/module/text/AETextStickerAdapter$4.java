@@ -1,13 +1,12 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnrh;
-import boct;
+import dov.com.qq.im.ae.util.AEQLog;
 import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
 
-public class AETextStickerAdapter$4
+class AETextStickerAdapter$4
   implements Runnable
 {
-  public AETextStickerAdapter$4(boct paramboct, boolean paramBoolean, AEEditorPagStickerConfig paramAEEditorPagStickerConfig, AEEditorTextBean paramAEEditorTextBean) {}
+  AETextStickerAdapter$4(AETextStickerAdapter paramAETextStickerAdapter, boolean paramBoolean, AEEditorPagStickerConfig paramAEEditorPagStickerConfig, AEEditorTextBean paramAEEditorTextBean) {}
   
   public void run()
   {
@@ -18,12 +17,12 @@ public class AETextStickerAdapter$4
       }
       return;
     }
-    bnrh.d("AETextStickerAdapter", "[onGetPagStickerConfig] succeeded failed");
+    AEQLog.d("AETextStickerAdapter", "[onGetPagStickerConfig] succeeded failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AETextStickerAdapter.4
  * JD-Core Version:    0.7.0.1
  */

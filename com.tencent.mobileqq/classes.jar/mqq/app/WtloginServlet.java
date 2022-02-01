@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import oicq.wlogin_sdk.request.WFastLoginInfo;
 import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.tools.ErrMsg;
@@ -27,8 +28,6 @@ public class WtloginServlet
   {
     switch (paramInt)
     {
-    case 2115: 
-    case 2116: 
     default: 
       return;
     case 2112: 
@@ -50,6 +49,9 @@ public class WtloginServlet
         paramString.addAttribute("verifyToken", arrayOfByte);
       }
       sendToMSF(paramIntent, paramString);
+      return;
+    case 2215: 
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_QuickLoginByGateway(paramString, paramIntent, 30000L));
       return;
     case 2119: 
       sendToMSF(paramIntent, MsfMsgUtil.get_wt_RefreshSMSVerifyLoginCode(paramString, paramIntent.getStringExtra("countryCode"), paramIntent.getStringExtra("userAccount"), 30000L));
@@ -151,16 +153,17 @@ public class WtloginServlet
       paramBundle.putString("mobile", (String)paramFromServiceMsg.attributes.get("mobile"));
       paramBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
       paramBundle.putString("msg", (String)paramFromServiceMsg.attributes.get("msg"));
-      localObject = paramFromServiceMsg.getAttribute("ret");
+      Object localObject = paramFromServiceMsg.getAttribute("ret");
       i = paramFromServiceMsg.getBusinessFailCode();
-      if ((localObject == null) || (!(localObject instanceof Integer))) {
-        break label140;
+      if (!(localObject instanceof Integer)) {
+        break label135;
       }
+      i = ((Integer)localObject).intValue();
     }
-    label140:
-    for (Object localObject = (Integer)localObject;; localObject = Integer.valueOf(i))
+    label135:
+    for (;;)
     {
-      paramBundle.putInt("ret", ((Integer)localObject).intValue());
+      paramBundle.putInt("ret", i);
       notifyObserver(paramIntent, 2118, paramFromServiceMsg.isSuccess(), paramBundle, WtloginObserver.class);
       return;
     }
@@ -264,15 +267,15 @@ public class WtloginServlet
         }
       }
       localObject2 = paramFromServiceMsg.getAttribute("resp_logini_ret");
-      if ((localObject2 == null) || (!(localObject2 instanceof Integer))) {
-        break label650;
+      if (!(localObject2 instanceof Integer)) {
+        break label640;
       }
     }
-    label650:
+    label640:
     for (int i = ((Integer)localObject2).intValue();; i = 0)
     {
       localObject2 = paramFromServiceMsg.getAttribute("resp_login_lhsig");
-      if ((localObject2 != null) && ((localObject2 instanceof byte[]))) {}
+      if ((localObject2 instanceof byte[])) {}
       for (localObject2 = (byte[])localObject2;; localObject2 = null)
       {
         paramBundle.putString("errorurl", (String)localObject1);
@@ -497,11 +500,11 @@ public class WtloginServlet
       paramBundle.putString("msg", (String)paramFromServiceMsg.attributes.get("msg"));
       localObject = paramFromServiceMsg.getAttribute("ret");
       i = paramFromServiceMsg.getBusinessFailCode();
-      if ((localObject == null) || (!(localObject instanceof Integer))) {
-        break label122;
+      if (!(localObject instanceof Integer)) {
+        break label117;
       }
     }
-    label122:
+    label117:
     for (Object localObject = (Integer)localObject;; localObject = Integer.valueOf(i))
     {
       paramBundle.putInt("ret", ((Integer)localObject).intValue());
@@ -535,11 +538,11 @@ public class WtloginServlet
       }
       localObject = paramFromServiceMsg.getAttribute("ret");
       i = paramFromServiceMsg.getBusinessFailCode();
-      if ((localObject == null) || (!(localObject instanceof Integer))) {
-        break label314;
+      if (!(localObject instanceof Integer)) {
+        break label309;
       }
     }
-    label314:
+    label309:
     for (Object localObject = (Integer)localObject;; localObject = Integer.valueOf(i))
     {
       paramBundle.putInt("ret", ((Integer)localObject).intValue());
@@ -577,13 +580,14 @@ public class WtloginServlet
       paramBundle.putString("msgCode", (String)paramFromServiceMsg.attributes.get("msgCode"));
       paramBundle.putString("mobile", (String)paramFromServiceMsg.attributes.get("mobile"));
       paramBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
+      paramBundle.putParcelable("userSigInfo", (WUserSigInfo)paramFromServiceMsg.attributes.get("userSigInfo"));
       localObject = paramFromServiceMsg.getAttribute("ret");
       i = paramFromServiceMsg.getBusinessFailCode();
-      if ((localObject == null) || (!(localObject instanceof Integer))) {
-        break label124;
+      if (!(localObject instanceof Integer)) {
+        break label137;
       }
     }
-    label124:
+    label137:
     for (Object localObject = (Integer)localObject;; localObject = Integer.valueOf(i))
     {
       paramBundle.putInt("ret", ((Integer)localObject).intValue());
@@ -641,6 +645,8 @@ public class WtloginServlet
     return;
     onRecvCheckSMSVerifyLoginAccount(paramIntent, paramFromServiceMsg, localBundle);
     return;
+    onRecvQuickLoginByGateway(paramIntent, paramFromServiceMsg, localBundle);
+    return;
     onRecvRefreshSMSVerifyLoginCode(paramIntent, paramFromServiceMsg, localBundle);
     return;
     onRecvVerifySMSVerifyLoginCode(paramIntent, paramFromServiceMsg, localBundle);
@@ -648,6 +654,29 @@ public class WtloginServlet
     onRecvGetStViaSMSVerifyLogin(paramIntent, paramFromServiceMsg, localBundle);
     return;
     onRecvGetSubaccountStViaSMSVerifyLogin(paramIntent, paramFromServiceMsg, localBundle);
+  }
+  
+  protected void onRecvQuickLoginByGateway(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle)
+  {
+    if (paramFromServiceMsg.attributes != null)
+    {
+      Object localObject1 = (WUserSigInfo)paramFromServiceMsg.attributes.get("userSigInfo");
+      paramBundle.putParcelable("userSigInfo", (WUserSigInfo)paramFromServiceMsg.attributes.get("userSigInfo"));
+      paramBundle.putParcelable("resp_devlockinfo", (DevlockInfo)paramFromServiceMsg.attributes.get("resp_devlockinfo"));
+      if (localObject1 != null) {
+        paramBundle.putInt("key_sso_seq", (int)((WUserSigInfo)localObject1)._seqence);
+      }
+      paramBundle.putParcelable("key_to_service_msg", (ToServiceMsg)paramFromServiceMsg.attributes.get("key_to_service_msg"));
+      paramBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
+      Object localObject2 = paramFromServiceMsg.getAttribute("ret");
+      paramBundle.putString("uin", (String)paramFromServiceMsg.attributes.get("uin"));
+      localObject1 = Integer.valueOf(paramFromServiceMsg.getBusinessFailCode());
+      if ((localObject2 instanceof Integer)) {
+        localObject1 = (Integer)localObject2;
+      }
+      paramBundle.putInt("ret", ((Integer)localObject1).intValue());
+    }
+    notifyObserver(paramIntent, 2215, paramFromServiceMsg.isSuccess(), paramBundle, WtloginObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket) {}

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class DefineAvatarInfo
   extends JceStruct
 {
-  public byte cImgFmt;
-  public byte cImgStyle;
+  public byte cImgFmt = 0;
+  public byte cImgStyle = 0;
   
   public DefineAvatarInfo() {}
   

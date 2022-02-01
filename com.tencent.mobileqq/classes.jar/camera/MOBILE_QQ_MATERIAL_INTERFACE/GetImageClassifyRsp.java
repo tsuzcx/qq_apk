@@ -8,7 +8,7 @@ public final class GetImageClassifyRsp
   extends JceStruct
 {
   static SmartFilterRspItem cache_SingleRet = new SmartFilterRspItem();
-  public SmartFilterRspItem SingleRet;
+  public SmartFilterRspItem SingleRet = null;
   
   public GetImageClassifyRsp() {}
   
@@ -31,7 +31,7 @@ public final class GetImageClassifyRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetImageClassifyRsp
  * JD-Core Version:    0.7.0.1
  */

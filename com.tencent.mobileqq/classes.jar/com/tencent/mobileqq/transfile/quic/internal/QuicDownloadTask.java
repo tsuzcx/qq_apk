@@ -2,7 +2,6 @@ package com.tencent.mobileqq.transfile.quic.internal;
 
 import android.os.Message;
 import android.text.TextUtils;
-import bhbx;
 import com.tencent.mobileqq.transfile.quic.report.DownloadListener;
 import com.tencent.mobileqq.transfile.quic.report.QuicNetReport;
 import com.tencent.qphone.base.util.QLog;
@@ -18,26 +17,45 @@ public class QuicDownloadTask
   extends Task<DownloadListener>
 {
   private static final String ISO_8859_1 = "ISO-8859-1";
-  private float currentProgress;
-  public boolean encryption;
-  public int fec;
+  private float currentProgress = 0.0F;
+  public boolean encryption = false;
+  public int fec = 0;
   public Map<String, String> headers = new LinkedHashMap();
   private boolean isHeader;
-  private volatile boolean mClientFailed;
-  private volatile boolean mClosed;
-  private volatile boolean mCompleted;
+  private volatile boolean mClientFailed = false;
+  private volatile boolean mClosed = false;
+  private volatile boolean mCompleted = false;
   public QuicDownloadRequest mQuicDownloadRequest;
   private QuicNative mRealQuicCall;
-  private RandomAccessFile savedFile;
-  private long sendReqTime;
-  private long startConnTime;
-  private long sum;
+  private RandomAccessFile savedFile = null;
+  private long sendReqTime = 0L;
+  private long startConnTime = 0L;
+  private long sum = 0L;
   public int timeOut = 10000;
   
   public QuicDownloadTask(ITaskHandler paramITaskHandler, String paramString1, String paramString2, String paramString3, Map<String, String> paramMap, DownloadListener paramDownloadListener)
   {
     super(paramITaskHandler, "quic", paramString1, paramString2, paramString3, paramMap, paramDownloadListener);
     this.report.channel = "quic";
+  }
+  
+  public static String bytesToHexString(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      if (str.length() < 2) {
+        localStringBuffer.append(0);
+      }
+      localStringBuffer.append(str.toUpperCase());
+      i += 1;
+    }
+    return localStringBuffer.toString();
   }
   
   private boolean cancelFinishIfNeed()
@@ -51,6 +69,11 @@ public class QuicDownloadTask
       return true;
     }
     return false;
+  }
+  
+  private static byte charToByte(char paramChar)
+  {
+    return (byte)"0123456789ABCDEF".indexOf(paramChar);
   }
   
   private void clear()
@@ -87,6 +110,30 @@ public class QuicDownloadTask
     this.report.header = localStringBuilder.toString();
     this.mCompleted = true;
     doFinish(3);
+  }
+  
+  public static byte[] hexStringToBytes(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      paramString = null;
+      return paramString;
+    }
+    int j = paramString.length() / 2;
+    byte[] arrayOfByte = new byte[j];
+    char[] arrayOfChar = paramString.toUpperCase().toCharArray();
+    int i = 0;
+    for (;;)
+    {
+      paramString = arrayOfByte;
+      if (i >= j) {
+        break;
+      }
+      int k = i * 2;
+      int m = charToByte(arrayOfChar[k]);
+      arrayOfByte[i] = ((byte)(charToByte(arrayOfChar[(k + 1)]) | m << 4));
+      i += 1;
+    }
   }
   
   void connectionClose(int paramInt, String paramString)
@@ -194,7 +241,7 @@ public class QuicDownloadTask
     if (paramBufferedReader.readLine() != null)
     {
       paramString = paramString.split(System.getProperty("line.separator"), paramInt + 2);
-      paramString = bhbx.a(bhbx.a(paramString[(paramString.length - 1)].getBytes("ISO-8859-1")));
+      paramString = hexStringToBytes(bytesToHexString(paramString[(paramString.length - 1)].getBytes("ISO-8859-1")));
       if (paramString != null)
       {
         parseBody(paramString, paramString.length);
@@ -294,108 +341,108 @@ public class QuicDownloadTask
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: new 149	java/lang/String
+    //   3: new 96	java/lang/String
     //   6: dup
     //   7: aload_1
     //   8: ldc 9
-    //   10: invokespecial 372	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   10: invokespecial 413	java/lang/String:<init>	([BLjava/lang/String;)V
     //   13: astore 7
     //   15: aload_0
-    //   16: getfield 53	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:report	Lcom/tencent/mobileqq/transfile/quic/report/QuicNetReport;
+    //   16: getfield 73	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:report	Lcom/tencent/mobileqq/transfile/quic/report/QuicNetReport;
     //   19: aload_0
     //   20: getfield 47	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:headers	Ljava/util/Map;
-    //   23: putfield 373	com/tencent/mobileqq/transfile/quic/report/QuicNetReport:headers	Ljava/util/Map;
-    //   26: new 375	java/io/ByteArrayInputStream
+    //   23: putfield 414	com/tencent/mobileqq/transfile/quic/report/QuicNetReport:headers	Ljava/util/Map;
+    //   26: new 416	java/io/ByteArrayInputStream
     //   29: dup
     //   30: aload_1
     //   31: iconst_0
     //   32: iload_2
-    //   33: invokespecial 377	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   33: invokespecial 418	java/io/ByteArrayInputStream:<init>	([BII)V
     //   36: astore 6
-    //   38: new 249	java/io/BufferedReader
+    //   38: new 303	java/io/BufferedReader
     //   41: dup
-    //   42: new 379	java/io/InputStreamReader
+    //   42: new 420	java/io/InputStreamReader
     //   45: dup
     //   46: aload 6
-    //   48: invokespecial 382	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   51: invokespecial 385	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   48: invokespecial 423	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   51: invokespecial 426	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   54: astore 5
     //   56: aload 5
-    //   58: invokevirtual 252	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   58: invokevirtual 306	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   61: astore_1
     //   62: iconst_0
     //   63: istore_3
     //   64: aload_1
     //   65: ifnull +215 -> 280
     //   68: aload_1
-    //   69: ldc_w 387
-    //   72: invokevirtual 390	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   69: ldc_w 428
+    //   72: invokevirtual 431	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   75: ifeq +80 -> 155
     //   78: aload_0
     //   79: aload_1
-    //   80: invokevirtual 392	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:handleStateLine	(Ljava/lang/String;)Z
+    //   80: invokevirtual 433	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:handleStateLine	(Ljava/lang/String;)Z
     //   83: istore 4
     //   85: iload 4
     //   87: ifeq +53 -> 140
     //   90: aload 5
     //   92: ifnull +8 -> 100
     //   95: aload 5
-    //   97: invokevirtual 393	java/io/BufferedReader:close	()V
+    //   97: invokevirtual 434	java/io/BufferedReader:close	()V
     //   100: aload 6
     //   102: ifnull +8 -> 110
     //   105: aload 6
-    //   107: invokevirtual 394	java/io/ByteArrayInputStream:close	()V
+    //   107: invokevirtual 435	java/io/ByteArrayInputStream:close	()V
     //   110: return
     //   111: astore 6
     //   113: aload 6
-    //   115: invokevirtual 395	java/lang/Exception:printStackTrace	()V
-    //   118: ldc_w 397
+    //   115: invokevirtual 436	java/lang/Exception:printStackTrace	()V
+    //   118: ldc_w 438
     //   121: astore 7
     //   123: goto -108 -> 15
     //   126: astore_1
     //   127: aload_1
-    //   128: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   128: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   131: goto -31 -> 100
     //   134: astore_1
     //   135: aload_1
-    //   136: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   136: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   139: return
     //   140: iload_3
     //   141: iconst_1
     //   142: iadd
     //   143: istore_2
     //   144: aload 5
-    //   146: invokevirtual 252	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   146: invokevirtual 306	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   149: astore_1
     //   150: iload_2
     //   151: istore_3
     //   152: goto -88 -> 64
     //   155: aload_1
-    //   156: ldc 155
-    //   158: invokevirtual 402	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   156: ldc 210
+    //   158: invokevirtual 443	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   161: ifeq +57 -> 218
     //   164: aload_0
     //   165: aload_1
-    //   166: invokevirtual 404	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:handleHeaderLine	(Ljava/lang/String;)Z
+    //   166: invokevirtual 445	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:handleHeaderLine	(Ljava/lang/String;)Z
     //   169: istore 4
     //   171: iload 4
     //   173: ifeq +38 -> 211
     //   176: aload 5
     //   178: ifnull +8 -> 186
     //   181: aload 5
-    //   183: invokevirtual 393	java/io/BufferedReader:close	()V
+    //   183: invokevirtual 434	java/io/BufferedReader:close	()V
     //   186: aload 6
     //   188: ifnull -78 -> 110
     //   191: aload 6
-    //   193: invokevirtual 394	java/io/ByteArrayInputStream:close	()V
+    //   193: invokevirtual 435	java/io/ByteArrayInputStream:close	()V
     //   196: return
     //   197: astore_1
     //   198: aload_1
-    //   199: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   199: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   202: return
     //   203: astore_1
     //   204: aload_1
-    //   205: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   205: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   208: goto -22 -> 186
     //   211: iload_3
     //   212: iconst_1
@@ -405,13 +452,13 @@ public class QuicDownloadTask
     //   218: iload_3
     //   219: istore_2
     //   220: aload_1
-    //   221: invokevirtual 408	java/lang/String:length	()I
+    //   221: invokevirtual 100	java/lang/String:length	()I
     //   224: ifne -80 -> 144
     //   227: aload_0
     //   228: aload 7
     //   230: aload 5
     //   232: iload_3
-    //   233: invokevirtual 410	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:handleBodyOnParseHeader	(Ljava/lang/String;Ljava/io/BufferedReader;I)Z
+    //   233: invokevirtual 447	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:handleBodyOnParseHeader	(Ljava/lang/String;Ljava/io/BufferedReader;I)Z
     //   236: istore 4
     //   238: iload_3
     //   239: istore_2
@@ -420,36 +467,36 @@ public class QuicDownloadTask
     //   245: aload 5
     //   247: ifnull +8 -> 255
     //   250: aload 5
-    //   252: invokevirtual 393	java/io/BufferedReader:close	()V
+    //   252: invokevirtual 434	java/io/BufferedReader:close	()V
     //   255: aload 6
     //   257: ifnull -147 -> 110
     //   260: aload 6
-    //   262: invokevirtual 394	java/io/ByteArrayInputStream:close	()V
+    //   262: invokevirtual 435	java/io/ByteArrayInputStream:close	()V
     //   265: return
     //   266: astore_1
     //   267: aload_1
-    //   268: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   268: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   271: return
     //   272: astore_1
     //   273: aload_1
-    //   274: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   274: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   277: goto -22 -> 255
     //   280: aload 5
     //   282: ifnull +8 -> 290
     //   285: aload 5
-    //   287: invokevirtual 393	java/io/BufferedReader:close	()V
+    //   287: invokevirtual 434	java/io/BufferedReader:close	()V
     //   290: aload 6
     //   292: ifnull -182 -> 110
     //   295: aload 6
-    //   297: invokevirtual 394	java/io/ByteArrayInputStream:close	()V
+    //   297: invokevirtual 435	java/io/ByteArrayInputStream:close	()V
     //   300: return
     //   301: astore_1
     //   302: aload_1
-    //   303: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   303: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   306: return
     //   307: astore_1
     //   308: aload_1
-    //   309: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   309: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   312: goto -22 -> 290
     //   315: astore 6
     //   317: aconst_null
@@ -460,35 +507,35 @@ public class QuicDownloadTask
     //   325: astore 5
     //   327: aload_0
     //   328: iconst_1
-    //   329: putfield 74	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:mClientFailed	Z
+    //   329: putfield 61	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:mClientFailed	Z
     //   332: aload_0
-    //   333: getfield 53	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:report	Lcom/tencent/mobileqq/transfile/quic/report/QuicNetReport;
+    //   333: getfield 73	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:report	Lcom/tencent/mobileqq/transfile/quic/report/QuicNetReport;
     //   336: aload 6
-    //   338: invokevirtual 239	java/lang/Exception:toString	()Ljava/lang/String;
-    //   341: putfield 79	com/tencent/mobileqq/transfile/quic/report/QuicNetReport:errMsg	Ljava/lang/String;
+    //   338: invokevirtual 293	java/lang/Exception:toString	()Ljava/lang/String;
+    //   341: putfield 130	com/tencent/mobileqq/transfile/quic/report/QuicNetReport:errMsg	Ljava/lang/String;
     //   344: aload_0
-    //   345: getfield 53	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:report	Lcom/tencent/mobileqq/transfile/quic/report/QuicNetReport;
+    //   345: getfield 73	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:report	Lcom/tencent/mobileqq/transfile/quic/report/QuicNetReport;
     //   348: sipush 10001
-    //   351: putfield 82	com/tencent/mobileqq/transfile/quic/report/QuicNetReport:errCode	I
+    //   351: putfield 133	com/tencent/mobileqq/transfile/quic/report/QuicNetReport:errCode	I
     //   354: aload_0
     //   355: iconst_5
-    //   356: invokevirtual 86	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:doFinish	(I)V
+    //   356: invokevirtual 136	com/tencent/mobileqq/transfile/quic/internal/QuicDownloadTask:doFinish	(I)V
     //   359: aload 5
     //   361: ifnull +8 -> 369
     //   364: aload 5
-    //   366: invokevirtual 393	java/io/BufferedReader:close	()V
+    //   366: invokevirtual 434	java/io/BufferedReader:close	()V
     //   369: aload_1
     //   370: ifnull -260 -> 110
     //   373: aload_1
-    //   374: invokevirtual 394	java/io/ByteArrayInputStream:close	()V
+    //   374: invokevirtual 435	java/io/ByteArrayInputStream:close	()V
     //   377: return
     //   378: astore_1
     //   379: aload_1
-    //   380: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   380: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   383: return
     //   384: astore 5
     //   386: aload 5
-    //   388: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   388: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   391: goto -22 -> 369
     //   394: astore_1
     //   395: aconst_null
@@ -498,20 +545,20 @@ public class QuicDownloadTask
     //   401: aload 5
     //   403: ifnull +8 -> 411
     //   406: aload 5
-    //   408: invokevirtual 393	java/io/BufferedReader:close	()V
+    //   408: invokevirtual 434	java/io/BufferedReader:close	()V
     //   411: aload 6
     //   413: ifnull +8 -> 421
     //   416: aload 6
-    //   418: invokevirtual 394	java/io/ByteArrayInputStream:close	()V
+    //   418: invokevirtual 435	java/io/ByteArrayInputStream:close	()V
     //   421: aload_1
     //   422: athrow
     //   423: astore 5
     //   425: aload 5
-    //   427: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   427: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   430: goto -19 -> 411
     //   433: astore 5
     //   435: aload 5
-    //   437: invokevirtual 398	java/io/IOException:printStackTrace	()V
+    //   437: invokevirtual 439	java/io/IOException:printStackTrace	()V
     //   440: goto -19 -> 421
     //   443: astore_1
     //   444: aconst_null

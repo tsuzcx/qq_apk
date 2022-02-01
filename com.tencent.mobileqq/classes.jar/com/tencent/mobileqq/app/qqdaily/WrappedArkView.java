@@ -2,7 +2,6 @@ package com.tencent.mobileqq.app.qqdaily;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import aozb;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
@@ -11,8 +10,8 @@ import com.tencent.ark.open.ArkView;
 public class WrappedArkView
   extends ArkView
 {
-  private aozb jdField_a_of_type_Aozb;
   ArkViewImplement.LoadCallback jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback;
+  private WrappedArkView.OnArkViewLoadListener jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener;
   private String jdField_a_of_type_JavaLangString;
   private String b;
   private String c;
@@ -41,8 +40,8 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoadFailed");
     }
-    if (this.jdField_a_of_type_Aozb != null) {
-      this.jdField_a_of_type_Aozb.a(paramString, paramInt, paramBoolean, this.mViewImpl.getViewModel());
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener.a(paramString, paramInt, paramBoolean, this.mViewImpl.getViewModel());
     }
   }
   
@@ -52,8 +51,8 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoadSuccess");
     }
-    if (this.jdField_a_of_type_Aozb != null) {
-      this.jdField_a_of_type_Aozb.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener.b();
     }
   }
   
@@ -63,19 +62,19 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoading");
     }
-    if (this.jdField_a_of_type_Aozb != null) {
-      this.jdField_a_of_type_Aozb.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener.a();
     }
   }
   
-  public void setOnLoadListener(aozb paramaozb)
+  public void setOnLoadListener(WrappedArkView.OnArkViewLoadListener paramOnArkViewLoadListener)
   {
-    this.jdField_a_of_type_Aozb = paramaozb;
+    this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener = paramOnArkViewLoadListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.WrappedArkView
  * JD-Core Version:    0.7.0.1
  */

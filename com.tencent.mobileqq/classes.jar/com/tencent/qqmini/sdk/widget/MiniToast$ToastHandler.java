@@ -25,9 +25,9 @@ class MiniToast$ToastHandler
     do
     {
       return;
-      MiniToast.access$302(paramMiniToast, false);
-    } while (MiniToast.access$800(paramMiniToast) == null);
-    MiniToast.access$800(paramMiniToast).cancel();
+      MiniToast.access$402(paramMiniToast, false);
+    } while (MiniToast.access$900(paramMiniToast) == null);
+    MiniToast.access$900(paramMiniToast).cancel();
   }
   
   private void scheduleHideToast(long paramLong)
@@ -41,7 +41,7 @@ class MiniToast$ToastHandler
   {
     QMLog.d("QQToast", "scheduleNextToast to " + paramLong);
     removeMessages(1);
-    MiniToast.access$200().add(new WeakReference(paramMiniToast));
+    MiniToast.access$300().add(new WeakReference(paramMiniToast));
     sendEmptyMessageDelayed(1, paramLong);
   }
   
@@ -51,17 +51,17 @@ class MiniToast$ToastHandler
     for (;;)
     {
       return;
-      if (!MiniToast.access$300(paramMiniToast))
+      if (!MiniToast.access$400(paramMiniToast))
       {
-        MiniToast.access$402(paramMiniToast, System.currentTimeMillis() + MiniToast.access$500(paramMiniToast));
-        MiniToast.access$302(paramMiniToast, true);
+        MiniToast.access$502(paramMiniToast, System.currentTimeMillis() + MiniToast.access$600(paramMiniToast));
+        MiniToast.access$402(paramMiniToast, true);
       }
       paramMiniToast.show();
-      if (MiniToast.access$600(paramMiniToast) == 0) {}
-      for (int i = 200; MiniToast.access$700(paramMiniToast) + i < MiniToast.access$400(paramMiniToast); i = 400)
+      if (MiniToast.access$700(paramMiniToast) == 0) {}
+      for (int i = 200; MiniToast.access$800(paramMiniToast) + i < MiniToast.access$500(paramMiniToast); i = 400)
       {
-        MiniToast.access$200().add(new WeakReference(paramMiniToast));
-        long l = MiniToast.access$700(paramMiniToast);
+        MiniToast.access$300().add(new WeakReference(paramMiniToast));
+        long l = MiniToast.access$800(paramMiniToast);
         scheduleShowToast(paramMiniToast, i + l - System.currentTimeMillis());
         return;
       }
@@ -81,21 +81,21 @@ class MiniToast$ToastHandler
         if (QMLog.isColorLevel()) {
           QMLog.d("QQToast", "MSG_SHOW_TOAST received");
         }
-        paramMessage = (WeakReference)MiniToast.access$200().poll();
+        paramMessage = (WeakReference)MiniToast.access$300().poll();
       } while (paramMessage == null);
       showToastImmediately((MiniToast)paramMessage.get());
       return;
       if (QMLog.isColorLevel()) {
         QMLog.d("QQToast", "MSG_HIDE_TOAST received");
       }
-      paramMessage = (WeakReference)MiniToast.access$200().poll();
+      paramMessage = (WeakReference)MiniToast.access$300().poll();
     } while (paramMessage == null);
     hideToastImmediately((MiniToast)paramMessage.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniToast.ToastHandler
  * JD-Core Version:    0.7.0.1
  */

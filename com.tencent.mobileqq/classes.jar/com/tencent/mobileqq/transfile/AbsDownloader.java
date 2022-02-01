@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.graphics.BitmapFactory.Options;
+import android.os.Environment;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.ProtocolDownloader.Adapter;
 import com.tencent.image.URLDrawableHandler;
@@ -11,20 +12,37 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.richmediavfs.RmVFSUtils;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.mobileqq.vfs.VFSSourcePathConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public abstract class AbsDownloader
   extends ProtocolDownloader.Adapter
   implements ProtocolDownloaderConstants
 {
-  public static final String CHAT_IMAGE_ROOT = AppConstants.SDCARD_PATH + "chatpic" + File.separator;
+  public static final String CHAT_IMAGE_ROOT;
+  public static final String PROTOCOL_PUB_ACCOUNT = "pubaccountimage";
   protected static final String TAG = "AbsDownloader";
+  public static DiskCache sDiskCache;
+  
+  static
+  {
+    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    for (File localFile = new File(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH));; localFile = MobileQQ.sMobileQQ.getCacheDir())
+    {
+      sDiskCache = new DiskCache(new File(localFile, "diskcache"));
+      CHAT_IMAGE_ROOT = VFSSourcePathConfig.a;
+      return;
+    }
+  }
   
   private void asynCommitBitmapFile(DiskCache.Editor paramEditor, File paramFile)
   {
@@ -112,7 +130,7 @@ public abstract class AbsDownloader
     {
       return localObject2;
       String str = getFileName(paramString);
-      Object localObject1 = URLDrawableHelper.diskCachePath + File.separator + str;
+      Object localObject1 = sDiskCache.getDirectory() + File.separator + str;
       try
       {
         localObject2 = new URL(paramString);
@@ -276,7 +294,7 @@ public abstract class AbsDownloader
   
   public static void migrateChatImage(String paramString1, String paramString2, String paramString3)
   {
-    int i = FileUtils.quickMove(paramString2, paramString3);
+    int i = FileUtils.a(paramString2, paramString3);
     if (QLog.isColorLevel()) {
       QLog.d("ChatImageMigrate", 2, "migrate:" + paramString1 + " from:" + paramString2 + " to:" + paramString3 + " status:" + i);
     }
@@ -313,302 +331,277 @@ public abstract class AbsDownloader
     //   5: aconst_null
     //   6: astore 8
     //   8: aload_0
-    //   9: invokevirtual 258	com/tencent/mobileqq/transfile/AbsDownloader:useDiskCache	()Z
-    //   12: ifeq +441 -> 453
+    //   9: invokevirtual 294	com/tencent/mobileqq/transfile/AbsDownloader:useDiskCache	()Z
+    //   12: ifeq +379 -> 391
     //   15: aload_1
-    //   16: getfield 263	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
+    //   16: getfield 299	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
     //   19: astore 7
     //   21: aload 7
-    //   23: invokestatic 225	com/tencent/mobileqq/transfile/AbsDownloader:getFile	(Ljava/lang/String;)Ljava/io/File;
+    //   23: invokestatic 262	com/tencent/mobileqq/transfile/AbsDownloader:getFile	(Ljava/lang/String;)Ljava/io/File;
     //   26: astore 6
     //   28: aload 6
-    //   30: ifnull +55 -> 85
-    //   33: ldc 11
-    //   35: ldc_w 274
-    //   38: new 15	java/lang/StringBuilder
+    //   30: ifnull +53 -> 83
+    //   33: ldc 14
+    //   35: ldc_w 308
+    //   38: new 119	java/lang/StringBuilder
     //   41: dup
-    //   42: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   45: ldc_w 276
-    //   48: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   45: ldc_w 310
+    //   48: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: aload 6
-    //   53: invokevirtual 279	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   56: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokestatic 285	azjq:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   53: invokevirtual 313	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   56: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokestatic 319	com/tencent/mobileqq/transfile/TransFileUtil:printRichMediaDebug	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   65: aload_2
     //   66: ifnull +14 -> 80
     //   69: aload_2
     //   70: aload 6
-    //   72: invokevirtual 288	java/io/File:length	()J
-    //   75: invokeinterface 294 3 0
+    //   72: invokevirtual 322	java/io/File:length	()J
+    //   75: invokeinterface 328 3 0
     //   80: aload 6
-    //   82: astore_1
+    //   82: areturn
     //   83: aload_1
-    //   84: areturn
-    //   85: aload_1
-    //   86: getfield 298	com/tencent/image/DownloadParams:mHttpDownloaderParams	Ljava/lang/Object;
-    //   89: ifnull +14 -> 103
-    //   92: aload_0
-    //   93: aconst_null
-    //   94: aload_1
-    //   95: aload_2
-    //   96: invokevirtual 300	com/tencent/mobileqq/transfile/AbsDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
-    //   99: pop
-    //   100: aload 6
-    //   102: areturn
-    //   103: aload 7
-    //   105: invokestatic 156	com/tencent/mobileqq/transfile/AbsDownloader:getFileName	(Ljava/lang/String;)Ljava/lang/String;
-    //   108: astore 10
-    //   110: getstatic 305	com/tencent/mobileqq/startup/step/InitUrlDrawable:a	Lcom/tencent/mobileqq/transfile/DiskCache;
-    //   113: aload 10
-    //   115: invokevirtual 311	com/tencent/mobileqq/transfile/DiskCache:edit	(Ljava/lang/String;)Lcom/tencent/mobileqq/transfile/DiskCache$Editor;
-    //   118: astore 11
-    //   120: aload_0
-    //   121: invokevirtual 314	com/tencent/mobileqq/transfile/AbsDownloader:supportBreakpointContinuingly	()Z
-    //   124: istore 4
-    //   126: iload 4
-    //   128: ifeq +398 -> 526
-    //   131: aload_1
-    //   132: aload 11
-    //   134: getfield 319	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
-    //   137: invokevirtual 288	java/io/File:length	()J
-    //   140: putfield 323	com/tencent/image/DownloadParams:downloaded	J
-    //   143: aload_0
-    //   144: aload_1
-    //   145: invokevirtual 326	com/tencent/mobileqq/transfile/AbsDownloader:needRestart	(Lcom/tencent/image/DownloadParams;)Z
-    //   148: istore 5
-    //   150: iload 5
-    //   152: ifne +5 -> 157
-    //   155: iconst_1
-    //   156: istore_3
-    //   157: iload 4
-    //   159: iload_3
-    //   160: iand
-    //   161: istore 4
-    //   163: new 328	java/io/FileOutputStream
-    //   166: dup
-    //   167: aload 11
-    //   169: getfield 319	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
-    //   172: iload 4
-    //   174: invokespecial 331	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   177: astore 6
-    //   179: aload_0
-    //   180: aload 6
-    //   182: aload_1
-    //   183: aload_2
-    //   184: invokevirtual 300	com/tencent/mobileqq/transfile/AbsDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
-    //   187: astore_2
-    //   188: aload 7
-    //   190: ldc_w 333
-    //   193: invokevirtual 336	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   196: ifeq +324 -> 520
-    //   199: aload 7
-    //   201: iconst_0
-    //   202: aload 7
-    //   204: ldc_w 333
-    //   207: invokevirtual 340	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   210: invokevirtual 77	java/lang/String:substring	(II)Ljava/lang/String;
-    //   213: astore_1
-    //   214: aload_1
-    //   215: invokestatic 225	com/tencent/mobileqq/transfile/AbsDownloader:getFile	(Ljava/lang/String;)Ljava/io/File;
-    //   218: astore 7
-    //   220: aload 7
-    //   222: ifnull +74 -> 296
-    //   225: ldc 11
-    //   227: ldc_w 274
-    //   230: new 15	java/lang/StringBuilder
-    //   233: dup
-    //   234: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   237: ldc_w 342
-    //   240: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: aload 7
-    //   245: invokevirtual 279	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   248: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   251: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   254: invokestatic 285	azjq:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   257: aload 11
-    //   259: getfield 319	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
-    //   262: invokevirtual 345	java/io/File:delete	()Z
-    //   265: pop
-    //   266: aload 7
-    //   268: astore_1
-    //   269: aload 6
-    //   271: ifnull -188 -> 83
-    //   274: aload 7
-    //   276: astore_1
-    //   277: aload_2
-    //   278: instanceof 347
-    //   281: ifne -198 -> 83
-    //   284: aload 6
-    //   286: invokevirtual 352	java/io/OutputStream:close	()V
-    //   289: aload 7
-    //   291: areturn
-    //   292: astore_1
-    //   293: aload 7
-    //   295: areturn
-    //   296: aload_0
-    //   297: aload_2
-    //   298: invokevirtual 354	com/tencent/mobileqq/transfile/AbsDownloader:isCommitBimapFileAsyn	(Ljava/io/File;)Z
-    //   301: ifeq +29 -> 330
-    //   304: aload_0
-    //   305: aload 11
-    //   307: aload_2
-    //   308: invokespecial 356	com/tencent/mobileqq/transfile/AbsDownloader:asynCommitBitmapFile	(Lcom/tencent/mobileqq/transfile/DiskCache$Editor;Ljava/io/File;)V
-    //   311: aload 6
-    //   313: ifnull +15 -> 328
-    //   316: aload_2
-    //   317: instanceof 347
-    //   320: ifne +8 -> 328
-    //   323: aload 6
-    //   325: invokevirtual 352	java/io/OutputStream:close	()V
-    //   328: aload_2
-    //   329: areturn
-    //   330: aload 11
-    //   332: invokevirtual 360	com/tencent/mobileqq/transfile/DiskCache$Editor:commit	()Ljava/io/File;
-    //   335: astore 7
-    //   337: aload 7
-    //   339: astore_1
-    //   340: aload 6
-    //   342: ifnull -259 -> 83
-    //   345: aload 7
-    //   347: astore_1
-    //   348: aload_2
-    //   349: instanceof 347
-    //   352: ifne -269 -> 83
-    //   355: aload 6
-    //   357: invokevirtual 352	java/io/OutputStream:close	()V
-    //   360: aload 7
-    //   362: areturn
-    //   363: astore_1
+    //   84: getfield 332	com/tencent/image/DownloadParams:mHttpDownloaderParams	Ljava/lang/Object;
+    //   87: ifnull +14 -> 101
+    //   90: aload_0
+    //   91: aconst_null
+    //   92: aload_1
+    //   93: aload_2
+    //   94: invokevirtual 334	com/tencent/mobileqq/transfile/AbsDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   97: pop
+    //   98: aload 6
+    //   100: areturn
+    //   101: aload 7
+    //   103: invokestatic 200	com/tencent/mobileqq/transfile/AbsDownloader:getFileName	(Ljava/lang/String;)Ljava/lang/String;
+    //   106: astore 10
+    //   108: getstatic 61	com/tencent/mobileqq/transfile/AbsDownloader:sDiskCache	Lcom/tencent/mobileqq/transfile/DiskCache;
+    //   111: aload 10
+    //   113: invokevirtual 338	com/tencent/mobileqq/transfile/DiskCache:edit	(Ljava/lang/String;)Lcom/tencent/mobileqq/transfile/DiskCache$Editor;
+    //   116: astore 11
+    //   118: aload_0
+    //   119: invokevirtual 341	com/tencent/mobileqq/transfile/AbsDownloader:supportBreakpointContinuingly	()Z
+    //   122: istore 4
+    //   124: iload 4
+    //   126: ifeq +330 -> 456
+    //   129: aload_1
+    //   130: aload 11
+    //   132: getfield 347	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
+    //   135: invokevirtual 322	java/io/File:length	()J
+    //   138: putfield 351	com/tencent/image/DownloadParams:downloaded	J
+    //   141: aload_0
+    //   142: aload_1
+    //   143: invokevirtual 354	com/tencent/mobileqq/transfile/AbsDownloader:needRestart	(Lcom/tencent/image/DownloadParams;)Z
+    //   146: istore 5
+    //   148: iload 5
+    //   150: ifne +5 -> 155
+    //   153: iconst_1
+    //   154: istore_3
+    //   155: iload 4
+    //   157: iload_3
+    //   158: iand
+    //   159: istore 4
+    //   161: new 356	java/io/FileOutputStream
+    //   164: dup
+    //   165: aload 11
+    //   167: getfield 347	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
+    //   170: iload 4
+    //   172: invokespecial 359	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   175: astore 6
+    //   177: aload_0
+    //   178: aload 6
+    //   180: aload_1
+    //   181: aload_2
+    //   182: invokevirtual 334	com/tencent/mobileqq/transfile/AbsDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   185: astore_2
+    //   186: aload 7
+    //   188: ldc_w 361
+    //   191: invokevirtual 364	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   194: ifeq +256 -> 450
+    //   197: aload 7
+    //   199: iconst_0
+    //   200: aload 7
+    //   202: ldc_w 361
+    //   205: invokevirtual 368	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   208: invokevirtual 113	java/lang/String:substring	(II)Ljava/lang/String;
+    //   211: astore_1
+    //   212: aload_1
+    //   213: invokestatic 262	com/tencent/mobileqq/transfile/AbsDownloader:getFile	(Ljava/lang/String;)Ljava/io/File;
+    //   216: astore 7
+    //   218: aload 7
+    //   220: ifnull +54 -> 274
+    //   223: ldc 14
+    //   225: ldc_w 308
+    //   228: new 119	java/lang/StringBuilder
+    //   231: dup
+    //   232: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   235: ldc_w 370
+    //   238: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: aload 7
+    //   243: invokevirtual 313	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   246: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: invokestatic 319	com/tencent/mobileqq/transfile/TransFileUtil:printRichMediaDebug	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   255: aload 11
+    //   257: getfield 347	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
+    //   260: invokevirtual 373	java/io/File:delete	()Z
+    //   263: pop
+    //   264: aload_0
+    //   265: aload 6
+    //   267: aload_2
+    //   268: invokevirtual 377	com/tencent/mobileqq/transfile/AbsDownloader:releaseStream	(Ljava/io/OutputStream;Ljava/io/File;)V
+    //   271: aload 7
+    //   273: areturn
+    //   274: aload_0
+    //   275: aload_2
+    //   276: invokevirtual 379	com/tencent/mobileqq/transfile/AbsDownloader:isCommitBimapFileAsyn	(Ljava/io/File;)Z
+    //   279: ifeq +19 -> 298
+    //   282: aload_0
+    //   283: aload 11
+    //   285: aload_2
+    //   286: invokespecial 381	com/tencent/mobileqq/transfile/AbsDownloader:asynCommitBitmapFile	(Lcom/tencent/mobileqq/transfile/DiskCache$Editor;Ljava/io/File;)V
+    //   289: aload_0
+    //   290: aload 6
+    //   292: aload_2
+    //   293: invokevirtual 377	com/tencent/mobileqq/transfile/AbsDownloader:releaseStream	(Ljava/io/OutputStream;Ljava/io/File;)V
+    //   296: aload_2
+    //   297: areturn
+    //   298: aload 11
+    //   300: invokevirtual 384	com/tencent/mobileqq/transfile/DiskCache$Editor:commit	()Ljava/io/File;
+    //   303: astore 7
+    //   305: aload_0
+    //   306: aload 6
+    //   308: aload_2
+    //   309: invokevirtual 377	com/tencent/mobileqq/transfile/AbsDownloader:releaseStream	(Ljava/io/OutputStream;Ljava/io/File;)V
+    //   312: aload 7
+    //   314: areturn
+    //   315: astore_1
+    //   316: aconst_null
+    //   317: astore_2
+    //   318: aload 8
+    //   320: astore 6
+    //   322: aload 11
+    //   324: ifnull +10 -> 334
+    //   327: aload 11
+    //   329: iload 4
+    //   331: invokevirtual 388	com/tencent/mobileqq/transfile/DiskCache$Editor:abort	(Z)V
+    //   334: ldc_w 390
+    //   337: ldc_w 308
+    //   340: new 119	java/lang/StringBuilder
+    //   343: dup
+    //   344: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   347: ldc_w 392
+    //   350: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   353: aload 10
+    //   355: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: ldc_w 394
+    //   361: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   364: aload 7
-    //   366: areturn
-    //   367: astore_1
-    //   368: aconst_null
-    //   369: astore_2
-    //   370: aload 8
-    //   372: astore 6
-    //   374: aload 11
-    //   376: ifnull +10 -> 386
-    //   379: aload 11
-    //   381: iload 4
-    //   383: invokevirtual 364	com/tencent/mobileqq/transfile/DiskCache$Editor:abort	(Z)V
-    //   386: ldc_w 366
-    //   389: ldc_w 274
-    //   392: new 15	java/lang/StringBuilder
-    //   395: dup
-    //   396: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   399: ldc_w 368
-    //   402: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   405: aload 10
-    //   407: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   410: ldc_w 370
-    //   413: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   416: aload 7
-    //   418: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   421: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   424: invokestatic 373	azjq:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   427: aload_1
-    //   428: invokevirtual 374	java/lang/Exception:printStackTrace	()V
-    //   431: aload_1
-    //   432: athrow
-    //   433: astore_1
-    //   434: aload 6
-    //   436: ifnull +15 -> 451
-    //   439: aload_2
-    //   440: instanceof 347
-    //   443: ifne +8 -> 451
-    //   446: aload 6
-    //   448: invokevirtual 352	java/io/OutputStream:close	()V
-    //   451: aload_1
-    //   452: athrow
-    //   453: aload_0
-    //   454: aconst_null
-    //   455: aload_1
-    //   456: aload_2
-    //   457: invokevirtual 300	com/tencent/mobileqq/transfile/AbsDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
-    //   460: areturn
-    //   461: astore_2
-    //   462: goto -11 -> 451
-    //   465: astore_1
-    //   466: aconst_null
-    //   467: astore_2
-    //   468: aload 9
-    //   470: astore 6
-    //   472: goto -38 -> 434
-    //   475: astore_1
-    //   476: aconst_null
-    //   477: astore_2
-    //   478: goto -44 -> 434
-    //   481: astore_1
-    //   482: goto -48 -> 434
-    //   485: astore_1
-    //   486: aconst_null
-    //   487: astore_2
-    //   488: aload 8
-    //   490: astore 6
-    //   492: goto -118 -> 374
-    //   495: astore_1
-    //   496: aconst_null
-    //   497: astore_2
-    //   498: goto -124 -> 374
-    //   501: astore_1
-    //   502: goto -128 -> 374
-    //   505: astore 8
-    //   507: aload_1
-    //   508: astore 7
-    //   510: aload 8
-    //   512: astore_1
-    //   513: goto -139 -> 374
-    //   516: astore_1
-    //   517: goto -189 -> 328
-    //   520: aload 7
-    //   522: astore_1
-    //   523: goto -309 -> 214
-    //   526: goto -363 -> 163
+    //   366: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   369: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   372: invokestatic 397	com/tencent/mobileqq/transfile/TransFileUtil:printRichMediaError	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   375: aload_1
+    //   376: invokevirtual 398	java/lang/Exception:printStackTrace	()V
+    //   379: aload_1
+    //   380: athrow
+    //   381: astore_1
+    //   382: aload_0
+    //   383: aload 6
+    //   385: aload_2
+    //   386: invokevirtual 377	com/tencent/mobileqq/transfile/AbsDownloader:releaseStream	(Ljava/io/OutputStream;Ljava/io/File;)V
+    //   389: aload_1
+    //   390: athrow
+    //   391: aload_0
+    //   392: aconst_null
+    //   393: aload_1
+    //   394: aload_2
+    //   395: invokevirtual 334	com/tencent/mobileqq/transfile/AbsDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   398: areturn
+    //   399: astore_1
+    //   400: aconst_null
+    //   401: astore_2
+    //   402: aload 9
+    //   404: astore 6
+    //   406: goto -24 -> 382
+    //   409: astore_1
+    //   410: aconst_null
+    //   411: astore_2
+    //   412: goto -30 -> 382
+    //   415: astore_1
+    //   416: goto -34 -> 382
+    //   419: astore_1
+    //   420: aconst_null
+    //   421: astore_2
+    //   422: aload 8
+    //   424: astore 6
+    //   426: goto -104 -> 322
+    //   429: astore_1
+    //   430: aconst_null
+    //   431: astore_2
+    //   432: goto -110 -> 322
+    //   435: astore_1
+    //   436: goto -114 -> 322
+    //   439: astore 8
+    //   441: aload_1
+    //   442: astore 7
+    //   444: aload 8
+    //   446: astore_1
+    //   447: goto -125 -> 322
+    //   450: aload 7
+    //   452: astore_1
+    //   453: goto -241 -> 212
+    //   456: goto -295 -> 161
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	529	0	this	AbsDownloader
-    //   0	529	1	paramDownloadParams	DownloadParams
-    //   0	529	2	paramURLDrawableHandler	URLDrawableHandler
-    //   1	160	3	bool1	boolean
-    //   124	258	4	bool2	boolean
-    //   148	3	5	bool3	boolean
-    //   26	465	6	localObject1	Object
-    //   19	502	7	localObject2	Object
-    //   6	483	8	localObject3	Object
-    //   505	6	8	localException	java.lang.Exception
-    //   3	466	9	localObject4	Object
-    //   108	298	10	str	String
-    //   118	262	11	localEditor	DiskCache.Editor
+    //   0	459	0	this	AbsDownloader
+    //   0	459	1	paramDownloadParams	DownloadParams
+    //   0	459	2	paramURLDrawableHandler	URLDrawableHandler
+    //   1	158	3	bool1	boolean
+    //   122	208	4	bool2	boolean
+    //   146	3	5	bool3	boolean
+    //   26	399	6	localObject1	Object
+    //   19	432	7	localObject2	Object
+    //   6	417	8	localObject3	Object
+    //   439	6	8	localException	java.lang.Exception
+    //   3	400	9	localObject4	Object
+    //   106	248	10	str	String
+    //   116	212	11	localEditor	DiskCache.Editor
     // Exception table:
     //   from	to	target	type
-    //   277	289	292	java/io/IOException
-    //   348	360	363	java/io/IOException
-    //   131	150	367	java/lang/Exception
-    //   379	386	433	finally
-    //   386	433	433	finally
-    //   439	451	461	java/io/IOException
-    //   131	150	465	finally
-    //   163	179	465	finally
-    //   179	188	475	finally
-    //   188	214	481	finally
-    //   214	220	481	finally
-    //   225	266	481	finally
-    //   296	311	481	finally
-    //   330	337	481	finally
-    //   163	179	485	java/lang/Exception
-    //   179	188	495	java/lang/Exception
-    //   188	214	501	java/lang/Exception
-    //   214	220	505	java/lang/Exception
-    //   225	266	505	java/lang/Exception
-    //   296	311	505	java/lang/Exception
-    //   330	337	505	java/lang/Exception
-    //   316	328	516	java/io/IOException
+    //   129	148	315	java/lang/Exception
+    //   327	334	381	finally
+    //   334	381	381	finally
+    //   129	148	399	finally
+    //   161	177	399	finally
+    //   177	186	409	finally
+    //   186	212	415	finally
+    //   212	218	415	finally
+    //   223	264	415	finally
+    //   274	289	415	finally
+    //   298	305	415	finally
+    //   161	177	419	java/lang/Exception
+    //   177	186	429	java/lang/Exception
+    //   186	212	435	java/lang/Exception
+    //   212	218	439	java/lang/Exception
+    //   223	264	439	java/lang/Exception
+    //   274	289	439	java/lang/Exception
+    //   298	305	439	java/lang/Exception
   }
   
   public boolean needRestart(DownloadParams paramDownloadParams)
   {
     return false;
+  }
+  
+  protected void releaseStream(OutputStream paramOutputStream, File paramFile)
+  {
+    if (paramOutputStream != null) {}
+    try
+    {
+      paramOutputStream.close();
+      return;
+    }
+    catch (IOException paramOutputStream) {}
   }
   
   public boolean supportBreakpointContinuingly()

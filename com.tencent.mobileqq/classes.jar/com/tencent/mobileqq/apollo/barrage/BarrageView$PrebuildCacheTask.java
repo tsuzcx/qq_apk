@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.apollo.barrage;
 
-import amqx;
 import android.os.Message;
-import bkys;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
@@ -11,9 +10,9 @@ class BarrageView$PrebuildCacheTask
   implements Runnable
 {
   private WeakReference<BarrageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<amqx> jdField_a_of_type_JavaUtilList;
+  private List<Barrage> jdField_a_of_type_JavaUtilList;
   
-  BarrageView$PrebuildCacheTask(List<amqx> paramList, BarrageView paramBarrageView)
+  BarrageView$PrebuildCacheTask(List<Barrage> paramList, BarrageView paramBarrageView)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBarrageView);
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -37,7 +36,7 @@ class BarrageView$PrebuildCacheTask
         int i = localList.size() - 1;
         while (i >= 0)
         {
-          ((amqx)localList.get(i)).a();
+          ((Barrage)localList.get(i)).a();
           i -= 1;
         }
         BarrageView.a(localBarrageView).obtainMessage(256, 1, 0, localList).sendToTarget();
@@ -48,7 +47,7 @@ class BarrageView$PrebuildCacheTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.BarrageView.PrebuildCacheTask
  * JD-Core Version:    0.7.0.1
  */

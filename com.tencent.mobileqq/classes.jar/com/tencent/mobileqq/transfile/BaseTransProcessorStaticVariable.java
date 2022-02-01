@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class BaseTransProcessorStaticVariable
 {
-  protected static RichMediaStrategy.OldEngineDPCProfile TIMEOUT_PROFILE = new RichMediaStrategy.OldEngineDPCProfile();
+  protected static OldEngineDPCProfile TIMEOUT_PROFILE = new OldEngineDPCProfile();
   public static WeakNetLearner WEAK_NET_LEARNER = new WeakNetLearner(BaseApplication.getContext(), new BaseTransProcessorStaticVariable.1());
 }
 

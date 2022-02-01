@@ -10,8 +10,8 @@ public final class ItemCfgInfo
   extends JceStruct
 {
   static Map<Long, String> cache_itemJumUrl = new HashMap();
-  public Map<Long, String> itemJumUrl;
-  public int vipType;
+  public Map<Long, String> itemJumUrl = null;
+  public int vipType = 0;
   
   static
   {

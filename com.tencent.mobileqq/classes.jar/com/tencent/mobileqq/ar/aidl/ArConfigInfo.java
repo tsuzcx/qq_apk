@@ -5,9 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import apfw;
-import apia;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ArConfigUtils;
 import com.tencent.mobileqq.ar.model.ArAwardInfo;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 import com.tencent.mobileqq.ar.model.ArModelResource;
@@ -24,7 +23,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ArConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ArConfigInfo> CREATOR = new apia();
+  public static final Parcelable.Creator<ArConfigInfo> CREATOR = new ArConfigInfo.1();
   public static final String TAG = "ArConfigInfo";
   public static final int VERSION_700 = 10;
   public static final int VERSION_710 = 11;
@@ -34,9 +33,9 @@ public class ArConfigInfo
   public static final int VERSION_739 = 19;
   public static final int VERSION_760 = 20;
   public long aRBegin;
-  public long aRCloudBegin;
-  public long aRCloudCacheExpireTime;
-  public long aRCloudEnd;
+  public long aRCloudBegin = 0L;
+  public long aRCloudCacheExpireTime = 0L;
+  public long aRCloudEnd = 0L;
   public long aREnd;
   public ArrayList<ArCloudConfigInfo> mArCloudConfigInfos = new ArrayList();
   public boolean saveConfig = true;
@@ -48,7 +47,7 @@ public class ArConfigInfo
   
   public ArConfigInfo() {}
   
-  public ArConfigInfo(Parcel paramParcel)
+  protected ArConfigInfo(Parcel paramParcel)
   {
     try
     {
@@ -216,7 +215,7 @@ public class ArConfigInfo
     //   181: ifeq +126 -> 307
     //   184: aload 6
     //   186: invokeinterface 248 1 0
-    //   191: checkcast 75	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo
+    //   191: checkcast 81	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo
     //   194: astore 7
     //   196: aload 7
     //   198: getfield 251	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_a_of_type_Boolean	Z
@@ -480,7 +479,7 @@ public class ArConfigInfo
           str1 = ((XmlPullParser)localObject1).getName();
           if (str1.equalsIgnoreCase("Begin"))
           {
-            localArConfigInfo.aRBegin = apfw.a(((XmlPullParser)localObject1).nextText());
+            localArConfigInfo.aRBegin = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
             i = ((XmlPullParser)localObject1).next();
           }
         }
@@ -490,7 +489,7 @@ public class ArConfigInfo
         }
         if (str1.equalsIgnoreCase("End"))
         {
-          localArConfigInfo.aREnd = apfw.a(((XmlPullParser)localObject1).nextText());
+          localArConfigInfo.aREnd = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
           continue;
           return localObject1;
         }
@@ -995,7 +994,7 @@ public class ArConfigInfo
         if (!((String)localObject2).equalsIgnoreCase("Begin")) {
           break label2237;
         }
-        localArConfigInfo.aRCloudBegin = apfw.a(((XmlPullParser)localObject1).nextText());
+        localArConfigInfo.aRCloudBegin = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
       }
       label2237:
       while ((i != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Cloud"))) {
@@ -1006,7 +1005,7 @@ public class ArConfigInfo
           break;
           if (((String)localObject2).equalsIgnoreCase("End"))
           {
-            localArConfigInfo.aRCloudEnd = apfw.a(((XmlPullParser)localObject1).nextText());
+            localArConfigInfo.aRCloudEnd = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
           }
           else
           {
@@ -1176,7 +1175,7 @@ public class ArConfigInfo
     //   216: invokevirtual 563	java/io/BufferedOutputStream:flush	()V
     //   219: aload 8
     //   221: aload 7
-    //   223: invokestatic 569	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   223: invokestatic 568	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
     //   226: istore_3
     //   227: iload_3
     //   228: istore 4
@@ -1185,13 +1184,13 @@ public class ArConfigInfo
     //   235: aload_1
     //   236: ifnull +7 -> 243
     //   239: aload_1
-    //   240: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   240: invokevirtual 569	java/io/BufferedOutputStream:close	()V
     //   243: iload 4
     //   245: istore_3
     //   246: aload_2
     //   247: ifnull -155 -> 92
     //   250: aload_2
-    //   251: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   251: invokevirtual 570	java/io/FileOutputStream:close	()V
     //   254: iload 4
     //   256: ireturn
     //   257: astore_0
@@ -1215,13 +1214,13 @@ public class ArConfigInfo
     //   288: aload_1
     //   289: ifnull +7 -> 296
     //   292: aload_1
-    //   293: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   293: invokevirtual 569	java/io/BufferedOutputStream:close	()V
     //   296: iload 4
     //   298: istore_3
     //   299: aload_0
     //   300: ifnull -208 -> 92
     //   303: aload_0
-    //   304: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   304: invokevirtual 570	java/io/FileOutputStream:close	()V
     //   307: iconst_0
     //   308: ireturn
     //   309: astore_0
@@ -1243,11 +1242,11 @@ public class ArConfigInfo
     //   334: aload_1
     //   335: ifnull +7 -> 342
     //   338: aload_1
-    //   339: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   339: invokevirtual 569	java/io/BufferedOutputStream:close	()V
     //   342: aload_2
     //   343: ifnull +7 -> 350
     //   346: aload_2
-    //   347: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   347: invokevirtual 570	java/io/FileOutputStream:close	()V
     //   350: aload_0
     //   351: athrow
     //   352: astore_1

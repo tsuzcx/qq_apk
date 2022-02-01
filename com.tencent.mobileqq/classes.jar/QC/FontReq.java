@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class FontReq
   extends JceStruct
 {
-  public int fontID;
+  public int fontID = 0;
   
   public FontReq() {}
   

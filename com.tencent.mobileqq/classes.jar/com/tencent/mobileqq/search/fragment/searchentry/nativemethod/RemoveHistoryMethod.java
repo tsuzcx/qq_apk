@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
 import android.content.Context;
-import aodf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SearchWordHistoryManager;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
@@ -23,13 +23,13 @@ class RemoveHistoryMethod
   
   public void onCallBack(HippyMap paramHippyMap, Promise paramPromise)
   {
-    paramPromise = aodf.a().a();
+    paramPromise = SearchWordHistoryManager.a().a();
     int i = 0;
     while (i < paramPromise.size())
     {
       TKDSearchHistoryBean localTKDSearchHistoryBean = (TKDSearchHistoryBean)paramPromise.get(i);
       if ((localTKDSearchHistoryBean != null) && (localTKDSearchHistoryBean.getId() == paramHippyMap.getInt("id")) && (localTKDSearchHistoryBean.getFromWhere() == paramHippyMap.getInt("fromWhere"))) {
-        aodf.a().a(i);
+        SearchWordHistoryManager.a().a(i);
       }
       i += 1;
     }
@@ -37,7 +37,7 @@ class RemoveHistoryMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RemoveHistoryMethod
  * JD-Core Version:    0.7.0.1
  */

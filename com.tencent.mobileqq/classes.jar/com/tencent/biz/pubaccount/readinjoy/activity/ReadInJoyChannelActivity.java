@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -15,19 +14,42 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import bmhv;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyWebProcessManager;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJStatisticCollectorReport;
+import com.tencent.biz.pubaccount.readinjoy.dt.RIJDtParamBuilder;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.CodecReuseHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.CodecReuseHelper.Companion;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyScreenShotReporter;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.biz.pubaccount.readinjoy.viola.so.ViolaSoLoaderManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.so.ViolaSoLoaderManager.Companion;
+import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -35,48 +57,30 @@ import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
-import olh;
-import omx;
-import oqu;
-import oqv;
-import ote;
-import otf;
-import otg;
-import oth;
-import pkh;
-import pkp;
-import pqe;
-import pti;
-import pvj;
-import pvp;
-import pvu;
-import pws;
-import set;
-import seu;
-import six;
-import spg;
-import sqd;
-import sqp;
-import tbh;
-import tlx;
-import zfn;
 
 public class ReadInJoyChannelActivity
   extends IphoneTitleBarActivity
   implements Observer
 {
   protected long a;
+  protected ReadInJoyBaseViewController a;
   private MessageForStructing jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
   String jdField_a_of_type_JavaLangString = "";
-  public oqu a;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
+  
+  public ReadInJoyChannelActivity()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController = null;
+  }
   
   private void a(int paramInt)
   {
@@ -88,13 +92,13 @@ public class ReadInJoyChannelActivity
     if ((paramViewGroup == null) || (this.jdField_b_of_type_Boolean)) {
       return;
     }
-    paramViewGroup.setOnClickListener(new otg(this));
+    paramViewGroup.setOnClickListener(new ReadInJoyChannelActivity.5(this));
   }
   
   private void a(boolean paramBoolean)
   {
-    if ((a()) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Oqu != null) && (this.jdField_a_of_type_Oqu.a() != null) && ((this.jdField_a_of_type_Oqu instanceof oqv)) && (((oqv)this.jdField_a_of_type_Oqu).a() != null) && (((oqv)this.jdField_a_of_type_Oqu).a().size() > 0)) {
-      pqe.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_Oqu.a().a(), (BaseArticleInfo)((oqv)this.jdField_a_of_type_Oqu).a().get(0), paramBoolean);
+    if ((a()) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController instanceof ReadInJoyChannelViewController)) && (((ReadInJoyChannelViewController)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController).a() != null) && (((ReadInJoyChannelViewController)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController).a().size() > 0)) {
+      RIJStatisticCollectorReport.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a().a(), (BaseArticleInfo)((ReadInJoyChannelViewController)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController).a().get(0), paramBoolean);
     }
   }
   
@@ -111,12 +115,12 @@ public class ReadInJoyChannelActivity
   {
     VideoReport.addToDetectionWhitelist(this);
     VideoReport.setPageId(this, "118");
-    VideoReport.setPageParams(this, new pti().a(Integer.valueOf(paramInt)).a());
+    VideoReport.setPageParams(this, new RIJDtParamBuilder().a(Integer.valueOf(paramInt)).a());
   }
   
   private void b(ViewGroup paramViewGroup)
   {
-    if ((b()) && (bmhv.F(pkh.a()))) {
+    if ((b()) && (ReadInJoyHelper.F(ReadInJoyUtils.a()))) {
       c(paramViewGroup);
     }
   }
@@ -146,11 +150,11 @@ public class ReadInJoyChannelActivity
           this.jdField_b_of_type_Boolean = "1".equals(localHashMap.get("canDownRefresh"));
           bool2 = "1".equals(localHashMap.get("canUpRefresh"));
           bool1 = "1".equals(localHashMap.get("isImmersive"));
-          bmhv.b(Integer.valueOf((String)localHashMap.get("channelID")).intValue());
-          if (this.jdField_a_of_type_Oqu != null)
+          ReadInJoyHelper.b(Integer.valueOf((String)localHashMap.get("channelID")).intValue());
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController != null)
           {
-            ((oqv)this.jdField_a_of_type_Oqu).a(this.jdField_b_of_type_Boolean, bool2, bool1);
-            ((oqv)this.jdField_a_of_type_Oqu).i();
+            ((ReadInJoyChannelViewController)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController).a(this.jdField_b_of_type_Boolean, bool2, bool1);
+            ((ReadInJoyChannelViewController)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController).i();
           }
           QLog.d("IphoneTitleBarActivity", 1, new Object[] { "handlerDynamicParams mCanPullDownRefresh=", Boolean.valueOf(this.jdField_b_of_type_Boolean), " mCanPullUpRefresh=", Boolean.valueOf(bool2), " mChannelName=", this.jdField_a_of_type_JavaLangString });
           return;
@@ -170,11 +174,11 @@ public class ReadInJoyChannelActivity
   {
     if (paramViewGroup != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131560425, paramViewGroup, false);
+      ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131560503, paramViewGroup, false);
       paramViewGroup.addView(localViewGroup);
       d(localViewGroup);
-      olh.a(null, "", "0X8009337", "0X8009337", 0, 0, "", "", "", omx.c(), false);
-      localViewGroup.setOnClickListener(new oth(this));
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009337", "0X8009337", 0, 0, "", "", "", VideoReporter.c(), false);
+      localViewGroup.setOnClickListener(new ReadInJoyChannelActivity.9(this));
     }
   }
   
@@ -189,16 +193,16 @@ public class ReadInJoyChannelActivity
   
   private void d()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376226);
-    this.jdField_a_of_type_Oqu = new oqv(this);
-    ((oqv)this.jdField_a_of_type_Oqu).c(getIntent().getIntExtra("channel_from", -1));
-    this.jdField_a_of_type_Oqu.a(localViewGroup);
-    this.jdField_a_of_type_Oqu.a();
-    if ((b()) && ((this.jdField_a_of_type_Oqu instanceof oqv))) {
-      this.rightViewImg.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Oqu);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376619);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController = new ReadInJoyChannelViewController(this);
+    ((ReadInJoyChannelViewController)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController).c(getIntent().getIntExtra("channel_from", -1));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a(localViewGroup);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a();
+    if ((b()) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController instanceof ReadInJoyChannelViewController))) {
+      this.rightViewImg.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController);
     }
-    if ((ThemeUtil.isInNightMode(pkh.a())) && (this.titleRoot != null)) {
-      View.inflate(this, 2131560291, this.titleRoot);
+    if ((ThemeUtil.isInNightMode(ReadInJoyUtils.a())) && (this.titleRoot != null)) {
+      View.inflate(this, 2131560363, this.titleRoot);
     }
     e();
     b(localViewGroup);
@@ -206,25 +210,25 @@ public class ReadInJoyChannelActivity
   
   private void d(ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramViewGroup.findViewById(2131373872);
-    if (zfn.a(this))
+    paramViewGroup = (TextView)paramViewGroup.findViewById(2131374187);
+    if (WeishiGuideUtils.a(this))
     {
-      paramViewGroup.setText(anvx.a(2131712329));
+      paramViewGroup.setText(HardCodeUtil.a(2131712839));
       return;
     }
-    paramViewGroup.setText(anvx.a(2131712327));
+    paramViewGroup.setText(HardCodeUtil.a(2131712837));
   }
   
   private void e()
   {
     if (b()) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = pkp.b();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = WeishiReportUtil.b();
     }
   }
   
   private void f()
   {
-    this.jdField_a_of_type_Oqu.a(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a(true);
     ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.6(this));
   }
   
@@ -234,8 +238,8 @@ public class ReadInJoyChannelActivity
     {
       super.getWindow().addFlags(67108864);
       setImmersiveStatus();
-      this.titleRoot = ((RelativeLayout)findViewById(2131379112));
-      ImmersiveUtils.a(getWindow(), this.isClearCoverLayer);
+      this.titleRoot = ((RelativeLayout)findViewById(2131379546));
+      ImmersiveUtils.clearCoverForStatus(getWindow(), this.isClearCoverLayer);
       this.titleRoot.setFitsSystemWindows(false);
       this.titleRoot.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
       if (this.mSystemBarComp == null) {
@@ -245,7 +249,7 @@ public class ReadInJoyChannelActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label269;
       }
-      if ((SystemUtil.isMIUI()) || (SystemUtil.isFlyme())) {
+      if ((SystemUtil.b()) || (SystemUtil.d())) {
         break label248;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -254,9 +258,9 @@ public class ReadInJoyChannelActivity
     {
       this.centerView.setTextColor(-16777216);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849537);
+      this.leftView.setBackgroundResource(2130849916);
       if (c()) {
-        this.leftView.setText(anvx.a(2131712238));
+        this.leftView.setText(HardCodeUtil.a(2131712750));
       }
       this.vg.setBackgroundColor(-1);
       a(this.vg);
@@ -272,12 +276,12 @@ public class ReadInJoyChannelActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label269:
-      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!SystemUtil.isFlyme())
+      else if (!SystemUtil.d())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -307,8 +311,8 @@ public class ReadInJoyChannelActivity
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Oqu != null) {
-      this.jdField_a_of_type_Oqu.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a(paramInt1, paramInt2, paramIntent);
     }
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -316,10 +320,10 @@ public class ReadInJoyChannelActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    sqp.a().a(this);
-    this.jdField_a_of_type_Boolean = six.c();
+    VideoVolumeControl.a().a(this);
+    this.jdField_a_of_type_Boolean = VideoFeedsHelper.c();
     if (!this.jdField_a_of_type_Boolean) {
-      setTheme(2131755152);
+      setTheme(2131755154);
     }
     super.doOnCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 11) {
@@ -328,24 +332,24 @@ public class ReadInJoyChannelActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().addFlags(-2147483648);
     }
-    setContentView(2131560240);
+    setContentView(2131560312);
     int i = getIntent().getIntExtra("channel_id", -1);
-    tlx.b(i);
-    paramBundle = (pvp)this.app.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+    ReadInJoyGlobalReporter.c(i);
+    paramBundle = (ReadInJoyLogicManager)this.app.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
     ReadInJoyWebProcessManager.a(this.app);
-    setClickableTitle(getIntent().getStringExtra("channel_name"), new ote(this));
+    setClickableTitle(getIntent().getStringExtra("channel_name"), new ReadInJoyChannelActivity.1(this));
     d();
     if (b())
     {
       ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.2(this));
       this.jdField_b_of_type_Long = System.currentTimeMillis();
-      pkp.a(getIntent().getIntExtra("channel_from", 9), pkp.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pkp.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pkp.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pkp.a(this.jdField_b_of_type_Long));
+      WeishiReportUtil.a(getIntent().getIntExtra("channel_from", 9), WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.a(this.jdField_b_of_type_Long));
       if ((this.app != null) && (this.app.getMessageFacade() != null) && (!c())) {
         this.app.getMessageFacade().addObserver(this);
       }
-      pvu.b();
-      pvu.c();
-      set.a.a();
+      ViolaSoLoaderManager.a.a().a();
+      ReadInJoyWebRenderEngine.c();
+      CodecReuseHelper.a.a();
     }
     c();
     b(i);
@@ -355,17 +359,17 @@ public class ReadInJoyChannelActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    ((pvp)pkh.a().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).a().i(getIntent().getIntExtra("channel_id", 0));
+    ((ReadInJoyLogicManager)ReadInJoyUtils.a().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).a().i(getIntent().getIntExtra("channel_id", 0));
     this.jdField_a_of_type_Long = 0L;
-    if (this.jdField_a_of_type_Oqu != null) {
-      this.jdField_a_of_type_Oqu.d();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.d();
     }
-    sqp.a().b(this);
-    tbh.a(this).b();
+    VideoVolumeControl.a().b(this);
+    ReadInJoyScreenShotReporter.a(this).b();
     if (b())
     {
       ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.3(this));
-      pkp.a(getIntent().getIntExtra("channel_from", 9), pkp.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pkp.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pkp.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pkp.a(this.jdField_b_of_type_Long), this.jdField_b_of_type_Long, "");
+      WeishiReportUtil.a(getIntent().getIntExtra("channel_from", 9), WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.a(this.jdField_b_of_type_Long), this.jdField_b_of_type_Long, "");
       this.jdField_b_of_type_Long = -1L;
       if ((this.app != null) && (this.app.getMessageFacade() != null)) {
         this.app.getMessageFacade().deleteObserver(this);
@@ -376,47 +380,47 @@ public class ReadInJoyChannelActivity
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Oqu.g();
-    tbh.a(this).a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.g();
+    ReadInJoyScreenShotReporter.a(this).a();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
     a();
-    this.jdField_a_of_type_Oqu.h();
-    tbh.a(this).a(getIntent().getIntExtra("channel_type", 0), getIntent().getIntExtra("channel_id", 0));
-    if ((bmhv.l()) && (a())) {
-      pvj.a().a(56);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.h();
+    ReadInJoyScreenShotReporter.a(this).a(getIntent().getIntExtra("channel_type", 0), getIntent().getIntExtra("channel_id", 0));
+    if ((ReadInJoyHelper.m()) && (a())) {
+      ReadInJoyLogicEngine.a().a(56);
     }
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    bmhv.a(getAppRuntime());
-    this.jdField_a_of_type_Oqu.e();
+    ReadInJoyHelper.a(getAppRuntime());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.e();
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
-      ((FlingGestureHandler)this.mFlingHandler).mTopLayout.setOnFlingGesture(new otf(this));
+      ((FlingGestureHandler)this.mFlingHandler).mTopLayout.setOnFlingGesture(new ReadInJoyChannelActivity.4(this));
     }
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    sqp.a().a(false, "ReadInJoyChannelActivity doOnStop");
-    this.jdField_a_of_type_Oqu.f();
+    VideoVolumeControl.a().a(false, "ReadInJoyChannelActivity doOnStop");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.f();
   }
   
   public boolean onBackEvent()
   {
-    Object localObject = this.jdField_a_of_type_Oqu.a();
-    if ((localObject != null) && (((spg)localObject).a() != null))
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a();
+    if ((localObject != null) && (((VideoPlayManager)localObject).a() != null))
     {
-      localObject = ((spg)localObject).a();
-      if (((sqd)localObject).a())
+      localObject = ((VideoPlayManager)localObject).a();
+      if (((VideoUIManager)localObject).a())
       {
-        ((sqd)localObject).j();
+        ((VideoUIManager)localObject).j();
         return true;
       }
     }
@@ -437,7 +441,7 @@ public class ReadInJoyChannelActivity
     Object localObject = super.onCreateRightView();
     if (b())
     {
-      this.rightViewImg.setImageResource(2130842934);
+      this.rightViewImg.setImageResource(2130843089);
       this.rightViewImg.setVisibility(0);
       localObject = this.rightViewImg;
     }
@@ -449,7 +453,7 @@ public class ReadInJoyChannelActivity
     if ((paramObject instanceof MessageRecord))
     {
       paramObservable = (MessageRecord)paramObject;
-      if ((!paramObservable.isSendFromLocal()) && (!pws.a(paramObservable))) {
+      if ((!paramObservable.isSendFromLocal()) && (!WeishiManager.a(paramObservable))) {
         b();
       }
     }
@@ -457,7 +461,7 @@ public class ReadInJoyChannelActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity
  * JD-Core Version:    0.7.0.1
  */

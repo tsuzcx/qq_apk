@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bigg;
-
-public class WebViewWrapper$WebViewClientImpl$3
+class WebViewWrapper$WebViewClientImpl$3
   implements Runnable
 {
-  public WebViewWrapper$WebViewClientImpl$3(bigg parambigg, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  WebViewWrapper$WebViewClientImpl$3(WebViewWrapper.WebViewClientImpl paramWebViewClientImpl, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class WebViewWrapper$WebViewClientImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewWrapper.WebViewClientImpl.3
  * JD-Core Version:    0.7.0.1
  */

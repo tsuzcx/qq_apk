@@ -1,22 +1,14 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import android.text.TextUtils;
-import apap;
-import arbw;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import android.util.Log;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import common.config.service.QzoneConfig;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
+import org.json.JSONArray;
 
 class DesktopDataManager$16
   implements Runnable
@@ -25,53 +17,34 @@ class DesktopDataManager$16
   
   public void run()
   {
-    AppInterface localAppInterface = MiniAppUtils.getAppInterface();
-    if (localAppInterface == null)
-    {
-      QLog.e("DesktopDataManager", 1, "initLocalDataRunnable, app is null.");
-      return;
-    }
     try
     {
-      Object localObject2 = new DesktopDataManager.16.1(this, DesktopDataManager.access$2600(this.this$0, localAppInterface));
-      this.this$0.runOnMainThread((Runnable)localObject2);
-      localObject2 = localAppInterface.getEntityManagerFactory().createEntityManager().query(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
-      if ((localObject2 != null) && (((List)localObject2).size() > 0))
+      Object localObject1 = QzoneConfig.getInstance().getConfig("qqminiapp", "dropDownDefaultRecomendApps", "[{\"appId\":\"1108291530\",\"appName\":\"游戏中心\",\"icon\":\"https://miniapp.gtimg.cn/public/appicon/78bccc3685c866d1b1e3ba5a43f77b88_200.jpg\",\"type\":3},{\"appId\":\"1108805017\",\"appName\":\"世界争霸\",\"icon\":\"https://miniapp.gtimg.cn/public/appicon/4be819263a88be6a827855456bc32c50_200.jpg\",\"type\":3},{\"appId\":\"1109508198\",\"appName\":\"胡莱三国\",\"icon\":\"https://miniapp.gtimg.cn/public/appicon/91628b538edf7291c30c2d81814a9e79_200.jpg\",\"type\":3},{\"appId\":\"1109836759\",\"appName\":\"火柴人神射手\",\"icon\":\"https://miniapp.gtimg.cn/public/appicon/6ba3fba6b84d3e940da0822c32a4f630_200.jpg\",\"type\":3},{\"appId\":\"1109694952\",\"appName\":\"天天电音\",\"icon\":\"https://miniapp.gtimg.cn/public/appicon/9adccd998e1d81772fb7db6b80e2e6f2_200.jpg\",\"type\":3}]");
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new DesktopAppModuleInfo(2, "好友在玩"));
+      localObject1 = new JSONArray((String)localObject1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i = 0;
+      while (i < ((JSONArray)localObject1).length())
       {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          MiniAppRedDotEntity localMiniAppRedDotEntity = (MiniAppRedDotEntity)((Iterator)localObject2).next();
-          if ((localMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(localMiniAppRedDotEntity.appId))) {
-            DesktopDataManager.access$2800(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
-          }
-        }
+        Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+        localObject2 = MiniAppInfo.from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(GdtJsonPbUtil.a(new INTERFACE.StApiAppInfo(), localObject2)));
+        DesktopAppInfo localDesktopAppInfo = new DesktopAppInfo(2, (MiniAppInfo)localObject2);
+        ((DesktopAppInfo)localDesktopAppInfo).fromBackup = 1;
+        localArrayList.add(localDesktopAppInfo);
+        localStringBuilder.append(((MiniAppInfo)localObject2).name).append(", ");
+        i += 1;
       }
-      DesktopDataManager.access$2900(this.this$0);
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DesktopDataManager", 1, "initLocalDataRunnable error,", localThrowable);
+      if (localArrayList.size() > 0) {
+        this.this$0.runOnMainThread(new DesktopDataManager.16.1(this, localArrayList, localStringBuilder));
+      }
+      QLog.e("DesktopDataManager", 1, "useLocalDataIfRequestFailed, backupList size: " + localArrayList.size());
       return;
     }
-    Object localObject1 = (apap)localThrowable.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
-    if (localObject1 != null) {
-      ((apap)localObject1).c();
-    }
-    localObject1 = arbw.a("miniappgetpskeydomain", "qzone.qq.com");
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    catch (Exception localException)
     {
-      QLog.d("DesktopDataManager", 1, "getPskeyDomain : " + (String)localObject1);
-      localObject1 = ((String)localObject1).split(",");
-      if (localObject1.length > 0)
-      {
-        localObject1 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getPskey(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 16L, (String[])localObject1, new DesktopDataManager.16.2(this));
-        if ((localObject1 != null) && (!TextUtils.isEmpty(((Ticket)localObject1).getPSkey("qzone.qq.com")))) {
-          QLog.d("DesktopDataManager", 1, "pskey success.");
-        }
-      }
+      QLog.e("DesktopDataManager", 1, "useLocalDataIfRequestFailed, exception: " + Log.getStackTraceString(localException));
     }
-    DesktopDataManager.access$3002(this.this$0, true);
   }
 }
 

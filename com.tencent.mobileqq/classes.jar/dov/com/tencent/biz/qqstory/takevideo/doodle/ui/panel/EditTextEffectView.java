@@ -9,15 +9,13 @@ import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import aumj;
-import bogd;
-import boiu;
-import bpca;
-import bpcb;
-import bpcc;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
 import java.util.ArrayList;
@@ -25,7 +23,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import mqq.app.AppRuntime;
-import ykv;
 
 public class EditTextEffectView
   extends RecyclerView
@@ -35,29 +32,31 @@ public class EditTextEffectView
   public static final int b;
   public static final int c;
   public Handler a;
-  public LinearLayoutManager a;
-  aumj jdField_a_of_type_Aumj;
-  boiu jdField_a_of_type_Boiu = new bpca(this);
-  bpcb jdField_a_of_type_Bpcb = null;
+  LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+  OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
+  CaptureConfigUpdateObserver jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver = new EditTextEffectView.1(this);
+  EditTextEffectView.EditTextAdapter jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter = null;
   public Vector<DynamicTextConfigManager.DynamicTextConfigBean> a;
   public boolean a;
-  public int d = -1;
+  int d = -1;
   private int e;
   
   static
   {
     Resources localResources = BaseApplicationImpl.sApplication.getResources();
-    b = AIOUtils.dp2px(5.0F, localResources);
-    jdField_a_of_type_Int = AIOUtils.dp2px(5.0F, localResources);
-    c = AIOUtils.dp2px(3.0F, localResources);
+    b = AIOUtils.a(5.0F, localResources);
+    jdField_a_of_type_Int = AIOUtils.a(5.0F, localResources);
+    c = AIOUtils.a(3.0F, localResources);
   }
   
-  public EditTextEffectView(Context paramContext, aumj paramaumj)
+  public EditTextEffectView(Context paramContext, OnHolderItemClickListener paramOnHolderItemClickListener)
   {
     super(paramContext);
+    this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_Aumj = paramaumj;
+    this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
     setClipToPadding(false);
     b();
     a();
@@ -80,13 +79,13 @@ public class EditTextEffectView
   
   public int a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bpcb != null) && (this.jdField_a_of_type_Bpcb.a != null))
+    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a != null))
     {
-      int j = this.jdField_a_of_type_Bpcb.a.size();
+      int j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a.size();
       int i = 0;
       while (i < j)
       {
-        if (((DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bpcb.a.get(i)).text_id == paramInt) {
+        if (((DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a.get(i)).text_id == paramInt) {
           return i;
         }
         i += 1;
@@ -97,10 +96,10 @@ public class EditTextEffectView
   
   public DynamicTextConfigManager.DynamicTextConfigBean a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bpcb.a == null) {
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a == null) {
       return null;
     }
-    return (DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bpcb.a.get(paramInt);
+    return (DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a.get(paramInt);
   }
   
   public void a()
@@ -108,7 +107,7 @@ public class EditTextEffectView
     if (QLog.isColorLevel()) {
       QLog.d("EditTextEffectView", 2, "loadData");
     }
-    DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bogd.a(7);
+    DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)QIMManager.a(7);
     if (!localDynamicTextConfigManager.a()) {
       localDynamicTextConfigManager.a();
     }
@@ -116,8 +115,8 @@ public class EditTextEffectView
     ArrayList localArrayList = localDynamicTextConfigManager.a();
     localDynamicTextConfigManager.a(localArrayList, this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_JavaUtilVector.addAll(a(localArrayList));
-    this.jdField_a_of_type_Bpcb.a(this.jdField_a_of_type_JavaUtilVector);
-    this.jdField_a_of_type_Bpcb.notifyDataSetChanged();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a(this.jdField_a_of_type_JavaUtilVector);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.notifyDataSetChanged();
   }
   
   public void a(int paramInt)
@@ -125,20 +124,20 @@ public class EditTextEffectView
     if (paramInt == -1) {
       return;
     }
-    if ((this.jdField_a_of_type_Bpcb.a != null) && (paramInt < this.jdField_a_of_type_Bpcb.a.size()))
+    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a != null) && (paramInt < this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a.size()))
     {
-      this.d = ((DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bpcb.a.get(paramInt)).text_id;
+      this.d = ((DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter.a.get(paramInt)).text_id;
       int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildCount();
       int i = 0;
       label65:
-      bpcc localbpcc;
+      EditTextEffectView.EditTextHolder localEditTextHolder;
       if (i < j)
       {
-        localbpcc = (bpcc)getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildAt(i));
-        if (localbpcc.jdField_a_of_type_Int == paramInt) {
+        localEditTextHolder = (EditTextEffectView.EditTextHolder)getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildAt(i));
+        if (localEditTextHolder.jdField_a_of_type_Int == paramInt) {
           break label109;
         }
-        localbpcc.b(false);
+        localEditTextHolder.b(false);
       }
       for (;;)
       {
@@ -146,8 +145,8 @@ public class EditTextEffectView
         break label65;
         break;
         label109:
-        localbpcc.b(true);
-        ykv.a("video_edit_new", "text_element", this.e, 0, new String[] { "0", String.valueOf(this.d) });
+        localEditTextHolder.b(true);
+        StoryReportor.a("video_edit_new", "text_element", this.e, 0, new String[] { "0", String.valueOf(this.d) });
       }
     }
     QLog.e("EditTextEffectView", 1, "select position = " + paramInt + " no item");
@@ -160,8 +159,8 @@ public class EditTextEffectView
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext());
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
     setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Bpcb = new bpcb(this, this.jdField_a_of_type_Aumj);
-    setAdapter(this.jdField_a_of_type_Bpcb);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter = new EditTextEffectView.EditTextAdapter(this, this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener);
+    setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -180,17 +179,17 @@ public class EditTextEffectView
   {
     super.onAttachedToWindow();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-    this.jdField_a_of_type_Boiu = new boiu();
-    localAppRuntime.registObserver(this.jdField_a_of_type_Boiu);
+    this.jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver = new CaptureConfigUpdateObserver();
+    localAppRuntime.registObserver(this.jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver);
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    BaseApplicationImpl.getApplication().waitAppRuntime(null).unRegistObserver(this.jdField_a_of_type_Boiu);
+    BaseApplicationImpl.getApplication().waitAppRuntime(null).unRegistObserver(this.jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver);
   }
   
-  protected void onVisibilityChanged(View paramView, int paramInt)
+  public void onVisibilityChanged(View paramView, int paramInt)
   {
     if (paramInt == 0) {
       if (QLog.isColorLevel()) {
@@ -215,7 +214,7 @@ public class EditTextEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView
  * JD-Core Version:    0.7.0.1
  */

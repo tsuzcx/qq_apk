@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Scroller;
-import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
+import com.tencent.mobileqq.widget.OverScrollRecyclerView;
 
 public class SlideAndOverScrollRecyclerView
   extends OverScrollRecyclerView
@@ -89,7 +89,7 @@ public class SlideAndOverScrollRecyclerView
     return -1;
   }
   
-  public void c()
+  public void a()
   {
     if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewViewGroup.getScrollX() != 0)) {
       this.jdField_a_of_type_AndroidViewViewGroup.scrollTo(0, 0);
@@ -205,14 +205,14 @@ public class SlideAndOverScrollRecyclerView
         }
       }
     }
-    c();
+    a();
     d();
     return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.SlideAndOverScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

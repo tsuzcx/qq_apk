@@ -8,10 +8,10 @@ public final class TNowBroadcastInfo
   extends JceStruct
 {
   static byte[] cache_vAnchorDataRsp = (byte[])new byte[1];
-  public int iFlag;
+  public int iFlag = 0;
   public String strHrefURL = "";
   public String strIconURL = "";
-  public byte[] vAnchorDataRsp;
+  public byte[] vAnchorDataRsp = null;
   
   static
   {
@@ -52,7 +52,7 @@ public final class TNowBroadcastInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TNowBroadcastInfo
  * JD-Core Version:    0.7.0.1
  */

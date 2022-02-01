@@ -1,23 +1,19 @@
 package cooperation.qqcircle.utils;
 
-import com.tencent.biz.qcircleshadow.local.requests.QCircleGetFollowListRequest;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
+import com.tencent.mobileqq.qcircle.api.requests.QCircleGetFollowListRequest;
+import com.tencent.mobileqq.qcircle.api.utils.QCircleHostConfig;
+import cooperation.qqcircle.QCircleConfig;
 import cooperation.qqcircle.beans.Friend;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
-import vvv;
 
 public class QCircleDoubleFollowUserHepler
 {
@@ -50,44 +46,9 @@ public class QCircleDoubleFollowUserHepler
     return null;
   }
   
-  private ArrayList<RecentUser> convertRecentUser(List<Friend> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      paramList = (Friend)localIterator.next();
-      if (paramList != null)
-      {
-        if (QCircleCommonUtil.isFriend(String.valueOf(paramList.mUin))) {}
-        for (paramList = new RecentUser(String.valueOf(paramList.mUin), 0);; paramList = new RecentUser(String.valueOf(paramList.mUin), 10008))
-        {
-          localArrayList.add(paramList);
-          break;
-        }
-      }
-    }
-    if (localArrayList.size() > 0) {
-      return localArrayList;
-    }
-    return null;
-  }
-  
   private void doGetFollowUser(String paramString, long paramLong)
   {
     VSNetworkHelper.getInstance().sendRequest(new QCircleGetFollowListRequest(paramString, paramLong), new QCircleDoubleFollowUserHepler.1(this));
-  }
-  
-  private QQAppInterface getApp()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime == null) {
-      return null;
-    }
-    if (!(localAppRuntime instanceof QQAppInterface)) {
-      return null;
-    }
-    return (QQAppInterface)localAppRuntime;
   }
   
   public static QCircleDoubleFollowUserHepler getInstance()
@@ -119,7 +80,7 @@ public class QCircleDoubleFollowUserHepler
   
   public void doGetFollowUser()
   {
-    if (System.currentTimeMillis() - vvv.a() > QzoneConfig.getQQCircleGetFollowUserInternal())
+    if (System.currentTimeMillis() - QCircleHostConfig.getGetFollowUserTime() > QCircleConfig.getQQCircleGetFollowUserInternal())
     {
       this.mFriends_temp.clear();
       doGetFollowUser(null, 0L);
@@ -128,99 +89,52 @@ public class QCircleDoubleFollowUserHepler
   
   public ArrayList<Entity> getFollowUserList()
   {
-    Object localObject2 = null;
-    Object localObject1;
     if ((this.mFriends != null) && (this.mFriends.size() > 0)) {
-      localObject1 = convertQQFriends(this.mFriends);
+      return convertQQFriends(this.mFriends);
     }
-    do
+    if (this.mEm == null) {
+      this.mEm = QCircleServiceImpl.getEntityManager();
+    }
+    this.mFriends = this.mEm.query(Friend.class);
+    if (this.mFriends == null)
     {
-      QQAppInterface localQQAppInterface;
-      do
-      {
-        return localObject1;
-        localQQAppInterface = getApp();
-        localObject1 = localObject2;
-      } while (localQQAppInterface == null);
-      if (this.mEm == null) {
-        this.mEm = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      }
-      this.mFriends = this.mEm.query(Friend.class);
-      if (this.mFriends != null) {
-        break;
-      }
       this.mFriends = new ArrayList();
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.i("QCircleDoubleFollowUserHepler", 2, "there has no double friends");
-    return null;
+      if (RFLog.isColorLevel()) {
+        RFLog.i("QCircleDoubleFollowUserHepler", RFLog.CLR, "there has no double friends");
+      }
+      return null;
+    }
     return convertQQFriends(this.mFriends);
-  }
-  
-  public ArrayList<RecentUser> getFollowUserListToRecentUser()
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((this.mFriends != null) && (this.mFriends.size() > 0)) {
-      localObject1 = convertRecentUser(this.mFriends);
-    }
-    do
-    {
-      QQAppInterface localQQAppInterface;
-      do
-      {
-        return localObject1;
-        localQQAppInterface = getApp();
-        localObject1 = localObject2;
-      } while (localQQAppInterface == null);
-      if (this.mEm == null) {
-        this.mEm = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      }
-      this.mFriends = this.mEm.query(Friend.class);
-      if (this.mFriends != null) {
-        break;
-      }
-      this.mFriends = new ArrayList();
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.i("QCircleDoubleFollowUserHepler", 2, "there has no double friends");
-    return null;
-    return convertRecentUser(this.mFriends);
   }
   
   public void updateFollowUser(String paramString1, String paramString2, boolean paramBoolean)
   {
     long l;
-    QQAppInterface localQQAppInterface;
+    Friend localFriend;
     try
     {
       l = Long.parseLong(paramString1);
-      localQQAppInterface = getApp();
-      if (localQQAppInterface == null) {
+      if (!paramBoolean)
+      {
+        paramString2 = this.mFriends.iterator();
+        while (paramString2.hasNext())
+        {
+          localFriend = (Friend)paramString2.next();
+          if ((localFriend != null) && (localFriend.mUin == l))
+          {
+            this.mFriends.remove(localFriend);
+            if (this.mEm == null) {
+              this.mEm = QCircleServiceImpl.getEntityManager();
+            }
+            ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.3(this, paramString1), 32, null, true);
+          }
+        }
         return;
       }
     }
     catch (Exception paramString1)
     {
-      QLog.e("QCircleDoubleFollowUserHepler", 1, paramString1, new Object[0]);
-      return;
-    }
-    Friend localFriend;
-    if (!paramBoolean)
-    {
-      paramString2 = this.mFriends.iterator();
-      do
-      {
-        if (!paramString2.hasNext()) {
-          break;
-        }
-        localFriend = (Friend)paramString2.next();
-      } while ((localFriend == null) || (localFriend.mUin != l));
-      this.mFriends.remove(localFriend);
-      if (this.mEm == null) {
-        this.mEm = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      }
-      ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.3(this, paramString1), 32, null, true);
+      RFLog.e("QCircleDoubleFollowUserHepler", RFLog.USR, new Object[] { paramString1 });
       return;
     }
     paramString1 = this.mFriends.iterator();
@@ -234,31 +148,28 @@ public class QCircleDoubleFollowUserHepler
     paramString1 = new Friend(l, paramString2);
     this.mFriends.add(paramString1);
     if (this.mEm == null) {
-      this.mEm = localQQAppInterface.getEntityManagerFactory().createEntityManager();
+      this.mEm = QCircleServiceImpl.getEntityManager();
     }
     ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.4(this, paramString1), 32, null, true);
   }
   
   public void updateFollowUserList(List<Friend> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleDoubleFollowUserHepler", 2, "updateRenameList");
+    if (RFLog.isColorLevel()) {
+      RFLog.d("QCircleDoubleFollowUserHepler", RFLog.CLR, "updateRenameList");
     }
-    QQAppInterface localQQAppInterface = getApp();
-    if (localQQAppInterface == null) {}
-    do
-    {
+    if (this.mEm == null) {
+      this.mEm = QCircleServiceImpl.getEntityManager();
+    }
+    if ((paramList == null) || (paramList.size() == 0)) {
       return;
-      if (this.mEm == null) {
-        this.mEm = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      }
-    } while ((paramList == null) || (paramList.size() == 0));
+    }
     ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.2(this, paramList), 32, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.utils.QCircleDoubleFollowUserHepler
  * JD-Core Version:    0.7.0.1
  */

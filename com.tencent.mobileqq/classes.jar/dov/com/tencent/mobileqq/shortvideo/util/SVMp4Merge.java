@@ -6,7 +6,7 @@ import java.util.List;
 public class SVMp4Merge
 {
   public static int a = 2;
-  public static int b;
+  public static int b = 0;
   
   public static int a(List<String> paramList, String paramString)
   {
@@ -76,7 +76,7 @@ public class SVMp4Merge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.SVMp4Merge
  * JD-Core Version:    0.7.0.1
  */

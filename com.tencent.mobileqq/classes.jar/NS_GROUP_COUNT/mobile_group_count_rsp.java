@@ -15,11 +15,11 @@ public final class mobile_group_count_rsp
 {
   static Map<String, String> cache_extendinfo;
   static ArrayList<Long> cache_vecUinList;
-  public Map<String, String> extendinfo;
-  public int iNextTimeout;
-  public int iShowRedPoint;
-  public long stCount;
-  public ArrayList<Long> vecUinList;
+  public Map<String, String> extendinfo = null;
+  public int iNextTimeout = 0;
+  public int iShowRedPoint = 0;
+  public long stCount = 0L;
+  public ArrayList<Long> vecUinList = null;
   
   static
   {

@@ -11,19 +11,19 @@ class QfileBaseLocalFileTabView$9
   {
     if (this.this$0.a != null)
     {
-      this.this$0.a.a(this.a);
+      this.this$0.a.expandGroup(this.a);
       if (this.b - 2 >= 0) {}
     }
     else
     {
       return;
     }
-    this.this$0.a.a(this.a, this.b - 2, true);
+    this.this$0.a.setSelectedChild(this.a, this.b - 2, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.9
  * JD-Core Version:    0.7.0.1
  */

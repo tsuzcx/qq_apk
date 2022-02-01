@@ -1,13 +1,16 @@
 package com.tencent.qqlive.module.videoreport.report.scroll;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.collect.DefaultEventListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
+import com.tencent.qqlive.module.videoreport.utils.ReportUtils;
 
 public class ScrollableViewObserver
   extends DefaultEventListener
@@ -15,6 +18,7 @@ public class ScrollableViewObserver
   private static final String TAG = "ScrollableViewObserver";
   private Handler mHandler = new Handler(Looper.getMainLooper());
   private ScrollableViewObserver.PendingTask mPendingTask = new ScrollableViewObserver.PendingTask(null);
+  private boolean mRecyclerViewTipsToasted = false;
   private ScrollableViewObserver.ScrollableHelper mScrollableHelper = new ScrollableViewObserver.ScrollableHelper(null);
   
   private ScrollableViewObserver()
@@ -42,6 +46,17 @@ public class ScrollableViewObserver
     return !this.mScrollableHelper.isScrolling();
   }
   
+  private void remindRecyclerViewVersionOld(View paramView)
+  {
+    paramView = paramView.getContext().getString(2131718503);
+    if (!this.mRecyclerViewTipsToasted)
+    {
+      this.mRecyclerViewTipsToasted = true;
+      Toast.makeText(ReportUtils.getContext(), paramView, 1).show();
+    }
+    Log.e("ScrollableViewObserver", paramView);
+  }
+  
   public void onViewReused(ViewGroup paramViewGroup, View paramView, long paramLong)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
@@ -50,12 +65,11 @@ public class ScrollableViewObserver
     if (paramViewGroup == null)
     {
       if (VideoReportInner.getInstance().isDebugMode()) {
-        throw new UnsupportedClassVersionError("RecyclerView.ViewHolder 23 版本以下获取不到所对应RecyclerView对象，请升级RecyclerView版本");
+        remindRecyclerViewVersionOld(paramView);
       }
+      return;
     }
-    else {
-      handleNotify(paramViewGroup);
-    }
+    handleNotify(paramViewGroup);
   }
 }
 

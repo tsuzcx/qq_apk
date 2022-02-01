@@ -10,12 +10,12 @@ class C2CMessageManager$2$1
   
   public void run()
   {
-    QQToast.a(this.a.a, 2131697440, 0).b(this.a.a.getTitleBarHeight());
+    QQToast.a(this.a.a, 2131697694, 0).b(this.a.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManager.2.1
  * JD-Core Version:    0.7.0.1
  */

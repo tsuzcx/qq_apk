@@ -8,6 +8,7 @@ import java.lang.ref.WeakReference;
 
 public class ExposureElementInfo
 {
+  private boolean mCanReport = true;
   private FinalData mFinalData;
   private String mIdentifier;
   private WeakReference<Object> mPage;
@@ -21,6 +22,11 @@ public class ExposureElementInfo
     setView(paramView);
     setPage(paramObject);
     setFinalData(paramFinalData);
+  }
+  
+  public boolean canReport()
+  {
+    return this.mCanReport;
   }
   
   public FinalData getFinalData()
@@ -54,6 +60,11 @@ public class ExposureElementInfo
       return (View)this.mView.get();
     }
     return null;
+  }
+  
+  public void setCanReport(boolean paramBoolean)
+  {
+    this.mCanReport = paramBoolean;
   }
   
   public void setFinalData(FinalData paramFinalData)

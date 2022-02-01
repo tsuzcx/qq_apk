@@ -7,14 +7,14 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import bieo;
-import bmgo;
 import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebBackForwardList;
 import com.tencent.smtt.sdk.WebHistoryItem;
 import com.tencent.smtt.sdk.WebView;
+import cooperation.qqreader.utils.ReaderUrlHelper;
 
 public class ReaderCommentPageFragment
   extends ReaderBaseFragment
@@ -22,7 +22,7 @@ public class ReaderCommentPageFragment
   private static String b = "";
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  private String jdField_a_of_type_JavaLangString = null;
   
   public static WebViewFragment a(Intent paramIntent)
   {
@@ -44,7 +44,7 @@ public class ReaderCommentPageFragment
     if (!TextUtils.isEmpty(paramString)) {
       str2 = str1 + "&commentId=" + paramString;
     }
-    return bmgo.a("qqreaderComment") + "&id=" + paramLong + str2;
+    return ReaderUrlHelper.a("qqreaderComment") + "&id=" + paramLong + str2;
   }
   
   private static String a(Intent paramIntent)
@@ -67,7 +67,7 @@ public class ReaderCommentPageFragment
     }
     for (;;)
     {
-      str = bmgo.a("qqreaderReadover") + "&recommend_bid=" + l1;
+      str = ReaderUrlHelper.a("qqreaderReadover") + "&recommend_bid=" + l1;
       paramIntent = a(i, paramIntent, l2);
       if (bool2)
       {
@@ -135,9 +135,9 @@ public class ReaderCommentPageFragment
     {
       getActivity().finish();
       return;
-      getActivity().overridePendingTransition(0, 2130772254);
+      getActivity().overridePendingTransition(0, 2130772268);
       continue;
-      getActivity().overridePendingTransition(0, 2130772252);
+      getActivity().overridePendingTransition(0, 2130772266);
     }
   }
   
@@ -164,39 +164,39 @@ public class ReaderCommentPageFragment
     super.initTitleBar(paramIntent, paramString);
     if ("readmenu".equals(this.jdField_a_of_type_JavaLangString))
     {
-      this.mSwiftTitleUI.leftView.setVisibility(8);
-      this.mSwiftTitleUI.rightViewText.setVisibility(0);
-      this.mSwiftTitleUI.rightViewText.setText("关闭");
-      this.mSwiftTitleUI.rightViewText.setTypeface(Typeface.DEFAULT_BOLD);
+      this.mSwiftTitleUI.a.setVisibility(8);
+      this.mSwiftTitleUI.c.setVisibility(0);
+      this.mSwiftTitleUI.c.setText("关闭");
+      this.mSwiftTitleUI.c.setTypeface(Typeface.DEFAULT_BOLD);
     }
     do
     {
       return;
       if (("readover".equals(this.jdField_a_of_type_JavaLangString)) || ("chaptercomment".equals(this.jdField_a_of_type_JavaLangString)))
       {
-        this.mSwiftTitleUI.leftView.setVisibility(0);
-        this.mSwiftTitleUI.rightViewText.setText("");
-        this.mSwiftTitleUI.rightViewText.setVisibility(8);
+        this.mSwiftTitleUI.a.setVisibility(0);
+        this.mSwiftTitleUI.c.setText("");
+        this.mSwiftTitleUI.c.setVisibility(8);
         return;
       }
     } while (!"chapterover".equals(this.jdField_a_of_type_JavaLangString));
-    this.mSwiftTitleUI.leftView.setVisibility(0);
-    this.mSwiftTitleUI.centerView.setText("章节评论");
-    this.mSwiftTitleUI.rightViewText.setVisibility(0);
-    this.mSwiftTitleUI.rightViewText.setText("书友交流");
-    this.mSwiftTitleUI.rightViewText.setTypeface(Typeface.DEFAULT_BOLD);
+    this.mSwiftTitleUI.a.setVisibility(0);
+    this.mSwiftTitleUI.b.setText("章节评论");
+    this.mSwiftTitleUI.c.setVisibility(0);
+    this.mSwiftTitleUI.c.setText("书友交流");
+    this.mSwiftTitleUI.c.setTypeface(Typeface.DEFAULT_BOLD);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.mSwiftTitleUI.leftView) {
+    if (paramView == this.mSwiftTitleUI.a) {
       b();
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView == this.mSwiftTitleUI.rightViewText)
+      if (paramView == this.mSwiftTitleUI.c)
       {
         if ("chapterover".equals(this.jdField_a_of_type_JavaLangString))
         {
@@ -240,13 +240,13 @@ public class ReaderCommentPageFragment
   {
     super.onReceivedTitle(paramWebView, paramString);
     if ("chapterover".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.mSwiftTitleUI.centerView.setText("章节评论");
+      this.mSwiftTitleUI.b.setText("章节评论");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderCommentPageFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.guide;
 
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class NearbyGuideActivity$11
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyGuideActivity$11
   
   public void run()
   {
-    bdla.b(this.this$0.app, "CliOper", "", "", this.a, this.a, 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.app, "CliOper", "", "", this.a, this.a, 0, 0, "", "", "", "");
   }
 }
 

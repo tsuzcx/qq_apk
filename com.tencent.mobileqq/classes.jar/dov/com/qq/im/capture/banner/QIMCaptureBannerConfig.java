@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.banner;
 
 import android.text.TextUtils;
-import aqcn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.ArMapUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public class QIMCaptureBannerConfig
   public long mBeginTime;
   public long mEndTime;
   public String mJumpUrl;
-  public Map<Integer, Object> mNewUserTipsItems = new LinkedHashMap();
+  public Map<Integer, QIMCaptureBannerConfig.NewUserTipsItem> mNewUserTipsItems = new LinkedHashMap();
   public QIMCaptureBannerConfig.RedDotItem mRedDotItem;
   public transient boolean update = false;
   
@@ -253,8 +253,8 @@ public class QIMCaptureBannerConfig
         }
         bool = true;
         paramQIMCaptureBannerConfig.mBannerEnable = bool;
-        paramQIMCaptureBannerConfig.mBeginTime = aqcn.b(((JSONObject)localObject2).optString("begin_time"));
-        paramQIMCaptureBannerConfig.mEndTime = aqcn.b(((JSONObject)localObject2).optString("end_time"));
+        paramQIMCaptureBannerConfig.mBeginTime = ArMapUtil.b(((JSONObject)localObject2).optString("begin_time"));
+        paramQIMCaptureBannerConfig.mEndTime = ArMapUtil.b(((JSONObject)localObject2).optString("end_time"));
         paramQIMCaptureBannerConfig.mJumpUrl = ((JSONObject)localObject2).optString("jmp_url");
         paramString = ((JSONObject)localObject2).optJSONObject("red_point");
         if (paramString == null)
@@ -280,8 +280,8 @@ public class QIMCaptureBannerConfig
           str1 = ((JSONObject)localObject3).optString("wording");
           str2 = ((JSONObject)localObject3).optString("img_md5");
           str3 = ((JSONObject)localObject3).optString("jmp_url");
-          l1 = aqcn.b(((JSONObject)localObject3).optString("begin_time"));
-          l2 = aqcn.b(((JSONObject)localObject3).optString("end_time"));
+          l1 = ArMapUtil.b(((JSONObject)localObject3).optString("begin_time"));
+          l2 = ArMapUtil.b(((JSONObject)localObject3).optString("end_time"));
           if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str3)) || (l1 < 0L) || (l2 < 0L)) {
             break label794;
           }
@@ -432,7 +432,7 @@ public class QIMCaptureBannerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.banner.QIMCaptureBannerConfig
  * JD-Core Version:    0.7.0.1
  */

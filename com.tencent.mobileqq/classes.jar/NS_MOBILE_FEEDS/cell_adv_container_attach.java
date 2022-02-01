@@ -8,10 +8,10 @@ public final class cell_adv_container_attach
   extends JceStruct
 {
   static s_picdata cache_picinfo = new s_picdata();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public int is_report;
-  public s_picdata picinfo;
+  public int is_report = 0;
+  public s_picdata picinfo = null;
   public String remark = "";
   public String report_url = "";
   

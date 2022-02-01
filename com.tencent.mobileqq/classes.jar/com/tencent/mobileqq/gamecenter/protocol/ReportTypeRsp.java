@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ReportTypeRsp
   extends JceStruct
 {
-  public int ret_code;
+  public int ret_code = 0;
   public String ret_msg = "ok";
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -26,7 +26,7 @@ public final class ReportTypeRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.protocol.ReportTypeRsp
  * JD-Core Version:    0.7.0.1
  */

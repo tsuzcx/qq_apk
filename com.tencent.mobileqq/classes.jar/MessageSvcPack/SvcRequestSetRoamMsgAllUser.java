@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestSetRoamMsgAllUser
   extends JceStruct
 {
-  public byte cValue;
-  public byte cVerifyType;
-  public long lUin;
-  public short shType;
+  public byte cValue = 0;
+  public byte cVerifyType = 0;
+  public long lUin = 0L;
+  public short shType = 0;
   
   public SvcRequestSetRoamMsgAllUser() {}
   

@@ -8,11 +8,11 @@ public final class GroupInfo
   extends JceStruct
   implements Cloneable
 {
-  public long lGroupCode;
-  public long lGroupSeq;
-  public long lMask;
-  public long lMemberSeq;
-  public long lRedPackTime;
+  public long lGroupCode = 0L;
+  public long lGroupSeq = 0L;
+  public long lMask = 0L;
+  public long lMemberSeq = 0L;
+  public long lRedPackTime = 0L;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

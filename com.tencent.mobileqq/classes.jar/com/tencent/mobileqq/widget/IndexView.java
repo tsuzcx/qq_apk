@@ -11,8 +11,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bipq;
-import bipr;
 import com.tencent.qphone.base.util.QLog;
 
 public class IndexView
@@ -21,17 +19,17 @@ public class IndexView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private bipq jdField_a_of_type_Bipq;
-  private bipr jdField_a_of_type_Bipr;
-  private boolean jdField_a_of_type_Boolean;
+  private IndexView.OnIndexChangedListener2 jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 = null;
+  private IndexView.OnIndexChangedListener jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener = null;
+  private boolean jdField_a_of_type_Boolean = false;
   private int[] jdField_a_of_type_ArrayOfInt;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private boolean jdField_b_of_type_Boolean;
   private int[] jdField_b_of_type_ArrayOfInt;
-  private boolean c;
-  private boolean d;
+  private boolean c = false;
+  private boolean d = false;
   
   public IndexView(Context paramContext)
   {
@@ -264,7 +262,7 @@ public class IndexView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     a();
   }
@@ -321,7 +319,7 @@ public class IndexView
           break label425;
         }
         f2 = paramMotionEvent.getY();
-        if ((this.jdField_a_of_type_Bipq == null) || (f2 < 0.0F)) {
+        if ((this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener == null) || (f2 < 0.0F)) {
           break label419;
         }
         i = getHeight() - getPaddingTop() - getPaddingBottom();
@@ -380,9 +378,9 @@ public class IndexView
       if (i >= this.jdField_a_of_type_ArrayOfInt.length) {
         j = this.jdField_a_of_type_ArrayOfInt.length - 1;
       }
-      this.jdField_a_of_type_Bipq.a(this.jdField_a_of_type_ArrayOfJavaLangString[j]);
-      if (this.jdField_a_of_type_Bipr != null) {
-        this.jdField_a_of_type_Bipr.a(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener.a(this.jdField_a_of_type_ArrayOfJavaLangString[j]);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2.a(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
       }
       bool = true;
       do
@@ -398,12 +396,12 @@ public class IndexView
     if ("$".equals(paramArrayOfString[0]))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840488);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840625);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
     if (this.c)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840487);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840624);
       this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     }
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
@@ -486,19 +484,19 @@ public class IndexView
     }
   }
   
-  public void setOnIndexChangedListener(bipq parambipq)
+  public void setOnIndexChangedListener(IndexView.OnIndexChangedListener paramOnIndexChangedListener)
   {
-    this.jdField_a_of_type_Bipq = parambipq;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener = paramOnIndexChangedListener;
   }
   
-  public void setOnIndexChangedListener2(bipr parambipr)
+  public void setOnIndexChangedListener2(IndexView.OnIndexChangedListener2 paramOnIndexChangedListener2)
   {
-    this.jdField_a_of_type_Bipr = parambipr;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 = paramOnIndexChangedListener2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IndexView
  * JD-Core Version:    0.7.0.1
  */

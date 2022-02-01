@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class FocusMpIdRsp
   extends JceStruct
 {
-  public int err_code;
+  public int err_code = 0;
   
   public FocusMpIdRsp() {}
   

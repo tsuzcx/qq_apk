@@ -10,12 +10,12 @@ public class PortalManager$RedPacketConfig
   public ArrayList<PortalManager.ComboNumber> comboNumberConfigs = new ArrayList();
   public long grebInterval = -1L;
   public int id;
-  public long lastGrabTime;
+  public long lastGrabTime = 0L;
   public ArrayList<PortalManager.PortalConfig> portalConfigs = new ArrayList();
   public long reportActiveInterval = -1L;
   public long reportNormalInterval = -1L;
   public int shareBaseLine;
-  public long showGesturesTime;
+  public long showGesturesTime = 0L;
   public int taskId;
   public int version;
   

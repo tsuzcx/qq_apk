@@ -63,10 +63,10 @@ public class MiniLoadingAdManager
   
   private static void checkCacheFolder()
   {
-    if (FileUtils.getFileOrFolderSize(MiniAppFileManager.getLoadingAdCacheFolder()) > maxAdCachedSize)
+    if (FileUtils.b(MiniAppFileManager.getLoadingAdCacheFolder()) > maxAdCachedSize)
     {
       QLog.d("MiniLoadingAdManager", 1, "checkCacheFolder size > maxAdCachedSize ");
-      FileUtils.deleteFilesInDirectory(MiniAppFileManager.getLoadingAdCacheFolder());
+      FileUtils.b(MiniAppFileManager.getLoadingAdCacheFolder());
     }
   }
   

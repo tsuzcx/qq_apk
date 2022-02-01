@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
-import anaj;
 import com.tencent.mobileqq.apollo.process.ui.framework.FrameworkView;
+import com.tencent.mobileqq.apollo.process.ui.framework.FrameworkViewFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloGameActivity$1
@@ -15,18 +15,18 @@ class ApolloGameActivity$1
     try
     {
       ApolloGameActivity.a(this.this$0).g();
-      ApolloGameActivity.a(this.this$0, anaj.a(this.this$0, ApolloGameActivity.a(this.this$0), ApolloGameActivity.a(this.this$0), this.this$0, ApolloGameActivity.a(this.this$0)));
+      ApolloGameActivity.a(this.this$0, FrameworkViewFactory.a(this.this$0, ApolloGameActivity.a(this.this$0), ApolloGameActivity.a(this.this$0), this.this$0, ApolloGameActivity.a(this.this$0)));
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e(this.this$0.b, 1, localThrowable, new Object[0]);
+      QLog.e(this.this$0.a, 1, localThrowable, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGameActivity.1
  * JD-Core Version:    0.7.0.1
  */

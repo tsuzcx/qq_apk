@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.confess;
 
 import android.text.TextUtils;
-import aqmz;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.campuscircle.CampusCircleIpcClient;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -23,7 +23,7 @@ class ConfessPlugin$6
     do
     {
       return;
-      localObject = aqmz.a().a(str);
+      localObject = CampusCircleIpcClient.a().a(str);
       ThreadManager.getUIHandler().post(new ConfessPlugin.6.2(this));
       if ((localObject == null) || (localObject.length != 3)) {
         break;
@@ -49,7 +49,7 @@ class ConfessPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.6
  * JD-Core Version:    0.7.0.1
  */

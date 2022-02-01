@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atht;
-import atni;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
 
-public class FileTransferHandler$5
+class FileTransferHandler$5
   implements Runnable
 {
   public void run()

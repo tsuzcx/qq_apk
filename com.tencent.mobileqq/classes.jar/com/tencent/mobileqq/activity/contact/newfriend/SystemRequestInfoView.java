@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ajbe;
-import ajbf;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,23 +9,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import anyz;
-import aooy;
-import bdla;
-import bdzx;
-import bisl;
 import com.tencent.mobileqq.activity.AddRequestActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -46,10 +44,10 @@ public class SystemRequestInfoView
   public long a;
   private Intent jdField_a_of_type_AndroidContentIntent;
   Button jdField_a_of_type_AndroidWidgetButton;
-  private anyz jdField_a_of_type_Anyz = new ajbe(this);
-  public bisl a;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new SystemRequestInfoView.1(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   public String a;
   private structmsg.StructMsg jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
   byte[] jdField_a_of_type_ArrayOfByte;
@@ -72,38 +70,38 @@ public class SystemRequestInfoView
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131299080);
+    return getResources().getDimensionPixelSize(2131299166);
   }
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bisl == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
-      this.jdField_a_of_type_Bisl = new bisl(getContext(), a());
-      this.jdField_a_of_type_Bisl.setOnDismissListener(new ajbf(this));
-      this.jdField_a_of_type_Bisl.c(paramInt);
-      this.jdField_a_of_type_Bisl.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bisl.setCancelable(false);
-      this.jdField_a_of_type_Bisl.show();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getContext(), a());
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new SystemRequestInfoView.2(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
   }
   
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Bisl != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
     {
       bool = true;
-      this.jdField_a_of_type_Bisl.cancel();
-      this.jdField_a_of_type_Bisl = null;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
     }
     return bool;
   }
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetSupport(getContext())) {
-      QQToast.a(getContext(), getResources().getString(2131694253), 0).b(a());
+    if (!NetworkUtil.d(getContext())) {
+      QQToast.a(getContext(), getResources().getString(2131694457), 0).b(a());
     }
     label868:
     for (;;)
@@ -119,7 +117,7 @@ public class SystemRequestInfoView
           ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).confirmContactFriend(0, Long.parseLong(this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, (byte)0, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Long, this.jdField_b_of_type_Long);
           i = 1;
           label115:
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673B", "0X800673B", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673B", "0X800673B", 0, 0, "", "", "", "");
         }
       }
       for (;;)
@@ -127,10 +125,10 @@ public class SystemRequestInfoView
         if (i == 0) {
           break label868;
         }
-        a(2131718527);
+        a(2131719050);
         break;
-        long l1 = bdzx.a().b();
-        Object localObject1 = bdzx.a().a(Long.valueOf(l1));
+        long l1 = FriendSystemMsgController.a().b();
+        Object localObject1 = FriendSystemMsgController.a().a(Long.valueOf(l1));
         long l2;
         int m;
         int n;
@@ -171,8 +169,8 @@ public class SystemRequestInfoView
         break label115;
         if (paramView == this.jdField_b_of_type_AndroidWidgetButton)
         {
-          l1 = bdzx.a().b();
-          this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = bdzx.a().a(Long.valueOf(l1));
+          l1 = FriendSystemMsgController.a().b();
+          this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = FriendSystemMsgController.a().a(Long.valueOf(l1));
           if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null)
           {
             i = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get();
@@ -191,7 +189,7 @@ public class SystemRequestInfoView
           }
           for (;;)
           {
-            bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673A", "0X800673A", 0, 0, "", "", "", "");
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673A", "0X800673A", 0, 0, "", "", "", "");
             break;
             localObject2 = new StringBuilder().append("refuse, ");
             if (localObject1 != null) {}
@@ -211,7 +209,7 @@ public class SystemRequestInfoView
           localObject1 = new Intent(this.jdField_a_of_type_AndroidContentIntent);
           ((Intent)localObject1).setClass(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AddRequestActivity.class);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult((Intent)localObject1, 1018);
-          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673D", "0X800673D", 0, 0, "", "", "", "");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673D", "0X800673D", 0, 0, "", "", "", "");
           i = k;
         }
       }
@@ -225,7 +223,7 @@ public class SystemRequestInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView
  * JD-Core Version:    0.7.0.1
  */

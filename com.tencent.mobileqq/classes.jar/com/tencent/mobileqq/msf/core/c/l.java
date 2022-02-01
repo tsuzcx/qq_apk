@@ -1,78 +1,58 @@
 package com.tencent.mobileqq.msf.core.c;
 
-import android.os.SystemClock;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.feedback.eup.CrashHandleListener;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.i;
+import java.util.concurrent.LinkedBlockingDeque;
 
-final class l
-  extends Thread
+class l
+  implements CrashHandleListener
 {
-  long a = 0L;
-  long b = 0L;
-  final long c = 5000L;
-  final long d = 1000L;
+  l(j paramj) {}
   
-  l(String paramString)
+  public byte[] getCrashExtraData(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
-    super(paramString);
+    return null;
   }
   
-  public void run()
+  public String getCrashExtraMessage(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
-    for (;;)
+    QLog.d("MSF.C.StatReport", 1, "getCrashExtraMessage...isNativeCrashed: " + paramBoolean + " crashType=" + paramString1 + " crashAddress=" + paramString2 + " crashStack=" + paramString3 + " native_SICODE=" + paramInt + " crashTime=" + paramLong);
+    QLog.flushLog(true);
+    if (paramString1.contains("OutOfMemory"))
     {
-      this.a = SystemClock.elapsedRealtime();
-      synchronized (k.n())
-      {
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.StatReport", 2, "try wait to report");
-          }
-          k.n().wait(5000L);
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-        this.b = SystemClock.elapsedRealtime();
-        if (this.b - this.a <= 6000L) {
-          break label241;
-        }
-        ??? = k.o().entrySet().iterator();
-        for (;;)
-        {
-          if (((Iterator)???).hasNext()) {
-            try
-            {
-              Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
-              if ((localEntry != null) && (this.b - ((Long)localEntry.getKey()).longValue() > k.p())) {
-                ((Iterator)???).remove();
-              }
-            }
-            catch (Exception localException)
-            {
-              localException.printStackTrace();
-            }
-          }
-        }
-      }
-      k.o().put(Long.valueOf(this.a), Long.valueOf(this.b));
-      k.b(true);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MSF.C.StatReport", 2, "find deep sleep. currTime:" + this.b + ", lastTime:" + this.a + ", sleep:" + (this.b - this.a));
-        continue;
-        label241:
-        k.b(false);
-      }
+      i.a(j.a(this.a));
+      j.a(this.a).append("\n:SendQueueSize:").append(MsfCore.sCore.sender.g.size());
+      j.a(this.a).append("\n:heapMax=").append(Runtime.getRuntime().maxMemory());
+      j.a(this.a).append(",heapTotal=").append(Runtime.getRuntime().totalMemory());
+      j.a(this.a).append(",heapFree=").append(Runtime.getRuntime().freeMemory());
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.StatReport", 2, "getCrashExtraMessage." + j.a(this.a).toString());
+    }
+    return j.a(this.a).toString();
+  }
+  
+  public boolean onCrashHandleEnd(boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public void onCrashHandleStart(boolean paramBoolean)
+  {
+    QLog.d("MSF.C.StatReport", 1, "onCrashHandleStart...isNativeCrashed: " + paramBoolean);
+    j.a(this.a).append("\nCurrent thread Id=").append(Process.myTid()).append(", Name=").append(Thread.currentThread().getName());
+    this.a.a();
+    this.a.b();
+  }
+  
+  public boolean onCrashSaving(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    return (paramBoolean) || (!"java.util.concurrent.TimeoutException".equals(paramString1)) || (TextUtils.isEmpty(paramString3)) || (!paramString3.contains("java.lang.Daemons$FinalizerDaemon"));
   }
 }
 

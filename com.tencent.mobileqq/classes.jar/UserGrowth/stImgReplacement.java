@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class stImgReplacement
   extends JceStruct
 {
-  public int height;
+  public int height = 0;
   public String img = "";
-  public int imgType;
-  public int width;
+  public int imgType = 0;
+  public int width = 0;
   
   public stImgReplacement() {}
   

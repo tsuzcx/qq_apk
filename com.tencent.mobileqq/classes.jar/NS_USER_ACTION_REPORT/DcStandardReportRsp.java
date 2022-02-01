@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class DcStandardReportRsp
   extends JceStruct
 {
-  public int ret_code;
+  public int ret_code = 0;
   public String ret_msg = "";
   
   public DcStandardReportRsp() {}

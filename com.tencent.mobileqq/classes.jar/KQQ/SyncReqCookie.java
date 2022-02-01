@@ -10,8 +10,8 @@ public final class SyncReqCookie
 {
   static byte[] cache_vCookie;
   static ArrayList<Long> cache_vServiceId;
-  public byte[] vCookie;
-  public ArrayList<Long> vServiceId;
+  public byte[] vCookie = null;
+  public ArrayList<Long> vServiceId = null;
   
   public SyncReqCookie() {}
   

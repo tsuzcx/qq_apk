@@ -8,7 +8,7 @@ import com.tencent.aekit.openrender.UniformParam.TextureParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.util.Arrays;
 import java.util.List;
@@ -85,7 +85,7 @@ public class TTV6SmoothMultiFaceMaskFilter
       if (i < j) {
         try
         {
-          List localList = VideoMaterialUtil.copyList((List)paramList.get(i));
+          List localList = VideoMaterial.copyList((List)paramList.get(i));
           if (localList != null) {
             FaceOffUtil.initFacePositions4Smooth(FaceOffUtil.getFacePoints4Smooth(localList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices, FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3 * 2 * i);
           }
@@ -105,7 +105,7 @@ public class TTV6SmoothMultiFaceMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTV6SmoothMultiFaceMaskFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class operation_click_button_req
   extends JceStruct
 {
   static Map<String, String> cache_busi_param = new HashMap();
-  public Map<String, String> busi_param;
+  public Map<String, String> busi_param = null;
   
   static
   {

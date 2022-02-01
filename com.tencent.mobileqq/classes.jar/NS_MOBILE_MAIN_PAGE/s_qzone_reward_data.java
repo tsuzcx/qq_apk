@@ -10,7 +10,7 @@ public final class s_qzone_reward_data
 {
   static ArrayList<s_reward_node> cache_vec_nodes = new ArrayList();
   public boolean show_entry = true;
-  public ArrayList<s_reward_node> vec_nodes;
+  public ArrayList<s_reward_node> vec_nodes = null;
   
   static
   {

@@ -1,29 +1,29 @@
 package com.tencent.biz.pubaccount;
 
-import acnh;
-import bdte;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.util.PAVideoStructMsgUtil;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 import com.tencent.qphone.base.util.QLog;
-import olh;
 import org.json.JSONObject;
-import usj;
 
-public final class VideoReporter$2
+final class VideoReporter$2
   implements Runnable
 {
-  public VideoReporter$2(int paramInt1, QQAppInterface paramQQAppInterface, String paramString, int paramInt2, long paramLong) {}
+  VideoReporter$2(int paramInt1, QQAppInterface paramQQAppInterface, String paramString, int paramInt2, long paramLong) {}
   
   public void run()
   {
-    int i = 1;
     long l1;
     Object localObject1;
     if (this.jdField_a_of_type_Int == -2011)
     {
       l1 = System.currentTimeMillis();
-      localbdte = usj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgItemByUniseq(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
-      if (localbdte != null) {
+      localStructMsgItemVideo = PAVideoStructMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long));
+      if (localStructMsgItemVideo != null) {
         localObject1 = "";
       }
     }
@@ -32,11 +32,12 @@ public final class VideoReporter$2
       try
       {
         localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localbdte.ae);
+        ((JSONObject)localObject2).put("vid", localStructMsgItemVideo.ae);
         ((JSONObject)localObject2).put("os", "1");
-        if (!acnh.d(this.b)) {
+        if (!UinTypeUtil.b(this.b)) {
           continue;
         }
+        i = 1;
         ((JSONObject)localObject2).put("aiotype", i);
         localObject2 = ((JSONObject)localObject2).toString();
         localObject1 = localObject2;
@@ -44,17 +45,20 @@ public final class VideoReporter$2
       catch (Exception localException)
       {
         Object localObject2;
+        int i;
+        IPublicAccountReportUtils localIPublicAccountReportUtils;
         long l2;
         localException.printStackTrace();
         continue;
-        String str = localbdte.aj;
+        String str = localStructMsgItemVideo.aj;
         continue;
       }
-      if (localbdte.aj != null) {
+      localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+      if (localStructMsgItemVideo.aj != null) {
         continue;
       }
       localObject2 = "0";
-      olh.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "1", (String)localObject2, (String)localObject1, false);
+      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "1", (String)localObject2, (String)localObject1, false);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("VideoReporter", 2, "reportVideoStructMsgSendSuc cost = " + (l2 - l1) + "ms");
@@ -78,7 +82,7 @@ public final class VideoReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoReporter.2
  * JD-Core Version:    0.7.0.1
  */

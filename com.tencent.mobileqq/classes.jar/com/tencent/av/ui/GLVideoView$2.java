@@ -1,26 +1,25 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.opengl.ui.GLRootView;
-import meu;
 
-public class GLVideoView$2
+class GLVideoView$2
   implements Runnable
 {
-  public GLVideoView$2(meu parammeu) {}
+  GLVideoView$2(GLVideoView paramGLVideoView) {}
   
   public void run()
   {
     GLRootView localGLRootView = this.this$0.a();
     if (localGLRootView != null)
     {
-      meu.e(this.this$0);
+      GLVideoView.e(this.this$0);
       localGLRootView.postDelayed(this.this$0.a, 80L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.GLVideoView.2
  * JD-Core Version:    0.7.0.1
  */

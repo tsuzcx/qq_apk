@@ -1,34 +1,33 @@
 package com.tencent.biz.qqstory.settings;
 
+import com.tencent.biz.qqstory.base.QQStoryManager;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import vzv;
-import xqo;
 
-public class QQStoryShieldListActivity$1$1
+class QQStoryShieldListActivity$1$1
   implements Runnable
 {
-  public QQStoryShieldListActivity$1$1(xqo paramxqo, List paramList) {}
+  QQStoryShieldListActivity$1$1(QQStoryShieldListActivity.1 param1, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Vzv == null) {}
+    if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager == null) {}
     for (;;)
     {
       return;
-      Object localObject = this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Vzv;
-      if (this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Int == 2) {}
+      Object localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
+      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_Int == 2) {}
       QQStoryUserInfo localQQStoryUserInfo;
       for (boolean bool = true;; bool = false)
       {
-        localObject = ((vzv)localObject).b(bool).iterator();
+        localObject = ((QQStoryManager)localObject).b(bool).iterator();
         while (((Iterator)localObject).hasNext())
         {
           localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
-          if (this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Vzv.a != null) {
-            this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Vzv.a.remove(localQQStoryUserInfo);
+          if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a != null) {
+            this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a.remove(localQQStoryUserInfo);
           }
         }
       }
@@ -36,11 +35,11 @@ public class QQStoryShieldListActivity$1$1
       while (((Iterator)localObject).hasNext())
       {
         localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
-        if (this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Vzv.a != null) {
-          this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Vzv.a.persistOrReplace(localQQStoryUserInfo);
+        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a != null) {
+          this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a.persistOrReplace(localQQStoryUserInfo);
         }
-        if (this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Vzv.b != null) {
-          this.jdField_a_of_type_Xqo.a.jdField_a_of_type_Vzv.b.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
+        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b != null) {
+          this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
         }
       }
     }
@@ -48,7 +47,7 @@ public class QQStoryShieldListActivity$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryShieldListActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

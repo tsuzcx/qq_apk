@@ -11,22 +11,23 @@ import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuBehaviour;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJItemViewType;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJFrameworkReportManager;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnBiuClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ColorUtil;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase.ClickStatus;
-import olh;
-import owc;
-import ppe;
-import pqb;
-import pqf;
-import pqw;
-import qqs;
-import rrq;
-import uvs;
+import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class ReadInJoyBiuButton
   extends ButtonBase
@@ -63,25 +64,25 @@ public class ReadInJoyBiuButton
       return;
     }
     SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    if (uvs.a(paramArticleInfo.mChannelID)) {}
+    if (ReadinjoyReportUtils.a(paramArticleInfo.mChannelID)) {}
     String str2;
     for (String str1 = "0X8009361";; str1 = "0X8007EE4")
     {
-      str2 = pqf.a(paramArticleInfo, true);
-      if ((!ppe.i(paramArticleInfo)) && (!ppe.g(paramArticleInfo)) && (!ppe.j(paramArticleInfo)) && (!ppe.k(paramArticleInfo))) {
-        break label154;
+      str2 = RIJTransMergeKanDianReport.a(paramArticleInfo, true);
+      if ((!RIJItemViewType.i(paramArticleInfo)) && (!RIJItemViewType.g(paramArticleInfo)) && (!RIJItemViewType.j(paramArticleInfo)) && (!RIJItemViewType.k(paramArticleInfo))) {
+        break label164;
       }
-      if (!ppe.o(paramArticleInfo)) {
-        olh.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Rrq.jdField_a_of_type_Long), str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
+      if (!RIJItemViewType.o(paramArticleInfo)) {
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_Long), str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
       }
-      if ((pqw.l(paramArticleInfo)) || (pqw.m(paramArticleInfo))) {
+      if ((RIJFeedsType.l(paramArticleInfo)) || (RIJFeedsType.m(paramArticleInfo))) {
         break;
       }
-      pqb.b(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+      RIJFrameworkReportManager.b(paramArticleInfo, (int)paramArticleInfo.mChannelID);
       return;
     }
-    label154:
-    olh.a(null, paramArticleInfo.mSubscribeID, str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
+    label164:
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramArticleInfo.mSubscribeID, str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
   }
   
   public int getComMeasuredHeight()
@@ -120,8 +121,8 @@ public class ReadInJoyBiuButton
     if (((paramView instanceof Activity)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
     {
       paramView = (Activity)paramView;
-      localIntent = qqs.a(paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      if (owc.b() != 1) {
+      localIntent = OnBiuClickListener.a(paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      if (BiuBehaviour.b() != 1) {
         break label103;
       }
     }
@@ -198,7 +199,7 @@ public class ReadInJoyBiuButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton
  * JD-Core Version:    0.7.0.1
  */

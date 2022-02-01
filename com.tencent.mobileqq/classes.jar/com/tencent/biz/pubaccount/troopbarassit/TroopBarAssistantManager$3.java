@@ -1,64 +1,59 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
-import acmw;
-import alik;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import uqx;
-import uuc;
 
-public class TroopBarAssistantManager$3
+class TroopBarAssistantManager$3
   implements Runnable
 {
-  public TroopBarAssistantManager$3(uqx paramuqx, QQAppInterface paramQQAppInterface) {}
+  TroopBarAssistantManager$3(TroopBarAssistantManager paramTroopBarAssistantManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    acmw localacmw = this.a.getConversationFacade();
+    ConversationFacade localConversationFacade = this.a.getConversationFacade();
     Object localObject1 = this.a.getMessageFacade();
-    if ((localacmw == null) || (localObject1 == null))
+    if ((localConversationFacade == null) || (localObject1 == null))
     {
       if (QLog.isColorLevel()) {
         QLog.w("TroopBarAssistantManager", 2, "clearAllSubscriptionUnreadMsgLite getConversationFacade fail");
       }
       return;
     }
-    label192:
-    for (;;)
+    synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
     {
-      synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+      if (this.this$0.jdField_a_of_type_JavaUtilList != null)
       {
-        if (this.this$0.jdField_a_of_type_JavaUtilList != null)
+        Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext())
         {
-          Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
-          if (localIterator.hasNext())
+          TroopBarData localTroopBarData = (TroopBarData)localIterator.next();
+          MessageRecord localMessageRecord = localTroopBarData.mLatestMessage;
+          localObject1 = localMessageRecord;
+          if (localMessageRecord == null) {
+            localObject1 = this.a.getMessageFacade().b(localTroopBarData.mUin, 1008);
+          }
+          if ((localObject1 != null) && (localConversationFacade.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) > 0))
           {
-            TroopBarData localTroopBarData = (TroopBarData)localIterator.next();
-            localObject1 = localTroopBarData.mLatestMessage;
-            if (localObject1 != null) {
-              break label192;
-            }
-            localObject1 = this.a.getMessageFacade().getLastMsgForMsgTab(localTroopBarData.mUin, 1008);
-            if ((localObject1 == null) || (localacmw.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
-              continue;
-            }
-            int i = uuc.b(this.a, ((MessageRecord)localObject1).frienduin);
-            alik.b(this.a, ((MessageRecord)localObject1).frienduin, i);
-            localacmw.a(((MessageRecord)localObject1).frienduin, i, true);
+            int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.a, ((MessageRecord)localObject1).frienduin);
+            RecentUtil.b(this.a, ((MessageRecord)localObject1).frienduin, i);
+            localConversationFacade.a(((MessageRecord)localObject1).frienduin, i, true);
           }
         }
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.3
  * JD-Core Version:    0.7.0.1
  */

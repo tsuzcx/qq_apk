@@ -1,29 +1,26 @@
 package com.tencent.mobileqq.apollo.utils.task;
 
-import anmp;
-import anms;
-
-public class TaskFlowEngine$1
+class TaskFlowEngine$1
   implements Runnable
 {
-  public TaskFlowEngine$1(anms paramanms) {}
+  TaskFlowEngine$1(TaskFlowEngine paramTaskFlowEngine) {}
   
   public void run()
   {
-    anmp[] arrayOfanmp = anms.a(this.this$0);
-    int j = arrayOfanmp.length;
+    BaseTask[] arrayOfBaseTask = TaskFlowEngine.a(this.this$0);
+    int j = arrayOfBaseTask.length;
     int i = 0;
     while (i < j)
     {
-      anmp localanmp = arrayOfanmp[i];
-      anms.a(this.this$0, localanmp);
+      BaseTask localBaseTask = arrayOfBaseTask[i];
+      TaskFlowEngine.a(this.this$0, localBaseTask);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskFlowEngine.1
  * JD-Core Version:    0.7.0.1
  */

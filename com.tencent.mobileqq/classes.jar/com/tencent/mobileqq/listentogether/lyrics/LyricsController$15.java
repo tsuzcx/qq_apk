@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import awgv;
-import awgx;
-import behx;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin;
 
-public class LyricsController$15
+class LyricsController$15
   implements Runnable
 {
-  public LyricsController$15(awgx paramawgx) {}
+  LyricsController$15(LyricsController paramLyricsController) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.this$0.jdField_a_of_type_Awgv.g, behx.a().k_());
+      this.this$0.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.this$0.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.g, FloatViewSkin.a().m_());
     }
   }
 }

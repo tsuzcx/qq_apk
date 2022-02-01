@@ -2,12 +2,12 @@ package com.tencent.qidian;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aupt;
-import azrb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +51,7 @@ class QidianProfileCardActivity$ForwardRunnable
       localBundle.putString("forward_extra", (String)localObject);
       localObject = new Intent();
       ((Intent)localObject).putExtras(localBundle);
-      aupt.a(localQidianProfileCardActivity, (Intent)localObject, 21);
+      ForwardBaseOption.a(localQidianProfileCardActivity, (Intent)localObject, 21);
       return;
     }
     catch (IOException localIOException)
@@ -65,7 +65,7 @@ class QidianProfileCardActivity$ForwardRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.ForwardRunnable
  * JD-Core Version:    0.7.0.1
  */

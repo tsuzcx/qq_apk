@@ -5,23 +5,22 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
-import zjn;
-import znl;
 
 class CodeMaskManager$PrepareBundleTask
   extends Thread
 {
   Bundle jdField_a_of_type_AndroidOsBundle;
+  CodeMaskManager.Callback jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  zjn jdField_a_of_type_Zjn;
   
-  CodeMaskManager$PrepareBundleTask(CodeMaskManager paramCodeMaskManager, zjn paramzjn, Bundle paramBundle)
+  CodeMaskManager$PrepareBundleTask(CodeMaskManager paramCodeMaskManager, CodeMaskManager.Callback paramCallback, Bundle paramBundle)
   {
     super("qr_code_mask_prepare_thread");
-    this.jdField_a_of_type_Zjn = paramzjn;
+    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback = paramCallback;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
@@ -36,7 +35,7 @@ class CodeMaskManager$PrepareBundleTask
         if (!bool) {
           try
           {
-            localObject1 = znl.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
+            localObject1 = QRUtils.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
             if (localObject1 == null) {
               return null;
             }
@@ -90,7 +89,7 @@ class CodeMaskManager$PrepareBundleTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager.PrepareBundleTask
  * JD-Core Version:    0.7.0.1
  */

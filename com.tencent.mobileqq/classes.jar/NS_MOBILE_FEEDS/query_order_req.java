@@ -10,10 +10,10 @@ public final class query_order_req
   extends JceStruct
 {
   static Map<String, String> cache_extendinfo = new HashMap();
-  public Map<String, String> extendinfo;
+  public Map<String, String> extendinfo = null;
   public String strIMSI = "";
   public String strIphoneNum = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

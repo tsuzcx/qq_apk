@@ -12,17 +12,17 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.TextView;
-import anvx;
-import awgo;
-import bhdj;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleWebClient;
 import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -59,14 +59,14 @@ public class QzoneWebMusicJsPlugin
   public static final String WEB_APP_MUSIC_EVENT = "WEBAPP_MUSIC";
   private static JsBridgeListener mFMLiveInfoJsBridgeListener;
   private String TAG = QzoneWebMusicJsPlugin.class.getSimpleName();
-  private boolean isAutoPlay;
-  public boolean isFlowWarningVisible;
+  private boolean isAutoPlay = false;
+  public boolean isFlowWarningVisible = false;
   private boolean isLoop = true;
-  private boolean isRandom;
-  private boolean isShowing;
-  private boolean isUseRemoteMusicManager;
-  private boolean isWebPageListening;
-  private Handler mMainHandler;
+  private boolean isRandom = false;
+  private boolean isShowing = false;
+  private boolean isUseRemoteMusicManager = false;
+  private boolean isWebPageListening = false;
+  private Handler mMainHandler = null;
   
   public QzoneWebMusicJsPlugin()
   {
@@ -361,21 +361,21 @@ public class QzoneWebMusicJsPlugin
   
   private static final void showAutoPlayTips(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    paramContext = bhdj.a(paramContext, 230, null, anvx.a(2131712083), anvx.a(2131712077), anvx.a(2131712079), paramOnClickListener2, paramOnClickListener1);
+    paramContext = DialogUtil.a(paramContext, 230, null, HardCodeUtil.a(2131712598), HardCodeUtil.a(2131712592), HardCodeUtil.a(2131712594), paramOnClickListener2, paramOnClickListener1);
     paramContext.setOnCancelListener(paramOnCancelListener);
     paramContext.show();
   }
   
   private static final void showPlayTips(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    bhdj.a(paramContext, 230, anvx.a(2131712084), "你正处于非WiFi环境，继续播放将会消耗流量，运营商可能会收取费用，是否继续\n", anvx.a(2131712078), anvx.a(2131712085), paramOnClickListener2, paramOnClickListener1).show();
+    DialogUtil.a(paramContext, 230, HardCodeUtil.a(2131712599), "你正处于非WiFi环境，继续播放将会消耗流量，运营商可能会收取费用，是否继续\n", HardCodeUtil.a(2131712593), HardCodeUtil.a(2131712600), paramOnClickListener2, paramOnClickListener1).show();
   }
   
   public void changeMusicList(String paramString)
   {
     try
     {
-      awgo.a(new JSONObject(paramString), "changeMusicList", null);
+      ListenTogetherIPCModuleWebClient.a(new JSONObject(paramString), "changeMusicList", null);
       return;
     }
     catch (JSONException paramString)
@@ -619,26 +619,26 @@ public class QzoneWebMusicJsPlugin
     // Byte code:
     //   0: iconst_0
     //   1: istore 5
-    //   3: new 484	java/util/ArrayList
+    //   3: new 486	java/util/ArrayList
     //   6: dup
-    //   7: invokespecial 485	java/util/ArrayList:<init>	()V
+    //   7: invokespecial 487	java/util/ArrayList:<init>	()V
     //   10: astore 7
-    //   12: new 203	org/json/JSONObject
+    //   12: new 211	org/json/JSONObject
     //   15: dup
     //   16: aload_1
-    //   17: invokespecial 487	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 489	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   20: astore_1
     //   21: aload_1
-    //   22: ldc_w 489
-    //   25: invokevirtual 713	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   22: ldc_w 491
+    //   25: invokevirtual 715	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   28: istore_3
     //   29: aload_1
     //   30: ldc_w 777
-    //   33: invokevirtual 713	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   33: invokevirtual 715	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   36: istore_2
     //   37: aload_1
-    //   38: ldc_w 494
-    //   41: invokevirtual 498	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   38: ldc_w 496
+    //   41: invokevirtual 500	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   44: astore_1
     //   45: iload_2
     //   46: istore 6
@@ -646,14 +646,14 @@ public class QzoneWebMusicJsPlugin
     //   49: istore 4
     //   51: iload 5
     //   53: aload_1
-    //   54: invokevirtual 504	org/json/JSONArray:length	()I
+    //   54: invokevirtual 506	org/json/JSONArray:length	()I
     //   57: if_icmpge +42 -> 99
     //   60: aload 7
     //   62: aload_1
     //   63: iload 5
-    //   65: invokevirtual 508	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   65: invokevirtual 510	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   68: invokestatic 780	cooperation/qzone/music/QzoneMusicHelper:convertAudioSongInfo	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/music/SongInfo;
-    //   71: invokevirtual 518	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   71: invokevirtual 520	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   74: pop
     //   75: iload 5
     //   77: iconst_1
@@ -666,13 +666,13 @@ public class QzoneWebMusicJsPlugin
     //   87: iconst_0
     //   88: istore_2
     //   89: aload_1
-    //   90: invokevirtual 596	org/json/JSONException:printStackTrace	()V
+    //   90: invokevirtual 598	org/json/JSONException:printStackTrace	()V
     //   93: iload_3
     //   94: istore 4
     //   96: iload_2
     //   97: istore 6
     //   99: aload 7
-    //   101: invokevirtual 523	java/util/ArrayList:size	()I
+    //   101: invokevirtual 525	java/util/ArrayList:size	()I
     //   104: ifle +53 -> 157
     //   107: iload 6
     //   109: iconst_1
@@ -683,10 +683,10 @@ public class QzoneWebMusicJsPlugin
     //   119: iconst_2
     //   120: istore_2
     //   121: aload_0
-    //   122: getfield 143	cooperation/qzone/music/QzoneWebMusicJsPlugin:mRuntime	Lbifw;
-    //   125: invokevirtual 400	bifw:a	()Lcom/tencent/common/app/AppInterface;
+    //   122: getfield 153	cooperation/qzone/music/QzoneWebMusicJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   125: invokevirtual 402	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
     //   128: ldc 2
-    //   130: invokevirtual 406	com/tencent/common/app/AppInterface:getHandler	(Ljava/lang/Class;)Lmqq/os/MqqHandler;
+    //   130: invokevirtual 408	com/tencent/common/app/AppInterface:getHandler	(Ljava/lang/Class;)Lmqq/os/MqqHandler;
     //   133: new 782	cooperation/qzone/music/QzoneWebMusicJsPlugin$9
     //   136: dup
     //   137: aload_0
@@ -694,19 +694,19 @@ public class QzoneWebMusicJsPlugin
     //   139: iload 4
     //   141: aload 7
     //   143: invokespecial 783	cooperation/qzone/music/QzoneWebMusicJsPlugin$9:<init>	(Lcooperation/qzone/music/QzoneWebMusicJsPlugin;IILjava/util/ArrayList;)V
-    //   146: invokevirtual 413	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   146: invokevirtual 415	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   149: pop
     //   150: return
     //   151: bipush 6
     //   153: istore_2
     //   154: goto -33 -> 121
-    //   157: invokestatic 344	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   157: invokestatic 348	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   160: ifeq -10 -> 150
     //   163: aload_0
     //   164: getfield 83	cooperation/qzone/music/QzoneWebMusicJsPlugin:TAG	Ljava/lang/String;
     //   167: iconst_2
     //   168: ldc_w 785
-    //   171: invokestatic 532	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   171: invokestatic 534	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   174: return
     //   175: astore_1
     //   176: iconst_0
@@ -798,7 +798,7 @@ public class QzoneWebMusicJsPlugin
               paramString = new JSONObject();
               paramString.put("uin", ((SongInfo)localArrayList.get(i)).jdField_b_of_type_Long);
               paramString.put("coverUrl", ((SongInfo)localArrayList.get(i)).e);
-              awgo.a(paramString, "showFloatView", null);
+              ListenTogetherIPCModuleWebClient.a(paramString, "showFloatView", null);
             }
             if (localArrayList.size() <= 0) {
               break;
@@ -908,7 +908,7 @@ public class QzoneWebMusicJsPlugin
       boolean bool = ((JSONObject)localObject).getBoolean("visible");
       if ((this.mRuntime.a() instanceof QQBrowserActivity))
       {
-        localObject = (TextView)this.mRuntime.a().findViewById(2131369262);
+        localObject = (TextView)this.mRuntime.a().findViewById(2131369518);
         if (bool) {}
         try
         {
@@ -960,7 +960,7 @@ public class QzoneWebMusicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

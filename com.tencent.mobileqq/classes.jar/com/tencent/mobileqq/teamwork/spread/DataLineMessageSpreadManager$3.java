@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import beed;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.TimerTask;
 
-public class DataLineMessageSpreadManager$3
+class DataLineMessageSpreadManager$3
   extends TimerTask
 {
-  public DataLineMessageSpreadManager$3(beed parambeed) {}
+  DataLineMessageSpreadManager$3(DataLineMessageSpreadManager paramDataLineMessageSpreadManager) {}
   
   public void run()
   {
@@ -23,15 +22,15 @@ public class DataLineMessageSpreadManager$3
         if (QLog.isColorLevel()) {
           QLog.i("DataLineMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
         }
-        i = beed.a(this.this$0).size() - 1;
+        i = DataLineMessageSpreadManager.a(this.this$0).size() - 1;
         while (i >= 0)
         {
-          localMessageRecord = (MessageRecord)beed.a(this.this$0).get(i);
+          localMessageRecord = (MessageRecord)DataLineMessageSpreadManager.a(this.this$0).get(i);
           this.this$0.a((DataLineMsgRecord)localMessageRecord);
           i -= 1;
         }
         this.this$0.a = 0L;
-        beed.a(this.this$0).clear();
+        DataLineMessageSpreadManager.a(this.this$0).clear();
       }
       while (!QLog.isColorLevel())
       {

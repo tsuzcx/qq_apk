@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.danmaku.data;
 
 import android.view.View;
-import arrt;
 
-public class ViewDanmaku$1
+class ViewDanmaku$1
   implements Runnable
 {
-  public ViewDanmaku$1(arrt paramarrt, View paramView) {}
+  ViewDanmaku$1(ViewDanmaku paramViewDanmaku, View paramView) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class ViewDanmaku$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.data.ViewDanmaku.1
  * JD-Core Version:    0.7.0.1
  */

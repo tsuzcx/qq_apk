@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class NetSegConf
   extends JceStruct
 {
-  public long uint32_curconnnum;
-  public long uint32_net_type;
-  public long uint32_segnum;
-  public long uint32_segsize;
+  public long uint32_curconnnum = 0L;
+  public long uint32_net_type = 0L;
+  public long uint32_segnum = 0L;
+  public long uint32_segsize = 0L;
   
   public NetSegConf() {}
   

@@ -25,7 +25,7 @@ public class ComponentContentPgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560172, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560250, this, true);
   }
   
   /* Error */
@@ -35,17 +35,17 @@ public class ComponentContentPgcVideo
     //   0: iconst_0
     //   1: istore 5
     //   3: aload_0
-    //   4: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Rfw	Lrfw;
-    //   7: getfield 40	rfw:a	Lqfw;
+    //   4: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt	Lcom/tencent/biz/pubaccount/readinjoy/rebuild/cmp/CmpCtxt;
+    //   7: getfield 40	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/CmpCtxt:a	Lcom/tencent/biz/pubaccount/readinjoy/model/IReadInJoyModel;
     //   10: ifnull +314 -> 324
     //   13: aload_0
-    //   14: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Rfw	Lrfw;
-    //   17: getfield 40	rfw:a	Lqfw;
+    //   14: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt	Lcom/tencent/biz/pubaccount/readinjoy/rebuild/cmp/CmpCtxt;
+    //   17: getfield 40	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/CmpCtxt:a	Lcom/tencent/biz/pubaccount/readinjoy/model/IReadInJoyModel;
     //   20: invokeinterface 45 1 0
     //   25: ifnull +299 -> 324
     //   28: aload_0
-    //   29: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Rfw	Lrfw;
-    //   32: getfield 40	rfw:a	Lqfw;
+    //   29: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt	Lcom/tencent/biz/pubaccount/readinjoy/rebuild/cmp/CmpCtxt;
+    //   32: getfield 40	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/CmpCtxt:a	Lcom/tencent/biz/pubaccount/readinjoy/model/IReadInJoyModel;
     //   35: invokeinterface 45 1 0
     //   40: astore 7
     //   42: aload 7
@@ -101,29 +101,29 @@ public class ComponentContentPgcVideo
     //   156: ldc 116
     //   158: aload_0
     //   159: invokevirtual 94	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:getResources	()Landroid/content/res/Resources;
-    //   162: invokestatic 122	com/tencent/mobileqq/activity/aio/AIOUtils:dp2px	(FLandroid/content/res/Resources;)I
+    //   162: invokestatic 121	com/tencent/mobileqq/activity/aio/AIOUtils:a	(FLandroid/content/res/Resources;)I
     //   165: istore 4
     //   167: aload_0
-    //   168: getfield 125	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
-    //   171: invokevirtual 128	com/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   168: getfield 124	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
+    //   171: invokevirtual 127	com/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
     //   174: astore 8
     //   176: iload_2
     //   177: iload_1
-    //   178: invokestatic 133	pqw:a	(II)Z
+    //   178: invokestatic 132	com/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/util/RIJFeedsType:a	(II)Z
     //   181: ifne +6 -> 187
     //   184: iconst_1
     //   185: istore 5
-    //   187: ldc 135
+    //   187: ldc 134
     //   189: iconst_2
-    //   190: new 137	java/lang/StringBuilder
+    //   190: new 136	java/lang/StringBuilder
     //   193: dup
-    //   194: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   197: ldc 141
-    //   199: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: invokespecial 138	java/lang/StringBuilder:<init>	()V
+    //   197: ldc 140
+    //   199: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: iload 5
-    //   204: invokevirtual 148	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   207: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   210: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   204: invokevirtual 147	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   207: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   210: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   213: iload 5
     //   215: ifeq +131 -> 346
     //   218: iload_3
@@ -140,82 +140,82 @@ public class ComponentContentPgcVideo
     //   232: istore_1
     //   233: aload 8
     //   235: iload_2
-    //   236: putfield 162	android/view/ViewGroup$LayoutParams:width	I
+    //   236: putfield 161	android/view/ViewGroup$LayoutParams:width	I
     //   239: aload 8
     //   241: iload_1
-    //   242: putfield 164	android/view/ViewGroup$LayoutParams:height	I
+    //   242: putfield 163	android/view/ViewGroup$LayoutParams:height	I
     //   245: aload 6
     //   247: iload_2
-    //   248: putfield 162	android/view/ViewGroup$LayoutParams:width	I
+    //   248: putfield 161	android/view/ViewGroup$LayoutParams:width	I
     //   251: aload 6
     //   253: iload_1
-    //   254: putfield 164	android/view/ViewGroup$LayoutParams:height	I
+    //   254: putfield 163	android/view/ViewGroup$LayoutParams:height	I
     //   257: aload_0
-    //   258: getfield 125	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
-    //   261: getstatic 170	android/widget/ImageView$ScaleType:CENTER_CROP	Landroid/widget/ImageView$ScaleType;
-    //   264: invokevirtual 174	com/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView:setScaleType	(Landroid/widget/ImageView$ScaleType;)V
+    //   258: getfield 124	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
+    //   261: getstatic 169	android/widget/ImageView$ScaleType:CENTER_CROP	Landroid/widget/ImageView$ScaleType;
+    //   264: invokevirtual 173	com/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView:setScaleType	(Landroid/widget/ImageView$ScaleType;)V
     //   267: aload_0
-    //   268: getfield 125	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
+    //   268: getfield 124	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView	Lcom/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView;
     //   271: aload 8
-    //   273: invokevirtual 178	com/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   273: invokevirtual 177	com/tencent/biz/pubaccount/readinjoy/view/KandianUrlImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
     //   276: aload_0
     //   277: aload 6
-    //   279: invokevirtual 179	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   282: ldc 135
+    //   279: invokevirtual 178	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   282: ldc 134
     //   284: iconst_2
-    //   285: new 137	java/lang/StringBuilder
+    //   285: new 136	java/lang/StringBuilder
     //   288: dup
-    //   289: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   292: ldc 181
-    //   294: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: invokespecial 138	java/lang/StringBuilder:<init>	()V
+    //   292: ldc 180
+    //   294: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   297: aload 8
-    //   299: getfield 162	android/view/ViewGroup$LayoutParams:width	I
-    //   302: invokevirtual 184	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   305: ldc 186
-    //   307: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: getfield 161	android/view/ViewGroup$LayoutParams:width	I
+    //   302: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   305: ldc 185
+    //   307: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   310: aload 8
-    //   312: getfield 164	android/view/ViewGroup$LayoutParams:height	I
-    //   315: invokevirtual 184	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   318: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   321: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   312: getfield 163	android/view/ViewGroup$LayoutParams:height	I
+    //   315: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   318: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   321: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   324: return
     //   325: astore 6
     //   327: iconst_0
     //   328: istore_1
-    //   329: ldc 188
+    //   329: ldc 187
     //   331: iconst_2
     //   332: aload 6
     //   334: iconst_0
-    //   335: anewarray 190	java/lang/Object
-    //   338: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   335: anewarray 189	java/lang/Object
+    //   338: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   341: iconst_0
     //   342: istore_2
     //   343: goto -224 -> 119
     //   346: aload 7
-    //   348: getfield 197	com/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo:mChannelID	J
+    //   348: getfield 196	com/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo:mChannelID	J
     //   351: lconst_0
     //   352: lcmp
     //   353: ifne +51 -> 404
     //   356: iload_3
     //   357: aload_0
     //   358: invokevirtual 94	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:getResources	()Landroid/content/res/Resources;
-    //   361: invokestatic 202	pjr:a	(ILandroid/content/res/Resources;)I
+    //   361: invokestatic 201	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyDisplayUtils:a	(ILandroid/content/res/Resources;)I
     //   364: istore_1
-    //   365: ldc 135
+    //   365: ldc 134
     //   367: iconst_2
-    //   368: new 137	java/lang/StringBuilder
+    //   368: new 136	java/lang/StringBuilder
     //   371: dup
-    //   372: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   375: ldc 204
-    //   377: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: invokespecial 138	java/lang/StringBuilder:<init>	()V
+    //   375: ldc 203
+    //   377: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   380: iload_1
-    //   381: invokevirtual 184	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   384: ldc 206
-    //   386: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   381: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   384: ldc 205
+    //   386: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: iload_1
-    //   390: invokevirtual 184	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   393: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   396: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   390: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   393: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   396: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   399: iload_1
     //   400: istore_2
     //   401: goto -168 -> 233
@@ -242,24 +242,24 @@ public class ComponentContentPgcVideo
     //   427: goto -194 -> 233
     //   430: aload 7
     //   432: ifnonnull +16 -> 448
-    //   435: ldc 208
+    //   435: ldc 207
     //   437: astore 6
-    //   439: ldc 188
+    //   439: ldc 187
     //   441: iconst_2
     //   442: aload 6
-    //   444: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   444: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   447: return
-    //   448: new 137	java/lang/StringBuilder
+    //   448: new 136	java/lang/StringBuilder
     //   451: dup
-    //   452: invokespecial 139	java/lang/StringBuilder:<init>	()V
+    //   452: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   455: aload 7
     //   457: getfield 51	com/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo:mJsonVideoList	Ljava/lang/String;
-    //   460: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   463: ldc 210
-    //   465: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   460: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: ldc 209
+    //   465: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   468: aload 7
-    //   470: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   473: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   470: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   473: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   476: astore 6
     //   478: goto -39 -> 439
     //   481: astore 6
@@ -293,7 +293,7 @@ public class ComponentContentPgcVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.adapter;
 
-import amha;
-import amhb;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -16,7 +14,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.mini.widget.media.danmu.DecelerateAccelerateInterpolator;
+import com.tencent.mobileqq.widget.DecelerateAccelerateInterpolator;
 
 public class ForwardRecentItemView
   extends RelativeLayout
@@ -42,19 +40,19 @@ public class ForwardRecentItemView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131562768, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376800));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378659));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378661));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368381));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131364612));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380136);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131562915, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377204));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379092));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379094));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368603));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131364726));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380575);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298201);
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296820);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298281);
+    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296840);
   }
   
   public void a(long paramLong)
@@ -63,7 +61,7 @@ public class ForwardRecentItemView
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -this.jdField_a_of_type_Int, 0 });
     localValueAnimator.setInterpolator(new DecelerateAccelerateInterpolator());
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.addUpdateListener(new amha(this, localLayoutParams));
+    localValueAnimator.addUpdateListener(new ForwardRecentItemView.1(this, localLayoutParams));
     localValueAnimator.start();
   }
   
@@ -105,7 +103,7 @@ public class ForwardRecentItemView
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramString2);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean2);
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(i);
-      if (AppSetting.c) {
+      if (AppSetting.d) {
         setContentDescription(paramString1);
       }
       return;
@@ -124,7 +122,7 @@ public class ForwardRecentItemView
   {
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
     Object localObject;
-    if (AppSetting.c)
+    if (AppSetting.d)
     {
       localObject = getResources();
       if (!paramBoolean) {
@@ -132,7 +130,7 @@ public class ForwardRecentItemView
       }
     }
     label58:
-    for (int i = 2131690825;; i = 2131719791)
+    for (int i = 2131690930;; i = 2131720361)
     {
       localObject = ((Resources)localObject).getString(i);
       setContentDescription(this.jdField_a_of_type_JavaLangString + (String)localObject);
@@ -146,7 +144,7 @@ public class ForwardRecentItemView
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -this.jdField_a_of_type_Int });
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.addUpdateListener(new amhb(this, localLayoutParams));
+    localValueAnimator.addUpdateListener(new ForwardRecentItemView.2(this, localLayoutParams));
     localValueAnimator.start();
   }
   

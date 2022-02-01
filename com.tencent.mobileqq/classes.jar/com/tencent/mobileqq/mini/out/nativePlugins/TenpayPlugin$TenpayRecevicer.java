@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +33,7 @@ final class TenpayPlugin$TenpayRecevicer
         paramBundle = new JSONObject(paramBundle);
         paramInt = paramBundle.optInt("resultCode", -1);
         String str = paramBundle.optString("retmsg");
-        NativePlugin.JSContext localJSContext = TenpayPlugin.access$000(this.this$0);
+        JSContext localJSContext = TenpayPlugin.access$000(this.this$0);
         if (paramInt == 0)
         {
           bool = true;

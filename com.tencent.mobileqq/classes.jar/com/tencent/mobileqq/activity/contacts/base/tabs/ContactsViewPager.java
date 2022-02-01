@@ -15,11 +15,11 @@ public class ContactsViewPager
   extends ViewPager
 {
   private int jdField_a_of_type_Int;
-  private HeaderScrollView jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView;
+  private HeaderScrollView jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView = null;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = false;
   
   public ContactsViewPager(Context paramContext)
   {
@@ -160,7 +160,7 @@ public class ContactsViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager
  * JD-Core Version:    0.7.0.1
  */

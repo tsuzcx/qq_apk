@@ -54,7 +54,7 @@
                             "value": "230"
                         },
                         "attributes": {
-                            "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20190807/f7a2f1e1e80a4fd7917439886606adfa.png", "1"],
+                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20190807/f7a2f1e1e80a4fd7917439886606adfa.png", "1"],
                             "setScaleType:": "1"
                         }
                     },
@@ -109,7 +109,7 @@
                                     "value": "5.5"
                                 },
                                 "attributes": {
-                                    "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20200609/92f337ef0f52465ba034148a2c38b56b.png", "1"]
+                                    "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20200609/92f337ef0f52465ba034148a2c38b56b.png", "1"]
                                 }
                             }
                         ]
@@ -260,7 +260,7 @@
                     "value": "16"
                 },
                 "attributes": {
-                    "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20200609/7772da4f14894d74b94975be178623af.png", "1"]
+                    "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20200609/7772da4f14894d74b94975be178623af.png", "1"]
                 }
             }, {
                 "view_type": "UILabel",
@@ -332,7 +332,7 @@
                         "value": "16"
                     },
                     "attributes": {
-                        "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20200609/e9983f2ee1354b70a772e174a41059a1.png", "1"]
+                        "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20200609/e9983f2ee1354b70a772e174a41059a1.png", "1"]
                     }
                 }, {
                     "view_type": "UILabel",
@@ -390,7 +390,7 @@
                         "value": "16"
                     },
                     "attributes": {
-                        "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20200609/a34ac7f594a24a6ab922fcf2dddd8b8a.png", "1"]
+                        "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20200609/a34ac7f594a24a6ab922fcf2dddd8b8a.png", "1"]
                     }
                 }, {
                     "view_type": "UILabel",
@@ -448,7 +448,7 @@
                         "value": "16"
                     },
                     "attributes": {
-                        "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20200609/a20f1e41f14b461ab2314ef899c4e228.png", "1"]
+                        "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20200609/a20f1e41f14b461ab2314ef899c4e228.png", "1"]
                     }
                 }, {
                     "view_type": "UILabel",
@@ -507,7 +507,7 @@
                             "value": "16"
                         },
                         "attributes": {
-                            "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20200609/6c97220abb9249049d3f5b7738c3d11a.png", "1"]
+                            "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20200609/6c97220abb9249049d3f5b7738c3d11a.png", "1"]
                         }
                     },
                     {

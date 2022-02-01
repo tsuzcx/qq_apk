@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class stLinkStragegyArgs
   extends JceStruct
 {
-  public boolean hasInstalledWeish;
-  public int todayClickCount;
-  public int todayEnterCount;
-  public int todayLastLinkId;
+  public boolean hasInstalledWeish = false;
+  public int todayClickCount = 0;
+  public int todayEnterCount = 0;
+  public int todayLastLinkId = 0;
   
   public stLinkStragegyArgs() {}
   

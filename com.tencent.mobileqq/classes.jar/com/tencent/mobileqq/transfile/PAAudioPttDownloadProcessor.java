@@ -8,6 +8,11 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
+import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.C2CPttDownReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -27,13 +32,12 @@ import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
 
 public class PAAudioPttDownloadProcessor
   extends BaseDownloadProcessor
-  implements INetEngine.IBreakDownFix
 {
   String mTempPath;
   
-  public PAAudioPttDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public PAAudioPttDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.mProxyIpList = ((ProxyIpManager)this.app.getManager(3)).getProxyIp(4);
   }
   
@@ -75,11 +79,11 @@ public class PAAudioPttDownloadProcessor
     if ("pttcenter".equals(this.mStorageSource)) {
       str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
     }
-    ProtoReqManager.ProtoReq localProtoReq;
+    ProtoReqManagerImpl.ProtoReq localProtoReq;
     for (;;)
     {
       cmd0x346.ReqBody localReqBody = constructApplyDownSuccess();
-      localProtoReq = new ProtoReqManager.ProtoReq();
+      localProtoReq = new ProtoReqManagerImpl.ProtoReq();
       localProtoReq.ssoCmd = str;
       localProtoReq.reqBody = localReqBody.toByteArray();
       localProtoReq.fixScheduleCount = 1;
@@ -96,7 +100,7 @@ public class PAAudioPttDownloadProcessor
         str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
       }
     }
-    this.app.getProtoReqManager().sendProtoReq(localProtoReq);
+    ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, "")).sendProtoReq(localProtoReq);
   }
   
   public int checkParam()
@@ -104,7 +108,7 @@ public class PAAudioPttDownloadProcessor
     super.checkParam();
     logRichMediaEvent("uiParam", this.mUiRequest.toString());
     String str = this.mUiRequest.mServerPath;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (FileUtils.isLocalPath(str)) || (str.startsWith("http://")))
+    if ((str == null) || (str.equals("")) || (str.equals("null")) || (FileUtils.c(str)) || (str.startsWith("http://")))
     {
       setError(9302, getExpStackString(new Exception("uuid illegal " + str)));
       onError();
@@ -112,23 +116,6 @@ public class PAAudioPttDownloadProcessor
     }
     this.mUiRequest.mOutFilePath = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + Utils.Crc64String(this.app.getAccount()) + "/" + "ptt" + "/pa_audio_" + str + ".amr");
     return 0;
-  }
-  
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
-  {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-    } while (0L != paramNetReq.mEndDownOffset);
-    paramNetResp.mWrittenBlockLen = 0L;
-    paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-    paramNetReq.mReqProperties.put("Range", paramNetResp);
   }
   
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
@@ -154,7 +141,7 @@ public class PAAudioPttDownloadProcessor
           this.file.fileUrl = this.mRespUrl;
           if ((this.mProxyIpList != null) && (!this.mProxyIpList.isEmpty()))
           {
-            paramRichProtoReq = RichMediaUtil.getIpAndPortFromUrl(this.mRespUrl);
+            paramRichProtoReq = TransFileUtil.getIpAndPortFromUrl(this.mRespUrl);
             if (paramRichProtoReq != null) {
               this.mIpList.add(paramRichProtoReq);
             }
@@ -175,79 +162,79 @@ public class PAAudioPttDownloadProcessor
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc 167
-    //   3: ldc_w 403
-    //   6: invokevirtual 173	com/tencent/mobileqq/transfile/PAAudioPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1: ldc 165
+    //   3: ldc_w 366
+    //   6: invokevirtual 171	com/tencent/mobileqq/transfile/PAAudioPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   9: aload_2
-    //   10: invokevirtual 408	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   10: invokevirtual 371	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   13: sipush 1000
     //   16: if_icmpeq +38 -> 54
     //   19: aload_2
-    //   20: invokevirtual 408	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   20: invokevirtual 371	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   23: istore 4
     //   25: aload_0
-    //   26: ldc_w 409
-    //   29: new 128	java/lang/StringBuilder
+    //   26: ldc_w 372
+    //   29: new 126	java/lang/StringBuilder
     //   32: dup
-    //   33: invokespecial 129	java/lang/StringBuilder:<init>	()V
-    //   36: ldc_w 411
-    //   39: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   36: ldc_w 374
+    //   39: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: iload 4
-    //   44: invokevirtual 414	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokevirtual 173	com/tencent/mobileqq/transfile/PAAudioPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokevirtual 377	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokevirtual 171	com/tencent/mobileqq/transfile/PAAudioPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   53: return
-    //   54: new 416	tencent/im/cs/cmd0x346/cmd0x346$RspBody
+    //   54: new 379	tencent/im/cs/cmd0x346/cmd0x346$RspBody
     //   57: dup
-    //   58: invokespecial 417	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
+    //   58: invokespecial 380	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
     //   61: astore_1
     //   62: aload_1
     //   63: aload_3
-    //   64: invokevirtual 421	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   64: invokevirtual 384	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   67: pop
     //   68: aload_1
-    //   69: getfield 422	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   72: invokevirtual 425	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   69: getfield 385	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   72: invokevirtual 388	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   75: ifeq +91 -> 166
     //   78: aload_1
-    //   79: getfield 422	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   82: invokevirtual 427	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   79: getfield 385	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   82: invokevirtual 390	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   85: i2l
     //   86: lstore 5
     //   88: lload 5
-    //   90: ldc2_w 428
+    //   90: ldc2_w 391
     //   93: lcmp
     //   94: ifne -41 -> 53
     //   97: aload_1
-    //   98: getfield 433	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   101: invokevirtual 436	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
+    //   98: getfield 396	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
+    //   101: invokevirtual 399	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
     //   104: ifeq -51 -> 53
     //   107: aload_1
-    //   108: getfield 433	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   111: invokevirtual 439	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   114: checkcast 435	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
-    //   117: getfield 443	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   120: invokevirtual 446	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   108: getfield 396	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
+    //   111: invokevirtual 402	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   114: checkcast 398	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
+    //   117: getfield 406	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   120: invokevirtual 409	com/tencent/mobileqq/pb/PBInt32Field:get	()I
     //   123: istore 4
-    //   125: invokestatic 335	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   125: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   128: ifeq -75 -> 53
     //   131: aload_0
-    //   132: ldc_w 409
-    //   135: new 128	java/lang/StringBuilder
+    //   132: ldc_w 372
+    //   135: new 126	java/lang/StringBuilder
     //   138: dup
-    //   139: invokespecial 129	java/lang/StringBuilder:<init>	()V
-    //   142: ldc_w 448
-    //   145: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: invokespecial 127	java/lang/StringBuilder:<init>	()V
+    //   142: ldc_w 411
+    //   145: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   148: iload 4
-    //   150: invokevirtual 414	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokevirtual 173	com/tencent/mobileqq/transfile/PAAudioPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   150: invokevirtual 377	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokevirtual 171	com/tencent/mobileqq/transfile/PAAudioPttDownloadProcessor:logRichMediaEvent	(Ljava/lang/String;Ljava/lang/String;)V
     //   159: return
     //   160: astore_1
     //   161: aload_1
-    //   162: invokevirtual 451	java/lang/Exception:printStackTrace	()V
+    //   162: invokevirtual 414	java/lang/Exception:printStackTrace	()V
     //   165: return
-    //   166: ldc2_w 452
+    //   166: ldc2_w 415
     //   169: lstore 5
     //   171: goto -83 -> 88
     //   174: astore_1
@@ -274,7 +261,7 @@ public class PAAudioPttDownloadProcessor
     sendMessageToUpdate(2005);
   }
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     onC2CPttSetSuccess(null, paramProtoResp.resp, paramProtoResp.resp.getWupBuffer());
   }
@@ -348,7 +335,7 @@ public class PAAudioPttDownloadProcessor
     localHttpNetReq.mIsNetChgAsError = true;
     localHttpNetReq.mReqProperties.put("Accept-Encoding", "identity");
     localHttpNetReq.mCanPrintUrl = true;
-    localHttpNetReq.mBreakDownFix = this;
+    localHttpNetReq.mSupportBreakResume = true;
     localHttpNetReq.mTempPath = this.mTempPath;
     String str2 = null;
     String str1 = str2;
@@ -359,7 +346,7 @@ public class PAAudioPttDownloadProcessor
         str1 = Arrays.toString(this.mIpList.toArray());
       }
     }
-    str2 = RichMediaUtil.getIpOrDomainFromURL(str3);
+    str2 = TransFileUtil.getIpOrDomainFromURL(str3);
     logRichMediaEvent("httpDown", "RespDomain: " + str2 + " ipList:" + str1 + " uuid:" + this.mUiRequest.mServerPath + " downOffset:" + localHttpNetReq.mStartDownOffset);
     if (!canDoNextStep()) {
       return;
@@ -388,7 +375,7 @@ public class PAAudioPttDownloadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "c2c_ptt_dw";
     localRichProtoReq.reqs.add(localC2CPttDownReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);

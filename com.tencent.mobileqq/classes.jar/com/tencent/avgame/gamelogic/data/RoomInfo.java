@@ -2,6 +2,7 @@ package com.tencent.avgame.gamelogic.data;
 
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -21,14 +22,18 @@ import trpc.qq_vgame.common.AvGameCommon.RoomUserInfo;
 public class RoomInfo
   implements Serializable
 {
+  public boolean fromMatchB2;
   public String gameName;
   public long id;
   public int matchShareId;
   public int matchStatus;
+  public byte[] matchV2Extra;
+  public boolean opened_match;
   public long owner;
   @NotNull
   public List<Player> players = new ArrayList();
   public long seq;
+  public boolean startMatching2Quick;
   
   public RoomInfo()
   {
@@ -55,8 +60,12 @@ public class RoomInfo
       this.players.clear();
       this.players.addAll(paramRoomInfo.players);
       this.matchStatus = paramRoomInfo.matchStatus;
-    } while (paramRoomInfo.matchShareId <= 0);
-    this.matchShareId = paramRoomInfo.matchShareId;
+      this.opened_match = paramRoomInfo.opened_match;
+      if (paramRoomInfo.matchShareId > 0) {
+        this.matchShareId = paramRoomInfo.matchShareId;
+      }
+    } while (paramRoomInfo.matchV2Extra == null);
+    this.matchV2Extra = paramRoomInfo.matchV2Extra;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -93,7 +102,7 @@ public class RoomInfo
   
   public String getNick(String paramString, int paramInt)
   {
-    return ContactUtils.getFitString(getNick(paramString), paramInt);
+    return ContactUtils.a(getNick(paramString), paramInt);
   }
   
   public Player getPlayer(String paramString)
@@ -208,6 +217,7 @@ public class RoomInfo
     this.players.clear();
     this.players.addAll((Collection)localObject);
     this.matchStatus = paramRoomInfo.match_status.get();
+    this.opened_match = paramRoomInfo.opened_match.get();
   }
   
   public void reset()
@@ -216,7 +226,13 @@ public class RoomInfo
     this.id = 0L;
     this.owner = 0L;
     this.gameName = "";
+    this.opened_match = false;
     this.players.clear();
+    this.matchStatus = 0;
+    this.matchShareId = 0;
+    this.matchV2Extra = null;
+    this.fromMatchB2 = false;
+    this.startMatching2Quick = false;
   }
   
   public String toString()
@@ -230,6 +246,7 @@ public class RoomInfo
     localStringBuilder.append("players:").append("=").append(Arrays.toString(this.players.toArray())).append("|");
     localStringBuilder.append("matchStatus:").append(this.matchStatus).append("|");
     localStringBuilder.append("matchShareId:").append(this.matchShareId);
+    localStringBuilder.append("matchV2Extra:").append(this.matchV2Extra);
     return localStringBuilder.toString();
   }
   
@@ -248,7 +265,7 @@ public class RoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.RoomInfo
  * JD-Core Version:    0.7.0.1
  */

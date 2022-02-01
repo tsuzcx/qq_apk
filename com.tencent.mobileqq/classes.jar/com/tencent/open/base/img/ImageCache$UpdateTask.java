@@ -1,30 +1,26 @@
 package com.tencent.open.base.img;
 
-import bizw;
-import bjht;
-import bjkj;
-import bjkl;
-import bjko;
-import bjlk;
-import bjll;
-import bjlm;
-import bjln;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.appcommon.Common;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.base.FileUtils;
+import com.tencent.open.base.LogUtility;
 import java.io.File;
 
 public class ImageCache$UpdateTask
   implements Runnable
 {
-  protected bjll a;
+  protected ImageDownCallback a;
   protected String a;
   protected String b;
   protected String c;
   
-  public ImageCache$UpdateTask(String paramString1, String paramString2, String paramString3, bjll parambjll)
+  public ImageCache$UpdateTask(String paramString1, String paramString2, String paramString3, ImageDownCallback paramImageDownCallback)
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Bjll = parambjll;
+    this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback = paramImageDownCallback;
   }
   
   public boolean equals(Object paramObject)
@@ -39,75 +35,75 @@ public class ImageCache$UpdateTask
   {
     for (;;)
     {
-      bjln localbjln;
+      ImageInfo localImageInfo;
       try
       {
-        if (((!bjht.a()) || (!bjkj.b(bizw.a().a()))) && (this.jdField_a_of_type_Bjll != null)) {
-          this.jdField_a_of_type_Bjll.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+        if (((!Common.a()) || (!APNUtil.b(CommonDataAdapter.a().a()))) && (this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback != null)) {
+          this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
         }
-        Object localObject1 = bjht.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bjkl.a(this.jdField_c_of_type_JavaLangString);
-        bjko.c("downloadImage", "imgFilePath = " + (String)localObject1 + " | " + this.jdField_b_of_type_JavaLangString + " | " + bjkl.a(this.jdField_c_of_type_JavaLangString) + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
-        if ((new File((String)localObject1).exists()) && (this.jdField_a_of_type_Bjll != null))
+        Object localObject1 = Common.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + FileUtils.a(this.jdField_c_of_type_JavaLangString);
+        LogUtility.c("downloadImage", "imgFilePath = " + (String)localObject1 + " | " + this.jdField_b_of_type_JavaLangString + " | " + FileUtils.a(this.jdField_c_of_type_JavaLangString) + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+        if ((new File((String)localObject1).exists()) && (this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback != null))
         {
-          this.jdField_a_of_type_Bjll.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, (String)localObject1);
-          this.jdField_a_of_type_Bjll = null;
+          this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, (String)localObject1);
+          this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback = null;
         }
-        localbjln = ImageCache.jdField_a_of_type_Bjlk.a(this.jdField_a_of_type_JavaLangString);
-        if (localbjln == null)
+        localImageInfo = ImageCache.jdField_a_of_type_ComTencentOpenBaseImgImageDbHelper.a(this.jdField_a_of_type_JavaLangString);
+        if (localImageInfo == null)
         {
-          bjko.a("ImageCache", "image not in db. key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
-          localObject1 = new bjln();
-          ((bjln)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          ((bjln)localObject1).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-          ((bjln)localObject1).jdField_c_of_type_Long = 0L;
-          ((bjln)localObject1).jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-          if (!bjlm.a((bjln)localObject1)) {
+          LogUtility.a("ImageCache", "image not in db. key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+          localObject1 = new ImageInfo();
+          ((ImageInfo)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+          ((ImageInfo)localObject1).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+          ((ImageInfo)localObject1).jdField_c_of_type_Long = 0L;
+          ((ImageInfo)localObject1).jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+          if (!ImageDownloader.a((ImageInfo)localObject1)) {
             break;
           }
-          bjko.d("ImageCache", "download image succ. " + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-          ImageCache.jdField_a_of_type_Bjlk.a((bjln)localObject1);
-          if (this.jdField_a_of_type_Bjll == null) {
+          LogUtility.d("ImageCache", "download image succ. " + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+          ImageCache.jdField_a_of_type_ComTencentOpenBaseImgImageDbHelper.a((ImageInfo)localObject1);
+          if (this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback == null) {
             return;
           }
-          this.jdField_a_of_type_Bjll.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, bjht.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bjkl.a(((bjln)localObject1).jdField_b_of_type_JavaLangString));
+          this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Common.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + FileUtils.a(((ImageInfo)localObject1).jdField_b_of_type_JavaLangString));
           return;
         }
-        localbjln.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-        if (this.jdField_a_of_type_Bjll != null)
+        localImageInfo.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+        if (this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback != null)
         {
-          bjko.a("ImageCache", "file is deleted." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-          localbjln.jdField_c_of_type_Long = 0L;
-          localObject1 = localbjln;
+          LogUtility.a("ImageCache", "file is deleted." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+          localImageInfo.jdField_c_of_type_Long = 0L;
+          localObject1 = localImageInfo;
           continue;
         }
         l = System.currentTimeMillis();
       }
       catch (Exception localException)
       {
-        bjko.b("ImageCache", "Download img warning", localException);
+        LogUtility.b("ImageCache", "Download img warning", localException);
         return;
       }
       long l;
-      Object localObject2 = localbjln;
-      if (l > localbjln.jdField_b_of_type_Long)
+      Object localObject2 = localImageInfo;
+      if (l > localImageInfo.jdField_b_of_type_Long)
       {
-        localObject2 = localbjln;
-        if (l < localbjln.jdField_a_of_type_Long + localbjln.jdField_b_of_type_Long)
+        localObject2 = localImageInfo;
+        if (l < localImageInfo.jdField_a_of_type_Long + localImageInfo.jdField_b_of_type_Long)
         {
-          bjko.a("ImageCache", "currenttime=" + System.currentTimeMillis() + "\nmaxage+updatetime=" + localbjln.jdField_a_of_type_Long + localbjln.jdField_b_of_type_Long + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+          LogUtility.a("ImageCache", "currenttime=" + System.currentTimeMillis() + "\nmaxage+updatetime=" + localImageInfo.jdField_a_of_type_Long + localImageInfo.jdField_b_of_type_Long + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
           return;
         }
       }
     }
-    bjko.d("ImageCache", "download failed." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Bjll != null) {
-      this.jdField_a_of_type_Bjll.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+    LogUtility.d("ImageCache", "download failed." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback != null) {
+      this.jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.base.img.ImageCache.UpdateTask
  * JD-Core Version:    0.7.0.1
  */

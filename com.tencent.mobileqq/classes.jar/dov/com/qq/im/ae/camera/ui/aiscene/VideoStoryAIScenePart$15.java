@@ -1,22 +1,21 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.widget.Toast;
-import anvx;
-import bncm;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class VideoStoryAIScenePart$15
+class VideoStoryAIScenePart$15
   implements Runnable
 {
-  public VideoStoryAIScenePart$15(bncm parambncm) {}
+  VideoStoryAIScenePart$15(VideoStoryAIScenePart paramVideoStoryAIScenePart) {}
   
   public void run()
   {
-    Toast.makeText(bncm.e(this.this$0), anvx.a(2131715771), 0).show();
+    Toast.makeText(VideoStoryAIScenePart.e(this.this$0), HardCodeUtil.a(2131716237), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.aiscene.VideoStoryAIScenePart.15
  * JD-Core Version:    0.7.0.1
  */

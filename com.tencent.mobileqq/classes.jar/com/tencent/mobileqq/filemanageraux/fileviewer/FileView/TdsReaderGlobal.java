@@ -4,15 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aujn;
-import aujo;
-import aujp;
-import aujq;
-import aujr;
-import aujs;
-import aujt;
-import auju;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.kwstudio.office.base.IGlobal;
 import com.tencent.kwstudio.office.base.ILog;
@@ -25,13 +16,13 @@ import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
 import com.tencent.kwstudio.office.preview.TdsReaderView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.transfile.HttpCommunicator;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
-import com.tencent.mobileqq.transfile.RichMediaStrategy.OldEngineDPCProfile.TimeoutParam;
+import com.tencent.mobileqq.transfile.TimeoutParam;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.impl.HttpEngineServiceImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.widget.ProtectedWebView;
@@ -46,24 +37,23 @@ import mqq.os.MqqHandler;
 public final class TdsReaderGlobal
   implements IHostInterface
 {
-  private static final RichMediaStrategy.OldEngineDPCProfile.TimeoutParam jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam = new RichMediaStrategy.OldEngineDPCProfile.TimeoutParam();
+  private static final TimeoutParam jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam = new TimeoutParam();
   private static final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static volatile boolean jdField_a_of_type_Boolean;
   private static volatile boolean jdField_b_of_type_Boolean;
   private static volatile boolean c;
   private final BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-  private volatile INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
-  private volatile INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private volatile IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
   private volatile Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
   private volatile Executor jdField_b_of_type_JavaUtilConcurrentExecutor;
   
   static
   {
-    RichMediaStrategy.OldEngineDPCProfile.TimeoutParam localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam;
+    TimeoutParam localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam;
     localTimeoutParam.connectTimeoutFor2G /= 2;
-    localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam;
+    localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam;
     localTimeoutParam.connectTimeoutFor3G /= 2;
-    localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam;
+    localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam;
     localTimeoutParam.connectTimeoutForWifi /= 2;
   }
   
@@ -72,30 +62,17 @@ public final class TdsReaderGlobal
     this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
   }
   
-  private INetEngine.IBreakDownFix a()
+  private IHttpEngineService a()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix == null) {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aujn(null);
-      }
-      INetEngine.IBreakDownFix localIBreakDownFix = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
-      return localIBreakDownFix;
-    }
-    finally {}
-  }
-  
-  private INetEngine a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null)
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService == null)
       {
-        localObject1 = new HttpCommunicator(new aujp(null), 128);
+        localObject1 = new HttpCommunicator(128);
         ((HttpCommunicator)localObject1).start();
-        this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine((HttpCommunicator)localObject1, true);
+        this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = new HttpEngineServiceImpl((HttpCommunicator)localObject1, true);
       }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
       return localObject1;
     }
     finally {}
@@ -250,7 +227,7 @@ public final class TdsReaderGlobal
       bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
       str2 = (String)paramArrayOfObject[2];
       localObject = (IHostInterface.IHttpListener)paramArrayOfObject[3];
-      if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      if (NetworkUtil.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
         break;
       }
     } while (localObject == null);
@@ -265,7 +242,7 @@ public final class TdsReaderGlobal
     paramArrayOfObject.mPrioty = 1;
     paramArrayOfObject.mUseByteArrayPool = true;
     paramArrayOfObject.mExcuteTimeLimit = 5000L;
-    paramArrayOfObject.mCallback = new aujs(str1, (IHostInterface.IHttpListener)localObject, null);
+    paramArrayOfObject.mCallback = new TdsReaderGlobal.NetEngineListener4Request(str1, (IHostInterface.IHttpListener)localObject, null);
     Object localObject = getUserId();
     String str3 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime().getManager(2)).getSkey((String)localObject);
     localObject = "uin=" + (String)localObject + ";skey=" + str3;
@@ -291,7 +268,7 @@ public final class TdsReaderGlobal
       str2 = (String)paramArrayOfObject[1];
       str3 = (String)paramArrayOfObject[2];
       paramArrayOfObject = (IHostInterface.IDownloadListener)paramArrayOfObject[3];
-      if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      if (NetworkUtil.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
         break;
       }
     } while (paramArrayOfObject == null);
@@ -303,9 +280,9 @@ public final class TdsReaderGlobal
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mPrioty = 1;
     localHttpNetReq.mUseByteArrayPool = true;
-    localHttpNetReq.mTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam.clone();
-    localHttpNetReq.mBreakDownFix = a();
-    localHttpNetReq.mCallback = new aujr(str1, paramArrayOfObject, null);
+    localHttpNetReq.mTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam.clone();
+    localHttpNetReq.mSupportBreakResume = true;
+    localHttpNetReq.mCallback = new TdsReaderGlobal.NetEngineListener4Download(str1, paramArrayOfObject, null);
     a().sendReq(localHttpNetReq);
   }
   
@@ -321,12 +298,12 @@ public final class TdsReaderGlobal
   
   public IGlobal createGlobal()
   {
-    return new aujo(this, null);
+    return new TdsReaderGlobal.GlobalImpl(this, null);
   }
   
   public ILog createLog()
   {
-    return new aujq(null);
+    return new TdsReaderGlobal.LogImpl(null);
   }
   
   public Object createRecyclerView(Context paramContext)
@@ -342,12 +319,12 @@ public final class TdsReaderGlobal
       ProtectedWebView localProtectedWebView = new ProtectedWebView((Context)localObject);
       if (paramIWebClient != null)
       {
-        localProtectedWebView.setWebChromeClient(new aujt(paramIWebClient, null));
+        localProtectedWebView.setWebChromeClient(new TdsReaderGlobal.WebChromeClientImpl(paramIWebClient, null));
         localObject = paramContext;
         if (paramContext == null) {
           localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
         }
-        localProtectedWebView.setWebViewClient(new auju((Context)localObject, paramIWebClient, null));
+        localProtectedWebView.setWebViewClient(new TdsReaderGlobal.WebViewClientImpl((Context)localObject, paramIWebClient, null));
       }
       paramContext = localProtectedWebView.getX5WebViewExtension();
       if (paramContext != null)
@@ -404,7 +381,7 @@ public final class TdsReaderGlobal
     }
     for (;;)
     {
-      bdla.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
+      ReportController.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
       return;
     }
   }
@@ -424,7 +401,7 @@ public final class TdsReaderGlobal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal
  * JD-Core Version:    0.7.0.1
  */

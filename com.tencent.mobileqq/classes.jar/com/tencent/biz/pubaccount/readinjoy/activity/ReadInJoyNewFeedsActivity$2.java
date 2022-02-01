@@ -1,27 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nuz;
-import otv;
-import otw;
-import otx;
-import oty;
+import com.tencent.biz.common.offline.HtmlOffline;
 
-public class ReadInJoyNewFeedsActivity$2
+class ReadInJoyNewFeedsActivity$2
   implements Runnable
 {
   ReadInJoyNewFeedsActivity$2(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
   public void run()
   {
-    nuz.b("2378", this.this$0.app, true, new otv(this));
-    nuz.b("2464", this.this$0.app, true, new otw(this));
-    nuz.b("2463", this.this$0.app, true, new otx(this));
-    nuz.b("3256", this.this$0.app, true, new oty(this));
+    HtmlOffline.b("2378", this.this$0.app, true, new ReadInJoyNewFeedsActivity.2.1(this));
+    HtmlOffline.b("2464", this.this$0.app, true, new ReadInJoyNewFeedsActivity.2.2(this));
+    HtmlOffline.b("2463", this.this$0.app, true, new ReadInJoyNewFeedsActivity.2.3(this));
+    HtmlOffline.b("3256", this.this$0.app, true, new ReadInJoyNewFeedsActivity.2.4(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2
  * JD-Core Version:    0.7.0.1
  */

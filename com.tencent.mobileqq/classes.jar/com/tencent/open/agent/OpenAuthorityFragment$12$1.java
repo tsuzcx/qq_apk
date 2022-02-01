@@ -1,10 +1,7 @@
 package com.tencent.open.agent;
 
-import anvx;
-import bjdr;
-import bjeo;
-import bjer;
-import bjhh;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.open.model.GetVirtualListResult;
 import com.tencent.open.model.VirtualInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -13,10 +10,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class OpenAuthorityFragment$12$1
+class OpenAuthorityFragment$12$1
   implements Runnable
 {
-  public OpenAuthorityFragment$12$1(bjdr parambjdr, boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult) {}
+  OpenAuthorityFragment$12$1(OpenAuthorityFragment.12 param12, boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult) {}
   
   public void run()
   {
@@ -32,23 +29,23 @@ public class OpenAuthorityFragment$12$1
         Object localObject = (VirtualInfo)localIterator.next();
         if ((((VirtualInfo)localObject).b != null) && (((VirtualInfo)localObject).jdField_a_of_type_JavaLangString != null))
         {
-          localObject = new bjer(((VirtualInfo)localObject).jdField_a_of_type_Long, ((VirtualInfo)localObject).jdField_a_of_type_JavaLangString, ((VirtualInfo)localObject).b);
-          if ((((bjer)localObject).jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Long) && (OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).a() == 0L)) {
-            ((bjer)localObject).jdField_a_of_type_Boolean = true;
+          localObject = new OpenCardContainer.VirtualAccountInfo(((VirtualInfo)localObject).jdField_a_of_type_Long, ((VirtualInfo)localObject).jdField_a_of_type_JavaLangString, ((VirtualInfo)localObject).b);
+          if ((((OpenCardContainer.VirtualAccountInfo)localObject).jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Long) && (OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).a() == 0L)) {
+            ((OpenCardContainer.VirtualAccountInfo)localObject).jdField_a_of_type_Boolean = true;
           }
           localArrayList.add(localObject);
           continue;
           QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "-->onGetVirtualList result == null || result.list == null && result.list.size() <= 0");
         }
       }
-      if ((OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a) != null) && (OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).a != null))
+      if ((OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a) != null) && (OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).a != null))
       {
         QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "-->onGetVirtualList setData accountInfoList.size=", Integer.valueOf(localArrayList.size()) });
-        OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).a.a(localArrayList, OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).getAccount());
-        if (OpenAuthorityFragment.j(this.jdField_a_of_type_Bjdr.a) != 0L) {
-          OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).a.a(OpenAuthorityFragment.j(this.jdField_a_of_type_Bjdr.a));
+        OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).a.a(localArrayList, OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).getAccount());
+        if (OpenAuthorityFragment.j(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a) != 0L) {
+          OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).a.a(OpenAuthorityFragment.j(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a));
         }
-        OpenAuthorityFragment.d(this.jdField_a_of_type_Bjdr.a, 0L);
+        OpenAuthorityFragment.d(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a, 0L);
       }
     }
     do
@@ -58,16 +55,16 @@ public class OpenAuthorityFragment$12$1
       break;
       if (this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult != null)
       {
-        bjhh.a(this.jdField_a_of_type_Bjdr.a.getActivity(), anvx.a(2131707303) + this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Int, false);
+        AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a.getActivity(), HardCodeUtil.a(2131707828) + this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Int, false);
         QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "getVirtualList error errorcode ===", Integer.valueOf(this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Int) });
       }
-    } while ((OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a) == null) || (OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).a == null) || ((OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).getAccount() != null) && (OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).getAccount().equals(OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).a.jdField_a_of_type_JavaLangString))));
-    OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).a.a(localArrayList, OpenAuthorityFragment.a(this.jdField_a_of_type_Bjdr.a).getAccount());
+    } while ((OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a) == null) || (OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).a == null) || ((OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).getAccount() != null) && (OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).getAccount().equals(OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).a.jdField_a_of_type_JavaLangString))));
+    OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).a.a(localArrayList, OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$12.a).getAccount());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityFragment.12.1
  * JD-Core Version:    0.7.0.1
  */

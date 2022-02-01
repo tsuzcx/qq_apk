@@ -8,8 +8,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.core.SystemEmotionPanelManager;
+import com.tencent.mobileqq.emoticonview.api.IPanelDependListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
 import java.util.List;
 
 class EmoticonLinearLayout$1
@@ -56,7 +57,7 @@ class EmoticonLinearLayout$1
   {
     if ((this.row == paramInt1) && (this.column == paramInt2) && (this.viewInited)) {}
     long l;
-    label294:
+    label322:
     do
     {
       return;
@@ -64,9 +65,14 @@ class EmoticonLinearLayout$1
       this.column = paramInt2;
       l = System.currentTimeMillis();
       this.this$0.removeAllViews();
-      paramInt1 = 0;
-      if (XPanelContainer.d > 0) {
-        paramInt1 = XPanelContainer.d / 3;
+      paramInt2 = 0;
+      paramInt1 = paramInt2;
+      if (SystemEmotionPanelManager.a().a() != null)
+      {
+        paramInt1 = paramInt2;
+        if (SystemEmotionPanelManager.a().a().getmAddedHeight() > 0) {
+          paramInt1 = SystemEmotionPanelManager.a().a().getmAddedHeight() / 3;
+        }
       }
       paramInt2 = paramInt1;
       if (paramInt1 > 60) {
@@ -97,7 +103,7 @@ class EmoticonLinearLayout$1
           {
             localRelativeLayout = new RelativeLayout(this.this$0.context);
             localObject = new URLImageView(this.this$0.context);
-            ((URLImageView)localObject).setId(2131366078);
+            ((URLImageView)localObject).setId(2131378813);
             switch (this.this$0.panelViewType)
             {
             default: 
@@ -118,7 +124,7 @@ class EmoticonLinearLayout$1
             ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
             ((URLImageView)localObject).setAdjustViewBounds(false);
             localRelativeLayout.addView((View)localObject, localLayoutParams);
-            break label294;
+            break label322;
             localObject = (ViewGroup)localRelativeLayout.getParent();
             if (localObject != null) {
               ((ViewGroup)localObject).removeAllViews();
@@ -135,7 +141,7 @@ class EmoticonLinearLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

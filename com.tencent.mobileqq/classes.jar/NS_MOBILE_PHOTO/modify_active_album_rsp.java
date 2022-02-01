@@ -9,7 +9,7 @@ public final class modify_active_album_rsp
 {
   public String fake_feeds_client_key = "";
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public modify_active_album_rsp() {}
   

@@ -30,7 +30,7 @@ public class ReadInJoyEntityManagerFactory
   public ReadInJoyEntityManagerFactory(String paramString)
   {
     super(paramString);
-    this.TAG = "ReadInJoy.MessageNode.EntityManagerFactory";
+    this.tag = "ReadInJoy.MessageNode.EntityManagerFactory";
   }
   
   private void a(com.tencent.mobileqq.app.SQLiteDatabase paramSQLiteDatabase)
@@ -55,7 +55,7 @@ public class ReadInJoyEntityManagerFactory
             }
             catch (SQLiteException localSQLiteException)
             {
-              QLog.e(this.TAG, 1, "[DB] dropAllTable " + str, localSQLiteException);
+              QLog.e(this.tag, 1, "[DB] dropAllTable " + str, localSQLiteException);
               SQLiteOpenHelper.throwDebugException(localSQLiteException);
             }
           }
@@ -195,7 +195,7 @@ public class ReadInJoyEntityManagerFactory
     //   107: aload 4
     //   109: astore 5
     //   111: aload_0
-    //   112: getfield 14	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyEntityManagerFactory:TAG	Ljava/lang/String;
+    //   112: getfield 14	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyEntityManagerFactory:tag	Ljava/lang/String;
     //   115: iconst_1
     //   116: ldc 197
     //   118: aload 6
@@ -268,7 +268,7 @@ public class ReadInJoyEntityManagerFactory
   {
     if ((this.dbHelper == null) || (this.mInnerDbHelper == null))
     {
-      QLog.d(this.TAG, 2, "removeDatabases: failed. please call build first.");
+      QLog.d(this.tag, 2, "removeDatabases: failed. please call build first.");
       return;
     }
     a(this.dbHelper.getWritableDatabase());
@@ -278,7 +278,7 @@ public class ReadInJoyEntityManagerFactory
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "readinjoy_message_node_" + paramString + ".db", null, 105);
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "readinjoy_message_node_" + paramString + ".db", null, 108);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
@@ -303,7 +303,7 @@ public class ReadInJoyEntityManagerFactory
   public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
     int i = 1;
-    QLog.i(this.TAG, 1, "[DB]|upgrade. oldver=" + paramInt1 + ",newver=" + paramInt2);
+    QLog.i(this.tag, 1, "[DB]|upgrade. oldver=" + paramInt1 + ",newver=" + paramInt2);
     a(getPackageName(), paramSQLiteDatabase);
     try
     {
@@ -350,14 +350,14 @@ public class ReadInJoyEntityManagerFactory
     }
     catch (Exception localException)
     {
-      QLog.e(this.TAG, 1, localException, new Object[0]);
+      QLog.e(this.tag, 1, localException, new Object[0]);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

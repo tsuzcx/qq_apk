@@ -3,7 +3,8 @@ package com.tencent.mobileqq.emoticonview;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import bdla;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class EmoticonPanelHotPicSearchHelper$LabelFlowAdapter$1
@@ -20,13 +21,13 @@ class EmoticonPanelHotPicSearchHelper$LabelFlowAdapter$1
       return;
       String str = this.val$tagBtn.getText().toString();
       this.this$1.this$0.startSearch(str);
-      bdla.b(this.this$1.this$0.getApp(), "dc00898", "", "", "0X800AE1F", "0X800AE1F", 0, 0, "2", "", str, "");
+      ReportController.b(this.this$1.this$0.getApp().getQQAppInterface(), "dc00898", "", "", "0X800AE1F", "0X800AE1F", 0, 0, "2", "", str, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelHotPicSearchHelper.LabelFlowAdapter.1
  * JD-Core Version:    0.7.0.1
  */

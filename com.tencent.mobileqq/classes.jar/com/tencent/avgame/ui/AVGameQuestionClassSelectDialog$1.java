@@ -1,0 +1,28 @@
+package com.tencent.avgame.ui;
+
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class AVGameQuestionClassSelectDialog$1
+  implements Handler.Callback
+{
+  AVGameQuestionClassSelectDialog$1(AVGameQuestionClassSelectDialog paramAVGameQuestionClassSelectDialog) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    paramMessage = this.a;
+    if (AVGameQuestionClassSelectDialog.a(this.a) > 0) {}
+    for (int i = AVGameQuestionClassSelectDialog.a(this.a) - 1;; i = 0)
+    {
+      AVGameQuestionClassSelectDialog.a(paramMessage, i);
+      AVGameQuestionClassSelectDialog.a(this.a);
+      return true;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.avgame.ui.AVGameQuestionClassSelectDialog.1
+ * JD-Core Version:    0.7.0.1
+ */

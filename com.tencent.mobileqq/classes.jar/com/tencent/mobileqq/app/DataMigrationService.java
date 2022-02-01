@@ -14,11 +14,9 @@ import android.os.Parcelable;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Base64;
-import anta;
-import antb;
-import bhfn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.MD5;
@@ -41,7 +39,7 @@ import oicq.wlogin_sdk.tools.util;
 public class DataMigrationService
   extends Service
 {
-  private Handler a = new anta(this);
+  private Handler a = new DataMigrationService.1(this);
   
   private void a(Intent paramIntent, int paramInt)
   {
@@ -64,7 +62,7 @@ public class DataMigrationService
       stopSelf(paramInt);
       return;
     }
-    if (("com.tencent.tim".equals(str1)) && (bhfn.b(this, "com.tencent.tim", "775E696D09856872FDD8AB4F3F06B1E0"))) {
+    if (("com.tencent.tim".equals(str1)) && (PackageUtil.b(this, "com.tencent.tim", "775E696D09856872FDD8AB4F3F06B1E0"))) {
       a("com.tencent.tim", str2, str3, i, paramInt);
     }
     for (bool = true;; bool = false)
@@ -223,9 +221,9 @@ public class DataMigrationService
       WtloginHelper localWtloginHelper = new WtloginHelper(this);
       localWtloginHelper.SetTimeOut(20);
       localWtloginHelper.SetMsfTransportFlag(1);
-      localWtloginHelper.SetListener(new antb(this, paramString1, paramString2, paramString3, paramInt1, paramInt2, localWtloginHelper));
+      localWtloginHelper.SetListener(new DataMigrationService.2(this, paramString1, paramString2, paramString3, paramInt1, paramInt2, localWtloginHelper));
       byte[] arrayOfByte = util.getPkgSigFromApkName(this, "com.tencent.tim");
-      i = localWtloginHelper.GetA1WithA1(localAppRuntime.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "8.4.10".getBytes(), arrayOfByte, new WUserSigInfo(), new WFastLoginInfo());
+      i = localWtloginHelper.GetA1WithA1(localAppRuntime.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "8.5.5".getBytes(), arrayOfByte, new WUserSigInfo(), new WFastLoginInfo());
       if (QLog.isColorLevel()) {
         QLog.d("DataMigrationService", 2, new Object[] { "sendActionAfterGetTicket| retCode=", Integer.valueOf(i), ", account=", localAppRuntime.getAccount() });
       }
@@ -249,7 +247,7 @@ public class DataMigrationService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataMigrationService
  * JD-Core Version:    0.7.0.1
  */

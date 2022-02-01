@@ -11,12 +11,12 @@ public final class UserFacadeElementDetail
   static ElementInfo cache_background = new ElementInfo();
   static ArrayList<ElementInfo> cache_icons = new ArrayList();
   static ArrayList<ElementInfo> cache_other;
-  public ElementInfo background;
-  public ArrayList<ElementInfo> icons;
-  public int lottieId;
-  public ArrayList<ElementInfo> other;
-  public int templateId;
-  public int themeId;
+  public ElementInfo background = null;
+  public ArrayList<ElementInfo> icons = null;
+  public int lottieId = 0;
+  public ArrayList<ElementInfo> other = null;
+  public int templateId = 0;
+  public int themeId = 0;
   
   static
   {

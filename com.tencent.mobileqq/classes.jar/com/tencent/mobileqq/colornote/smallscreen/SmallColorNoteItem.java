@@ -45,14 +45,14 @@ public class SmallColorNoteItem
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean) {}
-    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558949, paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558948, paramViewGroup, false))
+    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558990, paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558989, paramViewGroup, false))
     {
       paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131365192));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)paramViewGroup.findViewById(2131372079));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131372080));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372090));
-      this.b = ((TextView)paramViewGroup.findViewById(2131372088));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131365331));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)paramViewGroup.findViewById(2131372382));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131372383));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372393));
+      this.b = ((TextView)paramViewGroup.findViewById(2131372391));
       return;
     }
   }
@@ -75,7 +75,7 @@ public class SmallColorNoteItem
     this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     ((ViewGroup.LayoutParams)localObject).height = paramInt1;
     float f = 1.0F * paramInt1 / paramInt2;
-    paramInt1 = (int)(DisplayUtil.dip2px(getContext(), 6.0F) * f);
+    paramInt1 = (int)(DisplayUtil.a(getContext(), 6.0F) * f);
     localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
     int i;
     if (this.jdField_a_of_type_Boolean)
@@ -87,14 +87,14 @@ public class SmallColorNoteItem
       i = paramInt1;
       label73:
       ((RelativeLayout)localObject).setPadding(paramInt2, paramInt1, i, paramInt1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius((int)(DisplayUtil.dip2px(getContext(), 3.0F) * f), false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius((int)(DisplayUtil.a(getContext(), 3.0F) * f), false);
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).height = ((int)(DisplayUtil.dip2px(getContext(), 20.0F) * f));
-      ((RelativeLayout.LayoutParams)localObject).width = ((int)(DisplayUtil.dip2px(getContext(), 20.0F) * f));
+      ((RelativeLayout.LayoutParams)localObject).height = ((int)(DisplayUtil.a(getContext(), 20.0F) * f));
+      ((RelativeLayout.LayoutParams)localObject).width = ((int)(DisplayUtil.a(getContext(), 20.0F) * f));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize((int)(8.0F * f));
       this.b.setTextSize((int)(f * 6.0F));
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      paramInt1 = Math.max(DisplayUtil.dip2px(getContext(), 2.0F), (int)(DisplayUtil.dip2px(getContext(), 4.0F) * f));
+      paramInt1 = Math.max(DisplayUtil.a(getContext(), 2.0F), (int)(DisplayUtil.a(getContext(), 4.0F) * f));
       if (!this.jdField_a_of_type_Boolean) {
         break label297;
       }
@@ -168,12 +168,12 @@ public class SmallColorNoteItem
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }

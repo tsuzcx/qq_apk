@@ -9,11 +9,11 @@ public final class AcsDelMsgReq
 {
   static AcsHead cache_head = new AcsHead();
   public String domain = "";
-  public AcsHead head;
-  public long mn_appid;
+  public AcsHead head = null;
+  public long mn_appid = 0L;
   public String msg_id = "";
-  public int source;
-  public long uin;
+  public int source = 0;
+  public long uin = 0L;
   
   public AcsDelMsgReq() {}
   

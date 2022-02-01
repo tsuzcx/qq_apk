@@ -1,13 +1,9 @@
 package com.tencent.mobileqq.ar;
 
-import apgt;
-import apgu;
-import apgv;
-
 class FramePerformanceMonitor$CurrentRunnable
   implements Runnable
 {
-  private boolean a;
+  private boolean a = false;
   
   private FramePerformanceMonitor$CurrentRunnable(FramePerformanceMonitor paramFramePerformanceMonitor) {}
   
@@ -31,15 +27,15 @@ class FramePerformanceMonitor$CurrentRunnable
       {
         localException.printStackTrace();
       }
-      apgv localapgv = FramePerformanceMonitor.a(this.this$0).a();
-      FramePerformanceMonitor.a(this.this$0).a(localapgv);
+      GapDataCollector.RefreshData localRefreshData = FramePerformanceMonitor.a(this.this$0).a();
+      FramePerformanceMonitor.a(this.this$0).a(localRefreshData);
       Thread.sleep(FramePerformanceMonitor.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FramePerformanceMonitor.CurrentRunnable
  * JD-Core Version:    0.7.0.1
  */

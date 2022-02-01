@@ -9,10 +9,10 @@ public final class ReqGetSettings
   extends JceStruct
 {
   static ArrayList<String> cache_Paths;
-  public long Count;
-  public long Offset;
-  public ArrayList<String> Paths;
-  public int Revision;
+  public long Count = 0L;
+  public long Offset = 0L;
+  public ArrayList<String> Paths = null;
+  public int Revision = 0;
   
   public ReqGetSettings() {}
   

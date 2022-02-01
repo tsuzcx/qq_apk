@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.apollo.view;
 
-import anch;
-import anmj;
-import annn;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
+import com.tencent.mobileqq.apollo.api.impl.SpriteScriptManagerImpl;
+import com.tencent.mobileqq.apollo.utils.CmShowStatUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-public class ChatApolloViewListener$1
+class ChatApolloViewListener$1
   implements Runnable
 {
-  public ChatApolloViewListener$1(annn paramannn) {}
+  ChatApolloViewListener$1(ChatApolloViewListener paramChatApolloViewListener) {}
   
   public void run()
   {
@@ -26,15 +25,15 @@ public class ChatApolloViewListener$1
       return;
       localBaseChatPie = (BaseChatPie)this.this$0.a.get();
     } while (localBaseChatPie == null);
-    if ((localBaseChatPie.app != null) && (localBaseChatPie.sessionInfo != null)) {
-      ((anch)localBaseChatPie.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).a(localBaseChatPie.sessionInfo.curFriendUin, localBaseChatPie.sessionInfo.curType);
+    if ((localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+      ((SpriteScriptManagerImpl)localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all")).onSurfaceReady(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     }
-    anmj.b("TraceReport_initApolloSurfaceView_PreLoadJS");
+    CmShowStatUtil.b("TraceReport_initApolloSurfaceView_PreLoadJS");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ChatApolloViewListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqCommon
   extends JceStruct
 {
-  public byte cByte;
-  public int cInt;
-  public long cLong;
+  public byte cByte = 0;
+  public int cInt = 0;
+  public long cLong = 0L;
   public String cString = "";
   
   public ReqCommon() {}

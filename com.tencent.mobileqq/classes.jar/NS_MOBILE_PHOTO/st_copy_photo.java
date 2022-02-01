@@ -8,7 +8,7 @@ public final class st_copy_photo
   extends JceStruct
 {
   public String albumid = "";
-  public long owneruin;
+  public long owneruin = 0L;
   public String photoid = "";
   
   public st_copy_photo() {}

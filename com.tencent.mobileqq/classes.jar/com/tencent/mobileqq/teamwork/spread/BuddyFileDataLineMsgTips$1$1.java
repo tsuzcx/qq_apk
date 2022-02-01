@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import arnh;
-import arnk;
-import bcrg;
-import bedw;
-import bedy;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigBean;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigProcessor;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,7 +25,7 @@ class BuddyFileDataLineMsgTips$1$1
       QLog.i("BuddyFileDataLineMsgTips", 1, "sub Thread getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject2 = new StringTokenizer(arnk.a().a(), "|");
+    Object localObject2 = new StringTokenizer(TencentDocDataLineTipsConfigProcessor.a().a(), "|");
     if (!((StringTokenizer)localObject2).hasMoreTokens())
     {
       if (QLog.isColorLevel()) {
@@ -43,7 +41,7 @@ class BuddyFileDataLineMsgTips$1$1
       arrayOfString[i] = ((StringTokenizer)localObject2).nextToken();
       i += 1;
     }
-    long l = bcrg.a();
+    long l = MessageCache.a();
     localObject1 = ((List)localObject1).iterator();
     label304:
     label320:
@@ -68,7 +66,7 @@ class BuddyFileDataLineMsgTips$1$1
       }
       this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileDataLineMsgTips$1.a.a(localArrayList);
       return;
-      String str = FileUtil.getExtension(((FileManagerEntity)localObject2).fileName);
+      String str = FileUtil.a(((FileManagerEntity)localObject2).fileName);
       int j = arrayOfString.length;
       i = 0;
       if (i < j) {

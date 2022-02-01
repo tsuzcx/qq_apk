@@ -35,7 +35,7 @@ public class RoundRectView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     RectF localRectF = new RectF(0.0F, 0.0F, this.b, this.c);
@@ -44,7 +44,7 @@ public class RoundRectView
   }
   
   @SuppressLint({"DrawAllocation"})
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getWidth();

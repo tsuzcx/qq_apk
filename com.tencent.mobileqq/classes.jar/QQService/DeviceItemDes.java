@@ -8,7 +8,7 @@ public final class DeviceItemDes
   extends JceStruct
 {
   static byte[] cache_vecItemDes;
-  public byte[] vecItemDes;
+  public byte[] vecItemDes = null;
   
   public DeviceItemDes() {}
   

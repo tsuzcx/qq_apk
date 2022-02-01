@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.pluginsdk;
 
-import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;

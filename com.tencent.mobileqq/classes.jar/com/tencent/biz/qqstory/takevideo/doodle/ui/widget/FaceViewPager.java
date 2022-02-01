@@ -5,13 +5,11 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
-import yvl;
-import yvm;
 
 public class FaceViewPager
   extends ViewPager
 {
-  private List<yvm> a;
+  private List<FaceViewPager.PageChangedObserver> a;
   
   public FaceViewPager(Context paramContext)
   {
@@ -28,19 +26,19 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new yvl(this));
+    setOnPageChangeListener(new FaceViewPager.1(this));
   }
   
-  public void a(yvm paramyvm)
+  public void a(FaceViewPager.PageChangedObserver paramPageChangedObserver)
   {
-    if (!this.a.contains(paramyvm)) {
-      this.a.add(paramyvm);
+    if (!this.a.contains(paramPageChangedObserver)) {
+      this.a.add(paramPageChangedObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager
  * JD-Core Version:    0.7.0.1
  */

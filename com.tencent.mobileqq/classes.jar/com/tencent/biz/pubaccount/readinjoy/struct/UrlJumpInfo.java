@@ -4,18 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.protocol.RIJPBFieldUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import org.jetbrains.annotations.NotNull;
-import qxl;
-import rsm;
 import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
 
 public class UrlJumpInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<UrlJumpInfo> CREATOR = new rsm();
+  public static final Parcelable.Creator<UrlJumpInfo> CREATOR = new UrlJumpInfo.1();
   public int a;
   public String a;
   public String b;
@@ -25,7 +24,7 @@ public class UrlJumpInfo
   
   public UrlJumpInfo() {}
   
-  public UrlJumpInfo(Parcel paramParcel)
+  protected UrlJumpInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -48,11 +47,11 @@ public class UrlJumpInfo
     for (int i = paramUrlJumpInfo.uint32_jump_type.get();; i = 0)
     {
       localUrlJumpInfo.jdField_a_of_type_Int = i;
-      localUrlJumpInfo.c = qxl.b(paramUrlJumpInfo.bytes_jump_schema);
-      localUrlJumpInfo.b = qxl.b(paramUrlJumpInfo.bytes_jump_bundle);
-      localUrlJumpInfo.jdField_a_of_type_JavaLangString = qxl.b(paramUrlJumpInfo.bytes_jump_url);
-      localUrlJumpInfo.d = qxl.b(paramUrlJumpInfo.bytes_clipboard_info);
-      localUrlJumpInfo.e = qxl.b(paramUrlJumpInfo.bytes_common_data);
+      localUrlJumpInfo.c = RIJPBFieldUtils.b(paramUrlJumpInfo.bytes_jump_schema);
+      localUrlJumpInfo.b = RIJPBFieldUtils.b(paramUrlJumpInfo.bytes_jump_bundle);
+      localUrlJumpInfo.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.b(paramUrlJumpInfo.bytes_jump_url);
+      localUrlJumpInfo.d = RIJPBFieldUtils.b(paramUrlJumpInfo.bytes_clipboard_info);
+      localUrlJumpInfo.e = RIJPBFieldUtils.b(paramUrlJumpInfo.bytes_common_data);
       return localUrlJumpInfo;
     }
   }
@@ -101,7 +100,7 @@ public class UrlJumpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo
  * JD-Core Version:    0.7.0.1
  */

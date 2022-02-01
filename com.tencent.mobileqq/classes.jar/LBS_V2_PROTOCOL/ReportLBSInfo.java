@@ -9,17 +9,17 @@ public final class ReportLBSInfo
 {
   public String data_id = "";
   public String dev = "";
-  public int iLat;
-  public int iLon;
-  public int idx;
+  public int iLat = 0;
+  public int iLon = 0;
+  public int idx = 0;
   public String lang = "";
   public String os = "";
   public String os_ver = "";
   public String other = "";
-  public int ref;
+  public int ref = 0;
   public String ref_ver = "";
   public String request_id = "";
-  public long time;
+  public long time = 0L;
   
   public ReportLBSInfo() {}
   

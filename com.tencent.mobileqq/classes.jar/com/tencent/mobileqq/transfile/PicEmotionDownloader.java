@@ -9,13 +9,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import asdi;
-import asih;
-import awyr;
-import bheg;
-import bhyo;
-import bhyq;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -24,12 +17,19 @@ import com.tencent.image.NativeGifFactory;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
 import com.tencent.mobileqq.emoticonview.VoiceGifFactory;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmojiManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerProxy;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
@@ -39,6 +39,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import mqq.app.AppRuntime;
 import org.apache.http.Header;
 
 public class PicEmotionDownloader
@@ -59,7 +60,7 @@ public class PicEmotionDownloader
     this.mOptions.inScreenDensity = paramBaseApplicationImpl.getResources().getDisplayMetrics().densityDpi;
   }
   
-  private int configParams(DownloadParams paramDownloadParams, Emoticon paramEmoticon, AppInterface paramAppInterface, Bundle paramBundle, String paramString)
+  private int configParams(DownloadParams paramDownloadParams, Emoticon paramEmoticon, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, Bundle paramBundle, String paramString)
   {
     boolean bool3 = false;
     Object localObject = paramDownloadParams.getHeader("emo_type");
@@ -116,7 +117,7 @@ public class PicEmotionDownloader
       {
         if (!paramDownloadParams.useApngImage)
         {
-          paramEmoticon = ((awyr)paramAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(paramEmoticon.epId);
+          paramEmoticon = ((EmoticonManagerProxy)paramQQEmoticonMainPanelApp.getManager(QQManagerFactory.EMOTICON_MANAGER)).syncFindEmoticonPackageById(paramEmoticon.epId);
           if ((paramEmoticon != null) && (paramEmoticon.isAPNG == 2)) {
             paramDownloadParams.useApngImage = true;
           }
@@ -179,7 +180,7 @@ public class PicEmotionDownloader
           {
             paramString2 = localBitmap;
             localObject1 = localBitmap;
-            paramString1 = bheg.a(localBitmap);
+            paramString1 = ImageUtil.a(localBitmap);
           }
           paramString2 = paramString1;
           localObject1 = paramString1;
@@ -371,7 +372,7 @@ public class PicEmotionDownloader
       }
       try
       {
-        if (asdi.b(str)) {
+        if (EmosmUtils.b(str)) {
           return decodeGifFile(paramDownloadParams, paramString, str);
         }
         if (paramDownloadParams.useApngImage) {
@@ -380,7 +381,7 @@ public class PicEmotionDownloader
         if (QLog.isColorLevel()) {
           QLog.d("PicEmotionDownloader", 2, "decodeFile getDecryptFileData,path=" + str);
         }
-        paramDownloadParams = asdi.b(str);
+        paramDownloadParams = EmosmUtils.b(str);
         if (paramDownloadParams != null)
         {
           paramDownloadParams = decodeDecryptFileData(str, paramDownloadParams);
@@ -424,10 +425,10 @@ public class PicEmotionDownloader
     }
   }
   
-  protected void downlaodAIOEmoticon(Emoticon paramEmoticon, AppInterface paramAppInterface, int paramInt)
+  protected void downlaodAIOEmoticon(Emoticon paramEmoticon, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, int paramInt)
   {
-    paramAppInterface = (asih)paramAppInterface.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
-    if (!paramAppInterface.b(paramEmoticon, paramInt)) {}
+    paramQQEmoticonMainPanelApp = (EmojiManagerProxy)paramQQEmoticonMainPanelApp.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
+    if (!paramQQEmoticonMainPanelApp.tasksFileExists(paramEmoticon, paramInt)) {}
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
@@ -436,7 +437,7 @@ public class PicEmotionDownloader
       if (!bool) {
         break;
       }
-      bool = paramAppInterface.a(paramEmoticon, paramInt);
+      bool = paramQQEmoticonMainPanelApp.downloadAIOEmoticon(paramEmoticon, paramInt);
       if (QLog.isColorLevel()) {
         QLog.d("Q.emoji.EmoDown", 2, "downloadImage| downloadAIOEmoticon result=" + bool + " eId: " + paramEmoticon.eId);
       }
@@ -462,11 +463,11 @@ public class PicEmotionDownloader
     if (!(paramDownloadParams.tag instanceof Emoticon)) {
       throw new FileDownloadFailedException(9302, 0L, "downloadImage can't find emoticon!", false, false);
     }
-    paramURLDrawableHandler = (Emoticon)paramDownloadParams.tag;
-    Object localObject = paramDownloadParams.getHeader("my_uin");
+    Emoticon localEmoticon = (Emoticon)paramDownloadParams.tag;
+    paramURLDrawableHandler = paramDownloadParams.getHeader("my_uin");
     paramOutputStream = null;
-    if (localObject != null) {
-      paramOutputStream = ((Header)localObject).getValue();
+    if (paramURLDrawableHandler != null) {
+      paramOutputStream = paramURLDrawableHandler.getValue();
     }
     if (TextUtils.isEmpty(paramOutputStream))
     {
@@ -478,7 +479,7 @@ public class PicEmotionDownloader
     }
     try
     {
-      paramOutputStream = (AppInterface)this.application.getAppRuntime(paramOutputStream);
+      paramOutputStream = this.application.getAppRuntime(paramOutputStream);
       if (paramOutputStream == null)
       {
         if (QLog.isColorLevel()) {
@@ -496,37 +497,33 @@ public class PicEmotionDownloader
       if (Build.VERSION.SDK_INT > 10) {}
       for (int i = 4;; i = 0)
       {
-        localObject = paramOutputStream.getSharedPreferences("Last_Login", i).getString("uin", "");
-        paramOutputStream = (AppInterface)this.application.getAppRuntime((String)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("PicEmotionDownloader", 2, "downloadImage| a second time: uin->" + (String)localObject);
+        String str = paramOutputStream.getSharedPreferences("Last_Login", i).getString("uin", "");
+        paramURLDrawableHandler = this.application.getAppRuntime(str);
+        paramOutputStream = paramURLDrawableHandler;
+        if (!QLog.isColorLevel()) {
+          break;
         }
+        QLog.d("PicEmotionDownloader", 2, "downloadImage| a second time: uin->" + str);
+        paramOutputStream = paramURLDrawableHandler;
         break;
       }
-      localObject = new Bundle();
-      paramDownloadParams.tag = localObject;
-      ((Bundle)localObject).putSerializable("emoticon_key", paramURLDrawableHandler);
-      if ((paramOutputStream instanceof QQAppInterface)) {
-        break label428;
-      }
+      paramURLDrawableHandler = new Bundle();
+      paramDownloadParams.tag = paramURLDrawableHandler;
+      paramURLDrawableHandler.putSerializable("emoticon_key", localEmoticon);
+      paramOutputStream = new QQEmoticonMainPanelApp(paramOutputStream);
+      downlaodAIOEmoticon(localEmoticon, paramOutputStream, configParams(paramDownloadParams, localEmoticon, paramOutputStream, paramURLDrawableHandler, "aio_preview"));
     }
-    downloadSmallEmoticon(paramURLDrawableHandler, paramOutputStream);
-    for (;;)
-    {
-      return new File(AppConstants.SDCARD_PATH);
-      label428:
-      downlaodAIOEmoticon(paramURLDrawableHandler, paramOutputStream, configParams(paramDownloadParams, paramURLDrawableHandler, paramOutputStream, (Bundle)localObject, "aio_preview"));
-    }
+    return new File(AppConstants.SDCARD_PATH);
   }
   
-  protected void downloadSmallEmoticon(Emoticon paramEmoticon, AppInterface paramAppInterface)
+  protected void downloadSmallEmoticon(Emoticon paramEmoticon, AppRuntime paramAppRuntime)
   {
     if (paramEmoticon.jobType == 3)
     {
       String[] arrayOfString = new String[2];
       arrayOfString[0] = EmoticonUtils.smallEmoticonThumbUrl.replace("[epId]", paramEmoticon.epId).replace("[eId]", paramEmoticon.eId);
       arrayOfString[1] = EmoticonUtils.emoticonPreviewPath.replace("[epId]", paramEmoticon.epId).replace("[eId]", paramEmoticon.eId);
-      int i = bhyq.a(new bhyo(arrayOfString[0], new File(arrayOfString[1])), paramAppInterface);
+      int i = DownloaderFactory.a(new DownloadTask(arrayOfString[0], new File(arrayOfString[1])), paramAppRuntime);
       if (QLog.isColorLevel()) {
         QLog.d("PicEmotionDownloader", 2, "download small emoji, ret:" + i);
       }
@@ -563,7 +560,7 @@ public class PicEmotionDownloader
       if (paramBoolean)
       {
         paramEmoticon = "0";
-        awyr.a(paramEmoticon, 5);
+        EmoticonManager.a(paramEmoticon, 5);
       }
     }
     do
@@ -576,7 +573,7 @@ public class PicEmotionDownloader
         if (paramBoolean) {}
         for (paramEmoticon = "0";; paramEmoticon = "7001")
         {
-          awyr.a(paramEmoticon, 7);
+          EmoticonManager.a(paramEmoticon, 7);
           return;
         }
       }
@@ -584,7 +581,7 @@ public class PicEmotionDownloader
     if (paramBoolean) {}
     for (paramEmoticon = "0";; paramEmoticon = "66001")
     {
-      awyr.a(paramEmoticon, 6);
+      EmoticonManager.a(paramEmoticon, 6);
       return;
     }
   }

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import java.io.Serializable;
 
 public class SelectPositionModule$PositionData
@@ -14,7 +14,7 @@ public class SelectPositionModule$PositionData
   
   public SelectPositionModule$PositionData() {}
   
-  public SelectPositionModule$PositionData(SosoInterface.SosoLocation paramSosoLocation)
+  public SelectPositionModule$PositionData(SosoLocation paramSosoLocation)
   {
     if (paramSosoLocation == null) {
       return;
@@ -86,7 +86,7 @@ public class SelectPositionModule$PositionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData
  * JD-Core Version:    0.7.0.1
  */

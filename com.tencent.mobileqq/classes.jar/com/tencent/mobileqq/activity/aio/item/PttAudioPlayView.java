@@ -12,9 +12,9 @@ public class PttAudioPlayView
 {
   Bitmap a;
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private final int j = 12;
-  private int k = 2130838248;
+  private int k = 2130838328;
   
   public PttAudioPlayView(Context paramContext)
   {
@@ -63,7 +63,7 @@ public class PttAudioPlayView
   {
     super.a(paramInt);
     this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.k);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838249);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838329);
   }
   
   protected void a(Canvas paramCanvas)
@@ -100,7 +100,7 @@ public class PttAudioPlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioPlayView
  * JD-Core Version:    0.7.0.1
  */

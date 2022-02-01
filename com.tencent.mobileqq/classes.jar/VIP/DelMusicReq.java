@@ -8,9 +8,9 @@ public final class DelMusicReq
   extends JceStruct
 {
   static SourceInfo cache_stSource = new SourceInfo();
-  public long iUin;
+  public long iUin = 0L;
   public String sSongId = "";
-  public SourceInfo stSource;
+  public SourceInfo stSource = null;
   
   public DelMusicReq() {}
   

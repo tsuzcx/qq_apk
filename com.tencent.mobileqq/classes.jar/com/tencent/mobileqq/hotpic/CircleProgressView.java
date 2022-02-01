@@ -19,7 +19,7 @@ public class CircleProgressView
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
   private int c = 50;
-  private int d;
+  private int d = 0;
   
   public CircleProgressView(Context paramContext)
   {
@@ -60,7 +60,7 @@ public class CircleProgressView
     setCircleWidth(a(getContext(), 2.0F));
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     float f1 = getWidth() / 2;
@@ -77,7 +77,7 @@ public class CircleProgressView
     postInvalidateDelayed(20L);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
@@ -111,7 +111,7 @@ public class CircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

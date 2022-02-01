@@ -1,11 +1,11 @@
 package com.tencent.qqmini.nativePlugins;
 
-import albs;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.qwallet.utils.H5HbUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import mqq.util.WeakReference;
@@ -35,7 +35,7 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
     do
     {
       return;
-      paramBundle = albs.a(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+      paramBundle = H5HbUtil.a(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
     } while (paramBundle == null);
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramBundle);
   }

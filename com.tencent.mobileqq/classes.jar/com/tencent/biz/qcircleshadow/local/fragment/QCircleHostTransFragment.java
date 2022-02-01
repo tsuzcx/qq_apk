@@ -6,18 +6,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.qcircleshadow.lib.HostUIHelper;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.mobileqq.qcircle.api.event.HostActivityResultEvent;
+import com.tencent.mobileqq.qcircle.api.helper.HostUIHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import cooperation.qqcircle.events.HostActivityResultEvent;
 
 public class QCircleHostTransFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
 {
   private int a;
   private int b;
@@ -37,9 +36,8 @@ public class QCircleHostTransFragment
   {
     if (ImmersiveUtils.isSupporImmersive() != 0)
     {
-      paramLayoutInflater = ((PublicFragmentActivity)getActivity()).mSystemBarComp;
-      paramLayoutInflater.init();
-      paramLayoutInflater.setStatusBarColor(getResources().getColor(2131167296));
+      ((QPublicFragmentActivity)getActivity()).mSystemBarComp.init();
+      ((QPublicFragmentActivity)getActivity()).mSystemBarComp.setStatusBarColor(getResources().getColor(2131167305));
     }
     if (getActivity() != null) {
       this.a = getActivity().hashCode();
@@ -47,13 +45,12 @@ public class QCircleHostTransFragment
     if (HostUIHelper.getShadowTopContext() != null) {
       this.b = HostUIHelper.getShadowTopContext().hashCode();
     }
-    V4FragmentCollector.onV4FragmentViewCreated(this, null);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.fragment.QCircleHostTransFragment
  * JD-Core Version:    0.7.0.1
  */

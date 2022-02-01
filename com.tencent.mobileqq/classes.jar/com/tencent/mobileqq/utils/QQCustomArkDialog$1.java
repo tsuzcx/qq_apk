@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.utils;
 
-import agnx;
-import agoa;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
 
 class QQCustomArkDialog$1
-  implements agoa
+  implements ArkAppContainer.ArkAppModuleCallback
 {
   QQCustomArkDialog$1(QQCustomArkDialog paramQQCustomArkDialog) {}
   
-  public boolean closeView(agnx paramagnx)
+  public boolean a(ArkAppContainer paramArkAppContainer)
   {
-    if (this.this$0.isShowing())
+    if (this.a.isShowing())
     {
-      this.this$0.dismiss();
+      this.a.dismiss();
       return true;
     }
     return false;
   }
   
-  public boolean openCardView(agnx paramagnx, String paramString1, String paramString2)
+  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
   {
     return false;
   }

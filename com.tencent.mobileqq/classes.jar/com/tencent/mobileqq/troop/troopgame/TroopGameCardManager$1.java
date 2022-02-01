@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.troop.troopgame;
 
-import bgfx;
-import bgfy;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.troopgame.api.ITroopGameCardService.CallbackInMainThread;
 import mqq.os.MqqHandler;
 
-public class TroopGameCardManager$1
+class TroopGameCardManager$1
   implements Runnable
 {
-  public TroopGameCardManager$1(bgfx parambgfx, String paramString, bgfy parambgfy) {}
+  TroopGameCardManager$1(TroopGameCardManager paramTroopGameCardManager, String paramString, ITroopGameCardService.CallbackInMainThread paramCallbackInMainThread) {}
   
   public void run()
   {
-    MemberGradeLevelInfo localMemberGradeLevelInfo = bgfx.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    MemberGradeLevelInfo localMemberGradeLevelInfo = TroopGameCardManager.a(this.this$0, this.jdField_a_of_type_JavaLangString);
     ThreadManager.getUIHandler().post(new TroopGameCardManager.1.1(this, localMemberGradeLevelInfo));
   }
 }

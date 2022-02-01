@@ -9,8 +9,8 @@ public final class SvcRequestGetConfMsgNum
   extends JceStruct
 {
   static ArrayList<Long> cache_vConfUin;
-  public byte cVerifyType;
-  public ArrayList<Long> vConfUin;
+  public byte cVerifyType = 0;
+  public ArrayList<Long> vConfUin = null;
   
   public SvcRequestGetConfMsgNum() {}
   

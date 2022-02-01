@@ -9,7 +9,7 @@ public class ReportInfoManager$ReportChannlInfo
   public String ext2 = "";
   public String ext3 = "";
   public long oper_time = System.currentTimeMillis() / 1000L;
-  public int oper_type;
+  public int oper_type = 0;
   public int platform = 1;
   public String pos_id = "";
   public String pos_name = "";
@@ -21,7 +21,7 @@ public class ReportInfoManager$ReportChannlInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ReportInfoManager.ReportChannlInfo
  * JD-Core Version:    0.7.0.1
  */

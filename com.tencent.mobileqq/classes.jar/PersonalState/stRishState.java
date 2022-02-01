@@ -8,8 +8,8 @@ public final class stRishState
   extends JceStruct
 {
   static byte[] cache_vState;
-  public long uModifyTime;
-  public byte[] vState;
+  public long uModifyTime = 0L;
+  public byte[] vState = null;
   
   public stRishState() {}
   

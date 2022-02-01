@@ -11,8 +11,8 @@ public final class GetQzoneMusicInfoRsp
 {
   static CommRsp cache_errInfo = new CommRsp();
   static Map<String, MusicInfo> cache_mMusicList = new HashMap();
-  public CommRsp errInfo;
-  public Map<String, MusicInfo> mMusicList;
+  public CommRsp errInfo = null;
+  public Map<String, MusicInfo> mMusicList = null;
   
   static
   {

@@ -105,7 +105,7 @@ final class QzoneZipCacheHelper$2
           if (((File)???).exists())
           {
             bool2 = bool1;
-            FileUtil.deleteFile((File)???);
+            FileUtil.a((File)???);
           }
         }
         catch (Throwable localThrowable)
@@ -151,7 +151,7 @@ final class QzoneZipCacheHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneZipCacheHelper.2
  * JD-Core Version:    0.7.0.1
  */

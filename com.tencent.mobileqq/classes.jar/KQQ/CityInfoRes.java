@@ -9,7 +9,7 @@ public final class CityInfoRes
 {
   public String city = "";
   public String province = "";
-  public byte result;
+  public byte result = 0;
   
   public CityInfoRes() {}
   

@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.olympic.utils;
 
-import ayym;
-
-public final class OlympicUtil$1
+final class OlympicUtil$1
   implements Runnable
 {
   public void run()
   {
-    ayym.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    OlympicUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

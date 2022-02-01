@@ -12,7 +12,7 @@ public class FadedButton
     super(paramContext);
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
@@ -26,7 +26,7 @@ public class FadedButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.FadedButton
  * JD-Core Version:    0.7.0.1
  */

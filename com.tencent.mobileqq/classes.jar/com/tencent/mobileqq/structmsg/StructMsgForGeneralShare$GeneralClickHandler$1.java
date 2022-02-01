@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.os.Bundle;
-import bdor;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
-public class StructMsgForGeneralShare$GeneralClickHandler$1
+class StructMsgForGeneralShare$GeneralClickHandler$1
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$1(bdor parambdor, Bundle paramBundle) {}
+  StructMsgForGeneralShare$GeneralClickHandler$1(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, Bundle paramBundle) {}
   
   public void run()
   {
@@ -20,10 +19,10 @@ public class StructMsgForGeneralShare$GeneralClickHandler$1
       localObject = this.a.getString("uin");
       i = this.a.getInt("sessionType");
       localQQMessageFacade = this.this$0.a.getMessageFacade();
-      localObject = localQQMessageFacade.getMsgItemByUniseq((String)localObject, i, l);
+      localObject = localQQMessageFacade.a((String)localObject, i, l);
       ((MessageRecord)localObject).saveExtInfoToExtStr("receipt_msg_is_read", "1");
-      localQQMessageFacade.updateMsgFieldByUniseq(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject).extLong));
-      localQQMessageFacade.updateMsgFieldByUniseq(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
+      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject).extLong));
+      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
     }
     while (!QLog.isColorLevel())
     {

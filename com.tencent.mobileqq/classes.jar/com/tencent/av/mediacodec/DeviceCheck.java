@@ -6,11 +6,12 @@ import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.os.Build;
 import android.os.Build.VERSION;
+import com.tencent.av.business.config.ConfigManager;
+import com.tencent.av.mediacodec.config.CodecConfigParser;
+import com.tencent.avcore.jni.codec.HWCodecAbility;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lfu;
-import loh;
 
 @SuppressLint({"NewApi"})
 public class DeviceCheck
@@ -126,14 +127,14 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean c()
   {
-    List localList = AndroidCodec.getDecoderInfos(AndroidCodec.HEVC_CODEC_MIME);
+    List localList = AndroidCodec.getDecoderInfos("video/hevc");
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.HEVC_CODEC_MIME);
+        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), "video/hevc");
         if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
       }
       else
@@ -156,14 +157,14 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean d()
   {
-    List localList = AndroidCodec.getEndoderInfos(AndroidCodec.HEVC_CODEC_MIME);
+    List localList = AndroidCodec.getEndoderInfos("video/hevc");
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.HEVC_CODEC_MIME);
+        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), "video/hevc");
         if (localCodecCapabilities != null) {}
       }
       else
@@ -187,13 +188,13 @@ public class DeviceCheck
   public static boolean e()
   {
     boolean bool2 = false;
-    List localList = AndroidCodec.getDecoderInfos(AndroidCodec.AVC_CODEC_MIME);
+    List localList = AndroidCodec.getDecoderInfos("video/avc");
     int i = 0;
     boolean bool1 = bool2;
     MediaCodecInfo.CodecCapabilities localCodecCapabilities;
     if (i < localList.size())
     {
-      localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.AVC_CODEC_MIME);
+      localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), "video/avc");
       if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
     }
     for (;;)
@@ -218,7 +219,7 @@ public class DeviceCheck
   public static boolean f()
   {
     boolean bool2 = false;
-    List localList = AndroidCodec.getEndoderInfos(AndroidCodec.AVC_CODEC_MIME);
+    List localList = AndroidCodec.getEndoderInfos("video/avc");
     int i = 0;
     for (;;)
     {
@@ -227,7 +228,7 @@ public class DeviceCheck
       int j;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.AVC_CODEC_MIME);
+        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), "video/avc");
         if (localCodecCapabilities != null) {
           j = 0;
         }
@@ -251,19 +252,19 @@ public class DeviceCheck
   public static boolean g()
   {
     if (h()) {}
-    loh localloh;
-    AndroidCodec.HWCodecAbility localHWCodecAbility1;
-    AndroidCodec.HWCodecAbility localHWCodecAbility2;
+    CodecConfigParser localCodecConfigParser;
+    HWCodecAbility localHWCodecAbility1;
+    HWCodecAbility localHWCodecAbility2;
     do
     {
       do
       {
         return false;
       } while (Build.VERSION.SDK_INT < 21);
-      localloh = new loh(lfu.a(BaseApplicationImpl.getContext()));
-      localHWCodecAbility1 = localloh.d();
-      localHWCodecAbility2 = localloh.c();
-    } while ((localHWCodecAbility1 == null) || (!localHWCodecAbility1.isHWCodec) || (!localloh.a(2)) || (localHWCodecAbility2 == null) || (!localHWCodecAbility2.isHWCodec) || (!localloh.a(1)));
+      localCodecConfigParser = new CodecConfigParser(ConfigManager.a(BaseApplicationImpl.getContext()));
+      localHWCodecAbility1 = localCodecConfigParser.d();
+      localHWCodecAbility2 = localCodecConfigParser.c();
+    } while ((localHWCodecAbility1 == null) || (!localHWCodecAbility1.isHWCodec) || (!localCodecConfigParser.a(2)) || (localHWCodecAbility2 == null) || (!localHWCodecAbility2.isHWCodec) || (!localCodecConfigParser.a(1)));
     if (QLog.isColorLevel()) {
       QLog.d("DeviceCheck", 2, "SUPPORT Async API");
     }
@@ -279,7 +280,7 @@ public class DeviceCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.mediacodec.DeviceCheck
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,18 @@ public final class PayRuleCfg
   static ShowRule cache_rule = new ShowRule();
   public String advId = "";
   public String aid = "";
-  public int clickHide;
-  public int clubType;
-  public int enable;
+  public int clickHide = 0;
+  public int clubType = 0;
+  public int enable = 0;
   public String iconJumpUrl = "";
   public String iconText = "";
   public String iconTextCol = "";
   public String iconUrl = "";
   public String iosAid = "";
-  public int payHide;
-  public ShowRule rule;
-  public int update;
-  public int userType;
+  public int payHide = 0;
+  public ShowRule rule = null;
+  public int update = 0;
+  public int userType = 0;
   
   public PayRuleCfg() {}
   

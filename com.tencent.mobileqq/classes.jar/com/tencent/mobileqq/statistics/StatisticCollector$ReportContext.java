@@ -2,12 +2,12 @@ package com.tencent.mobileqq.statistics;
 
 public class StatisticCollector$ReportContext
 {
-  public int MAINTHREAD_TAG;
-  public int OPTCOUNT_TAG;
-  public int OPTMSGCOUNT_TAG;
-  public long OPTONECOST_TAG;
+  public int MAINTHREAD_TAG = 0;
+  public int OPTCOUNT_TAG = 0;
+  public int OPTMSGCOUNT_TAG = 0;
+  public long OPTONECOST_TAG = 0L;
   public String OPTSCENE_TAG = "";
-  public long OPTTOTALCOST_TAG;
+  public long OPTTOTALCOST_TAG = 0L;
   public String OPTTYPE_TAG = "";
 }
 

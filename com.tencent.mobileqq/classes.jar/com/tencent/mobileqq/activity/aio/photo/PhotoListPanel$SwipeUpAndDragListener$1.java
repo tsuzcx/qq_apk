@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahuu;
-
-public class PhotoListPanel$SwipeUpAndDragListener$1
+class PhotoListPanel$SwipeUpAndDragListener$1
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$1(ahuu paramahuu) {}
+  PhotoListPanel$SwipeUpAndDragListener$1(PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class PhotoListPanel$SwipeUpAndDragListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener.1
  * JD-Core Version:    0.7.0.1
  */

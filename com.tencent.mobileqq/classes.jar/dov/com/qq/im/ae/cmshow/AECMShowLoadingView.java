@@ -9,11 +9,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bnip;
-import bnrh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ttpic.openapi.initializer.PagInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import dov.com.qq.im.ae.util.AEQLog;
 import org.libpag.PAGFile;
 import org.libpag.PAGView;
 
@@ -26,7 +25,7 @@ public class AECMShowLoadingView
   private String jdField_a_of_type_JavaLangString;
   private PAGFile jdField_a_of_type_OrgLibpagPAGFile;
   private PAGView jdField_a_of_type_OrgLibpagPAGView;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private PAGFile b;
   
   public AECMShowLoadingView(@NonNull Context paramContext)
@@ -70,16 +69,16 @@ public class AECMShowLoadingView
   
   private void a(@NonNull Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131558496, this, true);
-    this.jdField_a_of_type_DovComQqImAeCmshowAECMShowSquareLayout = ((AECMShowSquareLayout)findViewById(2131364782));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380087));
+    LayoutInflater.from(paramContext).inflate(2131558502, this, true);
+    this.jdField_a_of_type_DovComQqImAeCmshowAECMShowSquareLayout = ((AECMShowSquareLayout)findViewById(2131364914));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380526));
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_OrgLibpagPAGView = new PAGView(paramContext);
       paramContext = new ViewGroup.LayoutParams(-1, -1);
       this.jdField_a_of_type_DovComQqImAeCmshowAECMShowSquareLayout.addView(this.jdField_a_of_type_OrgLibpagPAGView, paramContext);
     }
-    bnrh.a("AECMShowLoadingView", "[initViews] mPagInitSucceeded=" + this.jdField_a_of_type_Boolean);
+    AEQLog.a("AECMShowLoadingView", "[initViews] mPagInitSucceeded=" + this.jdField_a_of_type_Boolean);
   }
   
   private void b()
@@ -100,7 +99,7 @@ public class AECMShowLoadingView
     {
       this.jdField_a_of_type_OrgLibpagPAGView.setFile(this.b);
       this.jdField_a_of_type_OrgLibpagPAGView.setRepeatCount(1);
-      this.jdField_a_of_type_OrgLibpagPAGView.addListener(new bnip(this));
+      this.jdField_a_of_type_OrgLibpagPAGView.addListener(new AECMShowLoadingView.1(this));
       if (!this.jdField_a_of_type_OrgLibpagPAGView.isPlaying()) {
         this.jdField_a_of_type_OrgLibpagPAGView.play();
       }
@@ -110,7 +109,7 @@ public class AECMShowLoadingView
   public void a(int paramInt)
   {
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getString(2131689675, new Object[] { Integer.valueOf(paramInt) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getString(2131689683, new Object[] { Integer.valueOf(paramInt) }));
     }
   }
   
@@ -129,7 +128,7 @@ public class AECMShowLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.cmshow.AECMShowLoadingView
  * JD-Core Version:    0.7.0.1
  */

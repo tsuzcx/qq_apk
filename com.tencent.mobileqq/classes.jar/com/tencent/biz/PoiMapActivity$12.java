@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nst;
 
 class PoiMapActivity$12
   implements Runnable
@@ -30,7 +29,7 @@ class PoiMapActivity$12
         if (!this.jdField_a_of_type_JavaLangString.equals(this.this$0.jdField_b_of_type_ArrayOfJavaLangString[0]))
         {
           this.this$0.l = 0;
-          this.this$0.jdField_a_of_type_ArrayOfNst[0].b(true);
+          this.this$0.jdField_a_of_type_ArrayOfComTencentBizPoiMapActivity$PoiTab[0].b(true);
         }
         if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
           break label235;
@@ -66,7 +65,7 @@ class PoiMapActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.12
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,13 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
-import bgty;
 import com.tencent.qphone.base.util.QLog;
 
 public class OrientationAdapterImageView
   extends View
 {
-  public int a;
-  public Bitmap a;
+  protected int a;
+  protected Bitmap a;
   protected Paint a;
   protected RectF a;
   protected Handler a;
@@ -24,8 +23,10 @@ public class OrientationAdapterImageView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidOsHandler = new bgty(this);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_AndroidOsHandler = new OrientationAdapterImageView.1(this);
     a(paramContext);
   }
   
@@ -33,8 +34,10 @@ public class OrientationAdapterImageView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidOsHandler = new bgty(this);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_AndroidOsHandler = new OrientationAdapterImageView.1(this);
     a(paramContext);
   }
   
@@ -101,7 +104,7 @@ public class OrientationAdapterImageView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)

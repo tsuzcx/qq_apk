@@ -3,13 +3,13 @@ package com.tencent.mobileqq.msf.service;
 import android.os.Binder;
 import android.os.Process;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.i;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.mobileqq.msf.core.net.c.a;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.IBaseService.Stub;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.log.a.b;
 
 class n
   extends IBaseService.Stub
@@ -75,6 +75,9 @@ class n
       }
       return -1;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.S.MsfService", 2, "MsfService#sendToServiceMsg start: cmd = " + paramToServiceMsg.getServiceCmd());
+    }
     int i = MsfCore.getNextSeq();
     if (paramToServiceMsg.getRequestSsoSeq() == -1) {
       paramToServiceMsg.setRequestSsoSeq(i);
@@ -84,6 +87,9 @@ class n
     }
     if (MsfService.core.getMsfAppid() == -1) {
       MsfService.core.setMsfAppid(paramToServiceMsg.getAppId());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.S.MsfService", 2, "MsfService#sendToServiceMsg: " + paramToServiceMsg.getStringForLog());
     }
     try
     {
@@ -95,7 +101,7 @@ class n
       }
       else
       {
-        i.a();
+        b.a();
         if (MsfService.isSamePackage(this.a, j, paramToServiceMsg.getServiceCmd())) {
           MsfService.msfServiceReqHandler.a(this.a, paramToServiceMsg, j);
         }

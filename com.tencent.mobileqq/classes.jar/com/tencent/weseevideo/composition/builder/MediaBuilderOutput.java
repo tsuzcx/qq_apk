@@ -1,16 +1,23 @@
 package com.tencent.weseevideo.composition.builder;
 
 import com.tencent.autotemplate.TAVAutomaticTemplate;
+import com.tencent.weseevideo.model.template.light.LightTemplate;
 import com.tencent.weseevideo.model.template.movie.MovieTemplate;
 
 public class MediaBuilderOutput
 {
   private TAVAutomaticTemplate automaticTemplate;
+  private LightTemplate lightTemplate;
   private MovieTemplate movieTemplate;
   
   public TAVAutomaticTemplate getAutomaticTemplate()
   {
     return this.automaticTemplate;
+  }
+  
+  public LightTemplate getLightTemplate()
+  {
+    return this.lightTemplate;
   }
   
   public MovieTemplate getMovieTemplate()
@@ -23,6 +30,11 @@ public class MediaBuilderOutput
     this.automaticTemplate = paramTAVAutomaticTemplate;
   }
   
+  public void setLightTemplate(LightTemplate paramLightTemplate)
+  {
+    this.lightTemplate = paramLightTemplate;
+  }
+  
   public void setMovieTemplate(MovieTemplate paramMovieTemplate)
   {
     this.movieTemplate = paramMovieTemplate;
@@ -30,7 +42,7 @@ public class MediaBuilderOutput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.composition.builder.MediaBuilderOutput
  * JD-Core Version:    0.7.0.1
  */

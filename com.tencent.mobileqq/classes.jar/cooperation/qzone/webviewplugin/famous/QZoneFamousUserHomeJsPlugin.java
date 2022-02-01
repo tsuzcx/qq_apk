@@ -3,11 +3,11 @@ package cooperation.qzone.webviewplugin.famous;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.QzonePluginProxyActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,8 +45,8 @@ public class QZoneFamousUserHomeJsPlugin
       long l = new JSONObject(paramVarArgs[0]).getLong("uin");
       paramVarArgs = new Intent();
       QzonePluginProxyActivity.setActivityNameToIntent(paramVarArgs, "com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity");
-      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.a().getString(2131716909));
-      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.a().getString(2131716990));
+      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.a().getString(2131717404));
+      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.a().getString(2131717485));
       paramVarArgs.putExtra("key_album_owner_uin", l);
       paramVarArgs.putExtra("key_selected_tab", 0);
       paramVarArgs.putExtra("refer", REFER);
@@ -233,7 +233,7 @@ public class QZoneFamousUserHomeJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.famous.QZoneFamousUserHomeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

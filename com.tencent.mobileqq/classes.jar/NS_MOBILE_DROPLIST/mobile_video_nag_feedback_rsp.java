@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_video_nag_feedback_rsp
   extends JceStruct
 {
-  public int retCode;
+  public int retCode = 0;
   public String retMsg = "";
   
   public mobile_video_nag_feedback_rsp() {}

@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import anvk;
-import bbcj;
+import com.tencent.mobileqq.relationx.addFrd.AddFrdStateMng;
 
-public class FriendsManager$6
+class FriendsManager$6
   implements Runnable
 {
-  public FriendsManager$6(anvk paramanvk) {}
+  FriendsManager$6(FriendsManager paramFriendsManager) {}
   
   public void run()
   {
-    if (!anvk.a(this.this$0).a) {
-      anvk.a(this.this$0).a(anvk.a(this.this$0));
+    if (!FriendsManager.a(this.this$0).a) {
+      FriendsManager.a(this.this$0).a(FriendsManager.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.6
  * JD-Core Version:    0.7.0.1
  */

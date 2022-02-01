@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class s_KapuPraise
   extends JceStruct
 {
-  public long iCount;
-  public int iItemId;
+  public long iCount = 0L;
+  public int iItemId = 0;
   public String strName = "";
   
   public s_KapuPraise() {}

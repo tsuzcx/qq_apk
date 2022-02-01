@@ -15,7 +15,7 @@ public enum DefaultPluginConfig$ResourcePlugin$ResourceType
     OPEN_TAG = localResourceType2;
     ResourceType localResourceType3 = new ResourceType("OPEN_AUTO", 2, 7);
     OPEN_AUTO = localResourceType3;
-    ResourceType localResourceType4 = new ResourceType("OUTSIDE_TAG", 3, 10);
+    ResourceType localResourceType4 = new ResourceType("OUTSIDE_TAG", 3, 8);
     OUTSIDE_TAG = localResourceType4;
     $VALUES = new ResourceType[] { localResourceType1, localResourceType2, localResourceType3, localResourceType4 };
   }
@@ -32,7 +32,7 @@ public enum DefaultPluginConfig$ResourcePlugin$ResourceType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.DefaultPluginConfig.ResourcePlugin.ResourceType
  * JD-Core Version:    0.7.0.1
  */

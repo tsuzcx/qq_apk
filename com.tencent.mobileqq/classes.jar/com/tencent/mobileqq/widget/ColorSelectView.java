@@ -40,13 +40,13 @@ public class ColorSelectView
   
   private void a()
   {
-    this.b = DisplayUtil.dip2px(getContext(), 5.0F);
+    this.b = DisplayUtil.a(getContext(), 5.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = getMeasuredWidth();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
@@ -75,7 +75,7 @@ public class ColorSelectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ColorSelectView
  * JD-Core Version:    0.7.0.1
  */

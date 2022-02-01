@@ -5,7 +5,7 @@ public class DesktopDataManager$HongBaoResBuilder
   private int backgroundFailedResId = -1;
   private int backgroundLoadingResId = -1;
   private int backgroundResId = -1;
-  private String backgroundUrl;
+  private String backgroundUrl = null;
   private int capsuleLeftNormalResId = -1;
   private int capsuleLeftPressResId = -1;
   private int capsuleRightNormalResId = -1;

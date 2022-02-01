@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bihj;
-
-public class SwiftBrowserScreenShotHandler$1
+class SwiftBrowserScreenShotHandler$1
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$1(bihj parambihj) {}
+  SwiftBrowserScreenShotHandler$1(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
   
   public void run()
   {
@@ -15,7 +13,7 @@ public class SwiftBrowserScreenShotHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,17 +7,14 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bizw;
-import bjko;
-import bjla;
-import bjlb;
-import bjlc;
-import bjlf;
-import bjlt;
+import com.rookery.asyncHttpClient.CustomSSLSocketFactory;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.transfile.TlsSniSocketFactory;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.OpenConfig;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +27,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import kzg;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -76,9 +72,9 @@ public class HttpBaseUtil
   {
     int i = -1;
     if (Build.VERSION.SDK_INT < 11) {
-      if (bizw.a().a() != null)
+      if (CommonDataAdapter.a().a() != null)
       {
-        int j = Proxy.getPort(bizw.a().a());
+        int j = Proxy.getPort(CommonDataAdapter.a().a());
         i = j;
         if (j < 0) {
           i = Proxy.getDefaultPort();
@@ -101,12 +97,12 @@ public class HttpBaseUtil
     return -1;
   }
   
-  protected static bjla a(String paramString1, String paramString2, Bundle paramBundle)
+  protected static HttpBaseUtil.HttpResponseBean a(String paramString1, String paramString2, Bundle paramBundle)
   {
     return a(paramString1, paramString2, paramBundle, null);
   }
   
-  public static bjla a(String paramString1, String paramString2, Bundle paramBundle, HttpContext paramHttpContext)
+  public static HttpBaseUtil.HttpResponseBean a(String paramString1, String paramString2, Bundle paramBundle, HttpContext paramHttpContext)
   {
     if (!AppNetConnInfo.isNetSupport()) {
       throw new HttpBaseUtil.NetworkUnavailableException("network unavailable");
@@ -148,10 +144,10 @@ public class HttpBaseUtil
             if (str1 == null) {
               break label1057;
             }
-            paramString1.addHeader("If-None-Match", bjlf.a().a((String)localObject1));
+            paramString1.addHeader("If-None-Match", HttpCacheService.a().a((String)localObject1));
             if (localObject2 != null)
             {
-              paramString1.addHeader("If-Modified-Since", "\"" + bjlf.a().b((String)localObject1) + "\"");
+              paramString1.addHeader("If-Modified-Since", "\"" + HttpCacheService.a().b((String)localObject1) + "\"");
               break label1057;
               if ((paramString1 != null) && (!paramString1.containsHeader("Cookie"))) {
                 paramString1.setHeader("Cookie", b());
@@ -161,7 +157,7 @@ public class HttpBaseUtil
               }
               paramString1 = localHttpClient.execute(paramString1);
               a(paramString1);
-              return new bjla(paramString1, i);
+              return new HttpBaseUtil.HttpResponseBean(paramString1, i);
             }
           }
           else
@@ -172,8 +168,8 @@ public class HttpBaseUtil
             paramString2 = paramString1 + "&";
             continue;
           }
-          paramString1.addHeader("If-Modified-Since", "\"" + bjlf.a().a((String)localObject1) + "\"");
-          bjko.c(jdField_a_of_type_JavaLangString, "add header. If-None-Match:" + bjlf.a().a((String)localObject1) + "; If-Modified-Since:" + bjlf.a().a((String)localObject1));
+          paramString1.addHeader("If-Modified-Since", "\"" + HttpCacheService.a().a((String)localObject1) + "\"");
+          LogUtility.c(jdField_a_of_type_JavaLangString, "add header. If-None-Match:" + HttpCacheService.a().a((String)localObject1) + "; If-Modified-Since:" + HttpCacheService.a().a((String)localObject1));
         }
       }
       catch (MalformedURLException paramString1)
@@ -286,7 +282,7 @@ public class HttpBaseUtil
     }
   }
   
-  protected static bjlb a(Context paramContext)
+  protected static HttpBaseUtil.NetworkProxy a(Context paramContext)
   {
     if (paramContext == null) {}
     int i;
@@ -295,19 +291,19 @@ public class HttpBaseUtil
       do
       {
         return null;
-      } while (NetworkUtil.getNetworkType(paramContext) != 0);
+      } while (NetworkUtil.b(paramContext) != 0);
       paramContext = a();
       i = a();
     } while ((TextUtils.isEmpty(paramContext)) || (i < 0));
-    return new bjlb(paramContext, i);
+    return new HttpBaseUtil.NetworkProxy(paramContext, i);
   }
   
-  public static bjlc a(String paramString1, String paramString2, Bundle paramBundle)
+  public static HttpBaseUtil.Statistic a(String paramString1, String paramString2, Bundle paramBundle)
   {
     return a(paramString1, paramString2, paramBundle, 0);
   }
   
-  protected static bjlc a(String paramString1, String paramString2, Bundle paramBundle, int paramInt)
+  protected static HttpBaseUtil.Statistic a(String paramString1, String paramString2, Bundle paramBundle, int paramInt)
   {
     int i = 1;
     String str1 = "";
@@ -346,7 +342,7 @@ public class HttpBaseUtil
       if ("GET".equals(paramString2))
       {
         str4 = a(str7, paramBundle);
-        bjko.c(jdField_a_of_type_JavaLangString, "url2=" + str4);
+        LogUtility.c(jdField_a_of_type_JavaLangString, "url2=" + str4);
       }
       if (k != 200) {
         break label470;
@@ -375,7 +371,7 @@ public class HttpBaseUtil
         paramBundle = paramString1;
         if ("GET".equals(paramString2))
         {
-          bjlf.a().a(str4, str2, l1, paramString1, (String)localObject);
+          HttpCacheService.a().a(str4, str2, l1, paramString1, (String)localObject);
           paramBundle = paramString1;
           paramInt = i;
         }
@@ -385,7 +381,7 @@ public class HttpBaseUtil
     {
       for (;;)
       {
-        paramString1 = new bjlc(paramBundle, j, paramInt);
+        paramString1 = new HttpBaseUtil.Statistic(paramBundle, j, paramInt);
         if ((!TextUtils.isEmpty(str5)) && (str5.equals("cmshow_downLoad")) && (!a(localHttpResponse).booleanValue())) {
           paramString1.a = localHttpResponse.getEntity().getContent();
         }
@@ -397,7 +393,7 @@ public class HttpBaseUtil
         }
         catch (NumberFormatException localNumberFormatException)
         {
-          bjko.c(jdField_a_of_type_JavaLangString, " Parse Last-Modified to Long Exception: " + localNumberFormatException.getMessage());
+          LogUtility.c(jdField_a_of_type_JavaLangString, " Parse Last-Modified to Long Exception: " + localNumberFormatException.getMessage());
           l1 = 0L;
           String str3 = paramString1;
         }
@@ -412,13 +408,13 @@ public class HttpBaseUtil
       }
       paramString1 = str1;
       if (str4 != null) {
-        paramString1 = bjlf.a().c(str4);
+        paramString1 = HttpCacheService.a().c(str4);
       }
       if ((paramString1 == null) || ("".equals(paramString1)))
       {
-        bjko.e(jdField_a_of_type_JavaLangString, "Get response from cache error. remove cache and retry. retryCount=" + paramInt);
+        LogUtility.e(jdField_a_of_type_JavaLangString, "Get response from cache error. remove cache and retry. retryCount=" + paramInt);
         if (str4 != null) {
-          bjlf.a().a(str4);
+          HttpCacheService.a().a(str4);
         }
         paramBundle.putString("needhttpcache", "nothing");
         if (paramInt < 1) {
@@ -429,7 +425,7 @@ public class HttpBaseUtil
       paramBundle = paramString1;
     }
     label583:
-    bjko.e(jdField_a_of_type_JavaLangString, "request" + str7 + "http server return error, statuscode:" + k);
+    LogUtility.e(jdField_a_of_type_JavaLangString, "request" + str7 + "http server return error, statuscode:" + k);
     throw new HttpBaseUtil.HttpStatusException("http status code error:" + k);
   }
   
@@ -446,9 +442,9 @@ public class HttpBaseUtil
   {
     if (Build.VERSION.SDK_INT < 11)
     {
-      if (bizw.a().a() != null)
+      if (CommonDataAdapter.a().a() != null)
       {
-        String str2 = Proxy.getHost(bizw.a().a());
+        String str2 = Proxy.getHost(CommonDataAdapter.a().a());
         String str1 = str2;
         if (TextUtils.isEmpty(str2)) {
           str1 = Proxy.getDefaultHost();
@@ -581,73 +577,73 @@ public class HttpBaseUtil
     //   1: astore 7
     //   3: aconst_null
     //   4: astore 9
-    //   6: ldc_w 351
+    //   6: ldc_w 350
     //   9: astore 8
     //   11: aload_0
-    //   12: invokeinterface 421 1 0
+    //   12: invokeinterface 420 1 0
     //   17: astore 5
     //   19: aload_0
-    //   20: ldc_w 535
-    //   23: invokeinterface 382 2 0
+    //   20: ldc_w 534
+    //   23: invokeinterface 381 2 0
     //   28: ifeq +47 -> 75
     //   31: aload_0
-    //   32: ldc_w 535
-    //   35: invokeinterface 386 2 0
-    //   40: invokeinterface 391 1 0
-    //   45: invokestatic 435	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   32: ldc_w 534
+    //   35: invokeinterface 385 2 0
+    //   40: invokeinterface 390 1 0
+    //   45: invokestatic 434	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   48: lstore_3
     //   49: getstatic 22	com/tencent/open/base/http/HttpBaseUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   52: new 146	java/lang/StringBuilder
     //   55: dup
     //   56: invokespecial 147	java/lang/StringBuilder:<init>	()V
-    //   59: ldc_w 537
+    //   59: ldc_w 536
     //   62: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: lload_3
     //   66: invokevirtual 228	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   69: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokestatic 237	bjko:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   72: invokestatic 237	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   75: aload 5
-    //   77: invokeinterface 427 1 0
+    //   77: invokeinterface 426 1 0
     //   82: astore 5
     //   84: aload_0
-    //   85: ldc_w 466
-    //   88: invokeinterface 386 2 0
+    //   85: ldc_w 465
+    //   88: invokeinterface 385 2 0
     //   93: astore 6
     //   95: aload 6
     //   97: ifnull +72 -> 169
     //   100: aload 6
-    //   102: invokeinterface 391 1 0
-    //   107: invokevirtual 469	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   102: invokeinterface 390 1 0
+    //   107: invokevirtual 468	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   110: ldc 161
     //   112: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   115: iconst_m1
     //   116: if_icmple +53 -> 169
-    //   119: new 539	java/util/zip/GZIPInputStream
+    //   119: new 538	java/util/zip/GZIPInputStream
     //   122: dup
     //   123: aload 5
-    //   125: invokespecial 540	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   125: invokespecial 539	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   128: astore 6
     //   130: aload 6
-    //   132: invokestatic 542	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   132: invokestatic 541	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   135: astore 7
     //   137: aload 7
     //   139: astore_0
     //   140: aload 5
     //   142: ifnull +8 -> 150
     //   145: aload 5
-    //   147: invokevirtual 545	java/io/InputStream:close	()V
+    //   147: invokevirtual 544	java/io/InputStream:close	()V
     //   150: aload_0
     //   151: astore 5
     //   153: aload 6
     //   155: ifnull +11 -> 166
     //   158: aload 6
-    //   160: invokevirtual 545	java/io/InputStream:close	()V
+    //   160: invokevirtual 544	java/io/InputStream:close	()V
     //   163: aload_0
     //   164: astore 5
     //   166: aload 5
     //   168: areturn
     //   169: aload 5
-    //   171: invokestatic 542	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   171: invokestatic 541	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   174: astore 6
     //   176: aload 6
     //   178: astore_0
@@ -656,9 +652,9 @@ public class HttpBaseUtil
     //   182: goto -42 -> 140
     //   185: astore 5
     //   187: getstatic 22	com/tencent/open/base/http/HttpBaseUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   190: ldc_w 547
+    //   190: ldc_w 546
     //   193: aload 5
-    //   195: invokestatic 550	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   195: invokestatic 549	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   198: aload_0
     //   199: areturn
     //   200: astore 7
@@ -670,16 +666,16 @@ public class HttpBaseUtil
     //   212: new 146	java/lang/StringBuilder
     //   215: dup
     //   216: invokespecial 147	java/lang/StringBuilder:<init>	()V
-    //   219: ldc_w 552
+    //   219: ldc_w 551
     //   222: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   225: aload 7
-    //   227: invokevirtual 553	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   227: invokevirtual 552	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   230: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   236: aload 7
-    //   238: invokestatic 550	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   238: invokestatic 549	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   241: aload_0
-    //   242: invokeinterface 557 1 0
+    //   242: invokeinterface 556 1 0
     //   247: astore_0
     //   248: aload_0
     //   249: arraylength
@@ -697,18 +693,18 @@ public class HttpBaseUtil
     //   266: new 146	java/lang/StringBuilder
     //   269: dup
     //   270: invokespecial 147	java/lang/StringBuilder:<init>	()V
-    //   273: ldc_w 559
+    //   273: ldc_w 558
     //   276: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   279: aload 7
-    //   281: invokeinterface 560 1 0
+    //   281: invokeinterface 559 1 0
     //   286: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: ldc_w 562
+    //   289: ldc_w 561
     //   292: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   295: aload 7
-    //   297: invokeinterface 391 1 0
+    //   297: invokeinterface 390 1 0
     //   302: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   305: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   308: invokestatic 448	bjko:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   308: invokestatic 447	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   311: iload_1
     //   312: iconst_1
     //   313: iadd
@@ -717,21 +713,21 @@ public class HttpBaseUtil
     //   318: aload 5
     //   320: ifnull +8 -> 328
     //   323: aload 5
-    //   325: invokevirtual 545	java/io/InputStream:close	()V
+    //   325: invokevirtual 544	java/io/InputStream:close	()V
     //   328: aload 8
     //   330: astore 5
     //   332: aload 6
     //   334: ifnull -168 -> 166
     //   337: aload 6
-    //   339: invokevirtual 545	java/io/InputStream:close	()V
-    //   342: ldc_w 351
+    //   339: invokevirtual 544	java/io/InputStream:close	()V
+    //   342: ldc_w 350
     //   345: areturn
     //   346: astore_0
     //   347: getstatic 22	com/tencent/open/base/http/HttpBaseUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   350: ldc_w 547
+    //   350: ldc_w 546
     //   353: aload_0
-    //   354: invokestatic 550	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   357: ldc_w 351
+    //   354: invokestatic 549	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   357: ldc_w 350
     //   360: areturn
     //   361: astore_0
     //   362: aconst_null
@@ -741,18 +737,18 @@ public class HttpBaseUtil
     //   369: aload 5
     //   371: ifnull +8 -> 379
     //   374: aload 5
-    //   376: invokevirtual 545	java/io/InputStream:close	()V
+    //   376: invokevirtual 544	java/io/InputStream:close	()V
     //   379: aload 6
     //   381: ifnull +8 -> 389
     //   384: aload 6
-    //   386: invokevirtual 545	java/io/InputStream:close	()V
+    //   386: invokevirtual 544	java/io/InputStream:close	()V
     //   389: aload_0
     //   390: athrow
     //   391: astore 5
     //   393: getstatic 22	com/tencent/open/base/http/HttpBaseUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   396: ldc_w 547
+    //   396: ldc_w 546
     //   399: aload 5
-    //   401: invokestatic 550	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   401: invokestatic 549	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   404: goto -15 -> 389
     //   407: astore_0
     //   408: aload 7
@@ -819,8 +815,8 @@ public class HttpBaseUtil
       {
         Object localObject1 = KeyStore.getInstance(KeyStore.getDefaultType());
         ((KeyStore)localObject1).load(null, null);
-        localObject1 = new kzg((KeyStore)localObject1);
-        ((kzg)localObject1).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+        localObject1 = new CustomSSLSocketFactory((KeyStore)localObject1);
+        ((CustomSSLSocketFactory)localObject1).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
         Object localObject2 = localObject1;
         if (!TextUtils.isEmpty(paramString2))
         {
@@ -834,21 +830,21 @@ public class HttpBaseUtil
           }
         }
         localObject1 = new BasicHttpParams();
-        int j = bjlt.a(bizw.a().a(), paramString1).a("Common_HttpConnectionTimeout");
-        bjko.c("OpenConfig_agent", "config 3:Common_HttpConnectionTimeout     config_value:" + j + "   appid:" + paramString1 + "     url:" + paramString2);
+        int j = OpenConfig.a(CommonDataAdapter.a().a(), paramString1).a("Common_HttpConnectionTimeout");
+        LogUtility.c("OpenConfig_agent", "config 3:Common_HttpConnectionTimeout     config_value:" + j + "   appid:" + paramString1 + "     url:" + paramString2);
         int i = j;
         if (j == 0) {
           i = 15000;
         }
-        bjko.c("OpenConfig_agent", "config 3:Common_HttpConnectionTimeout     result_value:" + i + "   appid:" + paramString1 + "     url:" + paramString2);
+        LogUtility.c("OpenConfig_agent", "config 3:Common_HttpConnectionTimeout     result_value:" + i + "   appid:" + paramString1 + "     url:" + paramString2);
         HttpConnectionParams.setConnectionTimeout((HttpParams)localObject1, i);
-        j = bjlt.a(bizw.a().a(), paramString1).a("Common_SocketConnectionTimeout");
-        bjko.c("OpenConfig_agent", "config 4:Common_SocketConnectionTimeout   config_value:" + j + "   appid:" + paramString1 + "     url:" + paramString2);
+        j = OpenConfig.a(CommonDataAdapter.a().a(), paramString1).a("Common_SocketConnectionTimeout");
+        LogUtility.c("OpenConfig_agent", "config 4:Common_SocketConnectionTimeout   config_value:" + j + "   appid:" + paramString1 + "     url:" + paramString2);
         i = j;
         if (j == 0) {
           i = 30000;
         }
-        bjko.c("OpenConfig_agent", "config 4:Common_SocketConnectionTimeout   result_value:" + i + "   appid:" + paramString1 + "     url:" + paramString2);
+        LogUtility.c("OpenConfig_agent", "config 4:Common_SocketConnectionTimeout   result_value:" + i + "   appid:" + paramString1 + "     url:" + paramString2);
         HttpConnectionParams.setSoTimeout((HttpParams)localObject1, i);
         HttpProtocolParams.setVersion((HttpParams)localObject1, HttpVersion.HTTP_1_1);
         HttpProtocolParams.setContentCharset((HttpParams)localObject1, "UTF-8");
@@ -857,7 +853,7 @@ public class HttpBaseUtil
         paramString1.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
         paramString1.register(new Scheme("https", (SocketFactory)localObject2, 443));
         paramString1 = new DefaultHttpClient(new ThreadSafeClientConnManager((HttpParams)localObject1, paramString1), (HttpParams)localObject1);
-        paramString2 = a(bizw.a().a());
+        paramString2 = a(CommonDataAdapter.a().a());
         if (paramString2 != null)
         {
           paramString2 = new HttpHost(paramString2.jdField_a_of_type_JavaLangString, paramString2.jdField_a_of_type_Int);
@@ -893,13 +889,13 @@ public class HttpBaseUtil
   
   public static void a(HttpResponse paramHttpResponse)
   {
-    bjko.c(jdField_a_of_type_JavaLangString, "----setCookie");
+    LogUtility.c(jdField_a_of_type_JavaLangString, "----setCookie");
     if (paramHttpResponse != null) {}
     for (Object localObject1 = paramHttpResponse.getHeaders("Set-Cookie");; localObject1 = null)
     {
       if ((localObject1 == null) || (localObject1.length == 0))
       {
-        bjko.c(jdField_a_of_type_JavaLangString, "----there are no cookies");
+        LogUtility.c(jdField_a_of_type_JavaLangString, "----there are no cookies");
         return;
       }
       paramHttpResponse = "";
@@ -950,9 +946,9 @@ public class HttpBaseUtil
   
   public static String b()
   {
-    jdField_a_of_type_JavaUtilHashMap.put("uin", b(String.valueOf(bizw.a().a())));
-    jdField_a_of_type_JavaUtilHashMap.put("skey", bizw.a().a());
-    jdField_a_of_type_JavaUtilHashMap.put("qua", bizw.a().f());
+    jdField_a_of_type_JavaUtilHashMap.put("uin", b(String.valueOf(CommonDataAdapter.a().a())));
+    jdField_a_of_type_JavaUtilHashMap.put("skey", CommonDataAdapter.a().a());
+    jdField_a_of_type_JavaUtilHashMap.put("qua", CommonDataAdapter.a().f());
     Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
     String str2;
     for (String str1 = ""; localIterator.hasNext(); str1 = str1 + str2 + "=" + (String)jdField_a_of_type_JavaUtilHashMap.get(str2) + "; ") {
@@ -986,7 +982,7 @@ public class HttpBaseUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.base.http.HttpBaseUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atfq;
-
-public class FMObserver$1
+class FMObserver$1
   implements Runnable
 {
-  public FMObserver$1(atfq paramatfq, Object paramObject) {}
+  FMObserver$1(FMObserver paramFMObserver, Object paramObject) {}
   
   public void run()
   {
-    atfq.a(this.this$0, this.a);
+    FMObserver.a(this.this$0, this.a);
   }
 }
 

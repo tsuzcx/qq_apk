@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import pvj;
 
 class ComponentContentRecommendFollowGroup$3
   implements Runnable
@@ -10,19 +10,19 @@ class ComponentContentRecommendFollowGroup$3
   
   public void run()
   {
-    pvj localpvj = pvj.a();
+    ReadInJoyLogicEngine localReadInJoyLogicEngine = ReadInJoyLogicEngine.a();
     long l = this.a.uin;
     if (this.a.isFollowed) {}
     for (int i = 2;; i = 1)
     {
-      localpvj.c(l, i);
+      localReadInJoyLogicEngine.c(l, i);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import axtc;
-import axtd;
-import axte;
-import axth;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.util.DisplayUtil;
@@ -30,8 +26,8 @@ public class RecentUserInvitePanel
   extends HorizontalScrollView
 {
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public axte a;
-  List<axth> jdField_a_of_type_JavaUtilList;
+  RecentUserInvitePanel.OnClickListener jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel$OnClickListener;
+  List<WerewolvesDataManager.InviteUser> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean = false;
   
   public RecentUserInvitePanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -49,36 +45,36 @@ public class RecentUserInvitePanel
   private View a()
   {
     int i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    View localView = inflate(getContext(), 2131561240, null);
-    ((ImageView)localView.findViewById(2131368115)).setImageResource(2130841365);
-    ((ImageView)localView.findViewById(2131368146)).setVisibility(8);
-    TextView localTextView = (TextView)localView.findViewById(2131371803);
+    View localView = inflate(getContext(), 2131561345, null);
+    ((ImageView)localView.findViewById(2131368336)).setImageResource(2130841505);
+    ((ImageView)localView.findViewById(2131368367)).setVisibility(8);
+    TextView localTextView = (TextView)localView.findViewById(2131372115);
     if (i == 0) {
-      localTextView.setText(anvx.a(2131712673));
+      localTextView.setText(HardCodeUtil.a(2131713169));
     }
     for (;;)
     {
       localTextView.setMaxLines(2);
       localTextView.setSingleLine(false);
       localTextView.setGravity(1);
-      ((Button)localView.findViewById(2131368984)).setVisibility(8);
-      localView.setOnClickListener(new axtd(this));
+      ((Button)localView.findViewById(2131369216)).setVisibility(8);
+      localView.setOnClickListener(new RecentUserInvitePanel.2(this));
       return localView;
-      localTextView.setText(anvx.a(2131712674));
+      localTextView.setText(HardCodeUtil.a(2131713170));
     }
   }
   
-  private View a(axth paramaxth)
+  private View a(WerewolvesDataManager.InviteUser paramInviteUser)
   {
     Object localObject1 = null;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    View localView = inflate(getContext(), 2131561240, null);
-    Object localObject2 = (ImageView)localView.findViewById(2131368115);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368146);
+    View localView = inflate(getContext(), 2131561345, null);
+    Object localObject2 = (ImageView)localView.findViewById(2131368336);
+    ImageView localImageView = (ImageView)localView.findViewById(2131368367);
     int i;
-    if (paramaxth.jdField_a_of_type_Int == 0)
+    if (paramInviteUser.jdField_a_of_type_Int == 0)
     {
-      localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramaxth.jdField_a_of_type_JavaLangString);
+      localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramInviteUser.jdField_a_of_type_JavaLangString);
       i = -1;
     }
     for (;;)
@@ -89,22 +85,22 @@ public class RecentUserInvitePanel
       }
       for (;;)
       {
-        localObject2 = (TextView)localView.findViewById(2131371803);
+        localObject2 = (TextView)localView.findViewById(2131372115);
         localObject1 = "";
-        if (paramaxth.b != null) {
-          localObject1 = (String)TextUtils.ellipsize(paramaxth.b, ((TextView)localObject2).getPaint(), DisplayUtil.dip2px(getContext(), 65.0F), TextUtils.TruncateAt.END);
+        if (paramInviteUser.b != null) {
+          localObject1 = (String)TextUtils.ellipsize(paramInviteUser.b, ((TextView)localObject2).getPaint(), DisplayUtil.a(getContext(), 65.0F), TextUtils.TruncateAt.END);
         }
         ((TextView)localObject2).setText((CharSequence)localObject1);
-        localObject1 = (Button)localView.findViewById(2131368984);
-        ((Button)localObject1).setOnClickListener(new axtc(this, paramaxth));
-        a((View)localObject1, paramaxth.jdField_a_of_type_Boolean);
-        localView.setTag(paramaxth);
+        localObject1 = (Button)localView.findViewById(2131369216);
+        ((Button)localObject1).setOnClickListener(new RecentUserInvitePanel.1(this, paramInviteUser));
+        a((View)localObject1, paramInviteUser.jdField_a_of_type_Boolean);
+        localView.setTag(paramInviteUser);
         return localView;
-        if (paramaxth.jdField_a_of_type_Int != 1) {
+        if (paramInviteUser.jdField_a_of_type_Int != 1) {
           break label220;
         }
-        localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 4, paramaxth.jdField_a_of_type_JavaLangString);
-        i = 2130841363;
+        localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 4, paramInviteUser.jdField_a_of_type_JavaLangString);
+        i = 2130841503;
         break;
         localImageView.setVisibility(8);
       }
@@ -129,7 +125,7 @@ public class RecentUserInvitePanel
       paramView = (Button)paramView;
       if (paramBoolean)
       {
-        paramView.setText(anvx.a(2131712676));
+        paramView.setText(HardCodeUtil.a(2131713172));
         paramView.setAlpha(0.5F);
       }
     }
@@ -137,27 +133,27 @@ public class RecentUserInvitePanel
     {
       return;
     }
-    paramView.setText(anvx.a(2131712675));
+    paramView.setText(HardCodeUtil.a(2131713171));
   }
   
-  public void a(axth paramaxth)
+  public void a(WerewolvesDataManager.InviteUser paramInviteUser)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
       View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((localView.getTag() instanceof axth))
+      if ((localView.getTag() instanceof WerewolvesDataManager.InviteUser))
       {
-        axth localaxth = (axth)localView.getTag();
-        if ((localaxth.jdField_a_of_type_Int == paramaxth.jdField_a_of_type_Int) && (localaxth.jdField_a_of_type_JavaLangString.equals(paramaxth.jdField_a_of_type_JavaLangString))) {
-          a((Button)localView.findViewById(2131368984), paramaxth.jdField_a_of_type_Boolean);
+        WerewolvesDataManager.InviteUser localInviteUser = (WerewolvesDataManager.InviteUser)localView.getTag();
+        if ((localInviteUser.jdField_a_of_type_Int == paramInviteUser.jdField_a_of_type_Int) && (localInviteUser.jdField_a_of_type_JavaLangString.equals(paramInviteUser.jdField_a_of_type_JavaLangString))) {
+          a((Button)localView.findViewById(2131369216), paramInviteUser.jdField_a_of_type_Boolean);
         }
       }
       i += 1;
     }
   }
   
-  public void a(List<axth> paramList, boolean paramBoolean)
+  public void a(List<WerewolvesDataManager.InviteUser> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -166,24 +162,24 @@ public class RecentUserInvitePanel
     Object localObject;
     while (paramList.hasNext())
     {
-      localObject = a((axth)paramList.next());
+      localObject = a((WerewolvesDataManager.InviteUser)paramList.next());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 16.0F);
+      localLayoutParams.leftMargin = DisplayUtil.a(getContext(), 16.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject, localLayoutParams);
     }
     if (paramBoolean)
     {
       paramList = a();
       localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.dip2px(getContext(), 16.0F);
-      ((LinearLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(getContext(), 16.0F);
+      ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(getContext(), 16.0F);
+      ((LinearLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(getContext(), 16.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramList, (ViewGroup.LayoutParams)localObject);
     }
   }
   
-  public void setOnClickListener(axte paramaxte)
+  public void setOnClickListener(RecentUserInvitePanel.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Axte = paramaxte;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel$OnClickListener = paramOnClickListener;
   }
 }
 

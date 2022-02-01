@@ -10,8 +10,6 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
-import bkzf;
-import blgb;
 
 public abstract class AbsSpinner
   extends AdapterView<SpinnerAdapter>
@@ -20,7 +18,7 @@ public abstract class AbsSpinner
   private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver;
   final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   SpinnerAdapter jdField_a_of_type_AndroidWidgetSpinnerAdapter;
-  final bkzf jdField_a_of_type_Bkzf = new bkzf(this);
+  final AbsSpinner.RecycleBin jdField_a_of_type_ComTencentWidgetAbsSpinner$RecycleBin = new AbsSpinner.RecycleBin(this);
   int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
   int jdField_c_of_type_Int;
@@ -55,15 +53,15 @@ public abstract class AbsSpinner
       if (jdField_a_of_type_Int == -2) {
         jdField_a_of_type_Int = getStyleableValue("AbsSpinner_entries");
       }
-      paramAttributeSet = new blgb(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("AbsSpinner"), paramInt, 0));
-      CharSequence[] arrayOfCharSequence = paramAttributeSet.a(jdField_a_of_type_Int);
+      paramAttributeSet = new TypedArrayWarpper(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("AbsSpinner"), paramInt, 0));
+      CharSequence[] arrayOfCharSequence = paramAttributeSet.getTextArray(jdField_a_of_type_Int);
       if (arrayOfCharSequence != null)
       {
         paramContext = new ArrayAdapter(paramContext, 17367048, arrayOfCharSequence);
         paramContext.setDropDownViewResource(17367049);
         setAdapter(paramContext);
       }
-      paramAttributeSet.a();
+      paramAttributeSet.recycle();
     }
   }
   
@@ -170,17 +168,17 @@ public abstract class AbsSpinner
   void c()
   {
     int j = getChildCount();
-    bkzf localbkzf = this.jdField_a_of_type_Bkzf;
+    AbsSpinner.RecycleBin localRecycleBin = this.jdField_a_of_type_ComTencentWidgetAbsSpinner$RecycleBin;
     int k = this.mFirstPosition;
     int i = 0;
     while (i < j)
     {
-      localbkzf.a(k + i, getChildAt(i));
+      localRecycleBin.a(k + i, getChildAt(i));
       i += 1;
     }
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new ViewGroup.LayoutParams(-1, -2);
   }
@@ -198,7 +196,7 @@ public abstract class AbsSpinner
     return null;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int n = View.MeasureSpec.getMode(paramInt1);
     Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
@@ -237,13 +235,13 @@ public abstract class AbsSpinner
       if ((i < 0) || (this.jdField_a_of_type_AndroidWidgetSpinnerAdapter == null) || (i >= this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getCount())) {
         break label437;
       }
-      View localView = this.jdField_a_of_type_Bkzf.a(i);
+      View localView = this.jdField_a_of_type_ComTencentWidgetAbsSpinner$RecycleBin.a(i);
       localObject = localView;
       if (localView == null) {
         localObject = this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getView(i, null, this);
       }
       if (localObject != null) {
-        this.jdField_a_of_type_Bkzf.a(i, (View)localObject);
+        this.jdField_a_of_type_ComTencentWidgetAbsSpinner$RecycleBin.a(i, (View)localObject);
       }
       if (localObject == null) {
         break label437;
@@ -389,7 +387,7 @@ public abstract class AbsSpinner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.AbsSpinner
  * JD-Core Version:    0.7.0.1
  */

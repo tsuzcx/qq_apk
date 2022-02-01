@@ -14,15 +14,15 @@ public final class UniSetRsp
   static HamletCheck cache_stHamletItem = new HamletCheck();
   static ArrayList<Hamlet> cache_stHamletItemList = new ArrayList();
   public String errmsg = "";
-  public ExtraActAidInfo extraAid;
-  public UiExtraAppInfo extraappinfo;
-  public UiExtraGameInfo extragameinfo;
-  public int feetype;
-  public int ret;
-  public HamletCheck stHamletItem;
-  public ArrayList<Hamlet> stHamletItemList;
+  public ExtraActAidInfo extraAid = null;
+  public UiExtraAppInfo extraappinfo = null;
+  public UiExtraGameInfo extragameinfo = null;
+  public int feetype = 0;
+  public int ret = 0;
+  public HamletCheck stHamletItem = null;
+  public ArrayList<Hamlet> stHamletItemList = null;
   public String url = "";
-  public int validDay;
+  public int validDay = 0;
   
   static
   {

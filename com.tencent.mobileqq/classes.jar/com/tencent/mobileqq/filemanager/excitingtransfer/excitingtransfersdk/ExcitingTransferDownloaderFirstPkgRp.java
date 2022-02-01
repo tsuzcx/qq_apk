@@ -7,7 +7,7 @@ public class ExcitingTransferDownloaderFirstPkgRp
   public long mCSEndTime;
   public long mCSStartTime;
   public long mHtpFirstDataSize = -1L;
-  public long mHttpFirstTime;
+  public long mHttpFirstTime = 0L;
   
   public HashMap<String, String> getReportData()
   {
@@ -20,7 +20,7 @@ public class ExcitingTransferDownloaderFirstPkgRp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloaderFirstPkgRp
  * JD-Core Version:    0.7.0.1
  */

@@ -73,6 +73,7 @@ import com.tencent.qqmini.sdk.request.GetGroupCloudStorageRequest;
 import com.tencent.qqmini.sdk.request.GetLoginCodeRequest;
 import com.tencent.qqmini.sdk.request.GetNativeAppInfoRequest;
 import com.tencent.qqmini.sdk.request.GetNewBaseLibRequest;
+import com.tencent.qqmini.sdk.request.GetPhoneNumberRequest;
 import com.tencent.qqmini.sdk.request.GetPotentialFriendListRequest;
 import com.tencent.qqmini.sdk.request.GetProfileRequest;
 import com.tencent.qqmini.sdk.request.GetRobotUinRequest;
@@ -101,7 +102,6 @@ import com.tencent.qqmini.sdk.request.SetAvatarRequest;
 import com.tencent.qqmini.sdk.request.SetCloudStorageRequest;
 import com.tencent.qqmini.sdk.request.SetUserAppLikeRequest;
 import com.tencent.qqmini.sdk.request.UseUserAppRequest;
-import com.tencent.qqmini.sdk.request.getPhoneNumberRequest;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 import java.util.ArrayList;
@@ -174,7 +174,7 @@ public class ChannelProxyDefault
       QMLog.w("ChannelProxyDefault", "sendData " + paramProtoBufRequest);
       if (this.useHttpDirectly)
       {
-        HttpServer.sendData(arrayOfByte, new ChannelProxyDefault.5(this, paramProtoBufRequest, paramAsyncResult));
+        sendDataByHttpServer(paramProtoBufRequest, paramAsyncResult, arrayOfByte);
         return;
       }
     }
@@ -190,15 +190,15 @@ public class ChannelProxyDefault
     {
       paramProtoBufRequest.put("retCode", -1);
       paramProtoBufRequest.put("errMsg", "数据编码错误");
-      label100:
+      label93:
       paramAsyncResult.onReceiveResult(false, paramProtoBufRequest);
       return;
-      localMiniAppProxy.sendData(arrayOfByte, new ChannelProxyDefault.6(this, paramProtoBufRequest, paramAsyncResult));
+      sendDataByProxy(paramProtoBufRequest, paramAsyncResult, localMiniAppProxy, arrayOfByte);
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label100;
+      break label93;
     }
   }
   
@@ -242,9 +242,14 @@ public class ChannelProxyDefault
     }
   }
   
-  public void JudgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, COMM.StCommonExt paramStCommonExt, String paramString4, String paramString5, AsyncResult paramAsyncResult)
+  private void sendDataByHttpServer(ProtoBufRequest paramProtoBufRequest, AsyncResult paramAsyncResult, byte[] paramArrayOfByte)
   {
-    handleRequest(new JudgeTimingRequest(paramString1, paramInt1, paramInt2, paramInt3, paramLong, paramInt4, paramString2, paramInt5, paramString3, paramInt6, paramStCommonExt, paramString4, paramString5), paramAsyncResult);
+    HttpServer.sendData(paramArrayOfByte, new ChannelProxyDefault.6(this, paramProtoBufRequest, paramAsyncResult));
+  }
+  
+  private void sendDataByProxy(ProtoBufRequest paramProtoBufRequest, AsyncResult paramAsyncResult, MiniAppProxy paramMiniAppProxy, byte[] paramArrayOfByte)
+  {
+    paramMiniAppProxy.sendData(paramArrayOfByte, new ChannelProxyDefault.5(this, paramProtoBufRequest, paramAsyncResult));
   }
   
   public void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult)
@@ -309,6 +314,8 @@ public class ChannelProxyDefault
     handleRequest(new DelPhoneNumberRequest(paramString1, paramString2), paramAsyncResult);
   }
   
+  public void doGameRaffle(String paramString1, String paramString2, AsyncResult paramAsyncResult) {}
+  
   public void downloadQQBrowser(String paramString) {}
   
   public void ffmpegExecCommand(String[] paramArrayOfString, ChannelProxy.ICommandListenr paramICommandListenr) {}
@@ -370,6 +377,8 @@ public class ChannelProxyDefault
     handleRequest(new GetFriendCloudStorageRequest(paramArrayOfString, paramString), paramAsyncResult);
   }
   
+  public void getGameRaffleMaterial(String paramString1, String paramString2, AsyncResult paramAsyncResult) {}
+  
   public void getGdtAd(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
   {
     handleRequest(new GetAdRequest(paramString1, paramInt, paramString2, paramString3, paramString4, paramHashMap), paramAsyncResult);
@@ -429,7 +438,7 @@ public class ChannelProxyDefault
   
   public void getPhoneNumber(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new getPhoneNumberRequest(paramString), paramAsyncResult);
+    handleRequest(new GetPhoneNumberRequest(paramString), paramAsyncResult);
   }
   
   public void getPotentialFriendList(COMM.StCommonExt paramStCommonExt, String paramString, AsyncResult paramAsyncResult)
@@ -445,6 +454,11 @@ public class ChannelProxyDefault
   public void getSDKOpenKeyToken(COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult)
   {
     handleRequest(new GetSDKOpenKeyTokenRequest(paramStCommonExt), paramAsyncResult);
+  }
+  
+  public long getServerTime()
+  {
+    return 0L;
   }
   
   public void getShareInfo(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq, AsyncResult paramAsyncResult)
@@ -545,6 +559,11 @@ public class ChannelProxyDefault
   public boolean isGooglePlayVersion()
   {
     return false;
+  }
+  
+  public void judgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, COMM.StCommonExt paramStCommonExt, String paramString4, String paramString5, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new JudgeTimingRequest(paramString1, paramInt1, paramInt2, paramInt3, paramLong, paramInt4, paramString2, paramInt5, paramString3, paramInt6, paramStCommonExt, paramString4, paramString5), paramAsyncResult);
   }
   
   public boolean jump2PublicAccount(Context paramContext, String paramString1, String paramString2)
@@ -679,6 +698,8 @@ public class ChannelProxyDefault
     return false;
   }
   
+  public void springHbReport(String paramString1, int paramInt1, int paramInt2, Map<String, String> paramMap, String paramString2) {}
+  
   public boolean startAddFriendActivity(Context paramContext, String paramString1, String paramString2)
   {
     return false;
@@ -695,6 +716,17 @@ public class ChannelProxyDefault
   }
   
   public void startDownloadX5(IMiniAppContext paramIMiniAppContext) {}
+  
+  public boolean startRedpacketTranslucentBrowserActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("key_orientation_landscape", false);
+    localIntent.putExtras(paramBundle);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    MiniFragmentLauncher.startTranslucentForResult(paramActivity, localIntent, paramInt, MiniFragmentLauncher.FragmentType.FRAGMENT_TRANSLUCENT_BROWSER);
+    return true;
+  }
   
   public boolean startTransparentBrowserActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
   {

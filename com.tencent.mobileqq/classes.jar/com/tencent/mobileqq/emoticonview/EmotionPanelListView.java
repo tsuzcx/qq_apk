@@ -3,7 +3,6 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import avop;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 
@@ -11,7 +10,7 @@ public class EmotionPanelListView
   extends ListView
 {
   public static final String TAG = "EmotionPanelListView";
-  private boolean enableExtendPanle;
+  private boolean enableExtendPanle = false;
   private EmotionPanelListView.PullAndFastScrollListener mPullAndFastScrollListener;
   
   public EmotionPanelListView(Context paramContext)
@@ -86,14 +85,14 @@ public class EmotionPanelListView
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
     AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
     if ((!bool) && ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) && (paramInt2 < 0)) {
-      ((EmoticonPanelOnScrollListener)localOnScrollListener).getScrollVelometer().a(Math.abs(paramInt2));
+      ((EmoticonPanelOnScrollListener)localOnScrollListener).getScrollVelometer().onMove(Math.abs(paramInt2));
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelListView
  * JD-Core Version:    0.7.0.1
  */

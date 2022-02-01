@@ -9,9 +9,9 @@ public final class AuthCodeReq
   extends JceStruct
 {
   static ArrayList<Long> cache_apps = new ArrayList();
-  public ArrayList<Long> apps;
+  public ArrayList<Long> apps = null;
   public String skey = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {

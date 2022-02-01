@@ -7,7 +7,7 @@ import android.os.IBinder;
 
 public abstract class TBSOneStandaloneService$ServiceImpl
 {
-  protected Service mBaseService;
+  protected Service a;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -37,12 +37,12 @@ public abstract class TBSOneStandaloneService$ServiceImpl
   
   public void setBaseService(Service paramService)
   {
-    this.mBaseService = paramService;
+    this.a = paramService;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tbs.one.optional.TBSOneStandaloneService.ServiceImpl
  * JD-Core Version:    0.7.0.1
  */

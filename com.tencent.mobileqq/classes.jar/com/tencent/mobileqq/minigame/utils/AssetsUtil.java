@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
@@ -730,14 +730,14 @@ public class AssetsUtil
     {
       paramContext = new File(paramString2);
       if (paramContext.exists()) {
-        FileUtil.deleteFile(paramContext);
+        FileUtils.a(paramContext);
       }
-      label242:
+      label241:
       return false;
     }
     catch (Throwable paramContext)
     {
-      break label242;
+      break label241;
     }
   }
   

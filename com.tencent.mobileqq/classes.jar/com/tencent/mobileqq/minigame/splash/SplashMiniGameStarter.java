@@ -24,11 +24,17 @@ public class SplashMiniGameStarter
   private static String appVersionInConfig;
   public static SplashMiniGameData curData;
   public static HashMap<String, SplashMiniGameData> dataMap;
-  public static boolean hasClickJumpBtn;
+  public static boolean hasClickJumpBtn = false;
   public static boolean hasJumped;
   public static boolean hasPreloaded;
-  public static boolean needJump;
+  public static boolean needJump = false;
   private static ArrayList<String> syncPlayList = new ArrayList();
+  
+  static
+  {
+    hasPreloaded = false;
+    hasJumped = false;
+  }
   
   public static void clearAllConfig()
   {

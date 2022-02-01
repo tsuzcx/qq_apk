@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
 import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView.OnVideoViewControlListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView.OnVideoViewLifeCycleChangeListener;
 import com.tencent.viola.annotation.VComponentProp;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.core.dispatch.IObserver;
@@ -15,9 +17,6 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONObject;
-import uaf;
-import uag;
-import ubp;
 
 public class VTopicVideo
   extends VVideo
@@ -27,7 +26,7 @@ public class VTopicVideo
   private static final int TOPIC_VIDEO_CONTROL_PLAY = 2;
   private static final int TOPIC_VIDEO_CONTROL_REPLAY = 5;
   private static final int TOPIC_VIDEO_CONTROL_STOP = 4;
-  private IObserver mVideoAppearEventObserver = new ubp(this);
+  private IObserver mVideoAppearEventObserver = new VTopicVideo.1(this);
   
   public VTopicVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -42,7 +41,7 @@ public class VTopicVideo
     }
   }
   
-  public uag getVideoLifeCycleChangeListener()
+  public VVideoView.OnVideoViewLifeCycleChangeListener getVideoLifeCycleChangeListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();
@@ -147,7 +146,7 @@ public class VTopicVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo
  * JD-Core Version:    0.7.0.1
  */

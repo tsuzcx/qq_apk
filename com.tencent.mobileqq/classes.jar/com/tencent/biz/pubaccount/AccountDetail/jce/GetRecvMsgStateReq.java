@@ -8,8 +8,8 @@ public final class GetRecvMsgStateReq
   extends JceStruct
   implements Cloneable
 {
-  public long puin;
-  public long uin;
+  public long puin = 0L;
+  public long uin = 0L;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -25,7 +25,7 @@ public final class GetRecvMsgStateReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateReq
  * JD-Core Version:    0.7.0.1
  */

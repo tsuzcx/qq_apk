@@ -9,7 +9,7 @@ public final class PhotoSearchBoxChosenItemElem
 {
   static int cache_type = 0;
   public String categoryid = "";
-  public int type;
+  public int type = 0;
   
   public PhotoSearchBoxChosenItemElem() {}
   

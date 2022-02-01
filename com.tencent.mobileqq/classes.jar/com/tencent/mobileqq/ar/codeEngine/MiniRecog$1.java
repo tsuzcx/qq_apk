@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import apnh;
-import apni;
-
-public class MiniRecog$1
+class MiniRecog$1
   implements Runnable
 {
-  public MiniRecog$1(apnh paramapnh, long paramLong) {}
+  MiniRecog$1(MiniRecog paramMiniRecog, long paramLong) {}
   
   public void run()
   {

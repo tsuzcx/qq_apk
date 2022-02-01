@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class FriendUinInfo
   extends JceStruct
 {
-  public byte cType;
-  public long uFriendTime;
-  public long uFriendUin;
+  public byte cType = 0;
+  public long uFriendTime = 0L;
+  public long uFriendUin = 0L;
   
   public FriendUinInfo() {}
   

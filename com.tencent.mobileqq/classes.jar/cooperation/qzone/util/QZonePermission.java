@@ -2,9 +2,9 @@ package cooperation.qzone.util;
 
 import android.app.Activity;
 import android.os.Build.VERSION;
-import bhdj;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
 import cooperation.qzone.QzonePluginProxyActivity;
 import mqq.app.BaseActivity;
 import mqq.app.QQPermissionCallback;
@@ -69,7 +69,7 @@ public class QZonePermission
     }
     if ((Build.VERSION.SDK_INT >= 23) && ((paramActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
     {
-      bhdj.a(getRealActivity(paramActivity));
+      DialogUtil.a(getRealActivity(paramActivity));
       return false;
     }
     return true;
@@ -106,7 +106,7 @@ public class QZonePermission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.QZonePermission
  * JD-Core Version:    0.7.0.1
  */

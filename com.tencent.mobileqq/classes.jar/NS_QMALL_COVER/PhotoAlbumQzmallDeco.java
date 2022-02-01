@@ -8,7 +8,7 @@ public final class PhotoAlbumQzmallDeco
   extends JceStruct
 {
   static AlbumThemeSkin cache_stAlbumSkin = new AlbumThemeSkin();
-  public AlbumThemeSkin stAlbumSkin;
+  public AlbumThemeSkin stAlbumSkin = null;
   
   public PhotoAlbumQzmallDeco() {}
   

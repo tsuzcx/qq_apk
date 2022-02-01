@@ -3,10 +3,6 @@ package com.tencent.open.base.http;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bjkx;
-import bjky;
-import bjli;
-import bjlj;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -19,10 +15,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
-public class AvatarUpdateService$1
+class AvatarUpdateService$1
   implements Runnable
 {
-  public AvatarUpdateService$1(bjkx parambjkx, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, bjlj parambjlj) {}
+  AvatarUpdateService$1(AvatarUpdateService paramAvatarUpdateService, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, HttpImageDownloadAsyncTask.TaskCompleteCallback paramTaskCompleteCallback) {}
   
   public void run()
   {
@@ -59,15 +55,15 @@ public class AvatarUpdateService$1
       return;
     }
     ??? = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, "");
-    if ((!FileUtil.isFileExists(this.d)) || (!str.equals(???)))
+    if ((!FileUtil.a(this.d)) || (!str.equals(???)))
     {
       QLog.d("AvatarUpdateService", 1, "-->updateAvatar--avatar not exist or need update, will download new avatar");
       synchronized (this.this$0.jdField_a_of_type_JavaUtilHashMap)
       {
         if (!this.this$0.jdField_a_of_type_JavaUtilHashMap.containsKey(this.c))
         {
-          this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new bjky(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_Bjlj));
-          new bjli(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
+          this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new AvatarUpdateService.AvatarUpdateTask(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback));
+          new HttpImageDownloadAsyncTask(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
         }
         return;
       }
@@ -76,7 +72,7 @@ public class AvatarUpdateService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.base.http.AvatarUpdateService.1
  * JD-Core Version:    0.7.0.1
  */

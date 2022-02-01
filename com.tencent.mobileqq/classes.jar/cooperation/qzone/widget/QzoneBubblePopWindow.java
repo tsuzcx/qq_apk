@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 public class QzoneBubblePopWindow
   extends PopupWindow
 {
-  private WeakReference<Context> mContext;
+  private WeakReference<Context> mContext = null;
   
   public QzoneBubblePopWindow(Context paramContext)
   {
@@ -42,7 +42,7 @@ public class QzoneBubblePopWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneBubblePopWindow
  * JD-Core Version:    0.7.0.1
  */

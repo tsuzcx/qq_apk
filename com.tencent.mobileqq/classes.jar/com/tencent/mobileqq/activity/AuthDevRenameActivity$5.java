@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class AuthDevRenameActivity$5
   implements Runnable
@@ -30,7 +30,7 @@ class AuthDevRenameActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity.5
  * JD-Core Version:    0.7.0.1
  */

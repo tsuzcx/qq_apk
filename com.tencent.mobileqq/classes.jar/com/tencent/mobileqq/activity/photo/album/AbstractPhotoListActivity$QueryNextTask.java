@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.photo.album;
 import android.os.AsyncTask;
 import android.util.Pair;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.queryMedia.MediaQueryHelper;
+import com.tencent.mobileqq.activity.photo.album.querymedia.MediaQueryHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -56,7 +56,7 @@ public class AbstractPhotoListActivity$QueryNextTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.QueryNextTask
  * JD-Core Version:    0.7.0.1
  */

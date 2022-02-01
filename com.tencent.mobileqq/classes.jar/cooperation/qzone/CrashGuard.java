@@ -18,7 +18,7 @@ public class CrashGuard
 {
   private static final int DEFAULT_CRASH_DURATION_AFTER_LAUNCH = 15;
   private static final int DEFAULT_CRASH_MAX_COUNT = 2;
-  private static long appLaunchTime;
+  private static long appLaunchTime = 0L;
   private static int crashBetweenLaunch = -1;
   private Runnable clearTimestamp;
   private CrashGuard.CrashListener crashListener;
@@ -49,7 +49,7 @@ public class CrashGuard
   {
     clearFileCache(paramBaseApplication);
     if (!TextUtils.isEmpty(paramString)) {
-      paramBaseApplication.deleteDatabase(SecurityUtil.encrypt(paramString));
+      paramBaseApplication.deleteDatabase(SecurityUtil.a(paramString));
     }
     paramBaseApplication = paramBaseApplication.getFilesDir().getParent() + File.separator + "shared_prefs";
     if (!TextUtils.isEmpty(paramBaseApplication))

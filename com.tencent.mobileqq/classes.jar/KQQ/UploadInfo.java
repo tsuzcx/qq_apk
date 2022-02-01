@@ -8,11 +8,11 @@ public final class UploadInfo
   extends JceStruct
 {
   static byte[] cache_vSignature;
-  public long lAppID;
-  public long lFromMID;
-  public long lToMID;
-  public short shType;
-  public byte[] vSignature;
+  public long lAppID = 0L;
+  public long lFromMID = 0L;
+  public long lToMID = 0L;
+  public short shType = 0;
+  public byte[] vSignature = null;
   
   public UploadInfo() {}
   

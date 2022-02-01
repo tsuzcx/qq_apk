@@ -8,9 +8,9 @@ public final class RespOffFilePack
   extends JceStruct
 {
   static byte[] cache_vBody;
-  public int iReplyCode;
-  public long lUIN;
-  public byte[] vBody;
+  public int iReplyCode = 0;
+  public long lUIN = 0L;
+  public byte[] vBody = null;
   
   public RespOffFilePack() {}
   

@@ -1,11 +1,11 @@
 package com.tencent.hippy.qq.update;
 
 import android.text.TextUtils;
-import bdgh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.SoLoadManager;
+import com.tencent.mobileqq.soload.biz.entity.LoadExtResult;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class HippyQQLibraryManager
   public static final int STATE_LOADED = 2;
   public static final int STATE_LOADING = 1;
   public static final int STATE_UNLOAD = 0;
-  private static long mLastUpdateTime;
+  private static long mLastUpdateTime = 0L;
   private final String[] SO_LIST = { "libmtt_shared.so", "libmttv8.so", "libhippybridge.so", "libflexbox.so" };
   private final String[] SO_NAME = { "mtt_shared", "mttv8", "hippybridge", "flexbox" };
   private String mCDNPath;
@@ -160,8 +160,12 @@ public class HippyQQLibraryManager
     if (this.mLibraryLoadListeners != null)
     {
       Iterator localIterator = this.mLibraryLoadListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((HippyQQLibraryManager.LibraryLoadListener)localIterator.next()).onLoadFail(-8, "SoLoadManager load failed, resCode=" + paramInt);
+      while (localIterator.hasNext())
+      {
+        HippyQQLibraryManager.LibraryLoadListener localLibraryLoadListener = (HippyQQLibraryManager.LibraryLoadListener)localIterator.next();
+        if (localLibraryLoadListener != null) {
+          localLibraryLoadListener.onLoadFail(-8, "SoLoadManager load failed, resCode=" + paramInt);
+        }
       }
     }
   }
@@ -172,8 +176,12 @@ public class HippyQQLibraryManager
     if (this.mLibraryLoadListeners != null)
     {
       Iterator localIterator = this.mLibraryLoadListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((HippyQQLibraryManager.LibraryLoadListener)localIterator.next()).onLoadSuccess();
+      while (localIterator.hasNext())
+      {
+        HippyQQLibraryManager.LibraryLoadListener localLibraryLoadListener = (HippyQQLibraryManager.LibraryLoadListener)localIterator.next();
+        if (localLibraryLoadListener != null) {
+          localLibraryLoadListener.onLoadSuccess();
+        }
       }
     }
   }
@@ -207,7 +215,7 @@ public class HippyQQLibraryManager
     int i = 0;
     while (i < this.SO_NAME.length)
     {
-      String str2 = bdgh.a().a(this.SO_NAME[i]);
+      String str2 = SoLoadManager.a().a(this.SO_NAME[i]);
       if (TextUtils.isEmpty(str2)) {
         return 0;
       }
@@ -232,7 +240,7 @@ public class HippyQQLibraryManager
     int i = 0;
     while (i < this.SO_NAME.length)
     {
-      if (TextUtils.isEmpty(bdgh.a().a(this.SO_NAME[i]))) {
+      if (TextUtils.isEmpty(SoLoadManager.a().a(this.SO_NAME[i]))) {
         return false;
       }
       i += 1;
@@ -250,7 +258,7 @@ public class HippyQQLibraryManager
       return;
       this.mLoadState = 1;
       addLibraryLoadListener(paramLibraryLoadListener);
-      bdgh.a().a(this.SO_NAME, new HippyQQLibraryManager.2(this));
+      SoLoadManager.a().a(this.SO_NAME, new HippyQQLibraryManager.2(this));
       return;
       addLibraryLoadListener(paramLibraryLoadListener);
       return;
@@ -260,7 +268,7 @@ public class HippyQQLibraryManager
   
   public void preDownload()
   {
-    bdgh.a().b(this.SO_NAME, new HippyQQLibraryManager.1(this));
+    SoLoadManager.a().b(this.SO_NAME, new HippyQQLibraryManager.1(this));
   }
   
   protected void updateSoVersions(LoadExtResult paramLoadExtResult)
@@ -281,7 +289,7 @@ public class HippyQQLibraryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQLibraryManager
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,12 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import bnrh;
-import bnua;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.LyricCharacter;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.SentenceAttachInfo;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.SentenceUI;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.util.ArrayList;
 
 public class LyricViewInternalDetail
@@ -54,7 +53,7 @@ public class LyricViewInternalDetail
         }
         else
         {
-          bnrh.a("LyricViewInternalDetail", "computeHilightWhileScrolling() y => " + paramInt + ",position => " + m);
+          AEQLog.a("LyricViewInternalDetail", "computeHilightWhileScrolling() y => " + paramInt + ",position => " + m);
           return m;
         }
         j += 1;
@@ -176,12 +175,6 @@ public class LyricViewInternalDetail
       a(localSentence, paramCanvas, n, paramInt, this.jdField_a_of_type_AndroidGraphicsPaint);
       paramInt = localSentence.getUiLineSize() * k + paramInt;
     }
-  }
-  
-  public void a(bnua parambnua)
-  {
-    super.a(parambnua);
-    this.x = ((this.jdField_d_of_type_Int + this.e) * 2);
   }
   
   protected void a(Sentence paramSentence, Canvas paramCanvas, int paramInt1, int paramInt2)
@@ -341,6 +334,12 @@ public class LyricViewInternalDetail
     }
   }
   
+  public void a(LyricViewAttribute paramLyricViewAttribute)
+  {
+    super.a(paramLyricViewAttribute);
+    this.x = ((this.jdField_d_of_type_Int + this.e) * 2);
+  }
+  
   public int b()
   {
     if (this.jdField_l_of_type_Int != 70) {}
@@ -394,7 +393,7 @@ public class LyricViewInternalDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalDetail
  * JD-Core Version:    0.7.0.1
  */

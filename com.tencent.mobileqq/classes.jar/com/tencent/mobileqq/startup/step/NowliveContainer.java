@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import avru;
+import com.tencent.mobileqq.intervideo.IVLoggerFactory;
 import com.tencent.shadow.core.common.LoggerFactory;
 
 public class NowliveContainer
@@ -8,7 +8,7 @@ public class NowliveContainer
 {
   protected boolean doStep()
   {
-    LoggerFactory.setILoggerFactory(avru.a());
+    LoggerFactory.setILoggerFactory(IVLoggerFactory.a());
     return true;
   }
 }

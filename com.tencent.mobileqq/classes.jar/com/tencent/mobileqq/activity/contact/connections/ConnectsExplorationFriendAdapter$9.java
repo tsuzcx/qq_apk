@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import aiya;
-
-public class ConnectsExplorationFriendAdapter$9
+class ConnectsExplorationFriendAdapter$9
   implements Runnable
 {
-  public ConnectsExplorationFriendAdapter$9(aiya paramaiya) {}
+  ConnectsExplorationFriendAdapter$9(ConnectsExplorationFriendAdapter paramConnectsExplorationFriendAdapter) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ConnectsExplorationFriendAdapter$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationFriendAdapter.9
  * JD-Core Version:    0.7.0.1
  */

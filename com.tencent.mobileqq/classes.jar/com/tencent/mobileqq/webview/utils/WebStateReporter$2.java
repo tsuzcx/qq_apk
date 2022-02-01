@@ -2,23 +2,22 @@ package com.tencent.mobileqq.webview.utils;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import bdka;
-import bijc;
+import com.tencent.mobileqq.statistics.DcReportUtil;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
-public class WebStateReporter$2
+class WebStateReporter$2
   implements Runnable
 {
-  public WebStateReporter$2(bijc parambijc, String paramString, long paramLong, int paramInt) {}
+  WebStateReporter$2(WebStateReporter paramWebStateReporter, String paramString, long paramLong, int paramInt) {}
   
   public void run()
   {
     int i;
-    if (bijc.a.containsKey(this.jdField_a_of_type_JavaLangString))
+    if (WebStateReporter.a.containsKey(this.jdField_a_of_type_JavaLangString))
     {
-      i = ((Integer)bijc.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
-      if ((1 != i) && (this.jdField_a_of_type_Long % i != bijc.c)) {
+      i = ((Integer)WebStateReporter.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
+      if ((1 != i) && (this.jdField_a_of_type_Long % i != WebStateReporter.c)) {
         break label63;
       }
       i = 1;
@@ -75,14 +74,14 @@ public class WebStateReporter$2
       ((StringBuilder)localObject).append(str1).append("|");
       ((StringBuilder)localObject).append(str1).append("|");
       ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      bdka.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+      DcReportUtil.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.utils.WebStateReporter.2
  * JD-Core Version:    0.7.0.1
  */

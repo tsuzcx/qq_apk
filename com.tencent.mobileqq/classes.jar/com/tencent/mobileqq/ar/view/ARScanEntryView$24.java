@@ -5,27 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import apdk;
-import apfk;
-import apos;
-import bdla;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.ar.ARTarget;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.mobileqq.ar.model.ArWebInfo;
+import com.tencent.mobileqq.ar.model.QQARSession;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AppIntefaceReportWrap;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class ARScanEntryView$24
   implements Runnable
 {
-  ARScanEntryView$24(ARScanEntryView paramARScanEntryView, apfk paramapfk, int paramInt, boolean paramBoolean) {}
+  ARScanEntryView$24(ARScanEntryView paramARScanEntryView, ARTarget paramARTarget, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Apfk.a.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Apfk.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (this.jdField_a_of_type_Apfk.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_Apfk.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int == 0)) {
-      if (this.jdField_a_of_type_Apfk.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.b)
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int == 0)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.b)
       {
-        bdla.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Apfk.a.b, "1", "1", "");
+        ReportController.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.b, "1", "1", "");
         ARScanEntryView.b(this.this$0, true);
         if (ARScanEntryView.a(this.this$0) != null)
         {
@@ -38,14 +39,14 @@ class ARScanEntryView$24
     do
     {
       return;
-      bdla.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Apfk.a.b, "1", "0", "");
-      if (this.jdField_a_of_type_Apfk.a.c()) {
-        bdla.b(null, "CliOper", "", "", "0X80098D1", "0X80098D1", 0, 0, this.jdField_a_of_type_Apfk.a.b, "1", "0", "");
+      ReportController.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.b, "1", "0", "");
+      if (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.c()) {
+        ReportController.b(null, "CliOper", "", "", "0X80098D1", "0X80098D1", 0, 0, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.b, "1", "0", "");
       }
       Object localObject = (Activity)this.this$0.jdField_a_of_type_AndroidContentContext;
-      String str = this.jdField_a_of_type_Apfk.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
+      String str = this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
       ((Activity)localObject).setResult(11);
-      apdk.a().b(2);
+      ARVideoRecordUIControllerImpl.a().b(2);
       if (this.this$0.a(str))
       {
         localObject = new Intent("android.intent.action.VIEW");
@@ -58,7 +59,7 @@ class ARScanEntryView$24
       for (;;)
       {
         if ((ARScanEntryView.a(this.this$0) != null) && (!ARScanEntryView.a(this.this$0).a.d())) {
-          this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X8008145", "0X8008145", 0, 0, "1", this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), ARScanEntryView.a(this.this$0).a.b, "2");
+          AppIntefaceReportWrap.a(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface, "CliOper", "", "", "0X8008145", "0X8008145", 0, 0, "1", this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), ARScanEntryView.a(this.this$0).a.b, "2");
         }
         ARScanEntryView.c(this.this$0, true);
         return;

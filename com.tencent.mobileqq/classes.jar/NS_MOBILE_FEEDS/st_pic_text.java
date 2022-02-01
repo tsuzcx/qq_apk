@@ -10,17 +10,17 @@ public final class st_pic_text
 {
   static s_picdata cache_picinfo = new s_picdata();
   static ArrayList<s_user> cache_userlist = new ArrayList();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
   public String desc_after_click = "";
   public String desc_before_click = "";
-  public s_picdata picinfo;
+  public s_picdata picinfo = null;
   public String playurl = "";
   public String postfix = "";
   public String strHeader = "";
   public String summary = "";
   public String title = "";
-  public ArrayList<s_user> userlist;
+  public ArrayList<s_user> userlist = null;
   
   static
   {

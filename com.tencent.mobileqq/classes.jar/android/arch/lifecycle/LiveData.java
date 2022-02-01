@@ -18,7 +18,7 @@ public abstract class LiveData<T>
   private final Object mDataLock = new Object();
   private boolean mDispatchInvalidated;
   private boolean mDispatchingValue;
-  private SafeIterableMap<Observer<T>, LiveData<T>.ObserverWrapper> mObservers = new SafeIterableMap();
+  SafeIterableMap<Observer<T>, LiveData<T>.ObserverWrapper> mObservers = new SafeIterableMap();
   private volatile Object mPendingData = NOT_SET;
   private final Runnable mPostValueRunnable = new LiveData.1(this);
   private int mVersion = -1;
@@ -206,7 +206,7 @@ public abstract class LiveData<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     android.arch.lifecycle.LiveData
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,10 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public final class QualityReporter$3
+final class QualityReporter$3
   implements Runnable
 {
-  public QualityReporter$3(long paramLong, HashMap paramHashMap) {}
+  QualityReporter$3(long paramLong, HashMap paramHashMap) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public final class QualityReporter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.QualityReporter.3
  * JD-Core Version:    0.7.0.1
  */

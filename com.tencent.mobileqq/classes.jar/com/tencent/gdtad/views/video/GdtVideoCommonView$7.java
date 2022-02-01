@@ -1,9 +1,9 @@
 package com.tencent.gdtad.views.video;
 
-import aciv;
 import android.os.Handler;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import com.tencent.gdtad.views.GdtUIUtils;
 import com.tencent.superplayer.api.ISuperPlayer;
 
 class GdtVideoCommonView$7
@@ -36,7 +36,7 @@ class GdtVideoCommonView$7
       {
         GdtVideoCommonView.a(this.this$0).setProgress(i);
         GdtVideoCommonView.b(this.this$0).setProgress(i);
-        GdtVideoCommonView.c(this.this$0).setText(aciv.a(l1));
+        GdtVideoCommonView.c(this.this$0).setText(GdtUIUtils.a(l1));
       }
       GdtVideoCommonView.a(this.this$0).postDelayed(this, 50L);
       return;
@@ -50,7 +50,7 @@ class GdtVideoCommonView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.7
  * JD-Core Version:    0.7.0.1
  */

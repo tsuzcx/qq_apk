@@ -1,0 +1,29 @@
+package com.tencent.mobileqq.ocr.ui;
+
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+
+class SearchResultFragment$2
+  implements ViewPager.OnPageChangeListener
+{
+  SearchResultFragment$2(SearchResultFragment paramSearchResultFragment) {}
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
+    if (this.a.jdField_a_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchResultFragment.2
+ * JD-Core Version:    0.7.0.1
+ */

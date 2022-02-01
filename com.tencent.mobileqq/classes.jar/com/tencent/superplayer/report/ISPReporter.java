@@ -31,7 +31,13 @@ public abstract interface ISPReporter
   
   public abstract void onPrepared();
   
+  public abstract void onQuicInfoUpdate(String paramString);
+  
+  public abstract void onRelease();
+  
   public abstract void onSeek(long paramLong1, long paramLong2);
+  
+  public abstract void onSeekComplete();
   
   public abstract void onStart();
   
@@ -47,7 +53,7 @@ public abstract interface ISPReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.report.ISPReporter
  * JD-Core Version:    0.7.0.1
  */

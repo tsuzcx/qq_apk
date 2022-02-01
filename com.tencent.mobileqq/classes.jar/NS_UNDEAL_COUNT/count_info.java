@@ -10,15 +10,16 @@ public final class count_info
 {
   static single_count cache_stCount = new single_count();
   static ArrayList<feed_host_info> cache_vecUinList = new ArrayList();
-  public long cTime;
-  public int iShowLevel;
-  public int iSubCountID;
-  public single_count stCount;
+  public String actPageAttach = "";
+  public long cTime = 0L;
+  public int iShowLevel = 0;
+  public int iSubCountID = 0;
+  public single_count stCount = null;
   public String strIconUrl = "";
   public String strReportValue = "";
   public String strShowMsg = "";
   public String trace_info = "";
-  public ArrayList<feed_host_info> vecUinList;
+  public ArrayList<feed_host_info> vecUinList = null;
   
   static
   {
@@ -28,7 +29,7 @@ public final class count_info
   
   public count_info() {}
   
-  public count_info(single_count paramsingle_count, ArrayList<feed_host_info> paramArrayList, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, long paramLong, int paramInt2)
+  public count_info(single_count paramsingle_count, ArrayList<feed_host_info> paramArrayList, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, long paramLong, int paramInt2, String paramString5)
   {
     this.stCount = paramsingle_count;
     this.vecUinList = paramArrayList;
@@ -39,6 +40,7 @@ public final class count_info
     this.strReportValue = paramString4;
     this.cTime = paramLong;
     this.iShowLevel = paramInt2;
+    this.actPageAttach = paramString5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -52,6 +54,7 @@ public final class count_info
     this.strReportValue = paramJceInputStream.readString(6, false);
     this.cTime = paramJceInputStream.read(this.cTime, 7, false);
     this.iShowLevel = paramJceInputStream.read(this.iShowLevel, 8, false);
+    this.actPageAttach = paramJceInputStream.readString(9, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -77,6 +80,9 @@ public final class count_info
     }
     paramJceOutputStream.write(this.cTime, 7);
     paramJceOutputStream.write(this.iShowLevel, 8);
+    if (this.actPageAttach != null) {
+      paramJceOutputStream.write(this.actPageAttach, 9);
+    }
   }
 }
 

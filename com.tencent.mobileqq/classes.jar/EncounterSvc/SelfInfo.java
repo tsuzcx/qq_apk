@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class SelfInfo
   extends JceStruct
 {
-  public int NearRanking;
-  public byte cAge;
-  public byte cSex;
-  public int charm;
-  public int charm_level;
-  public byte god_flag;
+  public int NearRanking = 0;
+  public byte cAge = 0;
+  public byte cSex = 0;
+  public int charm = 0;
+  public int charm_level = 0;
+  public byte god_flag = 0;
   public int iVoteIncrement = -1;
-  public int iVoteNum;
+  public int iVoteNum = 0;
   public String strBirthDay = "";
   public String strNick = "";
   

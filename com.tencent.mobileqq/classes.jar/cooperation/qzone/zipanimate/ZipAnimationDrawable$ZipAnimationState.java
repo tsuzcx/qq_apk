@@ -15,7 +15,7 @@ final class ZipAnimationDrawable$ZipAnimationState
   ZipDrawableLoader animationResLoader;
   ZipLoadedListener animationResLoaderListener;
   int frameRate = 30;
-  private boolean mOneShot;
+  private boolean mOneShot = false;
   
   private ZipAnimationDrawable$ZipAnimationState(ZipAnimationDrawable paramZipAnimationDrawable) {}
   
@@ -93,7 +93,7 @@ final class ZipAnimationDrawable$ZipAnimationState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState
  * JD-Core Version:    0.7.0.1
  */

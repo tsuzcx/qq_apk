@@ -1,21 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import sxx;
-import sxy;
-
-public class CaptureOperateTouchLayout$IndicatorTouchListener$2
+class CaptureOperateTouchLayout$IndicatorTouchListener$2
   implements Runnable
 {
-  public CaptureOperateTouchLayout$IndicatorTouchListener$2(sxy paramsxy) {}
+  CaptureOperateTouchLayout$IndicatorTouchListener$2(CaptureOperateTouchLayout.IndicatorTouchListener paramIndicatorTouchListener) {}
   
   public void run()
   {
-    sxy.a(this.a).b();
+    CaptureOperateTouchLayout.IndicatorTouchListener.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout.IndicatorTouchListener.2
  * JD-Core Version:    0.7.0.1
  */

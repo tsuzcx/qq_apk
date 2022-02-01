@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afrp;
-import albw;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.qphone.base.util.QLog;
 
 class CustomizeStrategyFactory$3
@@ -13,7 +12,7 @@ class CustomizeStrategyFactory$3
   {
     try
     {
-      this.a.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = albw.a(this.a.jdField_a_of_type_Afrp.a);
+      this.a.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = QWalletTools.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig.a);
       this.a.c = true;
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "preProcessAnim-preProcess finished");
@@ -34,7 +33,7 @@ class CustomizeStrategyFactory$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.3
  * JD-Core Version:    0.7.0.1
  */

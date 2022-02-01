@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import aioh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgzs;
+import com.tencent.mobileqq.util.JSONUtils.FieldName;
 
 public class ZhituImgResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator<ZhituImgResponse> CREATOR = new aioh();
+  public static final Parcelable.Creator<ZhituImgResponse> CREATOR = new ZhituImgResponse.1();
   public String coord;
   public String md5;
   public String pass;
   public String style;
-  @bgzs(a="text-color")
+  @JSONUtils.FieldName(a="text-color")
   public String textColor;
   public String url;
   
   public ZhituImgResponse() {}
   
-  public ZhituImgResponse(Parcel paramParcel)
+  protected ZhituImgResponse(Parcel paramParcel)
   {
     this.url = paramParcel.readString();
     this.textColor = paramParcel.readString();
@@ -77,7 +76,7 @@ public class ZhituImgResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse
  * JD-Core Version:    0.7.0.1
  */

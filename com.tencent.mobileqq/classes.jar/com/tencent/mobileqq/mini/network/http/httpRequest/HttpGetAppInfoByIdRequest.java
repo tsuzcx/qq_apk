@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.network.http.httpRequest;
 
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bhjl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.network.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -13,6 +13,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -28,8 +29,12 @@ public class HttpGetAppInfoByIdRequest
     this.req.appid.set(paramString1);
     this.req.needVersionInfo.set(paramInt1);
     this.req.checkDevRight.set(paramInt2);
-    this.req.firstPath.set(paramString2);
-    this.req.envVersion.set(paramString3);
+    if (paramString2 != null) {
+      this.req.firstPath.set(paramString2);
+    }
+    if (paramString3 != null) {
+      this.req.envVersion.set(paramString3);
+    }
     paramString2 = this.req.fromAppid;
     paramString1 = paramString4;
     if (paramString4 == null) {
@@ -65,13 +70,14 @@ public class HttpGetAppInfoByIdRequest
     INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bhjl.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(WupUtil.b(paramArrayOfByte));
       localStGetAppInfoByIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       QLog.d("GetAppInfoByIdRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
       if (localStGetAppInfoByIdRsp != null)
       {
         paramArrayOfByte = new JSONObject();
         paramArrayOfByte.put("mini_app_info_data", MiniAppInfo.from(localStGetAppInfoByIdRsp.appInfo));
+        paramArrayOfByte.put("mini_app_info_pb_data", localStGetAppInfoByIdRsp.appInfo.toByteArray());
         paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
         paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
         return paramArrayOfByte;

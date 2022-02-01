@@ -311,7 +311,7 @@ public class SessionPool
   
   public void notifyIdle()
   {
-    UploadLog.d(getTag(), "notifyIdle --- " + this.mSessionQueue.size());
+    UploadLog.d(getTag(), "notifyIdle --- mSessionQueue size:" + this.mSessionQueue.size() + " mDetectingSession size:" + this.mDetectingSession.size());
     if ((this.mSessionQueue.size() == 0) && (this.mDetectingSession.size() == 0)) {
       this.mListener.onSessionPoolError(this, Const.UploadRetCode.NO_SESSION.getCode());
     }
@@ -461,9 +461,9 @@ public class SessionPool
     //   11: ifeq +23 -> 34
     //   14: aload_0
     //   15: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   18: invokeinterface 528 1 0
+    //   18: invokeinterface 530 1 0
     //   23: checkcast 300	com/tencent/upload/network/session/IUploadSession
-    //   26: invokeinterface 531 1 0
+    //   26: invokeinterface 533 1 0
     //   31: ifeq +100 -> 131
     //   34: aload_0
     //   35: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
@@ -471,22 +471,22 @@ public class SessionPool
     //   43: ifle +105 -> 148
     //   46: aload_0
     //   47: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   50: invokeinterface 533 1 0
+    //   50: invokeinterface 535 1 0
     //   55: checkcast 300	com/tencent/upload/network/session/IUploadSession
     //   58: astore_1
     //   59: aload_1
-    //   60: invokeinterface 531 1 0
+    //   60: invokeinterface 533 1 0
     //   65: ifeq +20 -> 85
     //   68: aload_1
     //   69: invokeinterface 368 1 0
     //   74: aload_0
     //   75: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
     //   78: aload_1
-    //   79: invokeinterface 465 2 0
+    //   79: invokeinterface 467 2 0
     //   84: pop
     //   85: aload_0
     //   86: invokespecial 97	com/tencent/upload/network/session/SessionPool:getTag	()Ljava/lang/String;
-    //   89: ldc_w 535
+    //   89: ldc_w 537
     //   92: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   95: aload_0
     //   96: iconst_1
@@ -495,18 +495,18 @@ public class SessionPool
     //   101: invokespecial 201	com/tencent/upload/network/session/SessionPool:createSession	(ILcom/tencent/upload/network/route/UploadRoute;)V
     //   104: aload_0
     //   105: invokespecial 97	com/tencent/upload/network/session/SessionPool:getTag	()Ljava/lang/String;
-    //   108: ldc_w 537
+    //   108: ldc_w 539
     //   111: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   114: aload_0
-    //   115: ldc2_w 538
-    //   118: invokevirtual 543	java/lang/Object:wait	(J)V
+    //   115: ldc2_w 540
+    //   118: invokevirtual 545	java/lang/Object:wait	(J)V
     //   121: aload_0
     //   122: invokespecial 97	com/tencent/upload/network/session/SessionPool:getTag	()Ljava/lang/String;
-    //   125: ldc_w 545
+    //   125: ldc_w 547
     //   128: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   131: aload_0
     //   132: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   135: invokeinterface 533 1 0
+    //   135: invokeinterface 535 1 0
     //   140: checkcast 300	com/tencent/upload/network/session/IUploadSession
     //   143: astore_1
     //   144: aload_0
@@ -515,7 +515,7 @@ public class SessionPool
     //   147: areturn
     //   148: aload_0
     //   149: invokespecial 97	com/tencent/upload/network/session/SessionPool:getTag	()Ljava/lang/String;
-    //   152: ldc_w 547
+    //   152: ldc_w 549
     //   155: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   158: goto -73 -> 85
     //   161: astore_1
@@ -528,7 +528,7 @@ public class SessionPool
     //   169: new 137	java/lang/StringBuilder
     //   172: dup
     //   173: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   176: ldc_w 549
+    //   176: ldc_w 551
     //   179: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: aload_1
     //   183: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -633,7 +633,7 @@ public class SessionPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.upload.network.session.SessionPool
  * JD-Core Version:    0.7.0.1
  */

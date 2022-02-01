@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.upgrade;
 
-import bgvp;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.TimeUnit;
 import mqq.os.MqqHandler;
 
-public class NewUpgradeDialog$6
+class NewUpgradeDialog$6
   implements Runnable
 {
-  public NewUpgradeDialog$6(bgvp parambgvp) {}
+  NewUpgradeDialog$6(NewUpgradeDialog paramNewUpgradeDialog) {}
   
   public void run()
   {
@@ -33,8 +32,8 @@ public class NewUpgradeDialog$6
         }
       }
     }
-    if (!bgvp.a(this.this$0)) {
-      bgvp.b(this.this$0);
+    if (!NewUpgradeDialog.a(this.this$0)) {
+      NewUpgradeDialog.b(this.this$0);
     }
   }
 }

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pvm;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class SubscriptionInfoModule$4
+class SubscriptionInfoModule$4
   implements Runnable
 {
   public void run()
   {
-    pvm.a().b(this.a);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterModule;
+import com.tencent.biz.qqstory.takevideo.artfilter.FilterUploadInfo;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import yqg;
-import yqi;
 
 class ArtFilterUploadProcessor$1
   implements ITransactionCallback

@@ -5,11 +5,11 @@ import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
 class PageSwitchObserver$3
   implements ListenerMgr.INotifyCallback<PageSwitchObserver.IPageSwitchListener>
 {
-  PageSwitchObserver$3(PageSwitchObserver paramPageSwitchObserver, PageInfo paramPageInfo) {}
+  PageSwitchObserver$3(PageSwitchObserver paramPageSwitchObserver, PageInfo paramPageInfo, int paramInt) {}
   
   public void onNotify(PageSwitchObserver.IPageSwitchListener paramIPageSwitchListener)
   {
-    paramIPageSwitchListener.onPageAppear(this.val$pageInfo);
+    paramIPageSwitchListener.onPageAppear(this.val$pageInfo, this.val$invokeFrom);
   }
 }
 

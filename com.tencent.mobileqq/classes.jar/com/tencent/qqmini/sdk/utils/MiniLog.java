@@ -51,6 +51,68 @@ public class MiniLog
     }
   }
   
+  private static Integer getLastLogNum(String paramString, Integer paramInteger, File paramFile)
+  {
+    if (paramInteger == null)
+    {
+      paramInteger = Integer.valueOf(1);
+      Integer localInteger = paramInteger;
+      try
+      {
+        File[] arrayOfFile = paramFile.listFiles();
+        paramFile = paramInteger;
+        if (arrayOfFile != null)
+        {
+          localInteger = paramInteger;
+          paramFile = paramInteger;
+          if (arrayOfFile.length > 0)
+          {
+            localInteger = paramInteger;
+            int j = arrayOfFile.length;
+            int i = 0;
+            for (;;)
+            {
+              paramFile = paramInteger;
+              if (i >= j) {
+                break;
+              }
+              localInteger = paramInteger;
+              String str = arrayOfFile[i].getName();
+              paramFile = paramInteger;
+              localInteger = paramInteger;
+              if (str.contains("log"))
+              {
+                localInteger = paramInteger;
+                str = str.substring(str.lastIndexOf("log") + 1);
+                paramFile = paramInteger;
+                localInteger = paramInteger;
+                if (isInteger(str))
+                {
+                  paramFile = paramInteger;
+                  localInteger = paramInteger;
+                  if (Integer.valueOf(str).intValue() > paramInteger.intValue())
+                  {
+                    localInteger = paramInteger;
+                    paramFile = Integer.valueOf(str);
+                  }
+                }
+              }
+              i += 1;
+              paramInteger = paramFile;
+            }
+          }
+        }
+        return paramFile;
+      }
+      catch (Exception paramInteger)
+      {
+        QMLog.e("MiniLog", paramString, paramInteger);
+        paramFile = localInteger;
+      }
+    }
+    return paramInteger;
+  }
+  
   public static String getMiniLogFolderPath()
   {
     return MiniSDKConst.getMiniCacheFilePath();
@@ -65,138 +127,79 @@ public class MiniLog
   private static String getMiniLogPath(String paramString)
   {
     String str = getMiniLogFolderPath(paramString);
-    Object localObject3 = (Integer)mLastNumCache.get(paramString);
-    Object localObject6 = new File(str);
-    if (!((File)localObject6).exists()) {
-      ((File)localObject6).mkdirs();
+    localObject1 = (Integer)mLastNumCache.get(paramString);
+    localObject2 = new File(str);
+    if (!((File)localObject2).exists()) {
+      ((File)localObject2).mkdirs();
     }
-    Object localObject1 = localObject3;
-    Object localObject5;
-    int j;
-    int i;
-    Object localObject7;
-    Object localObject2;
-    if (localObject3 == null)
+    localObject1 = getLastLogNum(paramString, (Integer)localObject1, (File)localObject2);
+    localObject2 = localObject1;
+    if (System.currentTimeMillis() - lastCheckLogSizeTime > 60000L)
     {
-      localObject3 = Integer.valueOf(1);
-      localObject5 = localObject3;
+      lastCheckLogSizeTime = System.currentTimeMillis();
+      localObject2 = localObject1;
+      localObject3 = localObject1;
+    }
+    label179:
+    do
+    {
       try
       {
-        localObject6 = ((File)localObject6).listFiles();
-        localObject1 = localObject3;
-        if (localObject6 != null)
+        if (FileUtils.createFile(str + "log" + localObject1).length() > MAX_MINI_LOG_SIZE)
         {
-          localObject5 = localObject3;
-          localObject1 = localObject3;
-          if (localObject6.length > 0)
-          {
-            localObject5 = localObject3;
-            j = localObject6.length;
-            i = 0;
-            for (;;)
-            {
-              localObject1 = localObject3;
-              if (i >= j) {
-                break;
-              }
-              localObject5 = localObject3;
-              localObject7 = localObject6[i].getName();
-              localObject1 = localObject3;
-              localObject5 = localObject3;
-              if (((String)localObject7).contains("log"))
-              {
-                localObject5 = localObject3;
-                localObject7 = ((String)localObject7).substring(((String)localObject7).lastIndexOf("log") + 1);
-                localObject1 = localObject3;
-                localObject5 = localObject3;
-                if (isInteger((String)localObject7))
-                {
-                  localObject1 = localObject3;
-                  localObject5 = localObject3;
-                  if (Integer.valueOf((String)localObject7).intValue() > ((Integer)localObject3).intValue())
-                  {
-                    localObject5 = localObject3;
-                    localObject1 = Integer.valueOf((String)localObject7);
-                  }
-                }
-              }
-              i += 1;
-              localObject3 = localObject1;
-            }
+          localObject3 = localObject1;
+          if (((Integer)localObject1).intValue() >= 5) {
+            break label179;
           }
-        }
-        if (System.currentTimeMillis() - lastCheckLogSizeTime <= 60000L) {
-          break label572;
+          localObject3 = localObject1;
+          i = ((Integer)localObject1).intValue();
+          localObject2 = Integer.valueOf(i + 1);
         }
       }
       catch (Exception localException1)
       {
-        QMLog.e("MiniLog", paramString, localException1);
-        localObject2 = localObject5;
-      }
-    }
-    else
-    {
-      lastCheckLogSizeTime = System.currentTimeMillis();
-      localObject3 = localObject2;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (FileUtils.createFile(str + "log" + localObject2).length() <= MAX_MINI_LOG_SIZE) {
-          break label572;
-        }
-        localObject3 = localObject2;
-        if (((Integer)localObject2).intValue() >= 5) {
-          continue;
-        }
-        localObject3 = localObject2;
-        i = ((Integer)localObject2).intValue();
-        localObject3 = Integer.valueOf(i + 1);
-      }
-      catch (Exception localException3)
-      {
-        localObject2 = localObject3;
-        localObject3 = localException3;
-        ((Exception)localObject3).printStackTrace();
-        localObject3 = localObject2;
-        continue;
-      }
-      mLastNumCache.put(paramString, localObject3);
-      return str + "log" + localObject3;
-      localObject3 = localObject2;
-      new File(str + "log" + 1).delete();
-      localObject2 = Integer.valueOf(1);
-      i = 2;
-      localObject3 = localObject2;
-      if (i <= 5)
-      {
-        try
+        for (;;)
         {
-          localObject6 = new File(str + "log" + i);
-          if (!((File)localObject6).exists()) {
-            break label569;
+          try
+          {
+            int i;
+            File localFile;
+            StringBuilder localStringBuilder;
+            int j;
+            localFile.renameTo(new File(localObject1));
+            localObject1 = localObject2;
+            i += 1;
           }
-          QMLog.i("MiniLog", "rename from file:log" + i + " to file:" + localObject2);
-          localObject7 = new StringBuilder().append(str).append("log");
-          j = ((Integer)localObject2).intValue();
-          localObject5 = Integer.valueOf(j + 1);
-          localObject3 = localObject5;
-          ((File)localObject6).renameTo(new File(localObject2));
-          localObject2 = localObject5;
+          catch (Exception localException2)
+          {
+            continue;
+          }
+          localException1 = localException1;
+          localObject2 = localObject3;
+          localException1.printStackTrace();
         }
-        catch (Exception localException2)
-        {
-          continue;
-          label569:
-          continue;
-        }
-        i += 1;
-        continue;
-        label572:
-        Object localObject4 = localObject2;
       }
+      mLastNumCache.put(paramString, localObject2);
+      return str + "log" + localObject2;
+      localObject3 = localObject1;
+      new File(str + "log" + 1).delete();
+      localObject3 = localObject1;
+      localObject1 = Integer.valueOf(1);
+      i = 2;
+      localObject2 = localObject1;
+    } while (i > 5);
+    localObject3 = localObject1;
+    localFile = new File(str + "log" + i);
+    localObject3 = localObject1;
+    if (localFile.exists())
+    {
+      localObject3 = localObject1;
+      QMLog.i("MiniLog", "rename from file:log" + i + " to file:" + localObject1);
+      localObject3 = localObject1;
+      localStringBuilder = new StringBuilder().append(str).append("log");
+      localObject3 = localObject1;
+      j = ((Integer)localObject1).intValue();
+      localObject2 = Integer.valueOf(j + 1);
     }
   }
   
@@ -307,7 +310,7 @@ public class MiniLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniLog
  * JD-Core Version:    0.7.0.1
  */

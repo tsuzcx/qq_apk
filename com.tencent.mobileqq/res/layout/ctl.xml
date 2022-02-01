@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/lvp" android:background="@drawable/eeo" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ff737373" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
-        <com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText android:textSize="16.0dip" android:textColor="#ff262626" android:textColorHint="#ffe5e5e5" android:id="@id/byx" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:singleLine="false" android:layout_toLeftOf="@id/o07" />
-        <TextView android:textSize="12.0dip" android:textColor="#ffa6a6a6" android:id="@id/o07" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <TextView android:textSize="16.0dip" android:textColor="@color/yw" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/lxp" android:background="@drawable/igz" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="282.0dip" android:layout_height="102.0dip" android:layout_marginBottom="32.0dip" android:text="@string/xk7" android:maxLines="3" android:layout_above="@id/lvq" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/lvq" android:layout_width="fill_parent" android:layout_height="340.0dip" android:layout_marginBottom="28.0dip" android:scaleType="fitCenter" android:layout_above="@id/n33" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/n33" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="50.0dip" android:layout_alignParentBottom="true">
+        <Button android:textSize="17.0dip" android:textColor="@color/yw" android:gravity="center" android:id="@id/n31" android:background="@drawable/common_btn_white" android:layout_width="120.0dip" android:layout_height="fill_parent" android:layout_marginRight="12.0dip" android:text="@string/xk5" android:layout_toRightOf="@id/n32" />
+        <Button android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/n32" android:background="@drawable/common_btn_blue" android:layout_width="120.0dip" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:text="@string/xk6" />
+    </LinearLayout>
+</RelativeLayout>

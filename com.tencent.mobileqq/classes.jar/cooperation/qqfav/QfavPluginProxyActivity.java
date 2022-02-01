@@ -1,6 +1,5 @@
 package cooperation.qqfav;
 
-import Override;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -8,13 +7,12 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import blvy;
-import blwh;
-import bmaf;
-import bmck;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.qqfav.widget.QfavLoadingDialog;
 
 public class QfavPluginProxyActivity
   extends PluginProxyActivity
@@ -76,8 +74,8 @@ public class QfavPluginProxyActivity
   public static boolean a(Context paramContext, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
     QfavPluginProxyService.a();
-    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!bmaf.a(paramContext))) {}
-    for (bmck localbmck = new bmck(paramContext);; localbmck = null)
+    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!QfavHelper.a(paramContext))) {}
+    for (QfavLoadingDialog localQfavLoadingDialog = new QfavLoadingDialog(paramContext);; localQfavLoadingDialog = null)
     {
       String str = a(paramIntent);
       paramIntent.putExtra("useSkinEngine", true);
@@ -85,19 +83,19 @@ public class QfavPluginProxyActivity
       if ((paramBoolean) || (!(paramContext instanceof Activity))) {
         paramIntent.addFlags(268435456);
       }
-      blwh localblwh = new blwh(0);
-      localblwh.jdField_b_of_type_JavaLangString = "qqfav.apk";
-      localblwh.d = "qqfav.apk";
-      localblwh.jdField_a_of_type_JavaLangString = paramString;
-      localblwh.e = str;
-      localblwh.jdField_a_of_type_JavaLangClass = a(paramIntent);
-      localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localblwh.jdField_b_of_type_Int = paramInt;
-      localblwh.jdField_a_of_type_AndroidAppDialog = localbmck;
-      localblwh.c = 30000;
-      localblwh.f = null;
-      localblwh.jdField_b_of_type_Boolean = false;
-      blvy.a(paramContext, localblwh);
+      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+      localPluginParams.jdField_b_of_type_JavaLangString = "qqfav.apk";
+      localPluginParams.e = "qqfav.apk";
+      localPluginParams.jdField_a_of_type_JavaLangString = paramString;
+      localPluginParams.f = str;
+      localPluginParams.jdField_a_of_type_JavaLangClass = a(paramIntent);
+      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localPluginParams.c = paramInt;
+      localPluginParams.jdField_a_of_type_AndroidAppDialog = localQfavLoadingDialog;
+      localPluginParams.d = 30000;
+      localPluginParams.g = null;
+      localPluginParams.jdField_b_of_type_Boolean = false;
+      IPluginManager.a(paramContext, localPluginParams);
       QLog.i("qqfav", 2, "QfavPluginProxyActivity: openPluginActivityForResult: " + str);
       return true;
     }
@@ -151,13 +149,13 @@ public class QfavPluginProxyActivity
     super.onCreate(paramBundle);
     paramBundle = getIntent().getExtras();
     if ((paramBundle != null) && (paramBundle.getInt("nOperation") == 6)) {
-      super.overridePendingTransition(2130771992, 2130771993);
+      super.overridePendingTransition(2130771994, 2130771995);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqfav.QfavPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

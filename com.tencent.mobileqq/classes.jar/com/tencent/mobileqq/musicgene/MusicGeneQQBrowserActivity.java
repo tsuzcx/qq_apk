@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.musicgene;
 
-import Override;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,15 +8,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import anvx;
-import aupt;
-import axkt;
-import bdnr;
-import bdnv;
-import bdoe;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
+import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
+import com.tencent.mobileqq.structmsg.StructMsgElementFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -26,17 +24,16 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class MusicGeneQQBrowserActivity
   extends QQBrowserActivity
 {
-  private BroadcastReceiver a;
+  private BroadcastReceiver a = new MusicGeneQQBrowserActivity.1(this);
   
   public MusicGeneQQBrowserActivity()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new axkt(this);
-    this.jdField_a_of_type_JavaLangClass = MusicGeneQQBrowserActivity.MusicGeneQQBrowserFragment.class;
+    this.mFragmentClass = MusicGeneQQBrowserActivity.MusicGeneQQBrowserFragment.class;
   }
   
   private void a()
   {
-    WebViewFragment localWebViewFragment = a();
+    WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
     if (localWebViewFragment != null)
     {
       if ((localWebViewFragment.webView != null) && (localWebViewFragment.webView.canGoBack()))
@@ -52,7 +49,7 @@ public class MusicGeneQQBrowserActivity
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
   {
-    paramString6 = new bdnr(StructMsgForAudioShare.class).c(2).a(anvx.a(2131706497)).a();
+    paramString6 = new AbsShareMsg.Builder(StructMsgForAudioShare.class).c(2).a(HardCodeUtil.a(2131707038)).a();
     paramString6.mContentSrc = paramString3;
     paramString6.mContentTitle = paramString5;
     paramString6.mContentCover = paramString1;
@@ -61,7 +58,7 @@ public class MusicGeneQQBrowserActivity
     paramString6.mSourceName = "QQ音乐";
     paramString6.mSourceAction = "app";
     paramString6.mSourceAppid = paramLong;
-    paramString2 = bdoe.a(2);
+    paramString2 = StructMsgElementFactory.a(2);
     paramString2.a(paramString1, paramString5, paramString4);
     paramString6.addItem(paramString2);
     paramString1 = new Bundle();
@@ -71,7 +68,7 @@ public class MusicGeneQQBrowserActivity
     }
     for (;;)
     {
-      paramString1.putString("app_name", anvx.a(2131706496));
+      paramString1.putString("app_name", HardCodeUtil.a(2131707037));
       paramString1.putString("detail_url", paramString6.mMsgUrl);
       paramString1.putString("audio_url", paramString6.mContentSrc);
       paramString1.putString("image_url_remote", paramString6.mContentCover);
@@ -89,7 +86,7 @@ public class MusicGeneQQBrowserActivity
       paramString2 = new Intent();
       paramString2.putExtra("refuse_show_share_result_dialog", true);
       paramString2.putExtras(paramString1);
-      aupt.a(this, paramString2);
+      ForwardBaseOption.a(this, paramString2);
       return;
       paramString1.putInt("req_type", 1);
     }
@@ -123,7 +120,7 @@ public class MusicGeneQQBrowserActivity
       localIntentFilter.addAction("BROAD_CAST_SHARE_MUSIC_GENE");
       localIntentFilter.addAction("BROAD_CAST_SHARE_SONG");
       localIntentFilter.addAction("BROAD_CAST_UPDATE_TITLE");
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.music.data.permission", null);
+      registerReceiver(this.a, localIntentFilter, "com.tencent.music.data.permission", null);
       return;
     }
     catch (Exception localException)
@@ -136,7 +133,7 @@ public class MusicGeneQQBrowserActivity
   {
     try
     {
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      unregisterReceiver(this.a);
       super.doOnStop();
       return;
     }

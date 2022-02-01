@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bevc;
-
-public class AbsPublishActivity$8$3
+class AbsPublishActivity$8$3
   implements Runnable
 {
-  public AbsPublishActivity$8$3(bevc parambevc) {}
+  AbsPublishActivity$8$3(AbsPublishActivity.8 param8) {}
   
   public void run()
   {

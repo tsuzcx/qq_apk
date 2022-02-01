@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.report;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bizw;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniAppReportManager$9
@@ -16,7 +16,7 @@ final class MiniAppReportManager$9
   {
     try
     {
-      long l = bizw.a().a();
+      long l = CommonDataAdapter.a().a();
       Object localObject = MiniAppReportManager.access$1100(this.val$miniAppConfig);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {

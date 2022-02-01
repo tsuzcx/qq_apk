@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.identification;
 
 import android.graphics.ColorMatrixColorFilter;
-import avqf;
-import avqg;
-import avqk;
 
-public class IdentificationPoseReflect$3$1
+class IdentificationPoseReflect$3$1
   implements Runnable
 {
-  public IdentificationPoseReflect$3$1(avqg paramavqg, ColorMatrixColorFilter paramColorMatrixColorFilter) {}
+  IdentificationPoseReflect$3$1(IdentificationPoseReflect.3 param3, ColorMatrixColorFilter paramColorMatrixColorFilter) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Avqg.a.a.a(this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter);
+    this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationPoseReflect$3.a.a.a(this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationPoseReflect.3.1
  * JD-Core Version:    0.7.0.1
  */

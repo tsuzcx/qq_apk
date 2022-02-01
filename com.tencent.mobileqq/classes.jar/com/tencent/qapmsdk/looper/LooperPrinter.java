@@ -53,8 +53,8 @@ class LooperPrinter
   
   void gotoReport(@NonNull MonitorInfo paramMonitorInfo, long paramLong)
   {
-    String str = paramMonitorInfo.stack;
-    if ((!PluginController.INSTANCE.canCollect(PluginCombination.loopStackPlugin.plugin)) || (TextUtils.isEmpty(str))) {
+    Object localObject = paramMonitorInfo.stack;
+    if ((!PluginController.INSTANCE.canCollect(PluginCombination.loopStackPlugin.plugin)) || (TextUtils.isEmpty((CharSequence)localObject))) {
       return;
     }
     try
@@ -62,15 +62,15 @@ class LooperPrinter
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("event_time", paramMonitorInfo.cacheRealStackTime);
       localJSONObject.put("cost_time", paramLong);
-      localJSONObject.put("stack", str);
+      localJSONObject.put("stack", localObject);
       localJSONObject.put("plugin", PluginCombination.loopStackPlugin.plugin);
       localJSONObject.put("stage", paramMonitorInfo.scene);
       localJSONObject.put("bread_crumb_id", AthenaReflect.getBreadCrumbId(1, new AthenaInfo(paramMonitorInfo.scene, (int)paramLong)));
       if (ListenerManager.looperListener != null) {
         ListenerManager.looperListener.onBeforeReport(new LooperMeta(localJSONObject));
       }
-      paramMonitorInfo = new ResultObject(0, "Looper single", true, 1L, 1L, localJSONObject, true, true, BaseInfo.userMeta.uin);
-      ReporterMachine.INSTANCE.addResultObj(paramMonitorInfo);
+      localObject = new ResultObject(0, "Looper single", true, 1L, 1L, localJSONObject, true, true, BaseInfo.userMeta.uin);
+      ReporterMachine.INSTANCE.addResultObj((ResultObject)localObject, null, paramMonitorInfo.needCheck);
       return;
     }
     catch (Exception paramMonitorInfo)
@@ -129,7 +129,7 @@ class LooperPrinter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.LooperPrinter
  * JD-Core Version:    0.7.0.1
  */

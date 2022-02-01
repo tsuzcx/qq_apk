@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import arva;
-import azzl;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.bean.AnonymousQuestion;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -14,11 +13,11 @@ import org.json.JSONObject;
 public final class MessageForTofuAskAnonymously
   extends ChatMessage
 {
-  public static final arva Companion = new arva(null);
+  public static final MessageForTofuAskAnonymously.Companion Companion = new MessageForTofuAskAnonymously.Companion(null);
   @NotNull
   public static final String TAG = "MessageForTofuAskAnonymously";
   @Nullable
-  private azzl askAnonymouslyQuestion;
+  private AnonymousQuestion askAnonymouslyQuestion;
   
   public MessageForTofuAskAnonymously()
   {
@@ -26,7 +25,7 @@ public final class MessageForTofuAskAnonymously
     this.mNeedTimeStamp = false;
   }
   
-  private final azzl parseJsonToAnonymousQuestion(String paramString)
+  private final AnonymousQuestion parseJsonToAnonymousQuestion(String paramString)
   {
     boolean bool = false;
     if (TextUtils.isEmpty((CharSequence)paramString)) {
@@ -38,26 +37,26 @@ public final class MessageForTofuAskAnonymously
       try
       {
         paramString = new JSONObject(paramString);
-        azzl localazzl = new azzl();
-        localazzl.jdField_a_of_type_JavaLangString = paramString.optString("key_question_id", "");
-        localazzl.jdField_b_of_type_JavaLangString = paramString.optString("key_question_str", "");
-        localazzl.jdField_a_of_type_Long = paramString.optLong("key_question_uin", -1L);
-        localazzl.jdField_b_of_type_Long = paramString.optLong("key_question_time", -1L);
-        localazzl.c = paramString.optString("key_answer_str", "");
-        localazzl.jdField_d_of_type_Long = paramString.optLong("key_answer_time", -1L);
-        localazzl.jdField_d_of_type_JavaLangString = paramString.optString("key_praise_key", "");
+        AnonymousQuestion localAnonymousQuestion = new AnonymousQuestion();
+        localAnonymousQuestion.mId = paramString.optString("key_question_id", "");
+        localAnonymousQuestion.mQuest = paramString.optString("key_question_str", "");
+        localAnonymousQuestion.mQuestUin = paramString.optLong("key_question_uin", -1L);
+        localAnonymousQuestion.mQuestTime = paramString.optLong("key_question_time", -1L);
+        localAnonymousQuestion.mAnswer = paramString.optString("key_answer_str", "");
+        localAnonymousQuestion.mAnswerTime = paramString.optLong("key_answer_time", -1L);
+        localAnonymousQuestion.mPraiseKey = paramString.optString("key_praise_key", "");
         if (paramString.optInt("key_been_praise", 0) == 1) {
           bool = true;
         }
-        localazzl.jdField_b_of_type_Boolean = bool;
-        localazzl.e = paramString.optLong("key_praise_num", -1L);
-        localazzl.f = paramString.optLong("key_comment_num", -1L);
-        localazzl.g = paramString.optLong("key_show_times", -1L);
-        paramString = localazzl;
+        localAnonymousQuestion.mPraised = bool;
+        localAnonymousQuestion.mTotalPraiseCount = paramString.optLong("key_praise_num", -1L);
+        localAnonymousQuestion.mTotalCommentCount = paramString.optLong("key_comment_num", -1L);
+        localAnonymousQuestion.mTotalViewCount = paramString.optLong("key_show_times", -1L);
+        paramString = localAnonymousQuestion;
         if (QLog.isColorLevel())
         {
-          QLog.i("MessageForTofuAskAnonymously", 2, "parseJsonToAnonymousQuestion result: " + localazzl);
-          return localazzl;
+          QLog.i("MessageForTofuAskAnonymously", 2, "parseJsonToAnonymousQuestion result: " + localAnonymousQuestion);
+          return localAnonymousQuestion;
         }
       }
       catch (Exception paramString)
@@ -77,19 +76,19 @@ public final class MessageForTofuAskAnonymously
   }
   
   @Nullable
-  public final azzl getAskAnonymouslyQuestion()
+  public final AnonymousQuestion getAskAnonymouslyQuestion()
   {
     return this.askAnonymouslyQuestion;
   }
   
-  public final void setAskAnonymouslyQuestion(@Nullable azzl paramazzl)
+  public final void setAskAnonymouslyQuestion(@Nullable AnonymousQuestion paramAnonymousQuestion)
   {
-    this.askAnonymouslyQuestion = paramazzl;
+    this.askAnonymouslyQuestion = paramAnonymousQuestion;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTofuAskAnonymously
  * JD-Core Version:    0.7.0.1
  */

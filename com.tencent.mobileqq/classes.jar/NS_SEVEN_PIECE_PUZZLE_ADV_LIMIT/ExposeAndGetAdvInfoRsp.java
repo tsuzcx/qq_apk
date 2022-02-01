@@ -9,9 +9,9 @@ public final class ExposeAndGetAdvInfoRsp
   extends JceStruct
 {
   static ArrayList<AdvExposureInfo> cache_vecAdvExposureInfo = new ArrayList();
-  public int Code;
+  public int Code = 0;
   public String Msg = "";
-  public ArrayList<AdvExposureInfo> vecAdvExposureInfo;
+  public ArrayList<AdvExposureInfo> vecAdvExposureInfo = null;
   
   static
   {

@@ -3,13 +3,30 @@ package com.tencent.av.ui.funchat.zimu;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
-import anvx;
+import com.tencent.av.AVLog;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.AudioTransClientInfoHandler;
+import com.tencent.av.business.handler.AudioTransClientInfoHandlerExtend;
+import com.tencent.av.business.handler.BusinessHandlerFactory;
+import com.tencent.av.business.manager.EffectConfigBase.IEffectConfigCallback;
+import com.tencent.av.business.manager.support.EffectSupportManager;
+import com.tencent.av.business.manager.zimu.ARZimuUtil;
+import com.tencent.av.business.manager.zimu.EffectZimuManager;
+import com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport;
 import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.av.core.VcSystemInfo;
+import com.tencent.av.tips.TipsUtil;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.BaseToolbar;
+import com.tencent.av.ui.BaseToolbar.UIInfo;
+import com.tencent.av.ui.ControlUIObserver.ZimuRequest;
+import com.tencent.av.ui.QAVPtvTemplateAdapter.IItemDownloadMgr;
+import com.tencent.av.ui.QavListItemBase.IDownloadCallback;
+import com.tencent.av.ui.QavListItemBase.ItemInfo;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -19,39 +36,21 @@ import java.util.BitSet;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import lbd;
-import lfe;
-import lge;
-import lgf;
-import lgw;
-import lin;
-import ljc;
-import ljd;
-import lje;
-import llq;
-import mbf;
-import mcl;
-import mdd;
-import mhu;
-import mim;
-import min;
-import mpg;
-import mph;
 
 public class ZimuToolbar
   extends BaseToolbar
-  implements lgw<ZimuItem>, mhu
+  implements EffectConfigBase.IEffectConfigCallback<ZimuItem>, QAVPtvTemplateAdapter.IItemDownloadMgr
 {
   private static final String TAG = "ZimuToolbar";
   private static final int ZIMU_CPU_CORE_THRESHOLD = 8;
   private static final int ZIMU_CPU_FREQ_THRESHOLD = 1800000;
-  private boolean mARZimuEnable;
-  private mph mAdapter;
-  private mpg mItemEvent;
+  private boolean mARZimuEnable = false;
+  private ZimuToolbar.QAVZimuAdapter mAdapter;
+  private ZimuToolbar.MyItemEvent mItemEvent;
   private HorizontalListView mListView;
-  private lin mSupportManager;
-  mcl mUIInfo = null;
-  private ljd mZimuManager;
+  private EffectSupportManager mSupportManager;
+  BaseToolbar.UIInfo mUIInfo = null;
+  private EffectZimuManager mZimuManager;
   
   public ZimuToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
@@ -62,13 +61,13 @@ public class ZimuToolbar
   {
     QLog.w("ZimuToolbar", 1, "cancleZimu, 取消字幕选择, seq[" + paramLong + "], isTranslation[" + this.mZimuManager.c() + "]");
     this.mZimuManager.a("onSelectZimuItem", paramLong);
-    new mdd(paramLong, "onSelectZimuItem", 3, paramString).a(this.mApp);
-    lgf.a(this.mApp, "onSelectZimuItem", paramLong, "EMPTY_ITEM", false);
+    new ControlUIObserver.ZimuRequest(paramLong, "onSelectZimuItem", 3, paramString).a(this.mApp);
+    AudioTransClientInfoHandlerExtend.a(this.mApp, "onSelectZimuItem", paramLong, "EMPTY_ITEM", false);
   }
   
   private boolean checkDimmStatus(String paramString)
   {
-    lbd.f("ZimuToolbar", "checkDimmStatus id = " + paramString);
+    AVLog.printColorLog("ZimuToolbar", "checkDimmStatus id = " + paramString);
     int i = this.mSupportManager.a(0, "735");
     int j = this.mSupportManager.a(0, "750");
     switch (i)
@@ -80,36 +79,36 @@ public class ZimuToolbar
     {
       paramString = (AVActivity)this.mActivity.get();
       if ((i != 0) && (paramString != null)) {
-        mbf.a(this.mApp, 1010, i);
+        TipsUtil.a(this.mApp, 1010, i);
       }
       return false;
       if (j == 1) {
         break;
       }
-      i = 2131695222;
+      i = 2131695465;
       continue;
-      i = 2131695221;
+      i = 2131695464;
     }
   }
   
   private boolean checkNeedUpdateList()
   {
     boolean bool = this.mARZimuEnable;
-    this.mARZimuEnable = ljc.a();
+    this.mARZimuEnable = ARZimuUtil.a();
     return (!bool) || (!this.mARZimuEnable);
   }
   
   public static boolean isShow(VideoAppInterface paramVideoAppInterface)
   {
     if (paramVideoAppInterface != null) {
-      return ljd.a(paramVideoAppInterface);
+      return EffectZimuManager.a(paramVideoAppInterface);
     }
     return false;
   }
   
   public static boolean isSupport()
   {
-    int i = llq.e();
+    int i = VcSystemInfo.getNumCores();
     if (i >= 8) {}
     long l;
     do
@@ -118,7 +117,7 @@ public class ZimuToolbar
       if (i < 4) {
         break;
       }
-      l = llq.d();
+      l = VcSystemInfo.getMaxCpuFreq();
     } while ((l != 0L) && (l >= 1800000L));
     return false;
   }
@@ -147,19 +146,19 @@ public class ZimuToolbar
       {
         i = 1;
         if (i == 0) {
-          break label241;
+          break label243;
         }
-        bool = ((lge)this.mApp.a(1)).a();
+        bool = ((AudioTransClientInfoHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.b)).a();
         QLog.w("ZimuToolbar", 1, "selectZimu, 选择新字幕, id[" + str + "->" + paramString + "], isSuccessCreateTranslation[" + bool + "], seq[" + paramLong + "], isTranslation[" + this.mZimuManager.c() + "], ZimuItem[" + localZimuItem + "]");
-        new mdd(paramLong, "onSelectZimuItem", 1, paramString).a(this.mApp);
+        new ControlUIObserver.ZimuRequest(paramLong, "onSelectZimuItem", 1, paramString).a(this.mApp);
         if (!bool) {
-          break label211;
+          break label213;
         }
-        lgf.a(this.mApp, "onSelectZimuItem", paramLong, paramString, true);
+        AudioTransClientInfoHandlerExtend.a(this.mApp, "onSelectZimuItem", paramLong, paramString, true);
         this.mZimuManager.b("onSelectZimuItem_" + paramString, paramLong);
       }
-      label211:
-      label241:
+      label213:
+      label243:
       while (!QLog.isDevelopLevel())
       {
         boolean bool;
@@ -189,7 +188,7 @@ public class ZimuToolbar
     }
   }
   
-  ArrayList<min> convertItemInfo(List<ZimuItem> paramList)
+  ArrayList<QavListItemBase.ItemInfo> convertItemInfo(List<ZimuItem> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -214,12 +213,12 @@ public class ZimuToolbar
         }
         else
         {
-          localObject = new min();
-          ((min)localObject).jdField_a_of_type_JavaLangString = paramList.getId();
-          ((min)localObject).b = paramList.getIconurl();
-          ((min)localObject).jdField_a_of_type_Boolean = paramList.isUsable();
-          ((min)localObject).c = paramList.getId();
-          ((min)localObject).d = paramList.getDesc();
+          localObject = new QavListItemBase.ItemInfo();
+          ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = paramList.getId();
+          ((QavListItemBase.ItemInfo)localObject).b = paramList.getIconurl();
+          ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_Boolean = paramList.isUsable();
+          ((QavListItemBase.ItemInfo)localObject).c = paramList.getId();
+          ((QavListItemBase.ItemInfo)localObject).d = paramList.getDesc();
           localArrayList.add(localObject);
         }
       }
@@ -227,15 +226,15 @@ public class ZimuToolbar
     return localArrayList;
   }
   
-  public mcl getUIInfo()
+  public BaseToolbar.UIInfo getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new mcl();
+      this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 6;
-      this.mUIInfo.f = 2131559820;
-      this.mUIInfo.e = 2130842322;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131695671);
+      this.mUIInfo.g = 2131559896;
+      this.mUIInfo.f = 2130842465;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131695914);
     }
     return this.mUIInfo;
   }
@@ -243,21 +242,21 @@ public class ZimuToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695210);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695453);
     }
     return "";
   }
   
-  ArrayList<min> insertEmptyItem(ArrayList<min> paramArrayList)
+  ArrayList<QavListItemBase.ItemInfo> insertEmptyItem(ArrayList<QavListItemBase.ItemInfo> paramArrayList)
   {
-    min localmin = new min();
-    localmin.jdField_a_of_type_JavaLangString = "-1";
-    paramArrayList.add(0, localmin);
-    localmin = new min();
-    localmin.jdField_a_of_type_JavaLangString = "0";
-    localmin.b = String.valueOf(2130842225);
-    localmin.d = anvx.a(2131716391);
-    paramArrayList.add(1, localmin);
+    QavListItemBase.ItemInfo localItemInfo = new QavListItemBase.ItemInfo();
+    localItemInfo.jdField_a_of_type_JavaLangString = "-1";
+    paramArrayList.add(0, localItemInfo);
+    localItemInfo = new QavListItemBase.ItemInfo();
+    localItemInfo.jdField_a_of_type_JavaLangString = "0";
+    localItemInfo.b = String.valueOf(2130842368);
+    localItemInfo.d = HardCodeUtil.a(2131716857);
+    paramArrayList.add(1, localItemInfo);
     return paramArrayList;
   }
   
@@ -273,23 +272,23 @@ public class ZimuToolbar
   
   protected void notifyEvent(Integer paramInteger, Object paramObject)
   {
-    lbd.f("ZimuToolbar", "notifyEvent :" + paramInteger + "|" + paramObject);
+    AVLog.printColorLog("ZimuToolbar", "notifyEvent :" + paramInteger + "|" + paramObject);
     this.mApp.a(new Object[] { paramInteger, paramObject });
   }
   
   public void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mSupportManager = ((lin)this.mApp.a(5));
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368362));
+    this.mSupportManager = ((EffectSupportManager)this.mApp.a(5));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368580));
     this.mListView.setStayDisplayOffsetZero(true);
-    this.mZimuManager = ((ljd)this.mApp.a(0));
+    this.mZimuManager = ((EffectZimuManager)this.mApp.a(0));
     ArrayList localArrayList2 = convertItemInfo(this.mZimuManager.a(null));
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2.size() > 0) {
       localArrayList1 = insertEmptyItem(localArrayList2);
     }
-    this.mAdapter = new mph(this.mApp, paramAVActivity, localArrayList1, this.mListView, this);
-    this.mItemEvent = new mpg(this);
+    this.mAdapter = new ZimuToolbar.QAVZimuAdapter(this.mApp, paramAVActivity, localArrayList1, this.mListView, this);
+    this.mItemEvent = new ZimuToolbar.MyItemEvent(this);
     this.mAdapter.a(this.mItemEvent);
     this.mAdapter.a(this);
     this.mAdapter.b(true);
@@ -322,19 +321,19 @@ public class ZimuToolbar
       return;
     }
     if (paramZimuItem == null) {}
-    lfe locallfe;
+    SessionInfo localSessionInfo;
     for (paramZimuItem = "0";; paramZimuItem = paramZimuItem.getId())
     {
       QLog.w("ZimuToolbar", 1, "onItemSelectedChanged begin, id[" + paramZimuItem + "], seq[" + paramLong + "]");
       this.mAdapter.a("onItemSelectedChanged", paramLong, paramZimuItem);
-      locallfe = VideoController.a().a();
-      if (!ljc.a(paramZimuItem)) {
+      localSessionInfo = VideoController.a().a();
+      if (!ARZimuUtil.a(paramZimuItem)) {
         break;
       }
-      locallfe.a.set(4);
+      localSessionInfo.a.set(4);
       return;
     }
-    locallfe.a.clear(4);
+    localSessionInfo.a.clear(4);
   }
   
   public void onProgressUpdate(ZimuItem paramZimuItem, int paramInt)
@@ -357,7 +356,7 @@ public class ZimuToolbar
         while (localIterator.hasNext())
         {
           ZimuItem localZimuItem = (ZimuItem)localIterator.next();
-          if (ljc.a(localZimuItem.getId())) {
+          if (ARZimuUtil.a(localZimuItem.getId())) {
             ((List)localObject2).add(localZimuItem);
           }
         }
@@ -377,7 +376,7 @@ public class ZimuToolbar
     for (localObject1 = "0";; localObject1 = ((ZimuItem)localObject1).getId())
     {
       localObject2 = localObject1;
-      if (ljc.a((String)localObject1))
+      if (ARZimuUtil.a((String)localObject1))
       {
         localObject2 = localObject1;
         if (!this.mARZimuEnable) {
@@ -386,7 +385,7 @@ public class ZimuToolbar
       }
       this.mAdapter.a("onShow", paramLong, (String)localObject2);
       if (paramInt != getUIInfo().d) {
-        lje.a("0X80085CA", "");
+        EffectZimuManager.DataReport.a("0X80085CA", "");
       }
       this.mZimuManager.a(paramLong, this);
       if (!((String)localObject2).equalsIgnoreCase("0")) {
@@ -396,21 +395,21 @@ public class ZimuToolbar
     }
   }
   
-  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, min parammin, mim parammim)
+  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, QavListItemBase.ItemInfo paramItemInfo, QavListItemBase.IDownloadCallback paramIDownloadCallback)
   {
-    paramAppInterface = (ZimuItem)this.mZimuManager.a(parammin.jdField_a_of_type_JavaLangString);
+    paramAppInterface = (ZimuItem)this.mZimuManager.a(paramItemInfo.jdField_a_of_type_JavaLangString);
     if (paramAppInterface != null)
     {
       this.mZimuManager.a(paramLong, paramAppInterface);
       return;
     }
     QLog.w("ZimuToolbar", 1, "startDownloadTemplate, item为空, seq[" + paramLong + "]");
-    parammim.a(paramLong, parammin.jdField_a_of_type_JavaLangString, false);
+    paramIDownloadCallback.a(paramLong, paramItemInfo.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuToolbar
  * JD-Core Version:    0.7.0.1
  */

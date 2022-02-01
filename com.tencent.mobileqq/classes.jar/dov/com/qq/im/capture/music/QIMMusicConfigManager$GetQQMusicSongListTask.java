@@ -2,8 +2,8 @@ package dov.com.qq.im.capture.music;
 
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -54,7 +54,7 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
     HashMap localHashMap = new HashMap();
     localHashMap.put("app_id", "2000000228");
     localHashMap.put("app_key", "TCOHANTCNlddnsTY");
-    localHashMap.put("device_id", DeviceInfoUtil.getIMEI());
+    localHashMap.put("device_id", DeviceInfoUtil.a());
     localHashMap.put("timestamp", String.valueOf(l));
     localHashMap.put("sign", a(l));
     localHashMap.putAll(a(this.c, str));
@@ -62,12 +62,12 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
     if (QLog.isColorLevel()) {
       QLog.d("QIMMusicConfigManager", 2, "QQMusicReq SongList api request, req url=" + localHttpNetReq.mReqUrl);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq(localHttpNetReq);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq(localHttpNetReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QIMMusicConfigManager.GetQQMusicSongListTask
  * JD-Core Version:    0.7.0.1
  */

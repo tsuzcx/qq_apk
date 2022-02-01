@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bfpp;
 import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class DotStyleNavBar
@@ -17,7 +16,7 @@ public class DotStyleNavBar
   private int jdField_a_of_type_Int;
   private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private int b;
+  private int b = 0;
   
   public DotStyleNavBar(Context paramContext)
   {
@@ -31,14 +30,14 @@ public class DotStyleNavBar
   
   private void a()
   {
-    int j = UIUtils.dip2px(getContext(), 8.0F);
-    int k = UIUtils.dip2px(getContext(), 3.0F);
+    int j = UIUtils.a(getContext(), 8.0F);
+    int k = UIUtils.a(getContext(), 3.0F);
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
       ImageView localImageView = new ImageView(getContext());
       if (i == this.b) {
-        localImageView.setImageResource(2130848991);
+        localImageView.setImageResource(2130849371);
       }
       for (;;)
       {
@@ -48,7 +47,7 @@ public class DotStyleNavBar
         addView(localImageView, localLayoutParams);
         i += 1;
         break;
-        localImageView.setImageResource(2130848992);
+        localImageView.setImageResource(2130849372);
       }
     }
   }
@@ -67,13 +66,13 @@ public class DotStyleNavBar
     {
       ImageView localImageView = (ImageView)getChildAt(i);
       if (i == this.b) {
-        localImageView.setImageResource(2130848991);
+        localImageView.setImageResource(2130849371);
       }
       for (;;)
       {
         i += 1;
         break;
-        localImageView.setImageResource(2130848992);
+        localImageView.setImageResource(2130849372);
       }
     }
     postInvalidate();
@@ -105,7 +104,7 @@ public class DotStyleNavBar
   {
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount());
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new bfpp(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new DotStyleNavBar.1(this));
   }
 }
 

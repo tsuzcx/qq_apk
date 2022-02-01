@@ -11,9 +11,9 @@ public final class material_item_get_rsp
 {
   static Map<String, String> cache_mapExtInfo;
   static MaterialItem cache_stItem = new MaterialItem();
-  public int iCode;
-  public Map<String, String> mapExtInfo;
-  public MaterialItem stItem;
+  public int iCode = 0;
+  public Map<String, String> mapExtInfo = null;
+  public MaterialItem stItem = null;
   
   static
   {

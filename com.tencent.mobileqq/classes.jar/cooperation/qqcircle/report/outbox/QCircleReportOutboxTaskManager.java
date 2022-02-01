@@ -1,11 +1,15 @@
 package cooperation.qqcircle.report.outbox;
 
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.statistic.Singleton;
-import cooperation.qzone.util.NetworkState;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.qcircle.api.db.util.Singleton;
+import cooperation.qqcircle.QCircleConfig;
+import cooperation.qqcircle.report.QCircleQualityReporter;
+import cooperation.qqcircle.report.QCircleReportHelper;
+import feedcloud.FeedCloudCommon.Entry;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -15,13 +19,13 @@ public class QCircleReportOutboxTaskManager
   private static int DEFAULT_MAX_PARALLEL_TASK_COUNT = 10;
   public static final String TAG = "QCircleReportOutboxTaskManager";
   private static final Singleton<QCircleReportOutboxTaskManager, Void> sSingleton = new QCircleReportOutboxTaskManager.1();
-  private volatile boolean hasRunningTask;
+  private volatile boolean hasRunningTask = false;
   private QCircleReportOutboxTaskCacheManager mCacheManager;
   private CopyOnWriteArrayList<QCircleReportOutboxTask> mTaskList = new CopyOnWriteArrayList();
   
   private QCircleReportOutboxTaskManager()
   {
-    QLog.d("QCircleReportOutboxTaskManager", 1, "new instance");
+    RFLog.d("QCircleReportOutboxTaskManager", RFLog.USR, "new instance");
     this.mCacheManager = new QCircleReportOutboxTaskCacheManager("QCircleSendTaskManager_outbox_queue");
   }
   
@@ -30,14 +34,19 @@ public class QCircleReportOutboxTaskManager
     return (QCircleReportOutboxTaskManager)sSingleton.get(null);
   }
   
+  private void reportReportOutboxResendFinalSuccess(QCircleReportOutboxTask paramQCircleReportOutboxTask)
+  {
+    QCircleQualityReporter.reportQualityEvent("outbox_task_resend_event_final", Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("ret_code", paramQCircleReportOutboxTask.getResultCode() + ""), QCircleReportHelper.newEntry("url", paramQCircleReportOutboxTask.getResultMsg()), QCircleReportHelper.newEntry("refer", paramQCircleReportOutboxTask.mCmdName + ""), QCircleReportHelper.newEntry("count", paramQCircleReportOutboxTask.getRetryNum() + ""), QCircleReportHelper.newEntry("attach_info", paramQCircleReportOutboxTask.getTaskId() + "_" + paramQCircleReportOutboxTask.getResultCode() + "_" + paramQCircleReportOutboxTask.getResultMsg() + "_state=" + paramQCircleReportOutboxTask.getState()) }), false);
+  }
+  
   public boolean addTask(QCircleReportOutboxTask paramQCircleReportOutboxTask)
   {
     if ((paramQCircleReportOutboxTask == null) || (this.mTaskList.contains(paramQCircleReportOutboxTask)))
     {
-      QLog.w("QCircleReportOutboxTaskManager", 1, "addTask error");
+      RFLog.w("QCircleReportOutboxTaskManager", RFLog.USR, "addTask error");
       return false;
     }
-    QLog.i("QCircleReportOutboxTaskManager", 1, "addTask id:" + paramQCircleReportOutboxTask.getTaskId());
+    RFLog.i("QCircleReportOutboxTaskManager", RFLog.USR, "addTask id:" + paramQCircleReportOutboxTask.getTaskId());
     this.mTaskList.add(paramQCircleReportOutboxTask);
     this.mCacheManager.saveTask(paramQCircleReportOutboxTask);
     return true;
@@ -47,7 +56,7 @@ public class QCircleReportOutboxTaskManager
   {
     if ((paramQCircleReportOutboxTask == null) || (!this.mTaskList.contains(paramQCircleReportOutboxTask)))
     {
-      QLog.w("QCircleReportOutboxTaskManager", 1, "completeTask error");
+      RFLog.w("QCircleReportOutboxTaskManager", RFLog.USR, "completeTask error");
       return false;
     }
     if (paramBoolean)
@@ -55,10 +64,11 @@ public class QCircleReportOutboxTaskManager
       paramQCircleReportOutboxTask.setState(3);
       this.mTaskList.remove(paramQCircleReportOutboxTask);
       this.mCacheManager.removeTask(paramQCircleReportOutboxTask);
+      reportReportOutboxResendFinalSuccess(paramQCircleReportOutboxTask);
     }
     for (;;)
     {
-      QLog.i("QCircleReportOutboxTaskManager", 1, "completeTask id:" + paramQCircleReportOutboxTask.getTaskId() + ", succeed:" + paramBoolean + ", resultCode:" + paramQCircleReportOutboxTask.getResultCode() + ", resultMsg:" + paramQCircleReportOutboxTask.getResultMsg());
+      RFLog.i("QCircleReportOutboxTaskManager", RFLog.USR, "completeTask id:" + paramQCircleReportOutboxTask.getTaskId() + ", succeed:" + paramBoolean + ", resultCode:" + paramQCircleReportOutboxTask.getResultCode() + ", resultMsg:" + paramQCircleReportOutboxTask.getResultMsg());
       return true;
       paramQCircleReportOutboxTask.setState(2);
       this.mCacheManager.updateTask(paramQCircleReportOutboxTask);
@@ -124,7 +134,7 @@ public class QCircleReportOutboxTaskManager
   
   public CopyOnWriteArrayList<QCircleReportOutboxTask> getTaskList()
   {
-    return this.mTaskList;
+    return (CopyOnWriteArrayList)this.mTaskList.clone();
   }
   
   public boolean hasRunningTask()
@@ -136,7 +146,7 @@ public class QCircleReportOutboxTaskManager
   {
     if ((paramQCircleReportOutboxTask == null) || (!this.mTaskList.contains(paramQCircleReportOutboxTask)))
     {
-      QLog.w("QCircleReportOutboxTaskManager", 1, "removeTask error");
+      RFLog.w("QCircleReportOutboxTaskManager", RFLog.USR, "removeTask error");
       return false;
     }
     paramQCircleReportOutboxTask.setState(4);
@@ -148,7 +158,7 @@ public class QCircleReportOutboxTaskManager
   
   public void reset()
   {
-    QLog.i("QCircleReportOutboxTaskManager", 1, "reset total size:" + this.mTaskList.size());
+    RFLog.i("QCircleReportOutboxTaskManager", RFLog.USR, "reset total size:" + this.mTaskList.size());
     if (this.mTaskList.size() > 0)
     {
       Iterator localIterator = this.mTaskList.iterator();
@@ -185,7 +195,7 @@ public class QCircleReportOutboxTaskManager
       this.mTaskList.clear();
       this.mTaskList.addAll(localArrayList);
     }
-    QLog.i("QCircleReportOutboxTaskManager", 1, "restore total size:" + this.mTaskList.size());
+    RFLog.i("QCircleReportOutboxTaskManager", RFLog.USR, "restore total size:" + this.mTaskList.size());
     if (this.mTaskList.size() > 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
@@ -196,10 +206,10 @@ public class QCircleReportOutboxTaskManager
   {
     if ((paramQCircleReportOutboxTask == null) || (!this.mTaskList.contains(paramQCircleReportOutboxTask)))
     {
-      QLog.w("QCircleReportOutboxTaskManager", 1, "resumeTask error");
+      RFLog.w("QCircleReportOutboxTaskManager", RFLog.USR, "resumeTask error");
       return false;
     }
-    QLog.i("QCircleReportOutboxTaskManager", 1, "resumeTask id:" + paramQCircleReportOutboxTask.getTaskId() + ", current state:" + paramQCircleReportOutboxTask.getState());
+    RFLog.i("QCircleReportOutboxTaskManager", RFLog.USR, "resumeTask id:" + paramQCircleReportOutboxTask.getTaskId() + ", current state:" + paramQCircleReportOutboxTask.getState());
     paramQCircleReportOutboxTask.onResume();
     return true;
   }
@@ -209,7 +219,7 @@ public class QCircleReportOutboxTaskManager
     boolean bool2 = true;
     int i = getRunningTaskCount();
     boolean bool1;
-    if (!NetworkState.isNetSupport())
+    if (!AppNetConnInfo.isNetSupport())
     {
       if (i > 0) {}
       for (bool1 = true;; bool1 = false)
@@ -218,7 +228,7 @@ public class QCircleReportOutboxTaskManager
         return false;
       }
     }
-    int j = QzoneConfig.getInstance().getConfig("qqcircle", "qqcircle_max_parallel_task_count", DEFAULT_MAX_PARALLEL_TASK_COUNT);
+    int j = QCircleConfig.getInstance().getConfigValue("qqcircle", "qqcircle_max_parallel_task_count", Integer.valueOf(DEFAULT_MAX_PARALLEL_TASK_COUNT)).intValue();
     if (i <= j)
     {
       Iterator localIterator = this.mTaskList.iterator();
@@ -231,12 +241,12 @@ public class QCircleReportOutboxTaskManager
           if (localQCircleReportOutboxTask != null) {
             if (localQCircleReportOutboxTask.getState() == 2)
             {
-              QLog.i("QCircleReportOutboxTaskManager", 1, "runTask id:" + localQCircleReportOutboxTask.getTaskId());
+              RFLog.i("QCircleReportOutboxTaskManager", RFLog.USR, "runTask id:" + localQCircleReportOutboxTask.getTaskId());
               localQCircleReportOutboxTask.setState(1);
               localQCircleReportOutboxTask.resend();
               i += 1;
               bool1 = true;
-              label147:
+              label155:
               if (i != j) {
                 break;
               }
@@ -255,7 +265,7 @@ public class QCircleReportOutboxTaskManager
         break;
         bool2 = false;
       }
-      break label147;
+      break label155;
       continue;
       bool1 = false;
     }
@@ -263,7 +273,7 @@ public class QCircleReportOutboxTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskManager
  * JD-Core Version:    0.7.0.1
  */

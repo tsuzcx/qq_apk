@@ -364,8 +364,51 @@ public class BrandPageWebview
   {
     this.mRealWebView = new PageWebview(this.mContext, this.mAppBrandPageContainer, this);
     this.mRealWebView.addJavascriptInterface(this, "WeixinJSCore");
-    this.mRealWebView.setWebViewClient(new BrandPageWebview.2(this));
-    this.mRealWebView.setWebChromeClient(new BrandPageWebview.3(this));
+    setWebviewClient();
+    setWebChromeClient();
+  }
+  
+  private void setWebChromeClient()
+  {
+    this.mRealWebView.setWebChromeClient(new BrandPageWebview.2(this));
+  }
+  
+  private void setWebviewClient()
+  {
+    this.mRealWebView.setWebViewClient(new BrandPageWebview.3(this));
+  }
+  
+  private void webviewReport()
+  {
+    StateMachine.State localState = getCurrState();
+    if (localState == this.stateWaJsLoading) {
+      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 18, "0");
+    }
+    do
+    {
+      return;
+      if (this.stateRemoteDebugJsLoadSucc == localState)
+      {
+        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 19, "0");
+        return;
+      }
+      if (this.stateInitial == localState)
+      {
+        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 102, "0");
+        return;
+      }
+      if (this.stateInited == localState)
+      {
+        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 103, "0");
+        return;
+      }
+      if (this.stateGlobalConfigJsLoading == localState)
+      {
+        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 106, "0");
+        return;
+      }
+    } while (this.stateLoadSucc != localState);
+    MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 107, "0");
   }
   
   public void cleanUp()
@@ -567,27 +610,32 @@ public class BrandPageWebview
       ((JSONObject)localObject1).put("env", localObject2);
       ((JSONObject)localObject1).put("preload", paramBoolean);
       localObject1 = String.format("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nvar window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');__qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.QUA='" + QUAUtil.getPlatformQUA() + "';__qqConfig.platform = 'android';", new Object[] { localObject1 });
-      String str = (String)localObject1 + "__qqConfig.XWebVideoMinVersion=045100;";
-      localObject2 = str;
+      localObject2 = (String)localObject1 + "__qqConfig.XWebVideoMinVersion=045100;";
+      localObject1 = localObject2;
       if (getRealView() != null)
       {
-        localObject2 = str;
+        localObject1 = localObject2;
         if (getRealView().getEmbeddedState() != null)
         {
           paramBoolean = getRealView().getEmbeddedState().isEnableEmbeddedVideo();
-          localObject1 = str;
+          localObject1 = localObject2;
           if (paramBoolean) {
-            localObject1 = str + "__qqConfig.useXWebVideo=" + paramBoolean + ";";
+            localObject1 = (String)localObject2 + "__qqConfig.useXWebVideo=" + paramBoolean + ";";
           }
           paramBoolean = getRealView().getEmbeddedState().isEnableEmbeddedLive();
           localObject2 = localObject1;
           if (paramBoolean) {
             localObject2 = (String)localObject1 + "__qqConfig.useXWebLive=" + paramBoolean + ";";
           }
+          paramBoolean = getRealView().getEmbeddedState().isEnableEmbeddedElement();
+          localObject1 = localObject2;
+          if (paramBoolean) {
+            localObject1 = (String)localObject2 + "__qqConfig.useXWebElement=" + paramBoolean + ";";
+          }
         }
       }
-      QMLog.d("minisdk-start", "getJsDefaultConfig pageWebview String: " + (String)localObject2);
-      return localObject2;
+      QMLog.d("minisdk-start", "getJsDefaultConfig pageWebview String: " + (String)localObject1);
+      return localObject1;
     }
     catch (Exception localException)
     {
@@ -763,33 +811,21 @@ public class BrandPageWebview
   
   public void setCurrState(StateMachine.State paramState)
   {
-    StateMachine.State localState;
     if (paramState == this.stateGenerateFuncReady)
     {
-      if (this.mEventListener != null)
-      {
-        QMLog.d("BrandPageWebview", "onWebViewReady  (" + this + ")");
-        this.mEventListener.onWebViewReady(this.mOpenType, this.mShowingUrl, this.mRealWebView.getPageWebViewId());
+      if (this.mEventListener == null) {
+        break label80;
       }
-    }
-    else
-    {
-      localState = getCurrState();
-      if (localState != this.stateWaJsLoading) {
-        break label140;
-      }
-      MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 18, "0");
+      QMLog.d("BrandPageWebview", "onWebViewReady  (" + this + ")");
+      this.mEventListener.onWebViewReady(this.mOpenType, this.mShowingUrl, this.mRealWebView.getPageWebViewId());
     }
     for (;;)
     {
+      webviewReport();
       super.setCurrState(paramState);
       return;
+      label80:
       QMLog.d("BrandPageWebview", "onWebViewReady no listener  (" + this + ")");
-      break;
-      label140:
-      if (this.stateRemoteDebugJsLoadSucc == localState) {
-        MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 19, "0");
-      }
     }
   }
   
@@ -803,7 +839,7 @@ public class BrandPageWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview
  * JD-Core Version:    0.7.0.1
  */

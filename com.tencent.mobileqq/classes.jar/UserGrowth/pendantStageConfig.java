@@ -10,8 +10,8 @@ public final class pendantStageConfig
   extends JceStruct
 {
   static Map<String, String> cache_exp = new HashMap();
-  public int duration;
-  public Map<String, String> exp;
+  public int duration = 0;
+  public Map<String, String> exp = null;
   public String h5url = "";
   public String icon_url = "";
   public String scheme_url = "";

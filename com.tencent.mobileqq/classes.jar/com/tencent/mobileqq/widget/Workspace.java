@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import biux;
 import java.util.ArrayList;
 
 public class Workspace
@@ -30,7 +29,7 @@ public class Workspace
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
   protected Scroller a;
-  private biux jdField_a_of_type_Biux;
+  private Workspace.OnScreenChangeListener jdField_a_of_type_ComTencentMobileqqWidgetWorkspace$OnScreenChangeListener;
   protected boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   protected float b;
@@ -65,7 +64,7 @@ public class Workspace
     c();
     setDrawingCacheEnabled(true);
     setAlwaysDrawnWithCacheEnabled(true);
-    setBackgroundDrawable(getResources().getDrawable(2130838911));
+    setBackgroundDrawable(getResources().getDrawable(2130838979));
   }
   
   private void c()
@@ -100,8 +99,8 @@ public class Workspace
       if (this.jdField_c_of_type_Int != i)
       {
         this.jdField_c_of_type_Int = i;
-        if (this.jdField_a_of_type_Biux != null) {
-          this.jdField_a_of_type_Biux.a(i);
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace$OnScreenChangeListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace$OnScreenChangeListener.a(i);
         }
       }
       this.jdField_d_of_type_Int = i;
@@ -200,8 +199,8 @@ public class Workspace
       this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
       this.jdField_d_of_type_Int = -1;
       b();
-    } while (this.jdField_a_of_type_Biux == null);
-    this.jdField_a_of_type_Biux.b(this.jdField_b_of_type_Int);
+    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace$OnScreenChangeListener == null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace$OnScreenChangeListener.b(this.jdField_b_of_type_Int);
   }
   
   public boolean dispatchUnhandledMove(View paramView, int paramInt)
@@ -318,7 +317,7 @@ public class Workspace
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt4 = getChildCount();
     paramInt1 = 0;
@@ -339,7 +338,7 @@ public class Workspace
     this.jdField_d_of_type_Boolean = false;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int j = View.MeasureSpec.getSize(paramInt1);
@@ -364,7 +363,7 @@ public class Workspace
     }
   }
   
-  protected boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
+  public boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
   {
     if (this.jdField_d_of_type_Int != -1) {}
     for (int i = this.jdField_d_of_type_Int;; i = this.jdField_b_of_type_Int)
@@ -380,7 +379,7 @@ public class Workspace
     }
   }
   
-  protected void onRestoreInstanceState(Parcelable paramParcelable)
+  public void onRestoreInstanceState(Parcelable paramParcelable)
   {
     paramParcelable = (Workspace.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
@@ -389,14 +388,14 @@ public class Workspace
     }
   }
   
-  protected Parcelable onSaveInstanceState()
+  public Parcelable onSaveInstanceState()
   {
     Workspace.SavedState localSavedState = new Workspace.SavedState(super.onSaveInstanceState());
     localSavedState.currentScreen = this.jdField_b_of_type_Int;
     return localSavedState;
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if ((paramInt2 < paramInt4) && (paramInt1 == paramInt3)) {}
     for (this.jdField_d_of_type_Boolean = true;; this.jdField_d_of_type_Boolean = false)
@@ -448,7 +447,7 @@ public class Workspace
           i = (int)(this.jdField_a_of_type_Float - f1);
           if ((i > 0) && (!this.jdField_c_of_type_Boolean) && (this.jdField_b_of_type_Int == getChildCount() - 1))
           {
-            this.jdField_a_of_type_Biux.b(getChildCount());
+            this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace$OnScreenChangeListener.b(getChildCount());
             return true;
           }
           this.jdField_a_of_type_Float = f1;
@@ -560,14 +559,14 @@ public class Workspace
     }
   }
   
-  public void setOnScreenChangeListener(biux parambiux)
+  public void setOnScreenChangeListener(Workspace.OnScreenChangeListener paramOnScreenChangeListener)
   {
-    this.jdField_a_of_type_Biux = parambiux;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace$OnScreenChangeListener = paramOnScreenChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.Workspace
  * JD-Core Version:    0.7.0.1
  */

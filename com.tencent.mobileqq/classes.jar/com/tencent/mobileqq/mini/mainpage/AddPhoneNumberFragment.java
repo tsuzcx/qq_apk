@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.mainpage;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -15,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.Switch;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -26,17 +26,17 @@ public class AddPhoneNumberFragment
   public static final String TAG = "AddPhoneNumberFragment";
   public static int mSecond = 1;
   private int intervalTime = 60;
-  private boolean isSave;
-  private String mAppId;
+  private boolean isSave = false;
+  private String mAppId = null;
   private Button mCommitBtn;
-  private Handler mHandler;
+  private Handler mHandler = null;
   private ImageView mLeftBtnView;
-  private String mPhoneNumber;
+  private String mPhoneNumber = null;
   private EditText mPhoneNumberEditText;
   private RelativeLayout mPhoneNumberLayout;
   private Switch mSaveSwitch;
   private Button mSendSmsCodeBtn;
-  private String mSmsCode;
+  private String mSmsCode = null;
   private EditText mSmsCodeEditText;
   private RelativeLayout mSmsCodeLayout;
   private Runnable runnableCountdown = new AddPhoneNumberFragment.9(this);
@@ -58,10 +58,11 @@ public class AddPhoneNumberFragment
   
   public boolean onBackEvent()
   {
-    if ((getActivity() != null) && (!getActivity().isFinishing()))
+    FragmentActivity localFragmentActivity = getActivity();
+    if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing()))
     {
-      getActivity().setResult(0);
-      getActivity().finish();
+      localFragmentActivity.setResult(0);
+      localFragmentActivity.finish();
     }
     return super.onBackEvent();
   }
@@ -78,39 +79,38 @@ public class AddPhoneNumberFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559427, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559494, null);
     if (Build.VERSION.SDK_INT >= 23)
     {
       getActivity().getWindow().clearFlags(67108864);
       getActivity().getWindow().addFlags(-2147483648);
       getActivity().getWindow().setStatusBarColor(-1);
-      ImmersiveUtils.a(true, getActivity().getWindow());
+      ImmersiveUtils.setStatusTextColor(true, getActivity().getWindow());
     }
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371268));
-    this.mSendSmsCodeBtn = ((Button)paramView.findViewById(2131371150));
+    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371548));
+    this.mSendSmsCodeBtn = ((Button)paramView.findViewById(2131371429));
     this.mSendSmsCodeBtn.setText("获取验证码");
     this.mSendSmsCodeBtn.setTextColor(Color.parseColor("#B0B3BF"));
     this.mSendSmsCodeBtn.setEnabled(false);
     this.mSendSmsCodeBtn.setClickable(false);
-    this.mPhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371149));
-    this.mPhoneNumberEditText = ((EditText)paramView.findViewById(2131371152));
-    this.mSmsCodeLayout = ((RelativeLayout)paramView.findViewById(2131371160));
-    this.mSmsCodeEditText = ((EditText)paramView.findViewById(2131371161));
-    this.mSaveSwitch = ((Switch)paramView.findViewById(2131371158));
+    this.mPhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371428));
+    this.mPhoneNumberEditText = ((EditText)paramView.findViewById(2131371431));
+    this.mSmsCodeLayout = ((RelativeLayout)paramView.findViewById(2131371439));
+    this.mSmsCodeEditText = ((EditText)paramView.findViewById(2131371440));
+    this.mSaveSwitch = ((Switch)paramView.findViewById(2131371437));
     this.mSaveSwitch.setChecked(false);
-    this.mCommitBtn = ((Button)paramView.findViewById(2131371151));
+    this.mCommitBtn = ((Button)paramView.findViewById(2131371430));
     this.mCommitBtn.setEnabled(false);
     this.mCommitBtn.setClickable(false);
     this.mCommitBtn.setTextColor(Color.parseColor("#3303081A"));

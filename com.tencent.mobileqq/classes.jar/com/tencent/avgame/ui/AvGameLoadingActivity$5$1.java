@@ -1,11 +1,9 @@
 package com.tencent.avgame.ui;
 
-import npv;
-
-public class AvGameLoadingActivity$5$1
+class AvGameLoadingActivity$5$1
   implements Runnable
 {
-  public AvGameLoadingActivity$5$1(npv paramnpv) {}
+  AvGameLoadingActivity$5$1(AvGameLoadingActivity.5 param5) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AvGameLoadingActivity$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.AvGameLoadingActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

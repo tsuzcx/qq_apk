@@ -13,18 +13,18 @@ public final class MultiVideoMsg
 {
   static ArrayList<Long> cache_to_uin;
   static byte[] cache_video_buff;
-  public short csCmd;
-  public long from_uin;
-  public long msg_dataflag;
-  public long msg_seq;
-  public long msg_time;
-  public long msg_type;
-  public long msg_uid;
-  public short subCmd;
-  public ArrayList<Long> to_uin;
-  public byte type;
-  public byte ver;
-  public byte[] video_buff;
+  public short csCmd = 0;
+  public long from_uin = 0L;
+  public long msg_dataflag = 0L;
+  public long msg_seq = 0L;
+  public long msg_time = 0L;
+  public long msg_type = 0L;
+  public long msg_uid = 0L;
+  public short subCmd = 0;
+  public ArrayList<Long> to_uin = null;
+  public byte type = 0;
+  public byte ver = 0;
+  public byte[] video_buff = null;
   
   static
   {

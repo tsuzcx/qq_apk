@@ -2,22 +2,21 @@ package dov.com.qq.im.ae.camera.ui;
 
 import android.view.View;
 import android.view.ViewGroup;
-import bnbg;
 
-public class AECaptureController$1
+class AECaptureController$1
   implements Runnable
 {
-  public AECaptureController$1(bnbg parambnbg, boolean paramBoolean) {}
+  AECaptureController$1(AECaptureController paramAECaptureController, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((bnbg.a(this.this$0) == null) && (bnbg.a(this.this$0) != null)) {
-      bnbg.a(this.this$0, bnbg.a(this.this$0).findViewById(2131379731));
+    if ((AECaptureController.a(this.this$0) == null) && (AECaptureController.a(this.this$0) != null)) {
+      AECaptureController.a(this.this$0, AECaptureController.a(this.this$0).findViewById(2131380158));
     }
     View localView;
-    if (bnbg.a(this.this$0) != null)
+    if (AECaptureController.a(this.this$0) != null)
     {
-      localView = bnbg.a(this.this$0);
+      localView = AECaptureController.a(this.this$0);
       if (!this.a) {
         break label73;
       }
@@ -32,7 +31,7 @@ public class AECaptureController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.AECaptureController.1
  * JD-Core Version:    0.7.0.1
  */

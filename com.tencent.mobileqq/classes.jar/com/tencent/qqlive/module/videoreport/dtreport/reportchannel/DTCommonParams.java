@@ -31,7 +31,7 @@ class DTCommonParams
     put(localHashMap, "dt_tid", paramIDTParamProvider.getTid());
     put(localHashMap, "dt_oaid", paramIDTParamProvider.getOaid());
     put(localHashMap, "dt_guid", paramIDTParamProvider.getGuid());
-    put(localHashMap, "dt_sdkversion", String.valueOf(1840));
+    put(localHashMap, "dt_sdkversion", String.valueOf(1808));
     return localHashMap;
   }
   

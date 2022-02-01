@@ -178,9 +178,9 @@ public class ImageUploadTask
       localObject = JceEncoder.encode((JceStruct)localObject);
       return localObject;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
-      UploadLog.e("ImageUploadTask", localException.toString());
+      UploadLog.e("ImageUploadTask", "buildExtra " + localThrowable.toString());
     }
     return null;
   }
@@ -483,7 +483,7 @@ public class ImageUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.ImageUploadTask
  * JD-Core Version:    0.7.0.1
  */

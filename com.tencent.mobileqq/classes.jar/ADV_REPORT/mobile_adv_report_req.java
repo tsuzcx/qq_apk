@@ -12,27 +12,27 @@ public final class mobile_adv_report_req
   static s_anti_cheat cache_anti_cheat;
   static Map<Integer, String> cache_busi_param;
   static Map<Integer, String> cache_cookie = new HashMap();
-  public int action_expectation;
-  public int action_type;
-  public s_anti_cheat anti_cheat;
+  public int action_expectation = 0;
+  public int action_type = 0;
+  public s_anti_cheat anti_cheat = null;
   public String antispam_info = "";
-  public Map<Integer, String> busi_param;
-  public long client_time;
-  public Map<Integer, String> cookie;
-  public long cost_time;
-  public long error_code;
-  public long feed_index;
+  public Map<Integer, String> busi_param = null;
+  public long client_time = 0L;
+  public Map<Integer, String> cookie = null;
+  public long cost_time = 0L;
+  public long error_code = 0L;
+  public long feed_index = 0L;
   public String feeds_click_attachinfo = "";
-  public boolean is_filter;
+  public boolean is_filter = false;
   public boolean is_impression = true;
-  public boolean is_installed;
-  public boolean is_repeated;
+  public boolean is_installed = false;
+  public boolean is_repeated = false;
   public boolean is_report_gdt = true;
-  public boolean is_trace;
-  public int report_posi;
-  public long stay_time;
+  public boolean is_trace = false;
+  public int report_posi = 0;
+  public long stay_time = 0L;
   public String video_playinfo = "";
-  public int write_return_code;
+  public int write_return_code = 0;
   
   static
   {

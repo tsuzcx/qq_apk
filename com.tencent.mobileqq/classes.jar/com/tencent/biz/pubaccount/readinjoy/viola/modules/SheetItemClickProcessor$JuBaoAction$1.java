@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URLEncoder;
-import pkh;
-import txy;
 
-public class SheetItemClickProcessor$JuBaoAction$1
+class SheetItemClickProcessor$JuBaoAction$1
   implements Runnable
 {
-  public SheetItemClickProcessor$JuBaoAction$1(txy paramtxy, String paramString) {}
+  SheetItemClickProcessor$JuBaoAction$1(SheetItemClickProcessor.JuBaoAction paramJuBaoAction, String paramString) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
-      localObject = (QQAppInterface)pkh.a();
+      localObject = (QQAppInterface)ReadInJoyUtils.a();
       if (localObject == null) {
         break label88;
       }
@@ -34,13 +33,13 @@ public class SheetItemClickProcessor$JuBaoAction$1
       }
     }
     if (BaseActivity.sTopActivity != null) {
-      pkh.a(BaseActivity.sTopActivity, (String)localObject);
+      ReadInJoyUtils.a(BaseActivity.sTopActivity, (String)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.SheetItemClickProcessor.JuBaoAction.1
  * JD-Core Version:    0.7.0.1
  */

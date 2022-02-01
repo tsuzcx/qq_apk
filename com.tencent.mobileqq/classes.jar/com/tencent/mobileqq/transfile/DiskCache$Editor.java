@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 
@@ -19,8 +20,10 @@ public class DiskCache$Editor
   
   void abort(boolean paramBoolean)
   {
-    if ((!paramBoolean) || (this.dirtyFile.length() <= 0L)) {
+    if ((!paramBoolean) || (this.dirtyFile.length() <= 0L))
+    {
       this.dirtyFile.delete();
+      QLog.d("DiskCache", 2, "dirtyFile delete as abort: " + this.dirtyFile.getPath());
     }
   }
   
@@ -32,9 +35,11 @@ public class DiskCache$Editor
     }
     if ((!this.dirtyFile.exists()) || (this.dirtyFile.length() <= 0L))
     {
+      QLog.d("DiskCache", 2, "dirtyFile delete: " + this.dirtyFile.getPath());
       this.dirtyFile.delete();
       throw new IOException("write 0 length file or null File");
     }
+    QLog.d("DiskCache", 2, "dirtyFile rename: " + this.dirtyFile.getPath());
     this.dirtyFile.renameTo(localFile);
     return localFile;
   }

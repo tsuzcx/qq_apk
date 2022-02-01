@@ -12,7 +12,7 @@ final class MiniLogManager$2
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (StringUtil.isEmpty(paramContext)) {}
+    if (StringUtil.a(paramContext)) {}
     do
     {
       return;

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 
-public final class ReadInJoyVideoTipsUtils$1
+final class ReadInJoyVideoTipsUtils$1
   implements Runnable
 {
   public void run()
@@ -12,7 +12,7 @@ public final class ReadInJoyVideoTipsUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyVideoTipsUtils.1
  * JD-Core Version:    0.7.0.1
  */

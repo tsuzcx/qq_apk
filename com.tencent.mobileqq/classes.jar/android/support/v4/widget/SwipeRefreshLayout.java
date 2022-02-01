@@ -340,7 +340,7 @@ public class SwipeRefreshLayout
     return ViewCompat.canScrollVertically(this.mTarget, -1);
   }
   
-  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     if (this.mCircleViewIndex < 0) {}
     do
@@ -414,7 +414,7 @@ public class SwipeRefreshLayout
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();

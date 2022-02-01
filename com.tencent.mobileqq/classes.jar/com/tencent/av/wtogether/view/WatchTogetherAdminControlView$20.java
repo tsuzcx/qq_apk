@@ -7,12 +7,12 @@ class WatchTogetherAdminControlView$20
 {
   public void run()
   {
-    this.this$0.b.setImageResource(2130842349);
+    this.this$0.b.setImageResource(2130842492);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherAdminControlView.20
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.onlinestatus.music;
 
-import azff;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.HashSet;
 
-public class OnlineStatusHandler$1
-  implements Runnable
+class OnlineStatusHandler$1
+  extends HashSet<String>
 {
-  public OnlineStatusHandler$1(azff paramazff) {}
-  
-  public void run()
+  OnlineStatusHandler$1(OnlineStatusHandler paramOnlineStatusHandler)
   {
-    QQToast.a(this.this$0.app.getApp(), 1, "“我的位置” 切换失败，请重试。", 1).a();
+    add("ImStatus.ReqPushStatus");
   }
 }
 

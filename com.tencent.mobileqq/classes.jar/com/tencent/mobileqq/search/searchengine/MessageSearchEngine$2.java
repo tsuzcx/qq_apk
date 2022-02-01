@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import aokt;
-import bcly;
+import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
 
-public class MessageSearchEngine$2
+class MessageSearchEngine$2
   implements Runnable
 {
-  public MessageSearchEngine$2(bcly parambcly) {}
+  MessageSearchEngine$2(MessageSearchEngine paramMessageSearchEngine) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class MessageSearchEngine$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.MessageSearchEngine.2
  * JD-Core Version:    0.7.0.1
  */

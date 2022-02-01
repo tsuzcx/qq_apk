@@ -10,19 +10,19 @@ class BaseChatPie$1
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.tag, 2, "mRunOnShow 800 hasDestory=" + this.this$0.hasDestory);
+      QLog.d(this.this$0.b, 2, "mRunOnShow 800 hasDestory=" + this.this$0.I);
     }
-    if ((this.this$0.onShowDone) || (this.this$0.hasDestory))
+    if ((this.this$0.w) || (this.this$0.I))
     {
-      QLog.i(this.this$0.tag, 1, "onShowFirst return|3 hasDestory:" + this.this$0.hasDestory);
+      QLog.i(this.this$0.b, 1, "onShowFirst return|3 hasDestory:" + this.this$0.I);
       return;
     }
-    this.this$0.onShowFirst(3);
+    this.this$0.m(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.1
  * JD-Core Version:    0.7.0.1
  */

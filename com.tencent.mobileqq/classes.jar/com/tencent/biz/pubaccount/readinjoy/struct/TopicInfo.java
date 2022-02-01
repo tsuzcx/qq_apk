@@ -3,13 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import rsf;
-import rsg;
 
 public class TopicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicInfo> CREATOR = new rsf();
+  public static final Parcelable.Creator<TopicInfo> CREATOR = new TopicInfo.1();
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -19,7 +17,7 @@ public class TopicInfo
   private String d;
   private String e;
   
-  public TopicInfo(Parcel paramParcel)
+  protected TopicInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
@@ -30,20 +28,20 @@ public class TopicInfo
     this.e = paramParcel.readString();
   }
   
-  private TopicInfo(rsg paramrsg)
+  private TopicInfo(TopicInfo.Builder paramBuilder)
   {
-    this.jdField_a_of_type_Long = rsg.a(paramrsg);
-    this.jdField_a_of_type_JavaLangString = rsg.a(paramrsg);
-    this.jdField_b_of_type_JavaLangString = rsg.b(paramrsg);
-    this.c = rsg.c(paramrsg);
-    this.d = rsg.d(paramrsg);
-    this.jdField_b_of_type_Long = rsg.b(paramrsg);
-    this.jdField_a_of_type_Boolean = rsg.a(paramrsg);
+    this.jdField_a_of_type_Long = TopicInfo.Builder.a(paramBuilder);
+    this.jdField_a_of_type_JavaLangString = TopicInfo.Builder.a(paramBuilder);
+    this.jdField_b_of_type_JavaLangString = TopicInfo.Builder.b(paramBuilder);
+    this.c = TopicInfo.Builder.c(paramBuilder);
+    this.d = TopicInfo.Builder.d(paramBuilder);
+    this.jdField_b_of_type_Long = TopicInfo.Builder.b(paramBuilder);
+    this.jdField_a_of_type_Boolean = TopicInfo.Builder.a(paramBuilder);
   }
   
-  public static rsg a()
+  public static TopicInfo.Builder a()
   {
-    return new rsg(null);
+    return new TopicInfo.Builder(null);
   }
   
   public long a()
@@ -105,7 +103,7 @@ public class TopicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo
  * JD-Core Version:    0.7.0.1
  */

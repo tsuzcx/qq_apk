@@ -8,16 +8,16 @@ public final class entrance_cfg
   extends JceStruct
 {
   static st_report_info cache_stReportInfo = new st_report_info();
-  public int iEntranceId;
-  public int isAnchor;
-  public int isDefualt;
+  public int iEntranceId = 0;
+  public int isAnchor = 0;
+  public int isDefualt = 0;
   public String sEntranceAction = "";
   public String sEntranceIcon = "";
   public String sEntranceName = "";
   public String sQbossEntranceIcon = "";
   public String sQbossTraceInfo = "";
-  public st_report_info stReportInfo;
-  public int tabid;
+  public st_report_info stReportInfo = null;
+  public int tabid = 0;
   
   public entrance_cfg() {}
   

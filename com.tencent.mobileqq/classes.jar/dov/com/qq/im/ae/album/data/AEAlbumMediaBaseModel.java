@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class AEAlbumMediaBaseModel
   implements Serializable
 {
+  private String mOriginPath;
   private String path;
   
   public AEAlbumMediaBaseModel(String paramString)
@@ -12,9 +13,19 @@ public class AEAlbumMediaBaseModel
     this.path = paramString;
   }
   
+  public String getOriginPath()
+  {
+    return this.mOriginPath;
+  }
+  
   public String getPath()
   {
     return this.path;
+  }
+  
+  public void setOriginPath(String paramString)
+  {
+    this.mOriginPath = paramString;
   }
   
   public void setPath(String paramString)
@@ -24,7 +35,7 @@ public class AEAlbumMediaBaseModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.album.data.AEAlbumMediaBaseModel
  * JD-Core Version:    0.7.0.1
  */

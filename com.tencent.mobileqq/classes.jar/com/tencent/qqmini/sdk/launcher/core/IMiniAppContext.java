@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import com.tencent.qqmini.sdk.launcher.core.action.Action;
+import com.tencent.qqmini.sdk.launcher.model.AdReportData;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract interface IMiniAppContext
 {
   public abstract boolean canLaunchApp();
+  
+  public abstract AdReportData getAdReportData();
   
   public abstract Activity getAttachedActivity();
   
@@ -31,7 +34,7 @@ public abstract interface IMiniAppContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.IMiniAppContext
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
     this.mClientQIPCModule = WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule.getInstance();
   }
   
-  protected void cancel(String paramString, NativePlugin.JSContext paramJSContext)
+  protected void cancel(String paramString, JSContext paramJSContext)
   {
     this.mClientQIPCModule.setWeiyunDownloadFileJsContext(paramJSContext);
     this.mClientQIPCModule.unregisterModule(paramString);
@@ -29,7 +29,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
     QIPCClientHelper.getInstance().callServer("Module_WeiyunDownloadService", "WeiyunDownloadServiceIPC_Action__Cancel", paramJSContext, null);
   }
   
-  protected void doDownloadWeiyun(JSONObject paramJSONObject, String paramString, NativePlugin.JSContext paramJSContext)
+  protected void doDownloadWeiyun(JSONObject paramJSONObject, String paramString, JSContext paramJSContext)
   {
     this.mClientQIPCModule.setWeiyunDownloadFileJsContext(paramJSContext);
     try
@@ -85,7 +85,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness
     return false;
   }
   
-  protected void pause(String paramString, NativePlugin.JSContext paramJSContext)
+  protected void pause(String paramString, JSContext paramJSContext)
   {
     this.mClientQIPCModule.setWeiyunDownloadFileJsContext(paramJSContext);
     paramJSContext = new Bundle();

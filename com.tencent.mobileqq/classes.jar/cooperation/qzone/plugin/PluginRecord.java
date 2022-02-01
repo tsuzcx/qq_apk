@@ -25,7 +25,7 @@ public class PluginRecord
   public static final String VERTICAL_VIDEO_PLUGIN_NAME = "QZoneVerticalVideo";
   public static final String WEISHI_FEEDS_PLUGIN_ID = "qzone_weishi_feeds_plugin.apk";
   public static final String WEISHI_FEEDS_PLUGIN_NAME = "QZoneWeishiFeedsVideo";
-  public int actype;
+  public int actype = 0;
   public String app = "";
   public String id = "";
   boolean loaded = false;
@@ -36,9 +36,9 @@ public class PluginRecord
   public String md5_2 = "";
   public String name = "";
   public String old_ver = "";
-  public float progress;
+  public float progress = 0.0F;
   public long size;
-  public int state;
+  public int state = 0;
   public String url = "";
   public String ver = "";
   
@@ -252,7 +252,7 @@ public class PluginRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.plugin.PluginRecord
  * JD-Core Version:    0.7.0.1
  */

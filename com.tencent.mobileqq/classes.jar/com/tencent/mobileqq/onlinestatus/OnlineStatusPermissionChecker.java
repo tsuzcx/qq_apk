@@ -3,11 +3,11 @@ package com.tencent.mobileqq.onlinestatus;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import bdla;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,7 +31,7 @@ public class OnlineStatusPermissionChecker
       if (paramInt == -1) {}
       for (paramQQAppInterface = "0X800AE77";; paramQQAppInterface = "0X800AE78")
       {
-        bdla.b(null, "dc00898", "", "", paramQQAppInterface, paramQQAppInterface, 0, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", paramQQAppInterface, paramQQAppInterface, 0, 0, "", "", "", "");
         if ((paramInt == -1) && (paramIntent != null)) {
           break;
         }
@@ -89,7 +89,7 @@ public class OnlineStatusPermissionChecker
       Long localLong = (Long)((Iterator)localObject).next();
       ResultRecord localResultRecord = new ResultRecord();
       localResultRecord.uin = String.valueOf(localLong);
-      localArrayList.add(SelectMemberActivity.constructAResultRecord(localResultRecord.uin, "", 0, "-1"));
+      localArrayList.add(SelectMemberActivity.a(localResultRecord.uin, "", 0, "-1"));
     }
     localObject = new Intent(paramActivity, SelectMemberActivity.class);
     ((Intent)localObject).addFlags(536870912);
@@ -98,17 +98,17 @@ public class OnlineStatusPermissionChecker
     ((Intent)localObject).putExtra("param_entrance", 40);
     ((Intent)localObject).putExtra("param_add_passed_members_to_result_set", true);
     ((Intent)localObject).putExtra("param_max", 1000);
-    ((Intent)localObject).putExtra("param_title", paramActivity.getString(2131698121));
+    ((Intent)localObject).putExtra("param_title", paramActivity.getString(2131698397));
     ((Intent)localObject).putExtra("online_status_permission_item", paramOnlineStatusPermissionItem);
-    ((Intent)localObject).putExtra("param_done_button_wording", paramActivity.getString(2131698122));
-    ((Intent)localObject).putExtra("param_done_button_highlight_wording", paramActivity.getString(2131698123));
+    ((Intent)localObject).putExtra("param_done_button_wording", paramActivity.getString(2131698398));
+    ((Intent)localObject).putExtra("param_done_button_highlight_wording", paramActivity.getString(2131698399));
     paramOnlineStatusPermissionItem = new ArrayList(1);
     ((Intent)localObject).putStringArrayListExtra("param_uins_hide", paramOnlineStatusPermissionItem);
     ((Intent)localObject).putExtra("filer_robot", true);
     paramOnlineStatusPermissionItem.add(paramQQAppInterface.getCurrentAccountUin());
     paramActivity.startActivityForResult((Intent)localObject, 100);
     if (paramBoolean) {
-      paramActivity.overridePendingTransition(2130771979, 2130771980);
+      paramActivity.overridePendingTransition(2130771981, 2130771982);
     }
   }
 }

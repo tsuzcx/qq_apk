@@ -1,35 +1,34 @@
 package com.tencent.mobileqq.profilecard.vas.component.header;
 
-import anvk;
-import azri;
-import badm;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.QZoneCover;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
 
-public class AbsVasProfileHeaderComponent$6
+class AbsVasProfileHeaderComponent$6
   implements Runnable
 {
-  public AbsVasProfileHeaderComponent$6(badm parambadm) {}
+  AbsVasProfileHeaderComponent$6(AbsVasProfileHeaderComponent paramAbsVasProfileHeaderComponent) {}
   
   public void run()
   {
-    Object localObject = ((anvk)badm.q(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(badm.r(this.this$0).getCurrentAccountUin());
+    Object localObject = ((FriendsManager)AbsVasProfileHeaderComponent.access$6100(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(AbsVasProfileHeaderComponent.access$6200(this.this$0).getCurrentAccountUin());
     if (localObject == null) {
-      badm.a(this.this$0, "-1");
+      AbsVasProfileHeaderComponent.access$6302(this.this$0, "-1");
     }
     for (;;)
     {
-      badm.a(this.this$0, "-1");
+      AbsVasProfileHeaderComponent.access$6302(this.this$0, "-1");
       return;
-      if (((Card)localObject).lCurrentStyleId == azri.a)
+      if (((Card)localObject).lCurrentStyleId == ProfileCardTemplate.a)
       {
-        localObject = (QZoneCover)badm.s(this.this$0).getEntityManagerFactory().createEntityManager().find(QZoneCover.class, badm.t(this.this$0).getCurrentAccountUin());
+        localObject = (QZoneCover)AbsVasProfileHeaderComponent.access$6400(this.this$0).getEntityManagerFactory().createEntityManager().find(QZoneCover.class, AbsVasProfileHeaderComponent.access$6500(this.this$0).getCurrentAccountUin());
         if (localObject != null) {
-          badm.a(this.this$0, ((QZoneCover)localObject).type);
+          AbsVasProfileHeaderComponent.access$6302(this.this$0, ((QZoneCover)localObject).type);
         }
       }
     }

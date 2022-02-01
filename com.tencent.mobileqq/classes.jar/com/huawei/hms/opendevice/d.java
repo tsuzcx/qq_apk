@@ -106,15 +106,15 @@ public abstract class d
   
   public static byte[] c(Context paramContext)
   {
-    byte[] arrayOfByte1 = b.a(paramContext.getString(2131695046));
-    paramContext = b.a(paramContext.getString(2131695045));
+    byte[] arrayOfByte1 = b.a(paramContext.getString(2131695285));
+    paramContext = b.a(paramContext.getString(2131695284));
     byte[] arrayOfByte2 = b.a(a());
     return a(a(a(arrayOfByte1, paramContext), arrayOfByte2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.huawei.hms.opendevice.d
  * JD-Core Version:    0.7.0.1
  */

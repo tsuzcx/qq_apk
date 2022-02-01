@@ -1,14 +1,13 @@
 package com.tencent.open.downloadnew;
 
 import android.content.Context;
-import bjnn;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
 import java.util.ArrayList;
 
-public class MyAppApi$9
+class MyAppApi$9
   implements Runnable
 {
-  public MyAppApi$9(bjnn parambjnn, Context paramContext, ArrayList paramArrayList, int paramInt, String paramString) {}
+  MyAppApi$9(MyAppApi paramMyAppApi, Context paramContext, ArrayList paramArrayList, int paramInt, String paramString) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class MyAppApi$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.9
  * JD-Core Version:    0.7.0.1
  */

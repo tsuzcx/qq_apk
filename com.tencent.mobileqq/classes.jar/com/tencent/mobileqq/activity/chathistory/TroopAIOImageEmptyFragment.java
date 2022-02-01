@@ -44,19 +44,19 @@ public class TroopAIOImageEmptyFragment
     {
       paramLayoutInflater = this.mContentView.getContext().getResources();
       paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-      paramViewGroup.mRequestWidth = AIOUtils.dp2px(321.0F, paramLayoutInflater);
-      paramViewGroup.mRequestHeight = AIOUtils.dp2px(200.0F, paramLayoutInflater);
+      paramViewGroup.mRequestWidth = AIOUtils.a(321.0F, paramLayoutInflater);
+      paramViewGroup.mRequestHeight = AIOUtils.a(200.0F, paramLayoutInflater);
       paramViewGroup.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
       paramViewGroup.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.mContentView.findViewById(2131378884)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.mContentView.findViewById(2131379315)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.mContentView.findViewById(2131378672)).setText(this.c);
+    ((TextView)this.mContentView.findViewById(2131379105)).setText(this.c);
   }
   
   public int getContentLayoutId()
   {
-    return 2131560650;
+    return 2131560740;
   }
   
   public void init(Bundle paramBundle)
@@ -69,7 +69,7 @@ public class TroopAIOImageEmptyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOImageEmptyFragment
  * JD-Core Version:    0.7.0.1
  */

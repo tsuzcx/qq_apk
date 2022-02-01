@@ -1,20 +1,30 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import ayzg;
-import bdxj;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.avatar.observer.AvatarObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public class AccountPanel$9
-  implements Runnable
+class AccountPanel$9
+  extends AvatarObserver
 {
-  public AccountPanel$9(ayzg paramayzg, QQAppInterface paramQQAppInterface, SimpleAccount paramSimpleAccount) {}
+  AccountPanel$9(AccountPanel paramAccountPanel) {}
   
-  public void run()
+  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().setReaded(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), 7000);
-    bdxj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (AccountPanel.a(this.a) == null) || (AccountPanel.a(this.a).isFinishing()) || (AccountPanel.a(this.a) == null)) {
+      QLog.d("AccountPanel", 1, String.format("onUpdateCustomHead return, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    do
+    {
+      return;
+      AccountPanel.AccountItemViewHolder localAccountItemViewHolder = AccountPanel.a(this.a, paramString);
+      if (localAccountItemViewHolder != null) {
+        localAccountItemViewHolder.a(FaceDrawable.getFaceDrawable(AccountPanel.a(this.a), 1, paramString));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onUpdateCustomHead, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
   }
 }
 

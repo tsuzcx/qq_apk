@@ -15,7 +15,7 @@ public final class MQKanDianSvc0x001$RspBody$ArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.im.cs.MQKanDianSvc0x001.MQKanDianSvc0x001.RspBody.ArticleInfo
  * JD-Core Version:    0.7.0.1
  */

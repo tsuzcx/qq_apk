@@ -190,7 +190,7 @@ public class FastAnimationDrawable
     //   147: aload 8
     //   149: astore 6
     //   151: aload_1
-    //   152: invokestatic 252	bheg:b	(Ljava/lang/String;)I
+    //   152: invokestatic 252	com/tencent/mobileqq/utils/ImageUtil:c	(Ljava/lang/String;)I
     //   155: istore_3
     //   156: aload 8
     //   158: astore 7
@@ -668,7 +668,7 @@ public class FastAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.FastAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

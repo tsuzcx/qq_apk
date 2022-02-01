@@ -1,20 +1,43 @@
 package com.tencent.mobileqq.search.activity;
 
-import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.MotionEvent;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class FunctionSearchActivity
   extends BaseSearchActivity
 {
+  private static String a(String paramString)
+  {
+    String str = paramString;
+    if (QFileAssistantUtils.a()) {
+      if ((!paramString.equals(HardCodeUtil.a(2131698222))) && (!paramString.equalsIgnoreCase(HardCodeUtil.a(2131698221))))
+      {
+        str = paramString;
+        if (!paramString.equalsIgnoreCase(HardCodeUtil.a(2131698220))) {}
+      }
+      else
+      {
+        str = HardCodeUtil.a(2131698224);
+      }
+    }
+    return str;
+  }
+  
   public static void a(Context paramContext, String paramString)
   {
+    paramString = a(paramString);
     Intent localIntent = new Intent(paramContext, FunctionSearchActivity.class);
     localIntent.putExtra("keyword", paramString);
     paramContext.startActivity(localIntent);
@@ -23,6 +46,24 @@ public class FunctionSearchActivity
   protected BaseSearchFragment a()
   {
     return FunctionSearchFragment.a();
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = a(this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getText().toString());
+    if (TextUtils.isEmpty(paramEditable)) {
+      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    }
+    for (;;)
+    {
+      paramEditable = paramEditable.trim();
+      if (!paramEditable.equals(this.jdField_a_of_type_JavaLangString)) {
+        com.tencent.mobileqq.search.util.SearchUtils.b = 0L;
+      }
+      a(paramEditable);
+      return;
+      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    }
   }
   
   @Override
@@ -36,7 +77,7 @@ public class FunctionSearchActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    this.a = true;
+    this.jdField_a_of_type_Boolean = true;
     super.doOnCreate(paramBundle);
     return true;
   }
@@ -50,7 +91,7 @@ public class FunctionSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.FunctionSearchActivity
  * JD-Core Version:    0.7.0.1
  */

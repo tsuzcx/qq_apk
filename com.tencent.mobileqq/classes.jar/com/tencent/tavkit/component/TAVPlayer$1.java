@@ -14,7 +14,7 @@ class TAVPlayer$1
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     paramSurfaceTexture = new Surface(paramSurfaceTexture);
-    this.this$0.onSurfaceCreate(paramSurfaceTexture, paramInt2, paramInt1);
+    this.this$0.onSurfaceCreate(paramSurfaceTexture, paramInt1, paramInt2);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
@@ -32,7 +32,7 @@ class TAVPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer.1
  * JD-Core Version:    0.7.0.1
  */

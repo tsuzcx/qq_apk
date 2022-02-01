@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import Override;
-import acim;
-import acin;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +7,10 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -21,18 +18,21 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqnr;
-import aqrl;
-import aqrn;
-import biwn;
-import bkod;
-import bkpq;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.gdtad.util.GdtManager;
+import com.tencent.gdtad.util.GdtManager.Params;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.ColorNoteController;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
+import com.tencent.mobileqq.colornote.smallscreen.IServiceSyncListener;
+import com.tencent.mobileqq.mini.appbrand.ui.MiniBaseActivity;
 import com.tencent.mobileqq.mini.ui.MiniAIOEntryView;
+import com.tencent.mobileqq.miniapp.MiniAppColorNoteData;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmini.proxyimpl.ColorNotePlugin.AddColorSignListener;
+import com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.IUIProxy;
@@ -43,16 +43,26 @@ import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import org.json.JSONObject;
 
 public class GameActivity1
-  extends BaseActivity
+  extends MiniBaseActivity
 {
   private String colorNoteQueryPath;
-  private bkod mAddColorSingListener;
-  protected aqnr mColorNoteController;
-  private aqrn mColorNoteServiceListenr;
+  private ColorNotePlugin.AddColorSignListener mAddColorSingListener;
+  protected ColorNoteController mColorNoteController;
+  private IServiceSyncListener mColorNoteServiceListenr;
   private RelativeLayout mRoot;
   private IUIProxy mUIProxy;
   private MiniAIOEntryView miniAIOEntryView;
   private long onCreateTime;
+  
+  private byte[] getMiniAppColorNoteDataBytes(MiniAppInfo paramMiniAppInfo, String paramString)
+  {
+    paramString = new MiniAppColorNoteData(paramMiniAppInfo, paramString);
+    paramMiniAppInfo = Parcel.obtain();
+    paramString.writeToParcel(paramMiniAppInfo, 0);
+    paramString = paramMiniAppInfo.marshall();
+    paramMiniAppInfo.recycle();
+    return paramString;
+  }
   
   private void initUIProxy(Intent paramIntent)
   {
@@ -75,33 +85,33 @@ public class GameActivity1
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_0
-    //   3: invokestatic 102	bkpw:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   3: invokestatic 130	com/tencent/qqmini/proxyimpl/MiniSdkUtil:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
     //   6: astore_2
-    //   7: invokestatic 108	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: invokestatic 58	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   10: astore_0
     //   11: aload_0
     //   12: astore_1
     //   13: aload_0
     //   14: iconst_0
-    //   15: invokevirtual 112	android/os/Parcel:setDataPosition	(I)V
+    //   15: invokevirtual 134	android/os/Parcel:setDataPosition	(I)V
     //   18: aload_0
     //   19: astore_1
     //   20: aload_0
     //   21: aload_2
-    //   22: getfield 118	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
+    //   22: getfield 140	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
     //   25: iconst_0
-    //   26: invokevirtual 122	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
+    //   26: invokevirtual 144	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
     //   29: aload_0
     //   30: astore_1
     //   31: aload_0
-    //   32: invokevirtual 126	android/os/Parcel:marshall	()[B
+    //   32: invokevirtual 66	android/os/Parcel:marshall	()[B
     //   35: astore_2
     //   36: aload_2
     //   37: astore_1
     //   38: aload_0
     //   39: ifnull +9 -> 48
     //   42: aload_0
-    //   43: invokevirtual 129	android/os/Parcel:recycle	()V
+    //   43: invokevirtual 69	android/os/Parcel:recycle	()V
     //   46: aload_2
     //   47: astore_1
     //   48: aload_1
@@ -111,24 +121,24 @@ public class GameActivity1
     //   52: astore_0
     //   53: aload_0
     //   54: astore_1
-    //   55: ldc 45
+    //   55: ldc 73
     //   57: iconst_1
-    //   58: new 131	java/lang/StringBuilder
+    //   58: new 146	java/lang/StringBuilder
     //   61: dup
-    //   62: invokespecial 132	java/lang/StringBuilder:<init>	()V
-    //   65: ldc 134
-    //   67: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: invokespecial 147	java/lang/StringBuilder:<init>	()V
+    //   65: ldc 149
+    //   67: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: aload_2
-    //   71: invokestatic 144	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   74: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 153	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   71: invokestatic 159	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   74: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   83: aload_3
     //   84: astore_1
     //   85: aload_0
     //   86: ifnull -38 -> 48
     //   89: aload_0
-    //   90: invokevirtual 129	android/os/Parcel:recycle	()V
+    //   90: invokevirtual 69	android/os/Parcel:recycle	()V
     //   93: aconst_null
     //   94: areturn
     //   95: astore_0
@@ -137,7 +147,7 @@ public class GameActivity1
     //   98: aload_1
     //   99: ifnull +7 -> 106
     //   102: aload_1
-    //   103: invokevirtual 129	android/os/Parcel:recycle	()V
+    //   103: invokevirtual 69	android/os/Parcel:recycle	()V
     //   106: aload_0
     //   107: athrow
     //   108: astore_0
@@ -174,15 +184,6 @@ public class GameActivity1
         paramActivity.getDecorView().setSystemUiVisibility(23075586);
       }
     }
-  }
-  
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -231,7 +232,7 @@ public class GameActivity1
         setContentView(localRelativeLayout);
         localFrameLayout = new FrameLayout(this);
         localRelativeLayout.addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
-        bkpq.a();
+        MiniSDKClientQIPCModule.a();
         initUIProxy(getIntent());
         if (this.mUIProxy == null)
         {
@@ -252,14 +253,14 @@ public class GameActivity1
         this.mUIProxy.onAttachActivity(this, paramBundle, localFrameLayout);
         this.mUIProxy.onIntentUpdate(getIntent());
         paramBundle = (MiniAppInfo)getIntent().getParcelableExtra("KEY_APPINFO");
-        this.mColorNoteController = new aqnr(this, false, true);
+        this.mColorNoteController = new ColorNoteController(this, false, true);
         this.mColorNoteController.a(this);
         this.mColorNoteController.a(new GameActivity1.1(this, paramBundle));
         this.mColorNoteController.a(new GameActivity1.2(this));
-        this.mColorNoteController.a(new GameActivity1.3(this));
+        this.mColorNoteController.a(new GameActivity1.3(this, paramBundle));
         this.mColorNoteServiceListenr = new GameActivity1.4(this);
         this.mColorNoteController.a(this.mColorNoteServiceListenr);
-        acim.a().a(this, new acin());
+        GdtManager.a().a(this, new GdtManager.Params());
         getSharedPreferences("sdk_conf", 4).edit().putInt("usersdk", 1).apply();
       }
     }
@@ -275,7 +276,6 @@ public class GameActivity1
     if (this.mUIProxy != null) {
       this.mUIProxy.onDetachActivity(this);
     }
-    bkpq.b();
     QLog.i("qqBaseActivity", 1, "[MiniEng]doOnDestroy " + this);
   }
   
@@ -331,7 +331,7 @@ public class GameActivity1
     if (this.mColorNoteController != null) {
       this.mColorNoteController.b();
     }
-    aqrl.a(this, 2, true);
+    ColorNoteSmallScreenUtil.a(this, 2, true);
   }
   
   public void doOnResume()
@@ -340,11 +340,11 @@ public class GameActivity1
     if (this.mUIProxy != null) {
       this.mUIProxy.onMiniResume();
     }
-    biwn.a(this);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowClosedBroadcast(this);
     if (this.mColorNoteController != null) {
       this.mColorNoteController.a();
     }
-    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
+    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void doOnStart()
@@ -383,7 +383,7 @@ public class GameActivity1
     }
   }
   
-  public aqnr getColorNoteController()
+  public ColorNoteController getColorNoteController()
   {
     return this.mColorNoteController;
   }
@@ -401,13 +401,6 @@ public class GameActivity1
       this.miniAIOEntryView.onDestroy();
       this.miniAIOEntryView = null;
     }
-  }
-  
-  @Override
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onProcessForeGround(Bundle paramBundle)
@@ -435,9 +428,9 @@ public class GameActivity1
     this.colorNoteQueryPath = paramString;
   }
   
-  public void setColorSignAddListener(bkod parambkod)
+  public void setColorSignAddListener(ColorNotePlugin.AddColorSignListener paramAddColorSignListener)
   {
-    this.mAddColorSingListener = parambkod;
+    this.mAddColorSingListener = paramAddColorSignListener;
   }
   
   public boolean showMiniAIOEntrance(JSONObject paramJSONObject)

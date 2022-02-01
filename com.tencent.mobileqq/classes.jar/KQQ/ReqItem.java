@@ -10,8 +10,8 @@ public final class ReqItem
   static int cache_eServiceID;
   static byte[] cache_vecParam;
   public byte cOperType = 1;
-  public int eServiceID;
-  public byte[] vecParam;
+  public int eServiceID = 0;
+  public byte[] vecParam = null;
   
   public ReqItem() {}
   

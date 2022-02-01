@@ -11,10 +11,10 @@ public final class mobile_facade_get_rsp
 {
   static Map<String, String> cache_mapExtInfo;
   static Facade cache_stFacade = new Facade();
-  public int iCode;
-  public int iShowOnFriDyn;
-  public Map<String, String> mapExtInfo;
-  public Facade stFacade;
+  public int iCode = 0;
+  public int iShowOnFriDyn = 0;
+  public Map<String, String> mapExtInfo = null;
+  public Facade stFacade = null;
   
   static
   {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 final class MiniAppLauncher$3
@@ -11,7 +11,7 @@ final class MiniAppLauncher$3
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131706283) + this.val$appId, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131706823) + this.val$appId, 1).a();
   }
 }
 

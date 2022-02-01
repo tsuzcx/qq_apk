@@ -7,8 +7,8 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
-import anvx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.Random;
 
 public class ScanSuccessView
@@ -18,7 +18,7 @@ public class ScanSuccessView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  String jdField_a_of_type_JavaLangString = anvx.a(2131712979);
+  String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713475);
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -26,7 +26,7 @@ public class ScanSuccessView
   RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   boolean jdField_b_of_type_Boolean = true;
   private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
+  private int jdField_c_of_type_Int = 0;
   private Paint jdField_c_of_type_AndroidGraphicsPaint;
   RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
   private float jdField_d_of_type_Float;
@@ -41,7 +41,7 @@ public class ScanSuccessView
   private int jdField_f_of_type_Int = 10;
   private Paint jdField_f_of_type_AndroidGraphicsPaint;
   private float jdField_g_of_type_Float = 10.0F;
-  private int jdField_g_of_type_Int;
+  private int jdField_g_of_type_Int = 0;
   private Paint jdField_g_of_type_AndroidGraphicsPaint;
   private float jdField_h_of_type_Float;
   private int jdField_h_of_type_Int = 18;
@@ -94,13 +94,13 @@ public class ScanSuccessView
     this.jdField_g_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_g_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_g_of_type_AndroidGraphicsPaint.setARGB(255, 255, 255, 255);
-    this.jdField_h_of_type_Int = AIOUtils.dp2px(18.0F, getResources());
+    this.jdField_h_of_type_Int = AIOUtils.a(18.0F, getResources());
     this.jdField_g_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_h_of_type_Int);
     Paint.FontMetrics localFontMetrics = this.jdField_f_of_type_AndroidGraphicsPaint.getFontMetrics();
     this.i = ((int)Math.ceil(localFontMetrics.descent - localFontMetrics.ascent));
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_g_of_type_Int % 10 == 9) {
       this.jdField_b_of_type_Boolean = false;

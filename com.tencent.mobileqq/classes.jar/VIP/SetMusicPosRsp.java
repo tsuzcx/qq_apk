@@ -8,7 +8,7 @@ public final class SetMusicPosRsp
   extends JceStruct
 {
   static CommRsp cache_errInfo = new CommRsp();
-  public CommRsp errInfo;
+  public CommRsp errInfo = null;
   
   public SetMusicPosRsp() {}
   

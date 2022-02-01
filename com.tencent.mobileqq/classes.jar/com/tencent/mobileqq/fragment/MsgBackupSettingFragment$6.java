@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import awzg;
-import axar;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthHandler;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData.Builder;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupNotifier;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ class MsgBackupSettingFragment$6
   
   public void run()
   {
-    axar localaxar = new axar();
+    MsgBackupUserData.Builder localBuilder = new MsgBackupUserData.Builder();
     ArrayList localArrayList = new ArrayList(2);
     QLog.d("MsgBackup", 1, "loadSo start");
     this.this$0.a = new MsgBackupJniProxy(this.this$0.getActivity());
@@ -28,19 +28,19 @@ class MsgBackupSettingFragment$6
     QLog.d("MsgBackup", 1, "createSession end, session = " + l);
     i = this.this$0.a.start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
     QLog.d("MsgBackup", 1, "start ret = " + i + ", ip = " + MsgBackupSettingFragment.a(this.this$0)[0] + ", udpport = " + MsgBackupSettingFragment.a(this.this$0) + ", tcpport = " + MsgBackupSettingFragment.b(this.this$0));
-    localaxar.c(MsgBackupSettingFragment.b(this.this$0)[1]);
-    localaxar.b(MsgBackupSettingFragment.b(this.this$0)[0]);
-    localaxar.a(MsgBackupSettingFragment.a(this.this$0)[0]);
+    localBuilder.c(MsgBackupSettingFragment.b(this.this$0)[1]);
+    localBuilder.b(MsgBackupSettingFragment.b(this.this$0)[0]);
+    localBuilder.a(MsgBackupSettingFragment.a(this.this$0)[0]);
     localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.b(this.this$0).intValue()));
     localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.a(this.this$0).intValue()));
-    localaxar.a(localArrayList);
-    localaxar.a(4);
-    MsgBackupSettingFragment.a(this.this$0).a(localaxar.a(), 3, true);
+    localBuilder.a(localArrayList);
+    localBuilder.a(4);
+    MsgBackupSettingFragment.a(this.this$0).a(localBuilder.a(), 3, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MsgBackupSettingFragment.6
  * JD-Core Version:    0.7.0.1
  */

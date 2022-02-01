@@ -6,64 +6,58 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Process;
-import bkwz;
+import com.tencent.av.utils.SeqUtil;
 import com.tencent.qphone.base.util.QLog;
-import mur;
 
 public class TraeAudioSession
   extends BroadcastReceiver
 {
-  static int jdField_a_of_type_Int;
+  static int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = -9223372036854775808L;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bkwz jdField_a_of_type_Bkwz;
+  private TraeAudioSession.ITraeAudioCallback jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback;
   private String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private boolean b = true;
   
-  public TraeAudioSession(Context paramContext, bkwz parambkwz)
+  public TraeAudioSession(Context paramContext, TraeAudioSession.ITraeAudioCallback paramITraeAudioCallback)
   {
     if (QLog.isColorLevel()) {
       QLog.w("TRAE", 2, "TraeAudioSession create");
     }
-    boolean bool;
-    Object localObject;
-    if (Process.myPid() == TraeAudioManager.e)
-    {
+    if (Process.myPid() == TraeAudioManager.e) {
       bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = a();
-      this.jdField_a_of_type_Bkwz = parambkwz;
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-      if ((paramContext == null) && (QLog.isColorLevel()))
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("AudioSession | Invalid parameters: ctx = ");
-        if (paramContext != null) {
-          break label182;
-        }
-        localObject = "null";
-        label101:
-        localObject = localStringBuilder.append((String)localObject).append("; cb = ");
-        if (parambkwz != null) {
-          break label189;
-        }
+    }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_Long = a();
+    this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback = paramITraeAudioCallback;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    Object localObject;
+    if ((paramContext == null) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("AudioSession | Invalid parameters: ctx = ");
+      if (paramContext != null) {
+        break label184;
+      }
+      localObject = "null";
+      localObject = localStringBuilder.append((String)localObject).append("; cb = ");
+      if (paramITraeAudioCallback != null) {
+        break label191;
       }
     }
-    label182:
-    label189:
-    for (parambkwz = "null";; parambkwz = "{object}")
+    label184:
+    label191:
+    for (paramITraeAudioCallback = "null";; paramITraeAudioCallback = "{object}")
     {
-      QLog.w("TRAE", 2, parambkwz);
-      parambkwz = new IntentFilter();
-      parambkwz.addAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_RES");
-      parambkwz.addAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_NOTIFY");
-      if ((paramContext != null) && (paramContext.registerReceiver(this, parambkwz) == null)) {}
+      QLog.w("TRAE", 2, paramITraeAudioCallback);
+      paramITraeAudioCallback = new IntentFilter();
+      paramITraeAudioCallback.addAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_RES");
+      paramITraeAudioCallback.addAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_NOTIFY");
+      if ((paramContext != null) && (paramContext.registerReceiver(this, paramITraeAudioCallback) == null)) {}
       a(true);
       return;
-      bool = false;
-      break;
       localObject = "{object}";
-      break label101;
+      break;
     }
   }
   
@@ -151,7 +145,7 @@ public class TraeAudioSession
     localIntent.putExtra("PARAM_RING_MODE", false);
     localIntent.putExtra("PARAM_RING_USERDATA_STRING", paramString2);
     localIntent.putExtra("PARAM_OPERATION", "OPERATION_STARTRING");
-    mur.a(localIntent, paramLong);
+    SeqUtil.a(localIntent, paramLong);
     this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
     return 0;
   }
@@ -176,7 +170,7 @@ public class TraeAudioSession
     localIntent.putExtra("PARAM_RING_MODE", paramBoolean2);
     localIntent.putExtra("PARAM_RING_USERDATA_STRING", paramString2);
     localIntent.putExtra("PARAM_OPERATION", "OPERATION_STARTRING");
-    mur.a(localIntent, paramLong);
+    SeqUtil.a(localIntent, paramLong);
     this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
     return 0;
   }
@@ -194,7 +188,7 @@ public class TraeAudioSession
     localIntent.putExtra("PARAM_SESSIONID", this.jdField_a_of_type_Long);
     localIntent.putExtra("PARAM_OPERATION", "OPERATION_CONNECTDEVICE");
     localIntent.putExtra("CONNECTDEVICE_DEVICENAME", paramString);
-    mur.a(localIntent, paramLong);
+    SeqUtil.a(localIntent, paramLong);
     this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
     return 0;
   }
@@ -213,7 +207,7 @@ public class TraeAudioSession
     localIntent.putExtra("PARAM_OPERATION", "OPERATION_STARTSERVICE");
     localIntent.putExtra("EXTRA_DATA_DEVICECONFIG", paramString1);
     localIntent.putExtra("EXTRA_DATA_CONNECTDEVICENAMEWHENSERVICEON", paramString2);
-    mur.a(localIntent, paramLong);
+    SeqUtil.a(localIntent, paramLong);
     this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
     return 0;
   }
@@ -239,7 +233,7 @@ public class TraeAudioSession
       label15:
       a(false);
       this.jdField_a_of_type_AndroidContentContext = null;
-      this.jdField_a_of_type_Bkwz = null;
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback = null;
       return;
     }
     catch (Exception localException)
@@ -294,7 +288,7 @@ public class TraeAudioSession
     localIntent.setAction("com.tencent.av.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST");
     localIntent.putExtra("PARAM_SESSIONID", this.jdField_a_of_type_Long);
     localIntent.putExtra("PARAM_OPERATION", "OPERATION_GETCONNECTEDDEVICE");
-    mur.a(localIntent, paramLong);
+    SeqUtil.a(localIntent, paramLong);
     this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
     return 0;
   }
@@ -413,7 +407,7 @@ public class TraeAudioSession
                                   l1 = paramIntent.getLongExtra("PARAM_SESSIONID", -9223372036854775808L);
                                   localObject = paramIntent.getStringExtra("PARAM_OPERATION");
                                   j = paramIntent.getIntExtra("PARAM_RES_ERRCODE", 0);
-                                  l2 = mur.a(paramIntent);
+                                  l2 = SeqUtil.a(paramIntent);
                                   if (QLog.isDevelopLevel()) {
                                     QLog.w("TraeAudioSession", 1, "onReceive, action[" + paramContext + "], nSessionId[" + l1 + "], strOperation[" + (String)localObject + "], errCode[" + j + "], seq[" + l2 + "]");
                                   }
@@ -427,9 +421,9 @@ public class TraeAudioSession
                                   if (QLog.isColorLevel()) {
                                     QLog.w("TraeAudioSession", 1, "onReceive.onServiceStateUpdate, on[" + bool + "], seq[" + l2 + "]");
                                   }
-                                  if (this.jdField_a_of_type_Bkwz != null)
+                                  if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback != null)
                                   {
-                                    this.jdField_a_of_type_Bkwz.a(l2, bool);
+                                    this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(l2, bool);
                                     return;
                                   }
                                 }
@@ -465,8 +459,8 @@ public class TraeAudioSession
                             }
                             this.b = bool;
                             this.jdField_a_of_type_JavaLangString = str1;
-                          } while (this.jdField_a_of_type_Bkwz == null);
-                          this.jdField_a_of_type_Bkwz.a(l2, (String[])localObject, str1, str2, str3);
+                          } while (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null);
+                          this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(l2, (String[])localObject, str1, str2, str3);
                           return;
                           if (!"NOTIFY_DEVICECHANGABLE_UPDATE".equals(localObject)) {
                             break;
@@ -475,8 +469,8 @@ public class TraeAudioSession
                           if (QLog.isColorLevel()) {
                             QLog.w("TraeAudioSession", 1, "onReceive.onDeviceChangabledUpdate, bIsChangabled[" + bool + "], seq[" + l2 + "]");
                           }
-                        } while (this.jdField_a_of_type_Bkwz == null);
-                        this.jdField_a_of_type_Bkwz.a(bool);
+                        } while (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null);
+                        this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(bool);
                         return;
                         if (!"NOTIFY_STREAMTYPE_UPDATE".equals(localObject)) {
                           break;
@@ -485,29 +479,29 @@ public class TraeAudioSession
                         if (QLog.isColorLevel()) {
                           QLog.w("TraeAudioSession", 1, "onReceive.NOTIFY_STREAMTYPE_UPDATE, errCode[" + j + "], st[" + i + "], seq[" + l2 + "]");
                         }
-                      } while (this.jdField_a_of_type_Bkwz == null);
-                      this.jdField_a_of_type_Bkwz.a(l2, i);
+                      } while (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null);
+                      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(l2, i);
                       return;
                       if (!"NOTIFY_ROUTESWITCHSTART".equals(localObject)) {
                         break;
                       }
                       paramContext = paramIntent.getStringExtra("EXTRA_DATA_ROUTESWITCHSTART_FROM");
                       localObject = paramIntent.getStringExtra("EXTRA_DATA_ROUTESWITCHSTART_TO");
-                    } while ((this.jdField_a_of_type_Bkwz == null) || (paramContext == null) || (localObject == null));
-                    this.jdField_a_of_type_Bkwz.a(paramContext, (String)localObject);
+                    } while ((this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) || (paramContext == null) || (localObject == null));
+                    this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(paramContext, (String)localObject);
                     return;
                     if (!"NOTIFY_ROUTESWITCHEND".equals(localObject)) {
                       break;
                     }
                     paramContext = paramIntent.getStringExtra("EXTRA_DATA_ROUTESWITCHEND_DEV");
                     l1 = paramIntent.getLongExtra("EXTRA_DATA_ROUTESWITCHEND_TIME", -1L);
-                  } while ((this.jdField_a_of_type_Bkwz == null) || (paramContext == null) || (l1 == -1L));
-                  this.jdField_a_of_type_Bkwz.a(paramContext, l1);
+                  } while ((this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) || (paramContext == null) || (l1 == -1L));
+                  this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(paramContext, l1);
                   return;
                 } while (!"NOTIFY_BEGIN_CONNECTED_DEVICE".equals(localObject));
                 paramContext = paramIntent.getStringExtra("CONNECTDEVICE_DEVICENAME");
-              } while (this.jdField_a_of_type_Bkwz == null);
-              this.jdField_a_of_type_Bkwz.a(paramContext);
+              } while (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null);
+              this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(paramContext);
               return;
             } while (!"com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_RES".equals(paramContext));
             QLog.w("TraeAudioSession", 1, "ACTION_TRAEAUDIOMANAGER_RES, mSessionId[" + this.jdField_a_of_type_Long + "], nSessionId[" + l1 + "], strOperation[" + (String)localObject + "], seq[" + l2 + "]");
@@ -539,14 +533,14 @@ public class TraeAudioSession
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder().append("OPERATION_GETDEVICELIST, errCode[").append(j).append("], connected[").append(str1).append("], prevConnected[").append(str2).append("], bt[").append(str3).append("], Num[").append(localObject.length).append("], mCallback[");
-            if (this.jdField_a_of_type_Bkwz == null) {
+            if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) {
               break label2027;
             }
             bool = true;
             QLog.w("TraeAudioSession", 1, bool + "], seq[" + l2 + "], str[" + paramContext + "]");
           }
-        } while (this.jdField_a_of_type_Bkwz == null);
-        this.jdField_a_of_type_Bkwz.a(j, (String[])localObject, str1, str2, str3);
+        } while (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null);
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(j, (String[])localObject, str1, str2, str3);
         return;
         if (!"OPERATION_CONNECTDEVICE".equals(localObject)) {
           break;
@@ -555,13 +549,13 @@ public class TraeAudioSession
         if (QLog.isColorLevel()) {
           QLog.w("TRAE", 2, "AudioSession|[onConnectDeviceRes] err:" + j + " dev:" + paramContext);
         }
-      } while (this.jdField_a_of_type_Bkwz == null);
-      localObject = this.jdField_a_of_type_Bkwz;
+      } while (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null);
+      localObject = this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback;
       if (j != 0) {
         break label2033;
       }
       bool = true;
-      ((bkwz)localObject).a(j, paramContext, bool);
+      ((TraeAudioSession.ITraeAudioCallback)localObject).a(j, paramContext, bool);
       return;
       if (!"OPERATION_EARACTION".equals(localObject)) {
         break;
@@ -570,7 +564,7 @@ public class TraeAudioSession
       if (QLog.isColorLevel()) {
         QLog.w("TRAE", 2, "AudioSession|[onConnectDeviceRes] err:" + j + " earAction:" + i);
       }
-    } while (this.jdField_a_of_type_Bkwz == null);
+    } while (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null);
     label922:
     label1065:
     return;
@@ -596,10 +590,10 @@ public class TraeAudioSession
     for (paramContext = "Y";; paramContext = "N")
     {
       QLog.w("TRAE", 2, paramContext);
-      if (this.jdField_a_of_type_Bkwz == null) {
+      if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) {
         break;
       }
-      this.jdField_a_of_type_Bkwz.a(j, bool);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(j, bool);
       return;
       if ("OPERATION_GETCONNECTEDDEVICE".equals(localObject))
       {
@@ -607,10 +601,10 @@ public class TraeAudioSession
         if (QLog.isColorLevel()) {
           QLog.w("TRAE", 2, "AudioSession|[onGetConnectedDeviceRes] err:" + j + " dev:" + paramContext);
         }
-        if (this.jdField_a_of_type_Bkwz == null) {
+        if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) {
           break;
         }
-        this.jdField_a_of_type_Bkwz.a(j, paramContext);
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(j, paramContext);
         return;
       }
       if ("OPERATION_GETCONNECTINGDEVICE".equals(localObject))
@@ -619,10 +613,10 @@ public class TraeAudioSession
         if (QLog.isColorLevel()) {
           QLog.w("TRAE", 2, "AudioSession|[onGetConnectingDeviceRes] err:" + j + " dev:" + paramContext);
         }
-        if (this.jdField_a_of_type_Bkwz == null) {
+        if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) {
           break;
         }
-        this.jdField_a_of_type_Bkwz.b(j, paramContext);
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.b(j, paramContext);
         return;
       }
       if ("OPERATION_GETSTREAMTYPE".equals(localObject))
@@ -631,10 +625,10 @@ public class TraeAudioSession
         if (QLog.isColorLevel()) {
           QLog.w("TRAE", 2, "AudioSession|[onGetStreamTypeRes] err:" + j + " st:" + i);
         }
-        if (this.jdField_a_of_type_Bkwz == null) {
+        if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) {
           break;
         }
-        this.jdField_a_of_type_Bkwz.a(j, i);
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(j, i);
         return;
       }
       if ("NOTIFY_RING_COMPLETION".equals(localObject))
@@ -643,10 +637,10 @@ public class TraeAudioSession
         if (QLog.isColorLevel()) {
           QLog.w("TRAE", 1, "\"AudioSession|[onRingCompletion], errCode[" + j + "], userData[" + paramContext + "], seq[" + l2 + "]");
         }
-        if (this.jdField_a_of_type_Bkwz == null) {
+        if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) {
           break;
         }
-        this.jdField_a_of_type_Bkwz.a(l2, j, paramContext);
+        this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(l2, j, paramContext);
         return;
       }
       if (!"OPERATION_VOICECALL_PREPROCESS".equals(localObject)) {
@@ -655,10 +649,10 @@ public class TraeAudioSession
       if (QLog.isColorLevel()) {
         QLog.w("TRAE", 2, "AudioSession|[onVoicecallPreprocess] err:" + j);
       }
-      if (this.jdField_a_of_type_Bkwz == null) {
+      if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback == null) {
         break;
       }
-      this.jdField_a_of_type_Bkwz.a(j);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession$ITraeAudioCallback.a(j);
       return;
       bool = false;
       i += 1;
@@ -675,7 +669,7 @@ public class TraeAudioSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioSession
  * JD-Core Version:    0.7.0.1
  */

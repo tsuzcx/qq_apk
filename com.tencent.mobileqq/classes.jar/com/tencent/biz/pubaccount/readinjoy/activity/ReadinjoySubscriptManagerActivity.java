@@ -1,7 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import Override;
-import algy;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,60 +15,56 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import anvx;
-import blfe;
 import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.activity.recent.RecentFaceDecoder;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.SwipListView;
+import com.tencent.widget.SwipListView.RightIconMenuListener;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.Comparator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ols;
-import ovi;
-import ovj;
-import ovk;
-import ovn;
-import ovo;
 
 public class ReadinjoySubscriptManagerActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, blfe, FaceDecoder.DecodeTaskCompletionListener
+  implements View.OnClickListener, DecodeTaskCompletionListener, SwipListView.RightIconMenuListener
 {
-  private algy jdField_a_of_type_Algy;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private Comparator<ovn> jdField_a_of_type_JavaUtilComparator = new ovi(this);
-  private ovk jdField_a_of_type_Ovk;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  private View jdField_a_of_type_AndroidViewView = null;
+  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  private ReadinjoySubscriptManagerActivity.SubscribeAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity$SubscribeAdapter = null;
+  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = null;
+  private RecentFaceDecoder jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = null;
+  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView = null;
+  private Comparator<ReadinjoySubscriptManagerActivity.SubscribeFeedData> jdField_a_of_type_JavaUtilComparator = new ReadinjoySubscriptManagerActivity.1(this);
+  private boolean jdField_a_of_type_Boolean = false;
+  private View b = null;
   
   private void a(String paramString)
   {
     Context localContext = getApplicationContext();
-    new ols(this.app, paramString, localContext, new ovj(this, localContext)).a();
+    new PublicAccountUnfollowTask(this.app, paramString, localContext, new ReadinjoySubscriptManagerActivity.3(this, localContext)).a();
   }
   
-  private void a(List<ovn> paramList)
+  private void a(List<ReadinjoySubscriptManagerActivity.SubscribeFeedData> paramList)
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_Ovk.a(paramList);
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.t();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity$SubscribeAdapter.a(paramList);
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.hideCurShowingRightView();
     }
-    if (this.jdField_a_of_type_Ovk.getCount() == 0)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity$SubscribeAdapter.getCount() == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -109,28 +103,28 @@ public class ReadinjoySubscriptManagerActivity
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new ReadInJoyNewFeedsTopGestureLayout(this));
     }
-    setTitle(anvx.a(2131712203));
-    setLeftViewName(2131690499);
+    setTitle(HardCodeUtil.a(2131712716));
+    setLeftViewName(2131690601);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getRightTextView());
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717730);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366179);
-    ((TextView)findViewById(2131379426)).setText(anvx.a(2131712275));
-    this.jdField_a_of_type_Ovk = new ovk(this, null);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131378255));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718232);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366350);
+    ((TextView)findViewById(2131379849)).setText(HardCodeUtil.a(2131712787));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity$SubscribeAdapter = new ReadinjoySubscriptManagerActivity.SubscribeAdapter(this, null);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131378681));
     TextView localTextView = new TextView(this);
-    localTextView.setHeight(AIOUtils.dp2px(20.0F, getResources()));
-    localTextView.setBackgroundResource(2131167296);
+    localTextView.setHeight(AIOUtils.a(20.0F, getResources()));
+    localTextView.setBackgroundResource(2131167305);
     localTextView.setClickable(false);
-    localTextView.setHintTextColor(getResources().getColor(2131167296));
+    localTextView.setHintTextColor(getResources().getColor(2131167305));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(localTextView, null, false);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Ovk);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity$SubscribeAdapter);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Ovk);
-    this.jdField_a_of_type_Algy = new algy(this.app, this, false);
-    this.b = findViewById(2131371990);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity$SubscribeAdapter);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(this.app, this, false);
+    this.b = findViewById(2131372297);
     if (ThemeUtil.isInNightMode(this.app)) {
       this.b.setVisibility(0);
     }
@@ -153,7 +147,7 @@ public class ReadinjoySubscriptManagerActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label178;
       }
-      if ((SystemUtil.isMIUI()) || (SystemUtil.isFlyme())) {
+      if ((SystemUtil.b()) || (SystemUtil.d())) {
         break label157;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -162,7 +156,7 @@ public class ReadinjoySubscriptManagerActivity
     {
       this.leftView.setTextColor(-14408926);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849537);
+      this.leftView.setBackgroundResource(2130849916);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -176,12 +170,12 @@ public class ReadinjoySubscriptManagerActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label178:
-      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!SystemUtil.isFlyme())
+      else if (!SystemUtil.d())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -191,16 +185,6 @@ public class ReadinjoySubscriptManagerActivity
         this.mSystemBarComp.setStatusBarDarkMode(true);
       }
     }
-  }
-  
-  public void a(View paramView)
-  {
-    a(false);
-  }
-  
-  public void b(View paramView)
-  {
-    a(true);
   }
   
   @Override
@@ -218,7 +202,7 @@ public class ReadinjoySubscriptManagerActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560335);
+    setContentView(2131560404);
     b();
     a();
     c();
@@ -228,10 +212,10 @@ public class ReadinjoySubscriptManagerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Algy != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder != null)
     {
-      this.jdField_a_of_type_Algy.a();
-      this.jdField_a_of_type_Algy = null;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = null;
     }
   }
   
@@ -263,10 +247,10 @@ public class ReadinjoySubscriptManagerActivity
       }
     }
     label95:
-    for (int i = 2131717662;; i = 2131717730)
+    for (int i = 2131718164;; i = 2131718232)
     {
       localTextView.setText(i);
-      this.jdField_a_of_type_Ovk.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity$SubscribeAdapter.notifyDataSetChanged();
       break;
       bool = false;
       break label41;
@@ -291,12 +275,12 @@ public class ReadinjoySubscriptManagerActivity
       while (paramInt1 < paramInt2)
       {
         Object localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(paramInt1);
-        if ((((View)localObject).getTag() instanceof ovo))
+        if ((((View)localObject).getTag() instanceof ReadinjoySubscriptManagerActivity.SubscribeHolder))
         {
-          localObject = (ovo)((View)localObject).getTag();
-          if (TextUtils.equals(ovo.a((ovo)localObject), paramString))
+          localObject = (ReadinjoySubscriptManagerActivity.SubscribeHolder)((View)localObject).getTag();
+          if (TextUtils.equals(ReadinjoySubscriptManagerActivity.SubscribeHolder.a((ReadinjoySubscriptManagerActivity.SubscribeHolder)localObject), paramString))
           {
-            new Handler(Looper.getMainLooper()).post(new ReadinjoySubscriptManagerActivity.4(this, (ovo)localObject, paramBitmap));
+            new Handler(Looper.getMainLooper()).post(new ReadinjoySubscriptManagerActivity.4(this, (ReadinjoySubscriptManagerActivity.SubscribeHolder)localObject, paramBitmap));
             return;
           }
         }
@@ -304,10 +288,20 @@ public class ReadinjoySubscriptManagerActivity
       }
     }
   }
+  
+  public void onRightIconMenuHide(View paramView)
+  {
+    a(true);
+  }
+  
+  public void onRightIconMenuShow(View paramView)
+  {
+    a(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity
  * JD-Core Version:    0.7.0.1
  */

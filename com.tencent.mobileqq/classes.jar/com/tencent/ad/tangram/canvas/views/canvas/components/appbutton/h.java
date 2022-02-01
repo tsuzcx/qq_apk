@@ -1,6 +1,6 @@
 package com.tencent.ad.tangram.canvas.views.canvas.components.appbutton;
 
-import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.downloader.IAdDownloader.Callback;
 
 public abstract class h
   implements IAdDownloader.Callback
@@ -15,7 +15,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.h
  * JD-Core Version:    0.7.0.1
  */

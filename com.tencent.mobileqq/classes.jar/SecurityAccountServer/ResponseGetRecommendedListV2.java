@@ -13,23 +13,23 @@ public final class ResponseGetRecommendedListV2
   static ArrayList<CircleFriendInfo> cache_circleInfo;
   static byte[] cache_sessionSid;
   static int cache_type;
-  public long ConfigVersion;
-  public long ForcePopSwitch;
+  public long ConfigVersion = 0L;
+  public long ForcePopSwitch = 0L;
   public String MobileUniqueNo = "";
-  public long PopCloseCount;
-  public long PopWindowsCount;
-  public long PopWindowsTime;
-  public ArrayList<MobileContactsDetailInfoEncrypt> alreadyBindContacts;
-  public ArrayList<MobileContactsDetailInfoEncrypt> assistBindContacts;
-  public long bindingTime;
-  public ArrayList<CircleFriendInfo> circleInfo;
+  public long PopCloseCount = 0L;
+  public long PopWindowsCount = 0L;
+  public long PopWindowsTime = 0L;
+  public ArrayList<MobileContactsDetailInfoEncrypt> alreadyBindContacts = null;
+  public ArrayList<MobileContactsDetailInfoEncrypt> assistBindContacts = null;
+  public long bindingTime = 0L;
+  public ArrayList<CircleFriendInfo> circleInfo = null;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";
-  public long nextFlag;
+  public long nextFlag = 0L;
   public long originBinder = 1L;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   public int type = 0;
   
   public ResponseGetRecommendedListV2() {}

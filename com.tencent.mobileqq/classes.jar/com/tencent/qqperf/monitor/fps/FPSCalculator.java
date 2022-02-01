@@ -1,0 +1,76 @@
+package com.tencent.qqperf.monitor.fps;
+
+import android.view.animation.AnimationUtils;
+import com.tencent.qqperf.tools.BusinessRecoderForPerf;
+import com.tencent.qqperf.tools.PerformanceReportUtils;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class FPSCalculator
+{
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long = -1L;
+  private String jdField_a_of_type_JavaLangString = null;
+  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
+  private final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
+      return;
+    }
+    new FPSCalculator.1(this).execute(new Void[0]);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      if (paramInt == 2)
+      {
+        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+        this.jdField_a_of_type_Int = 0;
+      }
+    }
+    else {
+      return;
+    }
+    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
+    {
+      long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
+      if ((l > 1000L) || ((l >= 500L) && ("actFPSRecent".equals(this.jdField_a_of_type_JavaLangString))))
+      {
+        paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
+        this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
+        this.jdField_a_of_type_JavaLangStringBuffer.append("FPSCalculator ").append(this.jdField_a_of_type_JavaLangString).append(" frameCount :").append(this.jdField_a_of_type_Int).append(",diffTime :").append(l).append(" fps:").append(paramInt);
+        this.jdField_a_of_type_JavaLangStringBuffer.append(",aioBusiness=").append(BusinessRecoderForPerf.a());
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
+        if ((paramInt > 0) && (!"".equals(this.jdField_a_of_type_JavaLangString))) {
+          PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString, paramInt, String.valueOf(BusinessRecoderForPerf.a()));
+        }
+        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100) {
+          a();
+        }
+      }
+    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_Int += 1;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.qqperf.monitor.fps.FPSCalculator
+ * JD-Core Version:    0.7.0.1
+ */

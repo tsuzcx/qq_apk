@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.loginwelcome;
 
 import android.net.Network;
-import awoq;
-import awou;
 import tencent.im.login.GatewayVerify.SelfPhoneUrl;
 
-public class GateWayVerifyManager$2
+class GateWayVerifyManager$2
   implements Runnable
 {
-  public GateWayVerifyManager$2(awoq paramawoq, GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, Network paramNetwork, awou paramawou) {}
+  GateWayVerifyManager$2(GateWayVerifyManager paramGateWayVerifyManager, GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, Network paramNetwork, GatewayCallback paramGatewayCallback) {}
   
   /* Error */
   public void run()
@@ -37,13 +35,13 @@ public class GateWayVerifyManager$2
     //   36: checkcast 54	java/net/HttpURLConnection
     //   39: astore_2
     //   40: aload_0
-    //   41: getfield 16	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:this$0	Lawoq;
+    //   41: getfield 16	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:this$0	Lcom/tencent/mobileqq/loginwelcome/GateWayVerifyManager;
     //   44: aload_2
     //   45: aload_0
     //   46: getfield 18	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl	Ltencent/im/login/GatewayVerify$SelfPhoneUrl;
     //   49: aload_0
-    //   50: getfield 22	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_Awou	Lawou;
-    //   53: invokestatic 59	awoq:a	(Lawoq;Ljava/net/HttpURLConnection;Ltencent/im/login/GatewayVerify$SelfPhoneUrl;Lawou;)V
+    //   50: getfield 22	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback	Lcom/tencent/mobileqq/loginwelcome/GatewayCallback;
+    //   53: invokestatic 59	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager:a	(Lcom/tencent/mobileqq/loginwelcome/GateWayVerifyManager;Ljava/net/HttpURLConnection;Ltencent/im/login/GatewayVerify$SelfPhoneUrl;Lcom/tencent/mobileqq/loginwelcome/GatewayCallback;)V
     //   56: aload_2
     //   57: ifnull +7 -> 64
     //   60: aload_2
@@ -73,10 +71,10 @@ public class GateWayVerifyManager$2
     //   94: aload_2
     //   95: astore_1
     //   96: aload_0
-    //   97: getfield 22	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_Awou	Lawou;
+    //   97: getfield 22	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback	Lcom/tencent/mobileqq/loginwelcome/GatewayCallback;
     //   100: iconst_m1
     //   101: aload_3
-    //   102: invokeinterface 80 3 0
+    //   102: invokeinterface 81 3 0
     //   107: aload_2
     //   108: ifnull -44 -> 64
     //   111: aload_2

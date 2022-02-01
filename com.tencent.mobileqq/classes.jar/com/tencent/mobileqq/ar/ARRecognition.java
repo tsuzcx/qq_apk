@@ -3,17 +3,13 @@ package com.tencent.mobileqq.ar;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apdb;
-import apdc;
-import apdd;
-import apde;
-import apjt;
-import apjy;
-import apka;
-import apki;
-import apkk;
-import apkq;
-import aplp;
+import com.tencent.mobileqq.ar.arengine.ARCloudMarkerRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudObjectClassifyResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudPreOcrResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogRspFaceResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudSceneRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARMIGObjectClassifyResult;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +18,7 @@ import java.util.List;
 public class ARRecognition
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARRecognition> CREATOR = new apdb();
+  public static final Parcelable.Creator<ARRecognition> CREATOR = new ARRecognition.1();
   public int a;
   public long a;
   public int b;
@@ -82,51 +78,51 @@ public class ARRecognition
     return l2;
   }
   
-  public static apde a(ArrayList<ARRecognition> paramArrayList, apki paramapki)
+  public static ARRecognition.RecognitionResult a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
   {
-    apde localapde = new apde(0L, false);
+    ARRecognition.RecognitionResult localRecognitionResult = new ARRecognition.RecognitionResult(0L, false);
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return localapde;
+      return localRecognitionResult;
     }
-    boolean bool1 = apjt.a(paramapki.jdField_a_of_type_Apjt);
-    boolean bool2 = apjy.a(paramapki.jdField_a_of_type_Apjy);
-    boolean bool3 = apkk.a(paramapki.jdField_a_of_type_Apkk);
-    boolean bool4 = aplp.a(paramapki.jdField_a_of_type_Aplp);
-    boolean bool5 = apkq.a(paramapki.jdField_a_of_type_Apkq);
+    boolean bool1 = ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
+    boolean bool2 = ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
+    boolean bool3 = ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
+    boolean bool4 = ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
+    boolean bool5 = ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
     if ((!bool1) && (!bool2) && (!bool3) && (!bool4) && (!bool5)) {
-      return localapde;
+      return localRecognitionResult;
     }
-    paramapki = new ArrayList();
+    paramARCloudRecogResult = new ArrayList();
     if (bool1) {
-      paramapki.add(new apdd(1L, a(paramArrayList, 1L)));
+      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(1L, a(paramArrayList, 1L)));
     }
     if (bool3) {
-      paramapki.add(new apdd(4L, a(paramArrayList, 4L)));
+      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(4L, a(paramArrayList, 4L)));
     }
     if (bool2) {
-      paramapki.add(new apdd(2L, a(paramArrayList, 2L)));
+      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(2L, a(paramArrayList, 2L)));
     }
     if (bool4) {
-      paramapki.add(new apdd(128L, a(paramArrayList, 128L)));
+      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(128L, a(paramArrayList, 128L)));
     }
     if (bool5) {
-      paramapki.add(new apdd(2048L, a(paramArrayList, 2048L)));
+      paramARCloudRecogResult.add(new ARRecognition.RecoglistionPriorityStore(2048L, a(paramArrayList, 2048L)));
     }
     paramArrayList = new StringBuilder();
     int i = 0;
-    while (i < paramapki.size())
+    while (i < paramARCloudRecogResult.size())
     {
-      paramArrayList.append("(index:").append(i).append(",prority=" + ((apdd)paramapki.get(i)).jdField_a_of_type_Long + ")\n");
+      paramArrayList.append("(index:").append(i).append(",prority=" + ((ARRecognition.RecoglistionPriorityStore)paramARCloudRecogResult.get(i)).jdField_a_of_type_Long + ")\n");
       i += 1;
     }
     QLog.i("AREngine_CommonConfigInfo", 1, "getCurrentPriorityHighestResult print result " + paramArrayList.toString());
-    Collections.sort(paramapki, new apdc());
-    localapde.jdField_a_of_type_Long = ((apdd)paramapki.get(0)).jdField_a_of_type_Long;
-    if (paramapki.size() == 1) {}
+    Collections.sort(paramARCloudRecogResult, new ARRecognition.2());
+    localRecognitionResult.jdField_a_of_type_Long = ((ARRecognition.RecoglistionPriorityStore)paramARCloudRecogResult.get(0)).jdField_a_of_type_Long;
+    if (paramARCloudRecogResult.size() == 1) {}
     for (bool1 = true;; bool1 = false)
     {
-      localapde.jdField_a_of_type_Boolean = bool1;
-      return localapde;
+      localRecognitionResult.jdField_a_of_type_Boolean = bool1;
+      return localRecognitionResult;
     }
   }
   
@@ -178,34 +174,34 @@ public class ARRecognition
     return false;
   }
   
-  public static boolean a(apki paramapki, long paramLong)
+  public static boolean a(ARCloudRecogResult paramARCloudRecogResult, long paramLong)
   {
-    if (paramapki == null) {}
+    if (paramARCloudRecogResult == null) {}
     do
     {
       return false;
       if (paramLong == 1L) {
-        return apjt.a(paramapki.jdField_a_of_type_Apjt);
+        return ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
       }
       if (paramLong == 2L) {
-        return apjy.a(paramapki.jdField_a_of_type_Apjy);
+        return ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
       }
       if (paramLong == 128L) {
-        return aplp.a(paramapki.jdField_a_of_type_Aplp);
+        return ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
       }
       if (paramLong == 4L) {
-        return apkk.a(paramapki.jdField_a_of_type_Apkk);
+        return ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
       }
       if (paramLong == 64L) {
-        return apka.a(paramapki.jdField_a_of_type_Apka);
+        return ARCloudPreOcrResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult);
       }
     } while (paramLong != 2048L);
-    return apkq.a(paramapki.jdField_a_of_type_Apkq);
+    return ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
   }
   
-  public static boolean a(apki paramapki, ArrayList<ARRecognition> paramArrayList, long paramLong)
+  public static boolean a(ARCloudRecogResult paramARCloudRecogResult, ArrayList<ARRecognition> paramArrayList, long paramLong)
   {
-    if ((paramapki == null) || (paramArrayList == null) || (!a(paramapki, paramLong))) {
+    if ((paramARCloudRecogResult == null) || (paramArrayList == null) || (!a(paramARCloudRecogResult, paramLong))) {
       return false;
     }
     int j = a(paramArrayList, paramLong);
@@ -217,7 +213,7 @@ public class ARRecognition
       }
       long l = 1 << (int)((ARRecognition)paramArrayList.get(i)).jdField_a_of_type_Long;
       int k = ((ARRecognition)paramArrayList.get(i)).c;
-      if ((paramLong != l) && (a(paramapki, l)) && (!a(paramLong, l, j, k))) {
+      if ((paramLong != l) && (a(paramARCloudRecogResult, l)) && (!a(paramLong, l, j, k))) {
         break;
       }
       i += 1;
@@ -335,7 +331,7 @@ public class ARRecognition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecognition
  * JD-Core Version:    0.7.0.1
  */

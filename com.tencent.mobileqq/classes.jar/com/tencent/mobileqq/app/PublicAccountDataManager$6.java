@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import aoan;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 
-public class PublicAccountDataManager$6
+class PublicAccountDataManager$6
   implements Runnable
 {
-  public PublicAccountDataManager$6(aoan paramaoan, PublicAccountInfo paramPublicAccountInfo) {}
+  PublicAccountDataManager$6(PublicAccountDataManager paramPublicAccountDataManager, PublicAccountInfo paramPublicAccountInfo) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class PublicAccountDataManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PublicAccountDataManager.6
  * JD-Core Version:    0.7.0.1
  */

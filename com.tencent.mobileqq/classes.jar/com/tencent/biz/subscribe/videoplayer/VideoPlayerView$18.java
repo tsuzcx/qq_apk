@@ -2,12 +2,12 @@ package com.tencent.biz.subscribe.videoplayer;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aanb;
 import android.view.View;
 import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.biz.videostory.support.VSReporter;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoOuterStatusListener;
 
 class VideoPlayerView$18
   implements Runnable
@@ -26,7 +26,7 @@ class VideoPlayerView$18
     if (!VideoPlayerView.d(this.this$0)) {
       if (VideoPlayerView.a(this.this$0) != null)
       {
-        if (!this.this$0.e()) {
+        if (!this.this$0.d()) {
           break label128;
         }
         VideoPlayerView.a(this.this$0).a();
@@ -49,10 +49,10 @@ class VideoPlayerView$18
         this.this$0.b.setVisibility(0);
         if (VideoPlayerView.a(this.this$0) != null)
         {
-          aanb.b(VideoPlayerView.a(this.this$0).poster.id.get(), "auth_video", "finish_exp", 0, 0, new String[] { "", "", VideoPlayerView.a(this.this$0).poster.nick.get(), VideoPlayerView.a(this.this$0).title.get() });
+          VSReporter.b(VideoPlayerView.a(this.this$0).poster.id.get(), "auth_video", "finish_exp", 0, 0, new String[] { "", "", VideoPlayerView.a(this.this$0).poster.nick.get(), VideoPlayerView.a(this.this$0).title.get() });
           continue;
           VideoPlayerView.f(this.this$0);
-          this.this$0.h();
+          this.this$0.i();
         }
       }
     }
@@ -60,7 +60,7 @@ class VideoPlayerView$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.18
  * JD-Core Version:    0.7.0.1
  */

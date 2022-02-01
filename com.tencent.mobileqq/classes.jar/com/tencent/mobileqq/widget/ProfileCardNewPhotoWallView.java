@@ -18,11 +18,10 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import anvx;
-import biro;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ProfilePhotoWall;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -36,14 +35,14 @@ public class ProfileCardNewPhotoWallView
 {
   private float jdField_a_of_type_Float;
   protected int a;
-  public Activity a;
+  Activity jdField_a_of_type_AndroidAppActivity;
   private Context jdField_a_of_type_AndroidContentContext;
   protected Drawable a;
   protected LayoutInflater a;
-  public QQAppInterface a;
-  public String a;
-  public LinkedList<ProfilePhotoWall> a;
-  private boolean jdField_a_of_type_Boolean;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  protected LinkedList<ProfilePhotoWall> a;
+  private boolean jdField_a_of_type_Boolean = false;
   protected int b;
   protected int c;
   private int d;
@@ -63,7 +62,7 @@ public class ProfileCardNewPhotoWallView
   
   private void a()
   {
-    int i = getResources().getDimensionPixelSize(2131297535);
+    int i = getResources().getDimensionPixelSize(2131297602);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     this.jdField_a_of_type_Float = localDisplayMetrics.density;
     this.jdField_a_of_type_Int = (localDisplayMetrics.widthPixels - i * 2);
@@ -87,7 +86,7 @@ public class ProfileCardNewPhotoWallView
   
   protected View a()
   {
-    return this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561412, null);
+    return this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561519, null);
   }
   
   public ViewGroup a(int paramInt1, int paramInt2, int paramInt3)
@@ -140,7 +139,7 @@ public class ProfileCardNewPhotoWallView
         break label375;
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2131166378);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2131166381);
       }
       Object localObject4 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable;
@@ -148,8 +147,8 @@ public class ProfileCardNewPhotoWallView
       ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = paramInt2;
       localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject4);
       localObject4 = (ViewGroup)a();
-      localURLImageView = (URLImageView)((ViewGroup)localObject4).findViewById(2131368727);
-      View localView = ((ViewGroup)localObject4).findViewById(2131368735);
+      localURLImageView = (URLImageView)((ViewGroup)localObject4).findViewById(2131368959);
+      View localView = ((ViewGroup)localObject4).findViewById(2131368967);
       if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
         break;
       }
@@ -160,9 +159,9 @@ public class ProfileCardNewPhotoWallView
       localStateListDrawable.addState(View.EMPTY_STATE_SET, new ColorDrawable(0));
       ((ViewGroup)localObject4).setLayoutParams(localLayoutParams);
       localURLImageView.setImageDrawable((Drawable)localObject1);
-      localURLImageView.setContentDescription(String.format(anvx.a(2131707917), new Object[] { Integer.valueOf(paramInt3 + 1) }));
+      localURLImageView.setContentDescription(String.format(HardCodeUtil.a(2131708444), new Object[] { Integer.valueOf(paramInt3 + 1) }));
       localView.setBackgroundDrawable(localStateListDrawable);
-      ((ViewGroup)localObject4).setOnClickListener(new biro(this, localProfilePhotoWall, paramInt3));
+      ((ViewGroup)localObject4).setOnClickListener(new ProfileCardNewPhotoWallView.1(this, localProfilePhotoWall, paramInt3));
       return localObject4;
     }
   }
@@ -271,7 +270,7 @@ public class ProfileCardNewPhotoWallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardNewPhotoWallView
  * JD-Core Version:    0.7.0.1
  */

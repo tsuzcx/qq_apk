@@ -109,7 +109,12 @@ public class MiniAppInfoLoadTask
         }
       }
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.mMiniAppInfo.link, this.mMiniAppInfo.linkType, new MiniAppInfoLoadTask.5(this, localMiniAppCacheProxy));
+    getAppInfoByLink(localMiniAppCacheProxy);
+  }
+  
+  private void getAppInfoByLink(MiniAppCacheProxy paramMiniAppCacheProxy)
+  {
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.mMiniAppInfo.link, this.mMiniAppInfo.linkType, new MiniAppInfoLoadTask.5(this, paramMiniAppCacheProxy));
   }
   
   private void reloadMiniAppInfoIfNeeded()
@@ -152,7 +157,7 @@ public class MiniAppInfoLoadTask
         paramMiniAppInfo.firstPage.pagePath = paramMiniAppInfo.firstPage.pagePath.substring(1);
       }
       if (!paramMiniAppInfo.firstPage.pagePath.contains(".html")) {
-        break label179;
+        break label180;
       }
       paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath;
     }
@@ -166,7 +171,7 @@ public class MiniAppInfoLoadTask
       }
       this.mMiniAppInfo = paramMiniAppInfo;
       return;
-      label179:
+      label180:
       if (paramMiniAppInfo.firstPage.pagePath.contains("?")) {
         paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath.replaceFirst("\\?", ".html\\?");
       } else {
@@ -198,7 +203,7 @@ public class MiniAppInfoLoadTask
         paramMiniAppInfo.launchParam.scene = 1044;
       }
       if (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData)) {
-        break label292;
+        break label294;
       }
       paramMiniAppInfo.launchParam.reportData = paramMiniAppInfo.reportData;
     }
@@ -216,7 +221,7 @@ public class MiniAppInfoLoadTask
       }
       paramMiniAppInfo.launchParam.entryPath = (paramMiniAppInfo.firstPage.pagePath + ".html");
       break;
-      label292:
+      label294:
       if (!TextUtils.isEmpty(paramMiniAppInfo.reportData)) {
         paramMiniAppInfo.launchParam.reportData = (paramMiniAppInfo.launchParam.reportData + "&" + paramMiniAppInfo.reportData);
       }
@@ -295,7 +300,7 @@ public class MiniAppInfoLoadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.MiniAppInfoLoadTask
  * JD-Core Version:    0.7.0.1
  */

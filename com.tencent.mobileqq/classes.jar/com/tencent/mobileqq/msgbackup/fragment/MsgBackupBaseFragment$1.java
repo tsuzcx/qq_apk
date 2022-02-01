@@ -13,7 +13,7 @@ class MsgBackupBaseFragment$1
   {
     int j = 1;
     Message localMessage;
-    if (NetworkUtil.getSystemNetwork(this.this$0.getActivity()) == 1)
+    if (NetworkUtil.a(this.this$0.getActivity()) == 1)
     {
       i = 1;
       localMessage = this.this$0.a.obtainMessage(10012);

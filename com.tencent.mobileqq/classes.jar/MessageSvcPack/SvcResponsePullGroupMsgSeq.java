@@ -9,10 +9,10 @@ public final class SvcResponsePullGroupMsgSeq
   extends JceStruct
 {
   static ArrayList<GroupInfo> cache_vGroupInfo;
-  public byte cReplyCode;
+  public byte cReplyCode = 0;
   public String strResult = "";
-  public ArrayList<GroupInfo> vGroupInfo;
-  public short wGroupNum;
+  public ArrayList<GroupInfo> vGroupInfo = null;
+  public short wGroupNum = 0;
   
   public SvcResponsePullGroupMsgSeq() {}
   

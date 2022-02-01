@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aeow;
-import agnx;
-import agoa;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,18 +12,19 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import avce;
-import avcp;
-import avcq;
-import bcvc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.data.PadFaceManager;
+import com.tencent.mobileqq.servlet.GameCenterManagerImp;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import org.json.JSONException;
@@ -34,14 +32,14 @@ import org.json.JSONObject;
 
 public class QQGamePadFaceFragment
   extends PublicBaseFragment
-  implements agoa
+  implements ArkAppContainer.ArkAppModuleCallback
 {
-  private agnx jdField_a_of_type_Agnx;
-  private avce jdField_a_of_type_Avce;
-  private bcvc jdField_a_of_type_Bcvc;
+  private ArkAppContainer jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
   private ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PadFaceAd jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd;
+  private PadFaceManager jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceManager;
+  private GameCenterManagerImp jdField_a_of_type_ComTencentMobileqqServletGameCenterManagerImp;
   private boolean jdField_a_of_type_Boolean;
   
   private void a()
@@ -51,8 +49,8 @@ public class QQGamePadFaceFragment
       return;
     }
     PadFaceAd localPadFaceAd = this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd;
-    this.jdField_a_of_type_Agnx = new agnx();
-    this.jdField_a_of_type_Agnx.a(localPadFaceAd.appName, localPadFaceAd.appView, localPadFaceAd.appVersion, localPadFaceAd.arkMeta, getResources().getDisplayMetrics().scaledDensity, new SessionInfo());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer = new ArkAppContainer();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(localPadFaceAd.appName, localPadFaceAd.appView, localPadFaceAd.appVersion, localPadFaceAd.arkMeta, getResources().getDisplayMetrics().scaledDensity, new SessionInfo());
     for (;;)
     {
       try
@@ -76,14 +74,14 @@ public class QQGamePadFaceFragment
       }
       j = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWidth();
       i = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getHeight();
-      this.jdField_a_of_type_Agnx.setFixSize(j, i);
-      this.jdField_a_of_type_Agnx.setMaxSize(j, i);
-      this.jdField_a_of_type_Agnx.setHintSize(j, i);
-      this.jdField_a_of_type_Agnx.setMinSize(j, i);
-      this.jdField_a_of_type_Agnx.a(j, i);
-      this.jdField_a_of_type_Agnx.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(new avcq(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a(this.jdField_a_of_type_Agnx, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setFixSize(j, i);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setMaxSize(j, i);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setHintSize(j, i);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.setMinSize(j, i);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(j, i);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(new QQGamePadFaceFragment.2(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer, null);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
       return;
@@ -93,9 +91,9 @@ public class QQGamePadFaceFragment
   
   public static void a(Activity paramActivity, PadFaceAd paramPadFaceAd)
   {
-    paramPadFaceAd = avce.a(paramPadFaceAd, null);
+    paramPadFaceAd = PadFaceManager.a(paramPadFaceAd, null);
     paramPadFaceAd.putExtra("public_fragment_window_feature", 1);
-    aeow.a(paramActivity, paramPadFaceAd, PublicTransFragmentActivity.class, QQGamePadFaceFragment.class, 10000);
+    PublicFragmentActivity.Launcher.a(paramActivity, paramPadFaceAd, PublicTransFragmentActivity.class, QQGamePadFaceFragment.class, 10000);
   }
   
   private void b()
@@ -104,18 +102,23 @@ public class QQGamePadFaceFragment
     getActivity().overridePendingTransition(0, 0);
   }
   
-  public void beforeFinish()
-  {
-    super.beforeFinish();
-    if (this.jdField_a_of_type_Agnx != null) {
-      this.jdField_a_of_type_Agnx.doOnEvent(2);
-    }
-  }
-  
-  public boolean closeView(agnx paramagnx)
+  public boolean a(ArkAppContainer paramArkAppContainer)
   {
     b();
     return true;
+  }
+  
+  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
+  {
+    return false;
+  }
+  
+  public void beforeFinish()
+  {
+    super.beforeFinish();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.doOnEvent(2);
+    }
   }
   
   public boolean onBackEvent()
@@ -128,9 +131,9 @@ public class QQGamePadFaceFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_Bcvc = ((bcvc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAMECENTER_MANAGER));
-    this.jdField_a_of_type_Avce = this.jdField_a_of_type_Bcvc.a();
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd = avce.a(getActivity().getIntent());
+    this.jdField_a_of_type_ComTencentMobileqqServletGameCenterManagerImp = ((GameCenterManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAMECENTER_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceManager = this.jdField_a_of_type_ComTencentMobileqqServletGameCenterManagerImp.a();
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd = PadFaceManager.a(getActivity().getIntent());
     if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd == null) {
       getActivity().finish();
     }
@@ -141,7 +144,7 @@ public class QQGamePadFaceFragment
         return;
       } while (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd.isValid());
       if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd.redPointId > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd = this.jdField_a_of_type_Avce.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd.redPointId);
+        this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd = this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceManager.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd.redPointId);
       }
     } while ((this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataPadFaceAd.isValid()));
     getActivity().finish();
@@ -156,7 +159,7 @@ public class QQGamePadFaceFragment
     paramBundle = new RelativeLayout(paramViewGroup.getContext());
     paramBundle.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView, paramLayoutInflater);
     paramViewGroup.addView(paramBundle, -1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.addOnLayoutChangeListener(new avcp(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.addOnLayoutChangeListener(new QQGamePadFaceFragment.1(this));
     V4FragmentCollector.onV4FragmentViewCreated(this, null);
     return null;
   }
@@ -191,15 +194,10 @@ public class QQGamePadFaceFragment
       i += 1;
     }
   }
-  
-  public boolean openCardView(agnx paramagnx, String paramString1, String paramString2)
-  {
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment
  * JD-Core Version:    0.7.0.1
  */

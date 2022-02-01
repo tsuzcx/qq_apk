@@ -2,15 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import sfg;
-import skn;
-import skq;
-import sks;
 
-public class VideoFeedsPlayManager$1$1
+class VideoFeedsPlayManager$1$1
   implements Runnable
 {
-  public VideoFeedsPlayManager$1$1(skn paramskn) {}
+  VideoFeedsPlayManager$1$1(VideoFeedsPlayManager.1 param1) {}
   
   public void run()
   {
@@ -21,14 +17,14 @@ public class VideoFeedsPlayManager$1$1
     {
       Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
       while (localIterator.hasNext()) {
-        ((sks)localIterator.next()).b(VideoFeedsPlayManager.a(this.a.a));
+        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).b(VideoFeedsPlayManager.a(this.a.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.1.1
  * JD-Core Version:    0.7.0.1
  */

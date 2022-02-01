@@ -2,12 +2,11 @@ package com.tencent.avgame.qav;
 
 import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import nnm;
 
-public class AVGameBusinessCtrl$4
+class AVGameBusinessCtrl$4
   implements Runnable
 {
-  public AVGameBusinessCtrl$4(nnm paramnnm, Intent paramIntent, String paramString) {}
+  AVGameBusinessCtrl$4(AVGameBusinessCtrl paramAVGameBusinessCtrl, Intent paramIntent, String paramString) {}
   
   public void run()
   {
@@ -18,10 +17,10 @@ public class AVGameBusinessCtrl$4
       j = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("android.bluetooth.profile.extra.STATE", 10);
       QLog.d("AVGameBusinessCtrl", 1, String.format("onReceive ACTION_AUDIO_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(j) }));
       if (j == 12) {
-        if (nnm.b(this.this$0))
+        if (AVGameBusinessCtrl.b(this.this$0))
         {
-          nnm.c(this.this$0, false);
-          nnm.a(this.this$0, 2, i);
+          AVGameBusinessCtrl.d(this.this$0, false);
+          AVGameBusinessCtrl.a(this.this$0, 2, i);
         }
       }
     }
@@ -41,7 +40,7 @@ public class AVGameBusinessCtrl$4
               i = 0;
               break;
             } while (j != 10);
-            nnm.a(this.this$0, 2);
+            AVGameBusinessCtrl.a(this.this$0, 2);
             return;
             if (!"android.intent.action.HEADSET_PLUG".equals(this.jdField_a_of_type_JavaLangString)) {
               break label179;
@@ -50,11 +49,11 @@ public class AVGameBusinessCtrl$4
             QLog.d("AVGameBusinessCtrl", 1, String.format("onReceive ACTION_HEADSET_PLUG state=%s", new Object[] { Integer.valueOf(i) }));
             if (i == 0)
             {
-              nnm.a(this.this$0, 0);
+              AVGameBusinessCtrl.a(this.this$0, 0);
               return;
             }
           } while (i != 1);
-          nnm.a(this.this$0, 0, 3);
+          AVGameBusinessCtrl.a(this.this$0, 0, 3);
           return;
           if (!"android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED".equals(this.jdField_a_of_type_JavaLangString)) {
             break label252;
@@ -63,22 +62,22 @@ public class AVGameBusinessCtrl$4
           QLog.d("AVGameBusinessCtrl", 1, String.format("onReceive ACTION_CONNECTION_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(i) }));
           if (i == 2)
           {
-            nnm.a(this.this$0, 2, 0);
+            AVGameBusinessCtrl.a(this.this$0, 2, 0);
             return;
           }
         } while (i != 0);
-        nnm.a(this.this$0, 2);
+        AVGameBusinessCtrl.a(this.this$0, 2);
         return;
       } while (!"android.bluetooth.adapter.action.STATE_CHANGED".equals(this.jdField_a_of_type_JavaLangString));
       i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
       QLog.d("AVGameBusinessCtrl", 1, String.format("onReceive ACTION_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(i) }));
     } while ((i != 10) && (i != 13));
-    nnm.a(this.this$0, 2);
+    AVGameBusinessCtrl.a(this.this$0, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameBusinessCtrl.4
  * JD-Core Version:    0.7.0.1
  */

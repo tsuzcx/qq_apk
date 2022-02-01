@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.model;
 
-import awyr;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.mobileqq.data.EmotionKeyword;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class EmoticonManager$1
+class EmoticonManager$1
   extends QQConcurrentHashMap<String, CopyOnWriteArrayList<EmotionKeyword>>
 {
-  public EmoticonManager$1(awyr paramawyr, int paramInt1, int paramInt2, int paramInt3)
+  EmoticonManager$1(EmoticonManager paramEmoticonManager, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramInt1, paramInt2, paramInt3);
   }

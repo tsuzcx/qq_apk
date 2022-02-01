@@ -8,8 +8,8 @@ public final class ReqMakeFriendsCard
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public byte bReqType;
-  public ReqHead stHeader;
+  public byte bReqType = 0;
+  public ReqHead stHeader = null;
   public int uFaceTimeStamp = -1;
   
   public ReqMakeFriendsCard() {}

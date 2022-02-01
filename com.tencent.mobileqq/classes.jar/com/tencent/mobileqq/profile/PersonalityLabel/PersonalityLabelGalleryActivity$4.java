@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.text.TextUtils;
-import azlg;
-import azph;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -31,7 +30,7 @@ class PersonalityLabelGalleryActivity$4
       }
       localObject = new CompressInfo((String)localObject, 0);
       ((CompressInfo)localObject).f = 0;
-      azlg.b((CompressInfo)localObject);
+      CompressOperator.b((CompressInfo)localObject);
       if (QLog.isColorLevel()) {
         QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label uploadPhoto(), thumb_path = " + ((CompressInfo)localObject).e);
       }
@@ -58,7 +57,7 @@ class PersonalityLabelGalleryActivity$4
       }
     }
     if (localArrayList.size() > 0) {
-      this.this$0.jdField_a_of_type_Azph.a(localArrayList, PersonalityLabelGalleryActivity.a(this.this$0));
+      this.this$0.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a(localArrayList, PersonalityLabelGalleryActivity.a(this.this$0));
     }
     this.this$0.runOnUiThread(new PersonalityLabelGalleryActivity.4.3(this));
   }

@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqHeader
   extends JceStruct
 {
-  public int guid;
-  public int mask;
-  public long qq;
+  public int guid = 0;
+  public int mask = 0;
+  public long qq = 0L;
   public String qua = "";
   public String sid = "";
-  public int version;
+  public int version = 0;
   
   public ReqHeader() {}
   

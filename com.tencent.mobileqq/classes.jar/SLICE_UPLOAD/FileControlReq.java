@@ -13,6 +13,7 @@ public final class FileControlReq
   static int cache_check_type;
   static Map<Integer, DumpBussinessReq> cache_dumpReq;
   static stEnvironment cache_env;
+  static Map<String, String> cache_extend_info;
   static int cache_model;
   static AuthToken cache_token = new AuthToken();
   public String appid = "";
@@ -22,10 +23,12 @@ public final class FileControlReq
   public String checksum = "";
   public Map<Integer, DumpBussinessReq> dumpReq = null;
   public stEnvironment env = null;
+  public Map<String, String> extend_info = null;
   public long file_len = 0L;
   public int model = 0;
   public boolean need_ip_redirect = false;
   public String session = "";
+  public long slice_size = 0L;
   public AuthToken token = null;
   public String uin = "";
   
@@ -39,18 +42,20 @@ public final class FileControlReq
     cache_dumpReq = new HashMap();
     DumpBussinessReq localDumpBussinessReq = new DumpBussinessReq();
     cache_dumpReq.put(Integer.valueOf(0), localDumpBussinessReq);
+    cache_extend_info = new HashMap();
+    cache_extend_info.put("", "");
   }
   
   public FileControlReq() {}
   
-  public FileControlReq(String paramString1, AuthToken paramAuthToken, String paramString2, String paramString3, int paramInt1, long paramLong, stEnvironment paramstEnvironment, int paramInt2, byte[] paramArrayOfByte, String paramString4, boolean paramBoolean, int paramInt3, Map<Integer, DumpBussinessReq> paramMap)
+  public FileControlReq(String paramString1, AuthToken paramAuthToken, String paramString2, String paramString3, int paramInt1, long paramLong1, stEnvironment paramstEnvironment, int paramInt2, byte[] paramArrayOfByte, String paramString4, boolean paramBoolean, int paramInt3, Map<Integer, DumpBussinessReq> paramMap, long paramLong2, Map<String, String> paramMap1)
   {
     this.uin = paramString1;
     this.token = paramAuthToken;
     this.appid = paramString2;
     this.checksum = paramString3;
     this.check_type = paramInt1;
-    this.file_len = paramLong;
+    this.file_len = paramLong1;
     this.env = paramstEnvironment;
     this.model = paramInt2;
     this.biz_req = paramArrayOfByte;
@@ -58,6 +63,8 @@ public final class FileControlReq
     this.need_ip_redirect = paramBoolean;
     this.asy_upload = paramInt3;
     this.dumpReq = paramMap;
+    this.slice_size = paramLong2;
+    this.extend_info = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -75,6 +82,8 @@ public final class FileControlReq
     this.need_ip_redirect = paramJceInputStream.read(this.need_ip_redirect, 10, false);
     this.asy_upload = paramJceInputStream.read(this.asy_upload, 11, false);
     this.dumpReq = ((Map)paramJceInputStream.read(cache_dumpReq, 12, false));
+    this.slice_size = paramJceInputStream.read(this.slice_size, 13, false);
+    this.extend_info = ((Map)paramJceInputStream.read(cache_extend_info, 14, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -99,6 +108,10 @@ public final class FileControlReq
     paramJceOutputStream.write(this.asy_upload, 11);
     if (this.dumpReq != null) {
       paramJceOutputStream.write(this.dumpReq, 12);
+    }
+    paramJceOutputStream.write(this.slice_size, 13);
+    if (this.extend_info != null) {
+      paramJceOutputStream.write(this.extend_info, 14);
     }
   }
 }

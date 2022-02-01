@@ -1,11 +1,9 @@
 package cooperation.qqpim;
 
 import android.os.Bundle;
-import bmdk;
-import bmdn;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
-public class QQPimGetTipsInfoIPC$GetContactTipsRunnable
+class QQPimGetTipsInfoIPC$GetContactTipsRunnable
   implements Runnable
 {
   private String a;
@@ -22,9 +20,9 @@ public class QQPimGetTipsInfoIPC$GetContactTipsRunnable
     try
     {
       Bundle localBundle = new Bundle();
-      localBundle.putString(bmdk.l, this.a);
-      localBundle.putString(bmdk.m, this.b);
-      QIPCServerHelper.getInstance().callClient(bmdk.b, bmdk.c, bmdk.d, localBundle, new bmdn(this));
+      localBundle.putString(QQPimDefineList.l, this.a);
+      localBundle.putString(QQPimDefineList.m, this.b);
+      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.d, localBundle, new QQPimGetTipsInfoIPC.GetContactTipsRunnable.1(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -35,7 +33,7 @@ public class QQPimGetTipsInfoIPC$GetContactTipsRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable
  * JD-Core Version:    0.7.0.1
  */

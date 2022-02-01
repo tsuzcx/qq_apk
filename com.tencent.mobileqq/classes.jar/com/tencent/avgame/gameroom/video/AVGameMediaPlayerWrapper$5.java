@@ -1,23 +1,22 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.superplayer.api.ISuperPlayer;
-import nmi;
 
-public class AVGameMediaPlayerWrapper$5
+class AVGameMediaPlayerWrapper$5
   implements Runnable
 {
-  public AVGameMediaPlayerWrapper$5(nmi paramnmi) {}
+  AVGameMediaPlayerWrapper$5(AVGameMediaPlayerWrapper paramAVGameMediaPlayerWrapper) {}
   
   public void run()
   {
-    if ((nmi.a(this.this$0) != null) && (nmi.a(this.this$0).isPlaying())) {
-      nmi.a(this.this$0).stop();
+    if ((AVGameMediaPlayerWrapper.a(this.this$0) != null) && (AVGameMediaPlayerWrapper.a(this.this$0).isPlaying())) {
+      AVGameMediaPlayerWrapper.a(this.this$0).stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameMediaPlayerWrapper.5
  * JD-Core Version:    0.7.0.1
  */

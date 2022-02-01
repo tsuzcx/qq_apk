@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<FrameLayout android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffffff" />
-    <corners android:radius="3.0dip" />
-</shape>
+    <FrameLayout android:id="@id/cks" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

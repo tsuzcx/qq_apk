@@ -13,11 +13,11 @@ public class AnimatingBall
   implements HippyTKDRefreshAnimation
 {
   public static final int BALL_COUNT = 3;
-  public static final int BALL_MARGIN_H = ImmersiveUtils.a(12.0F);
-  public static final int BALL_MARING_V = ImmersiveUtils.a(18.0F);
-  public static final int BALL_SIZE = ImmersiveUtils.a(3.0F);
-  public static final int CONTENT_HEIGHT = ImmersiveUtils.a(36.0F);
-  static final int INITIAL_Y = -ImmersiveUtils.a(40.0F);
+  public static final int BALL_MARGIN_H = ImmersiveUtils.dpToPx(12.0F);
+  public static final int BALL_MARING_V = ImmersiveUtils.dpToPx(18.0F);
+  public static final int BALL_SIZE = ImmersiveUtils.dpToPx(3.0F);
+  public static final int CONTENT_HEIGHT = ImmersiveUtils.dpToPx(36.0F);
+  static final int INITIAL_Y = -ImmersiveUtils.dpToPx(40.0F);
   static final int MSG_END = 0;
   static final int MSG_START = 0;
   static final String TAG = "AnimatingBall";
@@ -66,7 +66,7 @@ public class AnimatingBall
     this.mAlphaValues = new float[] { 0.2F, 1.0F, 0.2F };
     this.mScaleValues = new float[] { 1.0F, 1.8F, 1.0F };
     this.mRefreshStartDelay = (paramInt * 240);
-    this.mInitialY = (INITIAL_Y + (3 - paramInt) * ImmersiveUtils.a(8.0F));
+    this.mInitialY = (INITIAL_Y + (3 - paramInt) * ImmersiveUtils.dpToPx(8.0F));
     this.mOffsetY = this.mInitialY;
     int i = Math.abs(TARGET_Y);
     if (paramInt == 0) {}
@@ -301,7 +301,7 @@ public class AnimatingBall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.AnimatingBall
  * JD-Core Version:    0.7.0.1
  */

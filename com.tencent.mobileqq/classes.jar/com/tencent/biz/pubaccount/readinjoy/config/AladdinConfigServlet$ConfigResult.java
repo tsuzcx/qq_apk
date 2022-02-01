@@ -3,12 +3,11 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import pks;
 
-public class AladdinConfigServlet$ConfigResult
+class AladdinConfigServlet$ConfigResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<ConfigResult> CREATOR = new pks();
+  public static final Parcelable.Creator<ConfigResult> CREATOR = new AladdinConfigServlet.ConfigResult.1();
   private final int a;
   private final int b;
   private final int c;
@@ -20,7 +19,7 @@ public class AladdinConfigServlet$ConfigResult
     this.c = paramInt3;
   }
   
-  public AladdinConfigServlet$ConfigResult(Parcel paramParcel)
+  AladdinConfigServlet$ConfigResult(Parcel paramParcel)
   {
     this.a = paramParcel.readInt();
     this.b = paramParcel.readInt();
@@ -61,7 +60,7 @@ public class AladdinConfigServlet$ConfigResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult
  * JD-Core Version:    0.7.0.1
  */

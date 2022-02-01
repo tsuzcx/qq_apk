@@ -8,17 +8,23 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bgfz;
-import bhbt;
+import com.tencent.mobileqq.util.TroopGameCardUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopMemberGradeLevelView
   extends LinearLayout
 {
-  private static final int b = ViewUtils.dip2px(16.0F);
-  private static final int c = ViewUtils.dip2px(16.0F);
-  private int a = -1;
+  private static final int c = ViewUtils.a(16.0F);
+  private static final int d = ViewUtils.a(16.0F);
+  private int jdField_a_of_type_Int = -1;
+  private final String jdField_a_of_type_JavaLangString = ".png";
+  private final int b = 8;
+  
+  public TroopMemberGradeLevelView(Context paramContext)
+  {
+    super(paramContext);
+  }
   
   public TroopMemberGradeLevelView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -32,92 +38,103 @@ public class TroopMemberGradeLevelView
     setOrientation(0);
   }
   
-  public TroopMemberGradeLevelView(Context paramContext, LinearLayout paramLinearLayout)
+  private String a(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramContext);
-    setId(2131364559);
-    if (paramLinearLayout != null) {
-      paramLinearLayout.addView(this);
+    switch (paramInt1)
+    {
+    default: 
+      return null;
+    case 2: 
+      return paramString + "1";
+    case 3: 
+      return paramString + "2";
+    case 4: 
+      return paramString + "3";
+    case 5: 
+      return paramString + "4";
+    case 6: 
+      return paramString + "5";
+    case 7: 
+      return paramString + "6";
     }
+    if (paramInt2 > 5) {
+      return paramString + "8";
+    }
+    return paramString + "7";
+  }
+  
+  private String a(int paramInt, String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString)) {}
+    switch (paramInt)
+    {
+    default: 
+      str = null;
+      return str;
+    case 9: 
+      return paramString + "1";
+    case 8: 
+      return paramString + "2";
+    case 7: 
+      return paramString + "3";
+    case 6: 
+      return paramString + "4";
+    }
+    return paramString + "5";
   }
   
   public Bitmap a()
   {
-    Object localObject2 = null;
-    if (this.a <= 0) {
+    if (this.jdField_a_of_type_Int <= 0) {
       return null;
     }
-    int i = this.a / 100000;
-    Object localObject1 = bgfz.a();
-    localObject1 = (String)localObject1 + "aio_game_grade_";
-    switch (i)
+    int i = this.jdField_a_of_type_Int / 100000;
+    int j = this.jdField_a_of_type_Int % 100000 / 10000;
+    Object localObject = TroopGameCardResDownloadManager.a();
+    String str = a(i, j, (String)localObject + "aio_game_grade_");
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    localObject = str;
+    if (i != 8)
     {
-    default: 
-      localObject1 = null;
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        switch (this.a % 100000 / 10000)
-        {
-        default: 
-          localObject1 = localObject2;
-        }
+      str = a(j, str + "_");
+      localObject = str;
+      if (TextUtils.isEmpty(str)) {
+        return null;
       }
-      break;
     }
-    for (;;)
-    {
-      return bhbt.a((String)localObject1);
-      localObject1 = (String)localObject1 + "1_";
-      break;
-      localObject1 = (String)localObject1 + "2_";
-      break;
-      localObject1 = (String)localObject1 + "3_";
-      break;
-      localObject1 = (String)localObject1 + "4_";
-      break;
-      localObject1 = (String)localObject1 + "5_";
-      break;
-      localObject1 = (String)localObject1 + "6_";
-      break;
-      localObject1 = (String)localObject1 + "1.png";
-      continue;
-      localObject1 = (String)localObject1 + "2.png";
-      continue;
-      localObject1 = (String)localObject1 + "3.png";
-      continue;
-      localObject1 = (String)localObject1 + "4.png";
-      continue;
-      localObject1 = (String)localObject1 + "5.png";
-    }
+    return TroopGameCardUtil.a((String)localObject + ".png");
   }
   
   public void setTroopMemberGradeLevel(int paramInt)
   {
-    if (this.a == paramInt)
+    if (this.jdField_a_of_type_Int == paramInt)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopMemberGradeLevelView", 2, "setTroopMemberGradeLevel no change");
       }
       setVisibility(0);
-      return;
     }
-    this.a = paramInt;
-    removeAllViews();
-    setVisibility(8);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(b, c);
-    ImageView localImageView = new ImageView(getContext());
-    Bitmap localBitmap = a();
-    if (localBitmap != null) {
-      localImageView.setImageBitmap(localBitmap);
-    }
-    for (;;)
+    do
     {
-      addView(localImageView, localLayoutParams);
-      setVisibility(0);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberGradeLevelView", 2, "setTroopMemberGradeLevel bitmap is null");
+      this.jdField_a_of_type_Int = paramInt;
+      removeAllViews();
+      setVisibility(8);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(c, d);
+      ImageView localImageView = new ImageView(getContext());
+      Bitmap localBitmap = a();
+      if (localBitmap != null)
+      {
+        localImageView.setImageBitmap(localBitmap);
+        addView(localImageView, localLayoutParams);
+        setVisibility(0);
+        return;
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopMemberGradeLevelView", 2, "setTroopMemberGradeLevel bitmap is null");
   }
   
   public void setTroopMemberGradeLevel(MemberGradeLevelInfo paramMemberGradeLevelInfo)

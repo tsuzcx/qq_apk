@@ -28,7 +28,7 @@
                 "attributes":{
                     "setCornerRadiusString:": "8",
                     "setImageWithURLString:lineup:": [
-                        "http://img.nfa.qq.com/gmaster_test/15916608/gmaster_fphsszvemew_game_cell_bg.png",
+                        "https://img.nfa.qq.com/gmaster_test/15916608/gmaster_fphsszvemew_game_cell_bg.png",
                         "-1"
                     ]
                 }

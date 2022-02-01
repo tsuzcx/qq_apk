@@ -11,20 +11,20 @@ public final class SlaveMasterMsg
   static ArrayList<MarketFaceInfo> cache_vMarketFace;
   static byte[] cache_vOrigMsg;
   static byte[] cache_vReserved;
-  public long lFromUin;
-  public long lToUin;
-  public long uCmd;
-  public long uFromInstId;
-  public long uLastChangeTime;
-  public long uMsgType;
-  public long uSeq;
-  public long uSuperQQBubbleId;
-  public long uToInstId;
-  public ArrayList<MarketFaceInfo> vMarketFace;
-  public byte[] vOrigMsg;
-  public byte[] vReserved;
-  public short wFromApp;
-  public short wToApp;
+  public long lFromUin = 0L;
+  public long lToUin = 0L;
+  public long uCmd = 0L;
+  public long uFromInstId = 0L;
+  public long uLastChangeTime = 0L;
+  public long uMsgType = 0L;
+  public long uSeq = 0L;
+  public long uSuperQQBubbleId = 0L;
+  public long uToInstId = 0L;
+  public ArrayList<MarketFaceInfo> vMarketFace = null;
+  public byte[] vOrigMsg = null;
+  public byte[] vReserved = null;
+  public short wFromApp = 0;
+  public short wToApp = 0;
   
   public SlaveMasterMsg() {}
   

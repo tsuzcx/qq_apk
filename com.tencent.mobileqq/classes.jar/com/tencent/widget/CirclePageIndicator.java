@@ -60,11 +60,11 @@ public class CirclePageIndicator
       return;
     }
     Object localObject = getResources();
-    int i = ((Resources)localObject).getColor(2131165610);
-    int j = ((Resources)localObject).getColor(2131165609);
-    int k = ((Resources)localObject).getColor(2131165611);
-    float f1 = ((Resources)localObject).getDimension(2131296868);
-    float f2 = ((Resources)localObject).getDimension(2131296867);
+    int i = ((Resources)localObject).getColor(2131165612);
+    int j = ((Resources)localObject).getColor(2131165611);
+    int k = ((Resources)localObject).getColor(2131165613);
+    float f1 = ((Resources)localObject).getDimension(2131296888);
+    float f2 = ((Resources)localObject).getDimension(2131296887);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CirclePageIndicator, paramInt, 0);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(2, true);
     this.d = paramAttributeSet.getInt(0, 0);
@@ -120,7 +120,7 @@ public class CirclePageIndicator
     return j;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {}
@@ -230,7 +230,7 @@ public class CirclePageIndicator
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.d == 0)
     {
@@ -468,7 +468,7 @@ public class CirclePageIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.CirclePageIndicator
  * JD-Core Version:    0.7.0.1
  */

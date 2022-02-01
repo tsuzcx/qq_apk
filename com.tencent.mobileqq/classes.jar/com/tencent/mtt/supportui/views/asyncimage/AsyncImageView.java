@@ -250,7 +250,7 @@ public class AsyncImageView
     }
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     this.mIsAttached = true;
     super.onAttachedToWindow();
@@ -264,7 +264,7 @@ public class AsyncImageView
     onDrawableAttached();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     this.mIsAttached = false;
     if ((this.mFadeEnable) && (this.mAlphaAnimator != null)) {
@@ -293,7 +293,7 @@ public class AsyncImageView
   
   protected void onFetchImage(String paramString) {}
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   protected void onSetContent(String paramString) {}
   
@@ -533,7 +533,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.asyncimage.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

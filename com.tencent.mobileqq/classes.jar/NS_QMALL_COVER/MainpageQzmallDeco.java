@@ -14,13 +14,13 @@ public final class MainpageQzmallDeco
   static StrangerSkin cache_stStrangerSkin;
   static QzmallVipWidget cache_stVipWidget = new QzmallVipWidget();
   static ActYellowDiamond cache_stYellowDiamond = new ActYellowDiamond();
-  public UserCmShowQzoneTrack stCmShowQzoneTrack;
-  public CustomTrackDeco stCustomTrack;
-  public QzmallCustomVip stCustomVip;
-  public DataForQboss stQbossData;
-  public StrangerSkin stStrangerSkin;
-  public QzmallVipWidget stVipWidget;
-  public ActYellowDiamond stYellowDiamond;
+  public UserCmShowQzoneTrack stCmShowQzoneTrack = null;
+  public CustomTrackDeco stCustomTrack = null;
+  public QzmallCustomVip stCustomVip = null;
+  public DataForQboss stQbossData = null;
+  public StrangerSkin stStrangerSkin = null;
+  public QzmallVipWidget stVipWidget = null;
+  public ActYellowDiamond stYellowDiamond = null;
   
   static
   {

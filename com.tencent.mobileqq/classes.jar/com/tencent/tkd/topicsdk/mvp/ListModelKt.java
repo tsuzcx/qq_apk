@@ -1,0 +1,12 @@
+package com.tencent.tkd.topicsdk.mvp;
+
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"LoadDataFromNetworkCallback", "BEAN", "COOKIE", "Lkotlin/Function7;", "", "Lkotlin/ParameterName;", "name", "isSuccess", "isEnd", "", "totalSize", "Lkotlin/collections/ArrayList;", "list", "cookie", "errorCode", "", "errorMsg", "", "Ljava/util/ArrayList;", "topicsdk-framework_release"}, k=2, mv={1, 1, 16})
+public final class ListModelKt {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.tkd.topicsdk.mvp.ListModelKt
+ * JD-Core Version:    0.7.0.1
+ */

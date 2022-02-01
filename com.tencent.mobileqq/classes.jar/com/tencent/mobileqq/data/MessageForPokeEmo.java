@@ -6,7 +6,7 @@ import org.json.JSONObject;
 public class MessageForPokeEmo
   extends ChatMessage
 {
-  public boolean isNeedPlayed;
+  public boolean isNeedPlayed = false;
   public int pokeemoId;
   public int pokeemoPressCount;
   public String summary;
@@ -74,7 +74,7 @@ public class MessageForPokeEmo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPokeEmo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.pic;
 
-import azjv;
-import azke;
-
 class PicPreDownloader$5
   implements Runnable
 {
-  PicPreDownloader$5(PicPreDownloader paramPicPreDownloader, azke paramazke) {}
+  PicPreDownloader$5(PicPreDownloader paramPicPreDownloader, PicReq paramPicReq) {}
   
   public void run()
   {
-    azjv.a(this.a, PicPreDownloader.a(this.this$0));
+    PicBusiManager.a(this.a);
   }
 }
 

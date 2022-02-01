@@ -9,7 +9,7 @@ public final class cell_video_action
 {
   static s_button cache_rooftop_button = new s_button();
   public String relation_desc = "";
-  public s_button rooftop_button;
+  public s_button rooftop_button = null;
   
   public cell_video_action() {}
   

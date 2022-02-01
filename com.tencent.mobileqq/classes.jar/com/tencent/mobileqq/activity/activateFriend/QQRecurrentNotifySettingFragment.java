@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsGetMsgRsp;
-import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,11 +18,12 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import anvx;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -45,7 +45,7 @@ public class QQRecurrentNotifySettingFragment
     localIntent.putExtra("key_msgid", paramString1);
     localIntent.putExtra("key_busid", paramString2);
     localIntent.putExtra("key_domain", paramString3);
-    aeow.a(paramActivity, localIntent, PublicTransFragmentActivity.class, QQRecurrentNotifySettingFragment.class, paramInt);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicTransFragmentActivity.class, QQRecurrentNotifySettingFragment.class, paramInt);
   }
   
   private void a(String paramString)
@@ -59,8 +59,8 @@ public class QQRecurrentNotifySettingFragment
     {
       return;
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestHeight = UIUtils.dip2px(getActivity(), 28.0F);
-      localURLDrawableOptions.mRequestWidth = UIUtils.dip2px(getActivity(), 28.0F);
+      localURLDrawableOptions.mRequestHeight = UIUtils.a(getActivity(), 28.0F);
+      localURLDrawableOptions.mRequestWidth = UIUtils.a(getActivity(), 28.0F);
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     } while (paramString == null);
     if (paramString.getStatus() == 2) {
@@ -78,12 +78,12 @@ public class QQRecurrentNotifySettingFragment
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131560968, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131561054, paramViewGroup, false);
   }
   
   public void a()
   {
-    QQToast.a(getActivity(), anvx.a(2131710037), 0).a();
+    QQToast.a(getActivity(), HardCodeUtil.a(2131710553), 0).a();
   }
   
   public void a(AcsGetMsgRsp paramAcsGetMsgRsp)
@@ -112,7 +112,7 @@ public class QQRecurrentNotifySettingFragment
       a(paramAcsGetMsgRsp.busi_logo);
       b();
       return;
-      str1 = String.format(getResources().getString(2131699128), new Object[] { paramAcsGetMsgRsp.busi_name });
+      str1 = String.format(getResources().getString(2131699705), new Object[] { paramAcsGetMsgRsp.busi_name });
       break;
     }
     label109:
@@ -128,22 +128,22 @@ public class QQRecurrentNotifySettingFragment
     {
       bool = true;
       this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_b_of_type_Int = paramInt;
       this.jdField_a_of_type_JavaLangString = paramString;
       if (!this.jdField_a_of_type_Boolean) {
         break label55;
       }
       this.jdField_a_of_type_AndroidWidgetButton.setTag("1");
-      a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
     label55:
-    while (this.jdField_a_of_type_Int == 2)
+    while (this.jdField_b_of_type_Int == 2)
     {
       return;
       bool = false;
       break;
     }
-    a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
   
   public void c(int paramInt, String paramString)
@@ -174,13 +174,13 @@ public class QQRecurrentNotifySettingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362703));
-    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369422)).setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369423));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362730));
+    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369681)).setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369682));
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369424));
-    this.b = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363866));
-    this.b.setOnClickListener(this);
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369683));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363963));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -188,7 +188,7 @@ public class QQRecurrentNotifySettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQRecurrentNotifySettingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ public final class SvcRespPushMsg
   static byte[] cache_bytes_push_token;
   static DeviceInfo cache_deviceInfo = new DeviceInfo();
   static ArrayList<DelMsgInfo> cache_vDelInfos = new ArrayList();
-  public byte[] bytes_push_token;
-  public DeviceInfo deviceInfo;
-  public long lUin;
-  public int service_type;
-  public int svrip;
-  public ArrayList<DelMsgInfo> vDelInfos;
+  public byte[] bytes_push_token = null;
+  public DeviceInfo deviceInfo = null;
+  public long lUin = 0L;
+  public int service_type = 0;
+  public int svrip = 0;
+  public ArrayList<DelMsgInfo> vDelInfos = null;
   
   static
   {

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.util.ArrayMap;
-import android.text.TextUtils;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -44,15 +43,7 @@ class BaseBrowserFragment$1
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
     paramWebView = paramWebView.getUrl();
     QMLog.d("BaseBrowserFragment", "onReceivedError " + paramWebView + "; webResourceError : " + paramString1 + ", errCode = " + paramInt + ", failingUrl=" + paramString2);
-    if (this.this$0.mCoreDumpData == null) {
-      this.this$0.mCoreDumpData = new ArrayMap(4);
-    }
-    this.this$0.mCoreDumpData.put("errorCode", Integer.valueOf(paramInt));
-    this.this$0.mCoreDumpData.put("errorMsg", paramString1);
-    this.this$0.mCoreDumpData.put("requestUrl", paramString2);
-    if ((this.this$0.mBrowerEngin != null) && (paramInt >= 400)) {
-      this.this$0.mBrowerEngin.handleEvent(paramWebView, 1L, this.this$0.mCoreDumpData);
-    }
+    BaseBrowserFragment.access$300(this.this$0, paramInt, paramString1, paramString2, paramWebView);
   }
   
   @TargetApi(23)
@@ -82,24 +73,16 @@ class BaseBrowserFragment$1
   {
     QMLog.i("BaseBrowserFragment", "onReceivedHttpError:" + paramWebResourceResponse.getStatusCode());
     super.onReceivedHttpError(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
-    if (this.this$0.mCoreDumpData == null) {
-      this.this$0.mCoreDumpData = new ArrayMap(4);
-    }
-    this.this$0.mCoreDumpData.put("errorCode", Integer.valueOf(paramWebResourceResponse.getStatusCode()));
-    this.this$0.mCoreDumpData.put("errorMsg", paramWebResourceResponse.getReasonPhrase());
-    this.this$0.mCoreDumpData.put("requestUrl", paramWebResourceRequest.getUrl().toString());
-    if ((this.this$0.mBrowerEngin != null) && (paramWebResourceResponse.getStatusCode() >= 400)) {
-      this.this$0.mBrowerEngin.handleEvent(paramWebView.getUrl(), 1L, this.this$0.mCoreDumpData);
-    }
+    BaseBrowserFragment.access$300(this.this$0, paramWebResourceResponse.getStatusCode(), paramWebResourceResponse.getReasonPhrase(), paramWebResourceRequest.getUrl().toString(), paramWebView.getUrl());
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
     QMLog.d("BaseBrowserFragment", "shouldOverrideUrlLoading " + paramString);
-    if ((TextUtils.isEmpty(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {
+    if (BaseBrowserFragment.access$000(this.this$0, paramString)) {
       QMLog.e("BaseBrowserFragment", "" + new StringBuilder("shouldOverrideUrlLoading fail , url=[").append(paramString).append("]."));
     }
-    label162:
+    label148:
     do
     {
       for (;;)
@@ -110,22 +93,19 @@ class BaseBrowserFragment$1
         {
           return super.shouldOverrideUrlLoading(paramWebView, str);
           if (!paramString.startsWith("http://jsbridge/")) {
-            break label162;
+            break label148;
           }
         }
       }
-      if ((paramString.startsWith("mqqapi://")) || (paramString.startsWith("weixin://"))) {
-        break;
-      }
       String str = paramString;
-    } while (!paramString.startsWith("sms://"));
-    BaseBrowserFragment.access$000(this.this$0).getContext().startActivity(new Intent("android.intent.action.VIEW", Uri.parse(paramString)));
+    } while (!BaseBrowserFragment.access$100(this.this$0, paramString));
+    BaseBrowserFragment.access$200(this.this$0).getContext().startActivity(new Intent("android.intent.action.VIEW", Uri.parse(paramString)));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.BaseBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

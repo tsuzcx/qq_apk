@@ -1,9 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import bpsv;
-
 class Game3DNativeEvent
-  implements bpsv
+  implements GameEvent.GestureEventListener
 {
   public native void gestureEventNative(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   
@@ -15,7 +13,7 @@ class Game3DNativeEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.ptvfilter.material.Game3DNativeEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class AuthDevActivity$14
   implements Runnable
@@ -11,12 +11,12 @@ class AuthDevActivity$14
   {
     try
     {
-      if ((AuthDevActivity.a(this.this$0) != null) && (AuthDevActivity.a(this.this$0).isShowing()))
+      if ((AuthDevActivity.access$3100(this.this$0) != null) && (AuthDevActivity.access$3100(this.this$0).isShowing()))
       {
-        AuthDevActivity.a(this.this$0).dismiss();
-        AuthDevActivity.a(this.this$0).cancel();
+        AuthDevActivity.access$3100(this.this$0).dismiss();
+        AuthDevActivity.access$3100(this.this$0).cancel();
       }
-      AuthDevActivity.a(this.this$0, null);
+      AuthDevActivity.access$3102(this.this$0, null);
       return;
     }
     catch (Throwable localThrowable)
@@ -30,7 +30,7 @@ class AuthDevActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevActivity.14
  * JD-Core Version:    0.7.0.1
  */

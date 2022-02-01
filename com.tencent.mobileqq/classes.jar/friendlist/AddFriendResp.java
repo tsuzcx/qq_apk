@@ -14,17 +14,17 @@ public final class AddFriendResp
   static byte[] cache_sig = (byte[])new byte[1];
   static byte[] cache_verify;
   public String ErrorString = "";
-  public long adduin;
-  public int adduinsetting;
-  public short errorCode;
-  public byte myAllowFlag;
-  public byte myfriendgroupid;
-  public byte[] name;
-  public byte[] name1;
-  public int result;
-  public byte[] sig;
-  public long uin;
-  public byte[] verify;
+  public long adduin = 0L;
+  public int adduinsetting = 0;
+  public short errorCode = 0;
+  public byte myAllowFlag = 0;
+  public byte myfriendgroupid = 0;
+  public byte[] name = null;
+  public byte[] name1 = null;
+  public int result = 0;
+  public byte[] sig = null;
+  public long uin = 0L;
+  public byte[] verify = null;
   
   static
   {
@@ -99,7 +99,7 @@ public final class AddFriendResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.AddFriendResp
  * JD-Core Version:    0.7.0.1
  */

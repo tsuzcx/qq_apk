@@ -2,7 +2,9 @@ package com.tencent.mobileqq.data;
 
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 
+@KeepClassConstructor
 public class RoamSetting
   extends Entity
 {
@@ -39,7 +41,7 @@ public class RoamSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RoamSetting
  * JD-Core Version:    0.7.0.1
  */

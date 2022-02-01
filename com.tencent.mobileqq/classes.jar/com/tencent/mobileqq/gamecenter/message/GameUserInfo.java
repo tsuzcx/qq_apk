@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import avec;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.gamecenter.protocol.GameCenterUnissoHandler;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 
 public class GameUserInfo
   extends Entity
 {
-  public static final String TAG = avec.a + "GameUserInfo";
+  public static final String TAG = GameCenterUnissoHandler.a + "GameUserInfo";
   public String mAppId;
   public String mFaceUrl;
   public String mLevelPic;
@@ -22,6 +22,7 @@ public class GameUserInfo
   public long mSaveTs;
   public int mSex;
   public int mSwitchInGame;
+  public String mUin;
   public long mUpdateTs;
   
   public static boolean isUsrInfoUpdate(GameUserInfo paramGameUserInfo1, GameUserInfo paramGameUserInfo2)
@@ -40,7 +41,7 @@ public class GameUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.GameUserInfo
  * JD-Core Version:    0.7.0.1
  */

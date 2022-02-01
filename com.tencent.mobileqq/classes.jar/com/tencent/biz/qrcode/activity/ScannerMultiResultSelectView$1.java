@@ -4,12 +4,11 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import zmh;
 
 class ScannerMultiResultSelectView$1
   implements Runnable
 {
-  ScannerMultiResultSelectView$1(ScannerMultiResultSelectView paramScannerMultiResultSelectView, zmh paramzmh) {}
+  ScannerMultiResultSelectView$1(ScannerMultiResultSelectView paramScannerMultiResultSelectView, ScannerMultiResultSelectView.ImageData paramImageData) {}
   
   public void run()
   {
@@ -22,7 +21,7 @@ class ScannerMultiResultSelectView$1
     try
     {
       if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-        ScannerMultiResultSelectView.a(this.this$0, PhotoUtils.getBitmapFromFile(this.a.jdField_a_of_type_JavaLangString, ViewUtils.getScreenWidth(), ViewUtils.getScreenHeight()));
+        ScannerMultiResultSelectView.a(this.this$0, PhotoUtils.getBitmapFromFile(this.a.jdField_a_of_type_JavaLangString, ViewUtils.a(), ViewUtils.b()));
       }
       for (;;)
       {
@@ -47,7 +46,7 @@ class ScannerMultiResultSelectView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.ScannerMultiResultSelectView.1
  * JD-Core Version:    0.7.0.1
  */

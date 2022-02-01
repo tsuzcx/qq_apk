@@ -19,7 +19,7 @@ public class CouponEntity
   public int cid;
   public String detail;
   public long etime;
-  public boolean isNew;
+  public boolean isNew = false;
   public int is_read_able;
   public int is_valid;
   public String name;
@@ -88,7 +88,7 @@ public class CouponEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.CouponEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -15,7 +14,7 @@ public class QQVasH5PayBrowserActivity
 {
   public QQVasH5PayBrowserActivity()
   {
-    this.a = QQVasH5PayBrowserActivity.QQVasH5PayBrowserFragment.class;
+    this.mFragmentClass = QQVasH5PayBrowserActivity.QQVasH5PayBrowserFragment.class;
   }
   
   @Override
@@ -60,14 +59,14 @@ public class QQVasH5PayBrowserActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    getWindow().setBackgroundDrawableResource(2131167296);
-    findViewById(2131363780).setBackgroundResource(2131167296);
+    getWindow().setBackgroundDrawableResource(2131167305);
+    findViewById(2131363879).setBackgroundResource(2131167305);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

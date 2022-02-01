@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.qassistant.wake.aicore;
 
-import bakl;
-import baod;
+import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class WakeDataSaveHelper$1
+class WakeDataSaveHelper$1
   implements Runnable
 {
-  public WakeDataSaveHelper$1(baod parambaod, LinkedList paramLinkedList, float paramFloat, int paramInt) {}
+  WakeDataSaveHelper$1(WakeDataSaveHelper paramWakeDataSaveHelper, LinkedList paramLinkedList, float paramFloat, int paramInt) {}
   
   public void run()
   {
-    baod.a(this.this$0, this.jdField_a_of_type_JavaUtilLinkedList, Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_Int);
+    WakeDataSaveHelper.a(this.this$0, this.jdField_a_of_type_JavaUtilLinkedList, Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_Int);
     ((AtomicBoolean)this.this$0.b.get(this.jdField_a_of_type_Int)).set(false);
-    bakl.a("HelloQQWake", "saveData " + this.jdField_a_of_type_Int + ":" + this.jdField_a_of_type_Float);
+    AssistantUtils.a("HelloQQWake", "saveData " + this.jdField_a_of_type_Int + ":" + this.jdField_a_of_type_Float);
   }
 }
 

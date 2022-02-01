@@ -5,10 +5,12 @@ import android.app.ActivityManager.TaskDescription;
 import android.content.ClipData;
 import android.content.ClipData.Item;
 import android.content.ClipboardManager;
-import android.graphics.Rect;
+import android.content.ContentResolver;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.Window;
+import androidx.annotation.VisibleForTesting;
+import io.flutter.Log;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.AppSwitcherDescription;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.ClipboardContentFormat;
@@ -17,16 +19,18 @@ import io.flutter.embedding.engine.systemchannels.PlatformChannel.PlatformMessag
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SoundType;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemChromeStyle;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemUiOverlay;
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class PlatformPlugin
 {
   public static final int DEFAULT_SYSTEM_UI = 1280;
+  private static final String TAG = "PlatformPlugin";
   private final Activity activity;
   private PlatformChannel.SystemChromeStyle currentTheme;
   private int mEnabledOverlays;
-  private final PlatformChannel.PlatformMessageHandler mPlatformMessageHandler = new PlatformPlugin.1(this);
+  @VisibleForTesting
+  final PlatformChannel.PlatformMessageHandler mPlatformMessageHandler = new PlatformPlugin.1(this);
   private final PlatformChannel platformChannel;
   
   public PlatformPlugin(Activity paramActivity, PlatformChannel paramPlatformChannel)
@@ -39,20 +43,34 @@ public class PlatformPlugin
   
   private CharSequence getClipboardData(PlatformChannel.ClipboardContentFormat paramClipboardContentFormat)
   {
-    ClipData localClipData = ((ClipboardManager)this.activity.getSystemService("clipboard")).getPrimaryClip();
-    if (localClipData == null) {
+    Object localObject = (ClipboardManager)this.activity.getSystemService("clipboard");
+    if (!((ClipboardManager)localObject).hasPrimaryClip()) {
       return null;
     }
-    if ((paramClipboardContentFormat == null) || (paramClipboardContentFormat == PlatformChannel.ClipboardContentFormat.PLAIN_TEXT)) {
-      return localClipData.getItemAt(0).coerceToText(this.activity);
+    try
+    {
+      localObject = ((ClipboardManager)localObject).getPrimaryClip();
+      if (localObject == null) {
+        return null;
+      }
+      if ((paramClipboardContentFormat == null) || (paramClipboardContentFormat == PlatformChannel.ClipboardContentFormat.PLAIN_TEXT))
+      {
+        paramClipboardContentFormat = ((ClipData)localObject).getItemAt(0);
+        if (paramClipboardContentFormat.getUri() != null) {
+          this.activity.getContentResolver().openTypedAssetFileDescriptor(paramClipboardContentFormat.getUri(), "text/*", null);
+        }
+        paramClipboardContentFormat = paramClipboardContentFormat.coerceToText(this.activity);
+        return paramClipboardContentFormat;
+      }
+      return null;
     }
-    return null;
-  }
-  
-  private List<Rect> getSystemGestureExclusionRects()
-  {
-    if (Build.VERSION.SDK_INT >= 29) {
-      return this.activity.getWindow().getDecorView().getSystemGestureExclusionRects();
+    catch (FileNotFoundException paramClipboardContentFormat)
+    {
+      return null;
+    }
+    catch (SecurityException paramClipboardContentFormat)
+    {
+      Log.w("PlatformPlugin", "Attempted to get clipboard data that requires additional permission(s).\nSee the exception details for which permission(s) are required, and consider adding them to your Android Manifest as described in:\nhttps://developer.android.com/guide/topics/permissions/overview", paramClipboardContentFormat);
     }
     return null;
   }
@@ -97,13 +115,13 @@ public class PlatformPlugin
   {
     int i;
     int j;
-    if (paramList.size() == 0)
+    if ((paramList.size() == 0) && (Build.VERSION.SDK_INT >= 19))
     {
       i = 5894;
       j = 0;
-      label15:
+      label23:
       if (j >= paramList.size()) {
-        break label102;
+        break label110;
       }
       PlatformChannel.SystemUiOverlay localSystemUiOverlay = (PlatformChannel.SystemUiOverlay)paramList.get(j);
       switch (PlatformPlugin.2.$SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$SystemUiOverlay[localSystemUiOverlay.ordinal()])
@@ -113,14 +131,14 @@ public class PlatformPlugin
     for (;;)
     {
       j += 1;
-      break label15;
+      break label23;
       i = 1798;
       break;
       i = i & 0xFFFFFDFF & 0xFFFFFFFD;
       continue;
       i &= 0xFFFFFFFB;
     }
-    label102:
+    label110:
     this.mEnabledOverlays = i;
     updateSystemUiOverlays();
   }
@@ -188,37 +206,6 @@ public class PlatformPlugin
     }
   }
   
-  private void setSystemGestureExclusionRects(ArrayList<Rect> paramArrayList)
-  {
-    if (Build.VERSION.SDK_INT < 29) {
-      return;
-    }
-    this.activity.getWindow().getDecorView().setSystemGestureExclusionRects(paramArrayList);
-  }
-  
-  private void vibrateHapticFeedback(PlatformChannel.HapticFeedbackType paramHapticFeedbackType)
-  {
-    View localView = this.activity.getWindow().getDecorView();
-    switch (PlatformPlugin.2.$SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$HapticFeedbackType[paramHapticFeedbackType.ordinal()])
-    {
-    default: 
-      return;
-    case 5: 
-      localView.performHapticFeedback(4);
-      return;
-    case 4: 
-      localView.performHapticFeedback(6);
-      return;
-    case 3: 
-      localView.performHapticFeedback(3);
-      return;
-    case 2: 
-      localView.performHapticFeedback(1);
-      return;
-    }
-    localView.performHapticFeedback(0);
-  }
-  
   public void destroy()
   {
     this.platformChannel.setPlatformMessageHandler(null);
@@ -231,10 +218,40 @@ public class PlatformPlugin
       setSystemChromeSystemUIOverlayStyle(this.currentTheme);
     }
   }
+  
+  @VisibleForTesting
+  void vibrateHapticFeedback(PlatformChannel.HapticFeedbackType paramHapticFeedbackType)
+  {
+    View localView = this.activity.getWindow().getDecorView();
+    switch (PlatformPlugin.2.$SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$HapticFeedbackType[paramHapticFeedbackType.ordinal()])
+    {
+    default: 
+    case 5: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+        } while (Build.VERSION.SDK_INT < 21);
+        localView.performHapticFeedback(4);
+        return;
+      } while (Build.VERSION.SDK_INT < 23);
+      localView.performHapticFeedback(6);
+      return;
+    case 3: 
+      localView.performHapticFeedback(3);
+      return;
+    case 2: 
+      localView.performHapticFeedback(1);
+      return;
+    }
+    localView.performHapticFeedback(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformPlugin
  * JD-Core Version:    0.7.0.1
  */

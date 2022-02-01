@@ -1,17 +1,14 @@
 package com.tencent.mobileqq.colornote.list;
 
-import aqpu;
-import aqpv;
-
-public class DefaultItemBuilder$1$1$1
+class DefaultItemBuilder$1$1$1
   implements Runnable
 {
-  public DefaultItemBuilder$1$1$1(aqpv paramaqpv) {}
+  DefaultItemBuilder$1$1$1(DefaultItemBuilder.1.1 param1) {}
   
   public void run()
   {
     if (!this.a.a.jdField_a_of_type_Boolean) {
-      aqpu.a(this.a.a.this$0, this.a.a.jdField_a_of_type_Aqpk);
+      DefaultItemBuilder.a(this.a.a.this$0, this.a.a.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$ViewHolder);
     }
   }
 }

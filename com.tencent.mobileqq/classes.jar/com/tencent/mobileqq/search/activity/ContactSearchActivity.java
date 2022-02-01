@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.search.activity;
 
-import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anvx;
-import bcal;
-import bdla;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ContactSearchActivity
   extends BaseSearchActivity
 {
-  private bcal a;
+  private ContactSearchActivity.GroupFileSearchListener a;
   private boolean c;
   private int d;
   private int e;
@@ -52,27 +50,27 @@ public class ContactSearchActivity
     localObject = ((Intent)localObject).getStringExtra("watch_together_uin");
     if (i != 0)
     {
-      this.jdField_a_of_type_Bcal = new bcal(this, i, j, (String)localObject);
-      bdla.b(null, "dc00898", "", "", "0X800B625", "0X800B625", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqSearchActivityContactSearchActivity$GroupFileSearchListener = new ContactSearchActivity.GroupFileSearchListener(this, i, j, (String)localObject);
+      ReportController.b(null, "dc00898", "", "", "0X800B625", "0X800B625", 0, 0, "", "", "", "");
     }
   }
   
   protected BaseSearchFragment a()
   {
-    return ContactSearchFragment.a(this.e, this.d, null, null, this.jdField_a_of_type_Bcal, this.c, this.f, -1L);
+    return ContactSearchFragment.a(this.e, this.d, null, null, this.jdField_a_of_type_ComTencentMobileqqSearchActivityContactSearchActivity$GroupFileSearchListener, this.c, this.f, -1L);
   }
   
   protected String a()
   {
     if ((getIntent() != null) && (getIntent().getIntExtra("key_from_type", 0) != 0)) {
-      return anvx.a(2131699077);
+      return HardCodeUtil.a(2131699446);
     }
     switch (this.d)
     {
     default: 
-      return anvx.a(2131702047);
+      return HardCodeUtil.a(2131702595);
     }
-    return anvx.a(2131702030);
+    return HardCodeUtil.a(2131702577);
   }
   
   @Override
@@ -92,8 +90,8 @@ public class ContactSearchActivity
         paramIntent = paramIntent.getStringExtra("roomId");
         if (paramIntent != null)
         {
-          TroopUtils.enterTroopAio(this, paramIntent, true);
-          bdla.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+          TroopUtils.a(this, paramIntent, true);
+          ReportController.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
         }
       }
     }
@@ -125,7 +123,7 @@ public class ContactSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchActivity
  * JD-Core Version:    0.7.0.1
  */

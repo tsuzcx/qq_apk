@@ -9,7 +9,7 @@ public final class ResponeQueryNewUserRecommendedListNotBind
   extends JceStruct
 {
   static ArrayList<RecommendedContactInfo> cache_RecommendedContacts = new ArrayList();
-  public ArrayList<RecommendedContactInfo> RecommendedContacts;
+  public ArrayList<RecommendedContactInfo> RecommendedContacts = null;
   public long lastUsedFlag = 1L;
   
   static

@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import biaj;
-import biaq;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.vip.lianghao.RegisterLiangHaoHelper;
+import com.tencent.mobileqq.vip.lianghao.data.LiangHaoUinData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class RegisterLiangHaoPayFailLayoutView
@@ -16,7 +16,7 @@ public class RegisterLiangHaoPayFailLayoutView
   implements View.OnClickListener
 {
   private View jdField_a_of_type_AndroidViewView;
-  private biaj jdField_a_of_type_Biaj;
+  private RegisterLiangHaoHelper jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper;
   private LiangHaoView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView;
   
   public RegisterLiangHaoPayFailLayoutView(Context paramContext)
@@ -40,33 +40,33 @@ public class RegisterLiangHaoPayFailLayoutView
   private void a()
   {
     setOrientation(1);
-    int i = AIOUtils.dp2px(27.5F, getResources());
+    int i = Utils.a(27.5F, getResources());
     setPadding(i, 0, i, 0);
-    LayoutInflater.from(getContext()).inflate(2131561957, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131370060));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370059);
+    LayoutInflater.from(getContext()).inflate(2131562093, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131370333));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370332);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Biaj.b(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.a);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper.b(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setLiangHaoHelper(biaj parambiaj)
+  public void setLiangHaoHelper(RegisterLiangHaoHelper paramRegisterLiangHaoHelper)
   {
-    this.jdField_a_of_type_Biaj = parambiaj;
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper = paramRegisterLiangHaoHelper;
   }
   
-  public void setUin(biaq parambiaq)
+  public void setUin(LiangHaoUinData paramLiangHaoUinData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(parambiaq);
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(paramLiangHaoUinData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoPayFailLayoutView
  * JD-Core Version:    0.7.0.1
  */

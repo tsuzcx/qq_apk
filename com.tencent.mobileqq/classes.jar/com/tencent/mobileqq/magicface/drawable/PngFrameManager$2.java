@@ -2,29 +2,26 @@ package com.tencent.mobileqq.magicface.drawable;
 
 import android.os.Handler;
 import android.os.Message;
-import asdi;
-import awra;
-import awrg;
-import awrh;
-import awyr;
-import bhyo;
-import bhyq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import java.io.File;
 
-public class PngFrameManager$2
+class PngFrameManager$2
   implements Runnable
 {
-  public PngFrameManager$2(awra paramawra, awrg paramawrg) {}
+  PngFrameManager$2(PngFrameManager paramPngFrameManager, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
   
   public void run()
   {
     File localFile = new File(EmoticonUtils.emoticonJsonFilePath.replace("[epId]", this.a.jdField_a_of_type_JavaLangString));
-    awyr localawyr = (awyr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER);
-    ??? = localawyr.a(this.a.jdField_a_of_type_JavaLangString);
+    EmoticonManager localEmoticonManager = (EmoticonManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER);
+    ??? = localEmoticonManager.a(this.a.jdField_a_of_type_JavaLangString);
     Object localObject1 = ???;
     if (??? == null)
     {
@@ -39,22 +36,22 @@ public class PngFrameManager$2
         if (!localFile.exists()) {
           break label166;
         }
-        this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Awrh.a(localFile);
+        this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
         this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.a).sendToTarget();
         ((EmoticonPackage)localObject1).rscType = this.a.jdField_a_of_type_Int;
-        localawyr.a((EmoticonPackage)localObject1);
+        localEmoticonManager.a((EmoticonPackage)localObject1);
       }
       label166:
-      bhyo localbhyo;
+      DownloadTask localDownloadTask;
       do
       {
         return;
-        localbhyo = new bhyo(asdi.a(this.a.jdField_a_of_type_JavaLangString), localFile);
-        localbhyo.j = true;
-      } while ((bhyq.a(localbhyo, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.this$0.jdField_a_of_type_Awrh == null) || (this.this$0.jdField_a_of_type_AndroidOsHandler == null));
-      this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_Awrh.a(localFile);
+        localDownloadTask = new DownloadTask(EmosmUtils.a(this.a.jdField_a_of_type_JavaLangString), localFile);
+        localDownloadTask.j = true;
+      } while ((DownloaderFactory.a(localDownloadTask, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil == null) || (this.this$0.jdField_a_of_type_AndroidOsHandler == null));
+      this.a.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
       ((EmoticonPackage)localObject1).rscType = this.a.jdField_a_of_type_Int;
-      localawyr.a((EmoticonPackage)localObject1);
+      localEmoticonManager.a((EmoticonPackage)localObject1);
       this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.a).sendToTarget();
     }
   }

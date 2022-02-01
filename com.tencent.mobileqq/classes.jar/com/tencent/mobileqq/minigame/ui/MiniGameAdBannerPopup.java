@@ -17,7 +17,6 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bizw;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -26,17 +25,17 @@ import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import common.config.service.QzoneConfig;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import cooperation.vip.pb.TianShuAccess.MapEntry;
 import cooperation.vip.pb.TianShuAccess.RspEntry;
-import cooperation.vip.tianshu.TianShuAdPosItemData;
 import cooperation.vip.tianshu.TianShuManager;
-import cooperation.vip.tianshu.TianShuReportData;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -47,10 +46,10 @@ public class MiniGameAdBannerPopup
 {
   private static String APPID_BLACK_LIST;
   private static String APPID_WHITE_LIST;
-  private static MiniGameAdBannerPopup.GetAdCallback GET_AD_CALLBACK;
+  private static MiniGameAdBannerPopup.GetAdCallback GET_AD_CALLBACK = null;
   private static final String PREF_KEY_CURRENT_SHOW_TIMES = "pref_key_banner_ad_current_show_times";
   private static final String PREF_KEY_LAST_SHOW_TIME_MILLIS = "pref_key_banner_ad_popup_last_show_time_millis";
-  private static String REFER_BLACK_LIST = QzoneConfig.getInstance().getConfig("qqminiapp", "banner_ad_popup_refer_black_list", "");
+  private static String REFER_BLACK_LIST;
   private static String REFER_WHITE_LIST;
   private static int SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH = QzoneConfig.getInstance().getConfig("qqminiapp", "banner_ad_popup_show_delay_seconds_after_game_launch", 0);
   private static final String TAG = "MiniGameAdBannerPopup";
@@ -65,6 +64,7 @@ public class MiniGameAdBannerPopup
     APPID_WHITE_LIST = QzoneConfig.getInstance().getConfig("qqminiapp", "banner_ad_popup_appid_white_list", "");
     APPID_BLACK_LIST = QzoneConfig.getInstance().getConfig("qqminiapp", "banner_ad_popup_appid_black_list", "");
     REFER_WHITE_LIST = QzoneConfig.getInstance().getConfig("qqminiapp", "banner_ad_popup_refer_white_list", "");
+    REFER_BLACK_LIST = QzoneConfig.getInstance().getConfig("qqminiapp", "banner_ad_popup_refer_black_list", "");
   }
   
   private static boolean allowShowForAppId(MiniAppConfig paramMiniAppConfig)
@@ -237,8 +237,8 @@ public class MiniGameAdBannerPopup
     try
     {
       TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-      localTianShuAdPosItemData.mPosId = 258;
-      localTianShuAdPosItemData.mNeedCnt = 1;
+      localTianShuAdPosItemData.jdField_a_of_type_Int = 258;
+      localTianShuAdPosItemData.b = 1;
       GET_AD_CALLBACK = new MiniGameAdBannerPopup.GetAdCallback(paramContext, paramMiniAppConfig);
       TianShuManager.getInstance().requestAdv(Collections.singletonList(localTianShuAdPosItemData), GET_AD_CALLBACK);
       return;
@@ -251,20 +251,20 @@ public class MiniGameAdBannerPopup
   
   private static void handleGetAdResult(Context paramContext, MiniAppConfig paramMiniAppConfig, boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    Object localObject6 = null;
-    Object localObject9 = null;
-    Object localObject1 = null;
-    Object localObject7 = null;
     Iterator localIterator = null;
+    Object localObject7 = null;
+    Object localObject9 = null;
+    Object localObject6 = null;
     Object localObject4 = null;
-    Object localObject3 = null;
-    Object localObject8 = null;
+    Object localObject1 = null;
     Object localObject2 = null;
+    Object localObject8 = null;
+    Object localObject3 = null;
     Object localObject5;
     if ((paramBoolean) && (paramGetAdsRsp != null))
     {
       if (paramGetAdsRsp.mapAds.isEmpty()) {
-        break label969;
+        break label975;
       }
       paramGetAdsRsp = (TianShuAccess.RspEntry)paramGetAdsRsp.mapAds.get(0);
       if ((paramGetAdsRsp != null) && (paramGetAdsRsp.value != null) && (!paramGetAdsRsp.value.lst.isEmpty()))
@@ -273,17 +273,23 @@ public class MiniGameAdBannerPopup
         if ((localAdItem != null) && (localAdItem.argList != null) && (!localAdItem.argList.isEmpty()))
         {
           localIterator = localAdItem.argList.get().iterator();
-          paramGetAdsRsp = localObject9;
-          localObject1 = localObject7;
+          paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject7;
+          localObject1 = localObject6;
+          localObject9 = localAdItem;
+          localObject8 = localObject3;
+          localObject4 = localObject2;
+          localObject6 = localObject1;
+          localObject7 = paramGetAdsRsp;
           if (localIterator.hasNext())
           {
             localObject4 = (TianShuAccess.MapEntry)localIterator.next();
             if ("type".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
             {
               localObject4 = ((TianShuAccess.MapEntry)localObject4).value.get();
-              paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-              localObject3 = localObject4;
-              localObject4 = localObject2;
+              paramGetAdsRsp = localObject2;
+              localObject2 = localObject4;
+              localObject4 = localObject3;
+              localObject3 = localObject2;
               localObject2 = localObject1;
               localObject1 = paramGetAdsRsp;
               paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject4;
@@ -292,8 +298,8 @@ public class MiniGameAdBannerPopup
             {
               localObject4 = localObject3;
               localObject6 = localObject2;
-              localObject2 = paramGetAdsRsp;
-              localObject3 = localObject1;
+              localObject3 = paramGetAdsRsp;
+              localObject2 = localObject1;
               localObject1 = localObject6;
               paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject4;
               break;
@@ -301,28 +307,28 @@ public class MiniGameAdBannerPopup
               {
                 localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
                 localObject4 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject2;
-                localObject1 = localObject3;
+                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
+                localObject1 = localObject2;
                 localObject2 = localObject6;
                 localObject3 = localObject4;
               }
               else if ("text".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
               {
                 localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject3 = localObject1;
+                localObject2 = localObject1;
                 localObject4 = paramGetAdsRsp;
                 localObject1 = localObject6;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject2;
-                localObject2 = localObject3;
+                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
                 localObject3 = localObject4;
               }
               else if ("pic".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
               {
                 localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject2 = localObject1;
+                localObject3 = localObject1;
                 localObject4 = paramGetAdsRsp;
                 paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject6;
-                localObject1 = localObject3;
+                localObject1 = localObject2;
+                localObject2 = localObject3;
                 localObject3 = localObject4;
               }
               else if ("appid_on".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
@@ -330,8 +336,8 @@ public class MiniGameAdBannerPopup
                 APPID_WHITE_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
                 localObject4 = localObject1;
                 localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject2;
-                localObject1 = localObject3;
+                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
+                localObject1 = localObject2;
                 localObject2 = localObject4;
                 localObject3 = localObject6;
               }
@@ -340,8 +346,8 @@ public class MiniGameAdBannerPopup
                 APPID_BLACK_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
                 localObject4 = localObject1;
                 localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject2;
-                localObject1 = localObject3;
+                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
+                localObject1 = localObject2;
                 localObject2 = localObject4;
                 localObject3 = localObject6;
               }
@@ -350,8 +356,8 @@ public class MiniGameAdBannerPopup
                 REFER_WHITE_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
                 localObject4 = localObject1;
                 localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject2;
-                localObject1 = localObject3;
+                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
+                localObject1 = localObject2;
                 localObject2 = localObject4;
                 localObject3 = localObject6;
               }
@@ -360,8 +366,8 @@ public class MiniGameAdBannerPopup
                 REFER_BLACK_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
                 localObject4 = localObject1;
                 localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject2;
-                localObject1 = localObject3;
+                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
+                localObject1 = localObject2;
                 localObject2 = localObject4;
                 localObject3 = localObject6;
               }
@@ -372,8 +378,8 @@ public class MiniGameAdBannerPopup
                   SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH = Integer.parseInt(((TianShuAccess.MapEntry)localObject4).value.get());
                   localObject4 = localObject1;
                   localObject6 = paramGetAdsRsp;
-                  paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject2;
-                  localObject1 = localObject3;
+                  paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
+                  localObject1 = localObject2;
                   localObject2 = localObject4;
                   localObject3 = localObject6;
                 }
@@ -386,63 +392,61 @@ public class MiniGameAdBannerPopup
               {
                 localObject5 = localObject1;
                 localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject2;
-                localObject1 = localObject3;
+                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
+                localObject1 = localObject2;
                 localObject2 = localObject5;
                 localObject3 = localObject6;
               }
             }
           }
-          TianShuManager.getInstance().cacheTraceInfo(localAdItem);
-          localObject5 = localAdItem;
-          localObject6 = localObject2;
-          localObject2 = localObject1;
-          localObject1 = localObject6;
-          label730:
-          QLog.d("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", " appid whitelist " + APPID_WHITE_LIST + "\n appid blacklist " + APPID_BLACK_LIST + "\n refer whitelist " + REFER_WHITE_LIST + "\n refer blacklist " + REFER_BLACK_LIST + "\n show time " + SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH });
-          if (allowShowForAppId(paramMiniAppConfig)) {
-            break label991;
-          }
-          if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null)) {
-            QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", " not allow for appid " + paramMiniAppConfig.config.appId });
-          }
+        }
+        else
+        {
+          QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad item" });
+          paramGetAdsRsp = null;
+          localObject7 = localIterator;
+          localObject6 = localObject9;
+          localObject9 = paramGetAdsRsp;
+        }
+        localObject2 = localObject9;
+        localObject1 = localObject6;
+        paramGetAdsRsp = localObject8;
+        label775:
+        QLog.d("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", " appid whitelist " + APPID_WHITE_LIST + "\n appid blacklist " + APPID_BLACK_LIST + "\n refer whitelist " + REFER_WHITE_LIST + "\n refer blacklist " + REFER_BLACK_LIST + "\n show time " + SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH });
+        if (allowShowForAppId(paramMiniAppConfig)) {
+          break label997;
+        }
+        if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null)) {
+          QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", " not allow for appid " + paramMiniAppConfig.config.appId });
         }
       }
     }
-    label969:
-    label991:
+    label975:
+    label997:
     do
     {
       do
       {
         return;
-        QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad item" });
-        for (;;)
-        {
-          localObject5 = null;
-          localObject2 = localObject8;
-          localObject3 = localIterator;
-          paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject6;
-          break;
-          QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad data" });
-        }
+        QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad data" });
+        break;
         QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad result" });
-        localObject6 = null;
-        paramGetAdsRsp = null;
         localObject2 = null;
-        localObject1 = null;
-        localObject3 = localObject5;
-        localObject5 = localObject6;
-        break label730;
+        localObject7 = null;
+        localObject3 = null;
+        paramGetAdsRsp = null;
+        localObject5 = localObject1;
+        localObject1 = localObject3;
+        break label775;
         if (allowShowForRefer(paramMiniAppConfig)) {
-          break label1055;
+          break label1061;
         }
       } while ((paramMiniAppConfig == null) || (paramMiniAppConfig.launchParam == null));
       QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", " not allow for refer " + paramMiniAppConfig.launchParam.scene });
       return;
-    } while ((paramGetAdsRsp == null) || (localObject2 == null) || (localObject3 == null) || (localObject1 == null) || (localObject5 == null));
-    label1055:
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new MiniGameAdBannerPopup.2(paramContext, paramGetAdsRsp, (String)localObject3, (String)localObject1, (String)localObject2, localObject5), TimeUnit.SECONDS.toMillis(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH));
+    } while ((localObject7 == null) || (localObject1 == null) || (localObject5 == null) || (paramGetAdsRsp == null) || (localObject2 == null));
+    label1061:
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new MiniGameAdBannerPopup.2(paramContext, (String)localObject7, localObject5, paramGetAdsRsp, (String)localObject1, localObject2), TimeUnit.SECONDS.toMillis(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH));
   }
   
   @NotNull
@@ -450,15 +454,15 @@ public class MiniGameAdBannerPopup
   {
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
     TianShuReportData localTianShuReportData = new TianShuReportData();
-    localTianShuReportData.mTraceId = (String.valueOf(bizw.a().a()) + '_' + i);
-    localTianShuReportData.mActionId = paramInt;
-    localTianShuReportData.mActionValue = 1;
-    localTianShuReportData.mItemId = String.valueOf(paramAdItem.iAdId.get());
-    localTianShuReportData.mItemType = paramString;
-    localTianShuReportData.mOperTime = i;
-    localTianShuReportData.mTraceNum = 1;
-    localTianShuReportData.mAppId = "tianshu.81";
-    localTianShuReportData.mModuleId = "";
+    localTianShuReportData.b = (String.valueOf(CommonDataAdapter.a().a()) + '_' + i);
+    localTianShuReportData.d = paramInt;
+    localTianShuReportData.jdField_e_of_type_Int = 1;
+    localTianShuReportData.g = String.valueOf(paramAdItem.iAdId.get());
+    localTianShuReportData.n = paramString;
+    localTianShuReportData.jdField_a_of_type_Long = i;
+    localTianShuReportData.jdField_a_of_type_Int = 1;
+    localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.81";
+    localTianShuReportData.i = "";
     return localTianShuReportData;
   }
   
@@ -478,20 +482,20 @@ public class MiniGameAdBannerPopup
       } while (!(paramContext instanceof Activity));
       localObject = (Activity)paramContext;
     } while ((((Activity)localObject).isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject).isDestroyed())));
-    View localView = LayoutInflater.from(paramContext).inflate(2131559458, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131371345);
-    TextView localTextView = (TextView)localView.findViewById(2131371348);
-    Object localObject = (LinearLayout)localView.findViewById(2131371346);
-    ReportDialog localReportDialog = new ReportDialog(paramContext);
-    localReportDialog.setCancelable(false);
-    if (localReportDialog.getWindow() != null)
+    View localView = LayoutInflater.from(paramContext).inflate(2131559526, null);
+    ImageView localImageView = (ImageView)localView.findViewById(2131371625);
+    TextView localTextView = (TextView)localView.findViewById(2131371628);
+    Object localObject = (LinearLayout)localView.findViewById(2131371626);
+    Dialog localDialog = new Dialog(paramContext);
+    localDialog.setCancelable(false);
+    if (localDialog.getWindow() != null)
     {
-      localReportDialog.getWindow().requestFeature(1);
-      localReportDialog.getWindow().setBackgroundDrawableResource(17170445);
+      localDialog.getWindow().requestFeature(1);
+      localDialog.getWindow().setBackgroundDrawableResource(17170445);
     }
-    localReportDialog.setContentView(localView, new ViewGroup.LayoutParams(-1, -1));
-    localReportDialog.setOnShowListener(new MiniGameAdBannerPopup.3(paramAdItem, paramString1));
-    localImageView.setOnClickListener(new MiniGameAdBannerPopup.4(localReportDialog, paramAdItem, paramString1));
+    localDialog.setContentView(localView, new ViewGroup.LayoutParams(-1, -1));
+    localDialog.setOnShowListener(new MiniGameAdBannerPopup.3(paramAdItem, paramString1));
+    localImageView.setOnClickListener(new MiniGameAdBannerPopup.4(localDialog, paramAdItem, paramString1));
     if (!TextUtils.isEmpty(paramString2)) {
       localTextView.setText(paramString2);
     }
@@ -500,11 +504,11 @@ public class MiniGameAdBannerPopup
     paramString2.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramString2.setClickable(true);
     paramString2.setImageDrawable(URLDrawable.getDrawable(paramString3));
-    paramString2.setOnClickListener(new MiniGameAdBannerPopup.5(localReportDialog, paramContext, paramString4, paramAdItem, paramString1));
+    paramString2.setOnClickListener(new MiniGameAdBannerPopup.5(localDialog, paramContext, paramString4, paramAdItem, paramString1));
     paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
     paramContext.gravity = 1;
     ((LinearLayout)localObject).addView(paramString2, paramContext);
-    localReportDialog.show();
+    localDialog.show();
   }
 }
 

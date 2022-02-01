@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import bdcw;
-
-public class RedBagVideoManager$10
+class RedBagVideoManager$10
   implements Runnable
 {
-  public RedBagVideoManager$10(bdcw parambdcw) {}
+  RedBagVideoManager$10(RedBagVideoManager paramRedBagVideoManager) {}
   
   public void run()
   {
-    bdcw.g(this.this$0);
+    RedBagVideoManager.g(this.this$0);
   }
 }
 

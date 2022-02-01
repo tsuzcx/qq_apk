@@ -11,11 +11,11 @@ public final class stKuolieProfile
 {
   static Map<String, String> cache_extendinfo;
   static s_user cache_user = new s_user();
-  public int CommOpmask2;
-  public int CommOpmask3;
-  public int FeedsCount;
-  public Map<String, String> extendinfo;
-  public s_user user;
+  public int CommOpmask2 = 0;
+  public int CommOpmask3 = 0;
+  public int FeedsCount = 0;
+  public Map<String, String> extendinfo = null;
+  public s_user user = null;
   
   static
   {

@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import apce;
-import apci;
-
-public class ARTransferDoorLogicManager$7
+class ARTransferDoorLogicManager$7
   implements Runnable
 {
-  public ARTransferDoorLogicManager$7(apce paramapce) {}
+  ARTransferDoorLogicManager$7(ARTransferDoorLogicManager paramARTransferDoorLogicManager) {}
   
   public void run()
   {
-    if ((apce.a(this.this$0) != null) && (apce.a(this.this$0) != null)) {
-      apce.a(this.this$0).b(apce.a(this.this$0));
+    if ((ARTransferDoorLogicManager.a(this.this$0) != null) && (ARTransferDoorLogicManager.a(this.this$0) != null)) {
+      ARTransferDoorLogicManager.a(this.this$0).b(ARTransferDoorLogicManager.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.7
  * JD-Core Version:    0.7.0.1
  */

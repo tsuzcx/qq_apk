@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class HotRishState
   extends JceStruct
 {
-  public int iActId;
-  public int iDataId;
+  public int iActId = 0;
+  public int iDataId = 0;
   
   public HotRishState() {}
   

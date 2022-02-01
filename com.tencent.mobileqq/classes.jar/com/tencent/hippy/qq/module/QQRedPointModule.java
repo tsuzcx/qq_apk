@@ -1,9 +1,9 @@
 package com.tencent.hippy.qq.module;
 
 import android.os.Bundle;
-import ascz;
-import asdd;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
@@ -19,7 +19,7 @@ public class QQRedPointModule
   extends QQBaseWebIpcModule
 {
   static final String CLASSNAME = "QQRedPointModule";
-  public ascz mOnRemoteResp = new QQRedPointModule.2(this);
+  public Client.OnRemoteRespObserver mOnRemoteResp = new QQRedPointModule.2(this);
   
   public QQRedPointModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -103,7 +103,7 @@ public class QQRedPointModule
     {
       saveCallback(paramPromise);
       paramPromise = (Bundle)localHashMap.get("req");
-      super.sendRemoteReq(asdd.a("redTouch_setAppInfo", paramString, this.mOnRemoteResp.key, paramPromise), false, true);
+      super.sendRemoteReq(DataFactory.a("redTouch_setAppInfo", paramString, this.mOnRemoteResp.key, paramPromise), false, true);
       return;
     }
     paramPromise.resolve((String)localHashMap.get("errorJson"));
@@ -111,7 +111,7 @@ public class QQRedPointModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQRedPointModule
  * JD-Core Version:    0.7.0.1
  */

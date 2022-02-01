@@ -22,12 +22,13 @@ import NS_MINI_INTERFACE.INTERFACE.StResourcePreCacheInfo;
 import NS_MINI_INTERFACE.INTERFACE.StStartExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StSubPkgInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import achn;
+import NS_MINI_INTERFACE.INTERFACE.UseUserInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByIdEntity;
@@ -99,6 +100,7 @@ public class MiniAppInfo
   public int fileSize;
   public FirstPageInfo firstPage;
   public String friendMessageQuery = "";
+  public int friendNum;
   public String iconUrl;
   public String ide_extraAppid;
   public String ide_extraData;
@@ -133,6 +135,8 @@ public class MiniAppInfo
   public int topType;
   public final List<String> udpIpList = new ArrayList();
   public List<String> uploadFileDomainList;
+  public int userNum;
+  public List<UseUserInfo> users;
   public long usrFileSizeLimit;
   public int verType;
   public String version;
@@ -463,6 +467,9 @@ public class MiniAppInfo
     localMiniAppInfo.ide_extraData = paramMiniAppInfo.ide_extraData;
     localMiniAppInfo.tianshuAdId = paramMiniAppInfo.tianshuAdId;
     localMiniAppInfo.enableLoadingAd = paramMiniAppInfo.enableLoadingAd;
+    localMiniAppInfo.userNum = paramMiniAppInfo.userNum;
+    localMiniAppInfo.friendNum = paramMiniAppInfo.friendNum;
+    localMiniAppInfo.users = paramMiniAppInfo.users;
     return localMiniAppInfo;
   }
   
@@ -476,7 +483,7 @@ public class MiniAppInfo
     }
     try
     {
-      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(achn.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
+      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(GdtJsonPbUtil.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)
@@ -542,6 +549,26 @@ public class MiniAppInfo
     localMiniAppInfo.appStoreAnimPicUrl = paramStUserAppInfo.bgPic.get();
     localMiniAppInfo.motionPics = getMotionPics(paramStUserAppInfo.motionPics.get());
     localMiniAppInfo.apngUrl = paramStUserAppInfo.apngUrl.get();
+    localMiniAppInfo.userNum = paramStUserAppInfo.userNum.get();
+    localMiniAppInfo.friendNum = paramStUserAppInfo.friendNum.get();
+    if (localMiniAppInfo.friendNum > 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramStUserAppInfo = paramStUserAppInfo.users.get().iterator();
+      while (paramStUserAppInfo.hasNext())
+      {
+        INTERFACE.UseUserInfo localUseUserInfo = (INTERFACE.UseUserInfo)paramStUserAppInfo.next();
+        if (localUseUserInfo != null)
+        {
+          UseUserInfo localUseUserInfo1 = new UseUserInfo();
+          localUseUserInfo1.uin = localUseUserInfo.uin.get();
+          localUseUserInfo1.avatar = localUseUserInfo.avatar.get();
+          localUseUserInfo1.nick = localUseUserInfo.nick.get();
+          localArrayList.add(localUseUserInfo1);
+        }
+      }
+      localMiniAppInfo.users = localArrayList;
+    }
     return localMiniAppInfo;
   }
   
@@ -1274,7 +1301,7 @@ public class MiniAppInfo
     StringBuilder localStringBuilder = new StringBuilder().append("MiniAppInfo{appId='").append(this.appId).append('\'').append(", name='").append(this.name).append('\'').append(", iconUrl='").append(this.iconUrl).append('\'').append(", downloadUrl='").append(this.downloadUrl).append('\'').append(", topType=").append(this.topType).append(", version='").append(this.version).append('\'').append(", desc='").append(this.desc).append('\'').append(", engineType='").append(this.engineType).append('\'').append(", reportType='").append(this.reportType).append('\'').append(", verType=").append(this.verType).append(", timestamp=").append(this.timestamp).append(", baselibMiniVersion='").append(this.baselibMiniVersion).append('\'').append(", filesize=").append(this.fileSize).append(", extraData=").append(this.extraData).append(", developerDesc=").append(this.developerDesc).append(", firstPage=").append(this.firstPage).append(", whiteList=").append(list2string(this.whiteList)).append(", blackList=").append(list2string(this.blackList)).append(", secondApiRightInfoList=").append(list2stringSecond(this.secondApiRightInfoList)).append(", requestDomainList=").append(list2string(this.requestDomainList)).append(", socketDomainList=").append(list2string(this.socketDomainList)).append(", uploadFileDomainList=").append(list2string(this.uploadFileDomainList)).append(", downloadFileDomainList=").append(list2string(this.downloadFileDomainList)).append(", businessDomainList=").append(list2string(this.businessDomainList)).append(", udpIpList=").append(list2string(this.udpIpList)).append(", subpkgs=").append(list2stringO(this.subpkgs)).append(", isSupportOffline=").append(this.isSupportOffline).append(", skipDomainCheck=").append(this.skipDomainCheck).append(", openId=").append(this.openId).append(", tinyId=").append(this.tinyId).append(", isSupportBlueBar=").append(this.isSupportBlueBar).append(", isSupportOffline=").append(this.isSupportOffline).append(", recommendIconUrl=").append(this.recommendAppIconUrl).append(", extendData=").append(this.extendData).append(", extConfigInfo=").append(list2String(this.extConfigInfoList)).append(", clearAuths=").append(this.clearAuths).append(", appStoreAnimPicUrl=").append(this.appStoreAnimPicUrl).append(", usrFileSizeLimit=").append(this.usrFileSizeLimit).append(", versionUpdateTime=").append(this.versionUpdateTime).append(", noNeedRealRecommend=").append(this.noNeedRealRecommend).append(", miniGamePluginInfo=").append(this.miniGamePluginInfo).append(", renderInfo=");
     if (this.renderInfo != null) {}
     for (int i = this.renderInfo.renderMode;; i = 0) {
-      return i + ", shareId=" + this.shareId + ", via=" + this.via + ", enableLoadingAd=" + this.enableLoadingAd + ", prepayId=" + this.prepayId + '}';
+      return i + ", shareId=" + this.shareId + ", via=" + this.via + ", enableLoadingAd=" + this.enableLoadingAd + ", prepayId=" + this.prepayId + ", userNum=" + this.userNum + ", friendNum=" + this.friendNum + '}';
     }
   }
   
@@ -1330,7 +1357,7 @@ public class MiniAppInfo
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
       if (!this.isSupportOffline) {
-        break label535;
+        break label559;
       }
       paramInt = 1;
       label301:
@@ -1359,17 +1386,20 @@ public class MiniAppInfo
       paramParcel.writeInt(this.tianshuAdId);
       paramParcel.writeTypedList(this.resourcePreCacheInfo);
       if (!this.enableLoadingAd) {
-        break label540;
+        break label564;
       }
     }
-    label535:
-    label540:
+    label559:
+    label564:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       paramParcel.writeInt(this.deviceOrientation);
       paramParcel.writeInt(this.showStatusBar);
       paramParcel.writeString(this.prepayId);
+      paramParcel.writeInt(this.userNum);
+      paramParcel.writeInt(this.friendNum);
+      paramParcel.writeTypedList(this.users);
       return;
       paramInt = 0;
       break;

@@ -4,7 +4,6 @@ import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bhjl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.network.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -12,6 +11,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -49,16 +49,17 @@ public class HttpGetAppInfoByLinkRequest
       return null;
     }
     PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    Object localObject = new INTERFACE.StGetAppInfoByLinkRsp();
+    INTERFACE.StGetAppInfoByLinkRsp localStGetAppInfoByLinkRsp = new INTERFACE.StGetAppInfoByLinkRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bhjl.b(paramArrayOfByte));
-      ((INTERFACE.StGetAppInfoByLinkRsp)localObject).mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      localStQWebRsp.mergeFrom(WupUtil.b(paramArrayOfByte));
+      localStGetAppInfoByLinkRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       paramArrayOfByte = new JSONObject();
-      MiniAppInfo localMiniAppInfo = MiniAppInfo.from(((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo);
-      localObject = ((INTERFACE.StGetAppInfoByLinkRsp)localObject).shareTicket.get();
+      MiniAppInfo localMiniAppInfo = MiniAppInfo.from(localStGetAppInfoByLinkRsp.appInfo);
+      String str = localStGetAppInfoByLinkRsp.shareTicket.get();
       paramArrayOfByte.put("appInfo", localMiniAppInfo);
-      paramArrayOfByte.put("shareTicket", localObject);
+      paramArrayOfByte.put("appInfo_pd", localStGetAppInfoByLinkRsp.appInfo);
+      paramArrayOfByte.put("shareTicket", str);
       paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
       paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
       QLog.d("HttpGetAppInfoByLinkRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());

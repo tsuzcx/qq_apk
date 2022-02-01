@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contacts.phone;
 
-import ajlx;
 import com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView;
 
 class PhoneContactFragment$1$1
@@ -11,14 +10,14 @@ class PhoneContactFragment$1$1
   public void run()
   {
     this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.b(PhoneContactFragment.b(this.a.this$0));
-    if (this.a.this$0.jdField_a_of_type_Ajlx != null) {
-      this.a.this$0.jdField_a_of_type_Ajlx.notifyDataSetChanged();
+    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter != null) {
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

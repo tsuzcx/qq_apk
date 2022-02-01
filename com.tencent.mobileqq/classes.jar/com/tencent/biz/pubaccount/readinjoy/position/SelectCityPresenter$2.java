@@ -2,25 +2,23 @@ package com.tencent.biz.pubaccount.readinjoy.position;
 
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 import mqq.util.WeakReference;
-import qkm;
-import qkn;
 
-public class SelectCityPresenter$2
+class SelectCityPresenter$2
   implements Runnable
 {
-  public SelectCityPresenter$2(qkm paramqkm, SelectPositionModule.PositionData paramPositionData) {}
+  SelectCityPresenter$2(SelectCityPresenter paramSelectCityPresenter, SelectPositionModule.PositionData paramPositionData) {}
   
   public void run()
   {
-    qkn localqkn = (qkn)qkm.a(this.this$0).get();
-    if (localqkn != null) {
-      localqkn.b(this.a);
+    SelectCityPresenter.IView localIView = (SelectCityPresenter.IView)SelectCityPresenter.a(this.this$0).get();
+    if (localIView != null) {
+      localIView.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2
  * JD-Core Version:    0.7.0.1
  */

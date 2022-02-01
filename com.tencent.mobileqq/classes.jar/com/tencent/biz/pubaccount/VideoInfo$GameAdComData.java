@@ -4,18 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import omh;
 import org.json.JSONObject;
 
 public class VideoInfo$GameAdComData
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameAdComData> CREATOR = new omh();
+  public static final Parcelable.Creator<GameAdComData> CREATOR = new VideoInfo.GameAdComData.1();
   public String A;
   public String B;
   public String C;
   public String D;
   public String E;
+  public String F;
   public int a;
   public VideoInfo.GameAdDownloadInfo a;
   public String a;
@@ -47,7 +47,7 @@ public class VideoInfo$GameAdComData
   public String y;
   public String z;
   
-  public VideoInfo$GameAdComData(Parcel paramParcel)
+  protected VideoInfo$GameAdComData(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -76,10 +76,10 @@ public class VideoInfo$GameAdComData
     this.y = paramParcel.readString();
     this.z = paramParcel.readString();
     this.A = paramParcel.readString();
-    this.B = paramParcel.readString();
     this.C = paramParcel.readString();
     this.D = paramParcel.readString();
     this.E = paramParcel.readString();
+    this.F = paramParcel.readString();
   }
   
   public VideoInfo$GameAdComData(String paramString, JSONObject paramJSONObject)
@@ -121,9 +121,9 @@ public class VideoInfo$GameAdComData
     this.y = paramJSONObject.optString("sWordContentNoWifi", "");
     this.z = paramJSONObject.optString("sWordHighlight", "");
     this.A = paramJSONObject.optString("sWordHighlightColor", "");
-    this.B = paramJSONObject.optString("mExtendGameInfo", "");
-    if (TextUtils.isEmpty(this.B)) {
-      this.B = new JSONObject().toString();
+    this.C = paramJSONObject.optString("mExtendGameInfo", "");
+    if (TextUtils.isEmpty(this.C)) {
+      this.C = new JSONObject().toString();
     }
     a();
   }
@@ -132,13 +132,13 @@ public class VideoInfo$GameAdComData
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(this.B);
-      this.C = localJSONObject.optString("liujinReportUrl");
-      this.D = localJSONObject.optString("ticket");
-      if (TextUtils.isEmpty(this.D)) {
-        this.D = localJSONObject.optString("ad_encrypted_ticket");
+      JSONObject localJSONObject = new JSONObject(this.C);
+      this.D = localJSONObject.optString("liujinReportUrl");
+      this.E = localJSONObject.optString("ticket");
+      if (TextUtils.isEmpty(this.E)) {
+        this.E = localJSONObject.optString("ad_encrypted_ticket");
       }
-      this.E = localJSONObject.optString("amsNfbUrl");
+      this.F = localJSONObject.optString("amsNfbUrl");
       return;
     }
     catch (Throwable localThrowable)
@@ -181,15 +181,15 @@ public class VideoInfo$GameAdComData
     paramParcel.writeString(this.y);
     paramParcel.writeString(this.z);
     paramParcel.writeString(this.A);
-    paramParcel.writeString(this.B);
     paramParcel.writeString(this.C);
     paramParcel.writeString(this.D);
     paramParcel.writeString(this.E);
+    paramParcel.writeString(this.F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.GameAdComData
  * JD-Core Version:    0.7.0.1
  */

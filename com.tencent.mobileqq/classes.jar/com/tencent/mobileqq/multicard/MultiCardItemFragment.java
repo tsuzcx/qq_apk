@@ -12,31 +12,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import axfy;
-import axga;
-import axge;
-import axho;
-import axhp;
-import axhy;
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class MultiCardItemFragment
   extends PublicBaseFragment
-  implements axho
+  implements MultiCardRootLayout.MultiCardRootLayoutListener
 {
-  public static final axhy<MultiCardRootLayout> a;
-  public static final axhy<axga> b;
-  public static final axhy<axhp> c;
-  public static final axhy<View> d;
+  public static final ViewCache<MultiCardRootLayout> a;
+  public static final ViewCache<IntimateInfoViewDelegate> b;
+  public static final ViewCache<StrangerIntimateViewDelegate> c;
+  public static final ViewCache<View> d;
   private int jdField_a_of_type_Int;
-  private axfy jdField_a_of_type_Axfy;
-  private axge jdField_a_of_type_Axge;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private CardContent jdField_a_of_type_ComTencentMobileqqMulticardCardContent;
+  private MultiCardCustomViewDelegate jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate;
   private MultiCardRootLayout jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -48,21 +42,21 @@ public class MultiCardItemFragment
   
   static
   {
-    jdField_a_of_type_Axhy = new axhy();
-    jdField_b_of_type_Axhy = new axhy();
-    jdField_c_of_type_Axhy = new axhy();
-    jdField_d_of_type_Axhy = new axhy();
+    jdField_a_of_type_ComTencentMobileqqMulticardViewCache = new ViewCache();
+    jdField_b_of_type_ComTencentMobileqqMulticardViewCache = new ViewCache();
+    jdField_c_of_type_ComTencentMobileqqMulticardViewCache = new ViewCache();
+    jdField_d_of_type_ComTencentMobileqqMulticardViewCache = new ViewCache();
   }
   
   public static View a()
   {
     View localView = null;
-    if (jdField_d_of_type_Axhy != null)
+    if (jdField_d_of_type_ComTencentMobileqqMulticardViewCache != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("intimatetest", 2, "getDnaViewFromCache" + jdField_d_of_type_Axhy.a());
+        QLog.d("intimatetest", 2, "getDnaViewFromCache" + jdField_d_of_type_ComTencentMobileqqMulticardViewCache.a());
       }
-      localView = (View)jdField_d_of_type_Axhy.a();
+      localView = (View)jdField_d_of_type_ComTencentMobileqqMulticardViewCache.a();
     }
     return localView;
   }
@@ -82,7 +76,7 @@ public class MultiCardItemFragment
     if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout == null) {
       return;
     }
-    if (this.jdField_a_of_type_Axfy == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent == null)
     {
       a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
       this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.b(true);
@@ -90,14 +84,14 @@ public class MultiCardItemFragment
     }
     this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.b(false);
     int i;
-    if (this.jdField_a_of_type_Axfy.a() == 0) {
-      if ((this.jdField_a_of_type_Axge instanceof axga))
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent.a() == 0) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate instanceof IntimateInfoViewDelegate))
       {
         i = 1;
         if ((getUserVisibleHint()) && (!this.jdField_c_of_type_Boolean))
         {
-          if (this.jdField_a_of_type_Axge != null) {
-            this.jdField_a_of_type_Axge.c();
+          if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) {
+            this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.c();
           }
           this.jdField_c_of_type_Boolean = true;
         }
@@ -111,32 +105,32 @@ public class MultiCardItemFragment
       b(bool);
       return;
       a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
-      this.jdField_a_of_type_Axge = ((axge)jdField_b_of_type_Axhy.a());
-      if (this.jdField_a_of_type_Axge == null)
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate = ((MultiCardCustomViewDelegate)jdField_b_of_type_ComTencentMobileqqMulticardViewCache.a());
+      if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate == null)
       {
-        this.jdField_a_of_type_Axge = new axga(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getContext(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate = new IntimateInfoViewDelegate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getContext(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
         i = 0;
         break;
       }
-      this.jdField_a_of_type_Axge.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
       i = 0;
       break;
-      if (this.jdField_a_of_type_Axfy.a() == 1)
+      if (this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent.a() == 1)
       {
-        if ((this.jdField_a_of_type_Axge instanceof axhp))
+        if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate instanceof StrangerIntimateViewDelegate))
         {
           i = 1;
           break;
         }
         a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
-        this.jdField_a_of_type_Axge = ((axge)jdField_c_of_type_Axhy.a());
-        if (this.jdField_a_of_type_Axge == null)
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate = ((MultiCardCustomViewDelegate)jdField_c_of_type_ComTencentMobileqqMulticardViewCache.a());
+        if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate == null)
         {
-          this.jdField_a_of_type_Axge = new axhp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getContext(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
+          this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate = new StrangerIntimateViewDelegate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getContext(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
           i = 0;
           break;
         }
-        this.jdField_a_of_type_Axge.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
         if (QLog.isColorLevel()) {
           QLog.d("MultiCardItemFragment", 2, "reuse strangerdelegate");
         }
@@ -159,10 +153,10 @@ public class MultiCardItemFragment
   {
     if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = ((MultiCardRootLayout)jdField_a_of_type_Axhy.a());
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = ((MultiCardRootLayout)jdField_a_of_type_ComTencentMobileqqMulticardViewCache.a());
       if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = ((MultiCardRootLayout)paramLayoutInflater.inflate(2131559332, paramViewGroup, false));
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = ((MultiCardRootLayout)paramLayoutInflater.inflate(2131559397, paramViewGroup, false));
         if (QLog.isColorLevel()) {
           QLog.d("MultiCardItemFragment", 2, "create rootView ");
         }
@@ -185,26 +179,26 @@ public class MultiCardItemFragment
   
   private void a(ViewGroup paramViewGroup)
   {
-    if ((this.jdField_a_of_type_Axge != null) && (this.jdField_a_of_type_Axge.a() != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a() != null))
     {
       if (paramViewGroup != null) {
-        paramViewGroup.removeView(this.jdField_a_of_type_Axge.a());
+        paramViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a());
       }
-      if (!(this.jdField_a_of_type_Axge instanceof axga)) {
+      if (!(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate instanceof IntimateInfoViewDelegate)) {
         break label111;
       }
-      jdField_b_of_type_Axhy.a((axga)this.jdField_a_of_type_Axge);
+      jdField_b_of_type_ComTencentMobileqqMulticardViewCache.a((IntimateInfoViewDelegate)this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Axge = null;
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate = null;
       if (QLog.isColorLevel()) {
-        QLog.d("MultiCardItemFragment", 2, "removeViewAndAddDelegateIntoCache, friendviewcache:" + jdField_b_of_type_Axhy.a() + " strangerviewcache:" + jdField_c_of_type_Axhy.a());
+        QLog.d("MultiCardItemFragment", 2, "removeViewAndAddDelegateIntoCache, friendviewcache:" + jdField_b_of_type_ComTencentMobileqqMulticardViewCache.a() + " strangerviewcache:" + jdField_c_of_type_ComTencentMobileqqMulticardViewCache.a());
       }
       return;
       label111:
-      if ((this.jdField_a_of_type_Axge instanceof axhp)) {
-        jdField_c_of_type_Axhy.a((axhp)this.jdField_a_of_type_Axge);
+      if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate instanceof StrangerIntimateViewDelegate)) {
+        jdField_c_of_type_ComTencentMobileqqMulticardViewCache.a((StrangerIntimateViewDelegate)this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate);
       }
     }
   }
@@ -214,11 +208,11 @@ public class MultiCardItemFragment
     if ((paramViewGroup != null) && (paramView != null))
     {
       paramViewGroup.removeView(paramView);
-      if ((paramView != null) && (jdField_d_of_type_Axhy != null))
+      if ((paramView != null) && (jdField_d_of_type_ComTencentMobileqqMulticardViewCache != null))
       {
-        jdField_d_of_type_Axhy.a(paramView);
+        jdField_d_of_type_ComTencentMobileqqMulticardViewCache.a(paramView);
         if (QLog.isColorLevel()) {
-          QLog.d("intimatetest", 2, "removeViewAndAddDnaViewToCache" + jdField_d_of_type_Axhy.a());
+          QLog.d("intimatetest", 2, "removeViewAndAddDnaViewToCache" + jdField_d_of_type_ComTencentMobileqqMulticardViewCache.a());
         }
       }
     }
@@ -255,24 +249,24 @@ public class MultiCardItemFragment
   
   private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Axge != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null)
     {
       Object localObject = new Bundle();
-      ((Bundle)localObject).putString("uin", this.jdField_a_of_type_Axfy.a());
+      ((Bundle)localObject).putString("uin", this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent.a());
       ((Bundle)localObject).putString("troopuin", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Axge.a(this);
-      this.jdField_a_of_type_Axge.a((Bundle)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a((Bundle)localObject);
       if (paramBoolean)
       {
-        this.jdField_a_of_type_Axge.a(null);
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a(null);
         this.jdField_a_of_type_Boolean = true;
       }
-      this.jdField_a_of_type_Axge.a(this.jdField_a_of_type_Axfy);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a(this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent);
       localObject = getParentFragment();
       if ((localObject != null) && ((localObject instanceof MultiCardFragment)))
       {
         paramBoolean = ((MultiCardFragment)localObject).a();
-        this.jdField_a_of_type_Axge.a(paramBoolean);
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a(paramBoolean);
       }
     }
   }
@@ -282,30 +276,30 @@ public class MultiCardItemFragment
     return this.jdField_a_of_type_Int;
   }
   
-  public void a(axfy paramaxfy)
-  {
-    if ((this.jdField_a_of_type_Axfy == null) && (paramaxfy == null)) {}
-    while ((this.jdField_a_of_type_Axfy != null) && (paramaxfy != null) && (paramaxfy.a() <= this.jdField_a_of_type_Axfy.a())) {
-      return;
-    }
-    this.jdField_a_of_type_Axfy = paramaxfy;
-    a();
-  }
-  
-  public void a(axge paramaxge)
-  {
-    paramaxge = getParentFragment();
-    if ((paramaxge != null) && ((paramaxge instanceof MultiCardFragment)) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null) && (this.jdField_a_of_type_Axge != null)) {
-      ((MultiCardFragment)paramaxge).b(this.jdField_a_of_type_Axge);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, axfy paramaxfy, String paramString)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, CardContent paramCardContent, String paramString)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Axfy = paramaxfy;
+    this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent = paramCardContent;
     this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(CardContent paramCardContent)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent == null) && (paramCardContent == null)) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent != null) && (paramCardContent != null) && (paramCardContent.a() <= this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent.a())) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent = paramCardContent;
+    a();
+  }
+  
+  public void a(MultiCardCustomViewDelegate paramMultiCardCustomViewDelegate)
+  {
+    paramMultiCardCustomViewDelegate = getParentFragment();
+    if ((paramMultiCardCustomViewDelegate != null) && ((paramMultiCardCustomViewDelegate instanceof MultiCardFragment)) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null)) {
+      ((MultiCardFragment)paramMultiCardCustomViewDelegate).b(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate);
+    }
   }
   
   public void a(MultiCardRootLayout paramMultiCardRootLayout)
@@ -315,8 +309,8 @@ public class MultiCardItemFragment
     {
       return;
       paramMultiCardRootLayout = getParentFragment();
-    } while ((this.jdField_a_of_type_Axge == null) || (paramMultiCardRootLayout == null) || (!(paramMultiCardRootLayout instanceof MultiCardFragment)));
-    ((MultiCardFragment)paramMultiCardRootLayout).a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, this.jdField_a_of_type_Axge.a(), this.jdField_a_of_type_Axge);
+    } while ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate == null) || (paramMultiCardRootLayout == null) || (!(paramMultiCardRootLayout instanceof MultiCardFragment)));
+    ((MultiCardFragment)paramMultiCardRootLayout).a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a(), this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate);
   }
   
   public void a(boolean paramBoolean)
@@ -336,7 +330,7 @@ public class MultiCardItemFragment
     {
       return false;
       a(true);
-    } while (this.jdField_a_of_type_Axge != null);
+    } while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null);
     return true;
   }
   
@@ -360,9 +354,9 @@ public class MultiCardItemFragment
         }
         return true;
         bool1 = bool2;
-      } while (this.jdField_a_of_type_Axge == null);
+      } while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate == null);
       bool1 = bool2;
-    } while (!this.jdField_a_of_type_Axge.a(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()));
+    } while (!this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()));
     return false;
   }
   
@@ -373,8 +367,8 @@ public class MultiCardItemFragment
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Axge != null) {
-      this.jdField_a_of_type_Axge.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.h();
     }
     return true;
   }
@@ -398,7 +392,7 @@ public class MultiCardItemFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     a(paramLayoutInflater, paramViewGroup);
-    if (this.jdField_a_of_type_Axfy == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardCardContent == null)
     {
       paramLayoutInflater = getParentFragment();
       if ((paramLayoutInflater != null) && ((paramLayoutInflater instanceof MultiCardFragment))) {
@@ -422,12 +416,12 @@ public class MultiCardItemFragment
       if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.setListener(null);
-        jdField_a_of_type_Axhy.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
+        jdField_a_of_type_ComTencentMobileqqMulticardViewCache.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
         this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = null;
       }
-      if (this.jdField_a_of_type_Axge != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null)
       {
-        this.jdField_a_of_type_Axge.g();
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.g();
         a(null);
         this.f = true;
       }
@@ -440,7 +434,7 @@ public class MultiCardItemFragment
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MultiCardItemFragment", 2, "onDestroy() rootcache :" + jdField_a_of_type_Axhy.a() + " friendviewcache:" + jdField_b_of_type_Axhy.a() + " strangerviewcache:" + jdField_c_of_type_Axhy.a());
+      QLog.d("MultiCardItemFragment", 2, "onDestroy() rootcache :" + jdField_a_of_type_ComTencentMobileqqMulticardViewCache.a() + " friendviewcache:" + jdField_b_of_type_ComTencentMobileqqMulticardViewCache.a() + " strangerviewcache:" + jdField_c_of_type_ComTencentMobileqqMulticardViewCache.a());
     }
   }
   
@@ -453,8 +447,8 @@ public class MultiCardItemFragment
     View localView = getView();
     if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null) && ((localView instanceof ViewGroup)))
     {
-      if ((this.jdField_a_of_type_Axge != null) && (this.jdField_a_of_type_Axge.a() != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.removeView(this.jdField_a_of_type_Axge.a());
+      if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a() != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.a());
       }
       ((ViewGroup)localView).removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
     }
@@ -463,12 +457,12 @@ public class MultiCardItemFragment
       if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.setListener(null);
-        jdField_a_of_type_Axhy.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
+        jdField_a_of_type_ComTencentMobileqqMulticardViewCache.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
         this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = null;
       }
-      if (this.jdField_a_of_type_Axge != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null)
       {
-        this.jdField_a_of_type_Axge.g();
+        this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.g();
         a(null);
         this.f = true;
       }
@@ -481,15 +475,15 @@ public class MultiCardItemFragment
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MultiCardItemFragment", 2, "onDestroyView() rootcache :" + jdField_a_of_type_Axhy.a() + " friendviewcache:" + jdField_b_of_type_Axhy.a() + " strangerviewcache:" + jdField_c_of_type_Axhy.a());
+      QLog.d("MultiCardItemFragment", 2, "onDestroyView() rootcache :" + jdField_a_of_type_ComTencentMobileqqMulticardViewCache.a() + " friendviewcache:" + jdField_b_of_type_ComTencentMobileqqMulticardViewCache.a() + " strangerviewcache:" + jdField_c_of_type_ComTencentMobileqqMulticardViewCache.a());
     }
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Axge != null) {
-      this.jdField_a_of_type_Axge.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.b();
     }
   }
   
@@ -499,9 +493,9 @@ public class MultiCardItemFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiCardItemFragment", 2, "onPause() called " + this.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Axge != null) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
     {
-      this.jdField_a_of_type_Axge.d();
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.d();
       this.jdField_d_of_type_Boolean = true;
     }
   }
@@ -512,9 +506,9 @@ public class MultiCardItemFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiCardItemFragment", 2, "onResume() called " + this.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Axge != null) && (getUserVisibleHint()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) && (getUserVisibleHint()))
     {
-      this.jdField_a_of_type_Axge.c();
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.c();
       this.jdField_c_of_type_Boolean = true;
     }
   }
@@ -531,9 +525,9 @@ public class MultiCardItemFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiCardItemFragment", 2, "onStart() called " + this.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Axge != null) && (getUserVisibleHint()) && (this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) && (getUserVisibleHint()) && (this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_Axge.e();
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.e();
       this.jdField_b_of_type_Boolean = true;
     }
   }
@@ -544,9 +538,9 @@ public class MultiCardItemFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiCardItemFragment", 2, "onStop() called");
     }
-    if ((this.jdField_a_of_type_Axge != null) && (this.jdField_d_of_type_Boolean))
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) && (this.jdField_d_of_type_Boolean))
     {
-      this.jdField_a_of_type_Axge.f();
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.f();
       this.e = true;
     }
   }
@@ -562,7 +556,7 @@ public class MultiCardItemFragment
     if ((paramView instanceof FrameLayout))
     {
       paramBundle = new MultiCardMaskView(getActivity());
-      paramBundle.setId(2131371690);
+      paramBundle.setId(2131372003);
       paramBundle.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       ((FrameLayout)paramView).addView(paramBundle);
     }
@@ -571,8 +565,8 @@ public class MultiCardItemFragment
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_Axge != null) {
-      this.jdField_a_of_type_Axge.b(paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.b(paramBoolean);
     }
   }
   
@@ -588,26 +582,26 @@ public class MultiCardItemFragment
       return;
       if (paramBoolean)
       {
-        bdla.b(null, "dc00898", "", "", "0X800A213", "0X800A213", 0, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800A213", "0X800A213", 0, 0, "", "", "", "");
         if (!this.jdField_a_of_type_Boolean) {
           a();
         }
         if (!this.jdField_b_of_type_Boolean)
         {
-          if (this.jdField_a_of_type_Axge != null) {
-            this.jdField_a_of_type_Axge.e();
+          if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) {
+            this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.e();
           }
           this.jdField_b_of_type_Boolean = true;
         }
-        if (this.jdField_a_of_type_Axge != null) {
-          this.jdField_a_of_type_Axge.c();
+        if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) {
+          this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.c();
         }
         this.jdField_c_of_type_Boolean = true;
         return;
       }
     } while ((!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean) || (!this.jdField_c_of_type_Boolean));
-    if (this.jdField_a_of_type_Axge != null) {
-      this.jdField_a_of_type_Axge.d();
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomViewDelegate.d();
     }
     this.jdField_d_of_type_Boolean = true;
   }

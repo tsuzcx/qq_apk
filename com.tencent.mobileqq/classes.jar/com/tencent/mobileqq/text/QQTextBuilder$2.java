@@ -2,7 +2,8 @@ package com.tencent.mobileqq.text;
 
 import android.text.Editable;
 import android.text.Editable.Factory;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.qqemoticon.api.IChatTextSizeApi;
+import com.tencent.mobileqq.qroute.QRoute;
 
 final class QQTextBuilder$2
   extends Editable.Factory
@@ -12,7 +13,7 @@ final class QQTextBuilder$2
     if ((paramCharSequence instanceof QQTextBuilder)) {
       return (Editable)paramCharSequence;
     }
-    return new QQTextBuilder(paramCharSequence, 3, ChatTextSizeSettingActivity.b() + 1);
+    return new QQTextBuilder(paramCharSequence, 3, ((IChatTextSizeApi)QRoute.api(IChatTextSizeApi.class)).getChatTextSizeWithDP() + 1);
   }
 }
 

@@ -12,6 +12,7 @@ import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.utils.MiniSDKConst.AdConst;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,6 +36,15 @@ public class InterstitialAdPlugin
   public static final HashMap<Integer, String> S_CodeMsg_Map = MiniSDKConst.AdConst.CODE_MSG_MAP;
   private static final String TAG = "InterstitialAdPlugin";
   private Map<Integer, InterstitialAdPlugin.MiniInterstitialAd> mInterstitialMap = new HashMap();
+  
+  private int getAdType()
+  {
+    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.isEngineTypeMiniApp())) {}
+    for (int i = 0; i == 0; i = 1) {
+      return 10;
+    }
+    return 11;
+  }
   
   static boolean isAdUnitIdValid(String paramString)
   {
@@ -158,7 +168,7 @@ public class InterstitialAdPlugin
         }
         catch (Throwable paramRequestEvent)
         {
-          break label335;
+          break label339;
         }
       }
     }
@@ -171,7 +181,7 @@ public class InterstitialAdPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InterstitialAdPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.TextView;
-import bdnw;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsgTextElement;
 
 public class StructMsgItemTitle
-  extends bdnw
+  extends AbsStructMsgTextElement
 {
-  public boolean c;
-  public boolean d;
-  public int o;
+  public boolean c = false;
+  public boolean d = false;
+  public int o = 0;
   
   public StructMsgItemTitle()
   {
@@ -52,7 +52,7 @@ public class StructMsgItemTitle
   
   public int c()
   {
-    return 2131380210;
+    return 2131380651;
   }
   
   public int e()

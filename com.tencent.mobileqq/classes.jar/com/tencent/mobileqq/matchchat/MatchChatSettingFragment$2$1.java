@@ -12,7 +12,7 @@ class MatchChatSettingFragment$2$1
   {
     FragmentActivity localFragmentActivity = this.a.this$0.getActivity();
     if (localFragmentActivity != null) {
-      QQToast.a(localFragmentActivity, 2131698619, 0).a();
+      QQToast.a(localFragmentActivity, 2131698921, 0).a();
     }
   }
 }

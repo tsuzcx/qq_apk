@@ -8,13 +8,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import onq;
-import ook;
 
-public class EcShopAssistantManager$1
+class EcShopAssistantManager$1
   implements Runnable
 {
-  public EcShopAssistantManager$1(onq paramonq) {}
+  EcShopAssistantManager$1(EcShopAssistantManager paramEcShopAssistantManager) {}
   
   public void run()
   {
@@ -30,11 +28,14 @@ public class EcShopAssistantManager$1
     try
     {
       BaseApplicationImpl.getContext().registerReceiver(this.this$0.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      ((ook)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a();
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("ecshop_sp" + onq.a(this.this$0), 0);
+      localObject = (EcshopReportHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
+      if (localObject != null) {
+        ((EcshopReportHandler)localObject).a();
+      }
+      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("ecshop_sp" + EcShopAssistantManager.a(this.this$0), 0);
       this.this$0.b = ((SharedPreferences)localObject).getBoolean("folder_tab_show", false);
       this.this$0.c = ((SharedPreferences)localObject).getBoolean("preload_web", false);
-      onq.g = String.valueOf(((SharedPreferences)localObject).getLong("ad_puin", 0L));
+      EcShopAssistantManager.g = String.valueOf(((SharedPreferences)localObject).getLong("ad_puin", 0L));
       this.this$0.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("stayTime", 5000L);
       this.this$0.d = ((SharedPreferences)localObject).getInt("dayLimit", 3);
       this.this$0.b();
@@ -51,7 +52,7 @@ public class EcShopAssistantManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager.1
  * JD-Core Version:    0.7.0.1
  */

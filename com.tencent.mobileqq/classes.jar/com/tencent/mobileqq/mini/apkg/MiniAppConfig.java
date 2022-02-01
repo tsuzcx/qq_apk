@@ -18,10 +18,10 @@ public class MiniAppConfig
   public BaseLibInfo baseLibInfo;
   public MiniAppInfo config;
   public String entryPath;
-  public int forceReroad;
-  public int gameAdsTotalTime;
+  public int forceReroad = 0;
+  public int gameAdsTotalTime = 0;
   public boolean isFromShowInfo;
-  public boolean isSdkMode;
+  public boolean isSdkMode = false;
   public LaunchParam launchParam;
   public String link;
   public int linkType;

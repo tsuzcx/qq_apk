@@ -24,7 +24,7 @@ public class FadingHorizontalScrollView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected float getRightFadingEdgeStrength()
+  public float getRightFadingEdgeStrength()
   {
     float f = 0.0F;
     if (this.a != 1) {
@@ -40,7 +40,7 @@ public class FadingHorizontalScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.FadingHorizontalScrollView
  * JD-Core Version:    0.7.0.1
  */

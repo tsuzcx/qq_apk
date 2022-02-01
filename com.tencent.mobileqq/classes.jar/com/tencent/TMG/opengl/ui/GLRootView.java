@@ -157,7 +157,7 @@ public class GLRootView
     this.mRenderLock.lock();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     unfreeze();
     super.onDetachedFromWindow();
@@ -209,7 +209,7 @@ public class GLRootView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramBoolean) {
       requestLayoutContentPane();
@@ -430,7 +430,7 @@ public class GLRootView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.ui.GLRootView
  * JD-Core Version:    0.7.0.1
  */

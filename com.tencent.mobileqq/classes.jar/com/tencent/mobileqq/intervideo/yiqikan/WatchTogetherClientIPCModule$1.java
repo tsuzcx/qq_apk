@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.intervideo.yiqikan;
 
-import avxo;
-import avxt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
-public class WatchTogetherClientIPCModule$1
+class WatchTogetherClientIPCModule$1
   implements Runnable
 {
-  public WatchTogetherClientIPCModule$1(avxt paramavxt, String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData) {}
+  WatchTogetherClientIPCModule$1(WatchTogetherClientIPCModule paramWatchTogetherClientIPCModule, String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData) {}
   
   public void run()
   {
     boolean bool = true;
     if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
-      if (avxo.a().a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData) == 0) {
+      if (WatchFloatingWindowController.a().a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData) == 0) {
         if (QLog.isColorLevel()) {
           QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule show=" + bool);
         }
@@ -27,16 +25,16 @@ public class WatchTogetherClientIPCModule$1
       break;
       if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
       {
-        avxo.a().a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType(), true);
+        WatchFloatingWindowController.a().a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType(), true);
         return;
       }
     } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(this.jdField_a_of_type_JavaLangString));
-    avxo.a().b();
+    WatchFloatingWindowController.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

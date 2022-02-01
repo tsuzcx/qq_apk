@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.content.Intent;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ class GroupPlugin$MyActivityResultListener
           QLog.i("GroupPlugin", 2, String.format("evaluateCallback [ACTION_REQUEST_OPEN_GROUP_SELECTMEMBERS] %s", new Object[] { paramIntent }));
         }
         if (localObject != null) {
-          ((NativePlugin.JSContext)localObject).evaluateCallback(bool, paramIntent, "errDesc");
+          ((JSContext)localObject).evaluateCallback(bool, paramIntent, "errDesc");
         }
         return false;
       }

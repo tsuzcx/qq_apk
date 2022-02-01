@@ -10,28 +10,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import anvi;
-import anvk;
-import aoep;
-import aofu;
-import aqne;
-import aqnh;
-import aqnm;
-import aqnn;
-import bdla;
-import bhnp;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopBusinessObserver;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.chat.MessageNotificationSettingManager;
+import com.tencent.mobileqq.chat.MessageNotificationSettingManager.RingCallback;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.FormSwitchItem;
@@ -42,17 +40,17 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MessageNotificationSettingFragment
   extends IphoneTitleBarFragment
-  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, aqnh
+  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, MessageNotificationSettingManager.RingCallback
 {
   private int jdField_a_of_type_Int;
-  private anvi jdField_a_of_type_Anvi;
-  private anvk jdField_a_of_type_Anvk;
-  private aoep jdField_a_of_type_Aoep;
-  private aofu jdField_a_of_type_Aofu;
-  private aqne jdField_a_of_type_Aqne;
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
+  private FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private TroopBusinessObserver jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver;
+  private TroopHandler jdField_a_of_type_ComTencentMobileqqAppTroopHandler;
   private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  private MessageNotificationSettingManager jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private String jdField_a_of_type_JavaLangString;
@@ -71,14 +69,14 @@ public class MessageNotificationSettingFragment
       QLog.e("MessageNotificationSettingFragment", 2, new Object[] { "initData . ", " mUin: " + this.jdField_a_of_type_JavaLangString, " mUinType: " + this.jdField_a_of_type_Int });
     }
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int == -1)) {}
-    this.jdField_a_of_type_Aqne.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 0) {
-      bdla.b(null, "dc00898", "", "", "0X800A3C7", "0X800A3C7", 1, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A3C7", "0X800A3C7", 1, 0, "", "", "", "");
     }
     while (this.jdField_a_of_type_Int != 1) {
       return;
     }
-    bdla.b(null, "dc00898", "", "", "0X800A3C7", "0X800A3C7", 2, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A3C7", "0X800A3C7", 2, 0, "", "", "", "");
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -91,26 +89,36 @@ public class MessageNotificationSettingFragment
     PublicFragmentActivity.a(paramActivity, paramIntent, MessageNotificationSettingFragment.class);
   }
   
+  private boolean a(TroopInfo paramTroopInfo)
+  {
+    return (paramTroopInfo == null) || (!TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 4096));
+  }
+  
   private void b()
   {
-    this.jdField_a_of_type_Anvi = new aqnm(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anvi);
-    this.jdField_a_of_type_Aofu = new aqnn(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aofu);
-    this.jdField_a_of_type_Aqne.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new MessageNotificationSettingFragment.1(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new MessageNotificationSettingFragment.2(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.a(this);
+  }
+  
+  private boolean b(TroopInfo paramTroopInfo)
+  {
+    return (paramTroopInfo == null) || (!TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 2048));
   }
   
   private void c()
   {
-    setTitle(getString(2131694344));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)a(2131377457));
-    this.b = ((FormSwitchItem)a(2131377458));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131377459));
-    this.c = ((FormSwitchItem)a(2131377460));
+    setTitle(getString(2131694553));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)a(2131377875));
+    this.b = ((FormSwitchItem)a(2131377876));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131377877));
+    this.c = ((FormSwitchItem)a(2131377878));
     Object localObject;
     if (this.jdField_a_of_type_Int == 0)
     {
-      localObject = this.jdField_a_of_type_Anvk.a(this.jdField_a_of_type_JavaLangString, true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString, true);
       if (localObject == null)
       {
         QLog.d("MessageNotificationSettingFragment", 1, new Object[] { "initViews: invoked. ", " extensionInfo: ", localObject });
@@ -124,7 +132,7 @@ public class MessageNotificationSettingFragment
           this.b.setBgType(3);
         }
         if (this.jdField_a_of_type_Int != 0) {
-          break label454;
+          break label458;
         }
         VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "bell", "C2C_show", "", 1, 0, 0, "", "", "");
       }
@@ -177,10 +185,10 @@ public class MessageNotificationSettingFragment
       if (QLog.isColorLevel()) {
         QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "initViews: invoked. ", " troopInfo.cmdUinFlagEx2: ", Long.valueOf(((TroopInfo)localObject).cmdUinFlagEx2) });
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((TroopInfo)localObject).messageEnablePreview());
-      this.b.setChecked(((TroopInfo)localObject).messageEnableSound());
-      this.c.setChecked(((TroopInfo)localObject).messageEnableVibrate());
-      if (((TroopInfo)localObject).messageEnableSound())
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(c((TroopInfo)localObject));
+      this.b.setChecked(b((TroopInfo)localObject));
+      this.c.setChecked(a((TroopInfo)localObject));
+      if (b((TroopInfo)localObject))
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
         break;
@@ -191,8 +199,13 @@ public class MessageNotificationSettingFragment
     label280:
     label285:
     label290:
-    label454:
+    label458:
     VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "bell", "group_show", "", 1, 0, 0, "", "", "");
+  }
+  
+  private boolean c(TroopInfo paramTroopInfo)
+  {
+    return (paramTroopInfo == null) || (!TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 1024));
   }
   
   protected final <T extends View> T a(int paramInt)
@@ -202,12 +215,12 @@ public class MessageNotificationSettingFragment
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Aqne.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
   
   public int getContentLayoutId()
   {
-    return 2131559222;
+    return 2131559256;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -239,10 +252,10 @@ public class MessageNotificationSettingFragment
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a() != paramCompoundButton) {
         break label287;
       }
-      if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+      if (NetworkUtil.d(BaseApplication.getContext())) {
         break label164;
       }
-      a(2131692125, 1);
+      a(2131692257, 1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
       if (paramCompoundButton.isChecked()) {
@@ -268,11 +281,11 @@ public class MessageNotificationSettingFragment
       break label123;
       if (i != 0)
       {
-        this.jdField_a_of_type_Aoep.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), j, 1024, i4);
+        this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), j, 1024, i4);
         if (paramBoolean) {}
         for (i = k;; i = 2)
         {
-          bdla.b(null, "dc00898", "", "", "0X800A3CB", "0X800A3CB", i, 0, "", "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800A3CB", "0X800A3CB", i, 0, "", "", "", "");
           break;
         }
       }
@@ -280,14 +293,14 @@ public class MessageNotificationSettingFragment
       if (paramBoolean) {}
       for (i = m;; i = 2)
       {
-        bdla.b(null, "dc00898", "", "", "0X800A3C8", "0X800A3C8", i, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800A3C8", "0X800A3C8", i, 0, "", "", "", "");
         break;
       }
       if (this.b.a() == paramCompoundButton)
       {
-        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+        if (!NetworkUtil.d(BaseApplication.getContext()))
         {
-          a(2131692125, 1);
+          a(2131692257, 1);
           this.b.setOnCheckedChangeListener(null);
           localObject = this.b;
           if (!paramCompoundButton.isChecked()) {}
@@ -304,14 +317,14 @@ public class MessageNotificationSettingFragment
           if (i == 0) {
             break label458;
           }
-          this.jdField_a_of_type_Aoep.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), j, 2048, i4);
+          this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), j, 2048, i4);
           if (!paramBoolean) {
             break label453;
           }
         }
         for (i = n;; i = 2)
         {
-          bdla.b(null, "dc00898", "", "", "0X800A3CC", "0X800A3CC", i, 0, "", "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800A3CC", "0X800A3CC", i, 0, "", "", "", "");
           break;
           this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
           break label376;
@@ -320,7 +333,7 @@ public class MessageNotificationSettingFragment
         if (paramBoolean) {}
         for (i = i1;; i = 2)
         {
-          bdla.b(null, "dc00898", "", "", "0X800A3C9", "0X800A3C9", i, 0, "", "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800A3C9", "0X800A3C9", i, 0, "", "", "", "");
           break;
         }
       }
@@ -328,9 +341,9 @@ public class MessageNotificationSettingFragment
     label287:
     label453:
     label458:
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      a(2131692125, 1);
+      a(2131692257, 1);
       this.c.setOnCheckedChangeListener(null);
       localObject = this.c;
       if (!paramCompoundButton.isChecked()) {}
@@ -343,11 +356,11 @@ public class MessageNotificationSettingFragment
     }
     if (i != 0)
     {
-      this.jdField_a_of_type_Aoep.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), j, 4096, i4);
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), j, 4096, i4);
       if (paramBoolean) {}
       for (i = i2;; i = 2)
       {
-        bdla.b(null, "dc00898", "", "", "0X800A3CD", "0X800A3CD", i, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800A3CD", "0X800A3CD", i, 0, "", "", "", "");
         break;
       }
     }
@@ -355,7 +368,7 @@ public class MessageNotificationSettingFragment
     if (paramBoolean) {}
     for (int i = i3;; i = 2)
     {
-      bdla.b(null, "dc00898", "", "", "0X800A3CA", "0X800A3CA", i, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A3CA", "0X800A3CA", i, 0, "", "", "", "");
       break;
     }
   }
@@ -374,10 +387,10 @@ public class MessageNotificationSettingFragment
     int i;
     if (this.jdField_a_of_type_Int == 0)
     {
-      bdla.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 1, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 1, 0, "", "", "", "");
       VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "bell", "C2C_click", "", 1, 0, 0, "", "", "");
       localIntent = new Intent(getActivity(), QQBrowserActivity.class);
-      str2 = bhnp.a("specialCareRingUrl");
+      str2 = IndividuationUrlHelper.a("specialCareRingUrl");
       if (this.jdField_a_of_type_Int != 1) {
         break label233;
       }
@@ -397,7 +410,7 @@ public class MessageNotificationSettingFragment
       if (this.jdField_a_of_type_Int != 1) {
         break label91;
       }
-      bdla.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 3, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 3, 0, "", "", "", "");
       VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "bell", "group_click", "", 1, 0, 0, "", "", "");
       break label91;
       i = 0;
@@ -413,9 +426,9 @@ public class MessageNotificationSettingFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anvi);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aofu);
-    this.jdField_a_of_type_Aqne.b(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.b(this);
   }
   
   public void onResume()
@@ -425,11 +438,11 @@ public class MessageNotificationSettingFragment
     super.onResume();
     if (this.jdField_a_of_type_Int == 0)
     {
-      localObject = this.jdField_a_of_type_Anvk.a(this.jdField_a_of_type_JavaLangString, false);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString, false);
       if (localObject == null)
       {
         QLog.d("MessageNotificationSettingFragment", 1, new Object[] { "onResume: invoked. ", " extensionInfo: ", localObject });
-        this.jdField_a_of_type_Aqne.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, i, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, i, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       }
     }
     while (this.jdField_a_of_type_Int != 1) {
@@ -445,7 +458,7 @@ public class MessageNotificationSettingFragment
     }
     for (i = j;; i = (int)((TroopInfo)localObject).udwCmdUinRingtoneID)
     {
-      this.jdField_a_of_type_Aqne.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, i);
+      this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, i);
       return;
       if (QLog.isColorLevel()) {
         QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "onResume: invoked. ", " troopInfo.cmdUinFlagEx2: ", Long.valueOf(((TroopInfo)localObject).cmdUinFlagEx2) });
@@ -458,10 +471,10 @@ public class MessageNotificationSettingFragment
     super.onViewCreated(paramView, paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
     this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
-    this.jdField_a_of_type_Aoep = ((aoep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER));
-    this.jdField_a_of_type_Anvk = ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler = ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER));
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER));
     this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
-    this.jdField_a_of_type_Aqne = aqne.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     a();
     c();
     b();

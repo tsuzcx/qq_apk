@@ -8,12 +8,12 @@ public final class AnswerAddedFriendReq
   extends JceStruct
 {
   static int cache_myAllowFlag;
-  public long adduin;
-  public int myAllowFlag;
-  public byte myfriendgroupid;
+  public long adduin = 0L;
+  public int myAllowFlag = 0;
+  public byte myfriendgroupid = 0;
   public String refuseReason = "";
-  public byte refuseReasonLen;
-  public long uin;
+  public byte refuseReasonLen = 0;
+  public long uin = 0L;
   
   public AnswerAddedFriendReq() {}
   
@@ -51,7 +51,7 @@ public final class AnswerAddedFriendReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.AnswerAddedFriendReq
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,16 @@ package com.tencent.mobileqq.upgrade;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bjnn;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public final class NewUpgradeDialog$7
+final class NewUpgradeDialog$7
   implements Runnable
 {
-  public NewUpgradeDialog$7(Activity paramActivity, Bundle paramBundle) {}
+  NewUpgradeDialog$7(Activity paramActivity, Bundle paramBundle) {}
   
   public void run()
   {
-    bjnn.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
+    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
   }
 }
 

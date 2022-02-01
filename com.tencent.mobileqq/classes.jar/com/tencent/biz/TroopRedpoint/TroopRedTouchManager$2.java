@@ -4,12 +4,11 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.dating.MsgBoxListActivity;
 import com.tencent.qphone.base.util.QLog;
-import ntq;
 
-public class TroopRedTouchManager$2
+class TroopRedTouchManager$2
   implements Runnable
 {
-  public TroopRedTouchManager$2(ntq paramntq, QQAppInterface paramQQAppInterface) {}
+  TroopRedTouchManager$2(TroopRedTouchManager paramTroopRedTouchManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class TroopRedTouchManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
 import android.animation.ValueAnimator;
-import aqre;
 
 final class ColorNoteSmallScreenRelativeLayout$CheckForLongPress
   implements Runnable

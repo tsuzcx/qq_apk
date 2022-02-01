@@ -6,12 +6,10 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import bdee;
-import bnkt;
-import bnky;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -20,6 +18,7 @@ import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.ProcessUtils;
+import dov.com.qq.im.ae.download.AEResUtil;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,12 +37,12 @@ public class QZonePluginManager
   private static final String MTA_SUB_KEY_PLUGIN_ID = "plugin_id";
   private static final String MTA_SUB_KEY_REFER = "refer";
   public static final String TAG = "QZonePluginManger";
-  private boolean closed;
+  private boolean closed = false;
   private QZonePluginDownloader downloader;
   private QZonePluginInstaller installer;
-  private boolean lastUpdateSuccess;
+  private boolean lastUpdateSuccess = false;
   Context mContext;
-  private boolean mIsReady;
+  private boolean mIsReady = false;
   Object mPendingLaunchLock = new Object();
   QZonePluginManager.LaunchState mPendingLaunchState;
   private ConcurrentHashMap<String, WeakReference<OnQZonePluginInstallListner>> mPluginRecords;
@@ -958,10 +957,10 @@ public class QZonePluginManager
       do
       {
         return;
-      } while (!bdee.a());
+      } while (!PtvFilterSoLoad.a());
       QLog.w("QZonePluginManger", 1, "triggerQQDownloadPtuFilter");
-    } while (bnky.b(bnkt.b));
-    bdee.a(localQQAppInterface, BaseApplicationImpl.getContext());
+    } while (AEResUtil.b());
+    PtvFilterSoLoad.a(localQQAppInterface, BaseApplicationImpl.getContext());
   }
   
   public boolean uninstallPlugin(String paramString)
@@ -985,7 +984,7 @@ public class QZonePluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginManager
  * JD-Core Version:    0.7.0.1
  */

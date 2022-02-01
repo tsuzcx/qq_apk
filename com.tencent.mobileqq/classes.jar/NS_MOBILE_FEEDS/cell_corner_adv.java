@@ -11,15 +11,15 @@ public final class cell_corner_adv
   static s_picdata cache_adv_info = new s_picdata();
   static s_picdata cache_feedback_info;
   static s_picdata cache_gif_info = new s_picdata();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public int adv_appear_time;
-  public int adv_hold_time;
-  public s_picdata adv_info;
-  public int feedback_appear_time;
-  public s_picdata feedback_info;
-  public s_picdata gif_info;
-  public int min_video_time;
+  public int adv_appear_time = 0;
+  public int adv_hold_time = 0;
+  public s_picdata adv_info = null;
+  public int feedback_appear_time = 0;
+  public s_picdata feedback_info = null;
+  public s_picdata gif_info = null;
+  public int min_video_time = 0;
   public boolean show_corner_adv = true;
   
   static

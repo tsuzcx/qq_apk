@@ -2,10 +2,10 @@ package cooperation.qqfav;
 
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class QfavUtil$1
+final class QfavUtil$1
   implements Runnable
 {
-  public QfavUtil$1(QQToast paramQQToast, int paramInt) {}
+  QfavUtil$1(QQToast paramQQToast, int paramInt) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public final class QfavUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqfav.QfavUtil.1
  * JD-Core Version:    0.7.0.1
  */

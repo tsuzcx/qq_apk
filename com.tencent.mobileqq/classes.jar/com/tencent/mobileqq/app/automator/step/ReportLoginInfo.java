@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.charset.Charset;
@@ -47,14 +47,14 @@ public class ReportLoginInfo
   {
     try
     {
-      String str2 = this.a.app.getCurrentAccountUin();
+      String str2 = this.a.a.getCurrentAccountUin();
       String str1 = str2;
       if (str2 == null) {
         str1 = "";
       }
       str2 = a(str1);
-      long l = this.a.app.getApplication().getSharedPreferences(this.b + str2, 0).getLong(this.c, 0L);
-      bdla.a(this.a.app, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
+      long l = this.a.a.getApplication().getSharedPreferences(this.b + str2, 0).getLong(this.c, 0L);
+      ReportController.a(this.a.a, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
       if (QLog.isColorLevel()) {
         QLog.d("ReportLoginInfo", 2, "---> report login! --- uin: " + str1 + " Guid: " + SecUtil.toHexString(NetConnInfoCenter.GUID) + " reportID： " + l);
       }

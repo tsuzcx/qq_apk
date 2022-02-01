@@ -8,7 +8,6 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.Display;
 import android.view.WindowManager;
-import auyw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,7 +25,7 @@ public class NearbyImgLoader
   public static int b;
   public static int c;
   NearbyImgDownloader jdField_a_of_type_ComTencentMobileqqTransfileNearbyImgDownloader = new NearbyImgDownloader();
-  ArrayList<auyw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<NearbyImgLoader.OnLoadNearbyImgsCallback> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public List<URL> a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   
@@ -34,7 +33,7 @@ public class NearbyImgLoader
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     int i = ((WindowManager)localBaseApplication.getSystemService("window")).getDefaultDisplay().getWidth();
-    b = (i - AIOUtils.dp2px(2.0F, localBaseApplication.getResources())) / 2;
+    b = (i - AIOUtils.a(2.0F, localBaseApplication.getResources())) / 2;
     jdField_a_of_type_Int = i;
     c = localBaseApplication.getResources().getDisplayMetrics().densityDpi;
   }
@@ -323,7 +322,7 @@ public class NearbyImgLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.feed.NearbyImgLoader
  * JD-Core Version:    0.7.0.1
  */

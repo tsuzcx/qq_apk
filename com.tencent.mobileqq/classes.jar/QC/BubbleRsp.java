@@ -8,8 +8,8 @@ public final class BubbleRsp
   extends JceStruct
 {
   public String actUrl = "";
-  public int authRet;
-  public int bubbleID;
+  public int authRet = 0;
+  public int bubbleID = 0;
   
   public BubbleRsp() {}
   

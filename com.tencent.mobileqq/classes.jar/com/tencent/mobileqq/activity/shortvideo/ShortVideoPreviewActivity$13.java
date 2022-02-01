@@ -8,13 +8,13 @@ class ShortVideoPreviewActivity$13
   public void run()
   {
     ShortVideoPreviewActivity.b(this.this$0);
-    bcwz.b = System.currentTimeMillis();
+    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.b = System.currentTimeMillis();
     this.this$0.setResult(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.13
  * JD-Core Version:    0.7.0.1
  */

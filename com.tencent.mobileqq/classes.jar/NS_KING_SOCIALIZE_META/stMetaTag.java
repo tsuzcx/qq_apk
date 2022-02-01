@@ -9,7 +9,7 @@ public final class stMetaTag
 {
   public String iconUrl = "";
   public String jumpurl = "";
-  public int tag_type;
+  public int tag_type = 0;
   public String title = "";
   
   public stMetaTag() {}

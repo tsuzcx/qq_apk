@@ -24,11 +24,11 @@ class QQPublishCommentFragment$GifUi
   
   QQPublishCommentFragment$GifUi(QQPublishCommentFragment paramQQPublishCommentFragment, Dialog paramDialog)
   {
-    this.vGifButton = ((ImageView)paramDialog.findViewById(2131367706));
+    this.vGifButton = ((ImageView)paramDialog.findViewById(2131367913));
     this.vGifButton.setOnClickListener(this);
-    this.vGifImageContainer = ((RelativeLayout)paramDialog.findViewById(2131368571));
-    this.vGifImageView = ((ImageView)paramDialog.findViewById(2131368572));
-    this.vDelete = paramDialog.findViewById(2131368575);
+    this.vGifImageContainer = ((RelativeLayout)paramDialog.findViewById(2131368801));
+    this.vGifImageView = ((ImageView)paramDialog.findViewById(2131368802));
+    this.vDelete = paramDialog.findViewById(2131368805);
     this.vDelete.setOnClickListener(this);
   }
   
@@ -116,7 +116,7 @@ class QQPublishCommentFragment$GifUi
   {
     ImageView localImageView = this.vGifButton;
     if ((QQPublishCommentFragment.access$2400(this.this$0) == 2) && (QQPublishCommentFragment.access$1500(this.this$0) == 2)) {}
-    for (int i = 2130850667;; i = 2130850665)
+    for (int i = 2130851091;; i = 2130851089)
     {
       localImageView.setImageResource(i);
       return;
@@ -130,7 +130,7 @@ class QQPublishCommentFragment$GifUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.GifUi
  * JD-Core Version:    0.7.0.1
  */

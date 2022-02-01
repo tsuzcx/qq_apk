@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.video;
 
 import android.os.SystemClock;
-import bhyg;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public class VipVideoPlayActivity$VideoPlayerPreparedListener$1
+class VipVideoPlayActivity$VideoPlayerPreparedListener$1
   implements Runnable
 {
-  public VipVideoPlayActivity$VideoPlayerPreparedListener$1(bhyg parambhyg) {}
+  VipVideoPlayActivity$VideoPlayerPreparedListener$1(VipVideoPlayActivity.VideoPlayerPreparedListener paramVideoPlayerPreparedListener) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class VipVideoPlayActivity$VideoPlayerPreparedListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1
  * JD-Core Version:    0.7.0.1
  */

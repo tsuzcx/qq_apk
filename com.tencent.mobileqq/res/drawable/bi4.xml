@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:gravity="center" android:drawable="@drawable/bi7" />
-    <item android:gravity="center" android:id="@id/kqk" android:drawable="@drawable/bi8" android:left="2.0dip" android:top="2.0dip" android:right="2.0dip" android:bottom="2.0dip" />
-</layer-list>
+    <gradient android:startColor="#ff1f1f23" android:endColor="#9a000000" android:angle="0.0" />
+</shape>

@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class s_memory_seal_off
   extends JceStruct
 {
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
   public String button_text = "";
-  public int memory_time;
+  public int memory_time = 0;
   public String no_right_summary = "";
   public String summary = "";
-  public int type;
+  public int type = 0;
   
   public s_memory_seal_off() {}
   

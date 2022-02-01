@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.adapter;
 
-import amjz;
-import amkg;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-public class TroopListAdapter2$5
+class TroopListAdapter2$5
   implements Runnable
 {
-  public TroopListAdapter2$5(amjz paramamjz, TroopManager paramTroopManager, String paramString, amkg paramamkg, boolean paramBoolean) {}
+  TroopListAdapter2$5(TroopListAdapter2 paramTroopListAdapter2, TroopManager paramTroopManager, String paramString, TroopListAdapter2.TroopListItem paramTroopListItem, boolean paramBoolean) {}
   
   public void run()
   {
@@ -23,7 +21,7 @@ public class TroopListAdapter2$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.5
  * JD-Core Version:    0.7.0.1
  */

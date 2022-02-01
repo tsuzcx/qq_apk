@@ -8,13 +8,12 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
-import mwe;
 
 public class BidirectionSeekBar
   extends SeekBar
 {
-  private int a;
-  private int b;
+  private int a = 0;
+  private int b = 0;
   
   public BidirectionSeekBar(Context paramContext)
   {
@@ -40,20 +39,20 @@ public class BidirectionSeekBar
     if (getThumbOffset() != 0) {
       setThumbOffset(0);
     }
-    int i = getResources().getDrawable(2130841978).getIntrinsicWidth();
+    int i = getResources().getDrawable(2130842121).getIntrinsicWidth();
     Object localObject = getProgressDrawable();
     if ((localObject instanceof LayerDrawable))
     {
       localObject = (LayerDrawable)localObject;
       Drawable localDrawable = ((LayerDrawable)localObject).findDrawableByLayerId(16908301);
-      mwe localmwe = new mwe(getResources().getDrawable(2130841970), getResources().getDrawable(2130841973), 1, i);
-      localmwe.setLevel(localDrawable.getLevel());
-      ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localmwe);
+      BidirectionClipDrawable localBidirectionClipDrawable = new BidirectionClipDrawable(getResources().getDrawable(2130842113), getResources().getDrawable(2130842116), 1, i);
+      localBidirectionClipDrawable.setLevel(localDrawable.getLevel());
+      ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localBidirectionClipDrawable);
     }
     if (Build.VERSION.SDK_INT >= 11) {}
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.a = paramInt1;
@@ -69,7 +68,7 @@ public class BidirectionSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.widget.BidirectionSeekBar
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,6 @@ package com.tencent.mobileqq.listentogether.player;
 final class QQMusicPlayService$3
   implements Runnable
 {
-  QQMusicPlayService$3(Object paramObject, int[] paramArrayOfInt) {}
-  
   public void run()
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)

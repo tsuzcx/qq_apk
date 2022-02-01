@@ -37,14 +37,15 @@ public class AuthorityAccountView$DelAccountRunnable
     if (((CharSequence)localObject).toString().equals(this.a))
     {
       if (this.this$0.a.size() != 1) {
-        break label273;
+        break label298;
       }
       if ((AuthorityAccountView.a(this.this$0) == null) || (!(AuthorityAccountView.a(this.this$0) instanceof AuthorityActivity))) {
-        break label219;
+        break label244;
       }
       localObject = new Intent(AuthorityAccountView.a(this.this$0), Login.class);
       ((Intent)localObject).putExtra("key_req_src", 1);
       ((Intent)localObject).putExtra("is_first_login", true);
+      ((Intent)localObject).putExtra("param_qr_code_url", ((AuthorityActivity)AuthorityAccountView.a(this.this$0)).getIntent().getStringExtra("param_qr_code_url"));
       ((AuthorityActivity)AuthorityAccountView.a(this.this$0)).a = null;
       ((AuthorityActivity)AuthorityAccountView.a(this.this$0)).startActivityForResult((Intent)localObject, 1);
     }
@@ -56,16 +57,16 @@ public class AuthorityAccountView$DelAccountRunnable
       this.this$0.c();
       ((BaseActivity)AuthorityAccountView.a(this.this$0)).runOnUiThread(new AuthorityAccountView.DelAccountRunnable.2(this));
       return;
-      label219:
+      label244:
       if ((AuthorityAccountView.a(this.this$0) != null) && ((AuthorityAccountView.a(this.this$0) instanceof QuickLoginAuthorityActivity)))
       {
         ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.this$0)).a = null;
         ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.this$0)).a(null);
       }
     }
-    label273:
+    label298:
     int i = 0;
-    label275:
+    label300:
     if (i < this.this$0.a.size())
     {
       localObject = (String)this.this$0.a.get(i);
@@ -76,14 +77,14 @@ public class AuthorityAccountView$DelAccountRunnable
       ((BaseActivity)AuthorityAccountView.a(this.this$0)).runOnUiThread(new AuthorityAccountView.DelAccountRunnable.1(this, (String)localObject));
       break;
       i += 1;
-      break label275;
+      break label300;
       localObject = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityAccountView.DelAccountRunnable
  * JD-Core Version:    0.7.0.1
  */

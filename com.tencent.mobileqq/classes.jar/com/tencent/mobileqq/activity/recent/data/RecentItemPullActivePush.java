@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import bhid;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
 
 public class RecentItemPullActivePush
   extends AbsRecentUserBusinessBaseData
@@ -17,12 +17,12 @@ public class RecentItemPullActivePush
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = bhid.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPullActivePush
  * JD-Core Version:    0.7.0.1
  */

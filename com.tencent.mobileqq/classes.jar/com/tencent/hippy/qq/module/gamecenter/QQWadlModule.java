@@ -1,16 +1,13 @@
 package com.tencent.hippy.qq.module.gamecenter;
 
-import abuf;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
-import bhbx;
-import bjog;
-import bjqu;
-import bjqz;
-import bmqi;
-import bmqk;
-import bmql;
+import com.tencent.gamecenter.appointment.GameCenterUtils;
+import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
+import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
+import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
 import com.tencent.hippy.qq.module.QQBaseModule;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -18,9 +15,11 @@ import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.HippyModuleManager;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.mtt.hippy.modules.javascriptmodules.EventDispatcher;
+import com.tencent.open.downloadnew.UpdateManager;
+import com.tencent.open.wadl.WadlJsBridgeUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
+import cooperation.wadl.ipc.WadlProxyServiceUtil;
+import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,8 +30,7 @@ public class QQWadlModule
   extends QQBaseModule
 {
   static final String TAG = "QQWadlModule";
-  private volatile bmqi mWadlCallback;
-  private final bjqu mWadlJsBridgeCall = new bjqu(null, null);
+  private volatile WadlProxyServiceCallBackInterface mWadlCallback;
   
   public QQWadlModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -51,20 +49,17 @@ public class QQWadlModule
     {
       WadlParams localWadlParams = paramWadlResult.a;
       localHippyMap.pushString("appid", localWadlParams.jdField_a_of_type_JavaLangString);
-      localHippyMap.pushInt("state", bjqz.a(paramWadlResult.b));
+      localHippyMap.pushInt("state", WadlJsBridgeUtil.a(paramWadlResult.b));
       localHippyMap.pushInt("pro", paramWadlResult.d);
       localHippyMap.pushString("packagename", localWadlParams.f);
-      localHippyMap.pushInt("ismyapp", 0);
-      localHippyMap.pushInt("download_from", 0);
-      localHippyMap.pushInt("realDownloadType", 0);
       localHippyMap.pushString("via", localWadlParams.l);
       localHippyMap.pushInt("writecodestate", 0);
       localHippyMap.pushString("extraInfo", localWadlParams.o);
       localHippyMap.pushBoolean("isAutoInstallBySDK", localWadlParams.a(1));
       localHippyMap.pushBoolean("isRes", localWadlParams.jdField_a_of_type_Boolean);
-      int i = bjqz.b(paramWadlResult.c);
+      int i = WadlJsBridgeUtil.b(paramWadlResult.c);
       localHippyMap.pushInt("errorCode", i);
-      localHippyMap.pushString("errorMsg", bjqz.a(i));
+      localHippyMap.pushString("errorMsg", WadlJsBridgeUtil.a(i));
     }
     return localHippyMap;
   }
@@ -96,8 +91,8 @@ public class QQWadlModule
           i += 1;
         }
       }
-      bjog.a().a(new QQWadlModule.CheckUpdateCallback(paramString1, paramPromise));
-      bjog.a().a(paramString2);
+      UpdateManager.a().a(new QQWadlModule.CheckUpdateCallback(paramString1, paramPromise));
+      UpdateManager.a().a(paramString2);
       return;
     }
     catch (JSONException paramString1)
@@ -110,7 +105,7 @@ public class QQWadlModule
   public void deleteDownload(String paramString)
   {
     QLog.i("QQWadlModule", 1, "deleteDownload appid=" + paramString);
-    bmqk.a().c(0, paramString);
+    WadlProxyServiceUtil.a().c(0, paramString);
   }
   
   public void destroy()
@@ -122,10 +117,12 @@ public class QQWadlModule
   @HippyMethod(name="doDownloadAction")
   public void doDownloadAction(String paramString, Promise paramPromise)
   {
-    int i = this.mWadlJsBridgeCall.a(paramString, false, 0, "");
-    QLog.i("QQWadlModule", 1, "doDownloadAction jsonParams=" + paramString + ", result=" + i);
+    WadlParams localWadlParams = new WadlParams(paramString);
+    localWadlParams.d = 0;
+    WadlProxyServiceUtil.a().a(localWadlParams);
+    QLog.i("QQWadlModule", 1, "doDownloadAction jsonParams=" + paramString);
     if (paramPromise != null) {
-      paramPromise.resolve(Integer.valueOf(i));
+      paramPromise.resolve(Integer.valueOf(0));
     }
   }
   
@@ -135,7 +132,7 @@ public class QQWadlModule
     if (paramPromise != null) {}
     try
     {
-      paramPromise.resolve(Long.valueOf(bhbx.b()));
+      paramPromise.resolve(Long.valueOf(Utils.b()));
       return;
     }
     catch (Exception localException)
@@ -180,7 +177,7 @@ public class QQWadlModule
           str1 = paramString1;
           String str3 = localJSONArray2.getString(i);
           str1 = paramString1;
-          Object localObject2 = abuf.a(str3);
+          Object localObject2 = GameCenterUtils.a(str3);
           String str2 = "";
           localObject1 = "";
           paramString2 = "";
@@ -191,7 +188,7 @@ public class QQWadlModule
             str1 = paramString1;
             localObject1 = ((PackageInfo)localObject2).versionName;
             str1 = paramString1;
-            paramString2 = abuf.d(abuf.c(str3));
+            paramString2 = GameCenterUtils.b(GameCenterUtils.a(str3));
           }
           str1 = paramString1;
           localObject2 = new JSONObject();
@@ -259,7 +256,7 @@ public class QQWadlModule
       }
       if (paramPromise.size() > 0)
       {
-        bmqk.a().a(paramPromise);
+        WadlProxyServiceUtil.a().a(paramPromise);
         return;
         label123:
         i += 1;
@@ -273,7 +270,7 @@ public class QQWadlModule
     if (QLog.isColorLevel()) {
       QLog.d("QQWadlModule", 2, "queryAllDownloadTask");
     }
-    bmqk.a().b();
+    WadlProxyServiceUtil.a().a();
   }
   
   @HippyMethod(name="registerListener")
@@ -282,7 +279,7 @@ public class QQWadlModule
     if (this.mWadlCallback == null)
     {
       this.mWadlCallback = new QQWadlModule.1(this);
-      bmqk.a().a(this.mWadlCallback);
+      WadlProxyServiceUtil.a().a(this.mWadlCallback);
     }
   }
   
@@ -291,14 +288,14 @@ public class QQWadlModule
   {
     if (this.mWadlCallback != null)
     {
-      bmqk.a().b(this.mWadlCallback);
+      WadlProxyServiceUtil.a().b(this.mWadlCallback);
       this.mWadlCallback = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.gamecenter.QQWadlModule
  * JD-Core Version:    0.7.0.1
  */

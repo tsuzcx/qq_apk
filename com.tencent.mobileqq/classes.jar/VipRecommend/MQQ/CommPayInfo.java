@@ -10,8 +10,8 @@ public final class CommPayInfo
 {
   static ArrayList<PayParam> cache_payParams;
   static RecParam cache_recParam;
-  public ArrayList<PayParam> payParams;
-  public RecParam recParam;
+  public ArrayList<PayParam> payParams = null;
+  public RecParam recParam = null;
   
   public CommPayInfo() {}
   

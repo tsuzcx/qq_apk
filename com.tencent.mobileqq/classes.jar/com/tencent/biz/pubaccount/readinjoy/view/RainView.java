@@ -7,21 +7,18 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bdyd;
-import bdyf;
-import bdyh;
-import bdzh;
-import bdzk;
-import bheg;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.DelayAction;
+import com.tencent.mobileqq.surfaceviewaction.action.MoveToAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-import syz;
-import sza;
-import szb;
 
 public class RainView
   extends SpriteGLView
@@ -33,14 +30,14 @@ public class RainView
   private static int e = 3;
   private static int f = 6;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bdzk jdField_a_of_type_Bdzk;
+  private RainView.AnimationEndListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView$AnimationEndListener;
+  private Texture jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private szb jdField_a_of_type_Szb;
   private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   private int g;
   private int h;
   private int i;
-  private int j;
+  private int j = 0;
   private int k;
   
   public RainView(Context paramContext)
@@ -76,11 +73,11 @@ public class RainView
     }
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    bheg.a(paramString, (BitmapFactory.Options)localObject);
+    ImageUtil.a(paramString, (BitmapFactory.Options)localObject);
     int i2 = ((BitmapFactory.Options)localObject).outHeight;
     int m = ((BitmapFactory.Options)localObject).outWidth;
-    int n = DisplayUtil.dip2px(getContext(), 80.0F);
-    int i1 = DisplayUtil.dip2px(getContext(), 80.0F);
+    int n = DisplayUtil.a(getContext(), 80.0F);
+    int i1 = DisplayUtil.a(getContext(), 80.0F);
     if ((i2 > n) || (m > i1))
     {
       i2 /= 2;
@@ -105,7 +102,7 @@ public class RainView
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
         try
         {
-          localObject = bheg.a(paramString, (BitmapFactory.Options)localObject);
+          localObject = ImageUtil.a(paramString, (BitmapFactory.Options)localObject);
           paramString = (String)localObject;
           if (localObject != null) {
             break;
@@ -129,13 +126,13 @@ public class RainView
     {
       paramString = a(paramString);
       if (paramString != null) {
-        this.jdField_a_of_type_Bdzk = new bdzk(this, paramString);
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = new Texture(this, paramString);
       }
-      if (this.jdField_a_of_type_Bdzk != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null)
       {
         this.g = (paramInt1 / e);
         this.h = paramInt2;
-        this.i = (DisplayUtil.dip2px(getContext(), 20.0F) + paramInt3);
+        this.i = (DisplayUtil.a(getContext(), 20.0F) + paramInt3);
         this.k = (paramInt3 - paramInt2);
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
         b(this);
@@ -144,10 +141,10 @@ public class RainView
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("SpriteGLView", 2, "rain animation run initCount = " + m + " mTexture = " + this.jdField_a_of_type_Bdzk);
+        QLog.d("SpriteGLView", 2, "rain animation run initCount = " + m + " mTexture = " + this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
       }
       return;
-      if ((m > 1) && (this.jdField_a_of_type_Bdzk != null)) {
+      if ((m > 1) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null)) {
         b(this);
       }
     }
@@ -166,36 +163,36 @@ public class RainView
     int m = 0;
     while (m < e)
     {
-      bdzh localbdzh = new bdzh(this);
-      localbdzh.a(this.jdField_a_of_type_Bdzk);
-      localbdzh.e = ((new Random().nextInt(2) * 2 + 8) / 10.0F);
-      int n = this.h - new Random().nextInt(DisplayUtil.dip2px(getContext(), d));
+      Sprite localSprite = new Sprite(this);
+      localSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
+      localSprite.e = ((new Random().nextInt(2) * 2 + 8) / 10.0F);
+      int n = this.h - new Random().nextInt(DisplayUtil.a(getContext(), d));
       int i1 = this.i;
       int i2 = this.g * m + new Random().nextInt(this.g + 1);
-      localbdzh.a(i2, n);
-      Object localObject = new bdyh(jdField_a_of_type_Int, i2, n, a(i2), i1);
-      localbdzh.a(new bdyd[] { localObject });
-      ((bdyh)localObject).a(new syz(this, localbdzh));
+      localSprite.a(i2, n);
+      Object localObject = new MoveToAction(jdField_a_of_type_Int, i2, n, a(i2), i1);
+      localSprite.a(new Action[] { localObject });
+      ((MoveToAction)localObject).a(new RainView.1(this, localSprite));
       if (m == 0)
       {
-        localObject = new bdyf(jdField_b_of_type_Int);
-        localbdzh.a(new bdyd[] { localObject });
-        ((bdyf)localObject).a(new sza(this));
+        localObject = new DelayAction(jdField_b_of_type_Int);
+        localSprite.a(new Action[] { localObject });
+        ((DelayAction)localObject).a(new RainView.2(this));
       }
-      a(localbdzh);
+      a(localSprite);
       m += 1;
     }
     this.j += 1;
   }
   
-  public void setAnimationEndListener(szb paramszb)
+  public void setAnimationEndListener(RainView.AnimationEndListener paramAnimationEndListener)
   {
-    this.jdField_a_of_type_Szb = paramszb;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView$AnimationEndListener = paramAnimationEndListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RainView
  * JD-Core Version:    0.7.0.1
  */

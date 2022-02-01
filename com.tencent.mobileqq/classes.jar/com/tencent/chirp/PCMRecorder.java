@@ -1,22 +1,21 @@
 package com.tencent.chirp;
 
-import aaul;
 import android.content.Context;
 
 public class PCMRecorder
 {
   private int jdField_a_of_type_Int = 44100;
-  private aaul jdField_a_of_type_Aaul;
   private Context jdField_a_of_type_AndroidContentContext;
+  private PCMRecorder.OnQQRecorderListener jdField_a_of_type_ComTencentChirpPCMRecorder$OnQQRecorderListener;
   private volatile PCMRecorder.RecordThread jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread;
-  private int b;
+  private int b = 0;
   
-  public PCMRecorder(Context paramContext, int paramInt, aaul paramaaul)
+  public PCMRecorder(Context paramContext, int paramInt, PCMRecorder.OnQQRecorderListener paramOnQQRecorderListener)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
     this.b = (paramInt / 50 * 2 * 2);
-    this.jdField_a_of_type_Aaul = paramaaul;
+    this.jdField_a_of_type_ComTencentChirpPCMRecorder$OnQQRecorderListener = paramOnQQRecorderListener;
   }
   
   public void a()
@@ -41,7 +40,7 @@ public class PCMRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.chirp.PCMRecorder
  * JD-Core Version:    0.7.0.1
  */

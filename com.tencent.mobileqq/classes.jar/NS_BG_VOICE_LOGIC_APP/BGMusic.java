@@ -10,9 +10,9 @@ public final class BGMusic
   extends JceStruct
 {
   static ArrayList<MusicInfo> cache_all_music_list = new ArrayList();
-  public ArrayList<MusicInfo> all_music_list;
-  public int all_music_nums;
-  public byte green_diamond_flag;
+  public ArrayList<MusicInfo> all_music_list = null;
+  public int all_music_nums = 0;
+  public byte green_diamond_flag = 0;
   public boolean music_can_play = true;
   
   static

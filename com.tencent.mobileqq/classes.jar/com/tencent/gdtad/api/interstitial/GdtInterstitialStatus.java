@@ -1,6 +1,5 @@
 package com.tencent.gdtad.api.interstitial;
 
-import accj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +7,7 @@ import android.os.Parcelable.Creator;
 public final class GdtInterstitialStatus
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialStatus> CREATOR = new accj();
+  public static final Parcelable.Creator<GdtInterstitialStatus> CREATOR = new GdtInterstitialStatus.1();
   public int a;
   long a;
   public boolean a;
@@ -26,6 +25,12 @@ public final class GdtInterstitialStatus
   public GdtInterstitialStatus()
   {
     this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
     this.jdField_b_of_type_Int = -2147483648;
     this.jdField_c_of_type_Int = -2147483648;
     this.jdField_d_of_type_Int = -2147483648;
@@ -34,9 +39,15 @@ public final class GdtInterstitialStatus
     this.jdField_a_of_type_Long = -2147483648L;
   }
   
-  public GdtInterstitialStatus(Parcel paramParcel)
+  protected GdtInterstitialStatus(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
     this.jdField_b_of_type_Int = -2147483648;
     this.jdField_c_of_type_Int = -2147483648;
     this.jdField_d_of_type_Int = -2147483648;
@@ -49,38 +60,38 @@ public final class GdtInterstitialStatus
       bool1 = true;
       this.jdField_a_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label193;
+        break label223;
       }
       bool1 = true;
-      label78:
+      label108:
       this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label198;
+        break label228;
       }
       bool1 = true;
-      label92:
+      label122:
       this.jdField_c_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label203;
+        break label233;
       }
       bool1 = true;
-      label106:
+      label136:
       this.jdField_d_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label208;
+        break label238;
       }
       bool1 = true;
-      label120:
+      label150:
       this.jdField_e_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label213;
+        break label243;
       }
     }
-    label193:
-    label198:
-    label203:
-    label208:
-    label213:
+    label223:
+    label228:
+    label233:
+    label238:
+    label243:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_f_of_type_Boolean = bool1;
@@ -94,13 +105,13 @@ public final class GdtInterstitialStatus
       bool1 = false;
       break;
       bool1 = false;
-      break label78;
+      break label108;
       bool1 = false;
-      break label92;
+      break label122;
       bool1 = false;
-      break label106;
+      break label136;
       bool1 = false;
-      break label120;
+      break label150;
     }
   }
   
@@ -184,7 +195,7 @@ public final class GdtInterstitialStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialStatus
  * JD-Core Version:    0.7.0.1
  */

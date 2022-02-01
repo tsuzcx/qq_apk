@@ -7,10 +7,9 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
 import android.view.ViewGroup;
-import bpnt;
 import com.tencent.qphone.base.util.QLog;
 
-public class DragAnimationMgr$DragViewIcon
+class DragAnimationMgr$DragViewIcon
   extends View
   implements Runnable
 {
@@ -22,7 +21,7 @@ public class DragAnimationMgr$DragViewIcon
   float jdField_b_of_type_Float = 0.0F;
   int jdField_b_of_type_Int;
   Paint jdField_b_of_type_AndroidGraphicsPaint;
-  public boolean b;
+  boolean jdField_b_of_type_Boolean = false;
   float jdField_c_of_type_Float = 0.0F;
   int jdField_c_of_type_Int = 0;
   boolean jdField_c_of_type_Boolean = false;
@@ -38,7 +37,6 @@ public class DragAnimationMgr$DragViewIcon
   public DragAnimationMgr$DragViewIcon(DragAnimationMgr paramDragAnimationMgr, Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Boolean = false;
     a();
   }
   
@@ -97,7 +95,7 @@ public class DragAnimationMgr$DragViewIcon
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_Int = getWidth();
@@ -270,7 +268,7 @@ public class DragAnimationMgr$DragViewIcon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon
  * JD-Core Version:    0.7.0.1
  */

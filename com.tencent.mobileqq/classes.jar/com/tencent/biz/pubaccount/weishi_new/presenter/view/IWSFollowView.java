@@ -1,0 +1,30 @@
+package com.tencent.biz.pubaccount.weishi_new.presenter.view;
+
+import UserGrowth.stFeed;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowAdapter;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
+
+public abstract interface IWSFollowView
+  extends IWSView<List<stFeed>>
+{
+  public abstract WSFollowAdapter a();
+  
+  public abstract XRecyclerView a();
+  
+  public abstract void a(List<stFeed> paramList, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, List<stFeed> paramList, boolean paramBoolean3);
+  
+  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSFollowView
+ * JD-Core Version:    0.7.0.1
+ */

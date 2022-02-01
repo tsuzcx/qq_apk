@@ -9,7 +9,7 @@ public final class CircleFriendInfo
 {
   public String source = "";
   public String strRemark = "";
-  public long uin;
+  public long uin = 0L;
   
   public CircleFriendInfo() {}
   

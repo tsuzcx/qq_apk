@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.asyncdb;
 
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 
 public class BaseCacheManager
@@ -12,18 +12,18 @@ public class BaseCacheManager
   public static final int ROAM_DATA_CACHE = 2;
   private static final String TAG = "Q.db.Cache";
   public static final int TROOP_STATISTICS_CACHE = 3;
-  private IMCoreAppRuntime app;
-  private int[] baseCache = new int[0];
+  private AppRuntime app;
+  int[] baseCache = new int[0];
   private BaseCache[] cacheArray = new BaseCache[4];
   protected DBDelayManager dbDelayManager;
   private boolean isInit = false;
   private boolean isLazyInit = false;
-  private int[] lazyBaseCache = new int[0];
+  int[] lazyBaseCache = new int[0];
   
-  public BaseCacheManager(IMCoreAppRuntime paramIMCoreAppRuntime)
+  public BaseCacheManager(AppRuntime paramAppRuntime)
   {
-    this.app = paramIMCoreAppRuntime;
-    this.dbDelayManager = new DBDelayManager(paramIMCoreAppRuntime);
+    this.app = paramAppRuntime;
+    this.dbDelayManager = new DBDelayManager(paramAppRuntime);
   }
   
   private void initCaches(int[] paramArrayOfInt)

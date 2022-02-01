@@ -1,24 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric;
 
-import qwn;
-import qww;
-import qwx;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.ProteusPagerSnapHelper;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.RecycleViewAdapterHelper;
 
-public class RvPolymericContainer$9
+class RvPolymericContainer$9
   implements Runnable
 {
-  public RvPolymericContainer$9(qwn paramqwn, long paramLong) {}
+  RvPolymericContainer$9(RvPolymericContainer paramRvPolymericContainer, long paramLong) {}
   
   public void run()
   {
-    if ((qwn.a(this.this$0).a() > 1) && (qwn.a(this.this$0) != null)) {
-      qwn.a(this.this$0).a(this.a);
+    if ((RvPolymericContainer.a(this.this$0).a() > 1) && (RvPolymericContainer.a(this.this$0) != null)) {
+      RvPolymericContainer.a(this.this$0).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.RvPolymericContainer.9
  * JD-Core Version:    0.7.0.1
  */

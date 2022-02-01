@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/nqv" android:layout_width="fill_parent" android:layout_height="40.0dip"
+<FrameLayout android:id="@id/ny4" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/nqz" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" />
-    <TextView android:textSize="14.0dip" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/nr0" android:layout_width="96.0dip" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:text="班级投票聚餐" android:maxEms="6" android:singleLine="true" />
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/nqw" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/h0k" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/ny1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/ny2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:src="@drawable/g76" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/al6" android:gravity="center" android:id="@id/ny3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/ny2" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/nyi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="55.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/nyh" android:layout_width="321.0dip" android:layout_height="200.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:id="@id/nyk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="#c0ffffff" android:id="@id/nyj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" />
+    </LinearLayout>
+</FrameLayout>

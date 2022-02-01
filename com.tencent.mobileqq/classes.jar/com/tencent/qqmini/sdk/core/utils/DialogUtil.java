@@ -2,7 +2,9 @@ package com.tencent.qqmini.sdk.core.utils;
 
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.qqmini.sdk.R.layout;
@@ -33,6 +35,35 @@ public class DialogUtil
     paramContext.setBodyLayoutNoMargin();
     paramContext.setCanceledOnTouchOutside(false);
     return paramContext;
+  }
+  
+  public static AppCloseDialog createCloseAlertDialog(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, float paramFloat, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    AppCloseDialog localAppCloseDialog = new AppCloseDialog(paramContext, paramInt);
+    if (localAppCloseDialog.getWindow() != null)
+    {
+      Window localWindow = localAppCloseDialog.getWindow();
+      localWindow.requestFeature(1);
+      localWindow.setBackgroundDrawableResource(17170445);
+      localWindow.setGravity(17);
+    }
+    localAppCloseDialog.setContentView(R.layout.mini_sdk_app_close_dialog);
+    localAppCloseDialog.setTitle(paramString1);
+    localAppCloseDialog.setTextSingleLine(paramBoolean1);
+    localAppCloseDialog.setNegativeButton(paramString2, paramOnClickListener1);
+    localAppCloseDialog.setPositiveButton(paramString3, paramOnClickListener2);
+    if (paramFloat > 0.0F) {
+      localAppCloseDialog.setTitleHeight((int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F));
+    }
+    if (paramBoolean2) {
+      localAppCloseDialog.setTitleTextBold();
+    }
+    if (paramBoolean3) {
+      localAppCloseDialog.setButtonTextBold();
+    }
+    localAppCloseDialog.setBodyLayoutNoMargin();
+    localAppCloseDialog.setCancelable(false);
+    return localAppCloseDialog;
   }
   
   public static MiniCustomDialog createCustomDialog(Context paramContext, int paramInt)

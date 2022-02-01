@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import bdbl;
-
-public class CameraProxy$CameraPreviewObservable$1
+class CameraProxy$CameraPreviewObservable$1
   implements Runnable
 {
-  public CameraProxy$CameraPreviewObservable$1(bdbl parambdbl, int paramInt, Object[] paramArrayOfObject) {}
+  CameraProxy$CameraPreviewObservable$1(CameraProxy.CameraPreviewObservable paramCameraPreviewObservable, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    bdbl.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    CameraProxy.CameraPreviewObservable.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

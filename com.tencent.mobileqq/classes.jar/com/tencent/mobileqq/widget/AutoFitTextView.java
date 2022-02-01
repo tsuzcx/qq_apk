@@ -7,14 +7,13 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bima;
 
 public class AutoFitTextView
   extends TextView
 {
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private bima jdField_a_of_type_Bima;
+  private AutoFitTextView.OnGetMaxWidthCallback jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView$OnGetMaxWidthCallback;
   
   public AutoFitTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -30,9 +29,9 @@ public class AutoFitTextView
     if (this.jdField_a_of_type_Float == 0.0F) {
       this.jdField_a_of_type_Float = getTextSize();
     }
-    if (this.jdField_a_of_type_Bima != null) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView$OnGetMaxWidthCallback != null) {}
     float f1;
-    for (paramInt = this.jdField_a_of_type_Bima.a();; paramInt = getWidth())
+    for (paramInt = this.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView$OnGetMaxWidthCallback.a();; paramInt = getWidth())
     {
       int i = getPaddingLeft();
       int j = getPaddingRight();
@@ -52,20 +51,20 @@ public class AutoFitTextView
     setTextSize(0, f1);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     a(getText().toString(), getWidth());
   }
   
-  public void setOnGetMaxWidthCallback(bima parambima)
+  public void setOnGetMaxWidthCallback(AutoFitTextView.OnGetMaxWidthCallback paramOnGetMaxWidthCallback)
   {
-    this.jdField_a_of_type_Bima = parambima;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView$OnGetMaxWidthCallback = paramOnGetMaxWidthCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AutoFitTextView
  * JD-Core Version:    0.7.0.1
  */

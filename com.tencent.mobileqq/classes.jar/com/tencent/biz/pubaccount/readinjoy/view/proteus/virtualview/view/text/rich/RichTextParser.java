@@ -145,7 +145,11 @@ public class RichTextParser
       }
     }
     ((Drawable)localObject1).setBounds(localRect);
-    paramSpannableStringBuilder.setSpan(new RichTextParser.CustomImageSpan((Drawable)localObject1, 101), paramInt1, paramInt2, 33);
+    paramTextView = new RichTextParser.CustomImageSpan((Drawable)localObject1, 101);
+    if (truncateAttr != null) {
+      truncateAttr.imageSpans.add(paramTextView);
+    }
+    paramSpannableStringBuilder.setSpan(paramTextView, paramInt1, paramInt2, 33);
   }
   
   private static void dealNodeItem(TextView paramTextView, Node paramNode, SpannableStringBuilder paramSpannableStringBuilder)
@@ -379,7 +383,7 @@ public class RichTextParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser
  * JD-Core Version:    0.7.0.1
  */

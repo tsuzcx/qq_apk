@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import mqq.os.MqqHandler;
 
 public abstract class QWalletPayBridge
@@ -36,7 +37,7 @@ public abstract class QWalletPayBridge
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay.QWalletPayBridge", 2, "launchPlugin comeFrom = " + paramBundle.getInt("comeForm"));
     }
-    QWalletHelper.launchPayBridgeService(paramContext, paramAppInterface, paramBundle);
+    QWalletHelperImpl.launchPayBridgeService(paramContext, paramAppInterface, paramBundle);
     if ((paramBundle.getInt("launch_type", 0) == 0) && ((paramContext instanceof Activity)))
     {
       paramContext = (Activity)paramContext;
@@ -47,7 +48,7 @@ public abstract class QWalletPayBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayBridge
  * JD-Core Version:    0.7.0.1
  */

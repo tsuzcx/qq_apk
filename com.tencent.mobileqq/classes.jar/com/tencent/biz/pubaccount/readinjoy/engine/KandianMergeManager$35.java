@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
-import tem;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
 
 class KandianMergeManager$35
   implements Runnable
@@ -15,13 +15,13 @@ class KandianMergeManager$35
       Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianMergeManager.a(this.this$0);
       KandianMergeManager.a(this.this$0, null);
       Kandian210Msg0xeeInfo.removeKandian210Msg0xeeInfoFromSp();
-      tem.a().a(localKandian210Msg0xeeInfo);
+      KandianAppInPush.a().a(localKandian210Msg0xeeInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.35
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ayhd;
-
 class NearbyProfileEditPanel$22$1
   implements Runnable
 {
@@ -9,7 +7,7 @@ class NearbyProfileEditPanel$22$1
   
   public void run()
   {
-    ayhd.d(this.a.this$0);
+    NearbyProfileEditPanel.d(this.a.this$0);
   }
 }
 

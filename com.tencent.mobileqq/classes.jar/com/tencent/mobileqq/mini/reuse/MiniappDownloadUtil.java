@@ -16,8 +16,8 @@ import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.tools.DeviceInfoUtils;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -215,7 +215,7 @@ public class MiniappDownloadUtil
   private boolean rangeDownloadEnvEnable()
   {
     List localList = getRangeModePerfLevel();
-    if ((localList != null) && (!localList.contains(Integer.valueOf(DeviceInfoUtil.getPerfLevel())))) {}
+    if ((localList != null) && (!localList.contains(Integer.valueOf(DeviceInfoUtils.a())))) {}
     do
     {
       return false;
@@ -324,10 +324,12 @@ public class MiniappDownloadUtil
     return false;
   }
   
-  public void preConnectHost(ArrayList<String> paramArrayList)
+  public void preConnectHost(ArrayList<String> paramArrayList, String paramString)
   {
-    if (this.resumableDownloader != null) {
-      this.resumableDownloader.preConnectHost(paramArrayList);
+    if (this.resumableDownloader != null)
+    {
+      QLog.d("[mini] MiniappDownloadUtil", 1, "preconnect method = " + paramString);
+      this.resumableDownloader.preConnectHost(paramArrayList, paramString);
     }
   }
 }

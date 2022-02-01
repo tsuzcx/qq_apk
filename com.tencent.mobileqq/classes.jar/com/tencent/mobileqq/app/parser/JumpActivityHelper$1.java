@@ -2,18 +2,18 @@ package com.tencent.mobileqq.app.parser;
 
 import android.content.Intent;
 import android.os.Message;
-import aviq;
 import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.haoliyou.JumpForwardSecurityCheck;
 import mqq.os.MqqHandler;
 
-public final class JumpActivityHelper$1
+final class JumpActivityHelper$1
   implements Runnable
 {
-  public JumpActivityHelper$1(aviq paramaviq, Intent paramIntent, int paramInt, JumpActivity paramJumpActivity) {}
+  JumpActivityHelper$1(JumpForwardSecurityCheck paramJumpForwardSecurityCheck, Intent paramIntent, int paramInt, JumpActivity paramJumpActivity) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Aviq.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_AndroidContentIntent.getAction()))
+    if (!this.jdField_a_of_type_ComTencentMobileqqHaoliyouJumpForwardSecurityCheck.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_AndroidContentIntent.getAction()))
     {
       Message localMessage = Message.obtain();
       localMessage.what = 2;
@@ -25,7 +25,7 @@ public final class JumpActivityHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.JumpActivityHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.profilecard.bussiness.troopgame;
 
-import bacu;
-
-public class ProfileTroopMemGameInfoComponent$2
+class ProfileTroopMemGameInfoComponent$2
   implements Runnable
 {
-  public ProfileTroopMemGameInfoComponent$2(bacu parambacu) {}
+  ProfileTroopMemGameInfoComponent$2(ProfileTroopMemGameInfoComponent paramProfileTroopMemGameInfoComponent) {}
   
   public void run()
   {
-    bacu.b(this.this$0);
+    ProfileTroopMemGameInfoComponent.access$1200(this.this$0);
   }
 }
 

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bnrh;
+import dov.com.qq.im.ae.util.AEQLog;
 
 class AECameraManager$4
   implements Runnable
@@ -9,16 +9,16 @@ class AECameraManager$4
   
   public void run()
   {
-    bnrh.b("AECameraManager", "[cameraManagerHandler] changeCamera " + this.val$whichCamera);
+    AEQLog.b("AECameraManager", "[cameraManagerHandler] changeCamera " + this.val$whichCamera);
     if ((this.val$whichCamera != 2) && (this.val$whichCamera != 1))
     {
-      bnrh.d("AECameraManager", "[cameraManagerHandler] changeCamera invalid camera: " + this.val$whichCamera);
+      AEQLog.d("AECameraManager", "[cameraManagerHandler] changeCamera invalid camera: " + this.val$whichCamera);
       this.val$cameraOpenCallback.onOpenResult(AECameraManager.access$200(this.this$0), AECameraManager.access$500(this.this$0));
       return;
     }
     if ((AECameraManager.access$200(this.this$0) != this.val$whichCamera) && (AECameraManager.access$500(this.this$0)))
     {
-      bnrh.b("AECameraManager", "[cameraManagerHandler] changeCamera, firstly close last camera: " + AECameraManager.access$200(this.this$0));
+      AEQLog.b("AECameraManager", "[cameraManagerHandler] changeCamera, firstly close last camera: " + AECameraManager.access$200(this.this$0));
       AECameraManager.access$100(this.this$0, false);
     }
     AECameraManager.access$202(this.this$0, this.val$whichCamera);
@@ -27,7 +27,7 @@ class AECameraManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraManager.4
  * JD-Core Version:    0.7.0.1
  */

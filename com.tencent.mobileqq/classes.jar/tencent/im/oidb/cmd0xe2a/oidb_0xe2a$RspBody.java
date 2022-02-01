@@ -6,8 +6,9 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 public final class oidb_0xe2a$RspBody
   extends MessageMicro<RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "msg_add_video_rsp", "msg_move_video_rsp" }, new Object[] { null, null }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 66 }, new String[] { "msg_add_video_rsp", "msg_move_video_rsp", "msg_judge_topic_video_num_rsp" }, new Object[] { null, null, null }, RspBody.class);
   public oidb_0xe2a.AddVideoRsp msg_add_video_rsp = new oidb_0xe2a.AddVideoRsp();
+  public oidb_0xe2a.JudgeTopicVideoNumRsp msg_judge_topic_video_num_rsp = new oidb_0xe2a.JudgeTopicVideoNumRsp();
   public oidb_0xe2a.MoveVideoRsp msg_move_video_rsp = new oidb_0xe2a.MoveVideoRsp();
 }
 

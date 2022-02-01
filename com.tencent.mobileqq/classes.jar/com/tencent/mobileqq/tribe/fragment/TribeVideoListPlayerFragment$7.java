@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import betf;
-import betw;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.tribe.playvideo.TribeVideoADItem;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
@@ -17,7 +16,7 @@ class TribeVideoListPlayerFragment$7
   {
     try
     {
-      HttpUtil.openRequest(BaseApplicationImpl.getContext(), ((betf)this.a).a.i, null, "GET", null, null);
+      HttpUtil.openRequest(BaseApplicationImpl.getContext(), ((TribeVideoListPlayerFragment.ADViewHolder)this.a).a.i, null, "GET", null, null);
       return;
     }
     catch (IOException localIOException)

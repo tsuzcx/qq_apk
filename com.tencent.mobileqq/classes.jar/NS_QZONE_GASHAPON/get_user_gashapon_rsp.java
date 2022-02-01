@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class get_user_gashapon_rsp
   extends JceStruct
 {
-  public int iFrameRate;
+  public int iFrameRate = 0;
   public String strH5Url = "";
   public String strPicUrl = "";
   public String strTextUrl = "";
-  public long uiGashaponCount;
+  public long uiGashaponCount = 0L;
   
   public get_user_gashapon_rsp() {}
   

@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import boif;
 
 public class QIMBeautyItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMBeautyItem> CREATOR = new boif();
+  public static final Parcelable.Creator<QIMBeautyItem> CREATOR = new QIMBeautyItem.1();
   public String a;
   public String b;
   public String c;
@@ -17,7 +16,7 @@ public class QIMBeautyItem
   
   public QIMBeautyItem() {}
   
-  public QIMBeautyItem(Parcel paramParcel)
+  protected QIMBeautyItem(Parcel paramParcel)
   {
     this.a = paramParcel.readString();
     this.b = paramParcel.readString();
@@ -87,7 +86,7 @@ public class QIMBeautyItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.data.QIMBeautyItem
  * JD-Core Version:    0.7.0.1
  */

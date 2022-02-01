@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.asyncdb;
 
+import com.tencent.mobileqq.app.proxy.ProxyListener;
 import com.tencent.mobileqq.persistence.Entity;
 
 public class BaseDBQueueItem

@@ -1,18 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bjna;
-
-public final class DownloadApi$9
+final class DownloadApi$9
   implements Runnable
 {
   public void run()
   {
-    bjna.a().c();
+    DownloadManager.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.9
  * JD-Core Version:    0.7.0.1
  */

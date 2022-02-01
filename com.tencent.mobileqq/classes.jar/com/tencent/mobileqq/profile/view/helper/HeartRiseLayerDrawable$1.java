@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.profile.view.helper;
 
-import azwf;
-import azwg;
-
-public class HeartRiseLayerDrawable$1
+class HeartRiseLayerDrawable$1
   implements Runnable
 {
-  public HeartRiseLayerDrawable$1(azwf paramazwf, int paramInt1, int paramInt2, int paramInt3) {}
+  HeartRiseLayerDrawable$1(HeartRiseLayerDrawable paramHeartRiseLayerDrawable, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    ((azwg)this.this$0.getDrawable(this.a)).a(this.b, this.c);
+    ((HeartRiseLayerDrawable.HeartRiseDrawable)this.this$0.getDrawable(this.a)).a(this.b, this.c);
   }
 }
 

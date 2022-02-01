@@ -21,8 +21,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import bhfg;
-import bipw;
+import com.tencent.mobileqq.utils.MessageProgressController;
 import com.tencent.qphone.base.util.QLog;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -43,7 +42,7 @@ public class MessageProgressView
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   public Drawable a;
   AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator;
-  public bipw a;
+  public MessageProgressView.AnimRunnableListener a;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat;
   public float b;
@@ -75,7 +74,7 @@ public class MessageProgressView
   private float g;
   public int g;
   private float h = 8.0F;
-  private float i;
+  private float i = 0.0F;
   private float j = 5.0F;
   private float k = 4.0F;
   private float l = 10.0F;
@@ -99,6 +98,7 @@ public class MessageProgressView
     super(paramContext);
     this.jdField_b_of_type_JavaLangString = "MessageProgressView";
     this.jdField_d_of_type_Int = -1;
+    this.jdField_e_of_type_Int = 0;
     this.jdField_a_of_type_Long = -1L;
     this.jdField_g_of_type_Float = 14.0F;
     this.jdField_c_of_type_Float = Math.abs(this.i - this.m);
@@ -117,6 +117,7 @@ public class MessageProgressView
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_JavaLangString = "MessageProgressView";
     this.jdField_d_of_type_Int = -1;
+    this.jdField_e_of_type_Int = 0;
     this.jdField_a_of_type_Long = -1L;
     this.jdField_g_of_type_Float = 14.0F;
     this.jdField_c_of_type_Float = Math.abs(this.i - this.m);
@@ -135,6 +136,7 @@ public class MessageProgressView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_b_of_type_JavaLangString = "MessageProgressView";
     this.jdField_d_of_type_Int = -1;
+    this.jdField_e_of_type_Int = 0;
     this.jdField_a_of_type_Long = -1L;
     this.jdField_g_of_type_Float = 14.0F;
     this.jdField_c_of_type_Float = Math.abs(this.i - this.m);
@@ -306,15 +308,19 @@ public class MessageProgressView
   
   public void a(String paramString)
   {
-    paramString = bhfg.a().a(paramString);
-    if (paramString != null) {
-      paramString.a(this);
+    RefreshProgressRunnable localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
+    if (localRefreshProgressRunnable != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MessageProgressView", 2, " bind  key=" + paramString + " animRunnable.mProgress = " + localRefreshProgressRunnable.jdField_a_of_type_Int);
+      }
+      localRefreshProgressRunnable.a(this, localRefreshProgressRunnable.jdField_a_of_type_Int);
     }
   }
   
   public boolean a(String paramString)
   {
-    return bhfg.a().a(paramString) != null;
+    return MessageProgressController.a().a(paramString) != null;
   }
   
   protected void b(Canvas paramCanvas)
@@ -332,10 +338,10 @@ public class MessageProgressView
   
   public void b(String paramString)
   {
-    bhfg.a().a(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("MessageProgressView", 2, " stopAnim  key=" + paramString);
     }
+    MessageProgressController.a().a(paramString);
   }
   
   @TargetApi(11)
@@ -590,51 +596,58 @@ public class MessageProgressView
   {
     this.jdField_c_of_type_JavaLangString = null;
     this.jdField_e_of_type_Int = paramInt;
-    MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
+    RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = bhfg.a().a(paramString);
-      if (localRefreshProgressRunnable != null) {
-        break label96;
-      }
-      localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString);
-      bhfg.a().a(paramString, localRefreshProgressRunnable);
-      ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString + " progress=" + paramInt);
+      localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
+      if (localRefreshProgressRunnable == null)
+      {
+        localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString, paramInt);
+        if (QLog.isColorLevel()) {
+          QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString + " progress=" + paramInt);
+        }
+        MessageProgressController.a().a(paramString, localRefreshProgressRunnable);
+        ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       }
     }
-    return;
-    label96:
-    localRefreshProgressRunnable.a(this);
+    else
+    {
+      return;
+    }
+    localRefreshProgressRunnable.a(this, paramInt);
   }
   
   public void setAnimProgress(String paramString1, String paramString2)
   {
     this.jdField_c_of_type_JavaLangString = paramString1;
     this.jdField_e_of_type_Int = 0;
-    MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
+    RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = bhfg.a().a(paramString2);
-      if (localRefreshProgressRunnable != null) {
-        break label96;
-      }
-      localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString2);
-      bhfg.a().a(paramString2, localRefreshProgressRunnable);
-      ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString2 + " progress=" + paramString1);
+      localRefreshProgressRunnable = MessageProgressController.a().a(paramString2);
+      if (localRefreshProgressRunnable == null)
+      {
+        localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString2, this.jdField_e_of_type_Int);
+        if (QLog.isColorLevel()) {
+          QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString2 + " text =" + paramString1);
+        }
+        MessageProgressController.a().a(paramString2, localRefreshProgressRunnable);
+        ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       }
     }
-    return;
-    label96:
-    localRefreshProgressRunnable.a(this);
+    else
+    {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageProgressView", 2, " setAnimProgress , animRunnable exist, key=" + paramString2 + " text =" + paramString1);
+    }
+    localRefreshProgressRunnable.a(this, this.jdField_e_of_type_Int);
   }
   
-  public void setAnimRunnableListener(bipw parambipw)
+  public void setAnimRunnableListener(MessageProgressView.AnimRunnableListener paramAnimRunnableListener)
   {
-    this.jdField_a_of_type_Bipw = parambipw;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView$AnimRunnableListener = paramAnimRunnableListener;
   }
   
   public void setBreathingCircleRadius(float paramFloat)
@@ -767,7 +780,7 @@ public class MessageProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MessageProgressView
  * JD-Core Version:    0.7.0.1
  */

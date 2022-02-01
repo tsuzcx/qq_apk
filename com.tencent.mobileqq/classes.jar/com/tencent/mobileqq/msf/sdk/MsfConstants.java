@@ -21,6 +21,8 @@ public class MsfConstants
   public static final String ATTRIBUTE_LOGIN_TOKEN_CMDHEAD = "to_login_token_cmdhead";
   public static final String ATTRIBUTE_LOGIN_TOKEN_MAP = "to_login_token_map";
   public static final String ATTRIBUTE_LOGIN_UIN_ENCRYPT = "to_login_uin_encrypt";
+  public static final String ATTRIBUTE_MAP_FACE_REG_SIG = "face_reg_sig";
+  public static final String ATTRIBUTE_MAP_FACE_RESULT = "face_result";
   public static final String ATTRIBUTE_MAXPACKAGESIZE = "to_maxPackageSize";
   public static final String ATTRIBUTE_MSGTIMEOUT_CALLBACKER = "to_msgtimeoutCallbacker";
   public static final String ATTRIBUTE_PREDETECT_TIMEOUT_CALLBACKER = "to_predetect_timeoutCallbacker";
@@ -41,6 +43,7 @@ public class MsfConstants
   public static final String ATTRIBUTE_REGISTER_CM_PIGTYPE = "to_register_cr_pigType";
   public static final String ATTRIBUTE_REGISTER_INVITATION_CODE = "To_register_Invitation_code";
   public static final String ATTRIBUTE_REGISTER_LH_UIN = "To_register_lh_uin";
+  public static final String ATTRIBUTE_REGISTER_MAP_PARAM = "To_register_map_param";
   public static final String ATTRIBUTE_REGISTER_NICK = "To_register_nick";
   public static final String ATTRIBUTE_REGISTER_PASS = "To_register_pass";
   public static final String ATTRIBUTE_REGISTER_SMSCODE = "To_register_smsCode";
@@ -121,6 +124,8 @@ public class MsfConstants
   public static final String K_EVENT = "k_event";
   public static final String ProcessNameAll = "*";
   public static final int SERVICE_CMDID_CHANGEUIN = 5001;
+  public static final int TLV_KEY_FACE_REG_SIG = 54;
+  public static final int TLV_KEY_FACE_RESULT = 55;
 }
 
 

@@ -18,12 +18,11 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvx;
-import aorm;
-import bdgy;
-import bdjn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.multilanguage.MultiLanguageEngine;
+import com.tencent.mobileqq.startup.director.StartupDirector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -33,7 +32,7 @@ public class Update
   extends Step
   implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 37, 23, 24, 25, 34, 35, 36 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 36, 23, 24, 25, 33, 34, 35 };
   private double jdField_a_of_type_Double;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
@@ -109,29 +108,31 @@ public class Update
       try
       {
         Thread.sleep(300L);
-        bool1 = bdjn.b(4, this.mDirector, null).step();
+        bool1 = Step.AmStepFactory.b(4, this.mDirector, null).step();
         if (!bool1) {
-          break label839;
+          break label843;
         }
         localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4);
         str1 = "ProcFirstLaunch" + BaseApplicationImpl.processName;
         localObject2 = ((SharedPreferences)localObject1).getString(str1, "null");
         QLog.i("AutoMonitor", 1, String.format("updateVersion %s %s %s", new Object[] { str1, localObject2, String.valueOf(AppSetting.g()) }));
         if (TextUtils.equals(AppSetting.g(), (CharSequence)localObject2)) {
-          break label839;
+          break label843;
         }
         BaseApplicationImpl.isCurrentVersionFirstLaunch = true;
         BaseApplicationImpl.sLaunchTime = 0L;
         BaseApplicationImpl.sShowTime = 0L;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        if (TextUtils.isEmpty((CharSequence)localObject2))
+        {
           BaseApplicationImpl.isFirstLaunchNew = true;
+          com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch.k = true;
         }
-        bdjn.b(28, this.mDirector, null).step();
+        Step.AmStepFactory.b(27, this.mDirector, null).step();
         if (BaseApplicationImpl.sProcessId != 1) {
-          break label907;
+          break label911;
         }
         if (((SharedPreferences)localObject1).getBoolean("HasDelSharppSo", false)) {
-          break label895;
+          break label899;
         }
         QLog.d("DelSharpp", 1, "start del sharpp");
       }
@@ -161,7 +162,7 @@ public class Update
               bool2 = localFile.delete();
               QLog.d("DelSharpp", 1, "exist" + str2);
               if (bool2) {
-                break label865;
+                break label869;
               }
               QLog.d("DelSharpp", 1, " del fail" + str2);
               i += 1;
@@ -174,7 +175,7 @@ public class Update
             continue;
           }
           if (Looper.getMainLooper() == Looper.myLooper()) {
-            break label839;
+            break label843;
           }
         }
         catch (Throwable localThrowable)
@@ -184,34 +185,34 @@ public class Update
           localInterruptedException.edit().putBoolean("HasDelSharppSo", true).commit();
         }
       }
-      label718:
+      label722:
       if (this.jdField_a_of_type_AndroidOsHandler == null)
       {
         this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
       }
-      boolean bool2 = bdjn.b(0, this.mDirector, jdField_a_of_type_ArrayOfInt).step();
+      boolean bool2 = Step.AmStepFactory.b(0, this.mDirector, jdField_a_of_type_ArrayOfInt).step();
       QLog.e("AutoMonitor", 1, "UPDATE_STEPS " + bool2);
       localInterruptedException.edit().putString(str1, AppSetting.g()).commit();
       if (!BaseApplicationImpl.isFirstLaunchNew) {
-        aorm.a().c(BaseApplicationImpl.getContext());
+        MultiLanguageEngine.a().c(BaseApplicationImpl.getContext());
       }
       for (;;)
       {
-        label839:
+        label843:
         if (this.jdField_a_of_type_AndroidOsHandler != null)
         {
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
         }
         return bool1;
-        label865:
+        label869:
         QLog.d("DelSharpp", 1, " del succ" + str2);
         break;
-        label895:
+        label899:
         QLog.d("DelSharpp", 1, "has del sharpp");
-        break label718;
-        label907:
+        break label722;
+        label911:
         localInterruptedException.edit().putString(str1, AppSetting.g()).commit();
       }
       boolean bool1 = true;
@@ -241,11 +242,11 @@ public class Update
             this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localAppActivity.getWindow().getDecorView());
             if (this.jdField_a_of_type_AndroidViewViewGroup != null)
             {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.mDirector.a.getApplicationContext(), 2131562881, null));
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.mDirector.a.getApplicationContext(), 2131563028, null));
               this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-              this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368295));
-              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370477));
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131715269));
+              this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368512));
+              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370760));
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131715751));
               this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
             }
             this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
@@ -269,7 +270,7 @@ public class Update
         } while (this.jdField_a_of_type_AndroidWidgetProgressBar.getProgress() > i);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
         if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.mDirector.a.getString(2131692406), new Object[] { Integer.valueOf(i) }));
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.mDirector.a.getString(2131692537), new Object[] { Integer.valueOf(i) }));
         }
       } while (i >= 99);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 100L);

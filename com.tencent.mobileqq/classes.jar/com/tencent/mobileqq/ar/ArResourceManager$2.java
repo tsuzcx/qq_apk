@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import apge;
-import apgi;
 import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
-public class ArResourceManager$2
+class ArResourceManager$2
   implements Runnable
 {
-  public ArResourceManager$2(apgi paramapgi, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
+  ArResourceManager$2(ArResourceManager paramArResourceManager, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class ArResourceManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArResourceManager.2
  * JD-Core Version:    0.7.0.1
  */

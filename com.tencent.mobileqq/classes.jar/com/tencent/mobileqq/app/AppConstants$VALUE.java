@@ -5,7 +5,6 @@ public abstract interface AppConstants$VALUE
   public static final String ANDROID_PA_CARD_ACTION_DATA_SCHEME = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=";
   public static final int CREATE_DISCUSSION_MAX_PERSON = 100;
   public static final int CREATE_TROOP_MAX_SELECT_PERSON = 100;
-  public static final int FAVORITES_TYPE = 8000;
   public static final int HOT_CHAT_FROM_NORMAL = 1;
   public static final int HOT_CHAT_FROM_WIFI_SHELL = 2;
   public static final String IOS_PA_CARD_ACTION_DATA_SCHEME = "mqqapi://card/show_pslcard?src_type=app&card_type=public_account&version=1&uin=";
@@ -58,6 +57,7 @@ public abstract interface AppConstants$VALUE
   public static final int UIN_TYPE_DISCUSSION = 3000;
   public static final int UIN_TYPE_DISCUSSION_FRIEND = 1004;
   public static final int UIN_TYPE_EC_SHOP_ASSIST = 7120;
+  public static final int UIN_TYPE_FAVORITES = 8000;
   public static final int UIN_TYPE_FILTER_MSG = 10012;
   public static final int UIN_TYPE_FRIEND = 0;
   public static final int UIN_TYPE_FRIEND_VALIDATION = 1022;
@@ -92,7 +92,6 @@ public abstract interface AppConstants$VALUE
   public static final int UIN_TYPE_PC_QQ_SEARCH = 1023;
   public static final int UIN_TYPE_PERSONAL = 8999;
   public static final int UIN_TYPE_PHONECONTACT = 3;
-  public static final int UIN_TYPE_PHONECONTACT_SPECIAL = 4;
   public static final int UIN_TYPE_PHONE_CONTACT_PROFILE_BIND = 56941;
   public static final int UIN_TYPE_PHONE_CONTACT_PROFILE_FRIEND = 56939;
   public static final int UIN_TYPE_PHONE_CONTACT_PROFILE_SELFUNBIND = 56940;

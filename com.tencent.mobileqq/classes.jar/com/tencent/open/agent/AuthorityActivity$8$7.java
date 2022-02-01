@@ -1,12 +1,11 @@
 package com.tencent.open.agent;
 
-import bjat;
 import com.tencent.qphone.base.util.QLog;
 
-public class AuthorityActivity$8$7
+class AuthorityActivity$8$7
   implements Runnable
 {
-  public AuthorityActivity$8$7(bjat parambjat) {}
+  AuthorityActivity$8$7(AuthorityActivity.8 param8) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class AuthorityActivity$8$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityActivity.8.7
  * JD-Core Version:    0.7.0.1
  */

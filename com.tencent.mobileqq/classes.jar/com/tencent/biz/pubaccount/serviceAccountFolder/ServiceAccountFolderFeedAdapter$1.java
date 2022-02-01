@@ -1,27 +1,25 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import uon;
-import uoo;
 
-public class ServiceAccountFolderFeedAdapter$1
+class ServiceAccountFolderFeedAdapter$1
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$1(uoo paramuoo, uon paramuon) {}
+  ServiceAccountFolderFeedAdapter$1(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
   
   public void run()
   {
     try
     {
-      if (uoo.a(this.this$0, this.a.jdField_a_of_type_JavaLangString))
+      if (ServiceAccountFolderFeedAdapter.a(this.this$0, this.a.jdField_a_of_type_JavaLangString))
       {
         String str2 = this.a.jdField_a_of_type_JavaLangString;
         String str3 = this.a.c;
         if (this.a.jdField_a_of_type_JavaLangCharSequence == null) {}
         for (String str1 = "";; str1 = this.a.jdField_a_of_type_JavaLangCharSequence.toString())
         {
-          bdla.b(null, "dc00898", "", str2, "auth_page", "left_unfollow", 0, 0, "", "", str3, str1);
+          ReportController.b(null, "dc00898", "", str2, "auth_page", "left_unfollow", 0, 0, "", "", str3, str1);
           return;
         }
       }
@@ -35,7 +33,7 @@ public class ServiceAccountFolderFeedAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter.1
  * JD-Core Version:    0.7.0.1
  */

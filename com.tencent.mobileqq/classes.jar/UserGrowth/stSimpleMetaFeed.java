@@ -19,6 +19,7 @@ public final class stSimpleMetaFeed
 {
   static ArrayList<stMagicBrand> cache_brands;
   static stMetaTag cache_bt_style;
+  static stCardInfo cache_cardInfo = new stCardInfo();
   static stCollection cache_collection;
   static ArrayList<stMetaComment> cache_comments;
   static stFloatingLayerCardStyle cache_floatingLayerCardStyle;
@@ -27,12 +28,13 @@ public final class stSimpleMetaFeed
   static stH5OpInfo cache_h5_op_info;
   static ArrayList<stMetaUgcImage> cache_images;
   static ArrayList<stImgReplacement> cache_imgReplacements;
-  static stLive cache_live = new stLive();
+  static stLive cache_live;
   static stMagicBrand cache_magicBrand;
   static Map<String, String> cache_map_ext;
   static Map<Integer, byte[]> cache_map_pass_back;
   static stMusicFullInfo cache_music_info;
   static stNewIconStyle cache_new_icon;
+  static stFeedOpInfo cache_opInfo;
   static stOpVideo cache_opVideo;
   static stSimpleMetaPerson cache_poster = new stSimpleMetaPerson();
   static ArrayList<stQQGroupInfo> cache_qqGroups;
@@ -44,55 +46,57 @@ public final class stSimpleMetaFeed
   static stWaterFallCardStyle cache_waterFallCardStyle;
   static stWaterFallItemStrategy cache_waterFallItemStrategy;
   public String bottom_img_url = "";
-  public ArrayList<stMagicBrand> brands;
-  public stMetaTag bt_style;
-  public stCollection collection;
-  public ArrayList<stMetaComment> comments;
-  public int createTime;
-  public int ding_count;
+  public ArrayList<stMagicBrand> brands = null;
+  public stMetaTag bt_style = null;
+  public stCardInfo cardInfo = null;
+  public stCollection collection = null;
+  public ArrayList<stMetaComment> comments = null;
+  public int createTime = 0;
+  public int ding_count = 0;
   public String feed_desc = "";
   public String feed_material_jump_url = "";
-  public stFloatingLayerCardStyle floatingLayerCardStyle;
-  public stFriendLikes friendLikes;
+  public stFloatingLayerCardStyle floatingLayerCardStyle = null;
+  public stFriendLikes friendLikes = null;
   public String gdt_ad_info = "";
-  public int gdt_ad_type;
-  public stMetaGeoInfo geoInfo;
-  public stH5OpInfo h5_op_info;
+  public int gdt_ad_type = 0;
+  public stMetaGeoInfo geoInfo = null;
+  public stH5OpInfo h5_op_info = null;
   public String id = "";
-  public ArrayList<stMetaUgcImage> images;
-  public ArrayList<stImgReplacement> imgReplacements;
-  public boolean isLoop;
-  public int is_ding;
-  public stLive live;
-  public stMagicBrand magicBrand;
-  public Map<String, String> map_ext;
-  public Map<Integer, byte[]> map_pass_back;
+  public ArrayList<stMetaUgcImage> images = null;
+  public ArrayList<stImgReplacement> imgReplacements = null;
+  public boolean isLoop = false;
+  public int is_ding = 0;
+  public stLive live = null;
+  public stMagicBrand magicBrand = null;
+  public Map<String, String> map_ext = null;
+  public Map<Integer, byte[]> map_pass_back = null;
   public String material_desc = "";
   public String material_id = "";
   public String material_thumburl = "";
-  public long music_begin_time;
-  public long music_end_time;
+  public long music_begin_time = 0L;
+  public long music_end_time = 0L;
   public String music_id = "";
-  public stMusicFullInfo music_info;
-  public stNewIconStyle new_icon;
-  public stOpVideo opVideo;
-  public int playNum;
-  public stSimpleMetaPerson poster;
+  public stMusicFullInfo music_info = null;
+  public stNewIconStyle new_icon = null;
+  public stFeedOpInfo opInfo = null;
+  public stOpVideo opVideo = null;
+  public int playNum = 0;
+  public stSimpleMetaPerson poster = null;
   public String poster_id = "";
-  public ArrayList<stQQGroupInfo> qqGroups;
-  public int scaleType;
-  public stShareInfo share_info;
-  public ArrayList<stSimpleComment> simpleComments;
-  public ArrayList<stMetaTag> tags;
-  public int total_comment_num;
+  public ArrayList<stQQGroupInfo> qqGroups = null;
+  public int scaleType = 0;
+  public stShareInfo share_info = null;
+  public ArrayList<stSimpleComment> simpleComments = null;
+  public ArrayList<stMetaTag> tags = null;
+  public int total_comment_num = 0;
   public String traceId = "";
-  public stMetaUgcVideoSeg video;
-  public int videoPoolType;
-  public stVideoTag videoTag;
-  public int video_type;
+  public stMetaUgcVideoSeg video = null;
+  public int videoPoolType = 0;
+  public stVideoTag videoTag = null;
+  public int video_type = 0;
   public String video_url = "";
-  public stWaterFallCardStyle waterFallCardStyle;
-  public stWaterFallItemStrategy waterFallItemStrategy;
+  public stWaterFallCardStyle waterFallCardStyle = null;
+  public stWaterFallItemStrategy waterFallItemStrategy = null;
   public String weishi_jump_url = "";
   public String wording = "";
   
@@ -139,11 +143,13 @@ public final class stSimpleMetaFeed
     cache_qqGroups = new ArrayList();
     localObject = new stQQGroupInfo();
     cache_qqGroups.add(localObject);
+    cache_live = new stLive();
+    cache_opInfo = new stFeedOpInfo();
   }
   
   public stSimpleMetaFeed() {}
   
-  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, stCollection paramstCollection, stFriendLikes paramstFriendLikes, ArrayList<stMagicBrand> paramArrayList5, ArrayList<stQQGroupInfo> paramArrayList6, boolean paramBoolean, stLive paramstLive, int paramInt9)
+  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, stCollection paramstCollection, stFriendLikes paramstFriendLikes, ArrayList<stMagicBrand> paramArrayList5, ArrayList<stQQGroupInfo> paramArrayList6, boolean paramBoolean, stLive paramstLive, int paramInt9, stFeedOpInfo paramstFeedOpInfo, stCardInfo paramstCardInfo)
   {
     this.id = paramString1;
     this.wording = paramString2;
@@ -197,6 +203,8 @@ public final class stSimpleMetaFeed
     this.isLoop = paramBoolean;
     this.live = paramstLive;
     this.scaleType = paramInt9;
+    this.opInfo = paramstFeedOpInfo;
+    this.cardInfo = paramstCardInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -253,6 +261,8 @@ public final class stSimpleMetaFeed
     this.isLoop = paramJceInputStream.read(this.isLoop, 49, false);
     this.live = ((stLive)paramJceInputStream.read(cache_live, 50, false));
     this.scaleType = paramJceInputStream.read(this.scaleType, 51, false);
+    this.opInfo = ((stFeedOpInfo)paramJceInputStream.read(cache_opInfo, 52, false));
+    this.cardInfo = ((stCardInfo)paramJceInputStream.read(cache_cardInfo, 53, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -389,6 +399,12 @@ public final class stSimpleMetaFeed
       paramJceOutputStream.write(this.live, 50);
     }
     paramJceOutputStream.write(this.scaleType, 51);
+    if (this.opInfo != null) {
+      paramJceOutputStream.write(this.opInfo, 52);
+    }
+    if (this.cardInfo != null) {
+      paramJceOutputStream.write(this.cardInfo, 53);
+    }
   }
 }
 

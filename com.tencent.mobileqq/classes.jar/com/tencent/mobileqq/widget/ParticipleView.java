@@ -21,19 +21,13 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bdla;
-import biqr;
-import biqs;
-import biqt;
-import biqu;
-import biqv;
-import biqw;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.text.style.EmoticonSpan;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 import java.util.ArrayList;
@@ -48,26 +42,26 @@ public class ParticipleView
   private static final int jdField_c_of_type_Int = Color.parseColor("#FFFFFF");
   private static final int jdField_d_of_type_Int = Color.parseColor("#03081A");
   private byte jdField_a_of_type_Byte = 0;
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private long jdField_a_of_type_Long;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Point jdField_a_of_type_AndroidGraphicsPoint = new Point(0, 0);
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private biqu jdField_a_of_type_Biqu;
-  private biqv jdField_a_of_type_Biqv;
-  private biqw jdField_a_of_type_Biqw;
+  private ParticipleView.OnParticipleSelectChangeListener jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$OnParticipleSelectChangeListener;
+  private ParticipleView.ParticipleEntity jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity;
+  private ParticipleView.ParticipleExploreByTouchHelper jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleExploreByTouchHelper;
   private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  private List<biqv> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<ParticipleView.ParticipleEntity> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private final List<biqv> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
+  private final List<ParticipleView.ParticipleEntity> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_b_of_type_Boolean = false;
   private float jdField_c_of_type_Float;
   private Paint jdField_c_of_type_AndroidGraphicsPaint;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private boolean jdField_d_of_type_Boolean;
   private int e;
   private int f;
@@ -81,7 +75,7 @@ public class ParticipleView
   private int n;
   private int o;
   private int p;
-  private int q;
+  private int q = 0;
   private int r;
   private int s = 0;
   private int t = 0;
@@ -119,7 +113,7 @@ public class ParticipleView
       int i2 = this.jdField_a_of_type_JavaUtilList.size();
       while (i1 < i2)
       {
-        Iterator localIterator = biqv.a((biqv)this.jdField_a_of_type_JavaUtilList.get(i1)).iterator();
+        Iterator localIterator = ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1)).iterator();
         while (localIterator.hasNext()) {
           if (((RectF)localIterator.next()).contains(paramFloat1, paramFloat2)) {
             return i1;
@@ -182,7 +176,7 @@ public class ParticipleView
     }
   }
   
-  private void a(int paramInt1, int paramInt2, QQText paramQQText, biqv parambiqv, Canvas paramCanvas)
+  private void a(int paramInt1, int paramInt2, QQText paramQQText, ParticipleView.ParticipleEntity paramParticipleEntity, Canvas paramCanvas)
   {
     int i2 = a(paramQQText);
     if (getWidth() <= 0)
@@ -204,7 +198,7 @@ public class ParticipleView
       paramInt1 = getPaddingLeft();
       i1 = this.e;
       int i3 = this.h;
-      c(paramInt1, this.f * 2 + (i1 + paramInt2 + i3), paramQQText, parambiqv, paramCanvas);
+      c(paramInt1, this.f * 2 + (i1 + paramInt2 + i3), paramQQText, paramParticipleEntity, paramCanvas);
       this.jdField_a_of_type_AndroidGraphicsPoint.x = (getPaddingLeft() + i2 + this.g * 2 + this.i);
       this.jdField_a_of_type_AndroidGraphicsPoint.y = (this.e + paramInt2 + this.h + this.f * 2);
       return;
@@ -212,10 +206,10 @@ public class ParticipleView
       break;
     }
     label181:
-    b(paramInt1, paramInt2, paramQQText, parambiqv, paramCanvas);
+    b(paramInt1, paramInt2, paramQQText, paramParticipleEntity, paramCanvas);
     return;
     label193:
-    c(paramInt1, paramInt2, paramQQText, parambiqv, paramCanvas);
+    c(paramInt1, paramInt2, paramQQText, paramParticipleEntity, paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPoint.x = (paramInt1 + i2 + this.i + this.g * 2);
   }
   
@@ -226,14 +220,14 @@ public class ParticipleView
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ParticipleView);
       this.k = paramAttributeSet.getColor(9, jdField_a_of_type_Int);
       this.l = paramAttributeSet.getColor(10, jdField_b_of_type_Int);
-      this.j = paramAttributeSet.getDimensionPixelSize(3, AIOUtils.dp2px(3.0F, getResources()));
+      this.j = paramAttributeSet.getDimensionPixelSize(3, AIOUtils.a(3.0F, getResources()));
       this.m = paramAttributeSet.getColor(4, jdField_c_of_type_Int);
       this.n = paramAttributeSet.getColor(8, jdField_d_of_type_Int);
-      this.e = paramAttributeSet.getDimensionPixelSize(6, AIOUtils.dp2px(27.0F, getResources()));
-      this.f = paramAttributeSet.getDimensionPixelSize(7, AIOUtils.dp2px(4.0F, getResources()));
-      this.g = paramAttributeSet.getDimensionPixelSize(5, AIOUtils.dp2px(6.0F, getResources()));
-      this.h = paramAttributeSet.getDimensionPixelSize(11, AIOUtils.dp2px(12.0F, getResources()));
-      this.i = paramAttributeSet.getDimensionPixelSize(2, AIOUtils.dp2px(8.0F, getResources()));
+      this.e = paramAttributeSet.getDimensionPixelSize(6, AIOUtils.a(27.0F, getResources()));
+      this.f = paramAttributeSet.getDimensionPixelSize(7, AIOUtils.a(4.0F, getResources()));
+      this.g = paramAttributeSet.getDimensionPixelSize(5, AIOUtils.a(6.0F, getResources()));
+      this.h = paramAttributeSet.getDimensionPixelSize(11, AIOUtils.a(12.0F, getResources()));
+      this.i = paramAttributeSet.getDimensionPixelSize(2, AIOUtils.a(8.0F, getResources()));
       this.o = paramAttributeSet.getInteger(0, 200);
       this.p = paramAttributeSet.getInteger(1, 200);
       paramAttributeSet.recycle();
@@ -244,8 +238,8 @@ public class ParticipleView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.l);
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.k);
-    this.jdField_a_of_type_Biqw = new biqw(this, null);
-    ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Biqw);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleExploreByTouchHelper = new ParticipleView.ParticipleExploreByTouchHelper(this, null);
+    ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleExploreByTouchHelper);
     this.u = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
@@ -259,29 +253,29 @@ public class ParticipleView
       int i1 = 0;
       while (i1 < i2)
       {
-        biqv localbiqv = (biqv)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if ((paramCanvas == null) || (a(localbiqv))) {
-          a(paramCanvas, localbiqv);
+        ParticipleView.ParticipleEntity localParticipleEntity = (ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1);
+        if ((paramCanvas == null) || (a(localParticipleEntity))) {
+          a(paramCanvas, localParticipleEntity);
         }
         i1 += 1;
       }
     }
   }
   
-  private void a(Canvas paramCanvas, biqv parambiqv)
+  private void a(Canvas paramCanvas, ParticipleView.ParticipleEntity paramParticipleEntity)
   {
-    if (biqv.a(parambiqv).isEmpty()) {
-      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, parambiqv.a, parambiqv, paramCanvas);
+    if (ParticipleView.ParticipleEntity.a(paramParticipleEntity).isEmpty()) {
+      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramParticipleEntity.a, paramParticipleEntity, paramCanvas);
     }
     for (;;)
     {
       return;
-      int i2 = biqv.a(parambiqv).size();
+      int i2 = ParticipleView.ParticipleEntity.a(paramParticipleEntity).size();
       int i1 = 0;
       while (i1 < i2)
       {
-        RectF localRectF = (RectF)biqv.a(parambiqv).get(i1);
-        a(localRectF, (QQText)biqv.b(parambiqv).get(i1), parambiqv, paramCanvas);
+        RectF localRectF = (RectF)ParticipleView.ParticipleEntity.a(paramParticipleEntity).get(i1);
+        a(localRectF, (QQText)ParticipleView.ParticipleEntity.b(paramParticipleEntity).get(i1), paramParticipleEntity, paramCanvas);
         this.jdField_a_of_type_AndroidGraphicsPoint.x = ((int)localRectF.right + this.i);
         this.jdField_a_of_type_AndroidGraphicsPoint.y = ((int)localRectF.top);
         i1 += 1;
@@ -319,7 +313,7 @@ public class ParticipleView
       localObject3 = this.jdField_b_of_type_AndroidGraphicsRectF;
       paramRectF1 = (RectF)localObject1;
       localObject1 = localObject4;
-      this.jdField_a_of_type_Boolean = biqv.a(this.jdField_a_of_type_Biqv);
+      this.jdField_a_of_type_Boolean = ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity);
       localObject4 = paramRectF1;
       paramRectF1 = (RectF)localObject2;
       localObject2 = localObject4;
@@ -349,7 +343,7 @@ public class ParticipleView
       label196:
       if (paramRectF1.equals(this.jdField_b_of_type_AndroidGraphicsRectF))
       {
-        this.jdField_a_of_type_Boolean = biqv.a(this.jdField_a_of_type_Biqv);
+        this.jdField_a_of_type_Boolean = ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity);
         paramRectF1 = null;
         localObject4 = localObject1;
         localObject1 = null;
@@ -391,8 +385,8 @@ public class ParticipleView
     int i1 = 0;
     while (i1 < i2)
     {
-      biqv localbiqv = (biqv)this.jdField_a_of_type_JavaUtilList.get(i1);
-      Iterator localIterator = biqv.a(localbiqv).iterator();
+      ParticipleView.ParticipleEntity localParticipleEntity = (ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1);
+      Iterator localIterator = ParticipleView.ParticipleEntity.a(localParticipleEntity).iterator();
       while (localIterator.hasNext())
       {
         RectF localRectF = (RectF)localIterator.next();
@@ -400,8 +394,8 @@ public class ParticipleView
         {
           if (this.jdField_c_of_type_Boolean)
           {
-            if (biqv.a(localbiqv)) {
-              biqv.a(localbiqv, false);
+            if (ParticipleView.ParticipleEntity.a(localParticipleEntity)) {
+              ParticipleView.ParticipleEntity.a(localParticipleEntity, false);
             }
           }
           else
@@ -409,7 +403,7 @@ public class ParticipleView
             if (!this.jdField_a_of_type_Boolean) {}
             for (boolean bool = true;; bool = false)
             {
-              biqv.a(localbiqv, bool);
+              ParticipleView.ParticipleEntity.a(localParticipleEntity, bool);
               break;
             }
           }
@@ -448,10 +442,10 @@ public class ParticipleView
             if (!this.jdField_c_of_type_Boolean) {
               break label346;
             }
-            if (!biqv.a(localbiqv)) {
+            if (!ParticipleView.ParticipleEntity.a(localParticipleEntity)) {
               break;
             }
-            biqv.a(localbiqv, false);
+            ParticipleView.ParticipleEntity.a(localParticipleEntity, false);
             break;
             if (paramRectF3.left >= localRectF.left) {
               break;
@@ -465,27 +459,27 @@ public class ParticipleView
           label346:
           if (this.jdField_a_of_type_Boolean)
           {
-            if (!biqv.a(localbiqv))
+            if (!ParticipleView.ParticipleEntity.a(localParticipleEntity))
             {
-              biqv.a(localbiqv, true);
-              biqv.a(localbiqv, System.currentTimeMillis());
-              localArrayList.add(localbiqv);
+              ParticipleView.ParticipleEntity.a(localParticipleEntity, true);
+              ParticipleView.ParticipleEntity.a(localParticipleEntity, System.currentTimeMillis());
+              localArrayList.add(localParticipleEntity);
             }
           }
-          else if (biqv.a(localbiqv)) {
-            biqv.a(localbiqv, false);
+          else if (ParticipleView.ParticipleEntity.a(localParticipleEntity)) {
+            ParticipleView.ParticipleEntity.a(localParticipleEntity, false);
           }
         }
       }
       i1 += 1;
     }
     a(localArrayList);
-    if (this.jdField_a_of_type_Biqu != null) {
-      this.jdField_a_of_type_Biqu.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$OnParticipleSelectChangeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$OnParticipleSelectChangeListener.a();
     }
   }
   
-  private void a(RectF paramRectF, QQText paramQQText, biqv parambiqv, Canvas paramCanvas)
+  private void a(RectF paramRectF, QQText paramQQText, ParticipleView.ParticipleEntity paramParticipleEntity, Canvas paramCanvas)
   {
     int i2 = (int)paramRectF.bottom;
     int i3 = (int)paramRectF.left;
@@ -499,11 +493,11 @@ public class ParticipleView
       i1 = i1 - i3 - this.g * 2;
       f1 = 0.0F;
       f2 = 0.0F;
-      if (!biqv.a(parambiqv)) {
+      if (!ParticipleView.ParticipleEntity.a(paramParticipleEntity)) {
         break label271;
       }
-      if (biqv.a(parambiqv) >= 0.0F) {
-        f2 = biqv.a(parambiqv);
+      if (ParticipleView.ParticipleEntity.a(paramParticipleEntity) >= 0.0F) {
+        f2 = ParticipleView.ParticipleEntity.a(paramParticipleEntity);
       }
       f1 = 1.0F;
       if (f2 < 1.0F)
@@ -523,7 +517,7 @@ public class ParticipleView
       }
       label224:
       paramRectF = this.jdField_a_of_type_AndroidGraphicsPaint;
-      if (!biqv.a(parambiqv)) {
+      if (!ParticipleView.ParticipleEntity.a(paramParticipleEntity)) {
         break label373;
       }
     }
@@ -560,8 +554,8 @@ public class ParticipleView
       int i1 = 0;
       while (i1 < i4)
       {
-        biqv localbiqv = (biqv)this.jdField_a_of_type_JavaUtilList.get(i1);
-        Iterator localIterator = biqv.a(localbiqv).iterator();
+        ParticipleView.ParticipleEntity localParticipleEntity = (ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1);
+        Iterator localIterator = ParticipleView.ParticipleEntity.a(localParticipleEntity).iterator();
         while (localIterator.hasNext())
         {
           RectF localRectF2 = (RectF)localIterator.next();
@@ -574,15 +568,15 @@ public class ParticipleView
             {
               this.jdField_a_of_type_AndroidGraphicsRectF = localRectF2;
               this.jdField_b_of_type_AndroidGraphicsRectF = localRectF2;
-              this.jdField_a_of_type_Biqv = localbiqv;
+              this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity = localParticipleEntity;
             }
             else if (paramMotionEvent.getAction() == 2)
             {
-              if (this.jdField_a_of_type_Biqv == null)
+              if (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity == null)
               {
                 this.jdField_a_of_type_AndroidGraphicsRectF = localRectF2;
                 this.jdField_b_of_type_AndroidGraphicsRectF = localRectF2;
-                this.jdField_a_of_type_Biqv = localbiqv;
+                this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity = localParticipleEntity;
                 f();
               }
               else if (!localRectF1.equals(this.jdField_a_of_type_AndroidGraphicsRectF))
@@ -611,13 +605,6 @@ public class ParticipleView
       return;
     }
     a(paramView);
-  }
-  
-  private void a(biqv parambiqv)
-  {
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(parambiqv);
-    b(localArrayList);
   }
   
   private void a(QQText paramQQText, Canvas paramCanvas, int paramInt1, int paramInt2)
@@ -657,9 +644,9 @@ public class ParticipleView
       }
       Object localObject = arrayOfObject[i3];
       paramInt1 = i2;
-      if ((localObject instanceof QQText.EmoticonSpan))
+      if ((localObject instanceof EmoticonSpan))
       {
-        localObject = ((QQText.EmoticonSpan)localObject).getDrawable();
+        localObject = ((EmoticonSpan)localObject).getDrawable();
         paramInt1 = i2;
         if (localObject != null)
         {
@@ -680,16 +667,23 @@ public class ParticipleView
     }
   }
   
+  private void a(ParticipleView.ParticipleEntity paramParticipleEntity)
+  {
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(paramParticipleEntity);
+    b(localArrayList);
+  }
+  
   private void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = new QQText(paramString, 3);
-      this.jdField_a_of_type_JavaUtilList.add(new biqv(paramString, null));
+      this.jdField_a_of_type_JavaUtilList.add(new ParticipleView.ParticipleEntity(paramString, null));
     }
   }
   
-  private void a(List<biqv> paramList)
+  private void a(List<ParticipleView.ParticipleEntity> paramList)
   {
     if (paramList.size() > 0)
     {
@@ -707,17 +701,17 @@ public class ParticipleView
     return (paramRectF1.top < paramRectF2.top) || ((paramRectF1.top == paramRectF2.top) && (paramRectF1.left < paramRectF2.left));
   }
   
-  private boolean a(biqv parambiqv)
+  private boolean a(ParticipleView.ParticipleEntity paramParticipleEntity)
   {
-    if ((this.jdField_b_of_type_Boolean) && (!biqv.a(parambiqv).isEmpty()))
+    if ((this.jdField_b_of_type_Boolean) && (!ParticipleView.ParticipleEntity.a(paramParticipleEntity).isEmpty()))
     {
       a(this);
       if (this.jdField_a_of_type_ComTencentWidgetScrollView != null)
       {
-        parambiqv = biqv.a(parambiqv).iterator();
-        while (parambiqv.hasNext())
+        paramParticipleEntity = ParticipleView.ParticipleEntity.a(paramParticipleEntity).iterator();
+        while (paramParticipleEntity.hasNext())
         {
-          int i1 = (int)((RectF)parambiqv.next()).top;
+          int i1 = (int)((RectF)paramParticipleEntity.next()).top;
           if ((this.e + i1 + this.f * 2 - this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY() > 0) && (i1 - this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY() < this.jdField_a_of_type_ComTencentWidgetScrollView.getHeight())) {}
           for (i1 = 1; i1 != 0; i1 = 0) {
             return true;
@@ -751,7 +745,7 @@ public class ParticipleView
     }
   }
   
-  private void b(int paramInt1, int paramInt2, QQText paramQQText, biqv parambiqv, Canvas paramCanvas)
+  private void b(int paramInt1, int paramInt2, QQText paramQQText, ParticipleView.ParticipleEntity paramParticipleEntity, Canvas paramCanvas)
   {
     int i3;
     int i1;
@@ -808,13 +802,13 @@ public class ParticipleView
       if (i1 > 0) {
         break label323;
       }
-      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramQQText, parambiqv, paramCanvas);
+      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramQQText, paramParticipleEntity, paramCanvas);
       i1 = 1;
     }
     for (;;)
     {
       if (i1 == 0) {
-        a(paramInt1, paramInt2, paramQQText, parambiqv, paramCanvas);
+        a(paramInt1, paramInt2, paramQQText, paramParticipleEntity, paramCanvas);
       }
       return;
       i3 = getWidth();
@@ -824,9 +818,9 @@ public class ParticipleView
       i6 = i1;
       break label178;
       label323:
-      c(paramInt1, paramInt2, new QQText(str3.substring(0, i1), 3), parambiqv, paramCanvas);
+      c(paramInt1, paramInt2, new QQText(str3.substring(0, i1), 3), paramParticipleEntity, paramCanvas);
       str1 = str3.substring(i1, i10);
-      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, new QQText(str1, 3), parambiqv, paramCanvas);
+      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, new QQText(str1, 3), paramParticipleEntity, paramCanvas);
       i1 = 1;
       continue;
       label398:
@@ -837,7 +831,7 @@ public class ParticipleView
     }
   }
   
-  private void b(List<biqv> paramList)
+  private void b(List<ParticipleView.ParticipleEntity> paramList)
   {
     this.jdField_b_of_type_JavaUtilList.addAll(paramList);
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
@@ -848,32 +842,32 @@ public class ParticipleView
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.p);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new biqr(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ParticipleView.1(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
   }
   
   private void c()
   {
-    bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A359", "0X800A359", 0, 0, "", "", "", "");
+    ReportController.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A359", "0X800A359", 0, 0, "", "", "", "");
   }
   
-  private void c(int paramInt1, int paramInt2, QQText paramQQText, biqv parambiqv, Canvas paramCanvas)
+  private void c(int paramInt1, int paramInt2, QQText paramQQText, ParticipleView.ParticipleEntity paramParticipleEntity, Canvas paramCanvas)
   {
     int i1 = this.e;
     int i2 = this.f;
     int i3 = a(paramQQText);
     int i4 = this.g;
     RectF localRectF = new RectF(paramInt1, paramInt2, i3 + i4 * 2 + paramInt1, i1 + paramInt2 + i2 * 2);
-    biqv.a(parambiqv, localRectF, paramQQText);
-    a(localRectF, paramQQText, parambiqv, paramCanvas);
+    ParticipleView.ParticipleEntity.a(paramParticipleEntity, localRectF, paramQQText);
+    a(localRectF, paramQQText, paramParticipleEntity, paramCanvas);
   }
   
   private void d()
   {
     f();
-    if ((this.jdField_a_of_type_Biqv != null) && (biqv.a(this.jdField_a_of_type_Biqv))) {
-      bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A358", "0X800A358", 0, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity != null) && (ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity))) {
+      ReportController.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A358", "0X800A358", 0, 0, "", "", "", "");
     }
   }
   
@@ -884,27 +878,27 @@ public class ParticipleView
   
   private void f()
   {
-    if (this.jdField_a_of_type_Biqv != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity != null)
     {
-      this.jdField_c_of_type_Boolean = biqv.a(this.jdField_a_of_type_Biqv);
-      if (!biqv.a(this.jdField_a_of_type_Biqv)) {
+      this.jdField_c_of_type_Boolean = ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity);
+      if (!ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity)) {
         break label63;
       }
-      biqv.a(this.jdField_a_of_type_Biqv, false);
+      ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity, false);
       this.jdField_a_of_type_Boolean = false;
       invalidate();
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Biqu != null) {
-        this.jdField_a_of_type_Biqu.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$OnParticipleSelectChangeListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$OnParticipleSelectChangeListener.a();
       }
       return;
       label63:
-      biqv.a(this.jdField_a_of_type_Biqv, true);
+      ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity, true);
       this.jdField_a_of_type_Boolean = true;
-      biqv.a(this.jdField_a_of_type_Biqv, System.currentTimeMillis());
-      a(this.jdField_a_of_type_Biqv);
+      ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity, System.currentTimeMillis());
+      a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity);
     }
   }
   
@@ -917,10 +911,10 @@ public class ParticipleView
       int i1 = 0;
       while (i1 < i2)
       {
-        Object localObject = (biqv)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (biqv.a((biqv)localObject))
+        Object localObject = (ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1);
+        if (ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)localObject))
         {
-          localObject = ((biqv)localObject).a.toString();
+          localObject = ((ParticipleView.ParticipleEntity)localObject).a.toString();
           boolean bool = a((String)localObject);
           if ((localStringBuilder.length() > 0) && ((this.jdField_d_of_type_Boolean != bool) || (!this.jdField_d_of_type_Boolean))) {
             localStringBuilder.append(" ");
@@ -945,10 +939,10 @@ public class ParticipleView
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(this.o);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    localValueAnimator.addUpdateListener(new biqs(this));
+    localValueAnimator.addUpdateListener(new ParticipleView.2(this));
     localValueAnimator.setDuration(this.p);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.addListener(new biqt(this));
+    localAnimatorSet.addListener(new ParticipleView.3(this));
     localAnimatorSet.playSequentially(new Animator[] { localObjectAnimator, localValueAnimator });
     localAnimatorSet.start();
   }
@@ -964,7 +958,7 @@ public class ParticipleView
       int i1 = 0;
       while (i1 < i2)
       {
-        biqv.a((biqv)this.jdField_a_of_type_JavaUtilList.get(i1), false);
+        ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1), false);
         a(this);
         if (this.jdField_a_of_type_ComTencentWidgetScrollView != null) {
           this.jdField_a_of_type_ComTencentWidgetScrollView.scrollTo(0, 0);
@@ -975,21 +969,21 @@ public class ParticipleView
     invalidate();
   }
   
-  protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
+  public boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((AppSetting.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Biqw != null) && (this.jdField_a_of_type_Biqw.dispatchHoverEvent(paramMotionEvent))) {
+    if ((AppSetting.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleExploreByTouchHelper != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleExploreByTouchHelper.dispatchHoverEvent(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     a(paramCanvas);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i2 = getDefaultSize(getSuggestedMinimumWidth(), paramInt1);
     this.r = i2;
@@ -1081,7 +1075,7 @@ public class ParticipleView
       this.jdField_a_of_type_Byte = 0;
       this.jdField_a_of_type_AndroidGraphicsRectF = null;
       this.jdField_b_of_type_AndroidGraphicsRectF = null;
-      this.jdField_a_of_type_Biqv = null;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$ParticipleEntity = null;
       this.t = 0;
       this.jdField_b_of_type_Boolean = false;
       if (QLog.isColorLevel()) {
@@ -1094,9 +1088,9 @@ public class ParticipleView
     }
   }
   
-  public void setOnParticipleSelectChangeListener(biqu parambiqu)
+  public void setOnParticipleSelectChangeListener(ParticipleView.OnParticipleSelectChangeListener paramOnParticipleSelectChangeListener)
   {
-    this.jdField_a_of_type_Biqu = parambiqu;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView$OnParticipleSelectChangeListener = paramOnParticipleSelectChangeListener;
   }
   
   public void setParticipleItems(List<String> paramList)
@@ -1123,7 +1117,7 @@ public class ParticipleView
             if (i1 >= i2) {
               break label148;
             }
-            if (!TextUtils.equals((CharSequence)paramList.get(i1), ((biqv)this.jdField_a_of_type_JavaUtilList.get(i1)).a.toString()))
+            if (!TextUtils.equals((CharSequence)paramList.get(i1), ((ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1)).a.toString()))
             {
               i1 = 0;
               break;
@@ -1149,7 +1143,7 @@ public class ParticipleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ParticipleView
  * JD-Core Version:    0.7.0.1
  */

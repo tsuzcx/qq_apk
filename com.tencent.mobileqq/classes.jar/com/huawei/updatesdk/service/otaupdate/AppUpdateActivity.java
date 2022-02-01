@@ -1,6 +1,5 @@
 package com.huawei.updatesdk.service.otaupdate;
 
-import Override;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;

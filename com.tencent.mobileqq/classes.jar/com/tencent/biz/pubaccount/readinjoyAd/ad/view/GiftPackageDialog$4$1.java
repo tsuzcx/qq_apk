@@ -1,16 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 
 import android.text.TextUtils;
-import anvx;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.GameComponentReport;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.manager.GiftPackageManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.util.Pair;
-import ueb;
-import uhw;
-import ulx;
-import umb;
 
 class GiftPackageDialog$4$1
   implements Runnable
@@ -20,12 +18,12 @@ class GiftPackageDialog$4$1
   public void run()
   {
     int j = 2;
-    Object localObject = anvx.a(2131704746);
+    Object localObject = HardCodeUtil.a(2131705289);
     if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentUtilPair.second)) {
       localObject = (String)this.jdField_a_of_type_ComTencentUtilPair.second;
     }
     if ((((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue()) && (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentUtilPair.second))) {
-      localObject = anvx.a(2131704747);
+      localObject = HardCodeUtil.a(2131705290);
     }
     for (int i = 0;; i = 2)
     {
@@ -41,17 +39,17 @@ class GiftPackageDialog$4$1
           localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
           if ((localObject != null) && ((localObject instanceof QQAppInterface)))
           {
-            uhw.a(((QQAppInterface)localObject).getAccount(), ulx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
-            if (ulx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0) != null) {
-              ulx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0).a(ulx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
+            GiftPackageManager.a(((QQAppInterface)localObject).getAccount(), GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
+            if (GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0) != null) {
+              GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0).a(GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
             }
           }
-          if (!ulx.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0)) {
-            uhw.a(11, ulx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), ulx.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), 30103, 3010305, 301);
+          if (!GiftPackageDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0)) {
+            GiftPackageManager.a(11, GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), GiftPackageDialog.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), 30103, 3010305, 301);
           }
         }
-        if ((ulx.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0)) && (ulx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0) != null)) {
-          ueb.a(ulx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), i, ulx.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
+        if ((GiftPackageDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0)) && (GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0) != null)) {
+          GameComponentReport.a(GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), i, GiftPackageDialog.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
         }
         return;
         j = 1;
@@ -61,7 +59,7 @@ class GiftPackageDialog$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,36 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import com.tencent.qqmini.miniapp.R.string;
-import com.tencent.qqmini.sdk.core.utils.DialogUtil;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.widget.MiniCustomDialog;
+import com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime;
+import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
+import com.tencent.qqmini.sdk.launcher.core.action.Action;
+import com.tencent.qqmini.sdk.runtime.AppStateManager;
 
 class AppBrandPageContainer$5
-  implements Runnable
+  implements Action<Boolean>
 {
-  AppBrandPageContainer$5(AppBrandPageContainer paramAppBrandPageContainer, boolean paramBoolean) {}
+  AppBrandPageContainer$5(AppBrandPageContainer paramAppBrandPageContainer) {}
   
-  public void run()
+  public Boolean perform(BaseRuntime paramBaseRuntime)
   {
-    DialogUtil.createCustomDialog(AppBrandPageContainer.access$000(this.this$0).getAttachedActivity(), 230, "重启后生效", null, R.string.mini_sdk_cancel, R.string.mini_sdk_ok, new AppBrandPageContainer.5.1(this), null).show();
+    if ((paramBaseRuntime instanceof BaseAppBrandRuntime))
+    {
+      paramBaseRuntime = (BaseAppBrandRuntime)paramBaseRuntime;
+      if ((paramBaseRuntime == null) || (paramBaseRuntime.getAppStateManager() == null) || (!paramBaseRuntime.getAppStateManager().isFromPrelaunch)) {
+        break label45;
+      }
+    }
+    label45:
+    for (boolean bool = true;; bool = false)
+    {
+      return Boolean.valueOf(bool);
+      paramBaseRuntime = null;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.5
  * JD-Core Version:    0.7.0.1
  */

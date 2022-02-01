@@ -53,6 +53,7 @@ public class RenderItem
       ((NormalVideoFilter)this.filter).setPlayMode(this.triggerCtrlItem.getPlayMode());
       ((NormalVideoFilter)this.filter).setFirstTriggerInStateTime(this.triggerCtrlItem.getFirstTriggerInStateTime());
       ((NormalVideoFilter)this.filter).setIsInState(this.triggerCtrlItem.getInState());
+      ((NormalVideoFilter)this.filter).setFirstPlaySync(this.triggerCtrlItem.getPlayFristSync());
     }
     if (((this.filter instanceof TransformFilter)) && (this.triggerCtrlItem != null)) {
       ((TransformFilter)this.filter).setFrameIndex(this.triggerCtrlItem.getFrameIndex());
@@ -107,7 +108,7 @@ public class RenderItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RenderItem
  * JD-Core Version:    0.7.0.1
  */

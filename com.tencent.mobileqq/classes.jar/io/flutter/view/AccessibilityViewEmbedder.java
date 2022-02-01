@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Keep
-final class AccessibilityViewEmbedder
+class AccessibilityViewEmbedder
 {
   private static final String TAG = "AccessibilityBridge";
   private final Map<View, Rect> embeddedViewToDisplayBounds;
@@ -160,6 +160,9 @@ final class AccessibilityViewEmbedder
   private void setFlutterNodesTranslateBounds(@NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo1, @NonNull Rect paramRect, @NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo2)
   {
     Rect localRect = new Rect();
+    paramAccessibilityNodeInfo1.getBoundsInParent(localRect);
+    paramAccessibilityNodeInfo2.setBoundsInParent(localRect);
+    localRect = new Rect();
     paramAccessibilityNodeInfo1.getBoundsInScreen(localRect);
     localRect.offset(paramRect.left, paramRect.top);
     paramAccessibilityNodeInfo2.setBoundsInScreen(localRect);
@@ -249,6 +252,15 @@ final class AccessibilityViewEmbedder
     return localAccessibilityNodeProvider.performAction(localViewAndId.id, paramInt2, paramBundle);
   }
   
+  public View platformViewOfNode(int paramInt)
+  {
+    AccessibilityViewEmbedder.ViewAndId localViewAndId = (AccessibilityViewEmbedder.ViewAndId)this.flutterIdToOrigin.get(paramInt);
+    if (localViewAndId == null) {
+      return null;
+    }
+    return localViewAndId.view;
+  }
+  
   public boolean requestSendAccessibilityEvent(@NonNull View paramView1, @NonNull View paramView2, @NonNull AccessibilityEvent paramAccessibilityEvent)
   {
     AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain(paramAccessibilityEvent);
@@ -295,7 +307,7 @@ final class AccessibilityViewEmbedder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.view.AccessibilityViewEmbedder
  * JD-Core Version:    0.7.0.1
  */

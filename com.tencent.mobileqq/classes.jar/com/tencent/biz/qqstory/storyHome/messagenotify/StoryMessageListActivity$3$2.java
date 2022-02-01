@@ -1,11 +1,9 @@
 package com.tencent.biz.qqstory.storyHome.messagenotify;
 
-import ybh;
-
-public class StoryMessageListActivity$3$2
+class StoryMessageListActivity$3$2
   implements Runnable
 {
-  public StoryMessageListActivity$3$2(ybh paramybh) {}
+  StoryMessageListActivity$3$2(StoryMessageListActivity.3 param3) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class StoryMessageListActivity$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.3.2
  * JD-Core Version:    0.7.0.1
  */

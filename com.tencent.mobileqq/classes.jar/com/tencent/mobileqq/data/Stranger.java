@@ -22,23 +22,9 @@ public class Stranger
   public String remark;
   public long time;
   @notColumn
-  public boolean uiSelected;
+  public boolean uiSelected = false;
   @unique
   public String uin;
-  
-  public static boolean copyInfo(Stranger paramStranger1, Stranger paramStranger2)
-  {
-    if ((paramStranger1 == null) || (paramStranger1 == null)) {
-      return false;
-    }
-    paramStranger2.age = paramStranger1.age;
-    paramStranger2.gender = paramStranger1.gender;
-    paramStranger2.groupName = paramStranger1.groupName;
-    paramStranger2.login = paramStranger1.login;
-    paramStranger2.time = paramStranger1.time;
-    paramStranger2.remark = paramStranger1.remark;
-    return true;
-  }
   
   public String toString()
   {
@@ -47,7 +33,7 @@ public class Stranger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Stranger
  * JD-Core Version:    0.7.0.1
  */

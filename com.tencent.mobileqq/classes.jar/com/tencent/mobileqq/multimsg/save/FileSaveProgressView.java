@@ -12,7 +12,7 @@ import com.tencent.TMG.utils.QLog;
 public class FileSaveProgressView
   extends TextView
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private String jdField_a_of_type_JavaLangString = "0%";
@@ -41,7 +41,7 @@ public class FileSaveProgressView
     this.jdField_a_of_type_JavaLangStringBuffer = new StringBuffer(this.jdField_a_of_type_JavaLangString);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int j = getWidth();
     int k = getHeight();

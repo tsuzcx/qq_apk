@@ -169,7 +169,7 @@ public class MiniSDKImpl
       getLaunchManager().stopMiniApp(paramMiniAppInfo);
       return;
     }
-    catch (RemoteException paramMiniAppInfo)
+    catch (Throwable paramMiniAppInfo)
     {
       QMLog.e("minisdk-start_MiniSDKImpl", "Failed to stopMiniApp", paramMiniAppInfo);
     }
@@ -177,7 +177,7 @@ public class MiniSDKImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniSDKImpl
  * JD-Core Version:    0.7.0.1
  */

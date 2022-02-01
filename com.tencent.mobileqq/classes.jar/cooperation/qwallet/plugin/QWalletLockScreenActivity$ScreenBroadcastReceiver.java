@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 class QWalletLockScreenActivity$ScreenBroadcastReceiver
   extends BroadcastReceiver
 {
-  private String action;
+  private String action = null;
   
   private QWalletLockScreenActivity$ScreenBroadcastReceiver(QWalletLockScreenActivity paramQWalletLockScreenActivity) {}
   
@@ -37,7 +37,7 @@ class QWalletLockScreenActivity$ScreenBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletLockScreenActivity.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

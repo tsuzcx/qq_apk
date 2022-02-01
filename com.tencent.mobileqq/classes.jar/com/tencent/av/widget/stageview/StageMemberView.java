@@ -20,8 +20,6 @@ import android.util.TypedValue;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import mwn;
-import mwy;
 
 public class StageMemberView
   extends ViewGroup
@@ -33,28 +31,29 @@ public class StageMemberView
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = a();
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   public ImageView a;
-  private String jdField_a_of_type_JavaLangString;
-  public mwn a;
-  private mwy jdField_a_of_type_Mwy;
+  MemberEffect jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect = null;
+  private StageMemberView.SimpleTextView jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView$SimpleTextView;
+  private String jdField_a_of_type_JavaLangString = null;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 3;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = false;
   
   public StageMemberView(Context paramContext, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
     super(paramContext);
-    this.jdField_a_of_type_Mwn = null;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
     this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap2;
-    this.jdField_a_of_type_Mwy = new mwy(this, getContext());
-    this.jdField_a_of_type_Mwy.setVisibility(0);
+    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView$SimpleTextView = new StageMemberView.SimpleTextView(this, getContext());
+    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView$SimpleTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     addViewInLayout(this.jdField_a_of_type_AndroidWidgetImageView, 0, generateDefaultLayoutParams(), false);
     addViewInLayout(this.jdField_b_of_type_AndroidWidgetImageView, 1, generateDefaultLayoutParams(), false);
-    addViewInLayout(this.jdField_a_of_type_Mwy, 2, generateDefaultLayoutParams(), false);
+    addViewInLayout(this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView$SimpleTextView, 2, generateDefaultLayoutParams(), false);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     setClipChildren(false);
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
@@ -110,12 +109,12 @@ public class StageMemberView
   void a()
   {
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (int i = 0;; i = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint))
+    if (this.jdField_b_of_type_JavaLangString == null) {}
+    for (int i = 0;; i = (int)Layout.getDesiredWidth(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint))
     {
       int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
       getWidth();
-      this.jdField_a_of_type_Mwy.layout((getWidth() - i) / 2 + 5, this.jdField_b_of_type_AndroidWidgetImageView.getHeight(), (i + getWidth()) / 2 + 5, j + this.jdField_b_of_type_AndroidWidgetImageView.getHeight());
+      this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView$SimpleTextView.layout((getWidth() - i) / 2 + 5, this.jdField_b_of_type_AndroidWidgetImageView.getHeight(), (i + getWidth()) / 2 + 5, j + this.jdField_b_of_type_AndroidWidgetImageView.getHeight());
       b();
       return;
     }
@@ -123,10 +122,10 @@ public class StageMemberView
   
   void a(String paramString, boolean paramBoolean)
   {
-    if (((this.jdField_a_of_type_JavaLangString == null) && (paramString == null)) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))) {
+    if (((this.jdField_b_of_type_JavaLangString == null) && (paramString == null)) || ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString)))) {
       return;
     }
-    float f2 = super.getResources().getDimensionPixelSize(2131298720);
+    float f2 = super.getResources().getDimensionPixelSize(2131298808);
     String str2 = paramString;
     if (f2 > 0.0F)
     {
@@ -163,21 +162,21 @@ public class StageMemberView
         }
       }
     }
-    if ((this.jdField_a_of_type_Mwn != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Mwn.jdField_a_of_type_JavaLangString))) {
-      if ((TextUtils.isEmpty(str2)) && (this.jdField_a_of_type_Mwn.jdField_a_of_type_JavaLangString.contains("%s "))) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Mwn.jdField_a_of_type_JavaLangString.replace("%s ", "");
+    if ((this.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect.jdField_a_of_type_JavaLangString))) {
+      if ((TextUtils.isEmpty(str2)) && (this.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect.jdField_a_of_type_JavaLangString.contains("%s "))) {
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect.jdField_a_of_type_JavaLangString.replace("%s ", "");
       }
     }
     for (;;)
     {
       a();
-      this.jdField_a_of_type_Mwy.invalidate();
+      this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView$SimpleTextView.invalidate();
       this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
-      setContentDescription(this.jdField_a_of_type_JavaLangString);
+      setContentDescription(this.jdField_b_of_type_JavaLangString);
       return;
-      this.jdField_a_of_type_JavaLangString = String.format(this.jdField_a_of_type_Mwn.jdField_a_of_type_JavaLangString, new Object[] { str2 });
+      this.jdField_b_of_type_JavaLangString = String.format(this.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect.jdField_a_of_type_JavaLangString, new Object[] { str2 });
       continue;
-      this.jdField_a_of_type_JavaLangString = str2;
+      this.jdField_b_of_type_JavaLangString = str2;
     }
   }
   
@@ -190,7 +189,7 @@ public class StageMemberView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Mwy.invalidate();
+      this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView$SimpleTextView.invalidate();
       this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
       this.jdField_b_of_type_AndroidWidgetImageView.invalidate();
       return;
@@ -213,9 +212,9 @@ public class StageMemberView
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
@@ -272,7 +271,7 @@ public class StageMemberView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.widget.stageview.StageMemberView
  * JD-Core Version:    0.7.0.1
  */

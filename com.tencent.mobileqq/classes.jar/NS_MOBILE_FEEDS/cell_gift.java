@@ -18,7 +18,7 @@ public final class cell_gift
   public String giftid = "";
   public String giftname = "";
   public String gifttype = "";
-  public Map<Integer, String> gifturl;
+  public Map<Integer, String> gifturl = null;
   
   static
   {

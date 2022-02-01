@@ -12,7 +12,7 @@ import com.tencent.shadow.dynamic.host.PpsController;
 public class QTProxyService
   extends PluginProcessService
 {
-  private long jdField_a_of_type_Long;
+  private long jdField_a_of_type_Long = 0L;
   private PpsController jdField_a_of_type_ComTencentShadowDynamicHostPpsController;
   
   public IBinder onBind(Intent paramIntent)
@@ -72,7 +72,7 @@ public class QTProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.proxyinner.plugin.loader.QTProxyService
  * JD-Core Version:    0.7.0.1
  */

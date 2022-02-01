@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import albn;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -8,6 +7,7 @@ import android.util.SparseArray;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -31,7 +31,7 @@ public class EmojiGifHelper
       getInstance().compositeAndTransToGifInner(paramConvertParam, paramOnConvertListener);
       return;
     }
-    albn.a(paramConvertParam, new EmojiGifHelper.1(paramOnConvertListener));
+    ComIPCUtils.a(paramConvertParam, new EmojiGifHelper.1(paramOnConvertListener));
   }
   
   public static EmojiGifHelper getInstance()
@@ -58,7 +58,7 @@ public class EmojiGifHelper
       getInstance().removeTaskInner(paramInt);
       return;
     }
-    albn.a(paramInt);
+    ComIPCUtils.a(paramInt);
   }
   
   private void sendPicToAIO(EmojiGifHelper.EmojiInfo paramEmojiInfo)
@@ -74,13 +74,13 @@ public class EmojiGifHelper
     localArrayList.add(paramEmojiInfo.gifPath);
     localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
     localIntent.putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
-    localIntent.putExtra("uin", paramEmojiInfo.sessionInfo.curFriendUin);
-    localIntent.putExtra("uintype", paramEmojiInfo.sessionInfo.curType);
-    localIntent.putExtra("troop_uin", paramEmojiInfo.sessionInfo.troopUin);
-    localIntent.putExtra("key_confess_topicid", paramEmojiInfo.sessionInfo.topicId);
+    localIntent.putExtra("uin", paramEmojiInfo.sessionInfo.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uintype", paramEmojiInfo.sessionInfo.jdField_a_of_type_Int);
+    localIntent.putExtra("troop_uin", paramEmojiInfo.sessionInfo.b);
+    localIntent.putExtra("key_confess_topicid", paramEmojiInfo.sessionInfo.e);
     localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
     localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-    localIntent.putExtra("entrance", paramEmojiInfo.sessionInfo.entrance);
+    localIntent.putExtra("entrance", paramEmojiInfo.sessionInfo.c);
     if (localArrayList.size() == 1) {
       localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
     }
@@ -178,7 +178,7 @@ public class EmojiGifHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper
  * JD-Core Version:    0.7.0.1
  */

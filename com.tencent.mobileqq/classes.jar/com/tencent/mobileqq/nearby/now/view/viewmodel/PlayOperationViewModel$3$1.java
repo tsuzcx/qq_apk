@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.nearby.now.view.viewmodel;
 
 import android.text.TextUtils;
-import axny;
-import axxu;
-import ayat;
-import aybp;
-import bdlf;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.statistics.ReportTask;
 
-public class PlayOperationViewModel$3$1
+class PlayOperationViewModel$3$1
   implements Runnable
 {
-  public PlayOperationViewModel$3$1(aybp paramaybp, axny paramaxny) {}
+  PlayOperationViewModel$3$1(PlayOperationViewModel.3 param3, NearbyCardManager paramNearbyCardManager) {}
   
   public void run()
   {
-    bdlf localbdlf = new bdlf(this.jdField_a_of_type_Aybp.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_double_click").e(axxu.d);
-    int i = this.jdField_a_of_type_Axny.b();
-    String str2 = axxu.a;
-    if (TextUtils.equals(axxu.a, "2")) {}
-    for (String str1 = axxu.c;; str1 = "")
+    ReportTask localReportTask = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel$3.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_double_click").e(NowVideoReporter.d);
+    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyCardManager.b();
+    String str2 = NowVideoReporter.a;
+    if (TextUtils.equals(NowVideoReporter.a, "2")) {}
+    for (String str1 = NowVideoReporter.c;; str1 = "")
     {
-      localbdlf.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localReportTask.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

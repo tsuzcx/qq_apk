@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class NewFlowCameraActivity$31
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  NewFlowCameraActivity$31(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
+  NewFlowCameraActivity$31(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.this$0.a.a.b(this.a);
-    this.this$0.a.a.a(this.a);
+    NewFlowCameraActivity.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.31
  * JD-Core Version:    0.7.0.1
  */

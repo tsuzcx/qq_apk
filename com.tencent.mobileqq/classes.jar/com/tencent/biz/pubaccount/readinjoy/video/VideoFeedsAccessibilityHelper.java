@@ -5,28 +5,27 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import anvx;
-import bgyd;
+import com.tencent.biz.pubaccount.readinjoy.video.videofeeds.ADVideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.videofeeds.ShortVideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.videofeeds.VideoItemHolder;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView.OnSetNickNameListener;
 import com.tencent.common.config.AppSetting;
-import six;
-import swi;
-import swr;
-import swu;
-import taw;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 
 public class VideoFeedsAccessibilityHelper
 {
   public static View a(View paramView)
   {
-    if ((!AppSetting.c) || (paramView == null)) {
+    if ((!AppSetting.d) || (paramView == null)) {
       paramView = null;
     }
     View localView;
     do
     {
       return paramView;
-      localView = paramView.findViewById(2131361857);
+      localView = paramView.findViewById(2131361856);
       paramView = localView;
     } while (localView == null);
     localView.setVisibility(0);
@@ -35,22 +34,22 @@ public class VideoFeedsAccessibilityHelper
   
   public static void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    if ((!AppSetting.c) || (paramViewHolder == null)) {}
+    if ((!AppSetting.d) || (paramViewHolder == null)) {}
     do
     {
       return;
-      if ((paramViewHolder instanceof swi))
+      if ((paramViewHolder instanceof ADVideoItemHolder))
       {
-        bgyd.a(((swi)paramViewHolder).c);
+        AccessibilityUtil.a(((ADVideoItemHolder)paramViewHolder).c);
         return;
       }
-    } while (!(paramViewHolder instanceof swu));
-    bgyd.a(((swu)paramViewHolder).v);
+    } while (!(paramViewHolder instanceof VideoItemHolder));
+    AccessibilityUtil.a(((VideoItemHolder)paramViewHolder).v);
   }
   
   public static void a(RecyclerView paramRecyclerView)
   {
-    if ((paramRecyclerView == null) || (!AppSetting.c)) {
+    if ((paramRecyclerView == null) || (!AppSetting.d)) {
       return;
     }
     paramRecyclerView.setAccessibilityDelegateCompat(new VideoFeedsAccessibilityHelper.VideoFeedsRVAccessibilityDelegate(paramRecyclerView));
@@ -58,26 +57,26 @@ public class VideoFeedsAccessibilityHelper
   
   public static void a(View paramView, int paramInt)
   {
-    if (!AppSetting.c) {
+    if (!AppSetting.d) {
       return;
     }
-    a(paramView, six.b(paramInt, anvx.a(2131715537)));
+    a(paramView, VideoFeedsHelper.b(paramInt, HardCodeUtil.a(2131716003)));
   }
   
   public static void a(View paramView, long paramLong)
   {
-    if (!AppSetting.c) {}
+    if (!AppSetting.d) {}
     Object localObject;
     do
     {
       do
       {
         return;
-        localObject = six.a(paramLong);
+        localObject = VideoFeedsHelper.a(paramLong);
       } while (localObject == null);
       localObject = ((StringBuilder)localObject).toString();
     } while (TextUtils.isEmpty((CharSequence)localObject));
-    a(paramView, anvx.a(2131715535) + (String)localObject);
+    a(paramView, HardCodeUtil.a(2131716001) + (String)localObject);
   }
   
   public static void a(View paramView, String paramString)
@@ -90,53 +89,53 @@ public class VideoFeedsAccessibilityHelper
   
   public static void a(View paramView, boolean paramBoolean)
   {
-    if (!AppSetting.c) {
+    if (!AppSetting.d) {
       return;
     }
     if (paramBoolean) {}
-    for (String str = anvx.a(2131715572);; str = anvx.a(2131715574))
+    for (String str = HardCodeUtil.a(2131716038);; str = HardCodeUtil.a(2131716040))
     {
       a(paramView, str);
       return;
     }
   }
   
-  public static void a(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, taw paramtaw)
+  public static void a(ShortVideoItemHolder paramShortVideoItemHolder, View.OnClickListener paramOnClickListener)
   {
-    if ((!AppSetting.c) || (paramReadInJoyNickNameTextView == null)) {
+    if ((!AppSetting.d) || (paramShortVideoItemHolder == null) || (paramShortVideoItemHolder.a == null)) {
       return;
     }
-    paramReadInJoyNickNameTextView.setOnSetNickNameListener(paramtaw);
+    paramShortVideoItemHolder.a.setOnClickListener(paramOnClickListener);
+    paramShortVideoItemHolder.a.setTag(paramShortVideoItemHolder);
   }
   
-  public static void a(swr paramswr, View.OnClickListener paramOnClickListener)
+  public static void a(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, ReadInJoyNickNameTextView.OnSetNickNameListener paramOnSetNickNameListener)
   {
-    if ((!AppSetting.c) || (paramswr == null) || (paramswr.a == null)) {
+    if ((!AppSetting.d) || (paramReadInJoyNickNameTextView == null)) {
       return;
     }
-    paramswr.a.setOnClickListener(paramOnClickListener);
-    paramswr.a.setTag(paramswr);
+    paramReadInJoyNickNameTextView.setOnSetNickNameListener(paramOnSetNickNameListener);
   }
   
   public static void b(View paramView, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!AppSetting.c)) {
+    if ((TextUtils.isEmpty(paramString)) || (!AppSetting.d)) {
       return;
     }
-    a(paramView, anvx.a(2131715554) + paramString);
+    a(paramView, HardCodeUtil.a(2131716020) + paramString);
   }
   
   public static void c(View paramView, String paramString)
   {
-    if ((!AppSetting.c) || (TextUtils.isEmpty(paramString))) {
+    if ((!AppSetting.d) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    a(paramView, paramString + anvx.a(2131715550));
+    a(paramView, paramString + HardCodeUtil.a(2131716016));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper
  * JD-Core Version:    0.7.0.1
  */

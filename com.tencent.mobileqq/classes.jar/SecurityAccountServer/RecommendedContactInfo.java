@@ -1,9 +1,9 @@
 package SecurityAccountServer;
 
-import anvx;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,23 +13,23 @@ public final class RecommendedContactInfo
   static byte[] cache_MobileNoMask = (byte[])new byte[1];
   static int cache_conType = 0;
   static int cache_eNetworkType = 0;
-  public byte[] MobileNoMask;
-  public int age;
+  public byte[] MobileNoMask = null;
+  public int age = 0;
   public int conType = 0;
   public String contactsInfoEncrypt = "";
-  public byte detalStatusFlag;
+  public byte detalStatusFlag = 0;
   public int eNetworkType = 0;
-  public long faceFlag;
-  public long faceSysId;
-  public long faceTimeStamp;
-  public long faceType;
+  public long faceFlag = 0L;
+  public long faceSysId = 0L;
+  public long faceTimeStamp = 0L;
+  public long faceType = 0L;
   public String faceUrl = "";
-  public int iTermType;
+  public int iTermType = 0;
   public String name;
   public String personalSign = "";
-  public int sex;
+  public int sex = 0;
   public String strTermDesc = "";
-  public long uAbiFlag;
+  public long uAbiFlag = 0L;
   public String unicode;
   public String url;
   
@@ -91,7 +91,7 @@ public final class RecommendedContactInfo
       localJSONObject.put("sex", this.sex);
       localJSONObject.put("signature", this.personalSign);
       if (this.eNetworkType != 0) {}
-      for (String str = anvx.a(2131718977);; str = anvx.a(2131718976))
+      for (String str = HardCodeUtil.a(2131719512);; str = HardCodeUtil.a(2131719511))
       {
         localJSONObject.put("online", str);
         localJSONObject.put("url", this.url);

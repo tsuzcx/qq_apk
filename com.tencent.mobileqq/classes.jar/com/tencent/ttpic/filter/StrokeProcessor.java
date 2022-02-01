@@ -8,7 +8,7 @@ import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.openapi.filter.BlurRealFilter;
 import com.tencent.view.RendererUtils;
 
@@ -125,7 +125,7 @@ public class StrokeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.StrokeProcessor
  * JD-Core Version:    0.7.0.1
  */

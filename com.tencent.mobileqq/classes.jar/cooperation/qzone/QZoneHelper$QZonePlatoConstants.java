@@ -11,7 +11,7 @@ public class QZoneHelper$QZonePlatoConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.QZonePlatoConstants
  * JD-Core Version:    0.7.0.1
  */

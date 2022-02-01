@@ -1,23 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pvm;
-import qhd;
-import qhe;
-import tsp;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.RIJColumnDataSource;
 
-public class ReadInJoyDianDianEntranceModule$1
+class ReadInJoyDianDianEntranceModule$1
   implements Runnable
 {
-  public ReadInJoyDianDianEntranceModule$1(qhd paramqhd, tsp paramtsp) {}
+  ReadInJoyDianDianEntranceModule$1(ReadInJoyDianDianEntranceModule paramReadInJoyDianDianEntranceModule, RIJColumnDataSource paramRIJColumnDataSource) {}
   
   public void run()
   {
-    pvm.a().a(new qhe(this));
+    ReadInJoyLogicEngineEventDispatcher.a().a(new ReadInJoyDianDianEntranceModule.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDianDianEntranceModule.1
  * JD-Core Version:    0.7.0.1
  */

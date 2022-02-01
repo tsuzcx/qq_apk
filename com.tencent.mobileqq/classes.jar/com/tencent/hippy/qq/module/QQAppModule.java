@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import bcqt;
-import bhfn;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
+import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -34,12 +33,9 @@ public class QQAppModule
     if (QLog.isColorLevel()) {
       QLog.d("QQAppModule", 2, "launchAppWithTokens " + paramString3);
     }
-    bcqt localbcqt = new bcqt();
-    QQAppInterface localQQAppInterface = null;
-    if ((getActivity() instanceof BaseActivity)) {
-      localQQAppInterface = ((BaseActivity)getActivity()).app;
-    }
-    if (localQQAppInterface == null) {
+    AppLaucherHelper localAppLaucherHelper = new AppLaucherHelper();
+    AppInterface localAppInterface = getAppInterface();
+    if (localAppInterface == null) {
       return;
     }
     int i = 268435456;
@@ -49,7 +45,7 @@ public class QQAppModule
       {
         k = Integer.parseInt(paramString4);
         if ((0x4000000 & k) != 67108864) {
-          break label311;
+          break label292;
         }
         j = 335544320;
         i = j;
@@ -68,7 +64,7 @@ public class QQAppModule
         Intent localIntent;
         QLog.e("QQAppModule", 1, paramString4, new Object[0]);
         continue;
-        localbcqt.a(localQQAppInterface, getActivity(), paramString1, paramString2, paramString3, i);
+        localAppLaucherHelper.a(localAppInterface, getActivity(), paramString1, paramString2, paramString3, i);
         return;
       }
       k = 0;
@@ -90,10 +86,10 @@ public class QQAppModule
       }
       if (j != 0)
       {
-        localbcqt.a(paramString4, getActivity(), "", localQQAppInterface, paramString1, paramString3, i, paramString6);
+        localAppLaucherHelper.a(paramString4, getActivity(), "", localAppInterface, paramString1, paramString3, i, paramString6);
         return;
       }
-      label311:
+      label292:
       j = 268435456;
     }
   }
@@ -101,21 +97,21 @@ public class QQAppModule
   @HippyMethod(name="getAppsVerionCodeBatch")
   public void getAppsVerionCodeBatch(String paramString, Promise paramPromise)
   {
-    paramPromise.resolve(bhfn.d(BaseApplicationImpl.getContext(), paramString));
+    paramPromise.resolve(PackageUtil.d(BaseApplicationImpl.getContext(), paramString));
   }
   
   @HippyMethod(name="isAppInstalled")
   public void isAppInstalled(String paramString, Promise paramPromise)
   {
     if (paramPromise != null) {
-      paramPromise.resolve(Boolean.valueOf(bhfn.a(getActivity(), paramString)));
+      paramPromise.resolve(Boolean.valueOf(PackageUtil.a(getActivity(), paramString)));
     }
   }
   
   @HippyMethod(name="isAppInstalledBatch")
   public void isAppInstalledBatch(String paramString, Promise paramPromise)
   {
-    paramPromise.resolve(bhfn.c(BaseApplicationImpl.getContext(), paramString));
+    paramPromise.resolve(PackageUtil.c(BaseApplicationImpl.getContext(), paramString));
   }
   
   @HippyMethod(name="launchAppWithTokens")
@@ -135,7 +131,7 @@ public class QQAppModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQAppModule
  * JD-Core Version:    0.7.0.1
  */

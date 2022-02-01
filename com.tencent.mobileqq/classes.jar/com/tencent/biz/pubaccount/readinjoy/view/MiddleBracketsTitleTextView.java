@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
 public class MiddleBracketsTitleTextView
   extends TextView
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -114,7 +114,7 @@ public class MiddleBracketsTitleTextView
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_JavaLangString != null) && (getText() != null) && (this.jdField_a_of_type_Boolean) && (a()))
     {
@@ -136,7 +136,7 @@ public class MiddleBracketsTitleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.MiddleBracketsTitleTextView
  * JD-Core Version:    0.7.0.1
  */

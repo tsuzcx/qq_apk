@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afru;
-
-public class CustomizeStrategyFactory$SkinRedPacketStrategy$1
+class CustomizeStrategyFactory$SkinRedPacketStrategy$1
   implements Runnable
 {
-  public CustomizeStrategyFactory$SkinRedPacketStrategy$1(afru paramafru, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  CustomizeStrategyFactory$SkinRedPacketStrategy$1(CustomizeStrategyFactory.SkinRedPacketStrategy paramSkinRedPacketStrategy, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   /* Error */
   public void run()
@@ -30,12 +28,12 @@ public class CustomizeStrategyFactory$SkinRedPacketStrategy$1
     //   35: ldc 52
     //   37: invokestatic 56	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   40: aload_0
-    //   41: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lafru;
-    //   44: getfield 61	afru:jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager	Lcom/tencent/mobileqq/activity/qwallet/preload/PreloadManager;
+    //   41: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy;
+    //   44: getfield 61	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy:jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService	Lcom/tencent/mobileqq/qwallet/preload/IPreloadService;
     //   47: ifnull +13 -> 60
     //   50: aload_0
-    //   51: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lafru;
-    //   54: getfield 64	afru:jdField_a_of_type_Aktz	Laktz;
+    //   51: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy;
+    //   54: getfield 64	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy:jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager	Lcom/tencent/mobileqq/activity/qwallet/config/QWalletConfigManager;
     //   57: ifnonnull +27 -> 84
     //   60: invokestatic 30	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	()Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory;
     //   63: aload_0
@@ -52,16 +50,16 @@ public class CustomizeStrategyFactory$SkinRedPacketStrategy$1
     //   78: invokevirtual 70	java/lang/InterruptedException:printStackTrace	()V
     //   81: goto -55 -> 26
     //   84: aload_0
-    //   85: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lafru;
+    //   85: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy;
     //   88: aload_0
-    //   89: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lafru;
-    //   92: getfield 61	afru:jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager	Lcom/tencent/mobileqq/activity/qwallet/preload/PreloadManager;
+    //   89: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy;
+    //   92: getfield 61	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy:jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService	Lcom/tencent/mobileqq/qwallet/preload/IPreloadService;
     //   95: aload_0
-    //   96: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lafru;
-    //   99: getfield 64	afru:jdField_a_of_type_Aktz	Laktz;
+    //   96: getfield 14	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:this$0	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy;
+    //   99: getfield 64	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy:jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager	Lcom/tencent/mobileqq/activity/qwallet/config/QWalletConfigManager;
     //   102: aload_0
     //   103: getfield 16	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy$1:a	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;
-    //   106: invokestatic 73	afru:a	(Lafru;Lcom/tencent/mobileqq/activity/qwallet/preload/PreloadManager;Laktz;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;)V
+    //   106: invokestatic 73	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy:a	(Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$SkinRedPacketStrategy;Lcom/tencent/mobileqq/qwallet/preload/IPreloadService;Lcom/tencent/mobileqq/activity/qwallet/config/QWalletConfigManager;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;)V
     //   109: return
     //   110: astore_1
     //   111: aload_1
@@ -87,7 +85,7 @@ public class CustomizeStrategyFactory$SkinRedPacketStrategy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1
  * JD-Core Version:    0.7.0.1
  */

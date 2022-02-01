@@ -3,15 +3,14 @@ package com.tencent.mobileqq.app.avgameshare;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import aoji;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
-public class AVGameShareBase$3
+class AVGameShareBase$3
   implements Runnable
 {
-  public AVGameShareBase$3(aoji paramaoji, Map paramMap, Runnable paramRunnable) {}
+  AVGameShareBase$3(AVGameShareBase paramAVGameShareBase, Map paramMap, Runnable paramRunnable) {}
   
   private void a(Bitmap paramBitmap)
   {
@@ -57,7 +56,7 @@ public class AVGameShareBase$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareBase.3
  * JD-Core Version:    0.7.0.1
  */

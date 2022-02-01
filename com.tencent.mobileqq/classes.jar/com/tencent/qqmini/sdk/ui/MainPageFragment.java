@@ -102,6 +102,33 @@ public class MainPageFragment
     }
   }
   
+  private void handleMiniappMoreInfo()
+  {
+    if (QUAUtil.isQQApp()) {
+      startMoreInformation(null);
+    }
+    for (;;)
+    {
+      this.mMiniAppDialog.dismiss();
+      reportClick("profile");
+      return;
+      ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      if (localChannelProxy != null) {
+        localChannelProxy.getSDKOpenKeyToken(null, new MainPageFragment.3(this));
+      }
+    }
+  }
+  
+  private void handleMiniappSetting()
+  {
+    if ((this.mMiniAppInfo != null) && (!TextUtils.isEmpty(this.mMiniAppInfo.appId)))
+    {
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(getActivity(), this.mMiniAppInfo.appId, this.mMiniAppInfo.name);
+      this.mMiniAppDialog.dismiss();
+      reportClick("set");
+    }
+  }
+  
   private void handleMoreButtonEvent()
   {
     this.mMiniAppDialog = new MiniAppDialog(getActivity());
@@ -148,28 +175,14 @@ public class MainPageFragment
         }
       }
     }
-    if (this.isMiniGame)
+    updateUIText();
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isDemoApp()))
     {
-      this.mSetTopText.setText("置顶");
-      this.mRecommendMiniAppBtn.setText("推荐小游戏");
-      this.mEnterMiniAppBtn.setText("进入小游戏");
-      this.mLikeNum.setText("为小游戏点赞");
+      this.mSetTopContainer.setVisibility(8);
+      this.mLikeContainer.setVisibility(8);
     }
-    for (;;)
-    {
-      if ((!QUAUtil.isQQApp()) && (!QUAUtil.isDemoApp()))
-      {
-        this.mSetTopContainer.setVisibility(8);
-        this.mLikeContainer.setVisibility(8);
-      }
-      if (QUAUtil.isQQBrowseApp()) {
-        this.mEnterMiniAppBtn.setVisibility(8);
-      }
-      return;
-      if (WnsUtil.needShowMiniAppFullScreen()) {
-        this.mSetTopText.setText("置顶");
-      }
-      this.mLikeNum.setText("为小程序点赞");
+    if (QUAUtil.isQQBrowseApp()) {
+      this.mEnterMiniAppBtn.setVisibility(8);
     }
   }
   
@@ -374,6 +387,22 @@ public class MainPageFragment
     this.mSetTopSwitch.setChecked(true);
   }
   
+  private void updateUIText()
+  {
+    if (this.isMiniGame)
+    {
+      this.mSetTopText.setText("置顶");
+      this.mRecommendMiniAppBtn.setText("推荐小游戏");
+      this.mEnterMiniAppBtn.setText("进入小游戏");
+      this.mLikeNum.setText("为小游戏点赞");
+      return;
+    }
+    if (WnsUtil.needShowMiniAppFullScreen()) {
+      this.mSetTopText.setText("置顶");
+    }
+    this.mLikeNum.setText("为小程序点赞");
+  }
+  
   public String getUin()
   {
     return LoginManager.getInstance().getAccount();
@@ -406,48 +435,18 @@ public class MainPageFragment
       }
       else if (i != R.id.miniapp_relative_public_account_container)
       {
-        if (i == R.id.miniapp_complain_callback_container)
-        {
+        if (i == R.id.miniapp_complain_callback_container) {
           startComplainAndCallback();
-        }
-        else if (i == R.id.miniapp_title_back)
-        {
+        } else if (i == R.id.miniapp_title_back) {
           getActivity().finish();
-        }
-        else if (i == R.id.miniapp_title_more)
-        {
+        } else if (i == R.id.miniapp_title_more) {
           handleMoreButtonEvent();
-        }
-        else if (i == R.id.miniapp_seting)
-        {
-          if ((this.mMiniAppInfo != null) && (!TextUtils.isEmpty(this.mMiniAppInfo.appId)))
-          {
-            ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(getActivity(), this.mMiniAppInfo.appId, this.mMiniAppInfo.name);
-            this.mMiniAppDialog.dismiss();
-            reportClick("set");
-          }
-        }
-        else
-        {
-          if (i == R.id.miniapp_more_information)
-          {
-            if (QUAUtil.isQQApp()) {
-              startMoreInformation(null);
-            }
-            for (;;)
-            {
-              this.mMiniAppDialog.dismiss();
-              reportClick("profile");
-              break;
-              ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-              if (localChannelProxy != null) {
-                localChannelProxy.getSDKOpenKeyToken(null, new MainPageFragment.3(this));
-              }
-            }
-          }
-          if (i == R.id.miniapp_dialog_cancel) {
-            this.mMiniAppDialog.dismiss();
-          }
+        } else if (i == R.id.miniapp_seting) {
+          handleMiniappSetting();
+        } else if (i == R.id.miniapp_more_information) {
+          handleMiniappMoreInfo();
+        } else if (i == R.id.miniapp_dialog_cancel) {
+          this.mMiniAppDialog.dismiss();
         }
       }
     }
@@ -521,7 +520,7 @@ public class MainPageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MainPageFragment
  * JD-Core Version:    0.7.0.1
  */

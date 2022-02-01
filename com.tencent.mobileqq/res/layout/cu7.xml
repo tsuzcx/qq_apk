@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/mtt" android:background="@drawable/trans" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/mtr" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="28.0dip" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/co8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:singleLine="true" android:shadowColor="@color/aoz" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" android:layout_toLeftOf="@id/mts" android:layout_toRightOf="@id/mtr" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/mts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="28.0dip" android:shadowColor="@color/aoz" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ctz" />
+    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/o2k" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
+</FrameLayout>

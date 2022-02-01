@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import aetl;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class RegisterActivity$13$2
+class RegisterActivity$13$2
   implements Runnable
 {
-  public RegisterActivity$13$2(aetl paramaetl) {}
+  RegisterActivity$13$2(RegisterActivity.13 param13) {}
   
   public void run()
   {
     RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, anvx.a(2131712819));
+    RegisterActivity.a(this.a.a, HardCodeUtil.a(2131713315));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.13.2
  * JD-Core Version:    0.7.0.1
  */

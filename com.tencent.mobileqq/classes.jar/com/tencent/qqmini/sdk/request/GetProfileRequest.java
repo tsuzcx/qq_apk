@@ -58,7 +58,6 @@ public class GetProfileRequest
       if (localStGetProfileRsp != null)
       {
         paramArrayOfByte = new JSONObject();
-        JSONObject localJSONObject = new JSONObject();
         if (localStGetProfileRsp.user != null)
         {
           paramArrayOfByte.put("nickName", localStGetProfileRsp.user.nick.get());
@@ -77,9 +76,10 @@ public class GetProfileRequest
         paramJSONObject.put("encryptedData", localStGetProfileRsp.encryptedData.get());
         paramJSONObject.put("iv", localStGetProfileRsp.iv.get());
         paramJSONObject.put("userInfo", paramArrayOfByte);
-        localJSONObject.put("data", localStGetProfileRsp.rawData.get());
-        localJSONObject.put("signature", localStGetProfileRsp.signature.get());
-        paramJSONObject.put("data", localJSONObject.toString());
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("data", localStGetProfileRsp.rawData.get());
+        paramArrayOfByte.put("signature", localStGetProfileRsp.signature.get());
+        paramJSONObject.put("data", paramArrayOfByte.toString());
         return paramJSONObject;
       }
     }
@@ -94,7 +94,7 @@ public class GetProfileRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetProfileRequest
  * JD-Core Version:    0.7.0.1
  */

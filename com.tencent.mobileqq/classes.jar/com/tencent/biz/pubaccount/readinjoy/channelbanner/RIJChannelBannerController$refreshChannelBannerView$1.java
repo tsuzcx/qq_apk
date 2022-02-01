@@ -3,13 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.channelbanner;
 import com.tencent.pts.core.PTSComposer;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import oxw;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
-public final class RIJChannelBannerController$refreshChannelBannerView$1
+final class RIJChannelBannerController$refreshChannelBannerView$1
   implements Runnable
 {
-  public RIJChannelBannerController$refreshChannelBannerView$1(oxw paramoxw, PTSComposer paramPTSComposer) {}
+  RIJChannelBannerController$refreshChannelBannerView$1(RIJChannelBannerController paramRIJChannelBannerController, PTSComposer paramPTSComposer) {}
   
   public final void run()
   {
@@ -18,14 +17,14 @@ public final class RIJChannelBannerController$refreshChannelBannerView$1
     {
       PTSComposer localPTSComposer = this.a;
       Intrinsics.checkExpressionValueIsNotNull(localPTSComposer, "newPtsComposer");
-      localRIJChannelBannerView.a(localPTSComposer, oxw.a(this.this$0));
+      localRIJChannelBannerView.a(localPTSComposer, RIJChannelBannerController.a(this.this$0));
     }
-    oxw.a(this.this$0, this.a);
+    RIJChannelBannerController.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.channelbanner.RIJChannelBannerController.refreshChannelBannerView.1
  * JD-Core Version:    0.7.0.1
  */

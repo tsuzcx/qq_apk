@@ -1,6 +1,7 @@
 package com.tencent.hippy.qq.app;
 
 import com.tencent.cmsdk.hippy.TKDAdModule;
+import com.tencent.gdtad.hippy.GdtTangramModule;
 import com.tencent.hippy.qq.module.HippyQQBridgeModule;
 import com.tencent.hippy.qq.module.HippyQQCacheModule;
 import com.tencent.hippy.qq.module.HippyQQComicModule;
@@ -12,9 +13,11 @@ import com.tencent.hippy.qq.module.QQDebugModule;
 import com.tencent.hippy.qq.module.QQDeviceModule;
 import com.tencent.hippy.qq.module.QQEventModule;
 import com.tencent.hippy.qq.module.QQNavigatorModule;
+import com.tencent.hippy.qq.module.QQOfflineModule;
 import com.tencent.hippy.qq.module.QQRedPointModule;
 import com.tencent.hippy.qq.module.QQTroopNoticeModule;
 import com.tencent.hippy.qq.module.QQUiModule;
+import com.tencent.hippy.qq.view.boodo.CommonVideoViewController;
 import com.tencent.hippy.qq.view.video.HippyQQVideoViewController;
 import com.tencent.mtt.hippy.HippyAPIProvider;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -34,6 +37,7 @@ public class HippyQQAPIProvider
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(HippyQQVideoViewController.class);
+    localArrayList.add(CommonVideoViewController.class);
     return localArrayList;
   }
   
@@ -60,12 +64,14 @@ public class HippyQQAPIProvider
     localHashMap.put(QQRedPointModule.class, new HippyQQAPIProvider.13(this, paramHippyEngineContext));
     localHashMap.put(QQTroopNoticeModule.class, new HippyQQAPIProvider.14(this, paramHippyEngineContext));
     localHashMap.put(QQUiModule.class, new HippyQQAPIProvider.15(this, paramHippyEngineContext));
+    localHashMap.put(GdtTangramModule.class, new HippyQQAPIProvider.16(this, paramHippyEngineContext));
+    localHashMap.put(QQOfflineModule.class, new HippyQQAPIProvider.17(this, paramHippyEngineContext));
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.app.HippyQQAPIProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,5 @@
 package com.tencent.mobileqq.activity.history;
 
-import Override;
-import ajra;
-import ajsn;
-import ajsw;
-import ajtf;
-import ajtg;
-import ajwa;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -30,10 +23,10 @@ public class ChatHistoryActivity
   extends FragmentActivity
 {
   int jdField_a_of_type_Int;
-  ajra jdField_a_of_type_Ajra;
+  ChatHistoryBaseViewController jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController;
   boolean jdField_a_of_type_Boolean;
   boolean b;
-  public boolean c;
+  boolean c;
   
   public static int a(Context paramContext)
   {
@@ -52,19 +45,19 @@ public class ChatHistoryActivity
         QLog.d("Q.history.ChatHistoryActivity", 2, "getTagType, result = " + i);
       }
       return i;
-      if ((i == 2131364505) || (i == 2131364498))
+      if ((i == 2131364617) || (i == 2131364608))
       {
         i = 1;
       }
-      else if ((i == 2131364503) || (i == 2131364510))
+      else if ((i == 2131364613) || (i == 2131364622))
       {
         i = 2;
       }
-      else if ((i == 2131364507) || (i == 2131364500))
+      else if ((i == 2131364619) || (i == 2131364610))
       {
         i = 4;
       }
-      else if (i == 2131364501)
+      else if (i == 2131364611)
       {
         i = 7;
         continue;
@@ -84,22 +77,25 @@ public class ChatHistoryActivity
     }
   }
   
-  private ajra a()
+  private ChatHistoryBaseViewController a()
   {
     if ((this.jdField_a_of_type_Boolean) || (this.c)) {
-      return new ajtf(this);
+      return new ChatHistoryPicVideoViewController(this);
     }
     if (this.jdField_a_of_type_Int == 3011) {
-      return new ajsn(this);
+      return new ChatHistoryC2CViewController(this);
     }
     if (this.jdField_a_of_type_Int == 3012) {
-      return new ajwa(this);
+      return new ChatHistoryTroopViewController(this);
     }
     if (this.jdField_a_of_type_Int == 3013) {
-      return new ajtg(this);
+      return new ChatHistoryReadOnlyViewController(this);
     }
     if (this.jdField_a_of_type_Int == 3014) {
-      return new ajsw(this);
+      return new ChatHistoryEmotionViewController(this);
+    }
+    if (this.jdField_a_of_type_Int == 3015) {
+      return new ChatHistoryDatalineViewController(this);
     }
     return null;
   }
@@ -110,6 +106,15 @@ public class ChatHistoryActivity
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("extra.IS_FROM_CHAT_AIO_GALLERY", false);
     this.b = getIntent().getBooleanExtra("need_jump_to_msg", false);
     this.c = getIntent().getBooleanExtra("FromTroopAlbum", false);
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent(paramActivity, ChatHistoryActivity.class);
+    localIntent.putExtra("FromType", 3015);
+    localIntent.putExtra("SissionUin", paramString);
+    localIntent.putExtra("uin", paramString);
+    paramActivity.startActivity(localIntent);
   }
   
   public static void a(Activity paramActivity, String paramString, int paramInt)
@@ -186,8 +191,8 @@ public class ChatHistoryActivity
   
   public int a()
   {
-    if (this.jdField_a_of_type_Ajra != null) {
-      return this.jdField_a_of_type_Ajra.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.a();
     }
     return 0;
   }
@@ -207,7 +212,7 @@ public class ChatHistoryActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.history.ChatHistoryActivity", 2, "doOnActivityResult, requestCode = " + paramInt1);
     }
-    this.jdField_a_of_type_Ajra.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.a(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1) {}
     switch (paramInt1)
     {
@@ -222,7 +227,7 @@ public class ChatHistoryActivity
     paramIntent.putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
     paramIntent.putInt("PhotoConst.SEND_BUSINESS_TYPE", 1031);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
-    localIntent = AIOUtils.setOpenAIOIntent(localIntent, null);
+    localIntent = AIOUtils.a(localIntent, null);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     paramIntent.putBoolean("PicContants.NEED_COMPRESS", false);
     paramIntent.putBoolean("send_in_background", false);
@@ -233,14 +238,14 @@ public class ChatHistoryActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131558913);
+    setContentView(2131558954);
     a();
-    paramBundle = (TextView)findViewById(2131369278);
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131377845);
+    paramBundle = (TextView)findViewById(2131369534);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131378257);
     if ((this.jdField_a_of_type_Boolean) || (this.c))
     {
       if (paramBundle != null) {
-        paramBundle.setText(2131690779);
+        paramBundle.setText(2131690884);
       }
       if (localFrameLayout != null) {
         localFrameLayout.setVisibility(8);
@@ -248,9 +253,9 @@ public class ChatHistoryActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ajra = a();
-      this.jdField_a_of_type_Ajra.a();
-      paramBundle = super.findViewById(2131376947);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController = a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.a();
+      paramBundle = super.findViewById(2131377356);
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         paramBundle.setFitsSystemWindows(true);
@@ -260,7 +265,7 @@ public class ChatHistoryActivity
       if (this.jdField_a_of_type_Int == 3013)
       {
         if (paramBundle != null) {
-          paramBundle.setText(2131693777);
+          paramBundle.setText(2131693948);
         }
         if (localFrameLayout != null) {
           localFrameLayout.setVisibility(8);
@@ -269,7 +274,7 @@ public class ChatHistoryActivity
       else if (this.jdField_a_of_type_Int == 3014)
       {
         if (paramBundle != null) {
-          paramBundle.setText(2131690776);
+          paramBundle.setText(2131690881);
         }
         if (localFrameLayout != null) {
           localFrameLayout.setVisibility(8);
@@ -281,19 +286,19 @@ public class ChatHistoryActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Ajra.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.d();
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Ajra.c();
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.c();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Ajra.b();
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.b();
   }
   
   public boolean isWrapContent()
@@ -310,7 +315,7 @@ public class ChatHistoryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryActivity
  * JD-Core Version:    0.7.0.1
  */

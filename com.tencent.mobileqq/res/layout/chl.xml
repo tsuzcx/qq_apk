@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/root" android:background="@drawable/gf3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/ku3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.5dip" android:layout_marginRight="7.0dip">
-        <ImageView android:background="@drawable/gsx" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/kun" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/ku2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.0dip">
-        <ImageView android:background="@drawable/gsv" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/kuk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>
+    <include android:id="@id/idz" android:background="@color/bp" android:visibility="visible" layout="@layout/is" />
+    <TextView android:textSize="17.0sp" android:textColor="#ff8e8e93" android:gravity="center_horizontal" android:id="@id/odf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="124.0dip" android:text="@string/wi8" android:layout_below="@id/idz" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:gravity="center" android:id="@id/ocf" android:background="@drawable/bl5" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:visibility="invisible" android:layout_width="90.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wgq" android:layout_below="@id/odf" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/n_e" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="26.0dip" android:src="@drawable/bkl" android:layout_below="@id/ocf" android:layout_centerHorizontal="true" />
+    <android.support.v7.widget.RecyclerView android:layout_gravity="center_horizontal" android:id="@id/nzt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-26.0dip" android:layout_below="@id/n_e" android:layout_centerHorizontal="true" />
+    <include android:layout_width="fill_parent" android:layout_height="216.0dip" android:layout_alignParentBottom="true" layout="@layout/aoz" />
+</RelativeLayout>

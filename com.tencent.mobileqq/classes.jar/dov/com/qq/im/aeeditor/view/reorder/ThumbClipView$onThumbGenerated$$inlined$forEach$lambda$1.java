@@ -4,7 +4,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import boel;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 
@@ -21,13 +20,13 @@ final class ThumbClipView$onThumbGenerated$$inlined$forEach$lambda$1
     {
       Resources localResources = this.this$0.getResources();
       Intrinsics.checkExpressionValueIsNotNull(localResources, "resources");
-      localImageView.setImageDrawable((Drawable)new boel(localResources, this.jdField_a_of_type_AndroidGraphicsBitmap));
+      localImageView.setImageDrawable((Drawable)new SafeBitmapDrawable(localResources, this.jdField_a_of_type_AndroidGraphicsBitmap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.reorder.ThumbClipView.onThumbGenerated..inlined.forEach.lambda.1
  * JD-Core Version:    0.7.0.1
  */

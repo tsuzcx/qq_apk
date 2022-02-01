@@ -5,7 +5,9 @@ import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
 import NS_COMM.COMM.StCommonExt;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.biz.subscribe.utils.SubscribeAdDeviceInfoHelper;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -13,7 +15,6 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import zzd;
 
 public class GetSubscribeFeedListRequest
   extends VSBaseRequest
@@ -30,7 +31,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = zzd.a().a();
+    paramStCommonExt = SubscribeAdDeviceInfoHelper.a().a();
     if (paramStCommonExt != null)
     {
       vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -53,7 +54,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = zzd.a().a();
+    paramStCommonExt = SubscribeAdDeviceInfoHelper.a().a();
     if (paramStCommonExt != null)
     {
       paramString2 = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -80,7 +81,7 @@ public class GetSubscribeFeedListRequest
       if (paramStCommonExt != null) {
         this.req.extInfo.set(paramStCommonExt.get());
       }
-      paramStFeed = zzd.a().a();
+      paramStFeed = SubscribeAdDeviceInfoHelper.a().a();
       if (paramStFeed != null)
       {
         paramStCommonExt = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -99,7 +100,15 @@ public class GetSubscribeFeedListRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountRead.StGetFeedListRsp localStGetFeedListRsp = new CertifiedAccountRead.StGetFeedListRsp();
-    localStGetFeedListRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetFeedListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetFeedListRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetFeedListRsp;
   }
   
@@ -115,7 +124,7 @@ public class GetSubscribeFeedListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.GetSubscribeFeedListRequest
  * JD-Core Version:    0.7.0.1
  */

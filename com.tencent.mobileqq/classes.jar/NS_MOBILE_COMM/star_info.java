@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class star_info
   extends JceStruct
 {
-  public int iStarLevel;
-  public int iStarStatus;
-  public byte isAnnualVip;
-  public byte isHighStarVip;
+  public int iStarLevel = 0;
+  public int iStarStatus = 0;
+  public byte isAnnualVip = 0;
+  public byte isHighStarVip = 0;
   
   public star_info() {}
   

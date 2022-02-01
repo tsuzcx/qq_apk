@@ -1,7 +1,5 @@
 package com.tencent.widget;
 
-import bldq;
-
 class HorizontalListView$3
   implements Runnable
 {
@@ -15,11 +13,11 @@ class HorizontalListView$3
       do
       {
         return;
-      } while (!this.this$0.mScroller.a());
+      } while (!this.this$0.mScroller.isFinished());
       if (HorizontalListView.DEBUG) {
         this.this$0.log("mFlingRunnable", new Object[] { Integer.valueOf(this.this$0.mTouchMode) });
       }
-    } while (!this.this$0.mScroller.a(this.this$0.getScrollX() + this.this$0.mNextX, this.this$0.getScrollY(), this.this$0.mNextX, this.this$0.mNextX, 0, 0));
+    } while (!this.this$0.mScroller.springBack(this.this$0.getScrollX() + this.this$0.mNextX, this.this$0.getScrollY(), this.this$0.mNextX, this.this$0.mNextX, 0, 0));
     this.this$0.mTouchMode = 6;
     if (HorizontalListView.DEBUG) {
       this.this$0.log("mFlingRunnable", new Object[] { "TOUCH_MODE_OVERFLING" });
@@ -30,7 +28,7 @@ class HorizontalListView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.3
  * JD-Core Version:    0.7.0.1
  */

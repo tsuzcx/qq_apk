@@ -7,11 +7,11 @@ import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListener;
-import com.tencent.ad.tangram.canvas.download.AdDownloadTask;
-import com.tencent.ad.tangram.canvas.download.AdDownloader;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
 import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
 import com.tencent.ad.tangram.canvas.report.AdReport;
+import com.tencent.ad.tangram.downloader.AdDownloadTask;
+import com.tencent.ad.tangram.downloader.AdDownloader;
+import com.tencent.ad.tangram.downloader.IAdDownloader.Callback;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.protocol.landing_page_collect_data.LandingPageCollectData;
@@ -487,7 +487,7 @@ public class AdAppDownloadManager
   
   public void startDownload()
   {
-    boolean bool = true;
+    boolean bool2 = true;
     if (this.mCgdtAppBtnData == null) {
       return;
     }
@@ -504,20 +504,25 @@ public class AdAppDownloadManager
         localObject1 = this.downloaderWrapper;
         localObject2 = (Activity)this.mContext.get();
         localAdAppBtnData = this.mCgdtAppBtnData;
-        if ((this.ad == null) || (!this.ad.isHitWithoutInstallSuccessPage()) || (TextUtils.isEmpty(this.ad.getAppDeeplink()))) {
-          break label168;
+        if (this.ad == null) {
+          break label176;
+        }
+        bool1 = bool2;
+        if (!this.ad.canLaunchAppAfterInstalled()) {
+          if (TextUtils.isEmpty(this.ad.getAppDeeplink())) {
+            break label176;
+          }
         }
       }
     }
-    for (;;)
+    label176:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((g)localObject1).startRealDownload((Activity)localObject2, localAdAppBtnData, bool);
+      ((g)localObject1).startRealDownload((Activity)localObject2, localAdAppBtnData, bool1);
       AdReport.downloadReport(this.ad, this.mCgdtAppBtnData.mGdtAd_appId, this.mCgdtAppBtnData.cProgerss, this.autodownload, this.mCgdtAppBtnData);
       return;
       localObject1 = null;
       break;
-      label168:
-      bool = false;
     }
   }
   
@@ -539,7 +544,7 @@ public class AdAppDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager
  * JD-Core Version:    0.7.0.1
  */

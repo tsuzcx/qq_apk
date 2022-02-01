@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import com.tencent.biz.pubaccount.readinjoy.ugc.AlbumUtils.LocalMediaInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.PageLoadManager;
 import com.tencent.biz.pubaccount.readinjoy.view.AlbumPermissionView;
 import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
@@ -22,30 +24,22 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.QQPermissionCallback;
 import mqq.os.MqqHandler;
-import rsv;
-import rte;
-import rwl;
-import rwm;
-import rwn;
-import rwq;
-import rwt;
-import rwv;
 
 public class GalleryFragment
   extends PublicBaseFragment
-  implements QQPermissionCallback, rwt
+  implements LocalMediaGridAdapter.OnItemListener, QQPermissionCallback
 {
   private int jdField_a_of_type_Int;
-  public Activity a;
+  protected Activity a;
   private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
+  private PageLoadManager<AlbumUtils.LocalMediaInfo> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager = new PageLoadManager();
+  private LocalMediaGridAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectLocalMediaGridAdapter;
   private AlbumPermissionView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView;
   private UCropView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView;
   private String jdField_a_of_type_JavaLangString;
-  private List<rsv> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private rte<rsv> jdField_a_of_type_Rte = new rte();
-  private rwq jdField_a_of_type_Rwq;
+  private List<AlbumUtils.LocalMediaInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   
@@ -106,9 +100,9 @@ public class GalleryFragment
     ThreadManager.getUIHandler().post(new GalleryFragment.5(this, paramBitmap));
   }
   
-  private void b(rsv paramrsv)
+  private void b(AlbumUtils.LocalMediaInfo paramLocalMediaInfo)
   {
-    a(paramrsv.b);
+    a(paramLocalMediaInfo.b);
   }
   
   private void c()
@@ -118,7 +112,7 @@ public class GalleryFragment
   
   private void d()
   {
-    this.jdField_a_of_type_Rte.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager.a();
   }
   
   private void e()
@@ -139,12 +133,12 @@ public class GalleryFragment
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Rte.a(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager.a(paramInt);
   }
   
   public void a(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Rwq.a() >= 0) {}
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectLocalMediaGridAdapter.a() >= 0) {}
     for (int i = 1;; i = 0)
     {
       if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (i == 0)) {
@@ -154,22 +148,22 @@ public class GalleryFragment
     }
   }
   
-  public void a(rsv paramrsv)
+  public void a(AlbumUtils.LocalMediaInfo paramLocalMediaInfo)
   {
     e();
-    b(paramrsv);
+    b(paramLocalMediaInfo);
   }
   
-  public void a(rwv paramrwv)
+  public void a(OutputPicListener paramOutputPicListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView.a().a(Bitmap.CompressFormat.JPEG, 90, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new rwn(this, paramrwv));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView.a().a(Bitmap.CompressFormat.JPEG, 90, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new GalleryFragment.3(this, paramOutputPicListener));
   }
   
-  public boolean a(int paramInt, rsv paramrsv)
+  public boolean a(int paramInt, AlbumUtils.LocalMediaInfo paramLocalMediaInfo)
   {
-    if ((paramrsv.a() < this.jdField_a_of_type_Int / 2.0F) || (paramrsv.b() < this.jdField_b_of_type_Int / 2.0F))
+    if ((paramLocalMediaInfo.a() < this.jdField_a_of_type_Int / 2.0F) || (paramLocalMediaInfo.b() < this.jdField_b_of_type_Int / 2.0F))
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131717903, 0).show();
+      Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131718395, 0).show();
       return false;
     }
     return true;
@@ -192,12 +186,12 @@ public class GalleryFragment
     super.onAttach(paramActivity);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     b();
-    this.jdField_a_of_type_Rte.a(new rwl(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPageLoadManager.a(new GalleryFragment.1(this));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560034, null);
+    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560111, null);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -205,19 +199,19 @@ public class GalleryFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367498));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366160);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView = ((UCropView)paramView.findViewById(2131367495));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362625));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370320);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367685));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366331);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewUcropUCropView = ((UCropView)paramView.findViewById(2131367682));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362658));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370589);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAlbumPermissionView.setCallback(this);
-    this.jdField_a_of_type_Rwq = new rwq(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Rwq.a(this);
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Rwq.b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectLocalMediaGridAdapter = new LocalMediaGridAdapter(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectLocalMediaGridAdapter.a(this);
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectLocalMediaGridAdapter.b();
     this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 4);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new rwm(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Rwq);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new GalleryFragment.2(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectLocalMediaGridAdapter);
     e();
     c();
     a();
@@ -225,7 +219,7 @@ public class GalleryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class QwAdapter<V>
 {
   protected LayoutInflater layoutInflater;
   protected List<V> list;
-  private QwAdapter.IViewHolder mCloneObj;
+  private QwAdapter.IViewHolder mCloneObj = null;
   private QwAdapter.IViewHolder mHolder;
   protected int resource;
   
@@ -76,7 +76,7 @@ public class QwAdapter<V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qwallet.plugin.QwAdapter
  * JD-Core Version:    0.7.0.1
  */

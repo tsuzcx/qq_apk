@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.Arrays;
 
 public class LoopQueue<T>
@@ -8,8 +8,8 @@ public class LoopQueue<T>
   private int DEFAULT_SIZE = 10;
   private int capacity;
   private Object[] elementData;
-  private int front;
-  private int rear;
+  private int front = 0;
+  private int rear = 0;
   
   public LoopQueue()
   {
@@ -52,7 +52,7 @@ public class LoopQueue<T>
     try
     {
       if ((this.rear == this.front) && (this.elementData[this.front] != null)) {
-        throw new IndexOutOfBoundsException(anvx.a(2131705857));
+        throw new IndexOutOfBoundsException(HardCodeUtil.a(2131706397));
       }
     }
     finally {}
@@ -92,7 +92,7 @@ public class LoopQueue<T>
     try
     {
       if (isEmpty()) {
-        throw new IndexOutOfBoundsException(anvx.a(2131705856));
+        throw new IndexOutOfBoundsException(HardCodeUtil.a(2131706396));
       }
     }
     finally {}
@@ -107,14 +107,14 @@ public class LoopQueue<T>
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 49	cooperation/qzone/LoopQueue:rear	I
+    //   3: getfield 22	cooperation/qzone/LoopQueue:rear	I
     //   6: aload_0
-    //   7: getfield 60	cooperation/qzone/LoopQueue:front	I
+    //   7: getfield 20	cooperation/qzone/LoopQueue:front	I
     //   10: if_icmpne +23 -> 33
     //   13: aload_0
-    //   14: getfield 22	cooperation/qzone/LoopQueue:elementData	[Ljava/lang/Object;
+    //   14: getfield 26	cooperation/qzone/LoopQueue:elementData	[Ljava/lang/Object;
     //   17: aload_0
-    //   18: getfield 49	cooperation/qzone/LoopQueue:rear	I
+    //   18: getfield 22	cooperation/qzone/LoopQueue:rear	I
     //   21: aaload
     //   22: astore_2
     //   23: aload_2
@@ -154,7 +154,7 @@ public class LoopQueue<T>
     //   3: invokevirtual 90	cooperation/qzone/LoopQueue:size	()I
     //   6: istore_1
     //   7: aload_0
-    //   8: getfield 20	cooperation/qzone/LoopQueue:capacity	I
+    //   8: getfield 24	cooperation/qzone/LoopQueue:capacity	I
     //   11: istore_2
     //   12: iload_1
     //   13: iload_2
@@ -190,7 +190,7 @@ public class LoopQueue<T>
     try
     {
       if (isEmpty()) {
-        throw new IndexOutOfBoundsException(anvx.a(2131705858));
+        throw new IndexOutOfBoundsException(HardCodeUtil.a(2131706398));
       }
     }
     finally {}
@@ -225,25 +225,25 @@ public class LoopQueue<T>
     //   17: iload_1
     //   18: ireturn
     //   19: aload_0
-    //   20: getfield 49	cooperation/qzone/LoopQueue:rear	I
+    //   20: getfield 22	cooperation/qzone/LoopQueue:rear	I
     //   23: aload_0
-    //   24: getfield 60	cooperation/qzone/LoopQueue:front	I
+    //   24: getfield 20	cooperation/qzone/LoopQueue:front	I
     //   27: if_icmple +16 -> 43
     //   30: aload_0
-    //   31: getfield 49	cooperation/qzone/LoopQueue:rear	I
+    //   31: getfield 22	cooperation/qzone/LoopQueue:rear	I
     //   34: aload_0
-    //   35: getfield 60	cooperation/qzone/LoopQueue:front	I
+    //   35: getfield 20	cooperation/qzone/LoopQueue:front	I
     //   38: isub
     //   39: istore_1
     //   40: goto -25 -> 15
     //   43: aload_0
-    //   44: getfield 20	cooperation/qzone/LoopQueue:capacity	I
+    //   44: getfield 24	cooperation/qzone/LoopQueue:capacity	I
     //   47: istore_1
     //   48: aload_0
-    //   49: getfield 60	cooperation/qzone/LoopQueue:front	I
+    //   49: getfield 20	cooperation/qzone/LoopQueue:front	I
     //   52: istore_2
     //   53: aload_0
-    //   54: getfield 49	cooperation/qzone/LoopQueue:rear	I
+    //   54: getfield 22	cooperation/qzone/LoopQueue:rear	I
     //   57: istore_3
     //   58: iload_1
     //   59: iload_2

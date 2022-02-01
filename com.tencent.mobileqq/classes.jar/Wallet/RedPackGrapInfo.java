@@ -10,21 +10,21 @@ public final class RedPackGrapInfo
 {
   static ArrayList<Long> cache_vecGrapUin = new ArrayList();
   public String hbIdiomLastPY = "";
-  public int iConfType;
-  public int iEffectsId;
-  public int iEnvelopeId;
-  public int iMsgType;
-  public int iRedChannel;
-  public int iRedType;
-  public int iResourceType;
-  public int iSkinId;
-  public int iSongFlag;
-  public int iSongId;
-  public int iSoundRecordDuration;
-  public int iSpecialPopId;
-  public int iSubjectId;
-  public long lCreateTime;
-  public long lUin;
+  public int iConfType = 0;
+  public int iEffectsId = 0;
+  public int iEnvelopeId = 0;
+  public int iMsgType = 0;
+  public int iRedChannel = 0;
+  public int iRedType = 0;
+  public int iResourceType = 0;
+  public int iSkinId = 0;
+  public int iSongFlag = 0;
+  public int iSongId = 0;
+  public int iSoundRecordDuration = 0;
+  public int iSpecialPopId = 0;
+  public int iSubjectId = 0;
+  public long lCreateTime = 0L;
+  public long lUin = 0L;
   public String sAuthKey = "";
   public String sBiilNo = "";
   public String sContent = "";
@@ -32,8 +32,8 @@ public final class RedPackGrapInfo
   public String sName = "";
   public String sReserve = "";
   public String sTitle = "";
-  public int seq;
-  public ArrayList<Long> vecGrapUin;
+  public int seq = 0;
+  public ArrayList<Long> vecGrapUin = null;
   
   static
   {

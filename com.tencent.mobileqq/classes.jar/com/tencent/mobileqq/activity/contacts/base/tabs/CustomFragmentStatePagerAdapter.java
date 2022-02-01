@@ -16,9 +16,9 @@ import java.util.Iterator;
 public abstract class CustomFragmentStatePagerAdapter
   extends PagerAdapter
 {
-  private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
+  private Fragment jdField_a_of_type_AndroidSupportV4AppFragment = null;
   private final FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  private FragmentTransaction jdField_a_of_type_AndroidSupportV4AppFragmentTransaction;
+  private FragmentTransaction jdField_a_of_type_AndroidSupportV4AppFragmentTransaction = null;
   private ArrayList<Fragment.SavedState> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private ArrayList<Fragment> b = new ArrayList();
   
@@ -256,7 +256,7 @@ public abstract class CustomFragmentStatePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.CustomFragmentStatePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

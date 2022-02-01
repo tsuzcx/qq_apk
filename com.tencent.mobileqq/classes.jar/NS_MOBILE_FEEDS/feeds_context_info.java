@@ -9,11 +9,11 @@ public final class feeds_context_info
   extends JceStruct
 {
   static ArrayList<String> cache_video_tag_list = new ArrayList();
-  public int index;
+  public int index = 0;
   public String summary = "";
   public String ugckey = "";
   public String vid = "";
-  public ArrayList<String> video_tag_list;
+  public ArrayList<String> video_tag_list = null;
   
   static
   {

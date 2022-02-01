@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.multicard;
 
-import axgu;
-import axgv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
 
-public class MultiCardManager$2
+class MultiCardManager$2
   implements Runnable
 {
-  public MultiCardManager$2(axgu paramaxgu, long paramLong, ArrayList paramArrayList, axgv paramaxgv) {}
+  MultiCardManager$2(MultiCardManager paramMultiCardManager, long paramLong, ArrayList paramArrayList, MultiCardManager.GetGroupIntimateInfoListListener paramGetGroupIntimateInfoListListener) {}
   
   public void run()
   {

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.reward.aidl;
 
+import com.tencent.biz.pubaccount.readinjoy.reward.mvp.RIJRewardTaskTimingModel;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import rln;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/reward/mvp/RIJRewardTaskTimingModel;", "invoke"}, k=3, mv={1, 1, 16})
-public final class RIJAidlServerRewardTaskModule$model$2
+final class RIJAidlServerRewardTaskModule$model$2
   extends Lambda
-  implements Function0<rln>
+  implements Function0<RIJRewardTaskTimingModel>
 {
   public static final 2 INSTANCE = new 2();
   
@@ -19,14 +19,14 @@ public final class RIJAidlServerRewardTaskModule$model$2
   }
   
   @NotNull
-  public final rln invoke()
+  public final RIJRewardTaskTimingModel invoke()
   {
-    return new rln();
+    return new RIJRewardTaskTimingModel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlServerRewardTaskModule.model.2
  * JD-Core Version:    0.7.0.1
  */

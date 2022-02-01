@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aido;
-import aieh;
 import com.tencent.biz.ui.CustomMenuBar;
 
-public class PublicAccountChatPie$30$1
+class PublicAccountChatPie$30$1
   implements Runnable
 {
-  public PublicAccountChatPie$30$1(aieh paramaieh) {}
+  PublicAccountChatPie$30$1(PublicAccountChatPie.30 param30) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ public class PublicAccountChatPie$30$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.30.1
  * JD-Core Version:    0.7.0.1
  */

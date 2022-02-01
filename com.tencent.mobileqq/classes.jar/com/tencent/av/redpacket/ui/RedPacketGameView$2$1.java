@@ -6,8 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import com.tencent.av.opengl.texture.YUVTexture;
 import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.ui.GLVideoView;
 import com.tencent.av.ui.VideoLayerUI;
-import meu;
 
 class RedPacketGameView$2$1
   implements Runnable
@@ -46,7 +46,7 @@ class RedPacketGameView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketGameView.2.1
  * JD-Core Version:    0.7.0.1
  */

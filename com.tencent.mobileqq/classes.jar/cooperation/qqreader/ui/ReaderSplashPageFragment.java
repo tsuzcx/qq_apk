@@ -10,15 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bmer;
-import bmgm;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import cooperation.qqreader.ReaderSplashImpl;
+import cooperation.qqreader.utils.Log;
 
 public class ReaderSplashPageFragment
   extends WebViewFragment
 {
-  private bmer a;
+  private ReaderSplashImpl a;
   
   private ViewGroup a(Context paramContext)
   {
@@ -45,9 +45,9 @@ public class ReaderSplashPageFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bmgm.e("ReaderSplashPageFragment", "onCreate");
+    Log.e("ReaderSplashPageFragment", "onCreate");
     paramBundle = getActivity();
-    this.a = new bmer(paramBundle);
+    this.a = new ReaderSplashImpl(paramBundle);
     Intent localIntent = getIntent();
     if ((localIntent != null) && (localIntent.getExtras() != null))
     {
@@ -57,7 +57,7 @@ public class ReaderSplashPageFragment
       return;
     }
     paramBundle.finish();
-    bmgm.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
+    Log.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -72,7 +72,7 @@ public class ReaderSplashPageFragment
   
   public void onDestroy()
   {
-    bmgm.e("ReaderSplashPageFragment", "onDestroy");
+    Log.e("ReaderSplashPageFragment", "onDestroy");
     if (this.a != null) {
       this.a.b();
     }
@@ -81,7 +81,7 @@ public class ReaderSplashPageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderSplashPageFragment
  * JD-Core Version:    0.7.0.1
  */

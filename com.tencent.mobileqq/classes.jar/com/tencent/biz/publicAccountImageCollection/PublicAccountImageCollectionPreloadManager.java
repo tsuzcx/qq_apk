@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
+import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
@@ -32,12 +34,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import ojn;
-import ojo;
-import vuk;
-import vus;
-import vut;
-import vuu;
 
 public class PublicAccountImageCollectionPreloadManager
 {
@@ -45,16 +41,16 @@ public class PublicAccountImageCollectionPreloadManager
   private static String jdField_a_of_type_JavaLangString = "PublicAccountImageCollectionPreloadManager";
   int jdField_a_of_type_Int = 0;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  public MQLruCache<String, vus> a;
+  public MQLruCache<String, PublicAccountImageCollectionUtils.PhotoCollectionInfo> a;
+  private PublicAccountArticleObserver jdField_a_of_type_ComTencentBizPubaccountPublicAccountArticleObserver;
   Object jdField_a_of_type_JavaLangObject = new Object();
   public HashMap<String, String> a;
   private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private ojo jdField_a_of_type_Ojo;
   volatile boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int = 0;
+  private PublicAccountArticleObserver jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver;
   private Object jdField_b_of_type_JavaLangObject = new Object();
   private List<String> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private ojo jdField_b_of_type_Ojo;
   int c = 0;
   
   private PublicAccountImageCollectionPreloadManager()
@@ -71,57 +67,57 @@ public class PublicAccountImageCollectionPreloadManager
     return jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager;
   }
   
-  private vus a(ArticleComment.GetPhotoCollectionInfoResponse paramGetPhotoCollectionInfoResponse, String paramString)
+  private PublicAccountImageCollectionUtils.PhotoCollectionInfo a(ArticleComment.GetPhotoCollectionInfoResponse paramGetPhotoCollectionInfoResponse, String paramString)
   {
-    vus localvus = new vus();
+    PublicAccountImageCollectionUtils.PhotoCollectionInfo localPhotoCollectionInfo = new PublicAccountImageCollectionUtils.PhotoCollectionInfo();
     if (paramGetPhotoCollectionInfoResponse.ret.has())
     {
       if (paramGetPhotoCollectionInfoResponse.article_share_url.has()) {
-        localvus.jdField_b_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.article_share_url.get().toStringUtf8();
+        localPhotoCollectionInfo.jdField_b_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.article_share_url.get().toStringUtf8();
       }
       if (paramGetPhotoCollectionInfoResponse.puin.has()) {
-        localvus.c = (paramGetPhotoCollectionInfoResponse.puin.get() + "");
+        localPhotoCollectionInfo.c = (paramGetPhotoCollectionInfoResponse.puin.get() + "");
       }
       if (paramGetPhotoCollectionInfoResponse.article_img_url.has()) {
-        localvus.d = paramGetPhotoCollectionInfoResponse.article_img_url.get().toStringUtf8();
+        localPhotoCollectionInfo.d = paramGetPhotoCollectionInfoResponse.article_img_url.get().toStringUtf8();
       }
       if (paramGetPhotoCollectionInfoResponse.article_title.has()) {
-        localvus.e = paramGetPhotoCollectionInfoResponse.article_title.get().toStringUtf8();
+        localPhotoCollectionInfo.e = paramGetPhotoCollectionInfoResponse.article_title.get().toStringUtf8();
       }
       if (paramGetPhotoCollectionInfoResponse.enable_comment.has()) {
-        localvus.jdField_a_of_type_Int = paramGetPhotoCollectionInfoResponse.enable_comment.get();
+        localPhotoCollectionInfo.jdField_a_of_type_Int = paramGetPhotoCollectionInfoResponse.enable_comment.get();
       }
       if (paramGetPhotoCollectionInfoResponse.comment_url.has()) {
-        localvus.f = paramGetPhotoCollectionInfoResponse.comment_url.get().toStringUtf8();
+        localPhotoCollectionInfo.f = paramGetPhotoCollectionInfoResponse.comment_url.get().toStringUtf8();
       }
       if (paramGetPhotoCollectionInfoResponse.firstItem.has())
       {
-        localvus.jdField_a_of_type_Vut = new vut();
-        localvus.jdField_a_of_type_Vut.jdField_a_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.firstItem.url.get().toStringUtf8();
-        localvus.jdField_a_of_type_Vut.d = paramGetPhotoCollectionInfoResponse.firstItem.photo_author_name.get().toStringUtf8();
-        localvus.jdField_a_of_type_Vut.c = paramGetPhotoCollectionInfoResponse.firstItem.photo_time.get().toStringUtf8();
-        localvus.jdField_a_of_type_Vut.jdField_b_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.firstItem.publicaccount_name.get().toStringUtf8();
+        localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoFirstItemInfo = new PublicAccountImageCollectionUtils.PhotoFirstItemInfo();
+        localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoFirstItemInfo.jdField_a_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.firstItem.url.get().toStringUtf8();
+        localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoFirstItemInfo.d = paramGetPhotoCollectionInfoResponse.firstItem.photo_author_name.get().toStringUtf8();
+        localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoFirstItemInfo.c = paramGetPhotoCollectionInfoResponse.firstItem.photo_time.get().toStringUtf8();
+        localPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoFirstItemInfo.jdField_b_of_type_JavaLangString = paramGetPhotoCollectionInfoResponse.firstItem.publicaccount_name.get().toStringUtf8();
       }
       if ((paramGetPhotoCollectionInfoResponse.item.has()) && (paramGetPhotoCollectionInfoResponse.item.get().size() > 0))
       {
-        localvus.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localPhotoCollectionInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
         int j = paramGetPhotoCollectionInfoResponse.item.get().size();
         int i = 0;
         while (i < j)
         {
-          vuu localvuu = new vuu();
-          localvuu.jdField_a_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).url.get().toStringUtf8();
-          localvuu.jdField_b_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).content.get().toStringUtf8();
-          localvuu.c = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).static_url.get().toStringUtf8();
-          localvuu.jdField_a_of_type_Int = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).width.get();
-          localvuu.jdField_b_of_type_Int = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).height.get();
-          localvus.jdField_a_of_type_JavaUtilArrayList.add(localvuu);
+          PublicAccountImageCollectionUtils.PhotoItemInfo localPhotoItemInfo = new PublicAccountImageCollectionUtils.PhotoItemInfo();
+          localPhotoItemInfo.jdField_a_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).url.get().toStringUtf8();
+          localPhotoItemInfo.jdField_b_of_type_JavaLangString = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).content.get().toStringUtf8();
+          localPhotoItemInfo.c = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).static_url.get().toStringUtf8();
+          localPhotoItemInfo.jdField_a_of_type_Int = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).width.get();
+          localPhotoItemInfo.jdField_b_of_type_Int = ((ArticleComment.PhotoItemInfo)paramGetPhotoCollectionInfoResponse.item.get(i)).height.get();
+          localPhotoCollectionInfo.jdField_a_of_type_JavaUtilArrayList.add(localPhotoItemInfo);
           i += 1;
         }
       }
-      localvus.jdField_a_of_type_JavaLangString = paramString;
+      localPhotoCollectionInfo.jdField_a_of_type_JavaLangString = paramString;
     }
-    return localvus;
+    return localPhotoCollectionInfo;
   }
   
   private void a(String paramString, byte[] paramArrayOfByte)
@@ -139,7 +135,7 @@ public class PublicAccountImageCollectionPreloadManager
     if (paramString == null) {
       return;
     }
-    if (FileUtils.fileExistsAndNotEmpty(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_IMAGE_COLLECTION_PRELOAD + paramString))
+    if (FileUtils.b(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_IMAGE_COLLECTION_PRELOAD + paramString))
     {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "loadPhotoCollectionInfo file exist");
@@ -196,13 +192,13 @@ public class PublicAccountImageCollectionPreloadManager
         QLog.d(jdField_a_of_type_JavaLangString, 2, "loadPhotoCollectionInfoFromServer articleId = " + paramString);
       }
       long l = NetConnInfoCenter.getServerTimeMillis();
-      ojn localojn = (ojn)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.PUBLIC_ACCOUNT_VIDEO_HANDLER);
-      if (this.jdField_b_of_type_Ojo == null)
+      PublicAccountArticleHandler localPublicAccountArticleHandler = (PublicAccountArticleHandler)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.PUBLIC_ACCOUNT_VIDEO_HANDLER);
+      if (this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver == null)
       {
-        this.jdField_b_of_type_Ojo = new vuk(this, l);
-        localojn.a(this.jdField_b_of_type_Ojo);
+        this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver = new PublicAccountImageCollectionPreloadManager.2(this, l);
+        localPublicAccountArticleHandler.a(this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver);
       }
-      ThreadManager.executeOnSubThread(new PublicAccountImageCollectionPreloadManager.3(this, localojn, paramString));
+      ThreadManager.executeOnSubThread(new PublicAccountImageCollectionPreloadManager.3(this, localPublicAccountArticleHandler, paramString));
     }
   }
   
@@ -219,9 +215,9 @@ public class PublicAccountImageCollectionPreloadManager
     return this.c;
   }
   
-  public vus a(String paramString)
+  public PublicAccountImageCollectionUtils.PhotoCollectionInfo a(String paramString)
   {
-    paramString = (vus)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
+    paramString = (PublicAccountImageCollectionUtils.PhotoCollectionInfo)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
     if (paramString != null) {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "getPhotoCollectionInfoFromCache articleId =" + paramString.jdField_a_of_type_JavaLangString);
@@ -239,6 +235,22 @@ public class PublicAccountImageCollectionPreloadManager
     ThreadManager.executeOnSubThread(new PublicAccountImageCollectionPreloadManager.PreloadProtoThread(this));
   }
   
+  public void a(PublicAccountArticleObserver paramPublicAccountArticleObserver)
+  {
+    this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver = paramPublicAccountArticleObserver;
+  }
+  
+  void a(PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PublicAccountImageCollectionPreloadManager.1(this, paramPhotoCollectionInfo));
+  }
+  
+  public void a(PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramPhotoCollectionInfo.jdField_a_of_type_JavaLangString, paramPhotoCollectionInfo);
+    a(paramPhotoCollectionInfo.jdField_a_of_type_JavaLangString, paramArrayOfByte);
+  }
+  
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
@@ -247,7 +259,7 @@ public class PublicAccountImageCollectionPreloadManager
     ??? = a(paramString);
     if (??? != null)
     {
-      b((vus)???);
+      b((PublicAccountImageCollectionUtils.PhotoCollectionInfo)???);
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -263,29 +275,13 @@ public class PublicAccountImageCollectionPreloadManager
     }
   }
   
-  public void a(String paramString, ojo paramojo)
+  public void a(String paramString, PublicAccountArticleObserver paramPublicAccountArticleObserver)
   {
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "getPhotoCollectionInfoFromFile");
     }
-    this.jdField_a_of_type_Ojo = paramojo;
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountArticleObserver = paramPublicAccountArticleObserver;
     c(paramString);
-  }
-  
-  public void a(ojo paramojo)
-  {
-    this.jdField_b_of_type_Ojo = paramojo;
-  }
-  
-  void a(vus paramvus)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PublicAccountImageCollectionPreloadManager.1(this, paramvus));
-  }
-  
-  public void a(vus paramvus, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramvus.jdField_a_of_type_JavaLangString, paramvus);
-    a(paramvus.jdField_a_of_type_JavaLangString, paramArrayOfByte);
   }
   
   public void a(boolean paramBoolean)
@@ -346,24 +342,24 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void b()
   {
-    this.jdField_b_of_type_Ojo = null;
+    this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver = null;
   }
   
-  public void b(vus paramvus)
+  public void b(PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo)
   {
     if (!b()) {}
     for (;;)
     {
       return;
       LinkedList localLinkedList = new LinkedList();
-      if (this.jdField_a_of_type_JavaUtilHashMap.get(paramvus.jdField_a_of_type_JavaLangString) == null) {}
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(paramPhotoCollectionInfo.jdField_a_of_type_JavaLangString) == null) {}
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        vut localvut = paramvus.jdField_a_of_type_Vut;
-        if ((localvut != null) && (localvut.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(localvut.jdField_a_of_type_JavaLangString)))
+        PublicAccountImageCollectionUtils.PhotoFirstItemInfo localPhotoFirstItemInfo = paramPhotoCollectionInfo.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoFirstItemInfo;
+        if ((localPhotoFirstItemInfo != null) && (localPhotoFirstItemInfo.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(localPhotoFirstItemInfo.jdField_a_of_type_JavaLangString)))
         {
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramvus.jdField_a_of_type_JavaLangString, localvut.jdField_a_of_type_JavaLangString);
-          localLinkedList.add(localvut.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramPhotoCollectionInfo.jdField_a_of_type_JavaLangString, localPhotoFirstItemInfo.jdField_a_of_type_JavaLangString);
+          localLinkedList.add(localPhotoFirstItemInfo.jdField_a_of_type_JavaLangString);
         }
         if (localLinkedList == null) {
           continue;
@@ -404,7 +400,7 @@ public class PublicAccountImageCollectionPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager
  * JD-Core Version:    0.7.0.1
  */

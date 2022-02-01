@@ -8,7 +8,7 @@ public final class CommentInfo
   extends JceStruct
 {
   public String jumpUrlToDetail = "";
-  public int totalComment;
+  public int totalComment = 0;
   
   public CommentInfo() {}
   

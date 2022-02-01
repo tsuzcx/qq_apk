@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.business.sougou;
 
-import aqjk;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,9 +17,9 @@ class WordMatchManager$3$1
     Iterator localIterator = this.a.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      aqjk localaqjk = (aqjk)localIterator.next();
-      if (localaqjk != null) {
-        localaqjk.a(this.a.this$0.jdField_a_of_type_Aqjl);
+      WordMatchManager.MatcherCallback localMatcherCallback = (WordMatchManager.MatcherCallback)localIterator.next();
+      if (localMatcherCallback != null) {
+        localMatcherCallback.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher);
       }
     }
     this.a.this$0.jdField_a_of_type_JavaUtilArrayList.clear();

@@ -19,6 +19,7 @@ public class FileControlRequest
   private CheckType mCheckType;
   private String mChecksum;
   private Map<Integer, DumpBussinessReq> mDumpReq;
+  private Map<String, String> mExtend_info;
   private long mFileLength;
   private UploadModel mModel;
   private boolean mNeedCheck;
@@ -28,7 +29,7 @@ public class FileControlRequest
   private AuthToken mToken;
   private String mUin;
   
-  public FileControlRequest(String paramString1, String paramString2, AuthToken paramAuthToken, String paramString3, CheckType paramCheckType, long paramLong, stEnvironment paramstEnvironment, UploadModel paramUploadModel, String paramString4, boolean paramBoolean1, boolean paramBoolean2, int paramInt, Map<Integer, DumpBussinessReq> paramMap)
+  public FileControlRequest(String paramString1, String paramString2, AuthToken paramAuthToken, String paramString3, CheckType paramCheckType, long paramLong, stEnvironment paramstEnvironment, UploadModel paramUploadModel, String paramString4, boolean paramBoolean1, boolean paramBoolean2, int paramInt, Map<Integer, DumpBussinessReq> paramMap, Map<String, String> paramMap1)
   {
     this.mUin = paramString1;
     this.mAppid = paramString2;
@@ -43,6 +44,7 @@ public class FileControlRequest
     this.mNeedCheck = paramBoolean2;
     this.mAsyUpload = paramInt;
     this.mDumpReq = paramMap;
+    this.mExtend_info = paramMap1;
   }
   
   public JceStruct createJceRequest()
@@ -64,6 +66,7 @@ public class FileControlRequest
     }
     localFileControlReq.asy_upload = this.mAsyUpload;
     localFileControlReq.dumpReq = this.mDumpReq;
+    localFileControlReq.extend_info = this.mExtend_info;
     return localFileControlReq;
   }
   
@@ -86,7 +89,7 @@ public class FileControlRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.upload.request.impl.FileControlRequest
  * JD-Core Version:    0.7.0.1
  */

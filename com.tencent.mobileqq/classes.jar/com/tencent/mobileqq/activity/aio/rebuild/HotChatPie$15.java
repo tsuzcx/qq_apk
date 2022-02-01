@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aibs;
 import com.tencent.mobileqq.app.HotChatManager;
 
-public class HotChatPie$15
+class HotChatPie$15
   implements Runnable
 {
-  public HotChatPie$15(aibs paramaibs) {}
+  HotChatPie$15(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class HotChatPie$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.15
  * JD-Core Version:    0.7.0.1
  */

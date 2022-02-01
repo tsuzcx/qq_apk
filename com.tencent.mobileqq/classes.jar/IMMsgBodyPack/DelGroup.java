@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class DelGroup
   extends JceStruct
 {
-  public long dwGroupID;
+  public long dwGroupID = 0L;
   
   public DelGroup() {}
   

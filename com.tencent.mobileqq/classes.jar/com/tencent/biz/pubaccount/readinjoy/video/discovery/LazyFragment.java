@@ -19,8 +19,8 @@ public abstract class LazyFragment
   protected View a;
   protected ViewGroup a;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public abstract int a();
   
@@ -173,7 +173,7 @@ public abstract class LazyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.LazyFragment
  * JD-Core Version:    0.7.0.1
  */

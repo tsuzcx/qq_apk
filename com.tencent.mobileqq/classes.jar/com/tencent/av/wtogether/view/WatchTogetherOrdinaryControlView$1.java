@@ -18,12 +18,12 @@ class WatchTogetherOrdinaryControlView$1
       return;
     }
     WatchTogetherOrdinaryControlView.a(this.this$0).removeCallbacks(this);
-    WatchTogetherOrdinaryControlView.a(this.this$0).postDelayed(this, 12000L);
+    WatchTogetherOrdinaryControlView.a(this.this$0).postDelayed(this, WatchTogetherOrdinaryControlView.c(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherOrdinaryControlView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,6 +17,7 @@ public class BigHeadInitFilter
 {
   public static final String BGRA_NO_FILTER_FRAGMENT_SHADER = "precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uTexture;\n\nvoid main() {\n    gl_FragColor = texture2D(uTexture, vTextureCoord).bgra;\n}\n";
   public static final String NO_FILTER_VERTEX_SHADER = "uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n";
+  private static final String TAG = "BigHeadInitFilter";
   public List<PointF> fullFaceCoords;
   public float[] inClipMatrix = new float[16];
   private float[] inMvpMatrix = new float[16];
@@ -85,7 +86,7 @@ public class BigHeadInitFilter
     if (!this.mInited)
     {
       if (SLog.isEnable()) {
-        SLog.d("BigHeadFilter", "BigHeadInitFilter:drawTexture mInited=false");
+        SLog.d("BigHeadInitFilter", "BigHeadInitFilter:drawTexture mInited=false");
       }
       return;
     }
@@ -122,7 +123,7 @@ public class BigHeadInitFilter
     if (!this.mInited)
     {
       if (SLog.isEnable()) {
-        SLog.d("BigHeadFilter", "BigHeadInitFilter:drawTexture mInited=false");
+        SLog.d("BigHeadInitFilter", "BigHeadInitFilter:drawTexture mInited=false");
       }
       return;
     }
@@ -321,7 +322,7 @@ public class BigHeadInitFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.bighead.BigHeadInitFilter
  * JD-Core Version:    0.7.0.1
  */

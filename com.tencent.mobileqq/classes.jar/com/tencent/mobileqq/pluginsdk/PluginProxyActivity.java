@@ -277,7 +277,7 @@ public abstract class PluginProxyActivity
         }
         this.mLaunchActivity = localThrowable.activities[0].name;
       }
-      Object localObject = PluginStatic.getOrCreateClassLoaderByPath(this, this.mPluginID, this.mPluginApkFilePath);
+      Object localObject = PluginStatic.getOrCreateClassLoaderByPath(this, this.mPluginID, this.mPluginApkFilePath, true);
       getIntent().setExtrasClassLoader((ClassLoader)localObject);
       if (DebugHelper.sDebug) {
         DebugHelper.log("PluginProxyActivity.initPlugin start loadClass");

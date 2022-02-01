@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.confess;
 
-import aqvd;
-import aqvp;
-
-public class ConfessManager$1
+class ConfessManager$1
   implements Runnable
 {
-  public ConfessManager$1(aqvd paramaqvd) {}
+  ConfessManager$1(ConfessManager paramConfessManager) {}
   
   public void run()
   {

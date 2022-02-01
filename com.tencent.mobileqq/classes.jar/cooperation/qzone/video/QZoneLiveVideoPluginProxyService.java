@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.text.TextUtils;
-import blvy;
-import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.qzone.plugin.IQZonePluginManager;
 import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 import cooperation.qzone.plugin.QZonePluginUtils;
@@ -63,19 +63,19 @@ public class QZoneLiveVideoPluginProxyService
     return;
     if (((String)localObject1).equals("qzone_live_video_plugin.apk"))
     {
-      localObject1 = new blwh(0);
-      ((blwh)localObject1).b = "qzone_live_video_plugin.apk";
-      ((blwh)localObject1).d = "QZoneLiveVideo";
-      ((blwh)localObject1).jdField_a_of_type_JavaLangString = paramString1;
-      ((blwh)localObject1).e = paramString2;
-      ((blwh)localObject1).jdField_a_of_type_AndroidContentIntent = paramIntent;
-      ((blwh)localObject1).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-      ((blwh)localObject1).b = "qzone_live_video_plugin.apk";
-      ((blwh)localObject1).d = "QZoneLiveVideo";
+      localObject1 = new IPluginManager.PluginParams(0);
+      ((IPluginManager.PluginParams)localObject1).b = "qzone_live_video_plugin.apk";
+      ((IPluginManager.PluginParams)localObject1).e = "QZoneLiveVideo";
+      ((IPluginManager.PluginParams)localObject1).jdField_a_of_type_JavaLangString = paramString1;
+      ((IPluginManager.PluginParams)localObject1).f = paramString2;
+      ((IPluginManager.PluginParams)localObject1).jdField_a_of_type_AndroidContentIntent = paramIntent;
+      ((IPluginManager.PluginParams)localObject1).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      ((IPluginManager.PluginParams)localObject1).b = "qzone_live_video_plugin.apk";
+      ((IPluginManager.PluginParams)localObject1).e = "QZoneLiveVideo";
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
-      blvy.c(paramContext, (blwh)localObject1);
+      IPluginManager.c(paramContext, (IPluginManager.PluginParams)localObject1);
       return;
     }
     QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject1);
@@ -83,7 +83,7 @@ public class QZoneLiveVideoPluginProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.video.QZoneLiveVideoPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

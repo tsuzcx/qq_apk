@@ -17,7 +17,7 @@ class QzoneGuideBubbleHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneGuideBubbleHelper.2
  * JD-Core Version:    0.7.0.1
  */

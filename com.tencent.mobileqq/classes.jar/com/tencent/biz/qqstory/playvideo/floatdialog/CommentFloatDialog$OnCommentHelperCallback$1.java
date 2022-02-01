@@ -1,20 +1,18 @@
 package com.tencent.biz.qqstory.playvideo.floatdialog;
 
-import xel;
-
-public class CommentFloatDialog$OnCommentHelperCallback$1
+class CommentFloatDialog$OnCommentHelperCallback$1
   implements Runnable
 {
-  public CommentFloatDialog$OnCommentHelperCallback$1(xel paramxel) {}
+  CommentFloatDialog$OnCommentHelperCallback$1(CommentFloatDialog.OnCommentHelperCallback paramOnCommentHelperCallback) {}
   
   public void run()
   {
-    this.a.L_();
+    this.a.N_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentHelperCallback.1
  * JD-Core Version:    0.7.0.1
  */

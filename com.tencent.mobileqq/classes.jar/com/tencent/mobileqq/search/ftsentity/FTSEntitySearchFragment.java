@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import android.os.Bundle;
-import bcbc;
-import bccw;
-import bccz;
-import bcdc;
-import bclw;
-import bcml;
-import bcnc;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.search.searchengine.SearchRespData;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -25,21 +23,21 @@ public class FTSEntitySearchFragment
     return localFTSEntitySearchFragment;
   }
   
-  public bcbc a()
+  public BaseMvpAdapter a()
   {
-    return new bccw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
+    return new FTSEntitySearchFragment.1(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
   }
   
-  public bclw a()
+  public ISearchEngine a()
   {
     BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return bccz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
+    return FTSEntitySearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public String a()
   {
     BaseSearchActivity localBaseSearchActivity = (BaseSearchActivity)getActivity();
-    return bccz.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
+    return FTSEntitySearchUtils.a(localBaseSearchActivity, localBaseSearchActivity.jdField_a_of_type_Int);
   }
   
   public void a(String paramString)
@@ -64,21 +62,21 @@ public class FTSEntitySearchFragment
     label93:
     for (paramInt = i;; paramInt = paramList.size())
     {
-      bcnc.a("talk", "exp_page", new String[] { str, paramInt });
+      SearchUtils.a("talk", "exp_page", new String[] { str, paramInt });
       this.b = true;
       return;
     }
   }
   
-  public void a(List paramList, bcml parambcml)
+  public void a(List paramList, SearchRespData paramSearchRespData)
   {
-    if (parambcml.a(this.c)) {
-      a(paramList, parambcml.jdField_a_of_type_Int);
+    if (paramSearchRespData.a(this.c)) {
+      a(paramList, paramSearchRespData.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", parambcml.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
+    QLog.d("FTSEntitySearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramSearchRespData.jdField_a_of_type_JavaLangString, " keyword2:", this.c });
   }
   
   public void onCreate(Bundle paramBundle)
@@ -92,30 +90,30 @@ public class FTSEntitySearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Bclw.c();
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Bclw.d();
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    ((bcdc)this.jdField_a_of_type_Bclw).f();
+    ((FTSMessageSearchEngine)this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine).f();
   }
   
   public void onStop()
   {
     super.onStop();
-    ((bcdc)this.jdField_a_of_type_Bclw).g();
+    ((FTSMessageSearchEngine)this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment
  * JD-Core Version:    0.7.0.1
  */

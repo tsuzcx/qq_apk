@@ -1,17 +1,16 @@
 package com.tencent.av.wtogether.view;
 
-import bfmp;
-import nah;
+import com.tencent.mobileqq.troop.filemanager.data.TroopFileSearchManager;
 
-public class GroupFileSearchDialog$1
+class GroupFileSearchDialog$1
   implements Runnable
 {
-  public GroupFileSearchDialog$1(nah paramnah) {}
+  GroupFileSearchDialog$1(GroupFileSearchDialog paramGroupFileSearchDialog) {}
   
   public void run()
   {
-    bfmp localbfmp = bfmp.a();
-    this.this$0.jdField_a_of_type_JavaUtilList = localbfmp.a(this.this$0.jdField_a_of_type_AndroidAppActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+    TroopFileSearchManager localTroopFileSearchManager = TroopFileSearchManager.a();
+    this.this$0.jdField_a_of_type_JavaUtilList = localTroopFileSearchManager.a(this.this$0.jdField_a_of_type_AndroidAppActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
     if (this.this$0.b)
     {
       this.this$0.b = false;
@@ -21,7 +20,7 @@ public class GroupFileSearchDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.1
  * JD-Core Version:    0.7.0.1
  */

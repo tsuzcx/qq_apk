@@ -10,14 +10,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import qjf;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
-public class RIJUpvoteAndCommentHandler$2
+class RIJUpvoteAndCommentHandler$2
   implements Runnable
 {
-  public RIJUpvoteAndCommentHandler$2(qjf paramqjf, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
+  RIJUpvoteAndCommentHandler$2(RIJUpvoteAndCommentHandler paramRIJUpvoteAndCommentHandler, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
   
   public void run()
   {
@@ -84,19 +83,19 @@ public class RIJUpvoteAndCommentHandler$2
       QLog.d("RIJUpvoteAndCommentHandler", 1, new Object[] { "handle 8c8, feedsId = ", Long.valueOf(l), ", feedsType = ", Integer.valueOf(j) });
       ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 0);
       if (localArticleInfo != null) {
-        qjf.a(this.this$0, localArticleInfo, localException, 0);
+        RIJUpvoteAndCommentHandler.a(this.this$0, localArticleInfo, localException, 0);
       }
       localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 70);
       if (localArticleInfo != null) {
-        qjf.a(this.this$0, localArticleInfo, localException, 70);
+        RIJUpvoteAndCommentHandler.a(this.this$0, localArticleInfo, localException, 70);
       }
       localObject = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 41403);
       if (localObject != null) {
-        qjf.a(this.this$0, (ArticleInfo)localObject, localException, 41403);
+        RIJUpvoteAndCommentHandler.a(this.this$0, (ArticleInfo)localObject, localException, 41403);
       }
       if ((this.jdField_a_of_type_Boolean) && (localObject != null) && (((ArticleInfo)localObject).mSocialFeedInfo != null))
       {
-        boolean bool = qjf.a(this.this$0, (ArticleInfo)localObject);
+        boolean bool = RIJUpvoteAndCommentHandler.a(this.this$0, (ArticleInfo)localObject);
         if (!bool) {
           break;
         }
@@ -114,7 +113,7 @@ public class RIJUpvoteAndCommentHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.handler.RIJUpvoteAndCommentHandler.2
  * JD-Core Version:    0.7.0.1
  */

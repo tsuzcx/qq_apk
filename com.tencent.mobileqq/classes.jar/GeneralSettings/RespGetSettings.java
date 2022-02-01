@@ -9,9 +9,9 @@ public final class RespGetSettings
   extends JceStruct
 {
   static ArrayList<Setting> cache_Settings;
-  public int Revision;
-  public ArrayList<Setting> Settings;
-  public long Total;
+  public int Revision = 0;
+  public ArrayList<Setting> Settings = null;
+  public long Total = 0L;
   
   public RespGetSettings() {}
   

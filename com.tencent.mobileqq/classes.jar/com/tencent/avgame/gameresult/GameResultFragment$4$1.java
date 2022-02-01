@@ -24,7 +24,7 @@ class GameResultFragment$4$1
       }
       try
       {
-        if (FileUtil.writeBitmapToFile(this.jdField_a_of_type_AndroidGraphicsBitmap, str))
+        if (FileUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, str))
         {
           ThreadManager.getUIHandler().post(new GameResultFragment.4.1.1(this, str));
           return;
@@ -41,7 +41,7 @@ class GameResultFragment$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

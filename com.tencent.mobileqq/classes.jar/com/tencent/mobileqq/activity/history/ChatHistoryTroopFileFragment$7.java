@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import aagu;
+import com.tencent.biz.troop.file.TroopFileProtocol;
 
 class ChatHistoryTroopFileFragment$7
   implements Runnable
@@ -9,13 +9,13 @@ class ChatHistoryTroopFileFragment$7
   
   public void run()
   {
-    aagu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_Ajtu);
-    aagu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_Ajtv);
+    TroopFileProtocol.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment$FileFileCountObserver);
+    TroopFileProtocol.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment$FileFileSpaceObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.7
  * JD-Core Version:    0.7.0.1
  */

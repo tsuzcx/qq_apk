@@ -1,26 +1,16 @@
 package com.tencent.mobileqq.model;
 
-import awyr;
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class EmoticonManager$6
-  implements Runnable
+class EmoticonManager$6
+  implements QueryTask.Query<Pair<String, Integer>, EmoticonPackage>
 {
-  public EmoticonManager$6(awyr paramawyr, String paramString1, String paramString2) {}
+  EmoticonManager$6(EmoticonManager paramEmoticonManager) {}
   
-  public void run()
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
   {
-    Emoticon localEmoticon = (Emoticon)this.this$0.a.find(Emoticon.class, "epId=? and eId=?", new String[] { this.a, this.b });
-    if (localEmoticon != null)
-    {
-      this.this$0.b.put(localEmoticon.getMapKey(), localEmoticon);
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonManager", 2, "hit db, put into cache");
-      }
-    }
+    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 

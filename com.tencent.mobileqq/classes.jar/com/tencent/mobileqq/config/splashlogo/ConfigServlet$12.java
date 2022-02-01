@@ -1,51 +1,49 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import akqe;
 import android.text.TextUtils;
-import arph;
-import bhhr;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class ConfigServlet$12
+class ConfigServlet$12
   implements Runnable
 {
-  public ConfigServlet$12(arph paramarph, ConfigurationService.Config paramConfig) {}
+  ConfigServlet$12(ConfigServlet paramConfigServlet, QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
     int n = 0;
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.this$0.getAppRuntime();
-    akqe localakqe = (akqe)localQQAppInterface.getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER);
+    PasswdRedBagManager localPasswdRedBagManager = (PasswdRedBagManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER);
     HashSet localHashSet = new HashSet();
-    int j = bhhr.H(localQQAppInterface.getApp(), arph.a);
-    int i = this.a.version.get();
+    int j = SharedPreUtils.H(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), ConfigServlet.a);
+    int i = this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get();
     if (i != j) {
       if (i == j) {
-        break label505;
+        break label499;
       }
     }
     for (;;)
     {
       int m;
-      if ((this.a.content_list != null) && (this.a.content_list.size() > 0))
+      if ((this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list != null) && (this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list.size() > 0))
       {
-        int i1 = this.a.content_list.size();
+        int i1 = this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list.size();
         int k = 0;
         m = i;
         if (k < i1)
         {
-          Object localObject1 = (String)this.a.content_list.get(k);
+          Object localObject1 = (String)this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list.get(k);
           if (QLog.isColorLevel()) {
-            QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 56,content: " + (String)localObject1 + ",version: " + this.a.version.get());
+            QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 56,content: " + (String)localObject1 + ",version: " + this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
           }
           if (TextUtils.isEmpty((CharSequence)localObject1)) {}
           for (;;)
@@ -91,7 +89,7 @@ public class ConfigServlet$12
         m = i;
         if (QLog.isColorLevel())
         {
-          QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 56,content_list is empty ,version: " + this.a.version.get());
+          QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 56,content_list is empty ,version: " + this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
           m = i;
         }
       }
@@ -100,8 +98,8 @@ public class ConfigServlet$12
       {
         try
         {
-          bhhr.o(localQQAppInterface.getApp(), arph.a, m);
-          localakqe.a(localHashSet);
+          SharedPreUtils.o(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), ConfigServlet.a, m);
+          localPasswdRedBagManager.a(localHashSet);
           i = 1;
         }
         catch (Exception localException1)
@@ -115,7 +113,7 @@ public class ConfigServlet$12
           continue;
         }
         if (i == 0) {
-          localakqe.f();
+          localPasswdRedBagManager.f();
         }
         return;
         if (QLog.isColorLevel()) {
@@ -125,7 +123,7 @@ public class ConfigServlet$12
         break;
         i = 0;
       }
-      label505:
+      label499:
       i = j;
     }
   }

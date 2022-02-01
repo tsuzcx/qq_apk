@@ -6,17 +6,17 @@ public class FileMsg$StepTransInfo
   extends FileMsg.StepBaseInfo
 {
   public String actualUrl;
-  public long contentSize;
+  public long contentSize = 0L;
   public HashMap<String, String> extraInfo = new HashMap();
   public String firstIp;
-  public long flowDown;
-  public long flowUp;
-  public int httpRespCode;
-  public boolean isBigChannel;
-  public boolean isStream;
+  public long flowDown = 0L;
+  public long flowUp = 0L;
+  public int httpRespCode = 0;
+  public boolean isBigChannel = false;
+  public boolean isStream = false;
   public String lastUseIp;
   public String respHeader;
-  public boolean serverExist;
+  public boolean serverExist = false;
   
   public String toJson()
   {

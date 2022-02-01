@@ -1,29 +1,33 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import UserGrowth.stFollowFeedsRsp;
-import mqq.util.WeakReference;
-import uzf;
-import vfk;
-import vmp;
+import UserGrowth.stSimpleGetFeedListRsp;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 
-public class WeiShiCacheManager$2
+class WeiShiCacheManager$2
   implements Runnable
 {
-  public WeiShiCacheManager$2(uzf paramuzf, WeakReference paramWeakReference) {}
+  WeiShiCacheManager$2(WeiShiCacheManager paramWeiShiCacheManager, IWeiShiCacheCallback paramIWeiShiCacheCallback) {}
   
   public void run()
   {
-    vmp.b("CacheResponseLog", "getCacheDataForFollow startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
-    if (!this.this$0.b()) {
+    WSLog.b("CacheResponseLog", "getPushPreloadCacheData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
+    if (!this.this$0.a())
+    {
+      if (this.a == null) {
+        return;
+      }
+      this.a.a(null);
       return;
     }
-    stFollowFeedsRsp localstFollowFeedsRsp = (stFollowFeedsRsp)uzf.a(this.this$0, new stFollowFeedsRsp(), 3);
-    vfk.a().a(new WeiShiCacheManager.2.1(this, localstFollowFeedsRsp));
+    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = WeiShiCacheManager.a(this.this$0, 5);
+    this.this$0.a(13);
+    WeishiBusinessLooper.a().a(new WeiShiCacheManager.2.1(this, localstSimpleGetFeedListRsp));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.avgame.ui;
 
-import nqc;
+import com.tencent.avgame.util.AVGamePerfReporter;
 
 class AVGameActivity$2
   implements Runnable
@@ -9,13 +9,13 @@ class AVGameActivity$2
   
   public void run()
   {
-    nqc.a().a("param_StepLoading", 0);
+    AVGamePerfReporter.a().a("param_StepLoading", 0);
     this.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameActivity.2
  * JD-Core Version:    0.7.0.1
  */

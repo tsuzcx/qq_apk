@@ -4,16 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bcsc;
+import com.tencent.mobileqq.service.message.EmotionCodecUtils;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
-import ubh;
-import ubj;
 
 public class BarrageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<BarrageInfo> CREATOR = new ubh();
+  public static final Parcelable.Creator<BarrageInfo> CREATOR = new BarrageInfo.1();
   public int a;
   public BarrageInfo.Sender a;
   public QQText a;
@@ -25,7 +23,7 @@ public class BarrageInfo
   
   public BarrageInfo() {}
   
-  public BarrageInfo(Parcel paramParcel)
+  protected BarrageInfo(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -98,14 +96,14 @@ public class BarrageInfo
   public void a()
   {
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqTextQQText = new QQText(bcsc.b(BarrageItemView.a.a(a(this.jdField_b_of_type_JavaLangString))), 7, 15);
+      this.jdField_a_of_type_ComTencentMobileqqTextQQText = new QQText(EmotionCodecUtils.b(BarrageItemView.a.a(a(this.jdField_b_of_type_JavaLangString))), 7, 15);
     }
   }
   
   public void b()
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageInfo$Sender != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageInfo$Sender.jdField_b_of_type_JavaLangString))) {
-      this.jdField_b_of_type_ComTencentMobileqqTextQQText = new QQText(bcsc.b(a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageInfo$Sender.jdField_b_of_type_JavaLangString)), 7, 15);
+      this.jdField_b_of_type_ComTencentMobileqqTextQQText = new QQText(EmotionCodecUtils.b(a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageInfo$Sender.jdField_b_of_type_JavaLangString)), 7, 15);
     }
   }
   
@@ -135,7 +133,7 @@ public class BarrageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo
  * JD-Core Version:    0.7.0.1
  */

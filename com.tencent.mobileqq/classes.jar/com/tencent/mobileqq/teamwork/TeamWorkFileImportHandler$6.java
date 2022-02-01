@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.teamwork;
 
-import bebl;
-import becb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONObject;
 
-public class TeamWorkFileImportHandler$6
+class TeamWorkFileImportHandler$6
   implements Runnable
 {
-  public TeamWorkFileImportHandler$6(bebl parambebl, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  TeamWorkFileImportHandler$6(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
-    if (this.this$0.app == null) {}
+    if (TeamWorkFileImportHandler.a(this.this$0) == null) {}
     JSONObject localJSONObject;
     do
     {
       return;
-      localJSONObject = becb.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c, this.this$0.app.getCurrentAccountUin());
+      localJSONObject = TeamWorkHandler.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c, TeamWorkFileImportHandler.a(this.this$0).getCurrentAccountUin());
     } while (localJSONObject == null);
-    bebl.a(this.this$0, localJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    TeamWorkFileImportHandler.a(this.this$0, localJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
   }
 }
 

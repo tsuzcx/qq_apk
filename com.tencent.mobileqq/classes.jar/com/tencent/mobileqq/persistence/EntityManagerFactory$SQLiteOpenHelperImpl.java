@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteException;
 import android.text.TextUtils;
+import com.tencent.mobileqq.imcore.proxy.basic.CaughtExceptionReportProxy;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -55,7 +56,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
             }
             catch (SQLiteException localSQLiteException)
             {
-              QLog.e(this.this$0.TAG, 1, "[DB] dropAllTable " + str, localSQLiteException);
+              QLog.e(this.this$0.tag, 1, "[DB] dropAllTable " + str, localSQLiteException);
               com.tencent.mobileqq.app.SQLiteOpenHelper.throwDebugException(localSQLiteException);
             }
           }
@@ -124,7 +125,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
     //   109: astore 5
     //   111: aload_0
     //   112: getfield 16	com/tencent/mobileqq/persistence/EntityManagerFactory$SQLiteOpenHelperImpl:this$0	Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   115: getfield 76	com/tencent/mobileqq/persistence/EntityManagerFactory:TAG	Ljava/lang/String;
+    //   115: getfield 76	com/tencent/mobileqq/persistence/EntityManagerFactory:tag	Ljava/lang/String;
     //   118: iconst_1
     //   119: ldc 140
     //   121: aload 6
@@ -193,9 +194,20 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
     //   67	75	181	java/lang/Exception
   }
   
+  private void reportDBOpenLocaleError(Exception paramException)
+  {
+    if ((paramException instanceof SQLiteException))
+    {
+      String str = paramException.getMessage();
+      if ((!TextUtils.isEmpty(str)) && (str.startsWith("Failed to change locale for db"))) {
+        CaughtExceptionReportProxy.e(paramException, "DB open fail for different locale");
+      }
+    }
+  }
+  
   public void close()
   {
-    QLog.e(this.this$0.TAG, 1, "SQLiteOpenHelperImpl close");
+    QLog.e(this.this$0.tag, 1, "SQLiteOpenHelperImpl close");
     try
     {
       if ((this.dbR != null) && (this.dbR.isOpen()))
@@ -212,7 +224,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
     }
     catch (Exception localException)
     {
-      QLog.e(this.this$0.TAG, 1, "close", localException);
+      QLog.e(this.this$0.tag, 1, "close", localException);
     }
   }
   
@@ -233,8 +245,9 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
     {
       for (;;)
       {
-        QLog.e(this.this$0.TAG, 1, "getReadableDatabase", localException);
+        QLog.e(this.this$0.tag, 1, "getReadableDatabase", localException);
         com.tencent.mobileqq.app.SQLiteOpenHelper.throwDebugException(localException);
+        reportDBOpenLocaleError(localException);
       }
     }
     finally {}
@@ -253,8 +266,9 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
     {
       for (;;)
       {
-        QLog.e(this.this$0.TAG, 1, "getWritableDatabase", localException);
+        QLog.e(this.this$0.tag, 1, "getWritableDatabase", localException);
         com.tencent.mobileqq.app.SQLiteOpenHelper.throwDebugException(localException);
+        reportDBOpenLocaleError(localException);
       }
     }
     finally {}
@@ -263,7 +277,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(this.this$0.TAG, 2, "[DB]" + this.databaseName + " onCreate");
+      QLog.i(this.this$0.tag, 2, "[DB]" + this.databaseName + " onCreate");
     }
     this.this$0.createDatabase(paramSQLiteDatabase);
   }
@@ -274,7 +288,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
   {
     super.onOpen(paramSQLiteDatabase);
     if (QLog.isColorLevel()) {
-      QLog.i(this.this$0.TAG, 2, "[DB]" + this.databaseName + " onOpen");
+      QLog.i(this.this$0.tag, 2, "[DB]" + this.databaseName + " onOpen");
     }
     this.mInnerDb = paramSQLiteDatabase;
     try
@@ -292,11 +306,11 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
       int j = arrayOfMethod.length;
       i = 0;
       if (i >= j) {
-        break label524;
+        break label526;
       }
       paramSQLiteDatabase = arrayOfMethod[i];
       if (!TextUtils.equals(paramSQLiteDatabase.getName(), "reconfigure")) {
-        break label253;
+        break label255;
       }
     }
     catch (NoSuchFieldException paramSQLiteDatabase)
@@ -308,7 +322,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
         int i;
         paramSQLiteDatabase.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.w(this.this$0.TAG, 2, "[DB]" + this.databaseName + "  onOpen", paramSQLiteDatabase);
+          QLog.w(this.this$0.tag, 2, "[DB]" + this.databaseName + "  onOpen", paramSQLiteDatabase);
         }
       }
     }
@@ -318,7 +332,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
       {
         paramSQLiteDatabase.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.w(this.this$0.TAG, 2, "[DB]" + this.databaseName + "  onOpen", paramSQLiteDatabase);
+          QLog.w(this.this$0.tag, 2, "[DB]" + this.databaseName + "  onOpen", paramSQLiteDatabase);
         }
       }
     }
@@ -328,7 +342,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
       {
         paramSQLiteDatabase.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.w(this.this$0.TAG, 2, "[DB]" + this.databaseName + "  onOpen", paramSQLiteDatabase);
+          QLog.w(this.this$0.tag, 2, "[DB]" + this.databaseName + "  onOpen", paramSQLiteDatabase);
         }
       }
     }
@@ -339,7 +353,7 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
         paramSQLiteDatabase.printStackTrace();
         if (QLog.isColorLevel())
         {
-          QLog.w(this.this$0.TAG, 2, "[DB]" + this.databaseName + "  onOpen", paramSQLiteDatabase);
+          QLog.w(this.this$0.tag, 2, "[DB]" + this.databaseName + "  onOpen", paramSQLiteDatabase);
           continue;
           paramSQLiteDatabase = null;
         }
@@ -350,18 +364,18 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
       paramSQLiteDatabase.setAccessible(true);
       paramSQLiteDatabase.invoke(localObject2, new Object[] { localObject1 });
       if (QLog.isColorLevel()) {
-        QLog.i(this.this$0.TAG, 2, "[DB]" + this.databaseName + " LRU MAX SIZE = " + 150);
+        QLog.i(this.this$0.tag, 2, "[DB]" + this.databaseName + " LRU MAX SIZE = " + 150);
       }
     }
     for (;;)
     {
       this.this$0.cleanOverDueCorruptDatabase();
       return;
-      label253:
+      label255:
       i += 1;
       break;
       if (QLog.isColorLevel()) {
-        QLog.w(this.this$0.TAG, 2, "[DB]" + this.databaseName + " not find reconfigure()");
+        QLog.w(this.this$0.tag, 2, "[DB]" + this.databaseName + " not find reconfigure()");
       }
     }
   }
@@ -369,13 +383,13 @@ public class EntityManagerFactory$SQLiteOpenHelperImpl
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(this.this$0.TAG, 2, "[DB]" + this.databaseName + " onUpgrade oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
+      QLog.i(this.this$0.tag, 2, "[DB]" + this.databaseName + " onUpgrade oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
     }
     this.this$0.upgradeDatabase(paramSQLiteDatabase, paramInt1, paramInt2);
     this.this$0.checkTableColumnChange(this.this$0.getPackageName(), paramSQLiteDatabase, paramInt1, paramInt2);
     this.this$0.doAfterUpgradeDatabase(paramSQLiteDatabase, paramInt1, paramInt2);
     if (QLog.isColorLevel()) {
-      QLog.i(this.this$0.TAG, 2, "[DB] onUpgrade end");
+      QLog.i(this.this$0.tag, 2, "[DB] onUpgrade end");
     }
   }
 }

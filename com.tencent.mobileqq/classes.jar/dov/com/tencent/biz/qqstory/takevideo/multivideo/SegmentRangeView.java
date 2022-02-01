@@ -11,9 +11,6 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
-import bpef;
-import bpei;
-import bpej;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -22,26 +19,27 @@ import java.util.List;
 
 public class SegmentRangeView
   extends View
-  implements bpej
+  implements VideoFrameLoader.VideoFrameLoaderListener
 {
   private float jdField_a_of_type_Float = 8.0F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long = 0L;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private bpei jdField_a_of_type_Bpei;
-  private WeakReference<bpef> jdField_a_of_type_JavaLangRefWeakReference;
+  private VideoFrameLoader jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader;
+  private WeakReference<SegmentRangeView.SegmentRangeViewListener> jdField_a_of_type_JavaLangRefWeakReference;
   private List<Bitmap> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float = 20.0F;
-  private int jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 0;
+  private long jdField_b_of_type_Long = 0L;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private List<Pair<Long, Long>> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean;
+  private List<Pair<Long, Long>> jdField_b_of_type_JavaUtilList = null;
+  private boolean jdField_b_of_type_Boolean = false;
   private float jdField_c_of_type_Float = 72.0F;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private int jdField_c_of_type_Int = 0;
+  private boolean jdField_c_of_type_Boolean = false;
   private float jdField_d_of_type_Float = 3.0F;
   private int jdField_d_of_type_Int;
   private boolean jdField_d_of_type_Boolean = true;
@@ -204,9 +202,9 @@ public class SegmentRangeView
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bpef localbpef = (bpef)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbpef != null) {
-        localbpef.a(paramList);
+      SegmentRangeView.SegmentRangeViewListener localSegmentRangeViewListener = (SegmentRangeView.SegmentRangeViewListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localSegmentRangeViewListener != null) {
+        localSegmentRangeViewListener.a(paramList);
       }
     }
   }
@@ -230,7 +228,7 @@ public class SegmentRangeView
     invalidate();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     a(paramCanvas);
@@ -255,11 +253,11 @@ public class SegmentRangeView
         this.jdField_a_of_type_Int = ((int)(f1 * paramInt2));
         this.jdField_b_of_type_Int = paramInt2;
         if (this.jdField_a_of_type_Int != 0) {
-          break label112;
+          break label114;
         }
       }
     }
-    label112:
+    label114:
     while (this.jdField_b_of_type_JavaUtilList == null)
     {
       do
@@ -274,10 +272,10 @@ public class SegmentRangeView
           this.jdField_c_of_type_Int += 1;
         }
       } while (this.jdField_c_of_type_Int == 0);
-      if (this.jdField_a_of_type_Bpei != null)
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader != null)
       {
-        this.jdField_a_of_type_Bpei.b();
-        this.jdField_a_of_type_Bpei.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader.b();
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
     }
     List localList = this.jdField_b_of_type_JavaUtilList;
@@ -327,7 +325,7 @@ public class SegmentRangeView
     }
     label455:
     label457:
-    for (paramMotionEvent = (bpef)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+    for (paramMotionEvent = (SegmentRangeView.SegmentRangeViewListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
     {
       if (paramMotionEvent != null)
       {
@@ -355,7 +353,7 @@ public class SegmentRangeView
             this.g = (this.f + getWidth() * 0.1F);
           }
           if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-          for (paramMotionEvent = (bpef)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+          for (paramMotionEvent = (SegmentRangeView.SegmentRangeViewListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
           {
             if (paramMotionEvent == null) {
               break label455;
@@ -431,7 +429,7 @@ public class SegmentRangeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentRangeView
  * JD-Core Version:    0.7.0.1
  */

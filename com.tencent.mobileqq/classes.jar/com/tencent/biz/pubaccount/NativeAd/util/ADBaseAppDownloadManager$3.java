@@ -1,30 +1,28 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import oil;
-import oim;
-import udt;
-import ukq;
-import ule;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdDownloadUtil;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
 
-public class ADBaseAppDownloadManager$3
+class ADBaseAppDownloadManager$3
   implements Runnable
 {
-  public ADBaseAppDownloadManager$3(oil paramoil, ule paramule) {}
+  ADBaseAppDownloadManager$3(ADBaseAppDownloadManager paramADBaseAppDownloadManager, ADVideoAppDownloadData paramADVideoAppDownloadData) {}
   
   public void run()
   {
-    if (udt.a(this.a))
+    if (AdDownloadUtil.a(this.a))
     {
-      ukq.a("ADBaseAppDownloadManager", "already installed." + this.a.d);
+      ReadInJoyAdLog.a("ADBaseAppDownloadManager", "already installed." + this.a.d);
       this.this$0.a(this.a, 1, 100);
       return;
     }
-    udt.a(this.a, new oim(this));
+    AdDownloadUtil.a(this.a, new ADBaseAppDownloadManager.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -5,21 +5,20 @@ import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.SerializationPB.GeneralRecommendFeed;
 import com.tencent.biz.qqstory.base.SerializationPB.VideoListFeed;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import wjs;
-import wke;
-import yct;
-import zdl;
 
 public class GeneralRecommendFeedItem
-  extends VideoListFeedItem<yct, QQUserUIItem>
+  extends VideoListFeedItem<GeneralRecommendHomeFeed, QQUserUIItem>
 {
   public String blurb;
   public QQUserUIItem mUserUIItem = new QQUserUIItem();
@@ -40,7 +39,7 @@ public class GeneralRecommendFeedItem
     if (paramObject.mUserUIItem != null)
     {
       this.mUserUIItem = paramObject.mUserUIItem;
-      zdl.a(this.mUserUIItem);
+      AssertUtils.a(this.mUserUIItem);
     }
     if (paramObject.blurb != null) {
       this.blurb = paramObject.blurb;
@@ -79,8 +78,8 @@ public class GeneralRecommendFeedItem
       }
       paramString = new QQUserUIItem();
       paramString.convertFrom(paramGeneralFeed.user);
-      this.mUserUIItem = ((wke)wjs.a(2)).a(paramString);
-      zdl.a(this.mUserUIItem);
+      this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(paramString);
+      AssertUtils.a(this.mUserUIItem);
       this.ownerId = this.mUserUIItem.getUnionId();
       return true;
       bool = false;
@@ -113,9 +112,9 @@ public class GeneralRecommendFeedItem
   }
   
   @NonNull
-  public yct generateHomeFeed()
+  public GeneralRecommendHomeFeed generateHomeFeed()
   {
-    return new yct(this);
+    return new GeneralRecommendHomeFeed(this);
   }
   
   public int getCommentLikeType()
@@ -143,7 +142,7 @@ public class GeneralRecommendFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    this.mUserUIItem = ((wke)wjs.a(2)).a(this.ownerId);
+    this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(this.ownerId);
   }
   
   public void readFromLocalByte(byte[] paramArrayOfByte)
@@ -169,7 +168,7 @@ public class GeneralRecommendFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem
  * JD-Core Version:    0.7.0.1
  */

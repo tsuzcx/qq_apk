@@ -166,64 +166,64 @@ final class a
     //   307: invokevirtual 139	com/tencent/mobileqq/microapp/appbrand/b/b:a	(Ljava/lang/String;)Ljava/lang/String;
     //   310: astore 10
     //   312: aload 10
-    //   314: invokestatic 145	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   314: invokestatic 144	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
     //   317: astore 8
-    //   319: new 147	java/io/FileOutputStream
+    //   319: new 146	java/io/FileOutputStream
     //   322: dup
     //   323: aload 8
-    //   325: invokespecial 150	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   325: invokespecial 149	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   328: astore 8
-    //   330: ldc 152
+    //   330: ldc 151
     //   332: aload 11
-    //   334: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   334: invokevirtual 157	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   337: ifeq +166 -> 503
     //   340: aload_0
     //   341: getfield 22	com/tencent/mobileqq/microapp/widget/a:a	Lorg/json/JSONObject;
-    //   344: ldc 160
+    //   344: ldc 159
     //   346: invokevirtual 50	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
     //   349: dstore_1
     //   350: aload 7
-    //   352: getstatic 166	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   352: getstatic 165	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   355: dload_1
-    //   356: ldc2_w 167
+    //   356: ldc2_w 166
     //   359: dmul
     //   360: d2i
     //   361: aload 8
-    //   363: invokevirtual 172	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   363: invokevirtual 171	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   366: pop
     //   367: new 46	org/json/JSONObject
     //   370: dup
-    //   371: invokespecial 173	org/json/JSONObject:<init>	()V
+    //   371: invokespecial 172	org/json/JSONObject:<init>	()V
     //   374: astore 7
     //   376: aload 7
-    //   378: ldc 175
+    //   378: ldc 174
     //   380: invokestatic 137	com/tencent/mobileqq/microapp/appbrand/b/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/b/b;
     //   383: aload 10
-    //   385: invokevirtual 177	com/tencent/mobileqq/microapp/appbrand/b/b:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   388: invokevirtual 181	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   385: invokevirtual 176	com/tencent/mobileqq/microapp/appbrand/b/b:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   388: invokevirtual 180	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   391: pop
     //   392: aload_0
     //   393: getfield 24	com/tencent/mobileqq/microapp/widget/a:b	Lcom/tencent/mobileqq/microapp/appbrand/page/WebviewContainer;
-    //   396: getfield 185	com/tencent/mobileqq/microapp/appbrand/page/WebviewContainer:appBrandRuntime	Lcom/tencent/mobileqq/microapp/appbrand/a;
-    //   399: getfield 191	com/tencent/mobileqq/microapp/appbrand/a:i	Lcom/tencent/mobileqq/microapp/appbrand/page/ServiceWebview;
+    //   396: getfield 184	com/tencent/mobileqq/microapp/appbrand/page/WebviewContainer:appBrandRuntime	Lcom/tencent/mobileqq/microapp/appbrand/a;
+    //   399: getfield 190	com/tencent/mobileqq/microapp/appbrand/a:i	Lcom/tencent/mobileqq/microapp/appbrand/page/ServiceWebview;
     //   402: aload_0
     //   403: getfield 28	com/tencent/mobileqq/microapp/widget/a:d	I
     //   406: aload 7
-    //   408: invokevirtual 192	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   411: invokevirtual 198	com/tencent/mobileqq/microapp/appbrand/page/ServiceWebview:evaluateCallbackJs	(ILjava/lang/String;)V
+    //   408: invokevirtual 191	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   411: invokevirtual 197	com/tencent/mobileqq/microapp/appbrand/page/ServiceWebview:evaluateCallbackJs	(ILjava/lang/String;)V
     //   414: aload 8
     //   416: ifnull +13 -> 429
     //   419: aload 8
-    //   421: invokevirtual 201	java/io/FileOutputStream:flush	()V
+    //   421: invokevirtual 200	java/io/FileOutputStream:flush	()V
     //   424: aload 8
-    //   426: invokevirtual 204	java/io/FileOutputStream:close	()V
+    //   426: invokevirtual 203	java/io/FileOutputStream:close	()V
     //   429: aload 9
     //   431: ifnull +184 -> 615
     //   434: aload 9
-    //   436: invokevirtual 207	android/graphics/Bitmap:isRecycled	()Z
+    //   436: invokevirtual 206	android/graphics/Bitmap:isRecycled	()Z
     //   439: ifne +176 -> 615
     //   442: aload 9
-    //   444: invokevirtual 210	android/graphics/Bitmap:recycle	()V
+    //   444: invokevirtual 209	android/graphics/Bitmap:recycle	()V
     //   447: return
     //   448: astore 7
     //   450: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -233,10 +233,10 @@ final class a
     //   460: new 63	java/lang/StringBuilder
     //   463: dup
     //   464: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   467: ldc 212
+    //   467: ldc 211
     //   469: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   472: aload 7
-    //   474: invokevirtual 215	java/lang/Throwable:getLocalizedMessage	()Ljava/lang/String;
+    //   474: invokevirtual 214	java/lang/Throwable:getLocalizedMessage	()Ljava/lang/String;
     //   477: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   480: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   483: invokestatic 81	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -249,44 +249,44 @@ final class a
     //   496: getfield 28	com/tencent/mobileqq/microapp/widget/a:d	I
     //   499: invokevirtual 117	com/tencent/mobileqq/microapp/appbrand/page/WebviewContainer:callbackJsEventFail	(Ljava/lang/String;Lorg/json/JSONObject;I)V
     //   502: return
-    //   503: ldc 217
+    //   503: ldc 216
     //   505: aload 11
-    //   507: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   507: invokevirtual 157	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   510: ifeq -143 -> 367
     //   513: aload_0
     //   514: getfield 22	com/tencent/mobileqq/microapp/widget/a:a	Lorg/json/JSONObject;
-    //   517: ldc 219
+    //   517: ldc 218
     //   519: invokevirtual 50	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
     //   522: dstore_1
     //   523: aload 7
-    //   525: getstatic 222	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   525: getstatic 221	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   528: dload_1
-    //   529: ldc2_w 167
+    //   529: ldc2_w 166
     //   532: dmul
     //   533: d2i
     //   534: aload 8
-    //   536: invokevirtual 172	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   536: invokevirtual 171	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   539: pop
     //   540: goto -173 -> 367
     //   543: astore 7
     //   545: aload 8
     //   547: ifnull +13 -> 560
     //   550: aload 8
-    //   552: invokevirtual 201	java/io/FileOutputStream:flush	()V
+    //   552: invokevirtual 200	java/io/FileOutputStream:flush	()V
     //   555: aload 8
-    //   557: invokevirtual 204	java/io/FileOutputStream:close	()V
+    //   557: invokevirtual 203	java/io/FileOutputStream:close	()V
     //   560: aload 9
     //   562: ifnull +16 -> 578
     //   565: aload 9
-    //   567: invokevirtual 207	android/graphics/Bitmap:isRecycled	()Z
+    //   567: invokevirtual 206	android/graphics/Bitmap:isRecycled	()Z
     //   570: ifne +8 -> 578
     //   573: aload 9
-    //   575: invokevirtual 210	android/graphics/Bitmap:recycle	()V
+    //   575: invokevirtual 209	android/graphics/Bitmap:recycle	()V
     //   578: aload 7
     //   580: athrow
     //   581: astore 7
     //   583: aload 7
-    //   585: invokevirtual 225	org/json/JSONException:printStackTrace	()V
+    //   585: invokevirtual 224	org/json/JSONException:printStackTrace	()V
     //   588: aload_0
     //   589: getfield 24	com/tencent/mobileqq/microapp/widget/a:b	Lcom/tencent/mobileqq/microapp/appbrand/page/WebviewContainer;
     //   592: aload_0

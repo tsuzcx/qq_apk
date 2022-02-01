@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import axhz;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.multicard.RecommendPerson;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class TroopMemberRecommendHandler$1
+class TroopMemberRecommendHandler$1
   implements Runnable
 {
-  public TroopMemberRecommendHandler$1(axhz paramaxhz, long paramLong, ArrayList paramArrayList) {}
+  TroopMemberRecommendHandler$1(TroopMemberRecommendHandler paramTroopMemberRecommendHandler, long paramLong, ArrayList paramArrayList) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = TroopMemberRecommendHandler.a(this.this$0).getEntityManagerFactory().createEntityManager();
     int i = localEntityManager.delete(RecommendPerson.class.getSimpleName(), "troopUin=? ", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
     if (QLog.isColorLevel()) {
       QLog.i("TroopMemberRecommend.Handler", 2, "handleGetTroopMemRecommendCards,delete count =" + i);

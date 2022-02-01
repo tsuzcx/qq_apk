@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="44.0dip"
+<FrameLayout android:id="@id/eic" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/cgb" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/o0x" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxEms="15" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff4899df" android:id="@id/o0y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:maxLength="4" />
-    <ImageView android:id="@id/n3a" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/cip" android:contentDescription="@string/close" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/alw" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/v0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" android:includeFontPadding="false" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJHorizontalProgress android:layout_gravity="center" android:id="@id/n4m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJRoundProgressBar android:layout_gravity="center" android:id="@id/ifi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" />
+    <ImageView android:layout_gravity="center" android:id="@id/ddt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

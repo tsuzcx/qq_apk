@@ -1,30 +1,28 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import ofd;
-import off;
 
-public class AdvertisementVideoPreloadManager$2
+class AdvertisementVideoPreloadManager$2
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$2(ofd paramofd) {}
+  AdvertisementVideoPreloadManager$2(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
   public void run()
   {
     try
     {
-      TVK_SDKMgr.installPlugin(ofd.a(this.this$0), new off(this));
+      TVK_SDKMgr.installPlugin(AdvertisementVideoPreloadManager.a(this.this$0), new AdvertisementVideoPreloadManager.2.1(this));
       return;
     }
     catch (Throwable localThrowable)
     {
-      ofd.c("installSDK t==" + localThrowable.toString());
+      AdvertisementVideoPreloadManager.c("installSDK t==" + localThrowable.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2
  * JD-Core Version:    0.7.0.1
  */

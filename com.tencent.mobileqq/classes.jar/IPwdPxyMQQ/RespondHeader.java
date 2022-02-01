@@ -8,13 +8,13 @@ public final class RespondHeader
   extends JceStruct
 {
   static byte[] cache_tips;
-  public int cmd;
-  public long requestID;
-  public int result;
-  public long svrSeqNo;
-  public byte[] tips;
+  public int cmd = 0;
+  public long requestID = 0L;
+  public int result = 0;
+  public long svrSeqNo = 0L;
+  public byte[] tips = null;
   public String uin = "";
-  public int ver;
+  public int ver = 0;
   
   public RespondHeader() {}
   

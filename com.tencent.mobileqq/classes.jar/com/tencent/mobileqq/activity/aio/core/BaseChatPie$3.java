@@ -13,15 +13,15 @@ class BaseChatPie$3
   
   public boolean onLongClick(View paramView)
   {
-    if ("//findcrash".equals(this.this$0.input.getText().toString())) {
-      ThreadManager.post(new LocalCrashCollector(this.this$0), 8, null, true);
+    if ("//findcrash".equals(this.a.a.getText().toString())) {
+      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.3
  * JD-Core Version:    0.7.0.1
  */

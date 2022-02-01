@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahpt;
-import ahvi;
 import android.content.Intent;
 import android.text.TextUtils;
-import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class TransferAppInfo
   extends PlusPanelAppInfo
 {
-  public TransferAppInfo() {}
+  TransferAppInfo() {}
   
   public TransferAppInfo(int paramInt)
   {
@@ -29,7 +29,7 @@ public class TransferAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839230;
+    return 2130839299;
   }
   
   public int getAppID()
@@ -58,20 +58,20 @@ public class TransferAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131716639);
+    return BaseApplicationImpl.getContext().getString(2131717134);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    paramahvi.a("chat_tool_qwallettransfer", localQQAppInterface.getCurrentAccountUin());
-    paramahvi.b(paramBaseChatPie);
-    Intent localIntent = new Intent(paramBaseChatPie.getActivity(), TransactionActivity.class);
+    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    paramPlusPanelViewModel.a("chat_tool_qwallettransfer", localQQAppInterface.getCurrentAccountUin());
+    paramPlusPanelViewModel.b(paramBaseChatPie);
+    Intent localIntent = new Intent(paramBaseChatPie.a(), TransactionActivity.class);
     localIntent.putExtra("come_from", 2);
     int j = 0;
     int i = 0;
-    paramahvi = null;
-    switch (paramSessionInfo.curType)
+    paramPlusPanelViewModel = null;
+    switch (paramSessionInfo.jdField_a_of_type_Int)
     {
     }
     for (;;)
@@ -79,38 +79,39 @@ public class TransferAppInfo
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("targetUin", paramSessionInfo.curFriendUin);
-        localJSONObject.put("targetNickname", paramSessionInfo.curFriendNick);
+        localJSONObject.put("targetUin", paramSessionInfo.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("targetNickname", paramSessionInfo.d);
         localJSONObject.put("sign", "");
         if (j != 0) {
           localJSONObject.put("source", j);
         }
         localJSONObject.put("groupType", i);
-        if (!TextUtils.isEmpty(paramahvi)) {
-          localJSONObject.put("groupUin", paramahvi);
+        if (!TextUtils.isEmpty(paramPlusPanelViewModel)) {
+          localJSONObject.put("groupUin", paramPlusPanelViewModel);
         }
       }
-      catch (JSONException paramahvi)
+      catch (JSONException paramPlusPanelViewModel)
       {
         for (;;)
         {
-          paramahvi.printStackTrace();
+          paramPlusPanelViewModel.printStackTrace();
         }
       }
       localIntent.putExtra("extra_data", localJSONObject.toString());
       localIntent.putExtra("app_info", "appid#20000001|bargainor_id#1000026901|channel#aio");
-      localIntent.putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "transfer", "click", "sessionType=" + paramSessionInfo.curType, 0, null));
-      paramBaseChatPie.getActivity().startActivity(localIntent);
-      bdla.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOclick", 0, 0, "", "", "", "");
-      ahpt.a(localQQAppInterface, "0X8005CB0", paramSessionInfo.curType);
+      localIntent.putExtra("isJumpToH5", false);
+      localIntent.putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "transfer", "click", "sessionType=" + paramSessionInfo.jdField_a_of_type_Int, 0, null));
+      paramBaseChatPie.a().startActivity(localIntent);
+      ReportController.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOclick", 0, 0, "", "", "", "");
+      AIOPanelUtiles.a(localQQAppInterface, "0X8005CB0", paramSessionInfo.jdField_a_of_type_Int);
       return;
       j = 5;
       i = 3;
-      paramahvi = paramSessionInfo.troopUin;
+      paramPlusPanelViewModel = paramSessionInfo.b;
       continue;
       j = 5;
       i = 4;
-      paramahvi = paramSessionInfo.troopUin;
+      paramPlusPanelViewModel = paramSessionInfo.b;
     }
   }
 }

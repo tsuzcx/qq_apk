@@ -9,7 +9,7 @@ public final class CKV_MusicListInfo
   extends JceStruct
 {
   static ArrayList<CKV_MusicInfo> cache_vMusicList = new ArrayList();
-  public ArrayList<CKV_MusicInfo> vMusicList;
+  public ArrayList<CKV_MusicInfo> vMusicList = null;
   
   static
   {

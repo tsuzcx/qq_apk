@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.multivideo.IAdapter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ssm;
 
 class VideoFollowManager$CheckAccountFollowedRunnable$1
   implements Runnable
@@ -41,7 +41,7 @@ class VideoFollowManager$CheckAccountFollowedRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager.CheckAccountFollowedRunnable.1
  * JD-Core Version:    0.7.0.1
  */

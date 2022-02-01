@@ -12,11 +12,6 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityNodeInfo;
-import blgl;
-import blgm;
-import blgn;
-import blgo;
-import blgp;
 import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -29,15 +24,15 @@ public class XEditTextEx
   implements View.OnTouchListener
 {
   private int jdField_a_of_type_Int;
-  private blgl jdField_a_of_type_Blgl;
-  private blgm jdField_a_of_type_Blgm;
-  private blgn jdField_a_of_type_Blgn;
-  private blgo jdField_a_of_type_Blgo;
+  private XEditTextEx.OnKeyEventPreImeListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener;
+  private XEditTextEx.OnKeyboardShowListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener;
+  private XEditTextEx.OnPrivateIMECommandListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener;
+  private XEditTextEx.OnWindowFocusChangedListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener;
   private XEditTextEx.PerformClick jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick;
   public Object a;
   private List<WeakReference<View.OnClickListener>> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int;
-  private List<blgp> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private List<XEditTextEx.TextMenuListener> jdField_b_of_type_JavaUtilList = new ArrayList();
   
   public XEditTextEx(Context paramContext)
   {
@@ -57,9 +52,9 @@ public class XEditTextEx
     this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnClickListener));
   }
   
-  public void a(@Nullable blgp paramblgp)
+  public void a(@Nullable XEditTextEx.TextMenuListener paramTextMenuListener)
   {
-    this.jdField_b_of_type_JavaUtilList.add(paramblgp);
+    this.jdField_b_of_type_JavaUtilList.add(paramTextMenuListener);
   }
   
   public boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -67,14 +62,14 @@ public class XEditTextEx
     return (paramFloat1 >= -paramFloat3) && (paramFloat2 >= -paramFloat3) && (paramFloat1 < getRight() - getLeft() + paramFloat3) && (paramFloat2 < getBottom() - getTop() + paramFloat3);
   }
   
-  public void b(@Nullable blgp paramblgp)
+  public void b(@Nullable XEditTextEx.TextMenuListener paramTextMenuListener)
   {
-    this.jdField_b_of_type_JavaUtilList.remove(paramblgp);
+    this.jdField_b_of_type_JavaUtilList.remove(paramTextMenuListener);
   }
   
   public boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Blgl != null) && (this.jdField_a_of_type_Blgl.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener != null) && (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEventPreIme(paramKeyEvent);
@@ -82,8 +77,8 @@ public class XEditTextEx
   
   public boolean onCheckIsTextEditor()
   {
-    if (this.jdField_a_of_type_Blgm != null) {
-      return this.jdField_a_of_type_Blgm.a();
+    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener != null) {
+      return this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener.a();
     }
     return super.onCheckIsTextEditor();
   }
@@ -102,8 +97,8 @@ public class XEditTextEx
     if (QLog.isColorLevel()) {
       QLog.d("XEditTextEx", 1, "onPrivateIMECommand(), action:" + paramString + " data:" + paramBundle);
     }
-    if (this.jdField_a_of_type_Blgn != null) {
-      return this.jdField_a_of_type_Blgn.a(paramString, paramBundle);
+    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener != null) {
+      return this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener.a(paramString, paramBundle);
     }
     return super.onPrivateIMECommand(paramString, paramBundle);
   }
@@ -118,11 +113,11 @@ public class XEditTextEx
         if (!localIterator.hasNext()) {
           continue;
         }
-        localblgp = (blgp)localIterator.next();
+        localTextMenuListener = (XEditTextEx.TextMenuListener)localIterator.next();
         switch (paramInt)
         {
         case 16908320: 
-          if (!localblgp.b()) {
+          if (!localTextMenuListener.b()) {
             continue;
           }
           return true;
@@ -132,7 +127,7 @@ public class XEditTextEx
       {
         try
         {
-          blgp localblgp;
+          XEditTextEx.TextMenuListener localTextMenuListener;
           boolean bool = super.onTextContextMenuItem(paramInt);
           return bool;
         }
@@ -145,10 +140,10 @@ public class XEditTextEx
         QLog.d("XEditTextEx", 2, "onTextContextMenuItem has exception,", localException);
         return false;
       }
-      if (localblgp.a())
+      if (localTextMenuListener.a())
       {
         return true;
-        bool = localblgp.c();
+        bool = localTextMenuListener.c();
         if (bool) {
           return true;
         }
@@ -200,41 +195,41 @@ public class XEditTextEx
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_Blgo != null) {
-      this.jdField_a_of_type_Blgo.a(paramBoolean);
+    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener != null) {
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener.a(paramBoolean);
     }
   }
   
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Blgm == null) || (this.jdField_a_of_type_Blgm.a())) {
+    if ((this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener == null) || (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener.a())) {
       super.scrollTo(paramInt1, paramInt2);
     }
   }
   
-  public void setKeyEventPreImeListener(blgl paramblgl)
+  public void setKeyEventPreImeListener(XEditTextEx.OnKeyEventPreImeListener paramOnKeyEventPreImeListener)
   {
-    this.jdField_a_of_type_Blgl = paramblgl;
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener = paramOnKeyEventPreImeListener;
   }
   
-  public void setOnKeyboardShowListener(blgm paramblgm)
+  public void setOnKeyboardShowListener(XEditTextEx.OnKeyboardShowListener paramOnKeyboardShowListener)
   {
-    this.jdField_a_of_type_Blgm = paramblgm;
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener = paramOnKeyboardShowListener;
   }
   
-  public void setOnPrivateIMECommandListener(blgn paramblgn)
+  public void setOnPrivateIMECommandListener(XEditTextEx.OnPrivateIMECommandListener paramOnPrivateIMECommandListener)
   {
-    this.jdField_a_of_type_Blgn = paramblgn;
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener = paramOnPrivateIMECommandListener;
   }
   
-  public void setOnWindowFocusChangedListener(blgo paramblgo)
+  public void setOnWindowFocusChangedListener(XEditTextEx.OnWindowFocusChangedListener paramOnWindowFocusChangedListener)
   {
-    this.jdField_a_of_type_Blgo = paramblgo;
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener = paramOnWindowFocusChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.XEditTextEx
  * JD-Core Version:    0.7.0.1
  */

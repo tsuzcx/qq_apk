@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import android.net.Uri;
-import sfq;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
 
 class ViolaHandler$1$1
   implements Runnable
@@ -11,13 +11,13 @@ class ViolaHandler$1$1
   public void run()
   {
     if ("1".equals(Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("v_feeds_preload"))) {
-      sfq.a().b(this.jdField_a_of_type_JavaLangString);
+      ReadInJoyWebDataManager.a().b(this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.handlers.ViolaHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

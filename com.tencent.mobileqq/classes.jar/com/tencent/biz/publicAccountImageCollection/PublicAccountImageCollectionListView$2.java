@@ -1,15 +1,12 @@
 package com.tencent.biz.publicAccountImageCollection;
 
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import tlv;
-import tlw;
-import vtj;
-import vua;
-import vuu;
 
 class PublicAccountImageCollectionListView$2
   implements Runnable
@@ -56,16 +53,16 @@ class PublicAccountImageCollectionListView$2
             }
             try
             {
-              vuu localvuu = (vuu)this.jdField_a_of_type_JavaUtilList.get(j - 1);
-              if (localvuu != null)
+              PublicAccountImageCollectionUtils.PhotoItemInfo localPhotoItemInfo = (PublicAccountImageCollectionUtils.PhotoItemInfo)this.jdField_a_of_type_JavaUtilList.get(j - 1);
+              if (localPhotoItemInfo != null)
               {
-                localObject = ((vtj)this.this$0.getAdapter()).a(localvuu.a);
+                localObject = ((PublicAccountImageCollectionAdapter)this.this$0.getAdapter()).a(localPhotoItemInfo.a);
                 if (localObject == null) {
                   break;
                 }
-                int k = ((vtj)this.this$0.getAdapter()).a(localvuu)[0];
-                int m = ((vtj)this.this$0.getAdapter()).a(localvuu)[1];
-                localLinkedList.add(vua.a((URL)localObject, k, m));
+                int k = ((PublicAccountImageCollectionAdapter)this.this$0.getAdapter()).a(localPhotoItemInfo)[0];
+                int m = ((PublicAccountImageCollectionAdapter)this.this$0.getAdapter()).a(localPhotoItemInfo)[1];
+                localLinkedList.add(PublicAccountImageCollectionListView.PreloadImgInfo.a((URL)localObject, k, m));
                 if (QLog.isColorLevel()) {
                   QLog.d("PublicAccountImageCollectionListView", 2, "preloadImg index:" + j + "  reqWidth = " + k + " reqHeight = " + m);
                 }
@@ -82,14 +79,14 @@ class PublicAccountImageCollectionListView$2
       Iterator localIterator = localLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (vua)localIterator.next();
-        if ((localObject != null) && (((vua)localObject).jdField_a_of_type_JavaNetURL != null))
+        localObject = (PublicAccountImageCollectionListView.PreloadImgInfo)localIterator.next();
+        if ((localObject != null) && (((PublicAccountImageCollectionListView.PreloadImgInfo)localObject).jdField_a_of_type_JavaNetURL != null))
         {
-          tlw localtlw = new tlw();
-          localtlw.jdField_a_of_type_JavaNetURL = ((vua)localObject).jdField_a_of_type_JavaNetURL;
-          localtlw.jdField_a_of_type_Int = ((vua)localObject).jdField_a_of_type_Int;
-          localtlw.jdField_b_of_type_Int = ((vua)localObject).jdField_b_of_type_Int;
-          tlv.a().a(localtlw, null);
+          ImageRequest localImageRequest = new ImageRequest();
+          localImageRequest.jdField_a_of_type_JavaNetURL = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject).jdField_a_of_type_JavaNetURL;
+          localImageRequest.jdField_a_of_type_Int = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject).jdField_a_of_type_Int;
+          localImageRequest.jdField_b_of_type_Int = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject).jdField_b_of_type_Int;
+          ImageManager.a().a(localImageRequest, null);
         }
       }
     } while (!QLog.isColorLevel());
@@ -98,7 +95,7 @@ class PublicAccountImageCollectionListView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView.2
  * JD-Core Version:    0.7.0.1
  */

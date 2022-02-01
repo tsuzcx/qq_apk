@@ -1,0 +1,96 @@
+package com.tencent.mobileqq.config.business;
+
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.config.IQConfigProcessor;
+import com.tencent.mobileqq.config.QConfItem;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.qphone.base.util.QLog;
+
+public class QrCodeDisplayConfProcessor
+  extends IQConfigProcessor<QrCodeConfBean>
+{
+  @NonNull
+  public static QrCodeConfBean a()
+  {
+    QrCodeConfBean localQrCodeConfBean2 = (QrCodeConfBean)QConfigManager.a().a(630);
+    QrCodeConfBean localQrCodeConfBean1 = localQrCodeConfBean2;
+    if (localQrCodeConfBean2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QrCodeDisplay.ConfProcessor", 2, "loadConfig(): bean is null then new QrCodeConfBean()");
+      }
+      localQrCodeConfBean1 = new QrCodeConfBean();
+    }
+    return localQrCodeConfBean1;
+  }
+  
+  @NonNull
+  public QrCodeConfBean a(int paramInt)
+  {
+    return new QrCodeConfBean();
+  }
+  
+  @Nullable
+  public QrCodeConfBean a(QConfItem[] paramArrayOfQConfItem)
+  {
+    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0))
+    {
+      QLog.d("QrCodeDisplay.ConfProcessor", 1, "QrCodeDisplayConfProcessor onParsed, confFiles is null empty");
+      return null;
+    }
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, "QrCodeDisplayConfProcessor onParsed, content:" + paramArrayOfQConfItem);
+    }
+    return QrCodeConfBean.a(paramArrayOfQConfItem);
+  }
+  
+  public void a(QrCodeConfBean paramQrCodeConfBean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, "onUpdate " + paramQrCodeConfBean.toString());
+    }
+  }
+  
+  public Class<QrCodeConfBean> clazz()
+  {
+    return QrCodeConfBean.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 630;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.config.business.QrCodeDisplayConfProcessor
+ * JD-Core Version:    0.7.0.1
+ */

@@ -39,6 +39,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
 
 public class TPReportManager
@@ -58,6 +59,10 @@ public class TPReportManager
   private static final String TAG = "TPReportManager";
   private static boolean hasReportLastEvent = false;
   private static TPDiskReadWrite mCache = null;
+  private static AtomicBoolean sIsInitPhoneStateListener = new AtomicBoolean(false);
+  private static PhoneStateListener sPhoneStateListener;
+  private static int sSignalStrength = 0;
+  private static TelephonyManager sTelephonyManager;
   private boolean mAppState = true;
   private Context mContext;
   private TPReportParams.BufferingOnceParams mCurBufferingParams = null;
@@ -88,8 +93,6 @@ public class TPReportManager
   private TPReportParams mReportParams = null;
   private int mSeekBufferingCount = 0;
   private int mSeekBufferingDuration = 0;
-  private int mSignalStrength = 0;
-  private PhoneStateListener myListener;
   
   public TPReportManager(Context paramContext, Looper paramLooper)
   {
@@ -266,8 +269,8 @@ public class TPReportManager
   
   private void initPhoneStateListener()
   {
-    if (this.myListener == null) {
-      this.myListener = new TPReportManager.1(this);
+    if (sPhoneStateListener == null) {
+      sPhoneStateListener = new TPReportManager.1(this);
     }
   }
   
@@ -1028,7 +1031,6 @@ public class TPReportManager
   private void release()
   {
     TPLogUtil.i("TPReportManager", "release: ");
-    signalStrengthUnRegister();
     TPGlobalEventNofication.removeEventListener(this.mGlobalEventListener);
     TPLogUtil.i("TPReportManager", "release: end!");
   }
@@ -1052,36 +1054,32 @@ public class TPReportManager
   
   private void signalStrengthRegister()
   {
-    if (this.mContext == null) {
-      return;
-    }
-    TelephonyManager localTelephonyManager = (TelephonyManager)this.mContext.getSystemService("phone");
-    if (localTelephonyManager == null)
+    try
     {
-      TPLogUtil.e("TPReportManager", "getSystemService TELEPHONY_SERVICE err.");
-      return;
+      if (!sIsInitPhoneStateListener.compareAndSet(false, true)) {
+        return;
+      }
+      if (sTelephonyManager == null)
+      {
+        sTelephonyManager = (TelephonyManager)this.mContext.getSystemService("phone");
+        if (sTelephonyManager == null)
+        {
+          TPLogUtil.e("TPReportManager", "getSystemService TELEPHONY_SERVICE err.");
+          return;
+        }
+      }
     }
+    finally {}
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       initPhoneStateListener();
-      localTelephonyManager.listen(this.myListener, 256);
-      return;
+      sTelephonyManager.listen(sPhoneStateListener, 256);
     }
-    TPThreadUtil.postRunnableOnMainThread(new TPReportManager.2(this, localTelephonyManager));
-  }
-  
-  private void signalStrengthUnRegister()
-  {
-    if ((this.mContext == null) || (this.myListener == null)) {
-      return;
-    }
-    TelephonyManager localTelephonyManager = (TelephonyManager)this.mContext.getSystemService("phone");
-    if (localTelephonyManager == null)
+    for (;;)
     {
-      TPLogUtil.e("TPReportManager", "getSystemService TELEPHONY_SERVICE err.");
       return;
+      TPThreadUtil.postRunnableOnMainThread(new TPReportManager.2(this));
     }
-    localTelephonyManager.listen(this.myListener, 0);
   }
   
   private void updateCommonParam(ITPReportProperties paramITPReportProperties, int paramInt, boolean paramBoolean)
@@ -1092,16 +1090,16 @@ public class TPReportManager
     localCommonParams.seqInt += 1;
     localCommonParams.flowIdString = this.mFlowId;
     localCommonParams.playNoString = this.mFlowId;
-    localCommonParams.signalStrengthInt = this.mSignalStrength;
+    localCommonParams.signalStrengthInt = sSignalStrength;
     localCommonParams.networkSpeedInt = this.mNetworkSpeed;
     localCommonParams.networkTypeInt = getNetWorkType();
     localCommonParams.deviceNameString = TPSystemInfo.getDeviceName();
     localCommonParams.deviceResolutionString = getDeviceResolution();
     localCommonParams.osVersionString = getOsVersion();
     localCommonParams.p2pVersionString = TPDownloadProxyHelper.getNativeLibVersion();
-    localCommonParams.playerVersionString = "2.8.0.1104";
+    localCommonParams.playerVersionString = "2.9.0.1112";
     localCommonParams.playerTypeInt = this.mPlayerType;
-    label270:
+    label269:
     Iterator localIterator;
     if (this.mIsUseP2P)
     {
@@ -1109,7 +1107,7 @@ public class TPReportManager
       localCommonParams.p2pInt = paramInt;
       localCommonParams.playTypeInt = this.mPlayType;
       if ((this.mReportInfoGetter == null) || (!paramBoolean)) {
-        break label548;
+        break label547;
       }
       localCommonParams.testIdInt = this.mReportInfoGetter.testId;
       localCommonParams.cdnIdInt = this.mReportInfoGetter.cdnId;
@@ -1120,7 +1118,7 @@ public class TPReportManager
       localCommonParams.configIdInt = this.mReportInfoGetter.configId;
       localCommonParams.platformLong = this.mReportInfoGetter.platform;
       if (!this.mReportInfoGetter.isOnline) {
-        break label513;
+        break label512;
       }
       paramInt = i;
       localCommonParams.onlineInt = paramInt;
@@ -1137,14 +1135,14 @@ public class TPReportManager
       localCommonParams.mediaResolutionString = this.mReportInfoGetter.mediaResolution;
       localCommonParams.scenesId = this.mReportInfoGetter.scenesId;
       if (this.mReportInfoGetter.reportInfoProperties == null) {
-        break label537;
+        break label536;
       }
       localIterator = this.mReportInfoGetter.reportInfoProperties.entrySet().iterator();
     }
     for (;;)
     {
       if (!localIterator.hasNext()) {
-        break label537;
+        break label536;
       }
       Object localObject2 = (Map.Entry)localIterator.next();
       Object localObject1 = ((Map.Entry)localObject2).getKey();
@@ -1155,15 +1153,15 @@ public class TPReportManager
         continue;
         paramInt = 0;
         break;
-        label513:
+        label512:
         paramInt = 0;
-        break label270;
+        break label269;
       }
       paramITPReportProperties.put(localObject1.toString(), localObject2.toString());
     }
-    label537:
+    label536:
     this.mPlayType = this.mReportInfoGetter.getPlayType();
-    label548:
+    label547:
     if (localCommonParams.platformLong <= 0L) {
       localCommonParams.platformLong = TPPlayerConfig.getPlatform();
     }
@@ -1272,7 +1270,7 @@ public class TPReportManager
     {
       localLiveExParam.prePlayLengthInt = this.mParamRecord.playDurationMs;
       this.mParamRecord.playDurationMs = 0;
-      localLiveExParam.playerVersionString = "2.8.0.1104";
+      localLiveExParam.playerVersionString = "2.9.0.1112";
       localLiveExParam.deviceTypeInt = getDeviceType();
       localLiveExParam.networkTypeInt = getNetWorkType();
       localLiveExParam.maxSpeedInt = this.mParamRecord.maxSpeed;
@@ -1464,7 +1462,7 @@ public class TPReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager
  * JD-Core Version:    0.7.0.1
  */

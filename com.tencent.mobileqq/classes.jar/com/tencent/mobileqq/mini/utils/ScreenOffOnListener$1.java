@@ -12,7 +12,7 @@ class ScreenOffOnListener$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (StringUtil.isEmpty(paramIntent.getAction())) {}
+    if (StringUtil.a(paramIntent.getAction())) {}
     while (ScreenOffOnListener.access$000(this.this$0) == null) {
       return;
     }

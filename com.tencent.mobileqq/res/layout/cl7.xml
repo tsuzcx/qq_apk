@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a02"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/title_container" android:paddingLeft="@dimen/a03" android:paddingRight="@dimen/a03" android:layout_width="fill_parent" android:layout_height="47.0dip">
-        <ImageView android:id="@id/joy" android:layout_width="16.0dip" android:layout_height="28.0dip" android:layout_marginRight="6.0dip" android:layout_centerVertical="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nva" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_toRightOf="@id/joy" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true">
-            <TextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/skin_black" android:id="@id/jq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-        </LinearLayout>
-        <RelativeLayout android:id="@id/nv7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/nv2" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/nv2" android:layout_marginLeft="5.0dip" android:layout_marginRight="0.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/bt" />
-    </RelativeLayout>
-    <FrameLayout android:id="@id/b9t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a03" android:layout_marginRight="@dimen/a03" />
-</LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:id="@id/cnj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="24.0dip" android:text="@string/byr" />
+    <LinearLayout android:orientation="vertical" android:id="@id/cni" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="4.0dip" android:layout_below="@id/cnj" android:layout_alignLeft="@id/cnj" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/bt7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="16.0dip" android:layout_below="@id/cni" android:layout_alignLeft="@id/cnj">
+        <TextView android:textSize="12.0dip" android:textColor="#ff4d94ff" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/byq" />
+    </LinearLayout>
+</merge>

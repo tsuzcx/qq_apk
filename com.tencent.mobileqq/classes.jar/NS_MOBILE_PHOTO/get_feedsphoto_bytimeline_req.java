@@ -8,10 +8,10 @@ public final class get_feedsphoto_bytimeline_req
   extends JceStruct
 {
   public String attach_info = "";
-  public long begin_time;
-  public long end_time;
-  public int type;
-  public long uin;
+  public long begin_time = 0L;
+  public long end_time = 0L;
+  public int type = 0;
+  public long uin = 0L;
   
   public get_feedsphoto_bytimeline_req() {}
   

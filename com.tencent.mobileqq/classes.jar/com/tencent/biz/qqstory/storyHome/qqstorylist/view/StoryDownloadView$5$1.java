@@ -1,11 +1,9 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view;
 
-import yhi;
-
-public class StoryDownloadView$5$1
+class StoryDownloadView$5$1
   implements Runnable
 {
-  public StoryDownloadView$5$1(yhi paramyhi) {}
+  StoryDownloadView$5$1(StoryDownloadView.5 param5) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class StoryDownloadView$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1
  * JD-Core Version:    0.7.0.1
  */

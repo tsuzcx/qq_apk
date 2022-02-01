@@ -92,15 +92,15 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131381105) != null)
+      if (findViewById(2131381575) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addDebugView, debugTextView is exist");
         }
-        removeView(findViewById(2131381105));
+        removeView(findViewById(2131381575));
       }
       this.mDebugTextView = new TextView(this.mContext);
-      this.mDebugTextView.setId(2131381105);
+      this.mDebugTextView.setId(2131381575);
       this.mDebugTextView.setText(String.valueOf(this.mID));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
       localLayoutParams.leftMargin = UIUtil.dp2px(6.0F, this.mContext.getResources());
@@ -122,12 +122,12 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131381106) != null)
+      if (findViewById(2131381576) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addVideoView, videoView is exist");
         }
-        removeView(findViewById(2131381106));
+        removeView(findViewById(2131381576));
       }
       View localView = this.mVPProxy.getVideoView();
       if (localView == null)
@@ -136,7 +136,7 @@ public class BaseVideoView
         return;
       }
       localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localView.setId(2131381106);
+      localView.setId(2131381576);
       addView(localView, 0);
       if (LogUtil.isColorLevel())
       {
@@ -476,7 +476,7 @@ public class BaseVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.view.BaseVideoView
  * JD-Core Version:    0.7.0.1
  */

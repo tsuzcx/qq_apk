@@ -17,23 +17,23 @@ public final class MaterialItem
   static MaterialFile cache_stThumb;
   static byte[] cache_strExtFields;
   static ArrayList<MaterialFile> cache_vecFile = new ArrayList();
-  public int iItemId;
-  public int iItemType;
-  public int iPrice;
-  public int iTypeId;
-  public Map<String, String> mapExtInfo;
-  public MaterialFile stBanner;
-  public MaterialFile stExtFile1;
-  public MaterialFile stExtFile2;
-  public MaterialFile stThumb;
+  public int iItemId = 0;
+  public int iItemType = 0;
+  public int iPrice = 0;
+  public int iTypeId = 0;
+  public Map<String, String> mapExtInfo = null;
+  public MaterialFile stBanner = null;
+  public MaterialFile stExtFile1 = null;
+  public MaterialFile stExtFile2 = null;
+  public MaterialFile stThumb = null;
   public String strDescription = "";
-  public byte[] strExtFields;
+  public byte[] strExtFields = null;
   public String strItemName = "";
   public String strItemSummary = "";
   public String strJumpUrl = "";
   public String strTraceInfo = "";
-  public long uiSettleTime;
-  public ArrayList<MaterialFile> vecFile;
+  public long uiSettleTime = 0L;
+  public ArrayList<MaterialFile> vecFile = null;
   
   static
   {

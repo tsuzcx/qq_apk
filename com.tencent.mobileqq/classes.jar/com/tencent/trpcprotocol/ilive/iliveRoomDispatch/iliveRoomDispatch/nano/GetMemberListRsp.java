@@ -1,0 +1,81 @@
+package com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano;
+
+import com.google.protobuf.nano.CodedInputByteBufferNano;
+import com.google.protobuf.nano.CodedOutputByteBufferNano;
+import com.google.protobuf.nano.MessageNano;
+import com.google.protobuf.nano.WireFormatNano;
+
+public final class GetMemberListRsp
+  extends MessageNano
+{
+  public UserList a;
+  public boolean a;
+  
+  public GetMemberListRsp()
+  {
+    a();
+  }
+  
+  public GetMemberListRsp a()
+  {
+    this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.cachedSize = -1;
+    return this;
+  }
+  
+  public GetMemberListRsp a(CodedInputByteBufferNano paramCodedInputByteBufferNano)
+  {
+    for (;;)
+    {
+      int i = paramCodedInputByteBufferNano.readTag();
+      switch (i)
+      {
+      default: 
+        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          continue;
+        }
+      case 0: 
+        return this;
+      case 10: 
+        if (this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList == null) {
+          this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList = new UserList();
+        }
+        paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList);
+        break;
+      }
+      this.jdField_a_of_type_Boolean = paramCodedInputByteBufferNano.readBool();
+    }
+  }
+  
+  public int computeSerializedSize()
+  {
+    int j = super.computeSerializedSize();
+    int i = j;
+    if (this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(1, this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList);
+    }
+    j = i;
+    if (this.jdField_a_of_type_Boolean) {
+      j = i + CodedOutputByteBufferNano.computeBoolSize(2, this.jdField_a_of_type_Boolean);
+    }
+    return j;
+  }
+  
+  public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
+  {
+    if (this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList != null) {
+      paramCodedOutputByteBufferNano.writeMessage(1, this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      paramCodedOutputByteBufferNano.writeBool(2, this.jdField_a_of_type_Boolean);
+    }
+    super.writeTo(paramCodedOutputByteBufferNano);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.GetMemberListRsp
+ * JD-Core Version:    0.7.0.1
+ */

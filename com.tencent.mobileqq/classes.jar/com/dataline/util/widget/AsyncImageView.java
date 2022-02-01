@@ -8,26 +8,25 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import asbe;
-import auea;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.drawable.BitmapDrawableWithMargin;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import fh;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AsyncImageView
   extends ImageView
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private int jdField_a_of_type_Int = 0;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = false;
+  private int c = 0;
   private int d = Color.parseColor("#C8C8C8");
   
   public AsyncImageView(Context paramContext)
@@ -68,7 +67,7 @@ public class AsyncImageView
       }
       String str2;
       String str1;
-      if (auea.a(paramString) == 2)
+      if (FileManagerUtil.a(paramString) == 2)
       {
         str2 = "videothumb";
         str1 = paramString;
@@ -134,7 +133,7 @@ public class AsyncImageView
     {
       paramString = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
       setImageDrawable(paramString);
-      paramString.setURLDrawableListener(new fh(this));
+      paramString.setURLDrawableListener(new AsyncImageView.1(this));
       return;
       if (this.jdField_b_of_type_Boolean)
       {
@@ -167,12 +166,12 @@ public class AsyncImageView
     Resources localResources = getResources();
     if ((URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new asbe(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
       return;
     }
     if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new asbe(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawableHelper.getLoadingDrawable();
@@ -190,7 +189,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.dataline.util.widget.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

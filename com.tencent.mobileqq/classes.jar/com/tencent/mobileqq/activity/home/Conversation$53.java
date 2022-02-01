@@ -1,24 +1,27 @@
 package com.tencent.mobileqq.activity.home;
 
-import bdxj;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class Conversation$53
-  implements Runnable
+class Conversation$53
+  extends BroadcastReceiver
 {
   Conversation$53(Conversation paramConversation) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((Conversation.b(this.this$0)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.b()) && (bdxj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sub.uin.all"))) {
-      this.this$0.b(new Conversation.53.1(this));
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
+      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.53
  * JD-Core Version:    0.7.0.1
  */

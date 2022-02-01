@@ -1,41 +1,40 @@
 package com.tencent.mobileqq.ar.model;
 
-import apfk;
-import apku;
-import apos;
+import com.tencent.mobileqq.ar.ARTarget;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
-public class QQARSession$24
+class QQARSession$24
   implements Runnable
 {
-  public QQARSession$24(apos paramapos, int paramInt) {}
+  QQARSession$24(QQARSession paramQQARSession, int paramInt) {}
   
   public void run()
   {
-    if (!apos.a(this.this$0).d())
+    if (!QQARSession.a(this.this$0).d())
     {
-      if (apos.a(this.this$0).j()) {
-        apos.c(this.this$0);
+      if (QQARSession.a(this.this$0).j()) {
+        QQARSession.c(this.this$0);
       }
-      if (apos.a(this.this$0) != 1L) {
+      if (QQARSession.a(this.this$0) != 1L) {
         break label132;
       }
       this.this$0.b(1L);
-      apos.b(this.this$0);
+      QQARSession.b(this.this$0);
     }
     for (;;)
     {
       this.this$0.m();
-      if ((apos.b(this.this$0)) && (this.this$0.a == 2) && (apos.a(this.this$0) != null))
+      if ((QQARSession.b(this.this$0)) && (this.this$0.a == 2) && (QQARSession.a(this.this$0) != null))
       {
-        apfk localapfk = new apfk(apos.a(this.this$0));
-        apos.a(this.this$0).a(3, localapfk, this.a);
+        ARTarget localARTarget = new ARTarget(QQARSession.a(this.this$0));
+        QQARSession.a(this.this$0).a(3, localARTarget, this.a);
       }
       return;
       label132:
-      if (apos.a(this.this$0) == 2L) {
+      if (QQARSession.a(this.this$0) == 2L) {
         this.this$0.o();
-      } else if (apos.a(this.this$0) == 2048L) {
+      } else if (QQARSession.a(this.this$0) == 2048L) {
         this.this$0.q();
       }
     }

@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bnrh;
 import com.tencent.ttpic.baseutils.io.FileUtils;
+import dov.com.qq.im.ae.util.AEQLog;
 import java.io.File;
 
 final class AEEditorTextControlPanel$8
@@ -16,13 +16,13 @@ final class AEEditorTextControlPanel$8
     }
     catch (Throwable localThrowable)
     {
-      bnrh.d("AEEditorTextControlPanel", "[clean] error");
+      AEQLog.d("AEEditorTextControlPanel", "[clean] error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel.8
  * JD-Core Version:    0.7.0.1
  */

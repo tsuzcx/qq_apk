@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import java.net.URLEncoder;
-import pkh;
 
 class FastWebActivity$19
   implements Runnable
@@ -17,7 +17,7 @@ class FastWebActivity$19
     try
     {
       str1 = "https://post.mp.qq.com/jubao/index?" + "articleId=" + this.this$0.a.mArticleID + "&puin=" + this.this$0.a.mSubscribeID + "&url=" + URLEncoder.encode(this.this$0.a.mArticleContentUrl, "utf-8") + "&key=" + this.this$0.a.innerUniqueID + "&type=7&_wv=3";
-      pkh.a(this.this$0, str1);
+      ReadInJoyUtils.a(this.this$0, str1);
       return;
     }
     catch (Exception localException)
@@ -32,7 +32,7 @@ class FastWebActivity$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.19
  * JD-Core Version:    0.7.0.1
  */

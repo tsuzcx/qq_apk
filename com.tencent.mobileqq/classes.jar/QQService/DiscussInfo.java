@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class DiscussInfo
   extends JceStruct
 {
-  public long DiscussUin;
-  public long InfoSeq;
+  public long DiscussUin = 0L;
+  public long InfoSeq = 0L;
   
   public DiscussInfo() {}
   

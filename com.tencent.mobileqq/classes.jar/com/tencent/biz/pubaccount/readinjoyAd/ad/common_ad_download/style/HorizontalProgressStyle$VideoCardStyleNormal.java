@@ -17,7 +17,7 @@ final class HorizontalProgressStyle$VideoCardStyleNormal
   @NotNull
   private String btnTextColor = "#FFFFFF";
   private float btnTextSize = 14.0F;
-  private int progressDrawable = 2130842761;
+  private int progressDrawable = 2130842914;
   @NotNull
   private String progressTextColor = "#FFFFFF";
   private float progressTextSize = 14.0F;
@@ -127,7 +127,7 @@ final class HorizontalProgressStyle$VideoCardStyleNormal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle.VideoCardStyleNormal
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.jsp;
 
-import awcl;
-import bifw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,10 +11,10 @@ import org.json.JSONObject;
 public class WebRecordApiPlugin
   extends WebViewPlugin
 {
-  private awcl jdField_a_of_type_Awcl;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  private WebRecordApiPlugin.AudioApiHelper jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper = null;
+  private String jdField_a_of_type_JavaLangString = null;
+  private String b = null;
+  private String c = null;
   
   public WebRecordApiPlugin()
   {
@@ -27,8 +26,8 @@ public class WebRecordApiPlugin
     if (!"webRecord".equals(paramString2)) {
       return false;
     }
-    if (this.jdField_a_of_type_Awcl == null) {
-      this.jdField_a_of_type_Awcl = new awcl(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
+    if (this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper == null) {
+      this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper = new WebRecordApiPlugin.AudioApiHelper(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
     }
     if ("startRecord".equals(paramString3)) {
       try
@@ -37,7 +36,7 @@ public class WebRecordApiPlugin
         this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback", "");
         int i = paramJsBridgeListener.optInt("format", 0);
         int j = paramJsBridgeListener.optInt("maxTime", 0);
-        this.jdField_a_of_type_Awcl.a(i, j);
+        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a(i, j);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -52,7 +51,7 @@ public class WebRecordApiPlugin
     }
     if ("stopRecord".equals(paramString3))
     {
-      this.jdField_a_of_type_Awcl.a(0);
+      this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a(0);
       return true;
     }
     if ("play".equals(paramString3)) {
@@ -61,7 +60,7 @@ public class WebRecordApiPlugin
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         this.b = paramJsBridgeListener.optString("callback", "");
         paramJsBridgeListener = paramJsBridgeListener.optString("recordID", "");
-        this.jdField_a_of_type_Awcl.a(paramJsBridgeListener);
+        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -78,7 +77,7 @@ public class WebRecordApiPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("recordID", "");
-        this.jdField_a_of_type_Awcl.c(paramJsBridgeListener);
+        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.c(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -95,7 +94,7 @@ public class WebRecordApiPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("recordID", "");
-        this.jdField_a_of_type_Awcl.b(paramJsBridgeListener);
+        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.b(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -116,7 +115,7 @@ public class WebRecordApiPlugin
         paramJsBridgeListener = paramString2.optJSONArray("recordIDs");
         paramString1 = paramString2.optString("cgi", "");
         paramString2 = paramString2.optString("cookie", "");
-        this.jdField_a_of_type_Awcl.a(paramJsBridgeListener, paramString1, paramString2);
+        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a(paramJsBridgeListener, paramString1, paramString2);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -134,12 +133,12 @@ public class WebRecordApiPlugin
   
   public void onDestroy()
   {
-    boolean bool = this.jdField_a_of_type_Awcl.a();
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a();
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "RecordSoundPanel.onDestroy() is called,isRecording is:" + bool);
     }
     if (bool) {
-      this.jdField_a_of_type_Awcl.a(1);
+      this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a(1);
     }
   }
 }

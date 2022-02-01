@@ -5,12 +5,11 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
-import book;
 
 public class PressScaleImageView
   extends ImageView
 {
-  private final book a;
+  private final PressScaleAnimDelegate a;
   public boolean a;
   
   public PressScaleImageView(Context paramContext)
@@ -27,18 +26,18 @@ public class PressScaleImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Book = new book(this);
+    this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate = new PressScaleAnimDelegate(this);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Book.a())
+    if (this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate.a())
     {
       paramCanvas.save();
-      this.jdField_a_of_type_Book.a(paramCanvas);
+      this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate.a(paramCanvas);
     }
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Book.a()) {
+    if (this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate.a()) {
       paramCanvas.restore();
     }
   }
@@ -52,14 +51,14 @@ public class PressScaleImageView
     {
       return super.onTouchEvent(paramMotionEvent);
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Book.a();
+        this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.view.PressScaleImageView
  * JD-Core Version:    0.7.0.1
  */

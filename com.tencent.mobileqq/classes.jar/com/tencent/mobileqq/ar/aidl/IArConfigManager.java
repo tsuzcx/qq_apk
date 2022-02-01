@@ -1,0 +1,59 @@
+package com.tencent.mobileqq.ar.aidl;
+
+import android.os.IInterface;
+
+public abstract interface IArConfigManager
+  extends IInterface
+{
+  public abstract ARCommonConfigInfo a();
+  
+  public abstract ArConfigInfo a();
+  
+  public abstract ArEffectConfig a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract void a(IArFaceCallback paramIArFaceCallback);
+  
+  public abstract void a(IArMiniCallback paramIArMiniCallback);
+  
+  public abstract void a(IArRemoteCallback paramIArRemoteCallback);
+  
+  public abstract void a(IArSoCallback paramIArSoCallback);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(IArFaceCallback paramIArFaceCallback);
+  
+  public abstract void b(IArMiniCallback paramIArMiniCallback);
+  
+  public abstract void b(IArRemoteCallback paramIArRemoteCallback);
+  
+  public abstract void b(IArSoCallback paramIArSoCallback);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.ar.aidl.IArConfigManager
+ * JD-Core Version:    0.7.0.1
+ */

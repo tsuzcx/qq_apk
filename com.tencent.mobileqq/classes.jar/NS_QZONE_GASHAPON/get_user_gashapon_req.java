@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class get_user_gashapon_req
   extends JceStruct
 {
-  public long lUin;
+  public long lUin = 0L;
   
   public get_user_gashapon_req() {}
   

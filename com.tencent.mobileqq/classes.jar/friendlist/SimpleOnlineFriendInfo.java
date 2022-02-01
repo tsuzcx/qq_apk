@@ -12,26 +12,26 @@ public final class SimpleOnlineFriendInfo
   static byte[] cache_vecExtOnlineBusinessInfo;
   static byte[] cache_vecMusicInfo;
   static byte[] cache_vecPoiInfo;
-  public byte cNetwork;
-  public byte cSpecialFlag;
-  public byte detalStatusFlag;
+  public byte cNetwork = 0;
+  public byte cSpecialFlag = 0;
+  public byte detalStatusFlag = 0;
   public int eIconType = 0;
   public int eNetworkType = 0;
-  public long friendUin;
-  public int iBatteryStatus;
-  public int iTermType;
-  public byte isIphoneOnline;
-  public byte isMqqOnLine;
+  public long friendUin = 0L;
+  public int iBatteryStatus = 0;
+  public int iTermType = 0;
+  public byte isIphoneOnline = 0;
+  public byte isMqqOnLine = 0;
   public String sShowName = "";
-  public byte sqqOnLineState;
-  public byte sqqOnLineStateV2;
+  public byte sqqOnLineState = 0;
+  public byte sqqOnLineStateV2 = 0;
   public byte status = 20;
   public String strTermDesc = "";
-  public long uAbiFlag;
-  public long uExtOnlineStatus;
-  public byte[] vecExtOnlineBusinessInfo;
-  public byte[] vecMusicInfo;
-  public byte[] vecPoiInfo;
+  public long uAbiFlag = 0L;
+  public long uExtOnlineStatus = 0L;
+  public byte[] vecExtOnlineBusinessInfo = null;
+  public byte[] vecMusicInfo = null;
+  public byte[] vecPoiInfo = null;
   
   static
   {
@@ -130,7 +130,7 @@ public final class SimpleOnlineFriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.SimpleOnlineFriendInfo
  * JD-Core Version:    0.7.0.1
  */

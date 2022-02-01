@@ -20,8 +20,8 @@ class SearchRecommendAdapter$TitleViewHolder
   public SearchRecommendAdapter$TitleViewHolder(View paramView)
   {
     super(paramView);
-    this.title = ((TextView)paramView.findViewById(2131371316));
-    this.refreshView = ((ImageView)paramView.findViewById(2131371315));
+    this.title = ((TextView)paramView.findViewById(2131371596));
+    this.refreshView = ((ImageView)paramView.findViewById(2131371595));
   }
   
   public void update(TitleInfo paramTitleInfo)

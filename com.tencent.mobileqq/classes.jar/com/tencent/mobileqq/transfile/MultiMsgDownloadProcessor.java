@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.transfile;
 
-import acnh;
-import aooh;
-import axio;
-import azjj;
-import azjk;
-import azkb;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.MultiMsgDownReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -33,9 +36,9 @@ public class MultiMsgDownloadProcessor
   private String mOutFilePath;
   private int mUinType = this.mUiRequest.mUinType;
   
-  public MultiMsgDownloadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public MultiMsgDownloadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
   }
   
   /* Error */
@@ -646,7 +649,7 @@ public class MultiMsgDownloadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "multi_msg_dw";
     localRichProtoReq.reqs.add(localMultiMsgDownReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);
@@ -752,12 +755,12 @@ public class MultiMsgDownloadProcessor
     super.onError();
     if (this.mUiRequest.mDownCallBack != null)
     {
-      azjk localazjk = new azjk();
-      localazjk.b = -1;
-      localazjk.jdField_a_of_type_Azkb = new azkb();
-      localazjk.jdField_a_of_type_Azkb.b = "[MultiMsgDownloadProcessor] download failed";
-      localazjk.jdField_a_of_type_ArrayOfByte = null;
-      this.mUiRequest.mDownCallBack.a(localazjk);
+      DownCallBack.DownResult localDownResult = new DownCallBack.DownResult();
+      localDownResult.b = -1;
+      localDownResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = new PicInfoInterface.ErrInfo();
+      localDownResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b = "[MultiMsgDownloadProcessor] download failed";
+      localDownResult.jdField_a_of_type_ArrayOfByte = null;
+      this.mUiRequest.mDownCallBack.a(localDownResult);
     }
     this.mContent = null;
     sendMessageToUpdate(2005);
@@ -812,16 +815,16 @@ public class MultiMsgDownloadProcessor
     Object localObject1;
     if (this.mUiRequest.mDownCallBack != null)
     {
-      localObject1 = new azjk();
-      ((azjk)localObject1).b = 0;
-      ((azjk)localObject1).jdField_a_of_type_ArrayOfByte = this.mContent;
-      ((azjk)localObject1).jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
-      ((azjk)localObject1).jdField_c_of_type_Int = this.mUiRequest.mFileType;
-      ((azjk)localObject1).jdField_d_of_type_Int = this.mUiRequest.mDownMode;
-      ((azjk)localObject1).jdField_d_of_type_JavaLangString = this.mUiRequest.mRichTag;
-      ((azjk)localObject1).jdField_a_of_type_Long = this.mUiRequest.mUniseq;
-      ((azjk)localObject1).e = this.mUiRequest.resIdStr;
-      this.mUiRequest.mDownCallBack.a((azjk)localObject1);
+      localObject1 = new DownCallBack.DownResult();
+      ((DownCallBack.DownResult)localObject1).b = 0;
+      ((DownCallBack.DownResult)localObject1).jdField_a_of_type_ArrayOfByte = this.mContent;
+      ((DownCallBack.DownResult)localObject1).jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
+      ((DownCallBack.DownResult)localObject1).jdField_c_of_type_Int = this.mUiRequest.mFileType;
+      ((DownCallBack.DownResult)localObject1).jdField_d_of_type_Int = this.mUiRequest.mDownMode;
+      ((DownCallBack.DownResult)localObject1).jdField_d_of_type_JavaLangString = this.mUiRequest.mRichTag;
+      ((DownCallBack.DownResult)localObject1).jdField_a_of_type_Long = this.mUiRequest.mUniseq;
+      ((DownCallBack.DownResult)localObject1).e = this.mUiRequest.resIdStr;
+      this.mUiRequest.mDownCallBack.a((DownCallBack.DownResult)localObject1);
     }
     for (;;)
     {
@@ -829,11 +832,11 @@ public class MultiMsgDownloadProcessor
       sendMessageToUpdate(2003);
       return;
       localObject1 = new HashMap();
-      Object localObject2 = this.app.getMessageFacade().getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+      Object localObject2 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
       localObject2 = this.app.getProxyManager().a().a(this.mContent, (HashMap)localObject1, (MessageRecord)localObject2, null);
       if ((localObject2 != null) && (((HashMap)localObject2).size() > 0))
       {
-        axio.a().a((HashMap)localObject1, this.mUiRequest.mUniseq, this.app);
+        MultiMsgManager.a().a((HashMap)localObject1, this.mUiRequest.mUniseq, this.app);
         if (QLog.isColorLevel()) {
           QLog.d("MultiMsg_TAG", 2, "BaseTransProcessoronSuccess.onDownload,MultiMsg ");
         }
@@ -846,7 +849,7 @@ public class MultiMsgDownloadProcessor
     String str;
     if ((this.mNetReq != null) && ((this.mNetReq instanceof HttpNetReq)))
     {
-      if (!acnh.d(this.mUinType)) {
+      if (!UinTypeUtil.b(this.mUinType)) {
         break label56;
       }
       str = "multimsgCd";

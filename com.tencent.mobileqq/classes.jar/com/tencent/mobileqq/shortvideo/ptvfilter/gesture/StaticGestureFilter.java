@@ -20,9 +20,9 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.io.File;
 import java.util.List;
@@ -56,7 +56,7 @@ public class StaticGestureFilter
     super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
     this.dataPath = paramString;
     paramStickerItem.playCount = 1;
-    this.materialId = VideoMaterialUtil.getMaterialId(paramString);
+    this.materialId = VideoMaterial.getMaterialId(paramString);
     setCurrentItem(paramStickerItem, 0);
     initParams();
   }

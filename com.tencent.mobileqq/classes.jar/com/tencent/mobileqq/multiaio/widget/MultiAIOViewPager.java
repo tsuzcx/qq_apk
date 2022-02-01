@@ -14,12 +14,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import axer;
-import axfi;
-import axfj;
-import axfk;
-import axfw;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.fps.FPSCalculator;
 
 public class MultiAIOViewPager
   extends MultiAIOBaseViewPager
@@ -27,9 +23,9 @@ public class MultiAIOViewPager
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private axer jdField_a_of_type_Axer;
-  private axfk jdField_a_of_type_Axfk;
-  private axfw jdField_a_of_type_Axfw;
+  private MultiAIOViewPager.IdleListener jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager$IdleListener;
+  private TouchEventConsumer jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer;
+  private FPSCalculator jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
   private int d;
   private int e = -1;
   
@@ -67,8 +63,8 @@ public class MultiAIOViewPager
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new axfi(this), new Handler(Looper.getMainLooper()));
-    a(new axfj(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new MultiAIOViewPager.1(this), new Handler(Looper.getMainLooper()));
+    a(new MultiAIOViewPager.2(this));
   }
   
   public void b(float paramFloat)
@@ -85,8 +81,8 @@ public class MultiAIOViewPager
     if (QLog.isColorLevel()) {
       QLog.d("MultiAIOViewPager", 2, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + "], handled " + bool);
     }
-    if ((bool) && (this.jdField_a_of_type_Axfw != null)) {
-      this.jdField_a_of_type_Axfw.b(this, paramMotionEvent);
+    if ((bool) && (this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer.b(this, paramMotionEvent);
     }
     return bool;
   }
@@ -94,24 +90,24 @@ public class MultiAIOViewPager
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_Axer != null) {
-      this.jdField_a_of_type_Axer.b();
+    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
+      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.b();
     }
   }
   
-  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     return super.drawChild(paramCanvas, paramView, paramLong);
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Axer != null) {
-      this.jdField_a_of_type_Axer.a();
+    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
+      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a();
     }
   }
   
-  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     int i;
     try
@@ -138,8 +134,8 @@ public class MultiAIOViewPager
       if (QLog.isColorLevel()) {
         QLog.d("MultiAIOViewPager", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], handled = " + bool);
       }
-      if (this.jdField_a_of_type_Axfk != null) {
-        this.jdField_a_of_type_Axfk.a(bool);
+      if (this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager$IdleListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager$IdleListener.a(bool);
       }
       return bool;
     }
@@ -163,7 +159,7 @@ public class MultiAIOViewPager
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     boolean bool2 = true;
     int i = getChildCount();
@@ -196,7 +192,7 @@ public class MultiAIOViewPager
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -213,8 +209,8 @@ public class MultiAIOViewPager
   
   public void setActTAG(String paramString)
   {
-    this.jdField_a_of_type_Axer = new axer();
-    this.jdField_a_of_type_Axer.a(paramString);
+    this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator = new FPSCalculator();
+    this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a(paramString);
   }
   
   public void setAnchorX(int paramInt)
@@ -223,9 +219,9 @@ public class MultiAIOViewPager
     invalidate();
   }
   
-  public void setIdleListener(axfk paramaxfk)
+  public void setIdleListener(MultiAIOViewPager.IdleListener paramIdleListener)
   {
-    this.jdField_a_of_type_Axfk = paramaxfk;
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager$IdleListener = paramIdleListener;
   }
   
   public void setOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
@@ -234,9 +230,9 @@ public class MultiAIOViewPager
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void setTouchEventConsumer(axfw paramaxfw)
+  public void setTouchEventConsumer(TouchEventConsumer paramTouchEventConsumer)
   {
-    this.jdField_a_of_type_Axfw = paramaxfw;
+    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer = paramTouchEventConsumer;
   }
 }
 

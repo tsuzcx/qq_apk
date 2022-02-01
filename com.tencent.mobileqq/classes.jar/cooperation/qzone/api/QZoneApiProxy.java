@@ -12,19 +12,19 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import anvx;
-import bdfk;
-import bdhu;
-import blvy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
 import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
 import com.tencent.mobileqq.startup.step.InstallPlugins;
+import com.tencent.mobileqq.startup.step.InstallPlugins.QzoneInstallResult;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.plugin.IPluginManager;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.util.QZLog;
@@ -60,12 +60,19 @@ public class QZoneApiProxy
   private static final String SERVLET_CLASS_NAME = "com.qzone.common.servlet.QZoneServlet";
   private static final String TAG = "QZoneApiProxy";
   private static volatile boolean sIsEnvInit;
-  private static volatile boolean sIsInit;
+  private static volatile boolean sIsInit = false;
   public static volatile boolean sIsQzoneInstalled;
   public static volatile boolean sIsQzoneVersionRight;
   private static volatile WeakReference<QQAppInterface> sLastRuntimeRef;
   private static volatile WeakReference<PluginManagerClient> sPluginClientRef = new WeakReference(null);
   private static volatile Constructor<?> sSchoolExtendListConstructor;
+  
+  static
+  {
+    sIsEnvInit = false;
+    sIsQzoneVersionRight = false;
+    sIsQzoneInstalled = false;
+  }
   
   @Nullable
   public static Fragment createLebaFragment(@NonNull Activity paramActivity, @NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString)
@@ -213,7 +220,7 @@ public class QZoneApiProxy
     String str = getSelfSharedPreferences(paramContext).getString("msg_page_title", "");
     paramContext = str;
     if (TextUtils.isEmpty(str)) {
-      paramContext = anvx.a(2131719159);
+      paramContext = HardCodeUtil.a(2131719716);
     }
     return paramContext;
   }
@@ -284,7 +291,7 @@ public class QZoneApiProxy
     if (sIsInit) {
       return true;
     }
-    ((blvy)paramQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN)).a("qzone_plugin.apk");
+    ((IPluginManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN)).d("qzone_plugin.apk");
     paramContext = loadQZoneClass(paramContext, "com.qzone.common.servlet.QZoneServlet");
     if (paramContext == null) {
       return false;
@@ -660,6 +667,15 @@ public class QZoneApiProxy
     return isQZonePluginValid(paramActivity, paramQQAppInterface);
   }
   
+  public static boolean needShowMsgFeedList(@Nullable Activity paramActivity, @Nullable QQAppInterface paramQQAppInterface)
+  {
+    if ((paramActivity == null) || (paramQQAppInterface == null)) {}
+    while (QzoneConfig.getInstance().getConfig("OfficialAccount", "OfficialAccountCanShowFeedsList", 0) == 0) {
+      return false;
+    }
+    return isQZonePluginValid(paramActivity, paramQQAppInterface);
+  }
+  
   public static boolean needShowQzoneFrame(@Nullable Activity paramActivity, @Nullable QQAppInterface paramQQAppInterface)
   {
     boolean bool2 = false;
@@ -681,7 +697,7 @@ public class QZoneApiProxy
           return bool1;
           bool1 = bool2;
         } while (!needLoadQZoneEnv());
-        if (!bdfk.a())
+        if (!QQTheme.e())
         {
           QZLog.e("QZoneApiProxy", "isNowSimpleUI no");
           return false;
@@ -724,7 +740,7 @@ public class QZoneApiProxy
         sSchoolExtendListConstructor = paramQQAppInterface.getConstructor(new Class[] { Context.class, AttributeSet.class });
         try
         {
-          paramActivity.getLayoutInflater().inflate(2131561112, null);
+          paramActivity.getLayoutInflater().inflate(2131561201, null);
           i = 1;
         }
         catch (Throwable paramActivity)
@@ -827,7 +843,7 @@ public class QZoneApiProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.api.QZoneApiProxy
  * JD-Core Version:    0.7.0.1
  */

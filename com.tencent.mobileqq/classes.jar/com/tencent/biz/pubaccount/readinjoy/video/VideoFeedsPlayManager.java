@@ -8,16 +8,27 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import bmhv;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportConstants.VideoEndType;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoReporter;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyVideoReportData;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.VideoBufferRangeController;
+import com.tencent.biz.pubaccount.readinjoy.video.player.wrapper.IVideoView;
+import com.tencent.biz.pubaccount.readinjoy.video.player.wrapper.PlayerHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.player.wrapper.PlayerHelper.Companion;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -25,73 +36,47 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import ois;
-import omx;
 import org.json.JSONObject;
-import rpz;
-import rqa;
-import sfg;
-import sge;
-import sgg;
-import skn;
-import sko;
-import skq;
-import skr;
-import sks;
-import sln;
-import spn;
-import spp;
-import spr;
-import sqb;
-import sqt;
-import squ;
-import srh;
-import srq;
-import stv;
-import stw;
-import stx;
-import ufy;
-import uks;
 
 public class VideoFeedsPlayManager
-  implements spr, squ
+  implements VideoPluginInstall.OnVideoPluginInstallListener, VideoVolumeController.EventListener
 {
   private static List<VideoFeedsPlayManager> jdField_a_of_type_JavaUtilList = new ArrayList();
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new skn(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new VideoFeedsPlayManager.1(this, Looper.getMainLooper());
   private ReportConstants.VideoEndType jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType;
+  private VideoAutoPlayController jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoAutoPlayController;
+  private VideoFeedsPlayManager.MediaPlayListenerAdapterImpl jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$MediaPlayListenerAdapterImpl = new VideoFeedsPlayManager.MediaPlayListenerAdapterImpl(this, null);
+  private VideoFeedsPlayManager.VideoPlayParam jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam;
+  private VideoFeedsPlayManager.VideoPlayProgressListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayProgressListener;
+  private VideoFeedsRecommendManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendManager;
+  private VideoPluginInstall jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall;
   private VideoPreDownloadMgr jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<sks> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<VideoFeedsPlayManager.VideoStatusListener> jdField_a_of_type_JavaUtilArrayList = null;
   private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private ConcurrentHashMap<spn, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private sge jdField_a_of_type_Sge;
-  private sko jdField_a_of_type_Sko = new sko(this, null);
-  private skq jdField_a_of_type_Skq;
-  private skr jdField_a_of_type_Skr;
-  private sln jdField_a_of_type_Sln;
-  private spp jdField_a_of_type_Spp;
-  private boolean jdField_a_of_type_Boolean;
+  private ConcurrentHashMap<VideoPlayerWrapper, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
-  private skq jdField_b_of_type_Skq;
-  private volatile boolean jdField_b_of_type_Boolean;
+  private VideoFeedsPlayManager.VideoPlayParam jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam;
+  private volatile boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private boolean d;
-  private boolean e;
+  private boolean e = false;
   private boolean f;
   private boolean g;
   private boolean h;
   private boolean i;
-  private boolean j;
-  private boolean k;
+  private boolean j = false;
+  private boolean k = false;
   private boolean l;
-  private boolean m;
-  private boolean n;
-  private boolean o;
+  private boolean m = false;
+  private boolean n = false;
+  private boolean o = false;
   
   public VideoFeedsPlayManager(Context paramContext, QQAppInterface paramQQAppInterface)
   {
@@ -100,104 +85,107 @@ public class VideoFeedsPlayManager
   
   public VideoFeedsPlayManager(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = true;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_l_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Spp = new spp();
-    this.jdField_a_of_type_Spp.a(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall = new VideoPluginInstall();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall.a(this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    sqt.a().a(this);
-    this.jdField_a_of_type_Sge = sge.a();
-    if (sge.a(this.jdField_a_of_type_AndroidContentContext)) {
+    VideoVolumeController.a().a(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoAutoPlayController = VideoAutoPlayController.a();
+    if (VideoAutoPlayController.a(this.jdField_a_of_type_AndroidContentContext)) {
       e(true);
     }
     for (;;)
     {
-      if ((bmhv.g(paramQQAppInterface)) || (stw.a.a())) {
+      if ((ReadInJoyHelper.h(paramQQAppInterface)) || (PlayerHelper.a.a())) {
         bool = true;
       }
       this.jdField_h_of_type_Boolean = bool;
       jdField_a_of_type_JavaUtilList.add(this);
-      i();
+      j();
       return;
       e(false);
     }
   }
   
-  private skq a(skq paramskq)
+  private VideoFeedsPlayManager.VideoPlayParam a(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    if (paramskq == this.jdField_a_of_type_Skq) {
-      return paramskq;
+    if (paramVideoPlayParam == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam) {
+      return paramVideoPlayParam;
     }
     return null;
   }
   
-  private spn a()
+  private VideoPlayerWrapper a()
   {
-    return b(this.jdField_a_of_type_Skq);
+    return b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
   }
   
-  private spn a(skq paramskq)
+  private VideoPlayerWrapper a(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
     if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_b_of_type_Boolean)) {
       return null;
     }
-    paramskq = new spn(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), paramskq.jdField_a_of_type_JavaLangString);
-    paramskq.a(this.jdField_a_of_type_Sko);
-    return paramskq;
+    paramVideoPlayParam = new VideoPlayerWrapper(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), paramVideoPlayParam.jdField_a_of_type_JavaLangString);
+    paramVideoPlayParam.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$MediaPlayListenerAdapterImpl);
+    return paramVideoPlayParam;
   }
   
-  private spn a(spn paramspn)
+  private VideoPlayerWrapper a(VideoPlayerWrapper paramVideoPlayerWrapper)
   {
-    if (paramspn == a()) {
-      return paramspn;
+    if (paramVideoPlayerWrapper == a()) {
+      return paramVideoPlayerWrapper;
     }
     return null;
   }
   
-  private void a(rqa paramrqa)
+  private void a(ReadinjoyVideoReportData paramReadinjoyVideoReportData)
   {
-    ThreadManager.excute(new VideoFeedsPlayManager.8(this, paramrqa), 16, null, true);
+    ThreadManager.excute(new VideoFeedsPlayManager.8(this, paramReadinjoyVideoReportData), 16, null, true);
   }
   
-  private void a(spn paramspn)
+  private void a(VideoPlayerWrapper paramVideoPlayerWrapper)
   {
-    if (paramspn == null) {}
+    if (paramVideoPlayerWrapper == null) {}
     do
     {
       return;
-      paramspn.n();
-    } while (paramspn.j());
-    paramspn.j();
-    ThreadManager.excute(new VideoFeedsPlayManager.7(this, paramspn), 16, null, true);
+      paramVideoPlayerWrapper.n();
+    } while (paramVideoPlayerWrapper.j());
+    paramVideoPlayerWrapper.j();
+    ThreadManager.excute(new VideoFeedsPlayManager.7(this, paramVideoPlayerWrapper), 16, null, true);
   }
   
-  private void a(boolean paramBoolean, skq paramskq, ReportConstants.VideoEndType paramVideoEndType)
+  private void a(boolean paramBoolean, VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam, ReportConstants.VideoEndType paramVideoEndType)
   {
     Object localObject;
-    if (paramskq.jdField_a_of_type_Rqa != null)
+    if (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData != null)
     {
       localObject = a();
-      paramskq.jdField_a_of_type_Rqa.jdField_a_of_type_Long = ((spn)localObject).a(this.jdField_c_of_type_Boolean);
-      paramskq.jdField_a_of_type_Rqa.jdField_f_of_type_Int = ((spn)localObject).e();
-      paramskq.jdField_a_of_type_Rqa.jdField_n_of_type_Long = ((spn)localObject).c();
-      paramskq.jdField_a_of_type_Rqa.jdField_g_of_type_Int = ((spn)localObject).f();
-      paramskq.jdField_a_of_type_Rqa.jdField_c_of_type_Boolean = ((spn)localObject).jdField_b_of_type_Boolean;
-      paramskq.jdField_a_of_type_Rqa.jdField_q_of_type_Long = ((spn)localObject).jdField_b_of_type_Long;
-      paramskq.jdField_a_of_type_Rqa.jdField_p_of_type_Long = ((spn)localObject).jdField_a_of_type_Long;
-      paramskq.jdField_a_of_type_Rqa.r = ((spn)localObject).g();
-      if ((paramskq.jdField_a_of_type_Rqa.jdField_a_of_type_Long == 0L) && (paramskq.jdField_a_of_type_Rqa.jdField_d_of_type_Long == 0L))
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_Long = ((VideoPlayerWrapper)localObject).a(this.jdField_c_of_type_Boolean);
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_g_of_type_Int = ((VideoPlayerWrapper)localObject).e();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_n_of_type_Long = ((VideoPlayerWrapper)localObject).c();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_h_of_type_Int = ((VideoPlayerWrapper)localObject).f();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_c_of_type_Boolean = ((VideoPlayerWrapper)localObject).jdField_b_of_type_Boolean;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_q_of_type_Long = ((VideoPlayerWrapper)localObject).jdField_b_of_type_Long;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_p_of_type_Long = ((VideoPlayerWrapper)localObject).jdField_a_of_type_Long;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_r_of_type_Long = ((VideoPlayerWrapper)localObject).g();
+      if ((paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_Long == 0L) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_d_of_type_Long == 0L))
       {
-        paramskq.jdField_a_of_type_Rqa.jdField_d_of_type_Long = (SystemClock.uptimeMillis() - paramskq.jdField_a_of_type_Rqa.jdField_b_of_type_Long);
-        paramskq.jdField_a_of_type_Rqa.jdField_f_of_type_Long = paramskq.jdField_a_of_type_Rqa.jdField_d_of_type_Long;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_d_of_type_Long = (SystemClock.uptimeMillis() - paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_b_of_type_Long);
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_f_of_type_Long = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_d_of_type_Long;
       }
-      paramskq.jdField_a_of_type_Rqa.t = srh.a().a();
-      paramskq.jdField_a_of_type_Rqa.jdField_m_of_type_JavaLangString = srq.a().a();
-      paramskq.jdField_a_of_type_Rqa.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      paramskq.jdField_a_of_type_Rqa.jdField_l_of_type_Boolean = ((spn)localObject).p();
-      ((spn)localObject).a(paramskq.jdField_a_of_type_Rqa.b());
-      a(paramskq.jdField_a_of_type_Rqa);
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.t = BandwidthPredictor.a().a();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_m_of_type_JavaLangString = VideoBufferRangeController.a().a();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_l_of_type_Boolean = ((VideoPlayerWrapper)localObject).p();
+      ((VideoPlayerWrapper)localObject).a(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.b());
+      a(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData);
     }
     label323:
     AdvertisementInfo localAdvertisementInfo;
@@ -208,56 +196,56 @@ public class VideoFeedsPlayManager
     int i2;
     label443:
     int i3;
-    if ((h()) && (paramBoolean) && (!paramskq.jdField_a_of_type_Rpz.jdField_d_of_type_Boolean))
+    if ((h()) && (paramBoolean) && (!paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_d_of_type_Boolean))
     {
       if (a().e() != 0L) {
-        break label558;
+        break label555;
       }
-      paramskq.jdField_a_of_type_Rpz.jdField_d_of_type_Int = paramskq.jdField_a_of_type_Rpz.e;
-      paramskq.jdField_a_of_type_Rpz.e = ((int)a().b(this.jdField_c_of_type_Boolean));
-      localObject = paramskq.jdField_a_of_type_Rpz;
-      if (paramskq.jdField_a_of_type_Rpz.jdField_d_of_type_Int != 0) {
-        break label576;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_d_of_type_Int = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.e;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.e = ((int)a().c(this.jdField_c_of_type_Boolean));
+      localObject = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData;
+      if (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_d_of_type_Int != 0) {
+        break label573;
       }
       paramBoolean = true;
-      ((rpz)localObject).jdField_b_of_type_Boolean = paramBoolean;
-      paramskq.jdField_a_of_type_Rpz.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
-      paramskq.jdField_a_of_type_Rpz.jdField_h_of_type_Int = ((int)a().b());
-      localObject = paramskq.jdField_a_of_type_Rpz;
-      omx.a(((rpz)localObject).jdField_a_of_type_Boolean, ((rpz)localObject).jdField_d_of_type_Int, ((rpz)localObject).e, ((rpz)localObject).jdField_b_of_type_Boolean, ((rpz)localObject).jdField_c_of_type_Boolean, ((rpz)localObject).jdField_f_of_type_Int);
-      localAdvertisementInfo = ois.a(paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
-      i5 = ((rpz)localObject).jdField_d_of_type_Int;
-      i6 = ((rpz)localObject).e;
-      if (!((rpz)localObject).jdField_b_of_type_Boolean) {
-        break label581;
+      ((ReadinjoyAdVideoReportData)localObject).jdField_b_of_type_Boolean = paramBoolean;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_h_of_type_Int = ((int)a().b());
+      localObject = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData;
+      VideoReporter.a(((ReadinjoyAdVideoReportData)localObject).jdField_a_of_type_Boolean, ((ReadinjoyAdVideoReportData)localObject).jdField_d_of_type_Int, ((ReadinjoyAdVideoReportData)localObject).e, ((ReadinjoyAdVideoReportData)localObject).jdField_b_of_type_Boolean, ((ReadinjoyAdVideoReportData)localObject).jdField_c_of_type_Boolean, ((ReadinjoyAdVideoReportData)localObject).f);
+      localAdvertisementInfo = NativeAdUtils.a(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
+      i5 = ((ReadinjoyAdVideoReportData)localObject).jdField_d_of_type_Int;
+      i6 = ((ReadinjoyAdVideoReportData)localObject).e;
+      if (!((ReadinjoyAdVideoReportData)localObject).jdField_b_of_type_Boolean) {
+        break label578;
       }
       i1 = 1;
-      if (!((rpz)localObject).jdField_c_of_type_Boolean) {
-        break label587;
+      if (!((ReadinjoyAdVideoReportData)localObject).jdField_c_of_type_Boolean) {
+        break label584;
       }
       i2 = 1;
-      if (!uks.a(this.jdField_a_of_type_Skq)) {
-        break label593;
+      if (!ReadInJoyAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam)) {
+        break label590;
       }
       i3 = 20;
       label457:
-      if (!((rpz)localObject).jdField_a_of_type_Boolean) {
-        break label599;
+      if (!((ReadinjoyAdVideoReportData)localObject).jdField_a_of_type_Boolean) {
+        break label596;
       }
     }
-    label558:
-    label576:
-    label581:
-    label587:
-    label593:
-    label599:
+    label555:
+    label573:
+    label578:
+    label584:
+    label590:
+    label596:
     for (int i4 = 1;; i4 = 2)
     {
-      paramVideoEndType = ois.a(i5, i6, i1, i2, i3, i4, ((rpz)localObject).jdField_h_of_type_Int, 2, 0, ((rpz)localObject).jdField_i_of_type_Int, paramVideoEndType, true);
-      ois.a(new ufy().a(this.jdField_a_of_type_AndroidContentContext).a(6).b(((rpz)localObject).jdField_g_of_type_Int).a(localAdvertisementInfo).a(paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a(paramVideoEndType).a());
-      uks.a(this.jdField_a_of_type_Skq);
+      paramVideoEndType = NativeAdUtils.a(i5, i6, i1, i2, i3, i4, ((ReadinjoyAdVideoReportData)localObject).jdField_h_of_type_Int, 2, 0, ((ReadinjoyAdVideoReportData)localObject).jdField_i_of_type_Int, paramVideoEndType, true);
+      NativeAdUtils.a(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(6).b(((ReadinjoyAdVideoReportData)localObject).jdField_g_of_type_Int).a(localAdvertisementInfo).a(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a(paramVideoEndType));
+      ReadInJoyAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
       return;
-      paramskq.jdField_a_of_type_Rpz.jdField_d_of_type_Int = ((int)a().e());
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_d_of_type_Int = ((int)a().e());
       break;
       paramBoolean = false;
       break label323;
@@ -275,40 +263,41 @@ public class VideoFeedsPlayManager
     return (paramInt == 105) || (paramInt == 208);
   }
   
-  private boolean a(skq paramskq)
+  private boolean a(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
     boolean bool2 = false;
-    spn localspn = b(paramskq);
+    VideoPlayerWrapper localVideoPlayerWrapper = b(paramVideoPlayParam);
     int i1;
     int i2;
     label60:
     boolean bool1;
-    if ((localspn != null) && ((localspn.d()) || (localspn.e()) || (localspn.g())))
+    if ((localVideoPlayerWrapper != null) && ((localVideoPlayerWrapper.d()) || (localVideoPlayerWrapper.e()) || (localVideoPlayerWrapper.g())))
     {
       i1 = 1;
-      if ((localspn != null) && (localspn.a() != paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo)) {
-        break label165;
+      if ((localVideoPlayerWrapper != null) && (localVideoPlayerWrapper.a() != paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo)) {
+        break label172;
       }
       i2 = 1;
       if ((i1 == 0) || (i2 == 0)) {
-        break label170;
+        break label177;
       }
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsPlayManager.preplay", 2, "VideoFeedsPlayManager playVideo hasPrePlay, just go onVideoPrepared");
       }
-      paramskq.jdField_a_of_type_Boolean = false;
-      paramskq.jdField_a_of_type_Rqa.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      paramskq.jdField_a_of_type_Rqa.jdField_n_of_type_Int = 2;
-      paramskq.jdField_a_of_type_Spn.k();
+      paramVideoPlayParam.jdField_a_of_type_Boolean = false;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.o = 2;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.k();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.p();
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        paramskq.jdField_a_of_type_Rqa.jdField_g_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_g_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
       }
-      this.jdField_a_of_type_Sko.a(paramskq);
-      this.jdField_a_of_type_Sko.d(paramskq.jdField_a_of_type_Spn);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$MediaPlayListenerAdapterImpl.a(paramVideoPlayParam);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$MediaPlayListenerAdapterImpl.d(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper);
       bool1 = true;
     }
-    label165:
-    label170:
+    label172:
+    label177:
     do
     {
       do
@@ -319,60 +308,62 @@ public class VideoFeedsPlayManager
         i2 = 0;
         break label60;
         bool1 = bool2;
-      } while (!paramskq.jdField_a_of_type_Boolean);
+      } while (!paramVideoPlayParam.jdField_a_of_type_Boolean);
       bool1 = bool2;
     } while (i2 == 0);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("VideoFeedsPlayManager playVideo prePlaying, just do nothing ");
-      if (localspn == null) {
-        break label290;
+      if (localVideoPlayerWrapper == null) {
+        break label302;
       }
     }
-    label290:
-    for (Integer localInteger = Integer.valueOf(localspn.b());; localInteger = null)
+    label302:
+    for (Integer localInteger = Integer.valueOf(localVideoPlayerWrapper.b());; localInteger = null)
     {
       QLog.d("VideoFeedsPlayManager.preplay", 2, localInteger);
-      if (localspn != null) {
-        localspn.k();
+      if (localVideoPlayerWrapper != null)
+      {
+        localVideoPlayerWrapper.k();
+        localVideoPlayerWrapper.p();
       }
-      paramskq.jdField_a_of_type_Rqa.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      paramskq.jdField_a_of_type_Rqa.jdField_n_of_type_Int = 1;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.o = 1;
       this.m = true;
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(-3, 10000L);
       return true;
     }
   }
   
-  private boolean a(spn paramspn)
+  private boolean a(VideoPlayerWrapper paramVideoPlayerWrapper)
   {
-    return a(paramspn) != null;
+    return a(paramVideoPlayerWrapper) != null;
   }
   
-  private spn b(skq paramskq)
+  private VideoPlayerWrapper b(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    if (paramskq != null) {
-      return paramskq.jdField_a_of_type_Spn;
+    if (paramVideoPlayParam != null) {
+      return paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper;
     }
     return null;
   }
   
-  private void b(skq paramskq, boolean paramBoolean)
+  private void b(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
   {
-    spn localspn = b(paramskq);
-    if (localspn != null) {}
-    for (Object localObject = localspn.a(); (localspn != null) && (localObject == null) && (localspn.j()); localObject = null)
+    VideoPlayerWrapper localVideoPlayerWrapper = b(paramVideoPlayParam);
+    if (localVideoPlayerWrapper != null) {}
+    for (Object localObject = localVideoPlayerWrapper.a(); (localVideoPlayerWrapper != null) && (localObject == null) && (localVideoPlayerWrapper.j()); localObject = null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsPlayManager.preplay", 2, "createVideoPlayerAndPlay VideoFeedsPlayManager innerPlayVideo hit cache");
       }
-      paramskq.jdField_a_of_type_Spn.a(paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      d(paramskq, paramBoolean);
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      d(paramVideoPlayParam, paramBoolean);
       return;
     }
     StringBuilder localStringBuilder;
-    if (paramskq.jdField_c_of_type_Boolean)
+    if (paramVideoPlayParam.jdField_c_of_type_Boolean)
     {
       if (QLog.isColorLevel())
       {
@@ -385,11 +376,11 @@ public class VideoFeedsPlayManager
       for (localObject = "not null";; localObject = "null")
       {
         QLog.d("VideoFeedsPlayManager.preplay", 2, (String)localObject);
-        if (localspn != null) {
-          localspn.b(true);
+        if (localVideoPlayerWrapper != null) {
+          localVideoPlayerWrapper.b(true);
         }
-        paramskq.jdField_a_of_type_AndroidViewView = null;
-        c(paramskq, paramBoolean);
+        paramVideoPlayParam.jdField_a_of_type_AndroidViewView = null;
+        c(paramVideoPlayParam, paramBoolean);
         return;
       }
     }
@@ -403,49 +394,49 @@ public class VideoFeedsPlayManager
     label245:
     for (localObject = "not null";; localObject = "null")
     {
-      QLog.d("VideoFeedsPlayManager.preplay", 2, (String)localObject + ", oldPlayer=" + localspn);
-      if (localspn != null) {
-        localspn.b(true);
+      QLog.d("VideoFeedsPlayManager.preplay", 2, (String)localObject + ", oldPlayer=" + localVideoPlayerWrapper);
+      if (localVideoPlayerWrapper != null) {
+        localVideoPlayerWrapper.b(true);
       }
-      paramskq.jdField_a_of_type_AndroidViewView = null;
-      ThreadManager.post(new VideoFeedsPlayManager.2(this, paramskq, paramBoolean), 5, null, true);
+      paramVideoPlayParam.jdField_a_of_type_AndroidViewView = null;
+      ThreadManager.post(new VideoFeedsPlayManager.2(this, paramVideoPlayParam, paramBoolean), 5, null, true);
       return;
     }
   }
   
-  private boolean b(skq paramskq)
+  private boolean b(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    return a(paramskq) != null;
+    return a(paramVideoPlayParam) != null;
   }
   
-  private void c(skq paramskq, boolean paramBoolean)
+  private void c(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
   {
-    paramskq.jdField_a_of_type_Spn = a(paramskq);
+    paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper = a(paramVideoPlayParam);
     if (QLog.isColorLevel()) {
       QLog.d("VideoFeedsPlayManager.preplay", 2, "VideoFeedsPlayManager innerPlayVideo miss cache");
     }
-    if ((paramskq.jdField_a_of_type_Spn != null) && (this.jdField_a_of_type_AndroidOsHandler != null) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null))
+    if ((paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) && (this.jdField_a_of_type_AndroidOsHandler != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null))
     {
-      paramskq.jdField_a_of_type_Spn.a(paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramskq.jdField_a_of_type_Spn, this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_AndroidOsHandler.post(new VideoFeedsPlayManager.3(this, paramskq, paramBoolean));
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper, this.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_AndroidOsHandler.post(new VideoFeedsPlayManager.3(this, paramVideoPlayParam, paramBoolean));
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "createVideoPlayerAndPlay aysnc run error : playerParam.videoPlayer = " + paramskq.jdField_a_of_type_Spn + ", mUIHandler = " + this.jdField_a_of_type_AndroidOsHandler);
+    QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "createVideoPlayerAndPlay aysnc run error : playerParam.videoPlayer = " + paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper + ", mUIHandler = " + this.jdField_a_of_type_AndroidOsHandler);
   }
   
-  private void d(skq paramskq)
+  private void d(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    rqa localrqa;
-    if (paramskq != null)
+    ReadinjoyVideoReportData localReadinjoyVideoReportData;
+    if (paramVideoPlayParam != null)
     {
-      paramskq.jdField_a_of_type_Rqa = new rqa();
-      paramskq.jdField_a_of_type_Rqa.jdField_a_of_type_Int = paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int;
-      paramskq.jdField_a_of_type_Rqa.jdField_b_of_type_JavaLangString = paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString;
-      paramskq.jdField_a_of_type_Rqa.jdField_a_of_type_JavaLangString = paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_JavaLangString;
-      localrqa = paramskq.jdField_a_of_type_Rqa;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData = new ReadinjoyVideoReportData();
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_Int = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_b_of_type_JavaLangString = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_JavaLangString = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_JavaLangString;
+      localReadinjoyVideoReportData = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData;
       if (this.jdField_a_of_type_Int != 1) {
         break label274;
       }
@@ -453,76 +444,76 @@ public class VideoFeedsPlayManager
     label274:
     for (int i1 = 5;; i1 = 2)
     {
-      localrqa.jdField_d_of_type_Int = i1;
-      paramskq.jdField_a_of_type_Rqa.j = paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int;
-      paramskq.jdField_a_of_type_Rqa.k = paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int;
-      paramskq.jdField_a_of_type_Rqa.s = paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_d_of_type_Int;
-      paramskq.jdField_a_of_type_Rqa.jdField_a_of_type_Boolean = true;
-      paramskq.jdField_a_of_type_Rqa.o = 0;
-      paramskq.jdField_a_of_type_Rqa.jdField_p_of_type_Int = 0;
-      paramskq.jdField_a_of_type_Rqa.jdField_q_of_type_Int = 0;
-      paramskq.jdField_a_of_type_Rqa.jdField_f_of_type_Boolean = false;
-      paramskq.jdField_a_of_type_Rqa.jdField_f_of_type_JavaLangString = "";
-      paramskq.jdField_a_of_type_Rqa.jdField_g_of_type_Boolean = false;
-      paramskq.jdField_a_of_type_Rqa.jdField_h_of_type_Boolean = false;
-      paramskq.jdField_a_of_type_Rqa.jdField_h_of_type_Int = paramskq.jdField_a_of_type_AndroidOsBundle.getInt("jump_from_scene");
-      paramskq.jdField_a_of_type_Rqa.jdField_i_of_type_Int = paramskq.jdField_a_of_type_AndroidOsBundle.getInt("video_feeds_index");
-      if ((paramskq != null) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Boolean))
+      localReadinjoyVideoReportData.jdField_d_of_type_Int = i1;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.k = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_l_of_type_Int = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.s = paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_d_of_type_Int;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_a_of_type_Boolean = true;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_p_of_type_Int = 0;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_q_of_type_Int = 0;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_r_of_type_Int = 0;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_f_of_type_Boolean = false;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_f_of_type_JavaLangString = "";
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_g_of_type_Boolean = false;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_h_of_type_Boolean = false;
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_i_of_type_Int = paramVideoPlayParam.jdField_a_of_type_AndroidOsBundle.getInt("jump_from_scene");
+      paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.j = paramVideoPlayParam.jdField_a_of_type_AndroidOsBundle.getInt("video_feeds_index");
+      if ((paramVideoPlayParam != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Boolean))
       {
-        paramskq.jdField_a_of_type_Rpz = new rpz();
-        i1 = paramskq.jdField_a_of_type_AndroidOsBundle.getInt("ad_origin", 10);
-        paramskq.jdField_a_of_type_Rpz.jdField_g_of_type_Int = i1;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData = new ReadinjoyAdVideoReportData();
+        i1 = paramVideoPlayParam.jdField_a_of_type_AndroidOsBundle.getInt("ad_origin", 10);
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_g_of_type_Int = i1;
       }
       return;
     }
   }
   
-  private void d(skq paramskq, boolean paramBoolean)
+  private void d(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
   {
-    spn localspn = b(paramskq);
-    if ((paramskq == null) || (localspn == null)) {
+    VideoPlayerWrapper localVideoPlayerWrapper = b(paramVideoPlayParam);
+    if ((paramVideoPlayParam == null) || (localVideoPlayerWrapper == null)) {
       return;
     }
-    paramskq.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
+    paramVideoPlayParam.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
     if (QLog.isColorLevel()) {
       QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "innerPlayVideo: ");
     }
-    if (paramskq.jdField_a_of_type_AndroidViewView == null)
+    if (paramVideoPlayParam.jdField_a_of_type_AndroidViewView == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsPlayManager.preplay", 2, "VideoFeedsPlayManager innerPlayVideo videoView null");
       }
-      paramskq.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      localspn.a(paramskq.jdField_a_of_type_AndroidViewViewGroup, paramskq.jdField_c_of_type_Boolean, false);
-      if ((paramskq.jdField_c_of_type_Boolean) && (localspn.a() != 0))
+      paramVideoPlayParam.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+      localVideoPlayerWrapper.a(paramVideoPlayParam.jdField_a_of_type_AndroidViewViewGroup, paramVideoPlayParam.jdField_c_of_type_Boolean, false);
+      if ((paramVideoPlayParam.jdField_c_of_type_Boolean) && (localVideoPlayerWrapper.a() != 0))
       {
-        localspn.g();
-        paramskq.jdField_c_of_type_Boolean = false;
-        paramskq.jdField_a_of_type_Sfg.b(paramskq, false);
+        localVideoPlayerWrapper.g();
+        paramVideoPlayParam.jdField_c_of_type_Boolean = false;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.b(paramVideoPlayParam, false);
       }
-      View localView = localspn.a();
+      View localView = localVideoPlayerWrapper.a();
       if (localView == null)
       {
-        if (paramskq.jdField_a_of_type_Sfg != null) {
-          paramskq.jdField_a_of_type_Sfg.a(paramskq, 999, 999, null);
+        if (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate != null) {
+          paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.a(paramVideoPlayParam, 999, 999, null);
         }
-        paramskq.jdField_a_of_type_Spn = null;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper = null;
         return;
       }
-      paramskq.jdField_a_of_type_AndroidViewView = localView;
-      localView.setId(2131376175);
-      if (paramskq.jdField_a_of_type_Sfg != null) {
-        paramskq.jdField_a_of_type_Sfg.b(paramskq);
+      paramVideoPlayParam.jdField_a_of_type_AndroidViewView = localView;
+      localView.setId(2131376562);
+      if (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate != null) {
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.b(paramVideoPlayParam);
       }
-      if ((paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int > 0) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int > 0) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int < 10000) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int < 10000)) {
-        localspn.a().a(paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int, paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int);
+      if ((paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int > 0) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int > 0) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int < 10000) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int < 10000)) {
+        localVideoPlayerWrapper.a().a(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_b_of_type_Int, paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Int);
       }
     }
     int i1;
     if (this.jdField_a_of_type_Boolean)
     {
       i1 = 2;
-      localspn.b(i1);
+      localVideoPlayerWrapper.b(i1);
       if ((!this.o) && (!this.jdField_g_of_type_Boolean)) {
         break label502;
       }
@@ -530,80 +521,97 @@ public class VideoFeedsPlayManager
     label502:
     for (boolean bool = true;; bool = false)
     {
-      localspn.d(bool);
-      localspn.a(this.jdField_h_of_type_Boolean);
-      localspn.e(paramskq.jdField_b_of_type_Boolean);
-      localspn.c(this.jdField_i_of_type_Boolean);
+      localVideoPlayerWrapper.d(bool);
+      localVideoPlayerWrapper.a(this.jdField_h_of_type_Boolean);
+      localVideoPlayerWrapper.e(paramVideoPlayParam.jdField_b_of_type_Boolean);
+      localVideoPlayerWrapper.c(this.jdField_i_of_type_Boolean);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "innerPlayVideo: isMuted=" + b(paramskq).l());
+        QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "innerPlayVideo: isMuted=" + b(paramVideoPlayParam).l());
       }
-      paramskq.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramVideoPlayParam.jdField_a_of_type_AndroidViewView.setVisibility(0);
       if (!paramBoolean) {
-        paramskq.jdField_a_of_type_Rqa.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       }
-      if (paramskq.jdField_a_of_type_Rqa != null)
+      if (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData != null)
       {
-        paramskq.jdField_a_of_type_Rqa.o = 0;
-        paramskq.jdField_a_of_type_Rqa.jdField_p_of_type_Int = 0;
-        paramskq.jdField_a_of_type_Rqa.jdField_q_of_type_Int = 0;
-        paramskq.jdField_a_of_type_Rqa.jdField_g_of_type_Boolean = false;
-        paramskq.jdField_a_of_type_Rqa.jdField_h_of_type_Boolean = false;
-        paramskq.jdField_a_of_type_Rqa.jdField_i_of_type_Boolean = this.jdField_h_of_type_Boolean;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_p_of_type_Int = 0;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_q_of_type_Int = 0;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_r_of_type_Int = 0;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_g_of_type_Boolean = false;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_h_of_type_Boolean = false;
+        paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_i_of_type_Boolean = this.jdField_h_of_type_Boolean;
       }
-      if (!paramskq.jdField_c_of_type_Boolean) {
-        ThreadManager.excute(new VideoFeedsPlayManager.PlayStartVideoRunnable(this, paramskq, localspn, paramBoolean), 16, null, true);
+      if (!paramVideoPlayParam.jdField_c_of_type_Boolean) {
+        ThreadManager.excute(new VideoFeedsPlayManager.PlayStartVideoRunnable(this, paramVideoPlayParam, localVideoPlayerWrapper, paramBoolean), 16, null, true);
       }
-      paramskq.jdField_c_of_type_Boolean = false;
-      paramskq.jdField_a_of_type_JavaLangString = null;
+      paramVideoPlayParam.jdField_c_of_type_Boolean = false;
+      paramVideoPlayParam.jdField_a_of_type_JavaLangString = null;
       return;
-      i1 = paramskq.jdField_a_of_type_Int;
+      i1 = paramVideoPlayParam.jdField_a_of_type_Int;
       break;
     }
   }
   
   private void h()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_Skq != null)
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      ThreadManager.getSubThreadHandler().postAtFrontOfQueue(new VideoFeedsPlayManager.4(this));
+    }
+    VideoPlayerWrapper localVideoPlayerWrapper;
+    do
     {
-      localObject = this.jdField_a_of_type_Skq;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsPlayManager.preplay", 2, "innerChangeCoverImageView: getCurVideoPlayer().start() ");
+      }
+      localVideoPlayerWrapper = a();
+    } while (localVideoPlayerWrapper == null);
+    localVideoPlayerWrapper.d();
+  }
+  
+  private boolean h()
+  {
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null);
+  }
+  
+  private void i()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam;
       if ((d()) || (b())) {
         this.k = true;
       }
       b(ReportConstants.VideoEndType.EXIT_SCENE);
-      ((skq)localObject).jdField_a_of_type_Spn = null;
-      ((skq)localObject).jdField_a_of_type_AndroidViewView = null;
-      this.jdField_a_of_type_Skq = ((skq)localObject);
+      ((VideoFeedsPlayManager.VideoPlayParam)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper = null;
+      ((VideoFeedsPlayManager.VideoPlayParam)localObject).jdField_a_of_type_AndroidViewView = null;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = ((VideoFeedsPlayManager.VideoPlayParam)localObject);
     }
-    if (this.jdField_b_of_type_Skq != null)
+    if (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null)
     {
-      if (b(this.jdField_b_of_type_Skq) != null) {
-        b(this.jdField_b_of_type_Skq).l();
+      if (b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam) != null) {
+        b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam).l();
       }
-      this.jdField_b_of_type_Skq.jdField_a_of_type_AndroidViewView = null;
-      this.jdField_b_of_type_Skq.jdField_a_of_type_Spn = null;
-      this.jdField_b_of_type_Skq = null;
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_AndroidViewView = null;
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper = null;
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = null;
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
     {
       localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        spn localspn = (spn)((Iterator)localObject).next();
-        if ((localspn != null) && (!localspn.i())) {
-          localspn.l();
+        VideoPlayerWrapper localVideoPlayerWrapper = (VideoPlayerWrapper)((Iterator)localObject).next();
+        if ((localVideoPlayerWrapper != null) && (!localVideoPlayerWrapper.i())) {
+          localVideoPlayerWrapper.l();
         }
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
   }
   
-  private boolean h()
-  {
-    return (this.jdField_a_of_type_Skq != null) && (this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) && (this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz != null) && (this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null);
-  }
-  
-  private void i()
+  private void j()
   {
     int i1 = Aladdin.getConfig(352).getIntegerFromString("play_manager_max_count", 3);
     if (QLog.isColorLevel()) {
@@ -612,7 +620,7 @@ public class VideoFeedsPlayManager
     if (jdField_a_of_type_JavaUtilList.size() > i1)
     {
       int i2 = jdField_a_of_type_JavaUtilList.size();
-      ((VideoFeedsPlayManager)jdField_a_of_type_JavaUtilList.get(i2 - i1 - 1)).h();
+      ((VideoFeedsPlayManager)jdField_a_of_type_JavaUtilList.get(i2 - i1 - 1)).i();
     }
   }
   
@@ -626,7 +634,7 @@ public class VideoFeedsPlayManager
   
   public long a()
   {
-    if ((this.jdField_a_of_type_Skq != null) && (a() != null)) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (a() != null)) {
       return a().a();
     }
     return 0L;
@@ -634,15 +642,15 @@ public class VideoFeedsPlayManager
   
   public VideoInfo a()
   {
-    if ((this.jdField_a_of_type_Skq == null) || (this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo == null)) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo == null)) {
       return null;
     }
-    return this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
   }
   
-  public skq a()
+  public VideoFeedsPlayManager.VideoPlayParam a()
   {
-    return this.jdField_a_of_type_Skq;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam;
   }
   
   public void a()
@@ -650,42 +658,46 @@ public class VideoFeedsPlayManager
     Object localObject;
     if (a() != null)
     {
-      if (Looper.myLooper() == Looper.getMainLooper()) {
-        ThreadManager.getSubThreadHandler().postAtFrontOfQueue(new VideoFeedsPlayManager.4(this));
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-2);
-      this.jdField_a_of_type_AndroidOsHandler.post(new VideoFeedsPlayManager.5(this));
-      if (h())
+      if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
-        localObject = this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.h;
-        if (this.jdField_a_of_type_JavaUtilSet.contains(localObject)) {
-          break label206;
+        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((VideoFeedsPlayManager.VideoStatusListener)((Iterator)localObject).next()).f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
         }
+      }
+      h();
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-2);
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoFeedsPlayManager.5(this));
+    if (h()) {}
+    try
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.h;
+      if (!this.jdField_a_of_type_JavaUtilSet.contains(localObject))
+      {
         this.jdField_a_of_type_JavaUtilSet.add(localObject);
-        this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.jdField_f_of_type_Int = rpz.jdField_a_of_type_Int;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.jdField_a_of_type_Int;
+      }
+      for (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_i_of_type_Int = 0;; ((ReadinjoyAdVideoReportData)localObject).jdField_i_of_type_Int += 1)
+      {
+        localObject = a();
+        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (localObject != null))
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_n_of_type_Int = ((VideoPlayerWrapper)localObject).d();
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_m_of_type_Int = ((VideoPlayerWrapper)localObject).c();
+        }
+        return;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.jdField_c_of_type_Int;
+        localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData;
       }
     }
-    for (this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.jdField_i_of_type_Int = 0;; ((rpz)localObject).jdField_i_of_type_Int += 1)
+    catch (Throwable localThrowable)
     {
-      localObject = a();
-      if ((this.jdField_a_of_type_Skq != null) && (localObject != null))
+      for (;;)
       {
-        this.jdField_a_of_type_Skq.jdField_a_of_type_Rqa.jdField_m_of_type_Int = ((spn)localObject).d();
-        this.jdField_a_of_type_Skq.jdField_a_of_type_Rqa.jdField_l_of_type_Int = ((spn)localObject).c();
+        QLog.e("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 1, localThrowable, new Object[0]);
       }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsPlayManager.preplay", 2, "innerChangeCoverImageView: getCurVideoPlayer().start() ");
-      }
-      a().d();
-      break;
-      label206:
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.jdField_f_of_type_Int = rpz.jdField_c_of_type_Int;
-      localObject = this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz;
     }
   }
   
@@ -703,14 +715,14 @@ public class VideoFeedsPlayManager
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Skq != null) && (a() != null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (a() != null))
     {
       this.j = true;
       a().a(paramInt);
-      if ((paramBoolean) && (this.jdField_a_of_type_Skq != null) && (this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg != null))
+      if ((paramBoolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate != null))
       {
         long l1 = a().b();
-        this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg.a(this.jdField_a_of_type_Skq, (int)(paramInt * 100.0F / (float)l1 + 0.5D), l1);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam, (int)(paramInt * 100.0F / (float)l1 + 0.5D), l1);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
     }
@@ -721,21 +733,16 @@ public class VideoFeedsPlayManager
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType = paramVideoEndType;
   }
   
-  public void a(VideoPreDownloadMgr paramVideoPreDownloadMgr)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr = paramVideoPreDownloadMgr;
-  }
-  
-  public void a(skq paramskq)
+  public void a(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Skq = paramskq;
-    if (this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg != null) {
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg.a(this.jdField_a_of_type_Skq);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = paramVideoPlayParam;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
     }
   }
   
-  public void a(skq paramskq, boolean paramBoolean)
+  public void a(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("VideoFeedsPlayManager.preplay", 2, "VideoFeedsPlayManager playVideo");
@@ -750,101 +757,106 @@ public class VideoFeedsPlayManager
       do
       {
         return;
-        if ((paramskq != null) && (paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)) {
+        if ((paramVideoPlayParam != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)) {
           break;
         }
       } while (!QLog.isColorLevel());
       QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "playVideo() error, playerParam or videoInfo is null");
       return;
       if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "playVideo() vid=" + paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString);
+        QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "playVideo() vid=" + paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString);
       }
       this.jdField_c_of_type_Boolean = false;
       this.jdField_b_of_type_Int = 0;
       this.jdField_d_of_type_Boolean = false;
       this.e = false;
       this.j = false;
-      this.jdField_a_of_type_Skq = paramskq;
-      this.jdField_b_of_type_Skq = null;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = paramVideoPlayParam;
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = null;
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext()) {
-          ((sks)localIterator.next()).e(this.jdField_a_of_type_Skq);
+          ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
         }
       }
-      if (this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg != null) {
-        this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg.a(this.jdField_a_of_type_Skq, paramBoolean);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam, paramBoolean);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(-3);
-    } while (a(paramskq));
-    d(this.jdField_a_of_type_Skq);
-    paramskq.jdField_a_of_type_Rqa.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-    if ((this.jdField_a_of_type_Spp != null) && (!this.jdField_a_of_type_Spp.a()))
+    } while (a(paramVideoPlayParam));
+    d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
+    paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_c_of_type_Long = SystemClock.uptimeMillis();
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall.a()))
     {
-      this.jdField_a_of_type_Spp.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall.a();
       return;
     }
-    paramskq.jdField_a_of_type_Rqa.jdField_n_of_type_Int = 0;
-    b(paramskq, false);
+    paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.o = 0;
+    b(paramVideoPlayParam, false);
   }
   
-  public void a(skr paramskr)
+  public void a(VideoFeedsPlayManager.VideoPlayProgressListener paramVideoPlayProgressListener)
   {
-    this.jdField_a_of_type_Skr = paramskr;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayProgressListener = paramVideoPlayProgressListener;
   }
   
-  public void a(sks paramsks)
+  public void a(VideoFeedsPlayManager.VideoStatusListener paramVideoStatusListener)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramsks);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramVideoStatusListener);
   }
   
-  public void a(sln paramsln)
+  public void a(VideoFeedsRecommendManager paramVideoFeedsRecommendManager)
   {
-    this.jdField_a_of_type_Sln = paramsln;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendManager = paramVideoFeedsRecommendManager;
+  }
+  
+  public void a(VideoPreDownloadMgr paramVideoPreDownloadMgr)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr = paramVideoPreDownloadMgr;
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Skq != null) {
-        a(this.jdField_a_of_type_Skq, true);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) {
+        a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam, true);
       }
       return;
     }
-    if ((this.jdField_a_of_type_Skq != null) && (this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg != null)) {
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg.a(this.jdField_a_of_type_Skq, 999, 998, null);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam, 999, 998, null);
     }
-    this.jdField_a_of_type_Skq = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = null;
   }
   
   public void a(boolean paramBoolean, ReportConstants.VideoEndType paramVideoEndType)
   {
-    if ((this.jdField_a_of_type_Skq != null) && (this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg != null)) {
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg.f(this.jdField_a_of_type_Skq);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
     }
-    if ((this.jdField_a_of_type_Skq != null) && (this.jdField_a_of_type_Sln != null) && (this.jdField_a_of_type_Skq.jdField_a_of_type_Spn != null)) {
-      this.jdField_a_of_type_Sln.a(1, this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Skq.jdField_a_of_type_Spn.a(this.jdField_c_of_type_Boolean));
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendManager != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(this.jdField_c_of_type_Boolean));
     }
-    if ((this.jdField_a_of_type_Skq != null) && (a() != null))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (a() != null))
     {
-      a(paramBoolean, this.jdField_a_of_type_Skq, paramVideoEndType);
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Skq.jdField_a_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Skq.jdField_c_of_type_Boolean = false;
+      a(paramBoolean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam, paramVideoEndType);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_c_of_type_Boolean = false;
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
         paramVideoEndType = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (paramVideoEndType.hasNext()) {
-          ((sks)paramVideoEndType.next()).a(this.jdField_a_of_type_Skq, this.jdField_c_of_type_Boolean);
+          ((VideoFeedsPlayManager.VideoStatusListener)paramVideoEndType.next()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam, this.jdField_c_of_type_Boolean);
         }
       }
-      sqb.a.a(this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, a(), c());
-      c(this.jdField_a_of_type_Skq);
+      VideoResumeManager.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, a(), d());
+      c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
     }
-    if (this.jdField_a_of_type_Skq != null) {
-      this.jdField_a_of_type_Skq = null;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = null;
     }
     this.jdField_b_of_type_Int = 0;
     this.jdField_d_of_type_Boolean = false;
@@ -858,7 +870,7 @@ public class VideoFeedsPlayManager
   
   public long b()
   {
-    if ((this.jdField_a_of_type_Skq != null) && (a() != null)) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (a() != null)) {
       return a().a(g());
     }
     return 0L;
@@ -867,24 +879,24 @@ public class VideoFeedsPlayManager
   public void b()
   {
     Object localObject = a();
-    if ((localObject != null) && (!((spn)localObject).q()) && (((spn)localObject).f())) {}
-    for (int i1 = 1; (this.jdField_a_of_type_Skq != null) && (i1 != 0); i1 = 0)
+    if ((localObject != null) && (!((VideoPlayerWrapper)localObject).q()) && (((VideoPlayerWrapper)localObject).f())) {}
+    for (int i1 = 1; (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (i1 != 0); i1 = 0)
     {
       a().f();
-      if (this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg != null) {
-        this.jdField_a_of_type_Skq.jdField_a_of_type_Sfg.d(this.jdField_a_of_type_Skq);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoIVideoUIDelegate.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
       }
       if (this.jdField_a_of_type_JavaUtilArrayList == null) {
         break;
       }
       localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((sks)((Iterator)localObject).next()).c(this.jdField_a_of_type_Skq);
+        ((VideoFeedsPlayManager.VideoStatusListener)((Iterator)localObject).next()).c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
       }
     }
     boolean bool;
     label219:
-    rpz localrpz;
+    ReadinjoyAdVideoReportData localReadinjoyAdVideoReportData;
     AdvertisementInfo localAdvertisementInfo;
     int i5;
     int i6;
@@ -900,60 +912,60 @@ public class VideoFeedsPlayManager
     if ((h()) && (a() != null))
     {
       if (a().e() != 0L) {
-        break label488;
+        break label485;
       }
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.jdField_d_of_type_Int = this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.e;
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.e = ((int)a().b(this.jdField_c_of_type_Boolean));
-      localObject = this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz;
-      if (this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.jdField_d_of_type_Int != 0) {
-        break label509;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.e;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.e = ((int)a().c(this.jdField_c_of_type_Boolean));
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_d_of_type_Int != 0) {
+        break label506;
       }
       bool = true;
-      ((rpz)localObject).jdField_b_of_type_Boolean = bool;
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.jdField_h_of_type_Int = ((int)a().b());
-      localrpz = this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz;
-      omx.a(localrpz.jdField_a_of_type_Boolean, localrpz.jdField_d_of_type_Int, localrpz.e, localrpz.jdField_b_of_type_Boolean, localrpz.jdField_c_of_type_Boolean, localrpz.jdField_f_of_type_Int);
-      localAdvertisementInfo = ois.a(this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
-      i5 = localrpz.jdField_d_of_type_Int;
-      i6 = localrpz.e;
-      if (!localrpz.jdField_b_of_type_Boolean) {
-        break label515;
+      ((ReadinjoyAdVideoReportData)localObject).jdField_b_of_type_Boolean = bool;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_h_of_type_Int = ((int)a().b());
+      localReadinjoyAdVideoReportData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData;
+      VideoReporter.a(localReadinjoyAdVideoReportData.jdField_a_of_type_Boolean, localReadinjoyAdVideoReportData.jdField_d_of_type_Int, localReadinjoyAdVideoReportData.e, localReadinjoyAdVideoReportData.jdField_b_of_type_Boolean, localReadinjoyAdVideoReportData.jdField_c_of_type_Boolean, localReadinjoyAdVideoReportData.f);
+      localAdvertisementInfo = NativeAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
+      i5 = localReadinjoyAdVideoReportData.jdField_d_of_type_Int;
+      i6 = localReadinjoyAdVideoReportData.e;
+      if (!localReadinjoyAdVideoReportData.jdField_b_of_type_Boolean) {
+        break label512;
       }
       i1 = 1;
-      if (!localrpz.jdField_c_of_type_Boolean) {
-        break label520;
+      if (!localReadinjoyAdVideoReportData.jdField_c_of_type_Boolean) {
+        break label517;
       }
       i2 = 1;
-      if (!uks.a(this.jdField_a_of_type_Skq)) {
-        break label525;
+      if (!ReadInJoyAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam)) {
+        break label522;
       }
       i3 = 20;
-      if (!localrpz.jdField_a_of_type_Boolean) {
-        break label530;
+      if (!localReadinjoyAdVideoReportData.jdField_a_of_type_Boolean) {
+        break label527;
       }
       i4 = 1;
-      i7 = localrpz.jdField_h_of_type_Int;
-      i8 = localrpz.jdField_i_of_type_Int;
+      i7 = localReadinjoyAdVideoReportData.jdField_h_of_type_Int;
+      i8 = localReadinjoyAdVideoReportData.jdField_i_of_type_Int;
       if (this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType == null) {
-        break label536;
+        break label533;
       }
     }
-    label515:
-    label520:
-    label525:
-    label530:
-    label536:
+    label512:
+    label517:
+    label522:
+    label527:
+    label533:
     for (localObject = this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType;; localObject = ReportConstants.VideoEndType.CLICK_PAUSE)
     {
-      localObject = ois.a(i5, i6, i1, i2, i3, i4, i7, 2, 0, i8, (ReportConstants.VideoEndType)localObject, true);
-      ois.a(new ufy().a(this.jdField_a_of_type_AndroidContentContext).a(6).b(localrpz.jdField_g_of_type_Int).a(localAdvertisementInfo).a(this.jdField_a_of_type_Skq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a((JSONObject)localObject).a());
-      uks.a(this.jdField_a_of_type_Skq);
+      localObject = NativeAdUtils.a(i5, i6, i1, i2, i3, i4, i7, 2, 0, i8, (ReportConstants.VideoEndType)localObject, true);
+      NativeAdUtils.a(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(6).b(localReadinjoyAdVideoReportData.jdField_g_of_type_Int).a(localAdvertisementInfo).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a((JSONObject)localObject));
+      ReadInJoyAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
       return;
-      label488:
-      this.jdField_a_of_type_Skq.jdField_a_of_type_Rpz.jdField_d_of_type_Int = ((int)a().e());
+      label485:
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.jdField_d_of_type_Int = ((int)a().e());
       break;
-      label509:
+      label506:
       bool = false;
       break label219;
       i1 = 0;
@@ -972,34 +984,34 @@ public class VideoFeedsPlayManager
     a(true, paramVideoEndType);
   }
   
-  public void b(skq paramskq)
+  public void b(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsPlayManager.preplay", 2, "VideoFeedsPlayManager prePlayVideo mPreplaying=" + this.jdField_b_of_type_Skq + ", player=" + b(this.jdField_b_of_type_Skq));
+      QLog.d("VideoFeedsPlayManager.preplay", 2, "VideoFeedsPlayManager prePlayVideo mPreplaying=" + this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam + ", player=" + b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam));
     }
-    if ((paramskq == null) || (paramskq == this.jdField_a_of_type_Skq)) {}
+    if ((paramVideoPlayParam == null) || (paramVideoPlayParam == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam)) {}
     do
     {
-      spn localspn;
+      VideoPlayerWrapper localVideoPlayerWrapper;
       do
       {
         return;
-        localspn = b(paramskq);
-      } while ((localspn != null) && (paramskq.jdField_a_of_type_Boolean) && (localspn.a() == paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo));
-      if (b(this.jdField_b_of_type_Skq) != null)
+        localVideoPlayerWrapper = b(paramVideoPlayParam);
+      } while ((localVideoPlayerWrapper != null) && (paramVideoPlayParam.jdField_a_of_type_Boolean) && (localVideoPlayerWrapper.a() == paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo));
+      if (b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam) != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "prePlayVideo: last preplay video not stop");
         }
-        b(this.jdField_b_of_type_Skq).b(true);
+        b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam).b(true);
       }
       this.jdField_a_of_type_JavaLangString = null;
-    } while ((this.jdField_a_of_type_Spp == null) || (!this.jdField_a_of_type_Spp.a()));
-    paramskq.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Skq = paramskq;
-    d(this.jdField_b_of_type_Skq);
-    paramskq.jdField_a_of_type_Rqa.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-    b(paramskq, true);
+    } while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall == null) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall.a()));
+    paramVideoPlayParam.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = paramVideoPlayParam;
+    d(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
+    paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_c_of_type_Long = SystemClock.uptimeMillis();
+    b(paramVideoPlayParam, true);
   }
   
   public void b(boolean paramBoolean)
@@ -1014,8 +1026,8 @@ public class VideoFeedsPlayManager
   
   public long c()
   {
-    if (a() != null) {
-      return a().b();
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (a() != null)) {
+      return a().b(g());
     }
     return 0L;
   }
@@ -1026,10 +1038,10 @@ public class VideoFeedsPlayManager
   }
   
   @Deprecated
-  public void c(skq paramskq)
+  public void c(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    if (paramskq != null) {
-      a(paramskq.jdField_a_of_type_Spn);
+    if (paramVideoPlayParam != null) {
+      a(paramVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper);
     }
   }
   
@@ -1038,14 +1050,14 @@ public class VideoFeedsPlayManager
     if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if ((a() != null) && (this.jdField_a_of_type_Skq != null)) {
+      if ((a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null)) {
         if (!this.jdField_a_of_type_Boolean) {
           break label45;
         }
       }
     }
     label45:
-    for (int i1 = 2;; i1 = this.jdField_a_of_type_Skq.jdField_a_of_type_Int)
+    for (int i1 = 2;; i1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_Int)
     {
       a().b(i1);
       return;
@@ -1057,13 +1069,21 @@ public class VideoFeedsPlayManager
     return (a() != null) && (a().l());
   }
   
+  public long d()
+  {
+    if (a() != null) {
+      return a().b();
+    }
+    return 0L;
+  }
+  
   public void d()
   {
     boolean bool2 = true;
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType = null;
     this.jdField_f_of_type_Boolean = true;
-    if ((this.k) && (this.jdField_a_of_type_Skq != null)) {
-      a(this.jdField_a_of_type_Skq, false);
+    if ((this.k) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null)) {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam, false);
     }
     label155:
     label158:
@@ -1072,13 +1092,13 @@ public class VideoFeedsPlayManager
       this.k = false;
       this.jdField_l_of_type_Boolean = false;
       this.n = false;
-      sgg localsgg = sgg.a();
-      if (!sge.a().c())
+      VideoBehaviorsReporter localVideoBehaviorsReporter = VideoBehaviorsReporter.a();
+      if (!VideoAutoPlayController.a().c())
       {
         bool1 = bool2;
         label65:
-        localsgg.b(bool1);
-        srh.a().a(this.jdField_a_of_type_AndroidContentContext);
+        localVideoBehaviorsReporter.b(bool1);
+        BandwidthPredictor.a().a(this.jdField_a_of_type_AndroidContentContext);
         return;
         if ((this.n) && (a() != null) && (a().d()))
         {
@@ -1112,8 +1132,8 @@ public class VideoFeedsPlayManager
     if (a() != null) {
       a().c(paramBoolean);
     }
-    if (b(this.jdField_b_of_type_Skq) != null) {
-      b(this.jdField_b_of_type_Skq).c(paramBoolean);
+    if (b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam) != null) {
+      b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam).c(paramBoolean);
     }
   }
   
@@ -1134,12 +1154,12 @@ public class VideoFeedsPlayManager
       this.m = false;
       b();
     }
-    srh.a().b(this.jdField_a_of_type_AndroidContentContext);
+    BandwidthPredictor.a().b(this.jdField_a_of_type_AndroidContentContext);
   }
   
   public void e(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Sge.b(paramBoolean);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoAutoPlayController.b(paramBoolean);
   }
   
   public boolean e()
@@ -1160,42 +1180,42 @@ public class VideoFeedsPlayManager
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr = null;
     }
     b(ReportConstants.VideoEndType.EXIT_SCENE);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_a_of_type_Skq);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_b_of_type_Skq);
-    if (this.jdField_a_of_type_Skq != null)
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null)
     {
       if (a() != null)
       {
         a().l();
-        this.jdField_a_of_type_Skq.jdField_a_of_type_Spn = null;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper = null;
       }
-      this.jdField_a_of_type_Skq = null;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = null;
     }
-    if (this.jdField_b_of_type_Skq != null)
+    if (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null)
     {
-      if (b(this.jdField_b_of_type_Skq) != null)
+      if (b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam) != null)
       {
-        b(this.jdField_b_of_type_Skq).l();
-        this.jdField_b_of_type_Skq.jdField_a_of_type_Spn = null;
+        b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam).l();
+        this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper = null;
       }
-      this.jdField_b_of_type_Skq = null;
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam = null;
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
       while (localIterator.hasNext())
       {
-        spn localspn = (spn)localIterator.next();
-        if ((localspn != null) && (!localspn.i())) {
-          localspn.l();
+        VideoPlayerWrapper localVideoPlayerWrapper = (VideoPlayerWrapper)localIterator.next();
+        if ((localVideoPlayerWrapper != null) && (!localVideoPlayerWrapper.i())) {
+          localVideoPlayerWrapper.l();
         }
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
-    if (this.jdField_a_of_type_Spp != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall != null)
     {
-      this.jdField_a_of_type_Spp.b();
-      this.jdField_a_of_type_Spp = null;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall.b();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPluginInstall = null;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
@@ -1203,9 +1223,9 @@ public class VideoFeedsPlayManager
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_JavaUtilArrayList = null;
     }
-    sqt.a().b(this);
-    this.jdField_a_of_type_Skr = null;
-    this.jdField_a_of_type_Sln = null;
+    VideoVolumeController.a().b(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayProgressListener = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendManager = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     this.jdField_a_of_type_AndroidContentContext = null;
   }
@@ -1216,8 +1236,8 @@ public class VideoFeedsPlayManager
     if (a() != null) {
       a().d(paramBoolean);
     }
-    if (b(this.jdField_b_of_type_Skq) != null) {
-      b(this.jdField_b_of_type_Skq).d(paramBoolean);
+    if (b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam) != null) {
+      b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam).d(paramBoolean);
     }
   }
   
@@ -1226,7 +1246,7 @@ public class VideoFeedsPlayManager
     return a() == 3;
   }
   
-  public void g()
+  void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "checkPlayStateAfterPhoneCall mIsActivityOnResume = " + this.jdField_f_of_type_Boolean);
@@ -1243,10 +1263,10 @@ public class VideoFeedsPlayManager
   {
     boolean bool2 = false;
     this.o = paramBoolean;
-    spn localspn;
+    VideoPlayerWrapper localVideoPlayerWrapper;
     if (a() != null)
     {
-      localspn = a();
+      localVideoPlayerWrapper = a();
       if ((!paramBoolean) && (!this.jdField_g_of_type_Boolean)) {
         break label82;
       }
@@ -1254,10 +1274,10 @@ public class VideoFeedsPlayManager
     label82:
     for (boolean bool1 = true;; bool1 = false)
     {
-      localspn.d(bool1);
-      if (b(this.jdField_b_of_type_Skq) != null)
+      localVideoPlayerWrapper.d(bool1);
+      if (b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam) != null)
       {
-        localspn = b(this.jdField_b_of_type_Skq);
+        localVideoPlayerWrapper = b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam);
         if (!paramBoolean)
         {
           paramBoolean = bool2;
@@ -1267,7 +1287,7 @@ public class VideoFeedsPlayManager
         {
           paramBoolean = true;
         }
-        localspn.d(paramBoolean);
+        localVideoPlayerWrapper.d(paramBoolean);
       }
       return;
     }
@@ -1280,10 +1300,10 @@ public class VideoFeedsPlayManager
   
   public void onHeadsetStateChanged(boolean paramBoolean)
   {
-    spn localspn;
+    VideoPlayerWrapper localVideoPlayerWrapper;
     if (a() != null)
     {
-      localspn = a();
+      localVideoPlayerWrapper = a();
       if (paramBoolean) {
         break label24;
       }
@@ -1291,7 +1311,7 @@ public class VideoFeedsPlayManager
     label24:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      localspn.c(paramBoolean);
+      localVideoPlayerWrapper.c(paramBoolean);
       return;
     }
   }
@@ -1305,10 +1325,10 @@ public class VideoFeedsPlayManager
   
   public void onSystemVolumeChanged(int paramInt)
   {
-    spn localspn;
+    VideoPlayerWrapper localVideoPlayerWrapper;
     if (a() != null)
     {
-      localspn = a();
+      localVideoPlayerWrapper = a();
       if (paramInt > 0) {
         break label24;
       }
@@ -1316,14 +1336,14 @@ public class VideoFeedsPlayManager
     label24:
     for (boolean bool = true;; bool = false)
     {
-      localspn.c(bool);
+      localVideoPlayerWrapper.c(bool);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager
  * JD-Core Version:    0.7.0.1
  */

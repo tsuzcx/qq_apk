@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
 import android.widget.TextView;
-import anvk;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
@@ -14,14 +14,14 @@ class ShowExternalTroopListActivity$3
   
   public void run()
   {
-    String str = ContactUtils.getFriendNick(this.this$0.app, this.this$0.a);
-    Card localCard = ((anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.a);
+    String str = ContactUtils.a(this.this$0.app, this.this$0.a);
+    Card localCard = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.this$0.a);
     this.this$0.runOnUiThread(new ShowExternalTroopListActivity.3.1(this, str, localCard));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import bdcw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -18,7 +18,7 @@ class SplashActivity$6
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      bdcw.a((QQAppInterface)localAppRuntime);
+      RedBagVideoManager.a((QQAppInterface)localAppRuntime);
     }
   }
 }

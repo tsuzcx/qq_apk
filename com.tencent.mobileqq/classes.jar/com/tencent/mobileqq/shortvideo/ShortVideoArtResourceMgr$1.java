@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.shortvideo;
 
-import also;
-import bcww;
-import bcyg;
-import bcyh;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
-public final class ShortVideoArtResourceMgr$1
+final class ShortVideoArtResourceMgr$1
   implements Runnable
 {
   public void run()
   {
-    String str1 = bcww.b();
-    String str2 = bcww.a();
+    String str1 = ShortVideoArtResourceMgr.b();
+    String str2 = ShortVideoArtResourceMgr.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -37,8 +34,8 @@ public final class ShortVideoArtResourceMgr$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = bcyg.a((String)localObject2);
-            m = ((bcyh)localObject3).a();
+            localObject3 = ShortVideoSoManager.a((String)localObject2);
+            m = ((ShortVideoSoManager.CfgParser)localObject3).a();
             if (m == 0) {
               break label197;
             }
@@ -50,7 +47,7 @@ public final class ShortVideoArtResourceMgr$1
           }
         }
         label197:
-        localObject3 = ((bcyh)localObject3).b();
+        localObject3 = ((ShortVideoSoManager.CfgParser)localObject3).b();
       }
     }
     label419:
@@ -81,8 +78,8 @@ public final class ShortVideoArtResourceMgr$1
           ((File)localObject1).delete();
         }
       }
-      if (new File(also.c).exists()) {
-        FileUtils.deleteDirectory(also.c);
+      if (new File(VideoFilterTools.c).exists()) {
+        FileUtils.a(VideoFilterTools.c);
       }
       return;
     }
@@ -90,7 +87,7 @@ public final class ShortVideoArtResourceMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr.1
  * JD-Core Version:    0.7.0.1
  */

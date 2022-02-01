@@ -4,13 +4,13 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
-import anvx;
-import bdla;
 import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 class RedPacketVoiceFragment$3
@@ -27,7 +27,7 @@ class RedPacketVoiceFragment$3
     QQAppInterface localQQAppInterface;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.this$0.b.setText(anvx.a(2131712759));
+      this.this$0.b.setText(HardCodeUtil.a(2131713255));
       RedPacketVoiceFragment.a(this.this$0, this.jdField_a_of_type_JavaLangString);
       this.this$0.o();
       if (RedPacketVoiceFragment.a(this.this$0))
@@ -41,21 +41,21 @@ class RedPacketVoiceFragment$3
     label233:
     for (int i = 1;; i = 0)
     {
-      bdla.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.result", 0, i, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title.length() + "", this.this$0.getActivity().app.getCurrentAccountUin(), DeviceInfoUtil.getDeviceOSVersion() + "|" + DeviceInfoUtil.getModel(), "");
+      ReportController.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.result", 0, i, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title.length() + "", this.this$0.getActivity().app.getCurrentAccountUin(), DeviceInfoUtil.e() + "|" + DeviceInfoUtil.i(), "");
       this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.c();
       if (RedPacketVoiceFragment.a(this.this$0) == null) {
         break;
       }
       RedPacketVoiceFragment.a(this.this$0).removeCallbacksAndMessages(null);
       return;
-      this.this$0.b.setText(this.this$0.getResources().getString(2131695053));
+      this.this$0.b.setText(this.this$0.getResources().getString(2131695292));
       break label51;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment.3
  * JD-Core Version:    0.7.0.1
  */

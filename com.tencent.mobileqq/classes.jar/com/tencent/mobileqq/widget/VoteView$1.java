@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.widget;
 
 import android.view.View;
-import biun;
-import biup;
 
-public class VoteView$1
+class VoteView$1
   implements Runnable
 {
   VoteView$1(VoteView paramVoteView) {}
@@ -13,14 +11,14 @@ public class VoteView$1
   {
     if (VoteView.a(this.this$0))
     {
-      biun.a(this.this$0);
-      this.this$0.findViewById(2131369791).setOnClickListener(new biup(this));
+      VoteRotateAnimation.a(this.this$0);
+      this.this$0.findViewById(2131370060).setOnClickListener(new VoteView.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VoteView.1
  * JD-Core Version:    0.7.0.1
  */

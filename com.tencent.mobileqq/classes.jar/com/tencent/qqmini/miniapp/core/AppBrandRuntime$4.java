@@ -4,12 +4,12 @@ import android.graphics.Bitmap;
 import android.view.ViewGroup;
 import com.tencent.qqmini.miniapp.core.page.PageWebview.WebviewShotCallback;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
+import com.tencent.qqmini.sdk.launcher.core.utils.ICaptureImageCallback;
 
 class AppBrandRuntime$4
   implements PageWebview.WebviewShotCallback
 {
-  AppBrandRuntime$4(AppBrandRuntime paramAppBrandRuntime, GetScreenshot.Callback paramCallback, ViewGroup paramViewGroup) {}
+  AppBrandRuntime$4(AppBrandRuntime paramAppBrandRuntime, ICaptureImageCallback paramICaptureImageCallback, ViewGroup paramViewGroup) {}
   
   public void onShotReady(Bitmap paramBitmap)
   {
@@ -27,7 +27,7 @@ class AppBrandRuntime$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.AppBrandRuntime.4
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class PfaFriend
   extends JceStruct
 {
-  public int month_remain_limit;
-  public int per_limit;
+  public int month_remain_limit = 0;
+  public int per_limit = 0;
   public String rec_desc = "";
-  public int type;
+  public int type = 0;
   public String uin = "";
   
   public void readFrom(JceInputStream paramJceInputStream)

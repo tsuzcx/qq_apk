@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PathTraceService
   extends Service
 {
-  static PathTraceService jdField_a_of_type_ComTencentMobileqqVashealthPathTraceService;
+  static PathTraceService jdField_a_of_type_ComTencentMobileqqVashealthPathTraceService = null;
   public static String a;
   public static String b = "status";
   public static String c = "time";
@@ -40,29 +40,29 @@ public class PathTraceService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 58	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3: getstatic 60	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   6: astore_0
-    //   7: new 60	android/content/Intent
+    //   7: new 62	android/content/Intent
     //   10: dup
     //   11: aload_0
     //   12: ldc 2
-    //   14: invokespecial 63	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   14: invokespecial 65	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   17: astore_1
     //   18: aload_0
     //   19: aload_1
-    //   20: invokevirtual 69	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
+    //   20: invokevirtual 71	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
     //   23: pop
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
     //   28: astore_0
-    //   29: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   29: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   32: ifeq -8 -> 24
-    //   35: ldc 77
+    //   35: ldc 79
     //   37: iconst_2
-    //   38: ldc 79
+    //   38: ldc 81
     //   40: aload_0
-    //   41: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   41: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   44: goto -20 -> 24
     //   47: astore_0
     //   48: ldc 2
@@ -89,31 +89,31 @@ public class PathTraceService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 60	android/content/Intent
+    //   3: new 62	android/content/Intent
     //   6: dup
-    //   7: getstatic 58	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   7: getstatic 60	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   10: ldc 2
-    //   12: invokespecial 63	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   12: invokespecial 65	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   15: astore_0
-    //   16: invokestatic 86	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   16: invokestatic 88	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   19: aload_0
-    //   20: invokevirtual 92	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
+    //   20: invokevirtual 94	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
     //   23: pop
-    //   24: ldc 77
+    //   24: ldc 79
     //   26: iconst_1
-    //   27: ldc 94
-    //   29: invokestatic 98	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   27: ldc 96
+    //   29: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   32: ldc 2
     //   34: monitorexit
     //   35: return
     //   36: astore_0
-    //   37: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   37: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   40: ifeq -16 -> 24
-    //   43: ldc 77
+    //   43: ldc 79
     //   45: iconst_2
-    //   46: ldc 79
+    //   46: ldc 81
     //   48: aload_0
-    //   49: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   49: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   52: goto -28 -> 24
     //   55: astore_0
     //   56: ldc 2
@@ -137,13 +137,13 @@ public class PathTraceService
   public Notification a(Context paramContext, PendingIntent paramPendingIntent)
   {
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder = new NotificationCompat.Builder(paramContext);
-    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(paramContext.getPackageName(), 2131559557);
+    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(paramContext.getPackageName(), 2131559629);
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setContentIntent(paramPendingIntent);
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setContentTitle("QQ运动");
-    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setSmallIcon(2130838403);
+    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setSmallIcon(2130838472);
     try
     {
-      paramContext = BitmapFactory.decodeResource(getResources(), 2130838403);
+      paramContext = BitmapFactory.decodeResource(getResources(), 2130838472);
       if (paramContext != null) {
         this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(paramContext);
       }
@@ -239,7 +239,7 @@ public class PathTraceService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService
  * JD-Core Version:    0.7.0.1
  */

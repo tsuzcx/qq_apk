@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aqvh;
+import com.tencent.mobileqq.confess.ConfessMsgUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class MessageHandler$16
@@ -12,8 +12,8 @@ class MessageHandler$16
   {
     try
     {
-      aqvh.b(this.this$0.app, false);
-      aqvh.a(this.this$0.app, false);
+      ConfessMsgUtil.b(this.this$0.a, false);
+      ConfessMsgUtil.a(this.this$0.a, false);
       this.this$0.e(this.a);
       return;
     }
@@ -26,7 +26,7 @@ class MessageHandler$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.16
  * JD-Core Version:    0.7.0.1
  */

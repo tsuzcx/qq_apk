@@ -2,6 +2,7 @@ package com.tencent.qqmini.miniapp.core.page;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 
 class BrandPageWebview$5$1
   implements Animation.AnimationListener
@@ -10,7 +11,7 @@ class BrandPageWebview$5$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    BrandPageWebview.access$700(this.this$1.this$0).onNewPageCompleted();
+    AppBrandTask.runTaskOnUiThreadDelay(new BrandPageWebview.5.1.1(this), 10L);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -19,7 +20,7 @@ class BrandPageWebview$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview.5.1
  * JD-Core Version:    0.7.0.1
  */

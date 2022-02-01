@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import albs;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,16 +8,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bifw;
-import bmhp;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.activity.qwallet.utils.H5HbUtil;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.pluginshare.TenCookie;
 import cooperation.vip.manager.MonitorManager;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 
 public class QWalletPayJsPlugin
   extends VasWebviewJsPlugin
+  implements IPreCreatePluginChecker
 {
   private static final String METHOD_NAME_OPENSUPERVIP = "openSuperVip";
   private static final String METHOD_NAME_QWALLETBRIDGE = "qWalletBridge";
@@ -39,7 +41,7 @@ public class QWalletPayJsPlugin
   public static SparseArray<String> mFirstUrls = new SparseArray();
   public static ArrayList<Integer> mSequence = new ArrayList();
   private AppInterface app;
-  private Activity mActivity;
+  private Activity mActivity = null;
   private String mCallback;
   private Context mContext;
   protected long mReceiveRequestTime;
@@ -70,11 +72,11 @@ public class QWalletPayJsPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin", "");
-    if ((!StringUtil.isEmpty(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
+    if ((!StringUtil.a(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
     {
-      Object localObject = bmhp.a().b(str1);
+      Object localObject = TenCookie.a().b(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (StringUtil.isEmpty((String)localObject)) {
+      if (StringUtil.a((String)localObject)) {
         paramJSONObject = SharedPreferencesProxyManager.getInstance().getProxy("common_h5_hb_info" + str2, 0).getString(str1, "");
       }
       if (QLog.isColorLevel()) {
@@ -142,7 +144,7 @@ public class QWalletPayJsPlugin
       if (QLog.isColorLevel()) {
         QLog.d("QWalletPayJsHandler", 2, "grapH5CommonHb params: " + paramJSONObject);
       }
-      paramJSONObject = albs.a(this.app, paramJSONObject);
+      paramJSONObject = H5HbUtil.a(this.app, paramJSONObject);
       if (QLog.isColorLevel()) {
         QLog.d("QWalletPayJsHandler", 2, "grapH5CommonHb extraData: " + paramJSONObject);
       }
@@ -151,7 +153,7 @@ public class QWalletPayJsPlugin
         if ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().getUrl() != null)) {
           paramJSONObject.put("domain", new URL(this.mRuntime.a().getUrl()).getHost());
         }
-        albs.a(this.app, paramJSONObject.toString(), this.mRecevicer);
+        H5HbUtil.a(this.app, paramJSONObject.toString(), this.mRecevicer);
         return;
       }
       handJsError("-1001", "params error");
@@ -215,7 +217,7 @@ public class QWalletPayJsPlugin
           paramString.putLong("payparmas_h5_start", this.mReceiveRequestTime);
           paramString.putLong("vacreport_key_seq", this.mReportSeq);
           paramString.putString("payparmas_h5_url", (String)localObject1);
-          PayBridgeActivity.a(this.mRuntime.a(), 11, paramString);
+          PayBridgeActivity.tenpay(this.mRuntime.a(), 11, paramString);
           return true;
         }
         catch (JSONException localJSONException)
@@ -289,7 +291,7 @@ public class QWalletPayJsPlugin
       if (bool) {
         try
         {
-          albs.a(this.app, localJSONObject, "redgiftH5CommonDetail", this.mRecevicer);
+          H5HbUtil.a(this.app, localJSONObject, "redgiftH5CommonDetail", this.mRecevicer);
         }
         catch (Throwable localThrowable)
         {
@@ -312,7 +314,12 @@ public class QWalletPayJsPlugin
     localBundle.putString("callbackSn", paramString);
     localBundle.putInt("payparmas_paytype", 1);
     localBundle.putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.a(this.mRuntime.a(), 7, localBundle);
+    PayBridgeActivity.tenpay(this.mRuntime.a(), 7, localBundle);
+  }
+  
+  public long getWebViewSchemaByNameSpace(String paramString)
+  {
+    return 32L;
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -382,6 +389,11 @@ public class QWalletPayJsPlugin
     return handleThemeAndBubbleSchemaRequest(paramString1, paramString2, "pay");
   }
   
+  public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
+  {
+    return paramString2.equals("qqjsbridge");
+  }
+  
   public void onCreate()
   {
     super.onCreate();
@@ -444,7 +456,7 @@ public class QWalletPayJsPlugin
     localBundle.putString("callbackSn", paramString);
     localBundle.putInt("payparmas_paytype", 1);
     localBundle.putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.a(this.mRuntime.a(), 4, localBundle);
+    PayBridgeActivity.tenpay(this.mRuntime.a(), 4, localBundle);
   }
   
   public void openTenpayView(JSONObject paramJSONObject, String paramString)
@@ -457,7 +469,7 @@ public class QWalletPayJsPlugin
     localBundle.putString("callbackSn", paramString);
     localBundle.putInt("payparmas_paytype", 1);
     localBundle.putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.a(this.mRuntime.a(), 5, localBundle);
+    PayBridgeActivity.tenpay(this.mRuntime.a(), 5, localBundle);
   }
   
   public void pay(JSONObject paramJSONObject, String paramString)
@@ -471,7 +483,7 @@ public class QWalletPayJsPlugin
     localBundle.putString("payparmas_url_appinfo", getPayAppInfo());
     localBundle.putInt("payparmas_paytype", 1);
     localBundle.putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.a(this.mRuntime.a(), 9, localBundle);
+    PayBridgeActivity.tenpay(this.mRuntime.a(), 9, localBundle);
   }
   
   public void rechargeGameCurrency(JSONObject paramJSONObject, String paramString)
@@ -484,7 +496,7 @@ public class QWalletPayJsPlugin
     localBundle.putString("callbackSn", paramString);
     localBundle.putInt("payparmas_paytype", 1);
     localBundle.putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.a(this.mRuntime.a(), 6, localBundle);
+    PayBridgeActivity.tenpay(this.mRuntime.a(), 6, localBundle);
   }
   
   public void rechargeQb(JSONObject paramJSONObject, String paramString)
@@ -497,12 +509,12 @@ public class QWalletPayJsPlugin
     localBundle.putString("callbackSn", paramString);
     localBundle.putInt("payparmas_paytype", 1);
     localBundle.putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.a(this.mRuntime.a(), 8, localBundle);
+    PayBridgeActivity.tenpay(this.mRuntime.a(), 8, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,8 @@ package cooperation.qzone.util;
 
 import android.content.Intent;
 import android.os.SystemClock;
+import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -125,7 +127,7 @@ public final class PerfTracer
   private static final String SUB_TAG = "FeedsScrollPerformanceAutoMonitor";
   private static final String TAG = "Perf.Qzone";
   public static final String THREADTIME_TAG = "threadtime";
-  public static final boolean TRACE = false;
+  public static final boolean TRACE = true;
   public static final String UPLOADPHOTO_INITDATA = "UploadPhoto_initData";
   public static final String UPLOADPHOTO_INITEMOVIEW = "UploadPhoto_initEmoView";
   public static final String UPLOADPHOTO_INITUI = "UploadPhoto_initUI";
@@ -156,10 +158,27 @@ public final class PerfTracer
   
   public static void trace(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    System.currentTimeMillis();
-    SystemClock.currentThreadTimeMillis();
+    long l1 = System.currentTimeMillis();
+    long l2 = SystemClock.currentThreadTimeMillis();
     TimeCostTrace.getTrace("qzone_launch").stopStep(paramString1);
     TimeCostTrace.getTrace("qzone_launch").startStep(paramString2);
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      Long localLong1 = (Long)sLogs.remove(paramString1);
+      Long localLong2 = (Long)sLogs.remove(paramString1 + "threadtime");
+      if ((localLong1 != null) && (localLong1.longValue() != 0L) && (localLong2 != null) && (localLong2.longValue() != 0L))
+      {
+        Log.i("Perf.Qzone", "FeedsScrollPerformanceAutoMonitor" + paramString1 + "position," + paramInt + "  , cost=" + (l1 - localLong1.longValue()) + ", costThreadtime:" + (l2 - localLong2.longValue()));
+        if (paramBoolean) {
+          reportTracePerf(paramString1, l1 - localLong1.longValue());
+        }
+      }
+    }
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      sLogs.put(paramString2, Long.valueOf(l1));
+      sLogs.put(paramString2 + "threadtime", Long.valueOf(l2));
+    }
   }
   
   public static void traceClick2Activity(Intent paramIntent)
@@ -171,6 +190,8 @@ public final class PerfTracer
       return;
       l = paramIntent.getLongExtra("click_time", 0L);
     } while (l <= 0L);
+    sLogs.put("click2LoadActivityCreate", Long.valueOf(l));
+    sLogs.put("click2LoadCompleted", Long.valueOf(l));
     boolean bool = paramIntent.getBooleanExtra("QZoneExtra.Plugin.isloading", false);
     int i = paramIntent.getIntExtra("startup_sceneid", -1);
     TimeCostTrace.getTrace("qzone_launch").markFirst(l, i, bool);

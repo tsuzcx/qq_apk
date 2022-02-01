@@ -1,13 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bpaq;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
-import ykq;
 
-public class PersonalityOperator$1
+class PersonalityOperator$1
   implements Runnable
 {
-  public PersonalityOperator$1(bpaq parambpaq, VideoMaterial paramVideoMaterial) {}
+  PersonalityOperator$1(PersonalityOperator paramPersonalityOperator, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
@@ -15,12 +14,12 @@ public class PersonalityOperator$1
     this.this$0.a(this.a.getId());
     this.this$0.a(this.this$0.a, this.this$0.b, 1.0D);
     long l2 = System.currentTimeMillis();
-    ykq.b("PersonalityOperator", "setVideoFilter " + this.a.getId() + " t:" + (l2 - l1));
+    SLog.b("PersonalityOperator", "setVideoFilter " + this.a.getId() + " t:" + (l2 - l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator.1
  * JD-Core Version:    0.7.0.1
  */

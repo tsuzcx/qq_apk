@@ -12,8 +12,8 @@ public final class ReqGetBlackList
   static ReqHeader cache_stHeader;
   public int eListType = 1;
   public int eType = 0;
-  public long lNextMid;
-  public ReqHeader stHeader;
+  public long lNextMid = 0L;
+  public ReqHeader stHeader = null;
   
   public ReqGetBlackList() {}
   

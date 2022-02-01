@@ -4,10 +4,10 @@ import MQQ.QqLiveMsg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bluv;
-import blvm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.config.IliveConfigBean;
+import cooperation.ilive.util.IliveEntranceUtil;
 import mqq.app.AppRuntime;
 
 public class IliveDbManager
@@ -63,7 +63,7 @@ public class IliveDbManager
     }
   }
   
-  public static bluv getIliveConfigBean(int paramInt)
+  public static IliveConfigBean getIliveConfigBean(int paramInt)
   {
     Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
     String str = "";
@@ -76,7 +76,7 @@ public class IliveDbManager
       if (QLog.isColorLevel()) {
         QLog.d("IliveFileDbManager", 1, "getIliveConfigBean get sp key:" + str + " json value = " + (String)localObject);
       }
-      return bluv.a((String)localObject);
+      return IliveConfigBean.a((String)localObject);
       str = "ilive_plugin_new_data";
       continue;
       str = "ilive_plugin_last_use";
@@ -115,9 +115,9 @@ public class IliveDbManager
     }
   }
   
-  public static boolean saveIliveConfigBean(int paramInt, bluv parambluv)
+  public static boolean saveIliveConfigBean(int paramInt, IliveConfigBean paramIliveConfigBean)
   {
-    if (parambluv == null) {
+    if (paramIliveConfigBean == null) {
       return false;
     }
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
@@ -127,10 +127,10 @@ public class IliveDbManager
     }
     for (;;)
     {
-      parambluv = bluv.a(parambluv);
-      boolean bool = localSharedPreferences.edit().putString(str, parambluv).commit();
+      paramIliveConfigBean = IliveConfigBean.a(paramIliveConfigBean);
+      boolean bool = localSharedPreferences.edit().putString(str, paramIliveConfigBean).commit();
       if (QLog.isColorLevel()) {
-        QLog.d("IliveFileDbManager", 1, "saveIliveConfigBean set sp key:" + str + " json value = " + parambluv);
+        QLog.d("IliveFileDbManager", 1, "saveIliveConfigBean set sp key:" + str + " json value = " + paramIliveConfigBean);
       }
       return bool;
       str = "ilive_plugin_new_data";
@@ -198,14 +198,14 @@ public class IliveDbManager
     if (paramQqLiveMsg == null) {
       return;
     }
-    bluv localbluv = new bluv();
-    localbluv.jdField_a_of_type_Boolean = blvm.c();
-    localbluv.c = paramQqLiveMsg.anchorUrl;
-    localbluv.d = paramQqLiveMsg.anchorUrlMd5;
-    localbluv.jdField_a_of_type_JavaLangString = paramQqLiveMsg.viewerUrl;
-    localbluv.b = paramQqLiveMsg.viewerUrlMd5;
-    QLog.e("IliveFileDbManager", 1, "saveIlivePluginConfig anchorMd5 = " + localbluv.d + " mWatchPluginMd5 = " + localbluv.b);
-    saveIliveConfigBean(1, localbluv);
+    IliveConfigBean localIliveConfigBean = new IliveConfigBean();
+    localIliveConfigBean.jdField_a_of_type_Boolean = IliveEntranceUtil.c();
+    localIliveConfigBean.c = paramQqLiveMsg.anchorUrl;
+    localIliveConfigBean.d = paramQqLiveMsg.anchorUrlMd5;
+    localIliveConfigBean.jdField_a_of_type_JavaLangString = paramQqLiveMsg.viewerUrl;
+    localIliveConfigBean.b = paramQqLiveMsg.viewerUrlMd5;
+    QLog.e("IliveFileDbManager", 1, "saveIlivePluginConfig anchorMd5 = " + localIliveConfigBean.d + " mWatchPluginMd5 = " + localIliveConfigBean.b);
+    saveIliveConfigBean(1, localIliveConfigBean);
   }
   
   public static boolean saveIliveSwitch(int paramInt1, int paramInt2)
@@ -231,7 +231,7 @@ public class IliveDbManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.ilive.manager.IliveDbManager
  * JD-Core Version:    0.7.0.1
  */

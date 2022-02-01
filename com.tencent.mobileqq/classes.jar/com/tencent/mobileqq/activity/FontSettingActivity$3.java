@@ -1,0 +1,27 @@
+package com.tencent.mobileqq.activity;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class FontSettingActivity$3
+  implements View.OnClickListener
+{
+  FontSettingActivity$3(FontSettingActivity paramFontSettingActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (FontSettingManager.setCustomDensity(this.a, FontSettingActivity.a(this.a), true)) {
+      FontSettingManager.killProcess();
+    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity.3
+ * JD-Core Version:    0.7.0.1
+ */

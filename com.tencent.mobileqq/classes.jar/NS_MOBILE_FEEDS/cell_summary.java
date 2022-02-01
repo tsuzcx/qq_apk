@@ -15,15 +15,15 @@ public final class cell_summary
   static Map<String, byte[]> cache_mapProtoExt;
   static sparkle_word cache_sparkleword;
   static ArrayList<s_picdata> cache_summarypic = new ArrayList();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public int hasmore;
-  public Map<String, String> mapExt;
-  public Map<String, byte[]> mapProtoExt;
+  public int hasmore = 0;
+  public Map<String, String> mapExt = null;
+  public Map<String, byte[]> mapProtoExt = null;
   public String more_info = "";
-  public sparkle_word sparkleword;
+  public sparkle_word sparkleword = null;
   public String summary = "";
-  public ArrayList<s_picdata> summarypic;
+  public ArrayList<s_picdata> summarypic = null;
   
   static
   {

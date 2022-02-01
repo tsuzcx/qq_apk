@@ -1,23 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
 import android.content.Context;
-import anvx;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
+import com.tencent.biz.pubaccount.readinjoy.viewmodels.ArticleViewModel;
+import com.tencent.biz.pubaccount.readinjoy.viewmodels.Observable;
+import com.tencent.biz.pubaccount.readinjoy.viewmodels.Observer;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import qfw;
-import qvv;
-import rfw;
-import ttb;
-import ttc;
-import ttd;
 
 public class NativeBiuCommentView
   extends NativeCommentView
-  implements IView, ttd<CharSequence>
+  implements IView, Observer<CharSequence>
 {
   public NativeBiuCommentView(Context paramContext)
   {
@@ -29,25 +28,25 @@ public class NativeBiuCommentView
   private void b()
   {
     QLog.d("NativeBiuCommentView", 2, "bindRecommendCommentHeader | linkTextColor " + this.b);
-    if (this.jdField_a_of_type_Ttb != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsArticleViewModel != null)
     {
-      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_Ttb.a();
+      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsArticleViewModel.a();
       a(localArticleInfo);
       setMaxLines(a(localArticleInfo));
-      setSpanText(anvx.a(2131706542));
-      setMoreSpan(new qvv(this, localArticleInfo, this.b));
-      this.jdField_a_of_type_Ttb.a(this.b);
-      this.jdField_a_of_type_Ttc = this.jdField_a_of_type_Ttb.c();
-      this.jdField_a_of_type_Ttc.a(this);
-      QLog.d("NativeBiuCommentView", 2, "bindRecommendCommentHeader: " + this.jdField_a_of_type_Ttc.a());
-      setText((CharSequence)this.jdField_a_of_type_Ttc.a());
+      setSpanText(HardCodeUtil.a(2131707083));
+      setMoreSpan(new NativeBiuCommentView.MoreSpan(this, localArticleInfo, this.b));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsArticleViewModel.a(this.b);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsArticleViewModel.c();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.a(this);
+      QLog.d("NativeBiuCommentView", 2, "bindRecommendCommentHeader: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.a());
+      setText((CharSequence)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.a());
     }
   }
   
-  public void a(ttc<CharSequence> paramttc)
+  public void a(Observable<CharSequence> paramObservable)
   {
-    paramttc = (CharSequence)paramttc.a();
-    ThreadManager.getUIHandler().post(new NativeBiuCommentView.1(this, paramttc));
+    paramObservable = (CharSequence)paramObservable.a();
+    ThreadManager.getUIHandler().post(new NativeBiuCommentView.1(this, paramObservable));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -80,32 +79,32 @@ public class NativeBiuCommentView
     measure(paramInt1, paramInt2);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Ttc != null) {
-      this.jdField_a_of_type_Ttc.b(this);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.b(this);
     }
   }
   
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    if (this.jdField_a_of_type_Ttc != null) {
-      this.jdField_a_of_type_Ttc.b(this);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsObservable.b(this);
     }
   }
   
-  public void setModel(qfw paramqfw)
+  public void setModel(IReadInJoyModel paramIReadInJoyModel)
   {
-    this.jdField_a_of_type_Rfw.a(paramqfw);
-    this.jdField_a_of_type_Ttb = paramqfw.a().articleViewModel;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramIReadInJoyModel);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewmodelsArticleViewModel = paramIReadInJoyModel.a().articleViewModel;
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeBiuCommentView
  * JD-Core Version:    0.7.0.1
  */

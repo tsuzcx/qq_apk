@@ -7,23 +7,24 @@ import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdla;
-import bhon;
-import biex;
-import bifb;
-import bifw;
-import bihv;
-import biko;
-import bizo;
+import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.log.VipWebViewReportLog;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.URLInterceptManager;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
+import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebviewReportSpeedInterface;
+import com.tencent.mqpsdk.util.NetUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
@@ -31,7 +32,6 @@ import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import nwo;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,9 +47,9 @@ public class VasWebReport
   public static final int WEB_CORE_HTTP_CAPTURE = 2;
   public static final int WEB_CORE_PERFORMANCE_DATA = 1;
   private Map<String, Integer> errorMap = new HashMap();
-  private JSONObject mFirstScreenPerformanceObject;
-  private JSONObject mIndexPerformanceObject;
-  bhon mURLInterceptManager;
+  private JSONObject mFirstScreenPerformanceObject = null;
+  private JSONObject mIndexPerformanceObject = null;
+  URLInterceptManager mURLInterceptManager;
   private int mWebCoreDumpFlags;
   private int mWebCoreDumpHandlePolicy;
   private Map<String, Long> startTimeMap = new HashMap();
@@ -95,10 +95,10 @@ public class VasWebReport
               long l5 = paramString.optLong("recv_end");
               QLog.d("Web_X5_Performance", 1, "Web_X5_Load_Index, dns start: " + l1 + ", connect start: " + l2 + ", send start: " + l3 + ", receive first packet start: " + l4 + ", receive last packet end: " + l5);
               paramJSONObject = this.mRuntime.a(this.mRuntime.a());
-              if ((paramJSONObject == null) || (!(paramJSONObject instanceof biko))) {
+              if ((paramJSONObject == null) || (!(paramJSONObject instanceof WebUiUtils.WebviewReportSpeedInterface))) {
                 break label420;
               }
-              ((biko)paramJSONObject).setX5Performance(paramString);
+              ((WebUiUtils.WebviewReportSpeedInterface)paramJSONObject).setX5Performance(paramString);
               this.mIndexPerformanceObject = null;
               this.mFirstScreenPerformanceObject = null;
               return;
@@ -134,8 +134,8 @@ public class VasWebReport
             }
           }
         }
-      } while (!(this.mRuntime.a() instanceof biex));
-      paramJSONObject = (bihv)super.getBrowserComponent(-2);
+      } while (!(this.mRuntime.a() instanceof SwiftWebViewFragmentSupporter));
+      paramJSONObject = (SwiftBrowserStatistics)super.getBrowserComponent(-2);
     } while (paramJSONObject == null);
     paramJSONObject.a = paramString;
     this.mIndexPerformanceObject = null;
@@ -172,11 +172,11 @@ public class VasWebReport
         localJSONObject.optLong("connect_end");
         localJSONObject.optLong("recv_start");
         localJSONObject.optLong("recv_end");
-        bifb localbifb = this.mRuntime.a(this.mRuntime.a());
-        if ((localbifb == null) || (!(localbifb instanceof biko))) {
+        WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+        if ((localWebUiBaseInterface == null) || (!(localWebUiBaseInterface instanceof WebUiUtils.WebviewReportSpeedInterface))) {
           break label298;
         }
-        ((biko)localbifb).setX5Performance(localJSONObject);
+        ((WebUiUtils.WebviewReportSpeedInterface)localWebUiBaseInterface).setX5Performance(localJSONObject);
       }
       catch (Exception paramJSONObject)
       {
@@ -240,9 +240,9 @@ public class VasWebReport
             k = (int)(l6 - l5);
             m = paramJSONObject.optInt("errorcode");
             localObject = paramJSONObject.optString("website_address");
-            int n = bizo.a(null);
+            int n = NetUtil.a(null);
             if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountWebReport", 2, "urlStr: " + str3 + ",errorcode:" + m + ",netType:" + n + ",DNSCost" + i + ",connectCost:" + j + ",receiveCost:" + k + ",website_address:" + (String)localObject + ",AppSetting.subVersion:" + "8.4.10,3,4875");
+              QLog.i("PublicAccountWebReport", 2, "urlStr: " + str3 + ",errorcode:" + m + ",netType:" + n + ",DNSCost" + i + ",connectCost:" + j + ",receiveCost:" + k + ",website_address:" + (String)localObject + ",AppSetting.subVersion:" + "8.5.5,3,5105");
             }
           }
           if (!str2.equalsIgnoreCase(str1)) {
@@ -291,6 +291,11 @@ public class VasWebReport
       }
     } while (!QLog.isColorLevel());
     QLog.d("VasWebReport", 2, "Activity is null");
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 96L;
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -386,12 +391,12 @@ public class VasWebReport
         }
         paramMap = paramMap.get("errorCode");
         if (!(paramMap instanceof Integer)) {
-          break label1193;
+          break label1196;
         }
       }
     }
-    label933:
-    label1193:
+    label936:
+    label1196:
     for (paramMap = (Integer)paramMap;; paramMap = Integer.valueOf(0))
     {
       if (((this.mWebCoreDumpHandlePolicy & 0x1) != 0) && (localWebResourceRequest != null)) {
@@ -437,39 +442,39 @@ public class VasWebReport
             return false;
           }
           localObject1 = this.mRuntime.a().getApplicationContext();
-          if (2 != NetworkUtil.getSystemNetwork((Context)localObject1)) {
-            break label933;
+          if (2 != NetworkUtil.a((Context)localObject1)) {
+            break label936;
           }
           paramMap = "2G";
         }
         for (;;)
         {
           if (!this.errorMap.containsKey(paramString)) {
-            break label984;
+            break label987;
           }
-          bdla.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, "errocode:" + this.errorMap.get(paramString), paramMap, nwo.b(paramString, new String[0]), "8.4.10--android--" + Build.VERSION.SDK_INT);
+          ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, "errocode:" + this.errorMap.get(paramString), paramMap, Util.b(paramString, new String[0]), "8.5.5--android--" + Build.VERSION.SDK_INT);
           this.errorMap.remove(paramString);
           this.startTimeMap.remove(paramString);
           paramString = this.mRuntime.a();
-          paramMap = this.mRuntime.a();
+          paramMap = (WebViewFragment)this.mRuntime.a();
           if ((paramMap == null) || (paramMap.browserApp == null) || (paramMap.browserApp.a != null)) {
             break;
           }
-          paramMap.browserApp.a = new bhon(paramString);
+          paramMap.browserApp.a = new URLInterceptManager(paramString);
           break;
-          if (3 == NetworkUtil.getSystemNetwork((Context)localObject1)) {
+          if (3 == NetworkUtil.a((Context)localObject1)) {
             paramMap = "3G";
-          } else if (4 == NetworkUtil.getSystemNetwork((Context)localObject1)) {
+          } else if (4 == NetworkUtil.a((Context)localObject1)) {
             paramMap = "4G";
-          } else if (1 == NetworkUtil.getSystemNetwork((Context)localObject1)) {
+          } else if (1 == NetworkUtil.a((Context)localObject1)) {
             paramMap = "WIFI";
           }
         }
-        label984:
+        label987:
         if (this.startTimeMap.containsKey(paramString)) {}
         for (paramLong = System.currentTimeMillis() - ((Long)this.startTimeMap.get(paramString)).longValue();; paramLong = -1L)
         {
-          bdla.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, "" + paramLong, paramMap, nwo.b(paramString, new String[0]), "8.4.10--android--" + Build.VERSION.SDK_INT);
+          ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, "" + paramLong, paramMap, Util.b(paramString, new String[0]), "8.5.5--android--" + Build.VERSION.SDK_INT);
           break;
           if (QLog.isColorLevel()) {
             QLog.e("VasWebReport", 2, "VasWebReport--EVENT_LOAD_FINISH:report erro,there is not starttime for " + paramString);
@@ -493,11 +498,11 @@ public class VasWebReport
   {
     if (("debug".equalsIgnoreCase(paramString2)) && ("log".equalsIgnoreCase(paramString3)))
     {
-      paramJsBridgeListener = (bihv)super.getBrowserComponent(-2);
+      paramJsBridgeListener = (SwiftBrowserStatistics)super.getBrowserComponent(-2);
       if (paramJsBridgeListener != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("QQBrowser_report", 2, "try report web status, onNetworkCost,  step: 11, asyncMode: " + paramJsBridgeListener.jdField_b_of_type_Int + ", from loadUrl: " + (System.currentTimeMillis() - paramJsBridgeListener.q) + ", stepTime: " + (System.currentTimeMillis() - paramJsBridgeListener.jdField_b_of_type_Long) + ", totalTime: " + (System.currentTimeMillis() - paramJsBridgeListener.jdField_b_of_type_Long) + ", \n " + paramString1);
+          QLog.d("QQBrowser_report", 2, "try report web status, onNetworkCost,  step: 11, asyncMode: " + paramJsBridgeListener.jdField_b_of_type_Int + ", from loadUrl: " + (System.currentTimeMillis() - paramJsBridgeListener.r) + ", stepTime: " + (System.currentTimeMillis() - paramJsBridgeListener.jdField_b_of_type_Long) + ", totalTime: " + (System.currentTimeMillis() - paramJsBridgeListener.jdField_b_of_type_Long) + ", \n " + paramString1);
         }
         return true;
       }
@@ -515,7 +520,7 @@ public class VasWebReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebReport
  * JD-Core Version:    0.7.0.1
  */

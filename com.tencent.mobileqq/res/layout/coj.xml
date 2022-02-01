@@ -1,37 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:id="@id/b5j" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.image.URLImageView android:id="@id/a4i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <FrameLayout android:id="@id/o3z" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <FrameLayout android:layout_gravity="center" android:id="@id/krz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center|right|top" android:id="@id/eha" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/bb5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        </FrameLayout>
-        <include android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/abg" />
-    </FrameLayout>
-    <RelativeLayout android:id="@id/kqx" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:id="@id/dm5" android:layout_width="fill_parent" android:layout_height="240.0dip" android:layout_alignParentBottom="true" tencent:mask_mode="10" />
-        <FrameLayout android:id="@id/o1q" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_alignParentTop="true">
-            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView android:layout_gravity="center" android:id="@id/o1r" android:visibility="gone" android:layout_width="153.0dip" android:layout_height="28.0dip" />
-        </FrameLayout>
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView android:id="@id/o1p" android:visibility="gone" android:layout_width="153.0dip" android:layout_height="28.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="12.0dip" android:layout_above="@id/jln" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/jl5" android:layout_alignParentRight="true" layout="@layout/as8" />
-        <LinearLayout android:orientation="vertical" android:id="@id/jln" android:paddingLeft="15.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="86.0dip" android:layout_marginBottom="8.0dip" android:layout_above="@id/jl5">
-            <LinearLayout android:orientation="vertical" android:id="@id/o4b" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <include layout="@layout/com" />
-                <include android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/cok" />
-                <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTitleTextView android:textSize="14.0dip" android:textColor="#d8ffffff" android:ellipsize="end" android:gravity="left" android:id="@id/jq3" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="8.0dip" android:text="" android:maxLines="3" android:layout_weight="1.0" android:lineSpacingExtra="2.0dip" />
+<FrameLayout android:id="@id/oi6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <FrameLayout android:id="@id/oi4" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="320.0dip" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/al_" android:layout_gravity="center_horizontal" android:id="@id/oia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="拖动蓝框截取封面" android:alpha="0.35" />
+            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/oi9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="51.0dip" android:text="00:00" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="69.0dip">
+                <com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout android:id="@id/oi8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <android.support.v7.widget.RecyclerView android:id="@id/oi_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" android:foreground="@color/fw" />
+                    <ImageView android:id="@id/oi5" android:background="@drawable/e9a" android:padding="3.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:scaleType="centerCrop" android:cropToPadding="true" />
+                </com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout>
+                <com.tencent.biz.pubaccount.readinjoy.view.VideoMeasureScaleView android:id="@id/oi7" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginTop="6.0dip" />
             </LinearLayout>
-            <ViewStub android:id="@id/gfc" android:visibility="gone" android:layout="@layout/ab7" android:layout_width="218.0dip" android:layout_height="128.0dip" android:layout_marginBottom="10.0dip" />
-        </LinearLayout>
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/dm2" layout="@layout/col" />
-        <include android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_above="@id/lii" layout="@layout/arj" />
-        <FrameLayout android:id="@id/lii" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
-            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/o49" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="12.0dip" />
-            <TextView android:textSize="14.0sp" android:textColor="#b3b3b3b3" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="46.0dip" android:text="@string/xoj" />
         </FrameLayout>
-        <ViewStub android:id="@id/hxi" android:layout="@layout/aqd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </RelativeLayout>
-    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView android:id="@id/b5u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
 </FrameLayout>

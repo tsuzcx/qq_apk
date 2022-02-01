@@ -7,7 +7,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/hippy/qq/module/tkd/TKDCommentBizModule$hippyCommentEvent$1", "Lcom/tencent/hippy/qq/utils/tkd/TKDCommentDispatcher$HippyCommentEvent;", "jScloseComment", "", "onFontScaleChange", "scaleFactor", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/hippy/qq/module/tkd/TKDCommentBizModule$hippyCommentEvent$1", "Lcom/tencent/hippy/qq/utils/tkd/TKDCommentDispatcher$HippyCommentEvent;", "jScloseComment", "", "onFontScaleChange", "scaleFactor", "", "refreshNewAndHotData", "hippyMap", "Lcom/tencent/mtt/hippy/common/HippyMap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class TKDCommentBizModule$hippyCommentEvent$1
   implements TKDCommentDispatcher.HippyCommentEvent
 {
@@ -84,10 +84,16 @@ public final class TKDCommentBizModule$hippyCommentEvent$1
   {
     TKDCommentDispatcher.HippyCommentEvent.DefaultImpls.openComment(this);
   }
+  
+  public void refreshNewAndHotData(@NotNull HippyMap paramHippyMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHippyMap, "hippyMap");
+    this.this$0.sendEventToJs("@comment:refreshNewAndHot", paramHippyMap);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.module.tkd.TKDCommentBizModule.hippyCommentEvent.1
  * JD-Core Version:    0.7.0.1
  */

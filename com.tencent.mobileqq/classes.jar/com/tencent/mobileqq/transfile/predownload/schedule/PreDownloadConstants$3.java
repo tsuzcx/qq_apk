@@ -100,6 +100,8 @@ final class PreDownloadConstants$3
     put(Integer.valueOf(10093), Integer.valueOf(0));
     put(Integer.valueOf(10094), Integer.valueOf(2));
     put(Integer.valueOf(10095), Integer.valueOf(4));
+    put(Integer.valueOf(10096), Integer.valueOf(1));
+    put(Integer.valueOf(10097), Integer.valueOf(2));
   }
 }
 

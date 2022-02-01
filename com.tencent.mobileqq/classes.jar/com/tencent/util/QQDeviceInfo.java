@@ -1,6 +1,7 @@
 package com.tencent.util;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -16,13 +17,10 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.util.Xml;
-import bhhr;
-import bkyg;
 import com.tencent.beacon.event.UserAction;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.BaseSharedPreUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
@@ -67,7 +65,7 @@ public class QQDeviceInfo
     mAndroidId = getIMEIFromSp("android_id");
     if (TextUtils.isEmpty(mAndroidId))
     {
-      mAndroidId = Settings.System.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
+      mAndroidId = Settings.System.getString(BaseApplication.getContext().getContentResolver(), "android_id");
       saveIMEI2Sp("android_id", mAndroidId);
     }
     return mAndroidId;
@@ -85,10 +83,10 @@ public class QQDeviceInfo
     }
   }
   
-  public static bkyg getDeviceInfo(String paramString)
+  public static QQDeviceInfo.Entity getDeviceInfo(String paramString)
   {
     getLevelByBIdAndVerify(paramString);
-    return new bkyg(getIMEI(), getQIMEI(), getAndroidID());
+    return new QQDeviceInfo.Entity(getIMEI(), getQIMEI(), getAndroidID());
   }
   
   private static String getHuaweiOaid()
@@ -121,7 +119,7 @@ public class QQDeviceInfo
     {
       try
       {
-        localTelephonyManager = (TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone");
+        localTelephonyManager = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
         if (Build.VERSION.SDK_INT >= 26) {
           continue;
         }
@@ -164,7 +162,7 @@ public class QQDeviceInfo
     }
     initIMEI();
     initHuaweiOaid(true);
-    if (((Build.VERSION.SDK_INT > 28) || ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getApplication().checkSelfPermission("android.permission.READ_PHONE_STATE") != 0))) && (TextUtils.isEmpty(mImei))) {
+    if (((Build.VERSION.SDK_INT > 28) || ((Build.VERSION.SDK_INT >= 23) && (BaseApplication.getContext().checkSelfPermission("android.permission.READ_PHONE_STATE") != 0))) && (TextUtils.isEmpty(mImei))) {
       if (i >= 5) {
         paramString = getQIMEI();
       }
@@ -199,7 +197,7 @@ public class QQDeviceInfo
   
   private static String getIMEIFromSp(String paramString)
   {
-    String str = BaseApplicationImpl.getContext().getSharedPreferences("authority", 4).getString(paramString, "");
+    String str = BaseApplication.getContext().getSharedPreferences("authority", 4).getString(paramString, "");
     paramString = str;
     if (TextUtils.isEmpty(str)) {
       paramString = "";
@@ -210,7 +208,7 @@ public class QQDeviceInfo
   public static String getIMSI(String paramString)
   {
     getLevelByBIdAndVerify(paramString);
-    paramString = (TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone");
+    paramString = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
     try
     {
       paramString = paramString.getSubscriberId();
@@ -258,7 +256,7 @@ public class QQDeviceInfo
   public static String getMAC(String paramString)
   {
     getLevelByBIdAndVerify(paramString);
-    paramString = (WifiManager)BaseApplicationImpl.getContext().getSystemService("wifi");
+    paramString = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
     try
     {
       paramString = paramString.getConnectionInfo().getMacAddress();
@@ -277,8 +275,8 @@ public class QQDeviceInfo
   
   public static String getNoLoginUserId()
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    String str2 = (String)bhhr.a(localBaseApplication, "0", "key_no_login_user_id", "");
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    String str2 = (String)BaseSharedPreUtil.a(localBaseApplication, "0", "key_no_login_user_id", "");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "";
@@ -295,7 +293,7 @@ public class QQDeviceInfo
     }
     str2 = UUID.randomUUID().toString();
     str1 = MD5.toMD5(str1 + str2);
-    bhhr.a(localBaseApplication, "0", false, "key_no_login_user_id", str1);
+    BaseSharedPreUtil.a(localBaseApplication, "0", false, "key_no_login_user_id", str1);
     return str1;
   }
   
@@ -305,30 +303,28 @@ public class QQDeviceInfo
   }
   
   @SuppressLint({"HardwareIds"})
-  public static String getSerial()
+  public static String getSerial(Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT < 26) {
       return Build.SERIAL;
     }
-    if (Build.VERSION.SDK_INT > 28) {}
-    Object localObject = BaseActivity.sTopActivity;
-    if (localObject == null) {
+    if ((Build.VERSION.SDK_INT <= 28) || (paramActivity == null)) {
       return "unknown";
     }
-    if (((BaseActivity)localObject).checkSelfPermission("android.permission.READ_PHONE_STATE") != 0) {
-      ((BaseActivity)localObject).requestPermissions(new String[] { "android.permission.READ_PHONE_STATE" }, 1);
+    if (paramActivity.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0) {
+      paramActivity.requestPermissions(new String[] { "android.permission.READ_PHONE_STATE" }, 1);
     }
     for (;;)
     {
       return "unknown";
       try
       {
-        localObject = Build.getSerial();
-        return localObject;
+        paramActivity = Build.getSerial();
+        return paramActivity;
       }
-      catch (SecurityException localSecurityException)
+      catch (SecurityException paramActivity)
       {
-        QLog.e(TAG, 2, localSecurityException, new Object[0]);
+        QLog.e(TAG, 2, paramActivity, new Object[0]);
       }
     }
   }
@@ -336,7 +332,7 @@ public class QQDeviceInfo
   private static void initBusiIdData()
   {
     localHashMap = new HashMap();
-    Object localObject = BaseApplicationImpl.getContext();
+    Object localObject = BaseApplication.getContext();
     for (;;)
     {
       try
@@ -418,12 +414,12 @@ public class QQDeviceInfo
     HashMap localHashMap = new HashMap();
     String str = TAG + "_getHuaweiOaid";
     localHashMap.put("huawei_oaid", mHuaweiOaid);
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, str, true, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, 0L, 0L, localHashMap, null);
   }
   
   private static void saveIMEI2Sp(String paramString1, String paramString2)
   {
-    BaseApplicationImpl.getContext().getSharedPreferences("authority", 4).edit().putString(paramString1, paramString2).apply();
+    BaseApplication.getContext().getSharedPreferences("authority", 4).edit().putString(paramString1, paramString2).apply();
   }
   
   private static int stringToInt(String paramString, int paramInt)

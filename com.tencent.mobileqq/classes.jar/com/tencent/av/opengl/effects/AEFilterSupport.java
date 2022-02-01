@@ -3,30 +3,29 @@ package com.tencent.av.opengl.effects;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import bbhm;
-import bnky;
+import com.tencent.av.core.VcSystemInfo;
+import com.tencent.av.utils.QAVConfigUtils;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import llq;
-import lor;
-import los;
-import lph;
-import mtr;
+import dov.com.qq.im.ae.download.AEResUtil;
 
 public class AEFilterSupport
 {
   private static int jdField_a_of_type_Int = 0;
   private static long jdField_a_of_type_Long;
+  private static AEFilterSupport.MachineInfo jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineInfo = null;
+  private static final AEFilterSupport.MachineLevelLine jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineLevelLine = new AEFilterSupport.MachineLevelLine(21, 4, 1.1F, 2.7F);
   private static final Object jdField_a_of_type_JavaLangObject;
   private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static lor jdField_a_of_type_Lor;
-  private static final los jdField_a_of_type_Los = new los(21, 4, 1.1F, 2.7F);
-  private static int jdField_b_of_type_Int;
-  private static final los jdField_b_of_type_Los = new los(27, 8, 1.8F, 5.0F);
+  private static int jdField_b_of_type_Int = 0;
+  private static final AEFilterSupport.MachineLevelLine jdField_b_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineLevelLine = new AEFilterSupport.MachineLevelLine(27, 8, 1.8F, 5.0F);
   
   static
   {
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_JavaLangRunnable = null;
     jdField_a_of_type_JavaLangObject = new Object();
   }
   
@@ -35,21 +34,21 @@ public class AEFilterSupport
     if (jdField_b_of_type_Int != 0) {
       return jdField_b_of_type_Int;
     }
-    String str1 = mtr.a("machineMiddleLine");
-    String str2 = mtr.a("machineHighLine");
-    jdField_a_of_type_Los.a(str1);
-    jdField_b_of_type_Los.a(str2);
-    lor locallor = a();
-    if (jdField_b_of_type_Los.a(locallor)) {
+    String str1 = QAVConfigUtils.a("machineMiddleLine");
+    String str2 = QAVConfigUtils.a("machineHighLine");
+    jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineLevelLine.a(str1);
+    jdField_b_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineLevelLine.a(str2);
+    AEFilterSupport.MachineInfo localMachineInfo = a();
+    if (jdField_b_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineLevelLine.a(localMachineInfo)) {
       jdField_b_of_type_Int = 7;
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_Los, jdField_b_of_type_Los, locallor, str1, str2 }));
+        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineLevelLine, jdField_b_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineLevelLine, localMachineInfo, str1, str2 }));
       }
       return jdField_b_of_type_Int;
-      if (jdField_a_of_type_Los.a(locallor)) {
+      if (jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineLevelLine.a(localMachineInfo)) {
         jdField_b_of_type_Int = 4;
       } else {
         jdField_b_of_type_Int = 3;
@@ -58,24 +57,24 @@ public class AEFilterSupport
   }
   
   @NonNull
-  public static lor a()
+  public static AEFilterSupport.MachineInfo a()
   {
-    if (jdField_a_of_type_Lor == null)
+    if (jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineInfo == null)
     {
-      lor locallor = new lor();
-      locallor.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-      locallor.jdField_b_of_type_Float = ((float)DeviceInfoUtil.getSystemTotalMemory() / 1.073742E+009F);
-      locallor.jdField_b_of_type_Int = DeviceInfoUtil.getCpuNumber();
-      locallor.jdField_a_of_type_Float = ((float)llq.d() / 1048576.0F);
-      jdField_a_of_type_Lor = locallor;
+      AEFilterSupport.MachineInfo localMachineInfo = new AEFilterSupport.MachineInfo();
+      localMachineInfo.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+      localMachineInfo.jdField_b_of_type_Float = ((float)DeviceInfoUtil.a() / 1.073742E+009F);
+      localMachineInfo.jdField_b_of_type_Int = DeviceInfoUtil.b();
+      localMachineInfo.jdField_a_of_type_Float = ((float)VcSystemInfo.getMaxCpuFreq() / 1048576.0F);
+      jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineInfo = localMachineInfo;
     }
-    return jdField_a_of_type_Lor;
+    return jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterSupport$MachineInfo;
   }
   
   public static boolean a(int paramInt)
   {
     boolean bool = true;
-    if (!lph.b())
+    if (!EffectsRenderController.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "isAEKitSoReady, not support AEKit.");
@@ -87,7 +86,7 @@ public class AEFilterSupport
       return bool;
       if (jdField_a_of_type_Int != 1)
       {
-        if (bnky.a())
+        if (AEResUtil.a())
         {
           jdField_a_of_type_Int = 1;
           return true;
@@ -114,7 +113,7 @@ public class AEFilterSupport
   
   private static void b()
   {
-    if (!lph.b())
+    if (!EffectsRenderController.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "checkAndLoadAEKitSo, not support AEKit.");
@@ -125,9 +124,9 @@ public class AEFilterSupport
     if (QLog.isColorLevel()) {
       l1 = SystemClock.elapsedRealtime();
     }
-    boolean bool = bnky.a();
+    boolean bool = AEResUtil.a();
     if (!bool) {
-      bool = bbhm.a(false);
+      bool = CaptureUtil.b();
     }
     for (;;)
     {
@@ -158,7 +157,7 @@ public class AEFilterSupport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.opengl.effects.AEFilterSupport
  * JD-Core Version:    0.7.0.1
  */

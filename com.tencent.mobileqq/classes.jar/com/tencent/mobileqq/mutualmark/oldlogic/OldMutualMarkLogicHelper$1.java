@@ -1,39 +1,38 @@
 package com.tencent.mobileqq.mutualmark.oldlogic;
 
-import agab;
-import anvk;
-import axlr;
-import axms;
-import axna;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.FriendChatPie;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.mutualmark.MutualMarkDataCenter;
+import com.tencent.mobileqq.mutualmark.info.MutualMarkForDisplayInfo;
 
-public final class OldMutualMarkLogicHelper$1
+final class OldMutualMarkLogicHelper$1
   implements Runnable
 {
-  public OldMutualMarkLogicHelper$1(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, agab paramagab) {}
+  OldMutualMarkLogicHelper$1(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, FriendChatPie paramFriendChatPie) {}
   
   public void run()
   {
-    Object localObject = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (((anvk)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, false) == null) {
+    Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (((FriendsManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false) == null) {
       break label29;
     }
     label29:
-    while (((anvk)localObject).a(false)) {
+    while (((FriendsManager)localObject).a(false)) {
       return;
     }
-    localObject = axlr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 7L, false);
-    agab localagab = this.jdField_a_of_type_Agab;
-    if ((localObject != null) && (((axms)localObject).b > 0L) && (((axms)localObject).a())) {}
+    localObject = MutualMarkDataCenter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 7L, false);
+    FriendChatPie localFriendChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie;
+    if ((localObject != null) && (((MutualMarkForDisplayInfo)localObject).b > 0L) && (((MutualMarkForDisplayInfo)localObject).a())) {}
     for (boolean bool = true;; bool = false)
     {
-      localagab.d = bool;
-      if (!this.jdField_a_of_type_Agab.d) {
+      localFriendChatPie.P = bool;
+      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.P) {
         break;
       }
-      axna.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agab);
+      OldMutualMarkLogicHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie);
       return;
     }
   }

@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.limitchat;
 
-import admh;
-import awen;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class LimitChatDamon$1
+class LimitChatDamon$1
   implements Runnable
 {
-  public LimitChatDamon$1(awen paramawen, String paramString, QQAppInterface paramQQAppInterface) {}
+  LimitChatDamon$1(LimitChatDamon paramLimitChatDamon, String paramString, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     synchronized (this.this$0)
     {
-      awen.a(this.this$0, null);
+      LimitChatDamon.a(this.this$0, null);
       ??? = new SessionInfo();
-      ((SessionInfo)???).curFriendUin = this.jdField_a_of_type_JavaLangString;
-      ((SessionInfo)???).troopUin = this.jdField_a_of_type_JavaLangString;
-      ((SessionInfo)???).curType = 1037;
-      admh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)???);
+      ((SessionInfo)???).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((SessionInfo)???).b = this.jdField_a_of_type_JavaLangString;
+      ((SessionInfo)???).jdField_a_of_type_Int = 1037;
+      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)???);
       if (QLog.isColorLevel()) {
         QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm , real send:" + this.jdField_a_of_type_JavaLangString);
       }

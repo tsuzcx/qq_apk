@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ExtendFriend
   extends JceStruct
 {
-  public int fontid;
+  public int fontid = 0;
   
   public ExtendFriend() {}
   

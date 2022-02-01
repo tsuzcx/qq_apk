@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import befp;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
-public class ShareUtils$2
+class ShareUtils$2
   implements Runnable
 {
-  public ShareUtils$2(befp parambefp, int paramInt1, int paramInt2) {}
+  ShareUtils$2(ShareUtils paramShareUtils, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (befp.a(this.this$0).getWidth() < this.a) {
-      befp.a(this.this$0).setMove(true);
+    if (ShareUtils.a(this.this$0).getWidth() < this.a) {
+      ShareUtils.a(this.this$0).setMove(true);
     }
-    while (befp.b(this.this$0).getWidth() < this.b)
+    while (ShareUtils.b(this.this$0).getWidth() < this.b)
     {
-      befp.b(this.this$0).setMove(true);
+      ShareUtils.b(this.this$0).setMove(true);
       return;
-      befp.a(this.this$0).setMove(false);
+      ShareUtils.a(this.this$0).setMove(false);
     }
-    befp.b(this.this$0).setMove(false);
+    ShareUtils.b(this.this$0).setMove(false);
   }
 }
 

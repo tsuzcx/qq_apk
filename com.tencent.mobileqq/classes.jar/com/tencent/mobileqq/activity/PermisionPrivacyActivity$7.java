@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axmv;
+import com.tencent.mobileqq.mutualmark.oldlogic.FriendIntimateRelationshipHelper;
 
 class PermisionPrivacyActivity$7
   implements Runnable
@@ -14,14 +14,14 @@ class PermisionPrivacyActivity$7
     do
     {
       return;
-      i = axmv.a(this.this$0.app);
+      i = FriendIntimateRelationshipHelper.a(this.this$0.app);
     } while (this.this$0.isFinishing());
     this.this$0.runOnUiThread(new PermisionPrivacyActivity.7.1(this, i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.7
  * JD-Core Version:    0.7.0.1
  */

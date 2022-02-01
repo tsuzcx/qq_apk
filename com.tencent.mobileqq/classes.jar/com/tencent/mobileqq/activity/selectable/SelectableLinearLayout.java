@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import alwg;
-import alwi;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,15 +11,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SelectableLinearLayout
   extends LinearLayout
-  implements alwg
+  implements SelectableComponent
 {
   private int jdField_a_of_type_Int;
-  private alwg jdField_a_of_type_Alwg;
-  private alwi jdField_a_of_type_Alwi;
-  private boolean jdField_a_of_type_Boolean;
+  private SelectableComponent jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+  private SelectableDelegate jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
+  private boolean jdField_a_of_type_Boolean = false;
   private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private int jdField_c_of_type_Int = -5250572;
   private boolean jdField_c_of_type_Boolean = true;
   
@@ -40,9 +38,9 @@ public class SelectableLinearLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void bind(@Nullable alwi paramalwi)
+  public void bind(@Nullable SelectableDelegate paramSelectableDelegate)
   {
-    this.jdField_a_of_type_Alwi = paramalwi;
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate = paramSelectableDelegate;
   }
   
   public void clearHighlightContent()
@@ -53,8 +51,8 @@ public class SelectableLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof alwg)) {
-        ((alwg)localView).clearHighlightContent();
+      if ((localView instanceof SelectableComponent)) {
+        ((SelectableComponent)localView).clearHighlightContent();
       }
       i += 1;
     }
@@ -69,8 +67,8 @@ public class SelectableLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof alwg)) {
-        localStringBuilder.append(((alwg)localView).content());
+      if ((localView instanceof SelectableComponent)) {
+        localStringBuilder.append(((SelectableComponent)localView).content());
       }
       i += 1;
     }
@@ -85,10 +83,10 @@ public class SelectableLinearLayout
     if (j < k)
     {
       View localView = getChildAt(j);
-      if (!(localView instanceof alwg)) {
+      if (!(localView instanceof SelectableComponent)) {
         break label51;
       }
-      i = ((alwg)localView).contentLength() + i;
+      i = ((SelectableComponent)localView).contentLength() + i;
     }
     label51:
     for (;;)
@@ -100,9 +98,9 @@ public class SelectableLinearLayout
   }
   
   @Nullable
-  public alwi delegate()
+  public SelectableDelegate delegate()
   {
-    return this.jdField_a_of_type_Alwi;
+    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
   }
   
   public void doSelecting(ChatMessage paramChatMessage)
@@ -112,10 +110,10 @@ public class SelectableLinearLayout
         QLog.d("SelectableLinearLayout", 2, "doSelecting msg = null.");
       }
     }
-    while (this.jdField_a_of_type_Alwi == null) {
+    while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate == null) {
       return;
     }
-    this.jdField_a_of_type_Alwi.a(paramChatMessage);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramChatMessage);
   }
   
   public boolean hasSelected()
@@ -133,7 +131,7 @@ public class SelectableLinearLayout
     while (paramInt1 < j)
     {
       View localView = getChildAt(paramInt1);
-      if ((localView instanceof alwg))
+      if ((localView instanceof SelectableComponent))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SelectableLinearLayout", 2, new Object[] { "left=", Integer.valueOf(localView.getLeft()), " right=", Integer.valueOf(localView.getRight()), " top=", Integer.valueOf(localView.getTop()), " bottom=", Integer.valueOf(localView.getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
@@ -166,14 +164,14 @@ public class SelectableLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if ((localObject instanceof alwg))
+      if ((localObject instanceof SelectableComponent))
       {
-        localObject = (alwg)localObject;
-        if (!((alwg)localObject).hasSelected()) {
+        localObject = (SelectableComponent)localObject;
+        if (!((SelectableComponent)localObject).hasSelected()) {
           break label74;
         }
-        ((alwg)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
-        ((alwg)localObject).highlightContent();
+        ((SelectableComponent)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+        ((SelectableComponent)localObject).highlightContent();
       }
     }
     for (;;)
@@ -182,7 +180,7 @@ public class SelectableLinearLayout
       break label19;
       break;
       label74:
-      ((alwg)localObject).clearHighlightContent();
+      ((SelectableComponent)localObject).clearHighlightContent();
     }
   }
   
@@ -194,11 +192,11 @@ public class SelectableLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if (!(localObject instanceof alwg)) {
+      if (!(localObject instanceof SelectableComponent)) {
         break label79;
       }
-      localObject = (alwg)localObject;
-      int k = ((alwg)localObject).contentLength();
+      localObject = (SelectableComponent)localObject;
+      int k = ((SelectableComponent)localObject).contentLength();
       if (paramInt > k) {
         paramInt -= k;
       }
@@ -208,7 +206,7 @@ public class SelectableLinearLayout
     {
       i += 1;
       break;
-      ((alwg)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
+      ((SelectableComponent)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
       return;
     }
   }
@@ -228,7 +226,7 @@ public class SelectableLinearLayout
     int i;
     int k;
     label46:
-    alwg localalwg;
+    SelectableComponent localSelectableComponent;
     int m;
     int j;
     if ((paramInt1 == -1) || (paramInt2 == -1))
@@ -245,19 +243,19 @@ public class SelectableLinearLayout
         break label257;
       }
       View localView = getChildAt(k);
-      if (!(localView instanceof alwg)) {
+      if (!(localView instanceof SelectableComponent)) {
         break label266;
       }
-      localalwg = (alwg)localView;
+      localSelectableComponent = (SelectableComponent)localView;
       if (paramInt1 != 0) {
         break label237;
       }
-      m = localalwg.contentLength();
+      m = localSelectableComponent.contentLength();
       if (paramInt2 < m) {
         break label190;
       }
       i -= m;
-      localalwg.selectContent(-1, -1);
+      localSelectableComponent.selectContent(-1, -1);
       j = paramInt2 - m;
       paramInt2 = paramInt1;
       paramInt1 = j;
@@ -293,7 +291,7 @@ public class SelectableLinearLayout
       }
       for (;;)
       {
-        localalwg.selectContent(paramInt2, paramInt1);
+        localSelectableComponent.selectContent(paramInt2, paramInt1);
         if (j != 0) {
           break label258;
         }
@@ -305,7 +303,7 @@ public class SelectableLinearLayout
         j = 1;
       }
       label237:
-      localalwg.selectContent(-1, -1);
+      localSelectableComponent.selectContent(-1, -1);
       j = paramInt1;
       paramInt1 = paramInt2;
       paramInt2 = j;
@@ -335,16 +333,16 @@ public class SelectableLinearLayout
     if (j < k)
     {
       localObject = getChildAt(j);
-      if (!(localObject instanceof alwg)) {
+      if (!(localObject instanceof SelectableComponent)) {
         break label238;
       }
-      alwg localalwg = (alwg)localObject;
+      SelectableComponent localSelectableComponent = (SelectableComponent)localObject;
       if ((m > ((View)localObject).getLeft()) && (m < ((View)localObject).getRight()) && (n > ((View)localObject).getTop()) && (n < ((View)localObject).getBottom()))
       {
-        this.jdField_a_of_type_Alwg = localalwg;
-        return localalwg.touchIndex(paramInt1, paramInt2) + i;
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = localSelectableComponent;
+        return localSelectableComponent.touchIndex(paramInt1, paramInt2) + i;
       }
-      i = localalwg.contentLength() + i;
+      i = localSelectableComponent.contentLength() + i;
     }
     label235:
     label238:
@@ -357,14 +355,14 @@ public class SelectableLinearLayout
       if (j < k)
       {
         localObject = getChildAt(j);
-        if (!(localObject instanceof alwg)) {
+        if (!(localObject instanceof SelectableComponent)) {
           break label235;
         }
-        localObject = (alwg)localObject;
-        if (this.jdField_a_of_type_Alwg == localObject) {
-          return this.jdField_a_of_type_Alwg.touchIndex(paramInt1, paramInt2) + i;
+        localObject = (SelectableComponent)localObject;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent == localObject) {
+          return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.touchIndex(paramInt1, paramInt2) + i;
         }
-        i = ((alwg)localObject).contentLength() + i;
+        i = ((SelectableComponent)localObject).contentLength() + i;
       }
       for (;;)
       {
@@ -383,7 +381,7 @@ public class SelectableLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.SelectableLinearLayout
  * JD-Core Version:    0.7.0.1
  */

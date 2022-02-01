@@ -1,23 +1,25 @@
 package cooperation.qzone.util;
 
 import android.os.Build;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
 import common.config.service.QzoneConfig;
 
 public class PhotoDanmakuUtil
 {
   private static final String TAG = "PhotoDanmakuUtil";
   private static final int cpuLevelLimit = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuCpuLevel", 1);
-  private static PhotoDanmakuUtil instance;
+  private static PhotoDanmakuUtil instance = null;
   private static final String mPhotoDanmakuBlackList = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuBlackList", "");
   private static final int memoryLevelLimit = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuMemoryLevel", 1);
-  private volatile boolean enableP2VFunc;
-  private volatile String g_photoDanmakuBlacklist;
+  private volatile boolean enableP2VFunc = false;
+  private volatile String g_photoDanmakuBlacklist = null;
   private long phoneMemory = -1L;
   
   public PhotoDanmakuUtil()
   {
     if (this.phoneMemory == -1L) {
-      this.phoneMemory = (QzoneHardwareRestriction.getTotalMem() / 1024L);
+      this.phoneMemory = (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).getTotalMem() / 1024L);
     }
   }
   
@@ -71,15 +73,15 @@ public class PhotoDanmakuUtil
   {
     if ((mPhotoDanmakuBlackList != null) && (!mPhotoDanmakuBlackList.equals(this.g_photoDanmakuBlacklist))) {
       if (isBuildModelInList(mPhotoDanmakuBlackList)) {
-        break label64;
+        break label74;
       }
     }
-    label64:
+    label74:
     for (boolean bool = true;; bool = false)
     {
       this.enableP2VFunc = bool;
       this.g_photoDanmakuBlacklist = mPhotoDanmakuBlackList;
-      if ((!this.enableP2VFunc) || (!QzoneHardwareRestriction.meetHardwareRestriction(memoryLevelLimit, cpuLevelLimit))) {
+      if ((!this.enableP2VFunc) || (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(memoryLevelLimit, cpuLevelLimit))) {
         break;
       }
       return true;
@@ -89,7 +91,7 @@ public class PhotoDanmakuUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.PhotoDanmakuUtil
  * JD-Core Version:    0.7.0.1
  */

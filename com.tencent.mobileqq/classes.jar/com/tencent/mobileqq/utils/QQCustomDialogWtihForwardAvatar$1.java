@@ -2,9 +2,9 @@ package com.tencent.mobileqq.utils;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import ausq;
-import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class QQCustomDialogWtihForwardAvatar$1
@@ -14,12 +14,12 @@ class QQCustomDialogWtihForwardAvatar$1
   
   public void onClick(View paramView)
   {
-    bdla.b(this.val$app, "CliOper", "", "", "0X8009BE7", "0X8009BE7", 1, 0, "", "", "", "");
-    this.this$0.hideSoftInputFromWindow();
-    ausq localausq = new ausq(this.this$0);
-    localausq.a(this.val$app, this.val$titleStr, this.val$uin, this.val$uinType);
-    this.this$0.addPreviewView(localausq.b());
-    bdla.b(this.val$app, "CliOper", "", "", "0X8009AAD", "0X8009AAD", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE7", "0X8009BE7", 1, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.hideSoftInputFromWindow();
+    ForwardPreviewTroopMemberController localForwardPreviewTroopMemberController = new ForwardPreviewTroopMemberController(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar);
+    localForwardPreviewTroopMemberController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.addPreviewView(localForwardPreviewTroopMemberController.b());
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009AAD", "0X8009AAD", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

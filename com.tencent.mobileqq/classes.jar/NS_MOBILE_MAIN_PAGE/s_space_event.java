@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_space_event
   extends JceStruct
 {
-  public int iAdID;
+  public int iAdID = 0;
   public String strEventPic = "";
   public String strEventTxt = "";
   public String strJumpType = "";

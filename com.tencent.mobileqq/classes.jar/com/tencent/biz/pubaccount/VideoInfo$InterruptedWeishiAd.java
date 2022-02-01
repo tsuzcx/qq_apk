@@ -3,15 +3,14 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anvx;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.Arrays;
-import omj;
 
 public class VideoInfo$InterruptedWeishiAd
   implements Parcelable
 {
-  public static final Parcelable.Creator<InterruptedWeishiAd> CREATOR = new omj();
+  public static final Parcelable.Creator<InterruptedWeishiAd> CREATOR = new VideoInfo.InterruptedWeishiAd.1();
   public int a;
   public UrlJumpInfo a;
   public String a;
@@ -26,11 +25,15 @@ public class VideoInfo$InterruptedWeishiAd
   
   public VideoInfo$InterruptedWeishiAd()
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Int = -1;
   }
   
-  public VideoInfo$InterruptedWeishiAd(Parcel paramParcel)
+  protected VideoInfo$InterruptedWeishiAd(Parcel paramParcel)
   {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_ArrayOfInt = paramParcel.createIntArray();
     if (paramParcel.readByte() != 0)
@@ -38,10 +41,10 @@ public class VideoInfo$InterruptedWeishiAd
       bool1 = true;
       this.jdField_a_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label109;
+        break label119;
       }
     }
-    label109:
+    label119:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_b_of_type_Boolean = bool1;
@@ -81,7 +84,7 @@ public class VideoInfo$InterruptedWeishiAd
       if (this.jdField_b_of_type_Int != 1) {
         break;
       }
-      str = anvx.a(2131715645);
+      str = HardCodeUtil.a(2131716111);
       break;
     }
   }
@@ -116,7 +119,7 @@ public class VideoInfo$InterruptedWeishiAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd
  * JD-Core Version:    0.7.0.1
  */

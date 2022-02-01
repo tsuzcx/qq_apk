@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -17,29 +16,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anvx;
-import anzc;
-import aocy;
-import aodb;
-import appk;
-import aqkf;
-import aqkg;
-import aqkh;
-import aqki;
-import aqkj;
-import aqkk;
-import aqkl;
-import aqkm;
-import aqkn;
-import aqko;
-import aqkp;
-import aupt;
-import bdla;
-import bhaa;
-import bhdj;
-import bkzi;
-import bmad;
-import bman;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -49,53 +25,60 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.app.SVIPObserver;
+import com.tencent.mobileqq.ar.utils.UniformUtils;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ActionSheet;
 import com.tencent.widget.Gallery;
+import cooperation.qqfav.QfavBuilder;
+import cooperation.qqfav.QfavReport;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class CardPicGalleryActivity
   extends BaseActivity
   implements View.OnClickListener
 {
-  public int a;
+  int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
-  public Drawable a;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   View jdField_a_of_type_AndroidViewView;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new aqkg(this);
-  public ImageView a;
+  BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new CardPicGalleryActivity.10(this);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aodb jdField_a_of_type_Aodb = new aqkh(this);
+  private SVIPObserver jdField_a_of_type_ComTencentMobileqqAppSVIPObserver = new CardPicGalleryActivity.11(this);
   Gallery jdField_a_of_type_ComTencentWidgetGallery;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<String> a;
-  public boolean a;
-  public int b;
-  String b;
-  public boolean b;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int = -1;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  public int d = 1;
-  
-  public CardPicGalleryActivity()
-  {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_Boolean = false;
-  }
+  private boolean jdField_c_of_type_Boolean = false;
+  protected int d = 1;
   
   private void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new aqkp(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new CardPicGalleryActivity.9(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private void c(URLDrawable paramURLDrawable)
@@ -109,7 +92,7 @@ public class CardPicGalleryActivity
     {
       if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
       {
-        requestPermissions(new aqkm(this, paramURLDrawable), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        requestPermissions(new CardPicGalleryActivity.6(this, paramURLDrawable), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
       b(paramURLDrawable);
@@ -127,7 +110,7 @@ public class CardPicGalleryActivity
     return paramURLDrawable.getAbsolutePath();
   }
   
-  public void a()
+  protected void a()
   {
     if ((this.d == 1) && (!this.jdField_a_of_type_Boolean)) {}
     label15:
@@ -147,15 +130,15 @@ public class CardPicGalleryActivity
             } while (this.jdField_a_of_type_ComTencentWidgetGallery == null);
             localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
           } while (localObject == null);
-          localObject = ((ImageView)((View)localObject).findViewById(2131364343)).getDrawable();
+          localObject = ((ImageView)((View)localObject).findViewById(2131364450)).getDrawable();
         } while ((localObject == null) || (!(localObject instanceof URLDrawable)));
         localObject = (URLDrawable)localObject;
       } while ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (((URLDrawable)localObject).getStatus() != 1));
-      bkzi localbkzi = bkzi.a(this);
-      a(localbkzi);
-      localbkzi.a(new aqkk(this, (URLDrawable)localObject, localbkzi));
-      localbkzi.a(new aqkl(this, localbkzi));
-      localbkzi.show();
+      ActionSheet localActionSheet = ActionSheet.create(this);
+      a(localActionSheet);
+      localActionSheet.setOnButtonClickListener(new CardPicGalleryActivity.4(this, (URLDrawable)localObject, localActionSheet));
+      localActionSheet.setOnBottomCancelListener(new CardPicGalleryActivity.5(this, localActionSheet));
+      localActionSheet.show();
     } while (2 != this.d);
     if (this.app != null) {}
     for (Object localObject = this.app.getCurrentAccountUin();; localObject = "")
@@ -165,7 +148,7 @@ public class CardPicGalleryActivity
     }
   }
   
-  public void a(int paramInt, URLDrawable paramURLDrawable)
+  protected void a(int paramInt, URLDrawable paramURLDrawable)
   {
     switch (this.d)
     {
@@ -178,36 +161,13 @@ public class CardPicGalleryActivity
     c(paramInt, paramURLDrawable);
   }
   
-  protected void a(bkzi parambkzi)
-  {
-    switch (this.d)
-    {
-    default: 
-      return;
-    case 1: 
-      parambkzi.b(2131698331);
-      if (this.jdField_c_of_type_Boolean) {
-        parambkzi.a(2131698318, 3);
-      }
-      parambkzi.c(2131690697);
-      return;
-    }
-    if ((this.jdField_c_of_type_Int > 0) && (!this.jdField_b_of_type_Boolean)) {
-      parambkzi.b(2131693161);
-    }
-    parambkzi.b(2131693153);
-    parambkzi.b(2131693159);
-    parambkzi.b(2131693151);
-    parambkzi.c(2131690697);
-  }
-  
   void a(URLDrawable paramURLDrawable)
   {
     paramURLDrawable = a(paramURLDrawable);
     try
     {
-      bmad.b(paramURLDrawable).a(this, this.app.getCurrentAccountUin());
-      bman.a(null, 40, 3);
+      QfavBuilder.b(paramURLDrawable).a(this, this.app.getCurrentAccountUin());
+      QfavReport.a(null, 40, 3);
       return;
     }
     catch (Exception paramURLDrawable)
@@ -215,7 +175,7 @@ public class CardPicGalleryActivity
       if (QLog.isColorLevel()) {
         QLog.e("qqBaseActivity", 2, "", paramURLDrawable);
       }
-      QQToast.a(this, getString(2131692669), 0).a();
+      QQToast.a(this, getString(2131692807), 0).a();
     }
   }
   
@@ -231,7 +191,30 @@ public class CardPicGalleryActivity
     localBundle.putString("forward_extra", str);
     paramURLDrawable = new Intent();
     paramURLDrawable.putExtras(localBundle);
-    aupt.a(this, paramURLDrawable, 21);
+    ForwardBaseOption.a(this, paramURLDrawable, 21);
+  }
+  
+  protected void a(ActionSheet paramActionSheet)
+  {
+    switch (this.d)
+    {
+    default: 
+      return;
+    case 1: 
+      paramActionSheet.addButton(2131698611);
+      if (this.jdField_c_of_type_Boolean) {
+        paramActionSheet.addButton(2131698598, 3);
+      }
+      paramActionSheet.addCancelButton(2131690800);
+      return;
+    }
+    if ((this.jdField_c_of_type_Int > 0) && (!this.jdField_b_of_type_Boolean)) {
+      paramActionSheet.addButton(2131693310);
+    }
+    paramActionSheet.addButton(2131693302);
+    paramActionSheet.addButton(2131693308);
+    paramActionSheet.addButton(2131693300);
+    paramActionSheet.addCancelButton(2131690800);
   }
   
   protected void b(int paramInt, URLDrawable paramURLDrawable)
@@ -250,7 +233,7 @@ public class CardPicGalleryActivity
     finish();
   }
   
-  public void b(URLDrawable paramURLDrawable)
+  void b(URLDrawable paramURLDrawable)
   {
     if (paramURLDrawable.getStatus() != 1) {}
     String str;
@@ -271,12 +254,12 @@ public class CardPicGalleryActivity
         }
         catch (IOException paramURLDrawable)
         {
-          QQToast.a(this, getString(2131694684), 0).a();
+          QQToast.a(this, getString(2131694921), 0).a();
           return;
         }
       }
     }
-    bhdj.a(this, 230).setTitle(getString(2131718171)).setMessage(getString(2131694680)).setPositiveButton(getString(2131718048), new aqko(this, paramURLDrawable, str)).setNegativeButton(getString(2131694291), new aqkn(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131718675)).setMessage(getString(2131694917)).setPositiveButton(getString(2131718540), new CardPicGalleryActivity.8(this, paramURLDrawable, str)).setNegativeButton(getString(2131694495), new CardPicGalleryActivity.7(this)).show();
   }
   
   protected void c(int paramInt, URLDrawable paramURLDrawable)
@@ -301,12 +284,12 @@ public class CardPicGalleryActivity
       if (this.jdField_b_of_type_Boolean) {}
       for (paramURLDrawable = "1";; paramURLDrawable = "2")
       {
-        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", paramInt, 0, paramURLDrawable, "", "", "");
+        ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", paramInt, 0, paramURLDrawable, "", "", "");
         return;
         if ((this.app == null) || (this.jdField_c_of_type_Int <= 0)) {
           break label371;
         }
-        ((aocy)this.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g(this.jdField_c_of_type_Int);
+        ((SVIPHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g(this.jdField_c_of_type_Int);
         if (this.app != null) {}
         for (paramURLDrawable = this.app.getCurrentAccountUin();; paramURLDrawable = "")
         {
@@ -360,7 +343,7 @@ public class CardPicGalleryActivity
     while ((paramInt1 != 21) || (paramInt2 != -1)) {
       return;
     }
-    Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramIntent.getExtras()));
     startActivity(localIntent);
     finish();
@@ -371,7 +354,7 @@ public class CardPicGalleryActivity
     this.mNeedStatusTrans = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561042);
+    super.setContentView(2131561130);
     paramBundle = getIntent();
     this.jdField_a_of_type_JavaUtilArrayList = paramBundle.getStringArrayListExtra("business_card_pics");
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("is_edit_mode", false);
@@ -380,20 +363,20 @@ public class CardPicGalleryActivity
     this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("is_from_profile", false);
     this.jdField_c_of_type_Int = paramBundle.getIntExtra("default_card_id", 0);
     this.jdField_b_of_type_Boolean = paramBundle.getBooleanExtra("is_from_mine_profile", false);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131379104);
-    appk.a(this, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363329));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379538);
+    UniformUtils.a(this, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363408));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367490));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367496));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367677));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367683));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     if ((this.d == 1) && (!this.jdField_a_of_type_Boolean)) {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297147));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297168));
     this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new aqkf(this));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364342));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new CardPicGalleryActivity.1(this));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364449));
     Object localObject2;
     Object localObject1;
     label536:
@@ -401,22 +384,22 @@ public class CardPicGalleryActivity
     if (this.d == 2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new aqki(this));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new aqkj(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new CardPicGalleryActivity.2(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new CardPicGalleryActivity.3(this));
       this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
       paramBundle = BaseApplicationImpl.getApplication().getSharedPreferences("profile_sp", 0);
       this.jdField_a_of_type_Long = paramBundle.getLong("recommend_id", 0L);
       this.jdField_a_of_type_JavaLangString = paramBundle.getString("recommend_url", "");
       this.jdField_b_of_type_JavaLangString = paramBundle.getString("recommend_desc", "");
-      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378695);
-      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368683);
-      localObject1 = getResources().getDrawable(2130850821);
+      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379127);
+      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368914);
+      localObject1 = getResources().getDrawable(2130851250);
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
       {
         ((TextView)localObject2).setText(this.jdField_b_of_type_JavaLangString);
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = ViewUtils.dip2px(75.0F);
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ViewUtils.dip2px(80.0F);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = ViewUtils.a(75.0F);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ViewUtils.a(80.0F);
         ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
         ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
         paramBundle.setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2));
@@ -428,21 +411,21 @@ public class CardPicGalleryActivity
           break label637;
         }
         paramBundle = this.app.getCurrentAccountUin();
-        bdla.b((QQAppInterface)localObject1, "CliOper", "", paramBundle, "card_mall", "0X8007B2A", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+        ReportController.b((AppRuntime)localObject1, "CliOper", "", paramBundle, "card_mall", "0X8007B2A", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
         paramBundle = this.app;
         if (!this.jdField_b_of_type_Boolean) {
           break label643;
         }
         i = 1;
         label581:
-        bdla.b(paramBundle, "dc00898", "", "", "0X800A88B", "0X800A88B", i, 0, "", "", "", "");
+        ReportController.b(paramBundle, "dc00898", "", "", "0X800A88B", "0X800A88B", i, 0, "", "", "", "");
       }
     }
     for (;;)
     {
-      addObserver(this.jdField_a_of_type_Aodb);
+      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
       return true;
-      ((TextView)localObject2).setText(anvx.a(2131700954));
+      ((TextView)localObject2).setText(HardCodeUtil.a(2131701529));
       paramBundle.setImageDrawable((Drawable)localObject1);
       break;
       label637:
@@ -458,16 +441,16 @@ public class CardPicGalleryActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.app != null) && (((anzc)this.app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(hashCode()))) {
+    if ((this.app != null) && (((MessageRoamManager)this.app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(hashCode()))) {
       this.app.removeHandler(getClass());
     }
-    removeObserver(this.jdField_a_of_type_Aodb);
+    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
   }
   
   public boolean onBackEvent()
   {
     finish();
-    overridePendingTransition(0, 2130772355);
+    overridePendingTransition(0, 2130772375);
     return true;
   }
   
@@ -488,13 +471,13 @@ public class CardPicGalleryActivity
         onBackEvent();
       }
     } while (paramView != this.jdField_a_of_type_AndroidViewViewGroup);
-    bhaa.a(this, this.app.getCurrentAccountUin(), "inside.friendCardBackground", 1, 1, 1, "recommendId=" + this.jdField_a_of_type_Long, false);
+    ProfileCardUtil.a(this, this.app.getCurrentAccountUin(), "inside.friendCardBackground", 1, 1, 1, "recommendId=" + this.jdField_a_of_type_Long, false);
     QQAppInterface localQQAppInterface = this.app;
     if (this.app != null)
     {
       str = this.app.getCurrentAccountUin();
       label105:
-      bdla.b(localQQAppInterface, "CliOper", "", str, "card_mall", "0X8004DC0", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+      ReportController.b(localQQAppInterface, "CliOper", "", str, "card_mall", "0X8004DC0", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
       if (this.app == null) {
         break label180;
       }

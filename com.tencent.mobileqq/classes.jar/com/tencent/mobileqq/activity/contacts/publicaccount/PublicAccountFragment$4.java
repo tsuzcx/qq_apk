@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.publicaccount;
 
-import aoan;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 
 class PublicAccountFragment$4
   implements Runnable
@@ -16,7 +16,7 @@ class PublicAccountFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.4
  * JD-Core Version:    0.7.0.1
  */

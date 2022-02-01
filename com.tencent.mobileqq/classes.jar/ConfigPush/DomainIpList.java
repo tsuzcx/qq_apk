@@ -9,8 +9,8 @@ public final class DomainIpList
   extends JceStruct
 {
   static ArrayList<DomainIpInfo> cache_vIplist;
-  public int uDomain_type;
-  public ArrayList<DomainIpInfo> vIplist;
+  public int uDomain_type = 0;
+  public ArrayList<DomainIpInfo> vIplist = null;
   
   public DomainIpList() {}
   

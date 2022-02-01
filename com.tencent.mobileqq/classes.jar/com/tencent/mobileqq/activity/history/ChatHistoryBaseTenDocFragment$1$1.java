@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajqw;
 import android.os.Message;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
@@ -10,20 +9,20 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class ChatHistoryBaseTenDocFragment$1$1
+class ChatHistoryBaseTenDocFragment$1$1
   implements Runnable
 {
-  public ChatHistoryBaseTenDocFragment$1$1(ajqw paramajqw, List paramList) {}
+  ChatHistoryBaseTenDocFragment$1$1(ChatHistoryBaseTenDocFragment.1 param1, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_Ajqw.a.a.getMessageFacade().removeMsgByMessageRecord(((TencentDocItem)this.jdField_a_of_type_JavaUtilList.get(0)).mRecord, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment$1.a.a.getMessageFacade().a(((TencentDocItem)this.jdField_a_of_type_JavaUtilList.get(0)).mRecord, false);
     }
     for (;;)
     {
-      Object localObject = ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_Ajqw.a).obtainMessage(5678, this.jdField_a_of_type_JavaUtilList);
-      ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_Ajqw.a).sendMessage((Message)localObject);
+      Object localObject = ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment$1.a).obtainMessage(5678, this.jdField_a_of_type_JavaUtilList);
+      ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment$1.a).sendMessage((Message)localObject);
       return;
       if (this.jdField_a_of_type_JavaUtilList.size() > 1)
       {
@@ -32,14 +31,14 @@ public class ChatHistoryBaseTenDocFragment$1$1
         while (localIterator.hasNext()) {
           ((List)localObject).add(((TencentDocItem)localIterator.next()).mRecord);
         }
-        this.jdField_a_of_type_Ajqw.a.a.getMessageFacade().removeMultiMsgByMessageRecord((List)localObject, false);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment$1.a.a.getMessageFacade().a((List)localObject, false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

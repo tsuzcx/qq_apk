@@ -7,15 +7,14 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import aogi;
-import bbzh;
-import bcgq;
-import bcjs;
-import bkyq;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyTabTopSearchHeaderController;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaUiDelegate;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.UniteSearchHandler;
+import com.tencent.mobileqq.search.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchEntryHippyEngine;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchHippyEventEmitter;
@@ -23,12 +22,13 @@ import com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchHippyEventEm
 import com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler;
 import com.tencent.mobileqq.search.fragment.searchentry.nativemethod.INativeMethodHandler;
 import com.tencent.mobileqq.search.fragment.searchentry.nativemethod.SearchNativeMethodController;
+import com.tencent.mobileqq.search.model.SearchEntryDataModel;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.UiThreadUtil;
 import java.util.List;
-import tli;
-import tvg;
 
 public class SearchHippyEntryFragment
   extends ViolaFragment
@@ -40,7 +40,7 @@ public class SearchHippyEntryFragment
   public static final String SearchHippyPageFromTopBar = "1";
   private static final String TAG = "SearchHippyEntryFragmen";
   private QQAppInterface app;
-  private SearchHippyEventEmitter eventEmitter;
+  private SearchHippyEventEmitter eventEmitter = null;
   @NonNull
   private final SearchHotwordHandler hotwordHandler = new SearchHotwordHandler();
   private Bundle initData = new Bundle(9);
@@ -54,8 +54,8 @@ public class SearchHippyEntryFragment
     this.nativeMethodController.registerNativeMethod(this.mHippyQQEngine);
     this.eventEmitter = new SearchHippyEventEmitter(this.mHippyQQEngine, this.hotwordHandler);
     this.hotwordHandler.setEventEmitter(this.eventEmitter);
-    bcjs.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_start"));
-    new aogi(this.app).b(this.app, "load_start", "search_hippy", bcjs.a(25), "", "", "");
+    UniteSearchReportController.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_start"));
+    new UniteSearchHandler(this.app).b(this.app, "load_start", "search_hippy", UniteSearchReportController.a(25), "", "", "");
   }
   
   private void setBackgroundColor(ViewGroup paramViewGroup)
@@ -152,7 +152,7 @@ public class SearchHippyEntryFragment
       this.mHippyQQEngine.onDestroy();
     }
     this.hotwordHandler.destroy();
-    tli.a += bbzh.a;
+    ReadInJoyTabTopSearchHeaderController.a += SearchEntryConfigManager.a;
   }
   
   public void onError(int paramInt, String paramString)
@@ -165,8 +165,8 @@ public class SearchHippyEntryFragment
       SearchEntryHippyEngine.hippyError = true;
       UniteSearchActivity.a(getActivity(), null, 25, 0L, null, 0, null);
     }
-    bcjs.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_error").ver4(paramString));
-    new aogi(this.app).b(this.app, "load_error", "search_hippy", bcjs.a(25), "", paramString, "");
+    UniteSearchReportController.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_error").ver4(paramString));
+    new UniteSearchHandler(this.app).b(this.app, "load_error", "search_hippy", UniteSearchReportController.a(25), "", paramString, "");
   }
   
   public void onHotwordClick(int paramInt)
@@ -209,13 +209,13 @@ public class SearchHippyEntryFragment
     this.hotwordHandler.notifyFEHotwordChanged();
     Log.d("SearchHippyEntryFragmen", "hippyengine onSuccess: ");
     this.hotwordHandler.getSearchFEHotwordItems(new SearchHippyEntryFragment.3(this));
-    bcjs.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_success"));
-    new aogi(this.app).b(this.app, "load_success", "search_hippy", bcjs.a(25), "", "", "");
+    UniteSearchReportController.a(this.app, new ReportModelDC02528().module("search_hippy").action("load_success"));
+    new UniteSearchHandler(this.app).b(this.app, "load_success", "search_hippy", UniteSearchReportController.a(25), "", "", "");
   }
   
   public void refresh() {}
   
-  public void refreshDataModels(List<bcgq> paramList, boolean paramBoolean) {}
+  public void refreshDataModels(List<SearchEntryDataModel> paramList, boolean paramBoolean) {}
   
   public void requestSearchHotWord(boolean paramBoolean)
   {
@@ -229,7 +229,7 @@ public class SearchHippyEntryFragment
   
   public void setHotwordVisible(boolean paramBoolean)
   {
-    bkyq.a(new SearchHippyEntryFragment.1(this, paramBoolean));
+    UiThreadUtil.a(new SearchHippyEntryFragment.1(this, paramBoolean));
   }
   
   public void setInitData(@NonNull Bundle paramBundle)
@@ -245,7 +245,7 @@ public class SearchHippyEntryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.SearchHippyEntryFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,10 @@
 package cooperation.qqcircle.report;
 
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.config.api.IAppSettingApi;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class QCircleLpReportDc05501
 {
@@ -51,22 +54,27 @@ public class QCircleLpReportDc05501
   {
     if (paramDataBuilder == null)
     {
-      QLog.e("QCircleLpReportDc05501", 1, "DataBuilder == null");
+      RFLog.e("QCircleLpReportDc05501", RFLog.USR, "DataBuilder == null");
       return;
     }
     if (QCircleLpReportDc05501.DataBuilder.access$000(paramDataBuilder) <= 0)
     {
-      QLog.e("QCircleReportBean_QCircleLpReportDc05501", 1, "report invalid pageId," + QCircleLpReportDc05501.DataBuilder.access$000(paramDataBuilder) + ",actionType:" + QCircleLpReportDc05501.DataBuilder.access$100(paramDataBuilder) + ",subActionType:" + QCircleLpReportDc05501.DataBuilder.access$200(paramDataBuilder));
+      RFLog.e("QCircleReportBean_QCircleLpReportDc05501", RFLog.USR, "report invalid pageId," + QCircleLpReportDc05501.DataBuilder.access$000(paramDataBuilder) + ",actionType:" + QCircleLpReportDc05501.DataBuilder.access$100(paramDataBuilder) + ",subActionType:" + QCircleLpReportDc05501.DataBuilder.access$200(paramDataBuilder));
       showErrorToast(QCircleLpReportDc05501.DataBuilder.access$100(paramDataBuilder), QCircleLpReportDc05501.DataBuilder.access$200(paramDataBuilder));
     }
     QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05501.1(paramDataBuilder));
   }
   
-  private static void showErrorToast(int paramInt1, int paramInt2) {}
+  private static void showErrorToast(int paramInt1, int paramInt2)
+  {
+    if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
+      ThreadManagerV2.getUIHandlerV2().post(new QCircleLpReportDc05501.2(paramInt1, paramInt2));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05501
  * JD-Core Version:    0.7.0.1
  */

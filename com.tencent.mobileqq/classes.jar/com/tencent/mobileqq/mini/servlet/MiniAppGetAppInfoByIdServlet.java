@@ -5,11 +5,11 @@ import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhjl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
 
@@ -18,6 +18,7 @@ public class MiniAppGetAppInfoByIdServlet
 {
   public static final String KEY_APP_ID = "key_app_id";
   public static final String KEY_APP_INFO_DATA = "mini_app_info_data";
+  public static final String KEY_APP_INFO_PB_DATA = "mini_app_info_pb_data";
   public static final String KEY_ENV_VERSION = "key_env_version";
   public static final String KEY_EXT = "key_ext";
   public static final String KEY_FIRST_PATH = "key_first_path";
@@ -45,7 +46,9 @@ public class MiniAppGetAppInfoByIdServlet
       if (localStGetAppInfoByIdRsp.appInfo.type.get() == 3) {
         savaMiniAppInfo(paramIntent, localStGetAppInfoByIdRsp);
       }
-      paramBundle.putSerializable("mini_app_info_data", MiniAppInfo.from(localStGetAppInfoByIdRsp.appInfo));
+      paramArrayOfByte = localStGetAppInfoByIdRsp.appInfo;
+      paramBundle.putSerializable("mini_app_info_data", MiniAppInfo.from(paramArrayOfByte));
+      paramBundle.putSerializable("mini_app_info_pb_data", paramArrayOfByte.toByteArray());
       notifyObserver(paramIntent, 1024, true, paramBundle, MiniAppObserver.class);
       return;
     }
@@ -81,7 +84,7 @@ public class MiniAppGetAppInfoByIdServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetAppInfoById");
-      paramPacket.putSendData(bhjl.a((byte[])localObject1));
+      paramPacket.putSendData(WupUtil.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

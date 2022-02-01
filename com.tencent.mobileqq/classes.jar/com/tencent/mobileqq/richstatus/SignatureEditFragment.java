@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richstatus;
 
-import aeow;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,66 +25,58 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import bbua;
-import bbub;
-import bbuc;
-import bbud;
-import bbue;
-import bbuf;
-import bbug;
-import bbuh;
-import bbvh;
-import bbwn;
-import bbwo;
-import bbwp;
-import bdla;
-import bhdj;
-import bhoj;
-import bieo;
-import bihn;
-import biur;
+import com.etrump.mixlayout.FontManagerForTool;
+import com.etrump.mixlayout.VasFontIPCModule;
+import com.tencent.av.utils.UITools;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.profile.view.SoftInputDetectView;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.richstatus.sign.ISignViewHolder;
+import com.tencent.mobileqq.richstatus.sign.ISignViewHolder.OnClickListener;
+import com.tencent.mobileqq.richstatus.sign.MySignViewHolder;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserSetting;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.WebViewProgressBarController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qzone.util.SystemUtil;
-import gf;
-import gk;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observer;
-import mvk;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SignatureEditFragment
   extends WebViewFragment
-  implements Handler.Callback, bbwo
+  implements Handler.Callback, ISignViewHolder.OnClickListener
 {
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbwp jdField_a_of_type_Bbwp;
   public RichStatus a;
-  private Observer jdField_a_of_type_JavaUtilObserver = new bbuf(this);
+  private MySignViewHolder jdField_a_of_type_ComTencentMobileqqRichstatusSignMySignViewHolder;
+  private Observer jdField_a_of_type_JavaUtilObserver = new SignatureEditFragment.6(this);
   public boolean a;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -94,7 +85,7 @@ public class SignatureEditFragment
   public boolean b;
   private View jdField_c_of_type_AndroidViewView;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private boolean jdField_c_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean = false;
   private TextView jdField_d_of_type_AndroidWidgetTextView;
   private boolean jdField_d_of_type_Boolean = true;
   
@@ -102,6 +93,8 @@ public class SignatureEditFragment
   {
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
     this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
   
   private static int a(Context paramContext)
@@ -140,7 +133,7 @@ public class SignatureEditFragment
     if (paramBoolean) {}
     for (String str = "0X800A63B";; str = "0X800A63A")
     {
-      bdla.b(null, "dc00898", "", "", str, str, 0, 0, "0", "0", "", "");
+      ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "0", "0", "", "");
       return;
     }
   }
@@ -164,7 +157,7 @@ public class SignatureEditFragment
     label56:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ImmersiveUtils.a(bool1, getActivity().getWindow());
+      ImmersiveUtils.setStatusTextColor(bool1, getActivity().getWindow());
       return;
     }
   }
@@ -179,10 +172,10 @@ public class SignatureEditFragment
     }
     for (;;)
     {
-      Object localObject = bbvh.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-      if ((localObject != null) && (((bhoj)localObject).jdField_a_of_type_Bhol != null))
+      Object localObject = SignatureManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+      if ((localObject != null) && (((SignatureTemplateInfo)localObject).jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.set(0, ((bhoj)localObject).n);
+        this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.set(0, ((SignatureTemplateInfo)localObject).n);
         this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionId = 0;
         this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.locationText = "";
         this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText = null;
@@ -193,7 +186,7 @@ public class SignatureEditFragment
       }
       localObject = new Bundle();
       ((Bundle)localObject).putSerializable("my_signature", this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.f, (Bundle)localObject, bbvh.a().jdField_a_of_type_EipcEIPCResultCallback);
+      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.f, (Bundle)localObject, SignatureManagerForTool.a().jdField_a_of_type_EipcEIPCResultCallback);
       return;
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.mStickerInfos.clear();
       continue;
@@ -203,17 +196,17 @@ public class SignatureEditFragment
   
   private void f()
   {
-    Object localObject = bbvh.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+    Object localObject = SignatureManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
     if (this.mApp == null) {
       this.mApp = getActivity().getAppInterface();
     }
-    if ((localObject != null) && (((bhoj)localObject).f < 2) && ("signature_chouti".equals(getActivity().getIntent().getStringExtra("via"))))
+    if ((localObject != null) && (((SignatureTemplateInfo)localObject).f < 2) && ("signature_chouti".equals(getActivity().getIntent().getStringExtra("via"))))
     {
       localObject = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
       if (((SharedPreferences)localObject).getBoolean(this.mApp.getCurrentAccountUin() + "new_signature_version_826", true))
       {
         ((SharedPreferences)localObject).edit().putBoolean(this.mApp.getCurrentAccountUin() + "new_signature_version_826", false).apply();
-        bhdj.a(getActivity(), 230, anvx.a(2131713607), getActivity().getResources().getString(2131691835), anvx.a(2131713744), getActivity().getResources().getString(2131691820), new bbuc(this), new bbud(this)).show();
+        DialogUtil.a(getActivity(), 230, HardCodeUtil.a(2131714103), getActivity().getResources().getString(2131691955), HardCodeUtil.a(2131714240), getActivity().getResources().getString(2131691938), new SignatureEditFragment.3(this), new SignatureEditFragment.4(this)).show();
         VasWebviewUtil.reportCommercialDrainage("signature_update", "show", "", 0, 0, 0, "", "", "1", "", "", "", "", 0, 0, 0, 0);
       }
     }
@@ -221,17 +214,17 @@ public class SignatureEditFragment
   
   private void g()
   {
-    Object localObject = bbvh.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+    Object localObject = SignatureManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
     if (this.mApp == null) {
       this.mApp = getActivity().getAppInterface();
     }
-    if ((localObject != null) && (((bhoj)localObject).f < 2) && (Integer.parseInt(((bhoj)localObject).jdField_a_of_type_JavaLangString) > 0) && (this.jdField_d_of_type_Boolean))
+    if ((localObject != null) && (((SignatureTemplateInfo)localObject).f < 2) && (Integer.parseInt(((SignatureTemplateInfo)localObject).jdField_a_of_type_JavaLangString) > 0) && (this.jdField_d_of_type_Boolean))
     {
       localObject = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
       if ((((SharedPreferences)localObject).getBoolean(this.mApp.getCurrentAccountUin() + "edit_signature_version_826", false)) && (((SharedPreferences)localObject).getBoolean(this.mApp.getCurrentAccountUin() + "new_signature_version_826", true)))
       {
         ((SharedPreferences)localObject).edit().putBoolean(this.mApp.getCurrentAccountUin() + "new_signature_version_826", false).apply();
-        bhdj.a(getActivity(), 230, anvx.a(2131713607), getActivity().getResources().getString(2131691835), null, anvx.a(2131716172), new bbue(this), null).show();
+        DialogUtil.a(getActivity(), 230, HardCodeUtil.a(2131714103), getActivity().getResources().getString(2131691955), null, HardCodeUtil.a(2131716638), new SignatureEditFragment.5(this), null).show();
         VasWebviewUtil.reportCommercialDrainage("signature_update", "show", "", 0, 0, 0, "", "", "2", "", "", "", "", 0, 0, 0, 0);
       }
     }
@@ -239,7 +232,7 @@ public class SignatureEditFragment
   
   private void h()
   {
-    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.e, null, bbvh.a().jdField_a_of_type_EipcEIPCResultCallback);
+    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.e, null, SignatureManagerForTool.a().jdField_a_of_type_EipcEIPCResultCallback);
   }
   
   private void i()
@@ -250,15 +243,15 @@ public class SignatureEditFragment
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
       return;
     }
-    if (this.jdField_a_of_type_Bbwp == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusSignMySignViewHolder == null)
     {
       if (this.mApp == null) {
         this.mApp = getActivity().getAppInterface();
       }
-      this.jdField_a_of_type_Bbwp = new bbwp(getActivity(), this.mApp, this.jdField_a_of_type_AndroidViewView, this.mApp.getCurrentAccountUin());
-      this.jdField_a_of_type_Bbwp.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusSignMySignViewHolder = new MySignViewHolder(getActivity(), this.mApp, this.jdField_a_of_type_AndroidViewView, this.mApp.getCurrentAccountUin());
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusSignMySignViewHolder.a(this);
     }
-    this.jdField_a_of_type_Bbwp.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignMySignViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
     this.jdField_a_of_type_AndroidViewView.invalidate();
     a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
     d();
@@ -314,16 +307,16 @@ public class SignatureEditFragment
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       return;
     }
-    bdla.b(null, "dc00898", "", "", "0X800A63D", "0X800A63D", 0, 0, "0", "0", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A63D", "0X800A63D", 0, 0, "0", "0", "", "");
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.bOnlyHasTopic())
     {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(260);
       return;
     }
-    Object localObject = bbvh.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-    if ((i == 0) && (((bhoj)localObject).jdField_a_of_type_Bhol == null))
+    Object localObject = SignatureManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+    if ((i == 0) && (((SignatureTemplateInfo)localObject).jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem == null))
     {
-      bhdj.a(getActivity(), 230, anvx.a(2131713566), anvx.a(2131713569), anvx.a(2131713579), anvx.a(2131713564), new bbua(this), new bbub(this)).show();
+      DialogUtil.a(getActivity(), 230, HardCodeUtil.a(2131714062), HardCodeUtil.a(2131714065), HardCodeUtil.a(2131714075), HardCodeUtil.a(2131714060), new SignatureEditFragment.1(this), new SignatureEditFragment.2(this)).show();
       return;
     }
     e();
@@ -340,14 +333,14 @@ public class SignatureEditFragment
     Object localObject = arrayOfInt;
     if (paramInt > 1)
     {
-      bhoj localbhoj = bbvh.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+      SignatureTemplateInfo localSignatureTemplateInfo = SignatureManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
       localObject = arrayOfInt;
-      if (localbhoj != null)
+      if (localSignatureTemplateInfo != null)
       {
         localObject = arrayOfInt;
-        if (!TextUtils.isEmpty(localbhoj.t))
+        if (!TextUtils.isEmpty(localSignatureTemplateInfo.t))
         {
-          paramInt = Color.parseColor(localbhoj.t);
+          paramInt = Color.parseColor(localSignatureTemplateInfo.t);
           localObject = new int[2];
           localObject[0] = b(paramInt);
           localObject[1] = a(paramInt);
@@ -389,7 +382,7 @@ public class SignatureEditFragment
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.dataId = 0;
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.dataText = "";
       if (paramInt5 == 0) {
-        bbvh.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+        SignatureManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
       }
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(257);
@@ -398,7 +391,7 @@ public class SignatureEditFragment
     }
   }
   
-  public void a(View paramView, int paramInt, bbwn parambbwn)
+  public void a(View paramView, int paramInt, ISignViewHolder paramISignViewHolder)
   {
     QLog.d("Signature.Fragment", 1, new Object[] { "onClick viewType=", paramView });
     if ((paramInt == 2) || (paramInt == 1))
@@ -422,7 +415,7 @@ public class SignatureEditFragment
   {
     if ((this.jdField_a_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
     {
-      bhdj.a(getActivity(), 230, anvx.a(2131713586), anvx.a(2131713580), anvx.a(2131713585), anvx.a(2131713571), new bbug(this), new bbuh(this)).show();
+      DialogUtil.a(getActivity(), 230, HardCodeUtil.a(2131714082), HardCodeUtil.a(2131714076), HardCodeUtil.a(2131714081), HardCodeUtil.a(2131714067), new SignatureEditFragment.7(this), new SignatureEditFragment.8(this)).show();
       return;
     }
     getActivity().finish();
@@ -433,7 +426,7 @@ public class SignatureEditFragment
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_Final(paramBundle);
-    this.mSwiftTitleUI.titleContainer.setVisibility(8);
+    this.mSwiftTitleUI.a.setVisibility(8);
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.setVisibility(8);
     }
@@ -442,7 +435,7 @@ public class SignatureEditFragment
     if (this.jdField_b_of_type_Int > 0) {
       this.jdField_c_of_type_AndroidViewView.setVisibility(4);
     }
-    this.mUIStyleHandler.mProgressBarController.a(false);
+    this.mUIStyleHandler.a.a(false);
     this.mSetting.a("web_view_long_click", false);
     c();
     paramBundle.edit().putBoolean(this.mApp.getCurrentAccountUin() + "_has_history_sig_del_key", false).apply();
@@ -462,8 +455,8 @@ public class SignatureEditFragment
     if (QLog.isColorLevel()) {
       QLog.i("Signature.Fragment", 2, "doOnActivityResult refetch");
     }
-    bbvh.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
-    bbvh.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = null;
+    SignatureManagerForTool.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
+    SignatureManagerForTool.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = null;
     h();
     c();
   }
@@ -492,13 +485,13 @@ public class SignatureEditFragment
       i();
       return true;
     case 258: 
-      QQToast.a(getActivity(), 1, anvx.a(2131713557), 1).a();
+      QQToast.a(getActivity(), 1, HardCodeUtil.a(2131714053), 1).a();
       return true;
     case 261: 
-      QQToast.a(getActivity(), 1, anvx.a(2131713559), 1).a();
+      QQToast.a(getActivity(), 1, HardCodeUtil.a(2131714055), 1).a();
       return true;
     case 260: 
-      QQToast.a(getActivity(), 1, anvx.a(2131713570), 1).a();
+      QQToast.a(getActivity(), 1, HardCodeUtil.a(2131714066), 1).a();
       return true;
     case 259: 
       dispatchPluginEvent(8589934617L, (HashMap)paramMessage.obj);
@@ -507,7 +500,7 @@ public class SignatureEditFragment
     if (paramMessage.arg1 >= 0)
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(getString(2131718895), new Object[] { Integer.valueOf(paramMessage.arg1) }));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(getString(2131719422), new Object[] { Integer.valueOf(paramMessage.arg1) }));
       return true;
     }
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -539,7 +532,7 @@ public class SignatureEditFragment
       VasWebviewUtil.reportCommercialDrainage("signature_store", "click_edit", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       continue;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0)) {
-        bbvh.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+        SignatureManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
       }
       for (;;)
       {
@@ -547,8 +540,8 @@ public class SignatureEditFragment
         ((Intent)localObject).putExtra("key_uin", this.mApp.getCurrentAccountUin());
         ((Intent)localObject).putExtra("key_uin_name", this.mApp.getCurrentNickname());
         ((Intent)localObject).putExtra("key_open_via", "history-geqian");
-        aeow.a(getActivity(), (Intent)localObject, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-        bdla.b(null, "dc00898", "", "", "0X800A63C", "0X800A63C", 0, 0, "0", "0", "", "");
+        PublicFragmentActivity.Launcher.a(getActivity(), (Intent)localObject, PublicFragmentActivity.class, SignatureHistoryFragment.class);
+        ReportController.b(null, "dc00898", "", "", "0X800A63C", "0X800A63C", 0, 0, "0", "0", "", "");
         VasWebviewUtil.reportCommercialDrainage("signature_store", "history_enter", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
         break;
         this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
@@ -562,8 +555,8 @@ public class SignatureEditFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    gf.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
-    bbvh.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    FontManagerForTool.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    SignatureManagerForTool.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
     this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra("open_diy", false);
     f();
   }
@@ -574,31 +567,31 @@ public class SignatureEditFragment
       QLog.d("Signature.Fragment", 2, "onCreateView");
     }
     ApngImage.playByTag(17);
-    SoftInputDetectView localSoftInputDetectView = (SoftInputDetectView)paramLayoutInflater.inflate(2131562070, null);
-    this.jdField_a_of_type_AndroidViewView = localSoftInputDetectView.findViewById(2131377756);
-    Object localObject = localSoftInputDetectView.findViewById(2131377778).getLayoutParams();
+    SoftInputDetectView localSoftInputDetectView = (SoftInputDetectView)paramLayoutInflater.inflate(2131562208, null);
+    this.jdField_a_of_type_AndroidViewView = localSoftInputDetectView.findViewById(2131378167);
+    Object localObject = localSoftInputDetectView.findViewById(2131378189).getLayoutParams();
     int i = SystemUtil.getNotchHeight(getActivity(), getActivity());
     if (i > ((ViewGroup.LayoutParams)localObject).height)
     {
       ((ViewGroup.LayoutParams)localObject).height = i;
-      localSoftInputDetectView.findViewById(2131377775).setOnClickListener(this);
+      localSoftInputDetectView.findViewById(2131378186).setOnClickListener(this);
       if (this.jdField_c_of_type_Boolean) {
-        ((TextView)localSoftInputDetectView.findViewById(2131377779)).setText("DIY签名");
+        ((TextView)localSoftInputDetectView.findViewById(2131378190)).setText("DIY签名");
       }
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = localSoftInputDetectView.findViewById(2131377776);
-      this.jdField_b_of_type_AndroidViewView.setOnTouchListener(mvk.a);
+      this.jdField_b_of_type_AndroidViewView = localSoftInputDetectView.findViewById(2131378187);
+      this.jdField_b_of_type_AndroidViewView.setOnTouchListener(UITools.a);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localSoftInputDetectView.findViewById(2131377782));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localSoftInputDetectView.findViewById(2131378193));
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnTouchListener(mvk.a);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localSoftInputDetectView.findViewById(2131377783));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localSoftInputDetectView.findViewById(2131377774));
+      this.jdField_d_of_type_AndroidWidgetTextView.setOnTouchListener(UITools.a);
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localSoftInputDetectView.findViewById(2131378194));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localSoftInputDetectView.findViewById(2131378185));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localSoftInputDetectView.findViewById(2131377772));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localSoftInputDetectView.findViewById(2131378183));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      UIUtils.expandViewTouchArea(this.jdField_b_of_type_AndroidWidgetTextView, 0, 0, 0, UIUtils.dip2px(getActivity(), 10.0F));
-      this.jdField_c_of_type_AndroidViewView = localSoftInputDetectView.findViewById(2131377777);
+      UIUtils.a(this.jdField_b_of_type_AndroidWidgetTextView, 0, 0, 0, UIUtils.a(getActivity(), 10.0F));
+      this.jdField_c_of_type_AndroidViewView = localSoftInputDetectView.findViewById(2131378188);
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         break label433;
       }
@@ -607,8 +600,8 @@ public class SignatureEditFragment
     for (boolean bool = true;; bool = false)
     {
       localSoftInputDetectView.setExcludeStatusBar(bool);
-      localObject = (RelativeLayout)localSoftInputDetectView.findViewById(2131377781);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localSoftInputDetectView.findViewById(2131377773));
+      localObject = (RelativeLayout)localSoftInputDetectView.findViewById(2131378192);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localSoftInputDetectView.findViewById(2131378184));
       ((RelativeLayout)localObject).addView(super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle), new RelativeLayout.LayoutParams(-1, -1));
       i();
       h();
@@ -626,16 +619,16 @@ public class SignatureEditFragment
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Bbwp != null) {
-      this.jdField_a_of_type_Bbwp.k();
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusSignMySignViewHolder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusSignMySignViewHolder.k();
     }
-    gf.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
-    bbvh.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+    FontManagerForTool.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+    SignatureManagerForTool.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    bbvh.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
-    bbvh.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = null;
+    SignatureManagerForTool.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
+    SignatureManagerForTool.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = null;
     super.onDestroy();
   }
   
@@ -664,7 +657,7 @@ public class SignatureEditFragment
     {
       g();
       return;
-      localObject = bbvh.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
+      localObject = SignatureManagerForTool.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
       if ((localObject != null) && (this.jdField_a_of_type_Int == 0))
       {
         this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom((RichStatus)localObject);
@@ -678,7 +671,7 @@ public class SignatureEditFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureEditFragment
  * JD-Core Version:    0.7.0.1
  */

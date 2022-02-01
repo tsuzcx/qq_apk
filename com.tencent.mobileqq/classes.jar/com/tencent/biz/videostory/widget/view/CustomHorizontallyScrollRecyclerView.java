@@ -13,10 +13,10 @@ import android.view.ViewParent;
 public class CustomHorizontallyScrollRecyclerView
   extends RecyclerView
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private float b;
+  private float b = 0.0F;
   
   public CustomHorizontallyScrollRecyclerView(Context paramContext)
   {
@@ -93,7 +93,7 @@ public class CustomHorizontallyScrollRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.CustomHorizontallyScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

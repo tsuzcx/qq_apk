@@ -4,15 +4,13 @@ import com.tencent.ttpic.filter.DynamicNumFilter;
 import com.tencent.ttpic.filter.DynamicStickerFilter;
 import com.tencent.ttpic.filter.NormalVideoFilter;
 import com.tencent.ttpic.filter.StaticNumFilter;
-import com.tencent.ttpic.filter.WatermarkDynamicFilter;
-import com.tencent.ttpic.filter.WatermarkStaticFilter;
 import com.tencent.ttpic.openapi.filter.RenderItem;
 import com.tencent.ttpic.openapi.filter.SnapShotFilter;
 import com.tencent.ttpic.openapi.filter.StaticStickerFilter;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.trigger.TriggerManager;
 
 public class VideoFilterFactory
@@ -35,7 +33,7 @@ public class VideoFilterFactory
       }
       while (paramString != null)
       {
-        if (paramStickerItem.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_UP_DOWN) {
+        if (paramStickerItem.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.VIDEO_UP_DOWN) {
           paramString.updateFilterShader(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_UP_DOWN));
         }
         for (;;)
@@ -45,25 +43,17 @@ public class VideoFilterFactory
           }
           return paramString;
           if ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.GESTURE.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.BODY.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.CAT.type)) {
-            break label449;
+            break label376;
           }
           paramString = new DynamicStickerFilter(paramStickerItem, paramString);
           break;
           if ((paramStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.WATERMARK.type) && (paramStickerItem.transition == null))
           {
-            if ((paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type))
-            {
-              paramString = new WatermarkStaticFilter(paramStickerItem, paramString);
-              break;
-            }
-            if ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.GESTURE.type)) {
-              break label449;
-            }
-            paramString = new WatermarkDynamicFilter(paramStickerItem, paramString);
+            paramString = null;
             break;
           }
           if (paramStickerItem.stickerType != VideoFilterFactory.STICKER_TYPE.SNAP_SHOT.type) {
-            break label449;
+            break label376;
           }
           paramString = new SnapShotFilter(paramStickerItem, paramString);
           break;
@@ -73,15 +63,15 @@ public class VideoFilterFactory
             break;
           }
           if (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) {
-            break label449;
+            break label376;
           }
           paramString = new DynamicNumFilter(paramStickerItem, paramString);
           break;
-          if (paramStickerItem.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_LEFT_RIGHT) {
+          if (paramStickerItem.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.VIDEO_LEFT_RIGHT) {
             paramString.updateFilterShader(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_LEFT_RIGHT));
           }
         }
-        label449:
+        label376:
         paramString = null;
       }
     }
@@ -102,7 +92,7 @@ public class VideoFilterFactory
       }
       while (paramString != null)
       {
-        if (paramStickerItem.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_UP_DOWN) {
+        if (paramStickerItem.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.VIDEO_UP_DOWN) {
           paramString.updateFilterShader(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_UP_DOWN));
         }
         for (;;)
@@ -112,25 +102,17 @@ public class VideoFilterFactory
           }
           return new RenderItem(paramString, null);
           if ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.GESTURE.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.BODY.type)) {
-            break label444;
+            break label371;
           }
           paramString = new DynamicStickerFilter(paramStickerItem, paramString);
           break;
           if ((paramStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.WATERMARK.type) && (paramStickerItem.transition == null))
           {
-            if ((paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type))
-            {
-              paramString = new WatermarkStaticFilter(paramStickerItem, paramString);
-              break;
-            }
-            if ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.GESTURE.type)) {
-              break label444;
-            }
-            paramString = new WatermarkDynamicFilter(paramStickerItem, paramString);
+            paramString = null;
             break;
           }
           if (paramStickerItem.stickerType != VideoFilterFactory.STICKER_TYPE.SNAP_SHOT.type) {
-            break label444;
+            break label371;
           }
           paramString = new SnapShotFilter(paramStickerItem, paramString);
           break;
@@ -140,15 +122,15 @@ public class VideoFilterFactory
             break;
           }
           if (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) {
-            break label444;
+            break label371;
           }
           paramString = new DynamicNumFilter(paramStickerItem, paramString);
           break;
-          if (paramStickerItem.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_LEFT_RIGHT) {
+          if (paramStickerItem.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.VIDEO_LEFT_RIGHT) {
             paramString.updateFilterShader(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_LEFT_RIGHT));
           }
         }
-        label444:
+        label371:
         paramString = null;
       }
     }
@@ -156,7 +138,7 @@ public class VideoFilterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.util.VideoFilterFactory
  * JD-Core Version:    0.7.0.1
  */

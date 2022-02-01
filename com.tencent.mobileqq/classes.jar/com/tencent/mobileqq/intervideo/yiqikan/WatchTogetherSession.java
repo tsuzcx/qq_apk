@@ -3,24 +3,24 @@ package com.tencent.mobileqq.intervideo.yiqikan;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avyb;
-import bekh;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.together.TogetherSession;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class WatchTogetherSession
-  extends bekh
+  extends TogetherSession
   implements Parcelable
 {
-  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new avyb();
+  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new WatchTogetherSession.1();
   public int a;
   public long a;
   public String a;
   public String b;
   public String c;
   
-  public WatchTogetherSession(Parcel paramParcel)
+  protected WatchTogetherSession(Parcel paramParcel)
   {
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_e_of_type_Int = paramParcel.readInt();
@@ -44,6 +44,7 @@ public class WatchTogetherSession
   
   public WatchTogetherSession(String paramString)
   {
+    this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_e_of_type_Int = 2;
@@ -59,7 +60,7 @@ public class WatchTogetherSession
   public String a(QQAppInterface paramQQAppInterface)
   {
     if (this.j == 1) {
-      return paramQQAppInterface.getApp().getString(2131698993) + this.b;
+      return paramQQAppInterface.getApp().getString(2131699339) + this.b;
     }
     return this.b;
   }
@@ -67,19 +68,19 @@ public class WatchTogetherSession
   public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
   {
     if (paramBoolean) {
-      return paramQQAppInterface.getApp().getString(2131698985);
+      return paramQQAppInterface.getApp().getString(2131699331);
     }
-    return a(paramQQAppInterface, 2131698997, 2131698995, 2131698992);
+    return a(paramQQAppInterface, 2131699343, 2131699341, 2131699338);
   }
   
   public int b()
   {
-    return 2130844803;
+    return 2130844964;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
   {
-    return a(paramQQAppInterface, 2131698996, 2131698994);
+    return a(paramQQAppInterface, 2131699342, 2131699340);
   }
   
   protected Object clone()
@@ -138,7 +139,7 @@ public class WatchTogetherSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession
  * JD-Core Version:    0.7.0.1
  */

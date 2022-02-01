@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.theme.diy;
 
-import aozu;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.utils.DiySecureFileHelper;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import mqq.app.AppRuntime;
 
@@ -170,7 +170,7 @@ public class DIYThemeUtils
     //   327: putfield 173	com/tencent/image/URLDrawable$URLDrawableOptions:mFailedDrawable	Landroid/graphics/drawable/Drawable;
     //   330: aload 7
     //   332: aload_0
-    //   333: invokestatic 179	bkwb:a	(Landroid/content/Context;)Z
+    //   333: invokestatic 179	com/tencent/qqsharpP/QQSharpPUtil:a	(Landroid/content/Context;)Z
     //   336: putfield 182	com/tencent/image/URLDrawable$URLDrawableOptions:mUseSharpPImage	Z
     //   339: aload_1
     //   340: aload 7
@@ -275,7 +275,7 @@ public class DIYThemeUtils
       if (paramAppRuntime == null)
       {
         paramAppRuntime = "0";
-        paramAppRuntime = new StringBuilder().append(ThemeDiyStyleLogic.getDataDIYDir()).append(aozu.a(paramAppRuntime)).append("/");
+        paramAppRuntime = new StringBuilder().append(ThemeDiyStyleLogic.getDataDIYDir()).append(DiySecureFileHelper.a(paramAppRuntime)).append("/");
         if (120 != paramInt) {
           break label350;
         }
@@ -295,11 +295,6 @@ public class DIYThemeUtils
     }
     localResData.path = (ThemeDiyStyleLogic.getSdcardDIYDir() + "styleThum/" + paramString);
     return localResData;
-  }
-  
-  public static boolean isNeedDealDarkBright(ThemeDIYData paramThemeDIYData, ResSuitData paramResSuitData, ResData paramResData)
-  {
-    return (paramThemeDIYData.position == 1) && ((paramResSuitData == null) || ("999".equals(paramResSuitData.id))) && ((paramResData == null) || ((paramResSuitData != null) && (!paramResSuitData.id.equals(paramResData.dealThemeID))));
   }
 }
 

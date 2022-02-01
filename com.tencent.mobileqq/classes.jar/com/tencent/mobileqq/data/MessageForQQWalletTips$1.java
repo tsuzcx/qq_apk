@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import albw;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -58,7 +58,7 @@ class MessageForQQWalletTips$1
             break;
           }
           localObject3 = (TroopMemberInfo)localIterator.next();
-        } while ((localObject3 == null) || (!albw.c(((TroopMemberInfo)localObject3).memberuin, (String)localObject2)));
+        } while ((localObject3 == null) || (!QWalletTools.c(((TroopMemberInfo)localObject3).memberuin, (String)localObject2)));
       }
       for (int i = 0;; i = 1)
       {
@@ -74,7 +74,7 @@ class MessageForQQWalletTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.1
  * JD-Core Version:    0.7.0.1
  */

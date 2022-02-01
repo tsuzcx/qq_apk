@@ -13,13 +13,13 @@ public final class pendantConfig
   static pendantStageConfig cache_medium_stage;
   static pendantStageConfig cache_strong_stage;
   static pendantStageConfig cache_weak_stage = new pendantStageConfig();
-  public int cid;
-  public boolean enable;
-  public Map<String, String> ext;
-  public pendantStageConfig medium_stage;
-  public pendantStageConfig strong_stage;
+  public int cid = 0;
+  public boolean enable = false;
+  public Map<String, String> ext = null;
+  public pendantStageConfig medium_stage = null;
+  public pendantStageConfig strong_stage = null;
   public String trace_id = "";
-  public pendantStageConfig weak_stage;
+  public pendantStageConfig weak_stage = null;
   
   static
   {

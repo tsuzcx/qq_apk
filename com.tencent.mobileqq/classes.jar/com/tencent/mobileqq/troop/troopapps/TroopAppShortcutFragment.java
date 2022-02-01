@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bgfq;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -29,7 +28,7 @@ public class TroopAppShortcutFragment
       localSystemBarCompact.setStatusBarColor(0);
       localSystemBarCompact.setStatusColor(0);
       if (!ThemeUtil.isNowThemeIsNight(getActivity().app, true, null)) {
-        ImmersiveUtils.a(true, getActivity().getWindow());
+        ImmersiveUtils.setStatusTextColor(true, getActivity().getWindow());
       }
     }
   }
@@ -68,7 +67,7 @@ public class TroopAppShortcutFragment
     paramLayoutInflater = getActivity().getIntent().getStringExtra("troop_uin");
     paramViewGroup = (SessionInfo)getActivity().getIntent().getParcelableExtra("session_info");
     int i = getActivity().getIntent().getIntExtra("reportfrom", 2);
-    this.a = new bgfq(this, getActivity().app, getActivity(), getActivity(), paramViewGroup, paramLayoutInflater, 2);
+    this.a = new TroopAppShortcutFragment.1(this, getActivity().app, getActivity(), getActivity(), paramViewGroup, paramLayoutInflater, 2);
     if ((this.a == null) || (this.a.a() == null)) {}
     for (paramLayoutInflater = null;; paramLayoutInflater = this.a.a())
     {

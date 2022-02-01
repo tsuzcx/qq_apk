@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import axnn;
-import axno;
-import ayfx;
-import aygd;
+import com.tencent.mobileqq.nearby.FaceScoreConfig;
+import com.tencent.mobileqq.nearby.FaceScoreUtils;
 
-public class NearbyProfileDisplayTribePanel$14$1
+class NearbyProfileDisplayTribePanel$14$1
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$14$1(aygd paramaygd, axnn paramaxnn) {}
+  NearbyProfileDisplayTribePanel$14$1(NearbyProfileDisplayTribePanel.14 param14, FaceScoreConfig paramFaceScoreConfig) {}
   
   public void run()
   {
-    axno.a(this.jdField_a_of_type_Aygd.a.a.getAppInterface(), this.jdField_a_of_type_Axnn);
+    FaceScoreUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$14.a.a.getAppInterface(), this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreConfig);
   }
 }
 

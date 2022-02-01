@@ -7,8 +7,8 @@ class ShareActionSheetBuilder$2
   
   public void run()
   {
-    this.this$0.handleSetMove(this.this$0.mScrollView1, this.this$0.mGridView1Length);
-    this.this$0.handleSetMove(this.this$0.mScrollView2, this.this$0.mGridView2Length);
+    this.this$0.a(this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView, this.this$0.jdField_a_of_type_Int);
+    this.this$0.a(this.this$0.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView, this.this$0.jdField_b_of_type_Int);
   }
 }
 

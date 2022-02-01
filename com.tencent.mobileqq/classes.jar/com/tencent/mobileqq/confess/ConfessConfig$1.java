@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.confess;
 
-import aquz;
-
-public class ConfessConfig$1
+class ConfessConfig$1
   implements Runnable
 {
-  public ConfessConfig$1(aquz paramaquz) {}
+  ConfessConfig$1(ConfessConfig paramConfessConfig) {}
   
   public void run()
   {

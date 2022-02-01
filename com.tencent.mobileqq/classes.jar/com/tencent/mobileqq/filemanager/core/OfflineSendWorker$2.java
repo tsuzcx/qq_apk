@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atnd;
-
-public class OfflineSendWorker$2
+class OfflineSendWorker$2
   implements Runnable
 {
-  public OfflineSendWorker$2(atnd paramatnd, String paramString, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4) {}
+  OfflineSendWorker$2(OfflineSendWorker paramOfflineSendWorker, String paramString, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4) {}
   
   /* Error */
   public void run()
@@ -24,41 +22,41 @@ public class OfflineSendWorker$2
     //   18: invokespecial 53	java/lang/StringBuilder:<init>	()V
     //   21: ldc 55
     //   23: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: invokestatic 64	bcrg:a	()J
+    //   26: invokestatic 64	com/tencent/mobileqq/service/message/MessageCache:a	()J
     //   29: invokevirtual 67	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   32: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   35: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   38: aload_0
-    //   39: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
-    //   42: invokevirtual 80	atnd:k	()V
-    //   45: new 82	aucv
+    //   39: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
+    //   42: invokevirtual 80	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:k	()V
+    //   45: new 82	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara
     //   48: dup
-    //   49: invokespecial 83	aucv:<init>	()V
+    //   49: invokespecial 83	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:<init>	()V
     //   52: astore 5
     //   54: aload 5
     //   56: aload_0
     //   57: getfield 21	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   60: putfield 84	aucv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   60: putfield 84	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   63: aload 5
     //   65: aload_0
     //   66: getfield 23	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:jdField_a_of_type_Long	J
-    //   69: putfield 85	aucv:jdField_a_of_type_Long	J
+    //   69: putfield 85	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:jdField_a_of_type_Long	J
     //   72: aload 5
     //   74: aload_0
     //   75: getfield 25	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:jdField_a_of_type_ArrayOfByte	[B
-    //   78: putfield 86	aucv:c	[B
+    //   78: putfield 86	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:c	[B
     //   81: aload 5
     //   83: aload_0
     //   84: getfield 27	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:b	[B
-    //   87: putfield 89	aucv:f	[B
+    //   87: putfield 89	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:f	[B
     //   90: aload 5
     //   92: aload_0
     //   93: getfield 29	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:c	[B
-    //   96: putfield 90	aucv:b	[B
+    //   96: putfield 90	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:b	[B
     //   99: aload 5
     //   101: aload_0
     //   102: getfield 31	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:d	[B
-    //   105: putfield 91	aucv:jdField_a_of_type_ArrayOfByte	[B
+    //   105: putfield 91	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:jdField_a_of_type_ArrayOfByte	[B
     //   108: new 93	java/io/BufferedInputStream
     //   111: dup
     //   112: new 95	java/io/FileInputStream
@@ -80,8 +78,8 @@ public class OfflineSendWorker$2
     //   148: aload 4
     //   150: astore_3
     //   151: aload_0
-    //   152: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
-    //   155: invokestatic 117	atnd:a	(Latnd;)Z
+    //   152: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
+    //   155: invokestatic 117	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:a	(Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;)Z
     //   158: ifne +57 -> 215
     //   161: aload_2
     //   162: aload 6
@@ -118,42 +116,42 @@ public class OfflineSendWorker$2
     //   219: aload_2
     //   220: invokevirtual 130	java/io/InputStream:close	()V
     //   223: aload_0
-    //   224: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
-    //   227: invokestatic 117	atnd:a	(Latnd;)Z
+    //   224: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
+    //   227: invokestatic 117	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:a	(Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;)Z
     //   230: ifne +16 -> 246
     //   233: aload_3
     //   234: ifnull +12 -> 246
     //   237: aload 5
     //   239: aload_3
     //   240: invokevirtual 137	java/security/MessageDigest:digest	()[B
-    //   243: putfield 140	aucv:e	[B
+    //   243: putfield 140	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:e	[B
     //   246: aload_0
-    //   247: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
-    //   250: invokestatic 117	atnd:a	(Latnd;)Z
+    //   247: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
+    //   250: invokestatic 117	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:a	(Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;)Z
     //   253: ifne +57 -> 310
     //   256: aload_0
-    //   257: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
+    //   257: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
     //   260: aload 5
-    //   262: getfield 140	aucv:e	[B
-    //   265: invokevirtual 142	atnd:a	([B)V
+    //   262: getfield 140	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:e	[B
+    //   265: invokevirtual 142	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:a	([B)V
     //   268: aload_0
-    //   269: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
-    //   272: getfield 145	atnd:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   275: invokevirtual 151	com/tencent/mobileqq/app/QQAppInterface:getFileTransferHandler	()Latht;
+    //   269: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
+    //   272: getfield 145	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   275: invokevirtual 151	com/tencent/mobileqq/app/QQAppInterface:getFileTransferHandler	()Lcom/tencent/mobileqq/filemanager/app/FileTransferHandler;
     //   278: aload 5
     //   280: aload_0
-    //   281: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
-    //   284: invokestatic 154	atnd:a	(Latnd;)Latib;
+    //   281: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
+    //   284: invokestatic 154	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:a	(Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;)Lcom/tencent/mobileqq/filemanager/app/FileTransferObserver;
     //   287: aload_0
-    //   288: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
-    //   291: getfield 157	atnd:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   294: invokevirtual 162	atht:b	(Laucv;Latib;Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)V
+    //   288: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
+    //   291: getfield 157	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   294: invokevirtual 162	com/tencent/mobileqq/filemanager/app/FileTransferHandler:b	(Lcom/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara;Lcom/tencent/mobileqq/filemanager/app/FileTransferObserver;Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)V
     //   297: aload_0
-    //   298: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Latnd;
+    //   298: getfield 19	com/tencent/mobileqq/filemanager/core/OfflineSendWorker$2:this$0	Lcom/tencent/mobileqq/filemanager/core/OfflineSendWorker;
     //   301: iconst_1
     //   302: aload 5
-    //   304: getfield 140	aucv:e	[B
-    //   307: invokevirtual 165	atnd:a	(Z[B)V
+    //   304: getfield 140	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileUploadPara:e	[B
+    //   307: invokevirtual 165	com/tencent/mobileqq/filemanager/core/OfflineSendWorker:a	(Z[B)V
     //   310: aload_2
     //   311: ifnull -119 -> 192
     //   314: aload_2
@@ -208,7 +206,7 @@ public class OfflineSendWorker$2
     //   1	148	4	localMessageDigest2	java.security.MessageDigest
     //   193	3	4	localNoSuchAlgorithmException	java.security.NoSuchAlgorithmException
     //   334	23	4	localIOException8	java.io.IOException
-    //   52	251	5	localaucv	aucv
+    //   52	251	5	localOfflineFileUploadPara	com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload.OfflineFileUploadPara
     //   139	35	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
@@ -251,7 +249,7 @@ public class OfflineSendWorker$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OfflineSendWorker.2
  * JD-Core Version:    0.7.0.1
  */

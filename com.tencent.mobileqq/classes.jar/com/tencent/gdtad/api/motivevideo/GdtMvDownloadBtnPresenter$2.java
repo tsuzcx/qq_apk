@@ -1,11 +1,9 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aceo;
-
-public class GdtMvDownloadBtnPresenter$2
+class GdtMvDownloadBtnPresenter$2
   implements Runnable
 {
-  public GdtMvDownloadBtnPresenter$2(aceo paramaceo, GdtMvAppBtnData paramGdtMvAppBtnData, int paramInt) {}
+  GdtMvDownloadBtnPresenter$2(GdtMvDownloadBtnPresenter paramGdtMvDownloadBtnPresenter, GdtMvAppBtnData paramGdtMvAppBtnData, int paramInt) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class GdtMvDownloadBtnPresenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnPresenter.2
  * JD-Core Version:    0.7.0.1
  */

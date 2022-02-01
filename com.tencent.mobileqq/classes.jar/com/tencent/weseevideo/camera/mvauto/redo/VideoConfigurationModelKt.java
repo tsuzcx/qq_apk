@@ -1,9 +1,8 @@
 package com.tencent.weseevideo.camera.mvauto.redo;
 
-import android.graphics.PointF;
 import com.tencent.weseevideo.model.effect.VideoEffectModel;
+import com.tencent.weseevideo.model.resource.EditorPointF;
 import com.tencent.weseevideo.model.resource.VideoConfigurationModel;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import kotlin.Metadata;
@@ -12,7 +11,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/weseevideo/camera/mvauto/redo/VideoConfigurationModelKt;", "", "contentMode", "", "frameOrigin", "Landroid/graphics/PointF;", "frameWidth", "", "frameHeight", "matrix", "", "effects", "", "Lcom/tencent/weseevideo/model/effect/VideoEffectModel;", "rotate", "(ILandroid/graphics/PointF;FF[FLjava/util/List;I)V", "getContentMode", "()I", "getEffects", "()Ljava/util/List;", "getFrameHeight", "()F", "getFrameOrigin", "()Landroid/graphics/PointF;", "getFrameWidth", "getMatrix", "()[F", "getRotate", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "convert", "Lcom/tencent/weseevideo/model/resource/VideoConfigurationModel;", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "libtavcut_debug"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/weseevideo/camera/mvauto/redo/VideoConfigurationModelKt;", "", "contentMode", "", "frameOrigin", "Lcom/tencent/weseevideo/model/resource/EditorPointF;", "frameWidth", "", "frameHeight", "matrix", "", "effects", "Lcom/tencent/weseevideo/model/effect/VideoEffectModel;", "rotate", "(ILcom/tencent/weseevideo/model/resource/EditorPointF;FFLjava/util/List;Ljava/util/List;I)V", "getContentMode", "()I", "getEffects", "()Ljava/util/List;", "getFrameHeight", "()F", "getFrameOrigin", "()Lcom/tencent/weseevideo/model/resource/EditorPointF;", "getFrameWidth", "getMatrix", "getRotate", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "convert", "Lcom/tencent/weseevideo/model/resource/VideoConfigurationModel;", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "libtavcut_debug"}, k=1, mv={1, 1, 16})
 public final class VideoConfigurationModelKt
 {
   public static final VideoConfigurationModelKt.Companion Companion = new VideoConfigurationModelKt.Companion(null);
@@ -21,20 +20,20 @@ public final class VideoConfigurationModelKt
   private final List<VideoEffectModel> effects;
   private final float frameHeight;
   @Nullable
-  private final PointF frameOrigin;
+  private final EditorPointF frameOrigin;
   private final float frameWidth;
   @NotNull
-  private final float[] matrix;
+  private final List<Float> matrix;
   private final int rotate;
   
-  public VideoConfigurationModelKt(int paramInt1, @Nullable PointF paramPointF, float paramFloat1, float paramFloat2, @NotNull float[] paramArrayOfFloat, @Nullable List<? extends VideoEffectModel> paramList, int paramInt2)
+  public VideoConfigurationModelKt(int paramInt1, @Nullable EditorPointF paramEditorPointF, float paramFloat1, float paramFloat2, @NotNull List<Float> paramList, @Nullable List<VideoEffectModel> paramList1, int paramInt2)
   {
     this.contentMode = paramInt1;
-    this.frameOrigin = paramPointF;
+    this.frameOrigin = paramEditorPointF;
     this.frameWidth = paramFloat1;
     this.frameHeight = paramFloat2;
-    this.matrix = paramArrayOfFloat;
-    this.effects = paramList;
+    this.matrix = paramList;
+    this.effects = paramList1;
     this.rotate = paramInt2;
   }
   
@@ -44,7 +43,7 @@ public final class VideoConfigurationModelKt
   }
   
   @Nullable
-  public final PointF component2()
+  public final EditorPointF component2()
   {
     return this.frameOrigin;
   }
@@ -60,7 +59,7 @@ public final class VideoConfigurationModelKt
   }
   
   @NotNull
-  public final float[] component5()
+  public final List<Float> component5()
   {
     return this.matrix;
   }
@@ -79,30 +78,29 @@ public final class VideoConfigurationModelKt
   @NotNull
   public final VideoConfigurationModel convert()
   {
-    VideoConfigurationModel localVideoConfigurationModel = new VideoConfigurationModel();
-    localVideoConfigurationModel.setContentMode(this.contentMode);
-    localVideoConfigurationModel.setFrameOrigin(this.frameOrigin);
-    localVideoConfigurationModel.setFrameWidth(this.frameWidth);
-    localVideoConfigurationModel.setFrameHeight(this.frameHeight);
-    Object localObject = this.matrix;
-    localObject = Arrays.copyOf((float[])localObject, localObject.length);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.copyOf(this, size)");
-    localVideoConfigurationModel.setMatrix((float[])localObject);
-    localObject = this.effects;
-    if (localObject != null) {}
-    for (localObject = CollectionsKt.toMutableList((Collection)localObject);; localObject = null)
+    int i = this.contentMode;
+    EditorPointF localEditorPointF = this.frameOrigin;
+    float f1 = this.frameWidth;
+    float f2 = this.frameHeight;
+    List localList2 = CollectionsKt.toList((Iterable)this.matrix);
+    List localList1 = this.effects;
+    if (localList1 != null)
     {
-      localVideoConfigurationModel.setEffects((List)localObject);
-      localVideoConfigurationModel.setRotate(this.rotate);
-      return localVideoConfigurationModel;
+      localList1 = CollectionsKt.toMutableList((Collection)localList1);
+      if (localList1 == null) {}
+    }
+    for (;;)
+    {
+      return new VideoConfigurationModel(i, localEditorPointF, f1, f2, localList2, localList1, this.rotate);
+      localList1 = CollectionsKt.emptyList();
     }
   }
   
   @NotNull
-  public final VideoConfigurationModelKt copy(int paramInt1, @Nullable PointF paramPointF, float paramFloat1, float paramFloat2, @NotNull float[] paramArrayOfFloat, @Nullable List<? extends VideoEffectModel> paramList, int paramInt2)
+  public final VideoConfigurationModelKt copy(int paramInt1, @Nullable EditorPointF paramEditorPointF, float paramFloat1, float paramFloat2, @NotNull List<Float> paramList, @Nullable List<VideoEffectModel> paramList1, int paramInt2)
   {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "matrix");
-    return new VideoConfigurationModelKt(paramInt1, paramPointF, paramFloat1, paramFloat2, paramArrayOfFloat, paramList, paramInt2);
+    Intrinsics.checkParameterIsNotNull(paramList, "matrix");
+    return new VideoConfigurationModelKt(paramInt1, paramEditorPointF, paramFloat1, paramFloat2, paramList, paramList1, paramInt2);
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -138,7 +136,7 @@ public final class VideoConfigurationModelKt
   }
   
   @Nullable
-  public final PointF getFrameOrigin()
+  public final EditorPointF getFrameOrigin()
   {
     return this.frameOrigin;
   }
@@ -149,7 +147,7 @@ public final class VideoConfigurationModelKt
   }
   
   @NotNull
-  public final float[] getMatrix()
+  public final List<Float> getMatrix()
   {
     return this.matrix;
   }
@@ -178,7 +176,7 @@ public final class VideoConfigurationModelKt
       }
     }
     label120:
-    for (int j = Arrays.hashCode((float[])localObject);; j = 0)
+    for (int j = localObject.hashCode();; j = 0)
     {
       localObject = this.effects;
       if (localObject != null) {
@@ -193,12 +191,12 @@ public final class VideoConfigurationModelKt
   @NotNull
   public String toString()
   {
-    return "VideoConfigurationModelKt(contentMode=" + this.contentMode + ", frameOrigin=" + this.frameOrigin + ", frameWidth=" + this.frameWidth + ", frameHeight=" + this.frameHeight + ", matrix=" + Arrays.toString(this.matrix) + ", effects=" + this.effects + ", rotate=" + this.rotate + ")";
+    return "VideoConfigurationModelKt(contentMode=" + this.contentMode + ", frameOrigin=" + this.frameOrigin + ", frameWidth=" + this.frameWidth + ", frameHeight=" + this.frameHeight + ", matrix=" + this.matrix + ", effects=" + this.effects + ", rotate=" + this.rotate + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.VideoConfigurationModelKt
  * JD-Core Version:    0.7.0.1
  */

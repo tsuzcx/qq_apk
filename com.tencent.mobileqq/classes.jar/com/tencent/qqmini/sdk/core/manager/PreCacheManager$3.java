@@ -1,60 +1,58 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import com.tencent.qqmini.sdk.core.utils.FileUtils;
 import com.tencent.qqmini.sdk.core.utils.ParcelableUtil;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener.DownloadResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 class PreCacheManager$3
-  implements AsyncResult
+  implements DownloaderProxy.DownloadListener
 {
-  PreCacheManager$3(PreCacheManager paramPreCacheManager, String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo, String paramString3, PreCacheManager.OnCacheListener paramOnCacheListener) {}
+  PreCacheManager$3(PreCacheManager paramPreCacheManager, String paramString1, String paramString2, PreCacheManager.OnCacheListener paramOnCacheListener, PreCacheManager.PreCacheDescData paramPreCacheDescData, String paramString3, MiniAppInfo paramMiniAppInfo, String paramString4) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    if (paramBoolean) {}
-    do
+    QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " fetch PreCache url failed! url=" + this.val$queryUrl);
+    if (this.val$listener != null) {
+      this.val$listener.onCacheUpdated(false, false);
+    }
+  }
+  
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
+  
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
+  
+  public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
+  {
+    try
     {
-      try
+      paramString = new File(paramString);
+      QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " fetch PreCache succful. url" + this.val$queryUrl + " length=" + paramString.length());
+      if (paramString.length() <= PreCacheManager.access$200())
       {
-        Object localObject = (PreCacheManager.ContentAccelerateRsp)paramJSONObject.get("data");
-        QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " fetch PreCache succful. CacheType:" + this.val$cacheType + " httpCode=" + ((PreCacheManager.ContentAccelerateRsp)localObject).httpReturnCode + " length=" + ((PreCacheManager.ContentAccelerateRsp)localObject).cacheData.length);
-        if ((((PreCacheManager.ContentAccelerateRsp)localObject).httpReturnCode == 200) && (((PreCacheManager.ContentAccelerateRsp)localObject).cacheData.length <= PreCacheManager.access$200()))
-        {
-          paramJSONObject = new PreCacheManager.PreCacheDescData();
-          paramJSONObject.appid = this.val$miniAppConfig.appId;
-          paramJSONObject.url = this.val$origUrl;
-          paramJSONObject.scene = this.val$miniAppConfig.launchParam.scene;
-          paramJSONObject.path = this.val$miniAppConfig.launchParam.entryPath;
-          paramJSONObject.timeStamp = System.currentTimeMillis();
-          String str = MiniAppFileManager.getPreCacheFilePath(this.val$miniAppConfig.appId, this.val$cacheType, paramJSONObject.getCacheKey(this.val$cacheType));
-          FileUtils.writeFile(((PreCacheManager.ContentAccelerateRsp)localObject).cacheData, str);
-          paramJSONObject.filePath = str;
-          localObject = MiniAppFileManager.getPreCacheFilePath(this.val$miniAppConfig.appId, this.val$cacheType, paramJSONObject.getCacheKey(this.val$cacheType) + "_index");
-          ParcelableUtil.writeParcelableToFile(paramJSONObject, (String)localObject);
-          QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " save PreCache info. index=" + (String)localObject + " content=" + str);
-          if (this.val$listener != null) {
-            this.val$listener.onCacheUpdated(true, true);
-          }
+        this.val$cacheInfo.timeStamp = System.currentTimeMillis();
+        this.val$cacheInfo.filePath = this.val$tmpFilePath;
+        paramString = MiniAppFileManager.getPreCacheFilePath(this.val$miniAppConfig.appId, this.val$cacheType, this.val$cacheInfo.getCacheKey(this.val$cacheType) + "_index");
+        ParcelableUtil.writeParcelableToFile(this.val$cacheInfo, paramString);
+        QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " save PreCache info. index=" + paramString + " content=" + this.val$tmpFilePath);
+        if (this.val$listener != null) {
+          this.val$listener.onCacheUpdated(true, true);
         }
-        return;
       }
-      catch (Throwable paramJSONObject)
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      do
       {
-        do
-        {
-          QMLog.e("minisdk-start_PreCacheManager", this.val$logPrefix + " request PreCache exception!", paramJSONObject);
-        } while (this.val$listener == null);
-        this.val$listener.onCacheUpdated(false, false);
-        return;
-      }
-      int i = paramJSONObject.optInt("retCode");
-      QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " fetch PreCache failed! retCode=" + i + " msg=" + "");
-    } while (this.val$listener == null);
-    this.val$listener.onCacheUpdated(false, false);
+        QMLog.i("minisdk-start_PreCacheManager", this.val$logPrefix + " fetch PreCache exception!", paramString);
+      } while (this.val$listener == null);
+      this.val$listener.onCacheUpdated(false, false);
+    }
   }
 }
 

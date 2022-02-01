@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
+import com.tencent.biz.pubaccount.util.api.IPublicAccountH5AbilityPtt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PttUpReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
@@ -16,7 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import mqq.manager.ProxyIpManager;
-import usx;
 
 public class JSPttUploadProcessor
   extends BaseUploadProcessor
@@ -24,9 +26,9 @@ public class JSPttUploadProcessor
   public static final String TAG = "JSPttUploadProcessor";
   String mFileKey;
   
-  public JSPttUploadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
+  public JSPttUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileController, paramTransferRequest);
+    super(paramTransFileControllerImpl, paramTransferRequest);
     this.mProxyIpList = ((ProxyIpManager)this.app.getManager(3)).getProxyIp(4);
   }
   
@@ -169,7 +171,7 @@ public class JSPttUploadProcessor
             this.mIpList = paramRichProtoReq.ipList;
             this.mTransferedSize = 0L;
             this.mBlockSize = paramRichProtoReq.blockSize;
-            usx.b(this.mResid);
+            ((IPublicAccountH5AbilityPtt)QRoute.api(IPublicAccountH5AbilityPtt.class)).setServerIdForPtt(this.mResid);
             sendFile();
           }
         }
@@ -219,7 +221,7 @@ public class JSPttUploadProcessor
       {
         String str2;
         String str1;
-        setError(9343, AbstractImageDownloader.getExceptionMessage(new Exception("decode unknown exception")), "", this.mStepTrans);
+        setError(9343, BaseTransProcessor.getExceptionMessage(new Exception("decode unknown exception")), "", this.mStepTrans);
         onError();
         return;
       }
@@ -333,7 +335,7 @@ public class JSPttUploadProcessor
     localRichProtoReq.callback = this;
     localRichProtoReq.protoKey = "c2c_ptt_up";
     localRichProtoReq.reqs.add(localPttUpReq);
-    localRichProtoReq.protoReqMgr = this.app.getProtoReqManager();
+    localRichProtoReq.protoReqMgr = getProtoReqManager();
     if (!isAppValid())
     {
       setError(9366, "illegal app", null, this.mStepUrl);

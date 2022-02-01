@@ -10,10 +10,10 @@ public final class JoinShareAlbumReq
   static AllowJoinShareAlbum cache_allow_data = new AllowJoinShareAlbum();
   static ApplyJoinShareAlbum cache_apply_data;
   static int cache_mode = 0;
-  public AllowJoinShareAlbum allow_data;
-  public ApplyJoinShareAlbum apply_data;
+  public AllowJoinShareAlbum allow_data = null;
+  public ApplyJoinShareAlbum apply_data = null;
   public int mode = 0;
-  public long op_uin;
+  public long op_uin = 0L;
   
   static
   {

@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class CSPullConchs
   extends JceStruct
 {
-  public int busiType;
+  public int busiType = 0;
   public int cmdId = 0;
-  public int reserved;
+  public int reserved = 0;
   
   public JceStruct newInit()
   {

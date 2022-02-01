@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import ascz;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 
 class VasWebviewJsPlugin$1
-  extends ascz
+  extends Client.OnRemoteRespObserver
 {
   VasWebviewJsPlugin$1(VasWebviewJsPlugin paramVasWebviewJsPlugin) {}
   
@@ -30,7 +30,7 @@ class VasWebviewJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

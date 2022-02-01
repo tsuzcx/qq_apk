@@ -9,7 +9,7 @@ public final class ResponeBindMobile
 {
   static byte[] cache_sessionSid;
   public String alreadyBindedUin = "";
-  public byte[] sessionSid;
+  public byte[] sessionSid = null;
   
   public ResponeBindMobile() {}
   

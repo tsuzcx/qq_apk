@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import Override;
-import amwn;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import aqbi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QQGamePubActivity
@@ -14,8 +13,8 @@ public class QQGamePubActivity
 {
   static
   {
-    aqbi.a(true);
-    aqbi.a();
+    ArkMultiProcUtil.a(true);
+    ArkMultiProcUtil.a();
   }
   
   @Override
@@ -29,7 +28,7 @@ public class QQGamePubActivity
   
   public AppInterface getAppInterface()
   {
-    return amwn.a();
+    return CmGameUtil.a();
   }
   
   @Override
@@ -41,7 +40,7 @@ public class QQGamePubActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.QQGamePubActivity
  * JD-Core Version:    0.7.0.1
  */

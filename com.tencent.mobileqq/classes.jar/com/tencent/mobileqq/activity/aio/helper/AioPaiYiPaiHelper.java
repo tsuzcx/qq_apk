@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afrk;
-import afyy;
-import aggx;
-import agih;
-import agin;
 import android.app.Activity;
 import android.content.ContextWrapper;
 import android.content.res.Resources;
@@ -15,17 +10,19 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.ListAdapter;
-import avhr;
-import avhs;
-import avia;
-import azhc;
-import bdla;
+import com.tencent.mobileqq.activity.aio.ChatItemBuilder.BaseHolder;
+import com.tencent.mobileqq.activity.aio.avatardoubletap.DoubleTapEffect;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteEntity;
+import com.tencent.mobileqq.graytip.UniteEntity.Note;
+import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.paiyipai.PaiYiPaiObserver;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.avatar.VasAvatar;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -34,13 +31,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AioPaiYiPaiHelper
-  implements agin
+  implements ILifeCycleHelper
 {
-  private ViewTreeObserver.OnPreDrawListener jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new aggx(this);
-  private azhc jdField_a_of_type_Azhc = new azhc();
+  private ViewTreeObserver.OnPreDrawListener jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new AioPaiYiPaiHelper.PaiYiPaiOnPreDrawListener(this);
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private PaiYiPaiObserver jdField_a_of_type_ComTencentMobileqqPaiyipaiPaiYiPaiObserver = new PaiYiPaiObserver();
   
-  public AioPaiYiPaiHelper(agih paramagih, BaseChatPie paramBaseChatPie)
+  public AioPaiYiPaiHelper(HelperProvider paramHelperProvider, BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
@@ -57,9 +54,9 @@ public class AioPaiYiPaiHelper
         i -= 1;
         break;
         Object localObject = localView.getTag();
-        if (((localObject instanceof afrk)) && (TextUtils.equals(((afrk)localObject).a.senderuin, paramString)))
+        if (((localObject instanceof ChatItemBuilder.BaseHolder)) && (TextUtils.equals(((ChatItemBuilder.BaseHolder)localObject).a.senderuin, paramString)))
         {
-          localView = localView.findViewById(2131364531);
+          localView = localView.findViewById(2131364643);
           if ((localView != null) && (localView.isShown()))
           {
             localObject = new int[2];
@@ -94,7 +91,7 @@ public class AioPaiYiPaiHelper
   {
     paramChatXListView = (MessageForUniteGrayTip)paramListAdapter.getItem(paramInteger.intValue());
     if (paramChatXListView.entity == null) {
-      avia.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, paramChatXListView);
+      UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatXListView);
     }
     paramChatXListView = paramChatXListView.entity;
     if (paramChatXListView == null)
@@ -110,7 +107,7 @@ public class AioPaiYiPaiHelper
     label71:
     if (j < paramListAdapter.size())
     {
-      paramInteger = (avhs)paramListAdapter.get(j);
+      paramInteger = (UniteEntity.Note)paramListAdapter.get(j);
       if (paramInteger.a() == 4) {}
     }
     for (;;)
@@ -127,7 +124,7 @@ public class AioPaiYiPaiHelper
           if (QLog.isColorLevel()) {
             QLog.d("AioPaiYiPaiHelper", 2, "getPlayPaiYiPaiAvatars() fromUin = [" + paramChatXListView + "], toUin = [" + paramListAdapter + "]");
           }
-          if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getApp().getCurrentUin(), paramListAdapter))
+          if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getCurrentUin(), paramListAdapter))
           {
             paramInteger = paramListAdapter;
             if (!TextUtils.equals(paramChatXListView, paramListAdapter)) {
@@ -217,7 +214,7 @@ public class AioPaiYiPaiHelper
   
   private void a()
   {
-    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.listView;
+    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
     if (localChatXListView == null)
     {
       QLog.e("AioPaiYiPaiHelper", 1, "listView == null");
@@ -240,7 +237,7 @@ public class AioPaiYiPaiHelper
     if (paramMessageForUniteGrayTip.istroop == 0) {}
     for (;;)
     {
-      bdla.b(null, "dc00898", "", "", "0X800B3A2", "0X800B3A2", i, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B3A2", "0X800B3A2", i, 0, "", "", "", "");
       return;
       if (paramMessageForUniteGrayTip.istroop == 1) {
         i = 2;
@@ -255,7 +252,7 @@ public class AioPaiYiPaiHelper
     int i = 0;
     if (i < paramList.size())
     {
-      View localView = paramChatXListView.getChildAt(((Integer)paramList.get(i)).intValue()).findViewById(2131364531);
+      View localView = paramChatXListView.getChildAt(((Integer)paramList.get(i)).intValue()).findViewById(2131364643);
       if (QLog.isColorLevel()) {
         QLog.d("AioPaiYiPaiHelper", 2, "playPaiYiPaiAnimation() called with: avatar = [" + localView + "]");
       }
@@ -271,36 +268,41 @@ public class AioPaiYiPaiHelper
           }
         }
         else {
-          new afyy((VasAvatar)localView).a();
+          new DoubleTapEffect((VasAvatar)localView).a();
         }
       }
     }
   }
   
-  public void a(int paramInt)
+  public String getTag()
   {
-    ViewGroup localViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getAIORootView();
+    return "AioPaiYiPaiHelper";
+  }
+  
+  public int[] interestedIn()
+  {
+    return new int[] { 4, 14 };
+  }
+  
+  public void onMoveToState(int paramInt)
+  {
+    ViewGroup localViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
     switch (paramInt)
     {
     default: 
       return;
     case 4: 
       localViewGroup.getViewTreeObserver().addOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.addObserver(this.jdField_a_of_type_Azhc);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqPaiyipaiPaiYiPaiObserver);
       return;
     }
     localViewGroup.getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.removeObserver(this.jdField_a_of_type_Azhc);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 4, 14 };
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqPaiyipaiPaiYiPaiObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AioPaiYiPaiHelper
  * JD-Core Version:    0.7.0.1
  */

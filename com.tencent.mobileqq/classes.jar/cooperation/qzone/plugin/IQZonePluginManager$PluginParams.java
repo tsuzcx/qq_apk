@@ -33,7 +33,7 @@ public class IQZonePluginManager$PluginParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.plugin.IQZonePluginManager.PluginParams
  * JD-Core Version:    0.7.0.1
  */

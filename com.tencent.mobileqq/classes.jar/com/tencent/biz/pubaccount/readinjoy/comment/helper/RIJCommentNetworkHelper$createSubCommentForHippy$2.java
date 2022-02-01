@@ -6,15 +6,13 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import pgv;
-import pgw;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "<anonymous parameter 1>", "", "invoke"}, k=3, mv={1, 1, 16})
-public final class RIJCommentNetworkHelper$createSubCommentForHippy$2
+final class RIJCommentNetworkHelper$createSubCommentForHippy$2
   extends Lambda
   implements Function2<Integer, String, Unit>
 {
-  public RIJCommentNetworkHelper$createSubCommentForHippy$2(pgw parampgw, long paramLong)
+  RIJCommentNetworkHelper$createSubCommentForHippy$2(RIJCommentNetworkHelper.RIJCreateCommentForHippyObserver paramRIJCreateCommentForHippyObserver, long paramLong)
   {
     super(2);
   }
@@ -23,12 +21,12 @@ public final class RIJCommentNetworkHelper$createSubCommentForHippy$2
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<anonymous parameter 1>");
     this.$callback.onCreateCommentResult(false, paramInt, "");
-    pgv.a(pgv.a, -1, System.currentTimeMillis() - this.$requestTime);
+    RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, -1, System.currentTimeMillis() - this.$requestTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.helper.RIJCommentNetworkHelper.createSubCommentForHippy.2
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ class OlympicManager$7
         localObjectOutputStream.writeObject(this.a);
         localObjectOutputStream.close();
         localByteArrayOutputStream.close();
-        FileUtils.pushData2File(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.this$0.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+        FileUtils.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.this$0.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
         return;
       }
       catch (Throwable localThrowable)

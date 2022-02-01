@@ -160,8 +160,8 @@ public class VideoView
     for (;;)
     {
       return this.mBrowserItemView;
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131563040, paramViewGroup, false));
-      this.mVideoView = ((QQVideoPlayView)this.mBrowserItemView.findViewById(2131380797));
+      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131563196, paramViewGroup, false));
+      this.mVideoView = ((QQVideoPlayView)this.mBrowserItemView.findViewById(2131381245));
       this.mVideoView.setOnClickListener(this);
     }
   }
@@ -240,7 +240,7 @@ public class VideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.video.VideoView
  * JD-Core Version:    0.7.0.1
  */

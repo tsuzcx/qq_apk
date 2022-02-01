@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.imcore.constants.AppConstants;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.StatisticCollector;
+import com.tencent.mobileqq.imcore.proxy.basic.StatisticCollectorProxy;
 import com.tencent.mobileqq.persistence.TableNameCache;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
@@ -129,7 +128,7 @@ public class SQLiteOpenHelper
       try
       {
         localSQLiteDatabase = this.helper.getReadableDatabase();
-        if ((WAL_ENABLE) && (VersionUtils.isHoneycomb()) && (localSQLiteDatabase != null))
+        if ((WAL_ENABLE) && (VersionUtils.e()) && (localSQLiteDatabase != null))
         {
           boolean bool = sTryWalException;
           if (bool) {}
@@ -194,7 +193,7 @@ public class SQLiteOpenHelper
         sTryWalException = true;
         localObject2 = new HashMap();
         ((HashMap)localObject2).put("ReadWALException", "1");
-        IMCoreProxyRoute.StatisticCollector.collectPerformance(null, "actWALException", true, 0L, 0L, (HashMap)localObject2, null);
+        StatisticCollectorProxy.collectPerformance(null, "actWALException", true, 0L, 0L, (HashMap)localObject2, null);
         continue;
       }
       QLog.e("SQLiteOpenHelper", 1, new Object[] { "rdbIsNull, ", Integer.valueOf(this.helper.hashCode()), " helper = ", this.helper, " this = ", this });
@@ -220,7 +219,7 @@ public class SQLiteOpenHelper
       try
       {
         localSQLiteDatabase = this.helper.getWritableDatabase();
-        if ((WAL_ENABLE) && (VersionUtils.isHoneycomb()) && (localSQLiteDatabase != null))
+        if ((WAL_ENABLE) && (VersionUtils.e()) && (localSQLiteDatabase != null))
         {
           boolean bool = sTryWalException;
           if (bool) {}
@@ -285,7 +284,7 @@ public class SQLiteOpenHelper
         sTryWalException = true;
         localObject2 = new HashMap();
         ((HashMap)localObject2).put("WriteWALException", "1");
-        IMCoreProxyRoute.StatisticCollector.collectPerformance(null, "actWALException", true, 0L, 0L, (HashMap)localObject2, null);
+        StatisticCollectorProxy.collectPerformance(null, "actWALException", true, 0L, 0L, (HashMap)localObject2, null);
         continue;
       }
       QLog.e("SQLiteOpenHelper", 1, new Object[] { "wdbIsNull, ", Integer.valueOf(this.helper.hashCode()), " helper = ", this.helper, " this = ", this });
@@ -332,7 +331,7 @@ public class SQLiteOpenHelper
     //   43: anewarray 4	java/lang/Object
     //   46: dup
     //   47: iconst_0
-    //   48: ldc 206
+    //   48: ldc 205
     //   50: aastore
     //   51: dup
     //   52: iconst_1

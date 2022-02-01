@@ -18,7 +18,6 @@ import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.VideoTemplateParser;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.io.File;
@@ -162,7 +161,7 @@ public class FaceFeatureFilterReshape
   
   public void updatePointParams(List<PointF> paramList)
   {
-    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramList), 2.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramList), 2.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
     setCoordNum(690);
   }
   
@@ -171,7 +170,7 @@ public class FaceFeatureFilterReshape
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      updatePointParams(VideoMaterialUtil.copyList(paramObject.facePoints));
+      updatePointParams(VideoMaterial.copyList(paramObject.facePoints));
       updateTextureParams(paramObject.timestamp);
     }
   }
@@ -189,7 +188,7 @@ public class FaceFeatureFilterReshape
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceFeatureFilterReshape
  * JD-Core Version:    0.7.0.1
  */

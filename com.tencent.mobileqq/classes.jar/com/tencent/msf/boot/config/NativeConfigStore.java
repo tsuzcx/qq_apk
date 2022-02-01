@@ -7,7 +7,7 @@ import android.os.SystemClock;
 import android.telephony.TelephonyManager;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.j;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qphone.base.util.StringUtils;

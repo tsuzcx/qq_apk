@@ -2,15 +2,14 @@ package com.tencent.shadow.dynamic.host;
 
 import android.os.IBinder;
 import android.os.Parcel;
-import com.tencent.shadow.proguard.m;
 
 public class MultiLoaderPpsController
 {
-  private final IBinder a;
+  private final IBinder mRemote;
   
   MultiLoaderPpsController(IBinder paramIBinder)
   {
-    this.a = paramIBinder;
+    this.mRemote = paramIBinder;
   }
   
   public void exit()
@@ -19,8 +18,8 @@ public class MultiLoaderPpsController
     Parcel localParcel2 = Parcel.obtain();
     try
     {
-      localParcel1.writeInterfaceToken(m.a);
-      this.a.transact(6, localParcel1, localParcel2, 0);
+      localParcel1.writeInterfaceToken(MultiLoaderPpsBinder.DESCRIPTOR);
+      this.mRemote.transact(6, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -37,9 +36,9 @@ public class MultiLoaderPpsController
     Parcel localParcel2 = Parcel.obtain();
     try
     {
-      localParcel1.writeInterfaceToken(m.a);
+      localParcel1.writeInterfaceToken(MultiLoaderPpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString);
-      this.a.transact(5, localParcel1, localParcel2, 0);
+      this.mRemote.transact(5, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramString = localParcel2.readStrongBinder();
       return paramString;
@@ -57,9 +56,9 @@ public class MultiLoaderPpsController
     Parcel localParcel2 = Parcel.obtain();
     try
     {
-      localParcel1.writeInterfaceToken(m.a);
+      localParcel1.writeInterfaceToken(MultiLoaderPpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString);
-      this.a.transact(4, localParcel1, localParcel2, 0);
+      this.mRemote.transact(4, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramString = new PpsStatus(localParcel2);
       return paramString;
@@ -78,10 +77,10 @@ public class MultiLoaderPpsController
     int i;
     try
     {
-      localParcel1.writeInterfaceToken(m.a);
+      localParcel1.writeInterfaceToken(MultiLoaderPpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString1);
       localParcel1.writeString(paramString2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
+      this.mRemote.transact(2, localParcel1, localParcel2, 0);
       i = localParcel2.readInt();
       if (i == 1) {
         throw new FailedException(localParcel2);
@@ -106,10 +105,10 @@ public class MultiLoaderPpsController
     int i;
     try
     {
-      localParcel1.writeInterfaceToken(m.a);
+      localParcel1.writeInterfaceToken(MultiLoaderPpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString1);
       localParcel1.writeString(paramString2);
-      this.a.transact(1, localParcel1, localParcel2, 0);
+      this.mRemote.transact(1, localParcel1, localParcel2, 0);
       i = localParcel2.readInt();
       if (i == 1) {
         throw new FailedException(localParcel2);
@@ -133,10 +132,10 @@ public class MultiLoaderPpsController
     Parcel localParcel2 = Parcel.obtain();
     try
     {
-      localParcel1.writeInterfaceToken(m.a);
+      localParcel1.writeInterfaceToken(MultiLoaderPpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString);
       localParcel1.writeStrongBinder(paramIBinder);
-      this.a.transact(3, localParcel1, localParcel2, 0);
+      this.mRemote.transact(3, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -149,7 +148,7 @@ public class MultiLoaderPpsController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.MultiLoaderPpsController
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import ydd;
-import yeb;
-
-public final class HomeFeedPresenter$4
+final class HomeFeedPresenter$4
   implements Runnable
 {
-  public HomeFeedPresenter$4(yeb paramyeb) {}
+  HomeFeedPresenter$4(VideoListHomeFeed paramVideoListHomeFeed) {}
   
   public void run()
   {
-    ydd.a(this.a);
+    HomeFeedPresenter.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.4
  * JD-Core Version:    0.7.0.1
  */

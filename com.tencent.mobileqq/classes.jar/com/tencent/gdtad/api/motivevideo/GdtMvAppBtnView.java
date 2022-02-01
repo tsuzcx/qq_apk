@@ -20,12 +20,14 @@ public class GdtMvAppBtnView
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public boolean a;
-  private boolean b;
+  private boolean b = false;
   
   public GdtMvAppBtnView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private void a(boolean paramBoolean)
@@ -73,8 +75,8 @@ public class GdtMvAppBtnView
     if (this.b) {
       if (this.jdField_a_of_type_Boolean)
       {
-        localDrawable = getResources().getDrawable(2130840293);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840292);
+        localDrawable = getResources().getDrawable(2130840397);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840396);
       }
     }
     while (this.jdField_a_of_type_Boolean)
@@ -84,7 +86,7 @@ public class GdtMvAppBtnView
       i = getResources().getColor(2131165451);
       continue;
       if (this.jdField_a_of_type_Boolean) {
-        localDrawable = getResources().getDrawable(2130840292);
+        localDrawable = getResources().getDrawable(2130840396);
       } else {
         i = getResources().getColor(2131165459);
       }
@@ -92,7 +94,7 @@ public class GdtMvAppBtnView
     setBackgroundColor(i);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if (this.b)
     {
@@ -134,7 +136,7 @@ public class GdtMvAppBtnView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvAppBtnView
  * JD-Core Version:    0.7.0.1
  */

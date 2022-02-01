@@ -13,9 +13,9 @@ public final class CGetChiefRsp
   static Map<String, String> cache_extParams;
   static ArrayList<ModuleData> cache_modData = new ArrayList();
   public String errmsg = "";
-  public Map<String, String> extParams;
-  public ArrayList<ModuleData> modData;
-  public int ret;
+  public Map<String, String> extParams = null;
+  public ArrayList<ModuleData> modData = null;
+  public int ret = 0;
   
   static
   {

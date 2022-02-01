@@ -20,8 +20,10 @@ public class Avocado
   {
     gh = new HashMap();
     gh.put(Integer.valueOf(Auriga.ci.value), Integer.valueOf(0));
-    if (final.jf == 105668) {
+    if (final.jf == 105668)
+    {
       gh.put(Integer.valueOf(Auriga.bi.value), Integer.valueOf(0));
+      gh.put(Integer.valueOf(Auriga.qi.value), Integer.valueOf(0));
     }
     gh.put(Integer.valueOf(10001), Integer.valueOf(0));
     gh.put(Integer.valueOf(Auriga.ai.value), Integer.valueOf(0));
@@ -255,7 +257,7 @@ public class Avocado
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Avocado
  * JD-Core Version:    0.7.0.1
  */

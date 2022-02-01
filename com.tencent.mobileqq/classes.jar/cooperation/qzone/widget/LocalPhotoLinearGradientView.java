@@ -30,14 +30,14 @@ public class LocalPhotoLinearGradientView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.mPaint.setShader(this.mShader);
     paramCanvas.drawRoundRect(this.mRect, this.mRadius, this.mRadius, this.mPaint);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.mRect = new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
@@ -57,7 +57,7 @@ public class LocalPhotoLinearGradientView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.widget.LocalPhotoLinearGradientView
  * JD-Core Version:    0.7.0.1
  */

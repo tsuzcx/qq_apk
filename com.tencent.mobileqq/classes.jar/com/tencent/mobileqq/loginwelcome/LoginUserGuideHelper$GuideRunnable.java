@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.loginwelcome;
 
 import android.app.Activity;
-import awox;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -10,17 +9,17 @@ import java.lang.ref.WeakReference;
 public class LoginUserGuideHelper$GuideRunnable
   implements Runnable
 {
-  private final awox jdField_a_of_type_Awox;
+  private final LoginUserGuideHelper.LocationListener jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener;
   private final WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
   private final boolean jdField_a_of_type_Boolean;
   private final WeakReference<QQAppInterface> b;
   
-  public LoginUserGuideHelper$GuideRunnable(Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, awox paramawox)
+  public LoginUserGuideHelper$GuideRunnable(Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, LoginUserGuideHelper.LocationListener paramLocationListener)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
     this.b = new WeakReference(paramQQAppInterface);
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Awox = paramawox;
+    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener = paramLocationListener;
   }
   
   public void run()
@@ -36,7 +35,7 @@ public class LoginUserGuideHelper$GuideRunnable
     if (this.jdField_a_of_type_Boolean) {
       ThreadManager.excute(new LoginUserGuideHelper.GuideRunnable.1(this, localQQAppInterface), 16, null, false);
     }
-    LoginUserGuideHelper.a(localActivity, localQQAppInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Awox);
+    LoginUserGuideHelper.a(localActivity, localQQAppInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener);
   }
 }
 

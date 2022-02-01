@@ -1,7 +1,8 @@
 package com.tencent.image;
 
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.lang.ref.WeakReference;
 import java.net.URL;
 import java.util.Vector;
@@ -219,7 +220,7 @@ class URLState$DownloadRunnable
     if (paramInt == this.this$0.mProgress) {
       return;
     }
-    URLState.access$200().post(new URLState.DownloadRunnable.1(this, paramInt));
+    URLState.access$100().post(new URLState.DownloadRunnable.1(this, paramInt));
   }
   
   public void run()
@@ -233,34 +234,34 @@ class URLState$DownloadRunnable
     URLState.sThreadReportCache.put(this.this$0.mUrlStr, localObject1);
     try
     {
-      if (QLog.isColorLevel())
+      if (URLDrawable.depImp.mLog.isColorLevel())
       {
         long l2 = this.postTime;
-        QLog.d("URLDrawable_Thread", 2, "DownloadAsyncTask.doInBackground start: postCost=" + (l1 - l2) + " ,url=" + this.this$0.mUrlStr + " ,isCancelled:" + isCancelled() + " ,flag=" + this.flag);
+        URLDrawable.depImp.mLog.d("URLDrawable_Thread", 2, "DownloadAsyncTask.doInBackground start: postCost=" + (l1 - l2) + " ,url=" + this.this$0.mUrlStr + " ,isCancelled:" + isCancelled() + " ,flag=" + this.flag);
       }
       if (isCancelled()) {
         this.this$0.onLoadCancelled();
       }
       localObject1 = this.this$0.loadImage(this.mUrl, this);
       if (localObject1 != URLState.DOWNLOAD_ASYNC) {
-        URLState.access$300(this.this$0, localObject1);
+        URLState.access$000(this.this$0, localObject1);
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      URLState.access$300(this.this$0, localThrowable);
+      URLState.access$000(this.this$0, localThrowable);
       return;
     }
     finally
     {
       l1 = System.currentTimeMillis() - l1;
-      if ((l1 > 500000L) && (QLog.isColorLevel())) {
-        QLog.e("URLDrawable_Thread", 2, "DownloadAsyncTask cost :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
+      if ((l1 > 500000L) && (URLDrawable.depImp.mLog.isColorLevel())) {
+        URLDrawable.depImp.mLog.e("URLDrawable_Thread", 2, "DownloadAsyncTask cost :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
       }
       URLState.sThreadReportCache.remove(this.this$0.mUrlStr);
-      if (QLog.isColorLevel()) {
-        QLog.d("URLDrawable_Thread", 2, "DownloadAsyncTask.doInBackground end :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d("URLDrawable_Thread", 2, "DownloadAsyncTask.doInBackground end :" + l1 + ",url" + this.this$0.mUrlStr + ",flag=" + this.flag);
       }
     }
   }

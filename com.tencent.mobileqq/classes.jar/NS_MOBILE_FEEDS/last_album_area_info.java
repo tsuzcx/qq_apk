@@ -9,11 +9,11 @@ public final class last_album_area_info
   extends JceStruct
 {
   static ArrayList<album_area_item> cache_pos = new ArrayList();
-  public int anonymity;
+  public int anonymity = 0;
   public String id = "";
   public String name = "";
-  public ArrayList<album_area_item> pos;
-  public long switch_state;
+  public ArrayList<album_area_item> pos = null;
+  public long switch_state = 0L;
   
   static
   {

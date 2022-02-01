@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import asyq;
-import atpa;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
 import com.tencent.qphone.base.util.QLog;
 
-public class QfavFilePreviewController$2
+class QfavFilePreviewController$2
   implements Runnable
 {
-  public QfavFilePreviewController$2(atpa paramatpa) {}
+  QfavFilePreviewController$2(QfavFilePreviewController paramQfavFilePreviewController) {}
   
   public void run()
   {
-    if (3 != atpa.b(this.this$0))
+    if (3 != QfavFilePreviewController.b(this.this$0))
     {
-      this.this$0.a.a(false, atpa.a(this.this$0), String.valueOf(atpa.a(this.this$0)), atpa.a(this.this$0), null, atpa.b(this.this$0), null, atpa.c(this.this$0), null);
-      atpa.b(this.this$0, 3);
+      this.this$0.a.a(false, QfavFilePreviewController.a(this.this$0), String.valueOf(QfavFilePreviewController.a(this.this$0)), QfavFilePreviewController.a(this.this$0), null, QfavFilePreviewController.b(this.this$0), null, QfavFilePreviewController.c(this.this$0), null);
+      QfavFilePreviewController.b(this.this$0, 3);
       if (QLog.isColorLevel()) {
         QLog.i("QfavFilePreviewController", 2, "QfavFilePreviewController.run:wait for remote command timeout(5min).");
       }
@@ -23,7 +22,7 @@ public class QfavFilePreviewController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.2
  * JD-Core Version:    0.7.0.1
  */

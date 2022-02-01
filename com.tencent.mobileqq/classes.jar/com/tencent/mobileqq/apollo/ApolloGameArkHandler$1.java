@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import amly;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
+import com.tencent.mobileqq.app.face.util.AvatarDownloadUtil;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
-public class ApolloGameArkHandler$1
+class ApolloGameArkHandler$1
   implements Runnable
 {
-  public ApolloGameArkHandler$1(amly paramamly, String paramString) {}
+  ApolloGameArkHandler$1(ApolloGameArkHandler paramApolloGameArkHandler, String paramString) {}
   
   public void run()
   {
@@ -20,7 +17,6 @@ public class ApolloGameArkHandler$1
     Object localObject;
     do
     {
-      Setting localSetting;
       do
       {
         do
@@ -28,16 +24,16 @@ public class ApolloGameArkHandler$1
           return;
           localObject = this.this$0.a();
         } while (localObject == null);
-        localSetting = ((QQAppInterface)localObject).getQQHeadSettingFromDB(this.a);
-      } while ((localSetting == null) || (TextUtils.isEmpty(localSetting.url)));
-      localObject = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getQQHeadDownload().getQQHeandDownLoadUrl(localSetting.url, localSetting.bFaceFlags, localSetting.bUsrType, 0));
+        localObject = ((QQAppInterface)localObject).getQQHeadSettingFromDB(this.a);
+      } while ((localObject == null) || (TextUtils.isEmpty(((Setting)localObject).url)));
+      localObject = MsfSdkUtils.insertMtype("QQHeadIcon", AvatarDownloadUtil.getQQAvatarDownLoadUrl(((Setting)localObject).url, ((Setting)localObject).bFaceFlags, ((Setting)localObject).bUsrType, 0));
     } while (TextUtils.isEmpty((CharSequence)localObject));
     this.this$0.a(this.a, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloGameArkHandler.1
  * JD-Core Version:    0.7.0.1
  */

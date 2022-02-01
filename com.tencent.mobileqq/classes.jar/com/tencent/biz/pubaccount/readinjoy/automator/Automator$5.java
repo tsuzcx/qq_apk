@@ -1,22 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import ovw;
-import ovx;
-
-public class Automator$5
+class Automator$5
   implements Runnable
 {
-  public Automator$5(ovw paramovw, ovx paramovx) {}
+  Automator$5(Automator paramAutomator, BaseStep paramBaseStep) {}
   
   public void run()
   {
     this.a.c();
-    ovw.a(this.this$0);
+    Automator.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.automator.Automator.5
  * JD-Core Version:    0.7.0.1
  */

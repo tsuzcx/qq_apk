@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stSplitBlock
   extends JceStruct
 {
-  public int style;
+  public int style = 0;
   public String text = "";
   public String tips = "";
   

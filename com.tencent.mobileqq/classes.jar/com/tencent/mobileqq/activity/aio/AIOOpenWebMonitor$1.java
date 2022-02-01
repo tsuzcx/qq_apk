@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public final class AIOOpenWebMonitor$1
+final class AIOOpenWebMonitor$1
   implements Runnable
 {
-  public AIOOpenWebMonitor$1(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong) {}
+  AIOOpenWebMonitor$1(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public final class AIOOpenWebMonitor$1
       HashMap localHashMap = new HashMap(3);
       localHashMap.put("m_num", ((TroopInfo)localObject).wMemberNum + "");
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "AIOWebTC", false, 0L, 0L, localHashMap, "", false);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     } while (localObject == null);
     Object localObject = ((List)localObject).iterator();
     do
@@ -53,7 +53,7 @@ public final class AIOOpenWebMonitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor.1
  * JD-Core Version:    0.7.0.1
  */

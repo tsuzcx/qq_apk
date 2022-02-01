@@ -9,12 +9,12 @@ public final class VipMedalList
   extends JceStruct
 {
   static ArrayList<VipMedalInfo> cache_medalInfo = new ArrayList();
-  public int bUpdate;
+  public int bUpdate = 0;
   public String jumpUrl = "";
   public int lhLogoLv = -1;
-  public int lhNumFlag;
+  public int lhNumFlag = 0;
   public String lvlJumpUrl = "";
-  public ArrayList<VipMedalInfo> medalInfo;
+  public ArrayList<VipMedalInfo> medalInfo = null;
   
   static
   {

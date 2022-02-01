@@ -1,94 +1,96 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import arph;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import oicq.wlogin_sdk.tools.MD5;
 
-public class ConfigServlet$3
+class ConfigServlet$3
   implements Runnable
 {
   public void run()
   {
-    boolean bool1 = false;
+    k = 0;
     int i;
+    boolean bool1;
     if (!this.jdField_a_of_type_JavaIoFile.exists())
     {
       i = 0;
       if (QLog.isColorLevel()) {
         QLog.d("SPLASH_ConfigServlet", 2, "begin download url is " + this.jdField_a_of_type_JavaLangString + " file is " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " md5 " + this.b);
       }
-      bool1 = HttpDownloadUtil.download((AppInterface)this.this$0.getAppRuntime(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+      bool1 = HttpDownloadUtil.download(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
       if (bool1) {
         if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
       }
     }
-    label276:
-    label279:
     for (;;)
     {
-      try
+      for (;;)
       {
-        bool2 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
-        if (!bool2) {}
-        localThrowable1.printStackTrace();
-      }
-      catch (Throwable localThrowable1)
-      {
+        try
+        {
+          boolean bool2 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
+          k = bool1;
+          if (bool2) {}
+        }
+        catch (Throwable localThrowable1)
+        {
+          int j;
+          k = bool1;
+        }
         try
         {
           if (QLog.isColorLevel()) {
             QLog.d("SPLASH_ConfigServlet", 2, "down load success but check md5 failed");
           }
-          bool1 = false;
-          i += 1;
-          if (bool1) {
-            break label279;
+          k = 0;
+          j = i + 1;
+          if (k != 0) {
+            break label290;
           }
-          if (i < 2) {
-            break label276;
+          i = j;
+          if (j < 2) {
+            break;
           }
-          if ((!bool1) && (this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists())) {
-            this.jdField_a_of_type_JavaIoFile.delete();
-          }
-          return;
         }
         catch (Throwable localThrowable2)
         {
           for (;;)
           {
-            boolean bool2;
-            bool1 = false;
+            k = 0;
           }
         }
-        localThrowable1 = localThrowable1;
       }
+      if ((k == 0) && (this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists())) {
+        this.jdField_a_of_type_JavaIoFile.delete();
+      }
+      return;
+      localThrowable1.printStackTrace();
       continue;
-      bool1 = false;
+      k = 0;
       continue;
-      if (QLog.isColorLevel()) {
+      k = bool1;
+      if (QLog.isColorLevel())
+      {
         QLog.d("SPLASH_ConfigServlet", 2, "down load pic failed try again");
-      }
-      continue;
-      try
-      {
-        bool2 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
-        if (!bool2) {
-          continue;
+        k = bool1;
+        continue;
+        try
+        {
+          bool1 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
+          if (bool1) {
+            k = 1;
+          }
         }
-        bool1 = true;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SPLASH_ConfigServlet", 2, "splash has a file don't need download but check md5 get a exception");
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("SPLASH_ConfigServlet", 2, "splash has a file don't need download but check md5 get a exception");
+          }
+          localException.printStackTrace();
         }
-        localException.printStackTrace();
       }
-      continue;
-      break;
     }
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.Advertisement.activity;
 
 import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
 import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
 import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
 import com.tencent.qphone.base.util.QLog;
-import oeq;
-import oes;
 
 class PublicAccountAdvertisementActivity$6
   implements Runnable
@@ -21,7 +21,7 @@ class PublicAccountAdvertisementActivity$6
         QLog.d("PublicAccountAdvertisementActivity", 2, "doAutoJump = canScrollUp " + this.this$0.a());
       }
       localObject = PublicAccountAdvertisementActivity.a(this.this$0).a;
-      if ((localObject != null) && (((oes)localObject).k == 1))
+      if ((localObject != null) && (((VideoDownloadItem)localObject).k == 1))
       {
         if (!this.this$0.a()) {
           break label130;
@@ -49,7 +49,7 @@ class PublicAccountAdvertisementActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.6
  * JD-Core Version:    0.7.0.1
  */

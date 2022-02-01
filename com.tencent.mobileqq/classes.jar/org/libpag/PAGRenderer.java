@@ -13,7 +13,6 @@ public class PAGRenderer
   {
     LibraryLoadUtils.loadLibrary("libpag");
     nativeInit();
-    PAGFont.loadSystemFonts();
   }
   
   public PAGRenderer()
@@ -146,7 +145,7 @@ public class PAGRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     org.libpag.PAGRenderer
  * JD-Core Version:    0.7.0.1
  */

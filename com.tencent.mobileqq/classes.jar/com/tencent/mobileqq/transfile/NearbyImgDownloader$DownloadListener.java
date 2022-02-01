@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import asid;
-import bhed;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.emoticon.DownloadInfo;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.utils.HttpDownloadUtil.DownloadInfoListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 
 public class NearbyImgDownloader$DownloadListener
-  implements bhed
+  implements HttpDownloadUtil.DownloadInfoListener
 {
   private DownloadParams mDownloadConfig;
   private DiskCache.Editor mEditor;
@@ -30,10 +30,10 @@ public class NearbyImgDownloader$DownloadListener
     this.mDownloadConfig = paramDownloadParams;
   }
   
-  public boolean onRespDownloadInfo(asid paramasid)
+  public boolean onRespDownloadInfo(DownloadInfo paramDownloadInfo)
   {
     Object localObject2 = null;
-    if (paramasid.jdField_b_of_type_Int == 0) {
+    if (paramDownloadInfo.resultCode == 0) {
       if ((this.mDownloadConfig == null) || (!(this.mDownloadConfig.mExtraInfo instanceof PicInfo))) {
         break label257;
       }
@@ -41,20 +41,20 @@ public class NearbyImgDownloader$DownloadListener
     label257:
     for (Object localObject1 = (PicInfo)this.mDownloadConfig.mExtraInfo;; localObject1 = null)
     {
-      if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).g)) && (((!TextUtils.isEmpty(paramasid.k)) && (!paramasid.k.trim().equals("0"))) || ((!TextUtils.isEmpty(paramasid.j)) && (!paramasid.j.trim().equals("0")))))
+      if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).g)) && (((!TextUtils.isEmpty(paramDownloadInfo.respXErrNo)) && (!paramDownloadInfo.respXErrNo.trim().equals("0"))) || ((!TextUtils.isEmpty(paramDownloadInfo.respXFailNo)) && (!paramDownloadInfo.respXFailNo.trim().equals("0")))))
       {
         if (QLog.isColorLevel()) {
-          QLog.i("NearbyImgDownloader", 2, "historhead download fail, url : " + paramasid.jdField_b_of_type_JavaLangString + " respXFailNo: " + paramasid.j + " respXErrNo: " + paramasid.k);
+          QLog.i("NearbyImgDownloader", 2, "historhead download fail, url : " + paramDownloadInfo.reqUrl + " respXFailNo: " + paramDownloadInfo.respXFailNo + " respXErrNo: " + paramDownloadInfo.respXErrNo);
         }
-        paramasid.jdField_b_of_type_Int = 32;
+        paramDownloadInfo.resultCode = 32;
         return false;
       }
-      if (paramasid.a != null) {
+      if (paramDownloadInfo.conn != null) {
         try
         {
-          localObject1 = paramasid.a.getInputStream();
+          localObject1 = paramDownloadInfo.conn.getInputStream();
           if (localObject1 != null) {
-            return NearbyImgDownloader.access$000(this.this$0, (InputStream)localObject1, paramasid.e, this.mEditor, this.mHandelr);
+            return NearbyImgDownloader.access$000(this.this$0, (InputStream)localObject1, paramDownloadInfo.respContentLength, this.mEditor, this.mHandelr);
           }
         }
         catch (IOException localIOException)
@@ -68,11 +68,11 @@ public class NearbyImgDownloader$DownloadListener
               localObject1 = localObject2;
             }
           }
-          paramasid.jdField_b_of_type_Int = 11;
+          paramDownloadInfo.resultCode = 11;
           return false;
         }
       }
-      paramasid.jdField_b_of_type_Int = 11;
+      paramDownloadInfo.resultCode = 11;
       return false;
       return false;
     }

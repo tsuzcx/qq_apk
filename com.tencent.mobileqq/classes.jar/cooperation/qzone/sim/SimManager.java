@@ -1,11 +1,11 @@
 package cooperation.qzone.sim;
 
-import ab;
-import ac;
 import android.content.Context;
 import android.os.IBinder;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.android.internal.telephony.ISub;
+import com.android.internal.telephony.ISub.Stub;
 import cooperation.qzone.PlatformInfor;
 import cooperation.qzone.util.QZLog;
 import java.lang.reflect.Method;
@@ -47,12 +47,12 @@ public abstract class SimManager
     return mInstance;
   }
   
-  private ab getIsub()
+  private ISub getIsub()
   {
     try
     {
-      ab localab = ac.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isub" }));
-      return localab;
+      ISub localISub = ISub.Stub.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isub" }));
+      return localISub;
     }
     catch (Throwable localThrowable)
     {
@@ -259,7 +259,7 @@ public abstract class SimManager
     return null;
   }
   
-  abstract int initAllDataByAIDL(ab paramab);
+  abstract int initAllDataByAIDL(ISub paramISub);
   
   abstract int initAllDataByAPI(Context paramContext, int[] paramArrayOfInt);
   
@@ -276,17 +276,17 @@ public abstract class SimManager
       clear();
       initMainIMSI(paramContext);
       initMainPhoneNum(paramContext);
-      ab localab = getIsub();
+      ISub localISub = getIsub();
       j = 2;
       int[] arrayOfInt2 = null;
       int[] arrayOfInt1 = null;
       i = j;
-      if (localab != null) {
+      if (localISub != null) {
         arrayOfInt1 = arrayOfInt2;
       }
       try
       {
-        arrayOfInt2 = localab.a();
+        arrayOfInt2 = localISub.a();
         i = j;
         arrayOfInt1 = arrayOfInt2;
         if (arrayOfInt2 != null)
@@ -310,7 +310,7 @@ public abstract class SimManager
         this.mDeviceMoreInfo.mIsMultiSimEnabled = true;
         initAllIMSI(paramContext, arrayOfInt1);
         initAllPhoneNum(paramContext, arrayOfInt1);
-        if (initAllDataByAIDL(localab) != 0) {
+        if (initAllDataByAIDL(localISub) != 0) {
           initAllDataByAPI(paramContext, arrayOfInt1);
         }
       }
@@ -416,7 +416,7 @@ public abstract class SimManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.sim.SimManager
  * JD-Core Version:    0.7.0.1
  */

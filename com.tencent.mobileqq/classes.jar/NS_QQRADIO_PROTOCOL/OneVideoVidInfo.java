@@ -9,11 +9,11 @@ public final class OneVideoVidInfo
   extends JceStruct
 {
   static ArrayList<OneVideoPlayInfo> cache_play_info_vec = new ArrayList();
-  public int duration;
+  public int duration = 0;
   public String fileName = "";
   public String imageUrl = "";
-  public ArrayList<OneVideoPlayInfo> play_info_vec;
-  public int status;
+  public ArrayList<OneVideoPlayInfo> play_info_vec = null;
+  public int status = 0;
   public String vid = "";
   
   static

@@ -1,11 +1,9 @@
 package com.tencent.biz.qqstory.album.view;
 
-import vza;
-
-public class AlbumGalleryCapturePart$8
+class AlbumGalleryCapturePart$8
   implements Runnable
 {
-  public AlbumGalleryCapturePart$8(vza paramvza) {}
+  AlbumGalleryCapturePart$8(AlbumGalleryCapturePart paramAlbumGalleryCapturePart) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AlbumGalleryCapturePart$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.8
  * JD-Core Version:    0.7.0.1
  */

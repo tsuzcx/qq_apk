@@ -12,9 +12,9 @@ public class LbsDataV2$CellInfo
   public int lac = -1;
   public int mcc = -1;
   public int mnc = -1;
-  public int rssi;
-  public double stationLat;
-  public double stationLon;
+  public int rssi = 0;
+  public double stationLat = 0.0D;
+  public double stationLon = 0.0D;
   
   public LbsDataV2$CellInfo() {}
   
@@ -57,7 +57,7 @@ public class LbsDataV2$CellInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.CellInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import anri;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AccountOnlineStateActivity$3
@@ -11,9 +11,9 @@ class AccountOnlineStateActivity$3
   
   public void run()
   {
-    anri localanri = (anri)AccountOnlineStateActivity.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-    if (localanri != null) {
-      localanri.B();
+    CardHandler localCardHandler = (CardHandler)AccountOnlineStateActivity.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    if (localCardHandler != null) {
+      localCardHandler.o();
     }
   }
 }

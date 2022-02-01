@@ -3,13 +3,12 @@ package dov.com.qq.im.ae;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmyc;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class SessionWrap
   implements Parcelable
 {
-  public static final Parcelable.Creator<SessionWrap> CREATOR = new bmyc();
+  public static final Parcelable.Creator<SessionWrap> CREATOR = new SessionWrap.1();
   public int a;
   public String a;
   public String b;
@@ -34,10 +33,10 @@ public class SessionWrap
   public SessionInfo a()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.curType = this.jdField_a_of_type_Int;
-    localSessionInfo.curFriendNick = this.b;
-    localSessionInfo.curFriendUin = this.jdField_a_of_type_JavaLangString;
-    localSessionInfo.troopUin = this.c;
+    localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localSessionInfo.d = this.b;
+    localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localSessionInfo.b = this.c;
     return localSessionInfo;
   }
   
@@ -56,7 +55,7 @@ public class SessionWrap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.ae.SessionWrap
  * JD-Core Version:    0.7.0.1
  */

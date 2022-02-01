@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.mainpage;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -20,8 +21,12 @@ class AddPhoneNumberFragment$8$1$1$2
       localIntent.putExtra("phoneNumber", AddPhoneNumberFragment.access$000(this.this$3.this$2.this$1.this$0));
       QLog.d("AddPhoneNumberFragment", 1, "phoneNumber : " + AddPhoneNumberFragment.access$000(this.this$3.this$2.this$1.this$0));
     }
-    this.this$3.this$2.this$1.this$0.getActivity().setResult(-1, localIntent);
-    this.this$3.this$2.this$1.this$0.getActivity().finish();
+    FragmentActivity localFragmentActivity = this.this$3.this$2.this$1.this$0.getActivity();
+    if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing()))
+    {
+      localFragmentActivity.setResult(-1, localIntent);
+      localFragmentActivity.finish();
+    }
   }
 }
 

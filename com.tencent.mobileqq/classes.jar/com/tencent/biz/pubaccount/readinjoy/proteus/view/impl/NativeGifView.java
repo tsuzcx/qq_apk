@@ -44,7 +44,7 @@ public class NativeGifView
     onComMeasure(paramInt1, paramInt2);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     a();
@@ -60,7 +60,7 @@ public class NativeGifView
     measure(paramInt1, paramInt2);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }
@@ -73,7 +73,7 @@ public class NativeGifView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGifView
  * JD-Core Version:    0.7.0.1
  */

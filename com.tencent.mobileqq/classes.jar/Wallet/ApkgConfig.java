@@ -16,18 +16,18 @@ public final class ApkgConfig
   private static final int BIT_RISK_SWITCH = 1;
   static ArrayList<AllowDomainInfo> cache_allow_domains;
   static Map<String, String> cache_sub_apkg_urls = new HashMap();
-  public ArrayList<AllowDomainInfo> allow_domains;
+  public ArrayList<AllowDomainInfo> allow_domains = null;
   public String apkg_url = "";
   public String app_name = "";
-  public int bit_control;
+  public int bit_control = 0;
   public String cos_sign = "";
   public String desc_info = "";
   public String icon_url = "";
   public String mini_appid = "";
-  public int mini_version;
+  public int mini_version = 0;
   public String qq_qr_code = "";
   public String share_pic_url = "";
-  public Map<String, String> sub_apkg_urls;
+  public Map<String, String> sub_apkg_urls = null;
   public String union_id = "";
   public String wx_qr_code = "";
   
@@ -57,14 +57,6 @@ public final class ApkgConfig
     this.wx_qr_code = paramString8;
     this.qq_qr_code = paramString9;
     this.cos_sign = paramString10;
-  }
-  
-  public int getRuntimeType()
-  {
-    if ((this.bit_control & 0x4) != 0) {
-      return 1;
-    }
-    return 0;
   }
   
   public boolean isInnerUser()

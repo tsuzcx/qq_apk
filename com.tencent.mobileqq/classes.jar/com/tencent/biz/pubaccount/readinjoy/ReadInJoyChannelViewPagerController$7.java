@@ -2,22 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy;
 
 import android.view.View;
 import android.view.ViewGroup;
-import oqy;
 
-public class ReadInJoyChannelViewPagerController$7
+class ReadInJoyChannelViewPagerController$7
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$7(oqy paramoqy, int paramInt, View paramView, ViewGroup paramViewGroup) {}
+  ReadInJoyChannelViewPagerController$7(ReadInJoyChannelViewPagerController paramReadInJoyChannelViewPagerController, int paramInt, View paramView, ViewGroup paramViewGroup) {}
   
   public void run()
   {
-    oqy.a(this.this$0, this.jdField_a_of_type_Int);
-    oqy.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
+    ReadInJoyChannelViewPagerController.a(this.this$0, this.jdField_a_of_type_Int);
+    ReadInJoyChannelViewPagerController.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.7
  * JD-Core Version:    0.7.0.1
  */

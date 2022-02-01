@@ -1,0 +1,24 @@
+package com.tencent.biz.qqstory.shareGroup.icon;
+
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
+
+class ShareGroupIconManager$2
+  implements ShareGroupDrawableState.StreamCreator<Bitmap>
+{
+  ShareGroupIconManager$2(ShareGroupIconManager paramShareGroupIconManager, List paramList, String paramString) {}
+  
+  @NonNull
+  public Stream<Bitmap> a(ShareGroupDrawableState paramShareGroupDrawableState)
+  {
+    return ShareGroupIconManager.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.2
+ * JD-Core Version:    0.7.0.1
+ */

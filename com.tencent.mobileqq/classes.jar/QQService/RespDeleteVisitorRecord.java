@@ -8,7 +8,7 @@ public final class RespDeleteVisitorRecord
   extends JceStruct
 {
   static RespHead cache_stHeader = new RespHead();
-  public RespHead stHeader;
+  public RespHead stHeader = null;
   
   public RespDeleteVisitorRecord() {}
   

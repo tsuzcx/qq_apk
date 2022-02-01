@@ -1,15 +1,22 @@
 package com.tencent.qqlive.module.videoreport.report;
 
-import android.app.Activity;
+import com.tencent.qqlive.module.videoreport.Log;
+import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 
 class AppEventReporter$2
   implements Runnable
 {
-  AppEventReporter$2(AppEventReporter paramAppEventReporter, Activity paramActivity) {}
+  AppEventReporter$2(AppEventReporter paramAppEventReporter) {}
   
   public void run()
   {
-    AppEventReporter.access$400(this.this$0, this.val$activity);
+    if (AppEventReporter.access$100(this.this$0) == 0)
+    {
+      if (VideoReportInner.getInstance().isDebugMode()) {
+        Log.i("AppEventReporter", "满足条件，补充appOut事件");
+      }
+      AppEventReporter.access$200(this.this$0, true);
+    }
   }
 }
 

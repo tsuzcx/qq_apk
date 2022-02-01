@@ -19,7 +19,7 @@ class AbstractAlbumListFragment$AlbumListItemClickListener
     paramView = this.this$0.getActivity().getIntent();
     if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
     {
-      QQToast.a(this.this$0.getActivity(), 2131690017, 0).a();
+      QQToast.a(this.this$0.getActivity(), 2131690059, 0).a();
       return;
     }
     boolean bool = this.this$0.mAlbumListLogic.onItemClick(paramAdapterView, paramInt, paramView);
@@ -28,7 +28,7 @@ class AbstractAlbumListFragment$AlbumListItemClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractAlbumListFragment.AlbumListItemClickListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import alvd;
-import alvf;
 import android.annotation.TargetApi;
 import android.opengl.EGL14;
 import android.opengl.EGLContext;
 import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.opengl.GLES20;
+import com.tencent.mobileqq.activity.richmedia.view.GLSurfaceUtil;
+import com.tencent.mobileqq.activity.richmedia.view.GLSurfaceUtil.GLVideoHelper;
 
 @TargetApi(17)
 public class SVOpenglFlipFilter
@@ -69,7 +69,7 @@ public class SVOpenglFlipFilter
   
   public void a(String paramString)
   {
-    this.c = alvf.a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 textureCoordinateOut;\nvoid main()\n{\ntextureCoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", paramString);
+    this.c = GLSurfaceUtil.GLVideoHelper.a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 textureCoordinateOut;\nvoid main()\n{\ntextureCoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", paramString);
     if (this.c == 0) {
       throw new SVOpenglFlipFilter.EGLCreateProgramException("initOpenGlAtrribute:createShaderProgram = 0");
     }
@@ -77,7 +77,7 @@ public class SVOpenglFlipFilter
     this.e = GLES20.glGetAttribLocation(this.c, "position");
     this.f = GLES20.glGetAttribLocation(this.c, "textureCoordinateIn");
     this.d = GLES20.glGetUniformLocation(this.c, "inputImageTexture");
-    alvd.a(this.jdField_a_of_type_ArrayOfInt, this.e, this.f);
+    GLSurfaceUtil.a(this.jdField_a_of_type_ArrayOfInt, this.e, this.f);
     b("createSquareVtx");
     GLES20.glDisable(2929);
     GLES20.glDisable(2884);

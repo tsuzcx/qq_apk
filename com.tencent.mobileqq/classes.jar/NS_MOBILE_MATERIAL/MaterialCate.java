@@ -16,21 +16,21 @@ public final class MaterialCate
   static byte[] cache_strExtFields;
   static ArrayList<OperBanner> cache_vecBanner;
   static ArrayList<MaterialItem> cache_vecItem = new ArrayList();
-  public int iCateId;
-  public int iQZInitShowCount;
-  public int iSQInitShowCount;
-  public Map<String, String> mapExtInfo;
-  public MaterialFile stBanner;
-  public MaterialFile stThumb;
+  public int iCateId = 0;
+  public int iQZInitShowCount = 0;
+  public int iSQInitShowCount = 0;
+  public Map<String, String> mapExtInfo = null;
+  public MaterialFile stBanner = null;
+  public MaterialFile stThumb = null;
   public String strCateKey = "";
   public String strCateName = "";
   public String strDescription = "";
-  public byte[] strExtFields;
+  public byte[] strExtFields = null;
   public String strTraceInfo = "";
-  public long uiSettleTime;
-  public long uiTotalItems;
-  public ArrayList<OperBanner> vecBanner;
-  public ArrayList<MaterialItem> vecItem;
+  public long uiSettleTime = 0L;
+  public long uiTotalItems = 0L;
+  public ArrayList<OperBanner> vecBanner = null;
+  public ArrayList<MaterialItem> vecItem = null;
   
   static
   {

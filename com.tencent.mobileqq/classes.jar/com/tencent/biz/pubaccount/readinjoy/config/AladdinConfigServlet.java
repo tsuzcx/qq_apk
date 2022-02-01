@@ -2,9 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import bmhv;
 import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.aladdin.config.network.oidb_cmd0xbf8.CPU;
 import com.tencent.aladdin.config.network.oidb_cmd0xbf8.Camera;
 import com.tencent.aladdin.config.network.oidb_cmd0xbf8.Config;
@@ -21,6 +20,8 @@ import com.tencent.aladdin.config.network.oidb_cmd0xbf8.RspBodyType1;
 import com.tencent.aladdin.config.network.oidb_cmd0xbf8.RspBodyType2;
 import com.tencent.aladdin.config.network.oidb_cmd0xbf8.Screen;
 import com.tencent.aladdin.config.network.oidb_cmd0xbf8.Storage;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -34,6 +35,7 @@ import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -42,10 +44,6 @@ import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
 import mqq.app.NewIntent;
 import mqq.app.Packet;
-import pkh;
-import pkw;
-import pkz;
-import qxp;
 
 public class AladdinConfigServlet
   extends MSFServlet
@@ -55,22 +53,22 @@ public class AladdinConfigServlet
     oidb_cmd0xbf8.DeviceInfo localDeviceInfo = new oidb_cmd0xbf8.DeviceInfo();
     localDeviceInfo.os.set(new oidb_cmd0xbf8.OS());
     localDeviceInfo.os.type.set(2);
-    localDeviceInfo.os.version.set(DeviceInfoUtil.getDeviceOSVersion());
-    localDeviceInfo.os.sdk.set(String.valueOf(DeviceInfoUtil.getOsVersion()));
+    localDeviceInfo.os.version.set(DeviceInfoUtil.e());
+    localDeviceInfo.os.sdk.set(String.valueOf(DeviceInfoUtil.a()));
     localDeviceInfo.os.kernel.set(System.getProperty("os.version"));
     localDeviceInfo.cpu.set(new oidb_cmd0xbf8.CPU());
-    localDeviceInfo.cpu.model.set(DeviceInfoUtil.getCpuType());
-    localDeviceInfo.cpu.cores.set(DeviceInfoUtil.getCpuNumber());
-    localDeviceInfo.cpu.frequency.set((int)DeviceInfoUtil.getCpuFrequency());
+    localDeviceInfo.cpu.model.set(DeviceInfoUtil.g());
+    localDeviceInfo.cpu.cores.set(DeviceInfoUtil.b());
+    localDeviceInfo.cpu.frequency.set((int)DeviceInfoUtil.b());
     localDeviceInfo.memory.set(new oidb_cmd0xbf8.Memory());
-    localDeviceInfo.memory.total.set(DeviceInfoUtil.getSystemTotalMemory());
+    localDeviceInfo.memory.total.set(DeviceInfoUtil.a());
     localDeviceInfo.storage.set(new oidb_cmd0xbf8.Storage());
-    localDeviceInfo.storage.builtin.set(DeviceInfoUtil.getRomMemroy()[0]);
-    localDeviceInfo.storage.external.set(DeviceInfoUtil.getSDCardMemory()[0]);
+    localDeviceInfo.storage.builtin.set(DeviceInfoUtil.a()[0]);
+    localDeviceInfo.storage.external.set(DeviceInfoUtil.b()[0]);
     localDeviceInfo.screen.set(new oidb_cmd0xbf8.Screen());
-    localDeviceInfo.screen.dpi.set(DeviceInfoUtil.getDispalyDpi());
-    localDeviceInfo.screen.width.set((int)DeviceInfoUtil.getPortraitWidth());
-    localDeviceInfo.screen.height.set((int)DeviceInfoUtil.getPortraitHeight());
+    localDeviceInfo.screen.dpi.set(DeviceInfoUtil.e());
+    localDeviceInfo.screen.width.set((int)DeviceInfoUtil.i());
+    localDeviceInfo.screen.height.set((int)DeviceInfoUtil.j());
     localDeviceInfo.camera.set(new oidb_cmd0xbf8.Camera());
     return localDeviceInfo;
   }
@@ -100,7 +98,7 @@ public class AladdinConfigServlet
   {
     oidb_cmd0xbf8.ReqBody localReqBody = new oidb_cmd0xbf8.ReqBody();
     oidb_cmd0xbf8.ReqBodyType1 localReqBodyType1 = new oidb_cmd0xbf8.ReqBodyType1();
-    localReqBodyType1.app_version.set("8.4.10");
+    localReqBodyType1.app_version.set("8.5.5");
     localReqBodyType1.device_info.set(a());
     int j = paramArrayOfInt.length;
     int i = 0;
@@ -109,7 +107,7 @@ public class AladdinConfigServlet
       int k = paramArrayOfInt[i];
       oidb_cmd0xbf8.ConfigSeq localConfigSeq = new oidb_cmd0xbf8.ConfigSeq();
       localConfigSeq.id.set(k);
-      localConfigSeq.version.set(pkw.a(k));
+      localConfigSeq.version.set(QQAladdinPrefUtils.a(k));
       localReqBodyType1.rpt_config_list.add(localConfigSeq);
       i += 1;
     }
@@ -190,8 +188,8 @@ public class AladdinConfigServlet
     }
     long l = paramIntent.getLongExtra("key_packet_receive_timestamp", 0L) - paramIntent.getLongExtra("key_packet_send_timestamp", 0L);
     localHashMap.put("param_CostTime", String.valueOf(l));
-    paramList = StatisticCollector.getInstance(pkh.a().getApplication());
-    paramIntent = pkh.a();
+    paramList = StatisticCollector.getInstance(ReadInJoyUtils.a().getApplication());
+    paramIntent = ReadInJoyUtils.a();
     if (paramInt == 0) {}
     for (;;)
     {
@@ -210,10 +208,10 @@ public class AladdinConfigServlet
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    boolean bool = ((Boolean)bmhv.a("should_request_aladdin_config", Boolean.valueOf(true))).booleanValue();
+    boolean bool = ((Boolean)ReadInJoyHelper.a("should_request_aladdin_config", Boolean.valueOf(true))).booleanValue();
     QLog.i("AladdinConfigServlet", 1, "[maybeGetAllConfigs] shouldRequest=" + bool);
     if (bool) {
-      pkz.b();
+      QQAladdinUtils.b();
     }
   }
   
@@ -231,20 +229,20 @@ public class AladdinConfigServlet
   
   private boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    boolean bool1 = true;
-    boolean bool2 = true;
+    boolean bool = true;
     QLog.d("AladdinConfigServlet", 2, "[handleSingleConfigRsp] id = " + paramInt1 + ", version = " + paramInt2 + ", content = " + paramString + ", wipeFlag = " + paramInt3);
-    if (paramInt2 > pkw.a(paramInt1)) {}
+    QQAladdinPrefUtils.a(paramInt1);
     try
     {
-      AladdinConfigHandler localAladdinConfigHandler = Aladdin.getConfigHandlerById(paramInt1);
+      SimpleConfigHandler localSimpleConfigHandler = Aladdin.getConfigHandlerById(paramInt1);
       if (paramInt3 != 0) {
-        localAladdinConfigHandler.onWipeConfig(paramInt3);
+        localSimpleConfigHandler.onWipeConfig(paramInt3);
       }
-      for (bool1 = bool2;; bool1 = localAladdinConfigHandler.onReceiveConfig(paramInt1, paramInt2, paramString))
+      for (;;)
       {
-        pkw.a(paramInt1, paramInt2);
-        return bool1;
+        QQAladdinPrefUtils.a(paramInt1, paramInt2);
+        return bool;
+        bool = localSimpleConfigHandler.onReceiveConfig(paramInt1, paramInt2, paramString);
       }
       return false;
     }
@@ -284,7 +282,7 @@ public class AladdinConfigServlet
       int j;
       try
       {
-        int i = qxp.a(paramFromServiceMsg, a(paramFromServiceMsg.getWupBuffer()), localRspBody);
+        int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, a(paramFromServiceMsg.getWupBuffer()), localRspBody);
         QLog.i("AladdinConfigServlet", 1, "[onReceive] result=" + i);
         if (i != 0) {
           break label246;
@@ -328,7 +326,7 @@ public class AladdinConfigServlet
     {
       if (localObject1 != null)
       {
-        localObject1 = qxp.a("OidbSvc.0xbf8", 3064, 0, ((oidb_cmd0xbf8.ReqBody)localObject1).toByteArray());
+        localObject1 = ReadInJoyOidbHelper.a("OidbSvc.0xbf8", 3064, 0, ((oidb_cmd0xbf8.ReqBody)localObject1).toByteArray());
         paramPacket.setSSOCommand(((ToServiceMsg)localObject1).getServiceCmd());
         paramPacket.putSendData(b(((ToServiceMsg)localObject1).getWupBuffer()));
         paramPacket.setAttributes(((ToServiceMsg)localObject1).getAttributes());
@@ -353,7 +351,7 @@ public class AladdinConfigServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet
  * JD-Core Version:    0.7.0.1
  */

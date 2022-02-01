@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import biiq;
 import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
 import com.tencent.qphone.base.util.QLog;
 
-public class SwiftWebAccelerator$4
+class SwiftWebAccelerator$4
   implements Runnable
 {
-  public SwiftWebAccelerator$4(biiq parambiiq, SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
+  SwiftWebAccelerator$4(SwiftWebAccelerator paramSwiftWebAccelerator, SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
   
   public void run()
   {
@@ -24,7 +23,7 @@ public class SwiftWebAccelerator$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.4
  * JD-Core Version:    0.7.0.1
  */

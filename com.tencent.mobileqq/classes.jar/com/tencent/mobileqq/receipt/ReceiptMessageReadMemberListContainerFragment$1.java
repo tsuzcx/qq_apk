@@ -2,7 +2,7 @@ package com.tencent.mobileqq.receipt;
 
 import java.util.ArrayList;
 
-public class ReceiptMessageReadMemberListContainerFragment$1
+class ReceiptMessageReadMemberListContainerFragment$1
   implements Runnable
 {
   ReceiptMessageReadMemberListContainerFragment$1(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
@@ -21,7 +21,7 @@ public class ReceiptMessageReadMemberListContainerFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.1
  * JD-Core Version:    0.7.0.1
  */

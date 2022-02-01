@@ -53,12 +53,21 @@ public class EmbeddedWidgetClientHolder
         ((LivePlayerEmbeddedWidgetClient)this.realClient).handleInsertXWebLivePlayer(paramJSONObject, paramIJsService);
         return;
       }
-    } while ((!"insertXWebLivePusher".equals(paramString)) && (!"updateXWebLivePusher".equals(paramString)));
-    this.realClient = new LivePusherEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
+      if (("insertXWebLivePusher".equals(paramString)) || ("updateXWebLivePusher".equals(paramString)))
+      {
+        this.realClient = new LivePusherEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
+        if (this.surfaceCreated != null) {
+          this.realClient.onSurfaceCreated(this.surfaceCreated);
+        }
+        ((LivePusherEmbeddedWidgetClient)this.realClient).handleInsertXWebLivePusher(paramJSONObject, paramIJsService);
+        return;
+      }
+    } while ((!"insertXWebExternalElement".equals(paramString)) && (!"updateXWebExternalElement".equals(paramString)));
+    this.realClient = new ExternalEmbeddedWidgetClient(paramIMiniAppContext, this.tagName, this.attributes, this.widget);
     if (this.surfaceCreated != null) {
       this.realClient.onSurfaceCreated(this.surfaceCreated);
     }
-    ((LivePusherEmbeddedWidgetClient)this.realClient).handleInsertXWebLivePusher(paramJSONObject, paramIJsService);
+    ((ExternalEmbeddedWidgetClient)this.realClient).handleInsertXWebExternalElement(paramJSONObject, paramIJsService);
   }
   
   private void removeWidget()
@@ -72,6 +81,14 @@ public class EmbeddedWidgetClientHolder
   public IMiniAppContext getMiniAppContext()
   {
     return null;
+  }
+  
+  public int getViewId()
+  {
+    if (this.realClient != null) {
+      return this.realClient.getViewId();
+    }
+    return -1;
   }
   
   public void handleEmbeddedWidgetEvent(String paramString, IMiniAppContext paramIMiniAppContext, JSONObject paramJSONObject, int paramInt, IJsService paramIJsService)
@@ -114,8 +131,23 @@ public class EmbeddedWidgetClientHolder
         ((LivePusherEmbeddedWidgetClient)this.realClient).handleUpdateXWebLivePusher(paramJSONObject);
         return;
       }
-    } while (!"removeXWebLivePusher".equals(paramString));
-    ((LivePusherEmbeddedWidgetClient)this.realClient).handleRemoveXWebLivePusher();
+      if ("removeXWebLivePusher".equals(paramString))
+      {
+        ((LivePusherEmbeddedWidgetClient)this.realClient).handleRemoveXWebLivePusher();
+        return;
+      }
+      if ("operateXWebExternalElement".equals(paramString))
+      {
+        ((ExternalEmbeddedWidgetClient)this.realClient).handleOperateXWebExternalElement(paramJSONObject, paramInt, paramIJsService);
+        return;
+      }
+      if ("updateXWebExternalElement".equals(paramString))
+      {
+        ((ExternalEmbeddedWidgetClient)this.realClient).handleUpdateXWebExternalElement(paramJSONObject);
+        return;
+      }
+    } while (!"removeXWebExternalElement".equals(paramString));
+    ((ExternalEmbeddedWidgetClient)this.realClient).handleRemoveXWebExternalElement();
   }
   
   public void handleInsertEmbeddedWidgetEvent(String paramString, IMiniAppContext paramIMiniAppContext, JSONObject paramJSONObject, IJsService paramIJsService)
@@ -261,15 +293,15 @@ public class EmbeddedWidgetClientHolder
     QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "onVisibilityChanged-realClient is null");
   }
   
-  public void webViewDestory()
+  public void webViewDestroy()
   {
-    QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "webViewDestory");
+    QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "webViewDestroy");
     if (this.realClient != null)
     {
-      this.realClient.webViewDestory();
+      this.realClient.webViewDestroy();
       return;
     }
-    QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "webViewDestory-realClient is null");
+    QMLog.d("miniapp-embedded-EmbeddedWidgetClientHolder", "webViewDestroy-realClient is null");
   }
   
   public void webViewPause()
@@ -296,7 +328,7 @@ public class EmbeddedWidgetClientHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.EmbeddedWidgetClientHolder
  * JD-Core Version:    0.7.0.1
  */

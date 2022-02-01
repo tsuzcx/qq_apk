@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.structmsg;
 
-import aido;
 import android.text.TextUtils;
-import bdnu;
+import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import olh;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class AbsStructMsgElement$1
+class AbsStructMsgElement$1
   implements Runnable
 {
-  public AbsStructMsgElement$1(bdnu parambdnu1, bdnu parambdnu2, QQAppInterface paramQQAppInterface) {}
+  AbsStructMsgElement$1(AbsStructMsgElement paramAbsStructMsgElement1, AbsStructMsgElement paramAbsStructMsgElement2, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
     int j = -1;
     int i = j;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bdnu.aa)) {}
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.aa)) {}
     try
     {
       i = Integer.parseInt(this.this$0.aa);
-      if (aido.a(this.jdField_a_of_type_Bdnu.ab, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      if (PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.ab, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
         j = 1;
-        olh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Bdnu.ab, "0X80055C7", "0X80055C7", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_Bdnu.a), this.jdField_a_of_type_Bdnu.c, Integer.toString(j), false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.ab, "0X80055C7", "0X80055C7", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.a), this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.c, Integer.toString(j), false);
         return;
       }
     }

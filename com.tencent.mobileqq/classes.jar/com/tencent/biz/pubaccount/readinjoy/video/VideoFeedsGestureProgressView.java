@@ -9,7 +9,7 @@ import android.view.View;
 public class VideoFeedsGestureProgressView
   extends View
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   
   public VideoFeedsGestureProgressView(Context paramContext)
@@ -27,7 +27,7 @@ public class VideoFeedsGestureProgressView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1711276032);
@@ -44,7 +44,7 @@ public class VideoFeedsGestureProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureProgressView
  * JD-Core Version:    0.7.0.1
  */

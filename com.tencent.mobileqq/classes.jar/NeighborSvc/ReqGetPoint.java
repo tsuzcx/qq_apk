@@ -8,9 +8,9 @@ public final class ReqGetPoint
   extends JceStruct
 {
   static ReqUserInfo cache_stUserInfo;
-  public byte bGetCityId;
-  public byte bJiejingSOSO;
-  public ReqUserInfo stUserInfo;
+  public byte bGetCityId = 0;
+  public byte bJiejingSOSO = 0;
+  public ReqUserInfo stUserInfo = null;
   
   public ReqGetPoint() {}
   

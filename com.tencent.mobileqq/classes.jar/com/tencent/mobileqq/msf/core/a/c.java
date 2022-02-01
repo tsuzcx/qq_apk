@@ -10,11 +10,10 @@ import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.b.a;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
-import com.tencent.mobileqq.msf.core.w;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.msf.boot.config.NativeConfigStore;
@@ -26,6 +25,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.log.a.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -43,7 +43,7 @@ public class c
   private static final byte[] C = { -16, 68, 31, 95, -12, 45, -91, -113, -36, -9, -108, -102, -70, 98, -44, 17 };
   private static final String[] D = { "socket://msfxg.3g.qq.com:8080#46000_46002_46007_46001_46003:0:1", "socket://113.96.12.224:80#46003:0:1", "socket://183.232.94.44:14000#46000_46002_46007:0:1", "socket://120.232.18.27:8080#46000_46002_46007:0:1", "socket://157.255.13.77:443#46001:0:1", "socket://203.205.255.224:8080#46000_46002_46007_46001_46003:0:1" };
   private static final String[] E = { "socket://120.232.18.27:14000#46000_46002_46007:0:1", "socket://msfxg.3g.qq.com:80#46000_46002_46007:0:1", "socket://111.30.178.75:443#46000_46002_46007:0:1", "socket://36.155.240.38:8080#46000_46002_46007:0:1", "socket://183.232.94.44:8080#46000_46002_46007:0:1", "socket://111.30.138.152:443#46000_46002_46007:0:1", "socket://117.144.244.33:443#46000_46002_46007:0:1", "socket://111.30.138.152:443#46000_46002_46007:0:1" };
-  private static final String[] F = { "socket://163.177.89.195:14000#46001:0:1", "socket://msfxg.3g.qq.com:80#46001:0:1", "socket://157.255.13.77:8080#46001:0:1", "socket://221.198.69.96:8080#46001:0:1", "socket://153.3.149.61:14000#46001:0:1", "socket://111.206.25.142:443#46001:0:1", "socket://140.207.123.177:8080#46001:0:1" };
+  private static final String[] F = { "socket://163.177.89.195:14000#46001:0:1", "socket://msfxg.3g.qq.com:80#46001:0:1", "socket://157.255.13.77:8080#46001:0:1", "socket://221.198.69.96:8080#46001:0:1", "socket://153.3.149.61:14000#46001:0:1", "socket://111.206.25.142:443#46001:0:1", "socket://153.3.50.58:8080#46001:0:1" };
   private static final String[] G = { "socket://113.96.12.224:14000#46003:0:1", "socket://msfxg.3g.qq.com:80#46003:0:1", "socket://183.3.235.162:443#46003:0:1", "socket://42.81.169.100:8080#46003:0:1", "socket://114.221.144.89:443#46003:0:1", "socket://123.150.76.143:80#46003:0:1", "socket://61.129.6.101:14000#46003:0:1" };
   private static final String[] H = { "socket://203.205.255.224:443#46000_46002_46007_46001_46003:0:1", "socket://msfxg.3g.qq.com:80#46000_46002_46007_46001_46003:0:1", "socket://203.205.255.221:443#46000_46002_46007_46001_46003:0:1", "socket://183.3.235.162:8080#46000_46002_46007_46001_46003:0:1", "socket://163.177.89.195:8080#46000_46002_46007_46001_46003:0:1", "socket://183.232.94.44:443#46000_46002_46007_46001_46003:0:1" };
   private static final String[] I = { "socket://msfwifi.3g.qq.com:8080#00000:0:1", "socket://14.215.138.110:8080#00000:0:1", "socket://113.96.12.224:8080#00000:0:1", "socket://157.255.13.77:14000#00000:0:1", "socket://120.232.18.27:443#00000:0:1", "socket://183.3.235.162:14000#00000:0:1", "socket://163.177.89.195:443#00000:0:1", "socket://183.232.94.44:80#00000:0:1", "socket://203.205.255.224:8080#00000:0:1", "socket://203.205.255.221:8080#00000:0:1" };
@@ -567,7 +567,7 @@ public class c
   private void h()
   {
     this.N.clear();
-    Object localObject = w.e();
+    Object localObject = o.e();
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.SsoListManager", 2, "getIMSI " + (String)localObject);
     }

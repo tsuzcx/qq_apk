@@ -1,7 +1,8 @@
 package com.tencent.image;
 
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.IThreadManager;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.net.URL;
 
 class URLState$PreDownloadRunnable$1
@@ -12,8 +13,8 @@ class URLState$PreDownloadRunnable$1
   public void run()
   {
     URLState.PreDownloadRunnable localPreDownloadRunnable = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("URLDrawable_", 2, "PreDwonloadAsyncTask doInBackground." + URLState.PreDownloadRunnable.access$000(this.this$1));
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.i("URLDrawable_", 2, "PreDwonloadAsyncTask doInBackground." + URLState.PreDownloadRunnable.access$200(this.this$1));
     }
     if (this.this$1.mDownloadRunnable.isCancelled()) {
       return;
@@ -21,35 +22,35 @@ class URLState$PreDownloadRunnable$1
     long l = System.currentTimeMillis();
     this.this$1.mDownloadRunnable.postTime = l;
     if (l - URLState.slastCheckTime > 300000L) {
-      URLState.access$100(this.this$1.this$0);
+      URLState.access$300(this.this$1.this$0);
     }
     if (this.this$1.hasFile)
     {
       this.this$1.mDownloadRunnable.flag = 0;
-      ThreadManagerV2.excute(this.this$1.mDownloadRunnable, 64, null, false);
+      URLDrawable.depImp.mThreadManager.executeOnFileThreadExcutor(this.this$1.mDownloadRunnable, null, false);
     }
     for (;;)
     {
       this.this$1.this$0.onLoadStart();
-      if (!QLog.isColorLevel()) {
+      if (!URLDrawable.depImp.mLog.isColorLevel()) {
         break;
       }
-      QLog.i("URLDrawable_", 2, "PreDwonloadAsyncTask onLoadStart." + URLState.PreDownloadRunnable.access$000(this.this$1));
+      URLDrawable.depImp.mLog.i("URLDrawable_", 2, "PreDwonloadAsyncTask onLoadStart." + URLState.PreDownloadRunnable.access$200(this.this$1));
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("URLDrawable_", 2, "schedule load image " + this.this$1.this$0.mUrlStr + ",useThreadPool=" + this.this$1.this$0.mUseThreadPool);
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d("URLDrawable_", 2, "schedule load image " + this.this$1.this$0.mUrlStr + ",useThreadPool=" + this.this$1.this$0.mUseThreadPool);
       }
       this.this$1.mDownloadRunnable.flag = 1;
       if (this.this$1.mDownloadRunnable.mQueue != null)
       {
-        this.this$1.mDownloadRunnable.mQueue.execute(this.this$1.mDownloadRunnable, 128, true);
+        this.this$1.mDownloadRunnable.mQueue.excuteOnNetThread(this.this$1.mDownloadRunnable, true);
       }
       else
       {
-        if (URLState.PreDownloadRunnable.access$000(this.this$1).getProtocol().equals("chatthumb")) {
+        if (URLState.PreDownloadRunnable.access$200(this.this$1).getProtocol().equals("chatthumb")) {
           localPreDownloadRunnable = this.this$1;
         }
-        ThreadManagerV2.excute(this.this$1.mDownloadRunnable, 128, localPreDownloadRunnable, true);
+        URLDrawable.depImp.mThreadManager.executeOnNetThreadExcutor(this.this$1.mDownloadRunnable, localPreDownloadRunnable, true);
       }
     }
   }

@@ -2,13 +2,12 @@ package cooperation.qzone.report.lp;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReportInfo_dc01500
   implements LpReportInfo
@@ -41,7 +40,7 @@ public class LpReportInfo_dc01500
   public static final String EVENT_FETCH_CONFIG = "event_fetch_config";
   public static final String EVENT_INSTALL = "event_install";
   public static final String EVENT_LAUNCH = "event_launch";
-  private static int S_EVENT_INDEX;
+  private static int S_EVENT_INDEX = 0;
   public String attach_info = "";
   public String client_time = "";
   public String download_id = "";
@@ -67,8 +66,8 @@ public class LpReportInfo_dc01500
   public static void reportConfig(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
-    localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = QUA.getQUA3();
+    localLpReportInfo_dc01500.uin = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    localLpReportInfo_dc01500.qua = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_fetch_config";
     paramInt = S_EVENT_INDEX;
@@ -82,8 +81,8 @@ public class LpReportInfo_dc01500
   public static void reportDownload(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, double paramDouble, int paramInt2, int paramInt3, String paramString6)
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
-    localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = QUA.getQUA3();
+    localLpReportInfo_dc01500.uin = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    localLpReportInfo_dc01500.qua = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_download";
     paramInt3 = S_EVENT_INDEX;
@@ -104,8 +103,8 @@ public class LpReportInfo_dc01500
   public static void reportDownload(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, double paramDouble, int paramInt2, int paramInt3, String paramString6, String paramString7)
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
-    localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = QUA.getQUA3();
+    localLpReportInfo_dc01500.uin = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    localLpReportInfo_dc01500.qua = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_download";
     paramInt3 = S_EVENT_INDEX;
@@ -127,8 +126,8 @@ public class LpReportInfo_dc01500
   public static void reportInstall(String paramString1, String paramString2, String paramString3, double paramDouble, int paramInt)
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
-    localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = QUA.getQUA3();
+    localLpReportInfo_dc01500.uin = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    localLpReportInfo_dc01500.qua = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_install";
     int i = S_EVENT_INDEX;
@@ -145,8 +144,8 @@ public class LpReportInfo_dc01500
   public static void reportInstall(String paramString1, String paramString2, String paramString3, double paramDouble, int paramInt, String paramString4)
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
-    localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = QUA.getQUA3();
+    localLpReportInfo_dc01500.uin = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    localLpReportInfo_dc01500.qua = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_install";
     int i = S_EVENT_INDEX;
@@ -164,8 +163,8 @@ public class LpReportInfo_dc01500
   public static void reportLaunch(String paramString1, String paramString2, double paramDouble, int paramInt, String paramString3)
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
-    localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = QUA.getQUA3();
+    localLpReportInfo_dc01500.uin = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    localLpReportInfo_dc01500.qua = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_launch";
     int i = S_EVENT_INDEX;
@@ -187,7 +186,7 @@ public class LpReportInfo_dc01500
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("host_uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localHashMap.put("host_uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     LpReportUtils.safePut(localHashMap, "qua", this.qua);
     LpReportUtils.safePut(localHashMap, "plugin_id", this.plugin_id);
     LpReportUtils.safePut(localHashMap, "plugin_ver", this.plugin_version);
@@ -210,7 +209,7 @@ public class LpReportInfo_dc01500
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc01500
  * JD-Core Version:    0.7.0.1
  */

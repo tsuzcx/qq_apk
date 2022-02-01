@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class stConfNumInfo
   extends JceStruct
 {
-  public long lConfUin;
-  public long uConfMsgSeq;
-  public long uMemberMsgSeq;
+  public long lConfUin = 0L;
+  public long uConfMsgSeq = 0L;
+  public long uMemberMsgSeq = 0L;
   
   public stConfNumInfo() {}
   
@@ -36,7 +36,7 @@ public final class stConfNumInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.stConfNumInfo
  * JD-Core Version:    0.7.0.1
  */

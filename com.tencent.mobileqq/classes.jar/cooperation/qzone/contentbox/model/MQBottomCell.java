@@ -14,8 +14,8 @@ public class MQBottomCell
   public static final String TAG = "QZoneMsgManager.MQBottomCell";
   public String content = "";
   public String jumpUrl = "";
-  public int total;
-  public ArrayList<String> userAvatar;
+  public int total = 0;
+  public ArrayList<String> userAvatar = null;
   
   private static JSONArray convertAvatarToJsonArray(ArrayList<String> paramArrayList)
   {
@@ -108,7 +108,7 @@ public class MQBottomCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQBottomCell
  * JD-Core Version:    0.7.0.1
  */

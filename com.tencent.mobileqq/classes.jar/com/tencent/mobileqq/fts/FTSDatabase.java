@@ -2,13 +2,12 @@ package com.tencent.mobileqq.fts;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import auzs;
-import auzz;
-import avaa;
-import avah;
-import avai;
-import avaj;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
+import com.tencent.mobileqq.fts.logger.ILogger;
+import com.tencent.mobileqq.fts.logger.Logger;
+import com.tencent.mobileqq.fts.utils.FTSUtils;
+import com.tencent.mobileqq.fts.utils.FileUtils;
+import com.tencent.mobileqq.fts.utils.SQLUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -18,8 +17,8 @@ import java.util.Map;
 
 public class FTSDatabase
 {
-  private static auzz jdField_a_of_type_Auzz = new avaa();
-  private boolean jdField_a_of_type_Boolean;
+  private static ILogger jdField_a_of_type_ComTencentMobileqqFtsLoggerILogger = new Logger();
+  private boolean jdField_a_of_type_Boolean = false;
   private boolean b = true;
   
   public FTSDatabase()
@@ -29,14 +28,14 @@ public class FTSDatabase
     }
   }
   
-  public static auzz a()
+  public static ILogger a()
   {
-    return jdField_a_of_type_Auzz;
+    return jdField_a_of_type_ComTencentMobileqqFtsLoggerILogger;
   }
   
-  public static void a(auzz paramauzz)
+  public static void a(ILogger paramILogger)
   {
-    jdField_a_of_type_Auzz = paramauzz;
+    jdField_a_of_type_ComTencentMobileqqFtsLoggerILogger = paramILogger;
   }
   
   private void b()
@@ -91,7 +90,7 @@ public class FTSDatabase
     return i;
   }
   
-  public List<FTSEntity> a(auzs paramauzs)
+  public List<FTSEntity> a(FTSQueryArgs paramFTSQueryArgs)
   {
     b();
     if (!d()) {
@@ -102,7 +101,7 @@ public class FTSDatabase
     {
       return null;
       Object localObject1 = new ArrayList();
-      localObject3 = avaj.a(paramauzs, (List)localObject1);
+      localObject3 = SQLUtils.a(paramFTSQueryArgs, (List)localObject1);
       int[] arrayOfInt = new int[((List)localObject1).size()];
       int i = 0;
       while (i < ((List)localObject1).size())
@@ -121,7 +120,7 @@ public class FTSDatabase
         {
           localObject1 = ((List)localObject1).iterator();
           while (((Iterator)localObject1).hasNext()) {
-            ((List)localObject3).add(avaj.a((Map)((Iterator)localObject1).next(), paramauzs.a));
+            ((List)localObject3).add(SQLUtils.a((Map)((Iterator)localObject1).next(), paramFTSQueryArgs.a));
           }
         }
       }
@@ -192,7 +191,7 @@ public class FTSDatabase
       log("Q.fts.troop.FTSDatabase", "w", "init failed because so is not available.");
       return;
     }
-    avai.a(new File(paramString));
+    FileUtils.a(new File(paramString));
     try
     {
       log("Q.fts.troop.FTSDatabase", "i", Thread.currentThread().getName() + " native initNative V2");
@@ -244,7 +243,7 @@ public class FTSDatabase
       return bool2;
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      paramFTSEntity = avaj.a(paramFTSEntity, localArrayList2, localArrayList1);
+      paramFTSEntity = SQLUtils.a(paramFTSEntity, localArrayList2, localArrayList1);
       int[] arrayOfInt = new int[localArrayList2.size()];
       int i = 0;
       while (i < localArrayList2.size())
@@ -292,7 +291,7 @@ public class FTSDatabase
     String str2;
     for (;;)
     {
-      str2 = avaj.a(paramClass, avah.a(), bool1, bool2, bool3);
+      str2 = SQLUtils.a(paramClass, FTSUtils.a(), bool1, bool2, bool3);
       try
       {
         bool4 = execSQLNative(str2);
@@ -308,7 +307,7 @@ public class FTSDatabase
           String str1 = getErrorMsg();
           Object localObject = str1;
           log("Q.fts.troop.FTSDatabase", "e", "Can't create virtual table. " + (String)localObject);
-          if (!avah.a())
+          if (!FTSUtils.a())
           {
             log("Q.fts.troop.FTSDatabase", "e", "createTable failed." + (String)localObject);
             return false;
@@ -434,7 +433,7 @@ public class FTSDatabase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fts.FTSDatabase
  * JD-Core Version:    0.7.0.1
  */

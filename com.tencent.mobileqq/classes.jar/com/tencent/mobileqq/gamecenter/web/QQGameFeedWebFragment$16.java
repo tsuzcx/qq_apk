@@ -5,10 +5,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
-import avgi;
 import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
-public class QQGameFeedWebFragment$16
+class QQGameFeedWebFragment$16
   implements Runnable
 {
   QQGameFeedWebFragment$16(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
@@ -35,14 +34,14 @@ public class QQGameFeedWebFragment$16
     AnimationSet localAnimationSet = new AnimationSet(false);
     localAnimationSet.addAnimation((Animation)localObject1);
     localAnimationSet.addAnimation((Animation)localObject2);
-    localAnimationSet.setAnimationListener(new avgi(this));
+    localAnimationSet.setAnimationListener(new QQGameFeedWebFragment.16.1(this));
     QQGameFeedWebFragment.a(this.this$0, QQGameFeedWebFragment.a(this.this$0), false);
     QQGameFeedWebFragment.a(this.this$0).startAnimation(localAnimationSet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.16
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,14 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
-import mns;
-import mnt;
 
 @TargetApi(9)
 public class EffectCycleViewPager
   extends ViewPager
 {
-  public SparseArray<View> a;
-  private mns a;
-  public mnt a;
+  SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private EffectCycleViewPager.InnerOnPageChangeListener jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerOnPageChangeListener;
+  protected EffectCycleViewPager.InnerPagerAdapter a;
   
   public EffectCycleViewPager(Context paramContext)
   {
@@ -27,7 +25,6 @@ public class EffectCycleViewPager
   public EffectCycleViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
   View a()
@@ -38,20 +35,20 @@ public class EffectCycleViewPager
   
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
-    this.jdField_a_of_type_Mnt = new mnt(this, paramPagerAdapter);
-    super.setAdapter(this.jdField_a_of_type_Mnt);
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerPagerAdapter = new EffectCycleViewPager.InnerPagerAdapter(this, paramPagerAdapter);
+    super.setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerPagerAdapter);
     setCurrentItem(1);
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_Mns = new mns(this, paramOnPageChangeListener, getCurrentItem());
-    super.setOnPageChangeListener(this.jdField_a_of_type_Mns);
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerOnPageChangeListener = new EffectCycleViewPager.InnerOnPageChangeListener(this, paramOnPageChangeListener, getCurrentItem());
+    super.setOnPageChangeListener(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerOnPageChangeListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectCycleViewPager
  * JD-Core Version:    0.7.0.1
  */

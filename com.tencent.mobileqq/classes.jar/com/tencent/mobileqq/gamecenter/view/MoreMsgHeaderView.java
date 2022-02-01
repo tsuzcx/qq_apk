@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anvx;
-import avfh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
 public class MoreMsgHeaderView
   extends RelativeLayout
-  implements avfh
+  implements IHeaderView
 {
   public MoreMsgHeaderView(Context paramContext)
   {
@@ -28,39 +25,27 @@ public class MoreMsgHeaderView
   
   public void a() {}
   
-  public void a(MessageRecord paramMessageRecord, Activity paramActivity)
-  {
-    paramMessageRecord = new TextView(getContext());
-    paramMessageRecord.setText(anvx.a(2131706348));
-    paramMessageRecord.setTextColor(-16777216);
-    paramMessageRecord.setAlpha(0.5F);
-    paramMessageRecord.setEms(1);
-    paramActivity = new RelativeLayout.LayoutParams(-2, -2);
-    paramActivity.addRule(9);
-    paramActivity.addRule(15);
-    paramActivity.leftMargin = AIOUtils.dp2px(50.0F, BaseApplicationImpl.getApplication().getResources());
-    addView(paramMessageRecord, paramActivity);
-  }
-  
-  public void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt)
+  public void a(QQGameMsgInfo paramQQGameMsgInfo, Context paramContext, int paramInt, String paramString)
   {
     paramQQGameMsgInfo = new TextView(getContext());
-    paramQQGameMsgInfo.setText(anvx.a(2131706348));
+    paramQQGameMsgInfo.setText(HardCodeUtil.a(2131706888));
     paramQQGameMsgInfo.setTextColor(-16777216);
     paramQQGameMsgInfo.setAlpha(0.5F);
     paramQQGameMsgInfo.setEms(1);
-    paramActivity = new RelativeLayout.LayoutParams(-2, -2);
-    paramActivity.addRule(9);
-    paramActivity.addRule(15);
-    paramActivity.leftMargin = AIOUtils.dp2px(50.0F, BaseApplicationImpl.getApplication().getResources());
-    addView(paramQQGameMsgInfo, paramActivity);
+    paramContext = new RelativeLayout.LayoutParams(-2, -2);
+    paramContext.addRule(9);
+    paramContext.addRule(15);
+    paramContext.leftMargin = AIOUtils.a(50.0F, BaseApplicationImpl.getApplication().getResources());
+    addView(paramQQGameMsgInfo, paramContext);
   }
   
   public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView
  * JD-Core Version:    0.7.0.1
  */

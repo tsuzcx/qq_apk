@@ -140,7 +140,7 @@ public class VerifyCodeManagerImpl
   
   void notifyApp(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.app.getService().onRecvVerifyManagerCallback(paramToServiceMsg, paramFromServiceMsg);
+    this.app.getRuntimeService().onRecvVerifyManagerCallback(paramToServiceMsg, paramFromServiceMsg);
   }
   
   void notifyVerifyCodeActivity(ToServiceMsg paramToServiceMsg, String paramString1, byte[] paramArrayOfByte, String paramString2)
@@ -274,10 +274,10 @@ public class VerifyCodeManagerImpl
       if (localObject != null)
       {
         ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
-        paramServerNotifyObserver = this.app.getService().msfSub.getRefreVerifyCodeMsg(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
+        paramServerNotifyObserver = this.app.getRuntimeService().msfSub.getRefreVerifyCodeMsg(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
         paramServerNotifyObserver.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
         addConnectData(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).srcTo, paramServerNotifyObserver);
-        this.app.getService().msfSub.sendMsg(paramServerNotifyObserver);
+        this.app.getRuntimeService().msfSub.sendMsg(paramServerNotifyObserver);
         return;
       }
     } while (!QLog.isColorLevel());
@@ -291,7 +291,7 @@ public class VerifyCodeManagerImpl
     if (localObject != null)
     {
       ToServiceMsg localToServiceMsg = ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).srcTo;
-      paramString = this.app.getService().msfSub.getSubmitPuzzleVerifyCodeTicketMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
+      paramString = this.app.getRuntimeService().msfSub.getSubmitPuzzleVerifyCodeTicketMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
       paramString.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
       if (localToServiceMsg.getAttribute("from_where") != null)
       {
@@ -301,7 +301,7 @@ public class VerifyCodeManagerImpl
         paramString.addAttribute("mainaccount", str);
       }
       addConnectData(localToServiceMsg, paramString);
-      this.app.getService().msfSub.sendMsg(paramString);
+      this.app.getRuntimeService().msfSub.sendMsg(paramString);
     }
   }
   
@@ -326,7 +326,7 @@ public class VerifyCodeManagerImpl
     } while (localObject1 == null);
     ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).serverNotifyObserver = paramServerNotifyObserver;
     paramServerNotifyObserver = ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).srcTo;
-    paramString = this.app.getService().msfSub.getSubmitVerifyCodeMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).verifyCodeInfo);
+    paramString = this.app.getRuntimeService().msfSub.getSubmitVerifyCodeMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).verifyCodeInfo);
     paramString.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).verifyCodeInfo.appSeq);
     if (paramServerNotifyObserver.getAttribute("from_where") != null)
     {
@@ -336,7 +336,7 @@ public class VerifyCodeManagerImpl
       paramString.addAttribute("mainaccount", localObject2);
     }
     addConnectData(paramServerNotifyObserver, paramString);
-    this.app.getService().msfSub.sendMsg(paramString);
+    this.app.getRuntimeService().msfSub.sendMsg(paramString);
   }
 }
 

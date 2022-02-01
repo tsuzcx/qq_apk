@@ -16,7 +16,7 @@ class QZoneMsgFragment$6
     for (int i = 44;; i = 0)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)QZoneMsgFragment.access$500(this.this$0).getLayoutParams();
-      localLayoutParams.bottomMargin = ViewUtils.dpToPx(i);
+      localLayoutParams.bottomMargin = ViewUtils.b(i);
       QZoneMsgFragment.access$500(this.this$0).setLayoutParams(localLayoutParams);
       QZoneMsgFragment.access$600(this.this$0).updateData(this.val$datas);
       return;
@@ -25,7 +25,7 @@ class QZoneMsgFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.6
  * JD-Core Version:    0.7.0.1
  */

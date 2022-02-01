@@ -12,15 +12,15 @@ class RequestJsPlugin$3$1
   {
     if (paramBoolean)
     {
-      RequestJsPlugin.access$2000(this.this$1.this$0, this.this$1.val$req, paramJSONObject);
+      RequestJsPlugin.access$1100(this.this$1.this$0, this.this$1.val$req, paramJSONObject);
       return;
     }
-    RequestJsPlugin.access$2100(this.this$1.this$0, this.this$1.val$req, null, "do not support wnsRequest");
+    RequestJsPlugin.access$1200(this.this$1.this$0, this.this$1.val$req, null, "do not support wnsRequest");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

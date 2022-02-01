@@ -3,22 +3,24 @@ package com.tencent.mobileqq.app.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anyv;
-import aozz;
+import com.tencent.mobileqq.app.MessageHandlerUtils;
 import java.util.Arrays;
 
 public class FriendsStatusUtil$UpdateFriendStatusItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new aozz();
+  public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new FriendsStatusUtil.UpdateFriendStatusItem.1();
   public int a;
   public long a;
   public String a;
   private byte[] a;
   public int b = -1;
   
-  public FriendsStatusUtil$UpdateFriendStatusItem(Parcel paramParcel)
+  protected FriendsStatusUtil$UpdateFriendStatusItem(Parcel paramParcel)
   {
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -30,6 +32,9 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   
   public FriendsStatusUtil$UpdateFriendStatusItem(String paramString, int paramInt1, int paramInt2)
   {
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.b = paramInt1;
@@ -38,6 +43,9 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
   
   public FriendsStatusUtil$UpdateFriendStatusItem(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.b = paramInt1;
@@ -55,10 +63,10 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
         return 0L;
       }
       if (this.jdField_a_of_type_ArrayOfByte.length == 4) {
-        return anyv.a(this.jdField_a_of_type_ArrayOfByte);
+        return MessageHandlerUtils.a(this.jdField_a_of_type_ArrayOfByte);
       }
     } while (this.jdField_a_of_type_ArrayOfByte.length != 8);
-    return anyv.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
+    return MessageHandlerUtils.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
   }
   
   public void a(long paramLong)
@@ -136,7 +144,7 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem
  * JD-Core Version:    0.7.0.1
  */

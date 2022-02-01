@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.canvas.download.AdDownloadConstants;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.downloader.AdDownloadConstants;
+import com.tencent.ad.tangram.downloader.IAdDownloader;
+import com.tencent.ad.tangram.downloader.IAdDownloader.Callback;
 
 public class g
 {
@@ -137,7 +137,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.g
  * JD-Core Version:    0.7.0.1
  */

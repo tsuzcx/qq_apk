@@ -10,30 +10,116 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CountDownTimer
   extends Handler
 {
-  private static final int MSG = 1;
-  private boolean isRunning = false;
-  private long mCountdownInterval = 1000L;
-  public CopyOnWriteArrayList<CountDownTimer.CountDownTimerListener> mListeners = new CopyOnWriteArrayList();
-  private boolean mPause = false;
-  private long mStopTimeInFuture;
+  private long jdField_a_of_type_Long = 1000L;
+  public CopyOnWriteArrayList<CountDownTimer.CountDownTimerListener> a;
+  private boolean jdField_a_of_type_Boolean = false;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean = false;
   
-  public CountDownTimer() {}
+  public CountDownTimer()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  }
   
   public CountDownTimer(Looper paramLooper)
   {
     super(paramLooper);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   }
   
-  public void addListener(CountDownTimer.CountDownTimerListener paramCountDownTimerListener)
+  public void a()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    b();
+    c();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + 1000L * paramLong, this.jdField_b_of_type_Long);
+    f();
+  }
+  
+  public void a(CountDownTimer.CountDownTimerListener paramCountDownTimerListener)
   {
     long l = SystemClock.elapsedRealtime();
-    if (CountDownTimer.CountDownTimerListener.access$000(paramCountDownTimerListener) > l)
+    if (CountDownTimer.CountDownTimerListener.a(paramCountDownTimerListener) > l)
     {
-      this.mListeners.add(paramCountDownTimerListener);
-      setTime(CountDownTimer.CountDownTimerListener.access$000(paramCountDownTimerListener) - l);
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramCountDownTimerListener);
+      a(CountDownTimer.CountDownTimerListener.a(paramCountDownTimerListener) - l);
       return;
     }
-    paramCountDownTimerListener.onFinish();
+    paramCountDownTimerListener.b();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) {
+      g();
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((CountDownTimer.CountDownTimerListener)localIterator.next()).a();
+    }
+  }
+  
+  public void b(CountDownTimer.CountDownTimerListener paramCountDownTimerListener)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramCountDownTimerListener);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 2) {
+      g();
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((CountDownTimer.CountDownTimerListener)localIterator.next()).b();
+    }
+  }
+  
+  public void d()
+  {
+    removeMessages(1);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_b_of_type_Long >= SystemClock.elapsedRealtime()) {
+      sendMessage(obtainMessage(1));
+    }
+  }
+  
+  public void f()
+  {
+    for (;;)
+    {
+      try
+      {
+        boolean bool = this.jdField_b_of_type_Boolean;
+        if (bool) {
+          return;
+        }
+        if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
+        {
+          a();
+          continue;
+        }
+        this.jdField_b_of_type_Boolean = true;
+      }
+      finally {}
+      sendMessage(obtainMessage(1));
+    }
+  }
+  
+  public void g()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    removeMessages(1);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
   }
   
   public void handleMessage(Message paramMessage)
@@ -42,13 +128,13 @@ public class CountDownTimer
     {
       try
       {
-        l = this.mStopTimeInFuture - SystemClock.elapsedRealtime();
+        l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
         if (l <= 0L)
         {
-          onFinish();
+          a();
           return;
         }
-        if (l < this.mCountdownInterval)
+        if (l < this.jdField_a_of_type_Long)
         {
           sendMessageDelayed(obtainMessage(1), l);
           continue;
@@ -56,101 +142,18 @@ public class CountDownTimer
         l = SystemClock.elapsedRealtime();
       }
       finally {}
-      notifyTrick();
-      for (long l = l + this.mCountdownInterval - SystemClock.elapsedRealtime(); l < 0L; l += this.mCountdownInterval) {}
+      b();
+      for (long l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
       sendMessageDelayed(obtainMessage(1), l);
-    }
-  }
-  
-  public void notifyFinish()
-  {
-    if (this.mListeners.size() < 2) {
-      stop();
-    }
-    Iterator localIterator = this.mListeners.iterator();
-    while (localIterator.hasNext()) {
-      ((CountDownTimer.CountDownTimerListener)localIterator.next()).onFinish();
-    }
-  }
-  
-  public void notifyTrick()
-  {
-    if (this.mListeners.isEmpty()) {
-      stop();
-    }
-    Iterator localIterator = this.mListeners.iterator();
-    while (localIterator.hasNext()) {
-      ((CountDownTimer.CountDownTimerListener)localIterator.next()).tick();
-    }
-  }
-  
-  public void onFinish()
-  {
-    this.isRunning = false;
-    notifyTrick();
-    notifyFinish();
-  }
-  
-  public void pause()
-  {
-    removeMessages(1);
-    this.mPause = true;
-  }
-  
-  public void removeListener(CountDownTimer.CountDownTimerListener paramCountDownTimerListener)
-  {
-    this.mListeners.remove(paramCountDownTimerListener);
-  }
-  
-  public void resume()
-  {
-    this.mPause = false;
-    if (this.mStopTimeInFuture >= SystemClock.elapsedRealtime()) {
-      sendMessage(obtainMessage(1));
     }
   }
   
   public boolean sendMessageAtTime(Message paramMessage, long paramLong)
   {
-    if (!this.mPause) {
+    if (!this.jdField_a_of_type_Boolean) {
       return super.sendMessageAtTime(paramMessage, paramLong);
     }
     return false;
-  }
-  
-  public void setTime(long paramLong)
-  {
-    this.mStopTimeInFuture = Math.max(SystemClock.elapsedRealtime() + 1000L * paramLong, this.mStopTimeInFuture);
-    start();
-  }
-  
-  public void start()
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool = this.isRunning;
-        if (bool) {
-          return;
-        }
-        if (this.mStopTimeInFuture <= SystemClock.elapsedRealtime())
-        {
-          onFinish();
-          continue;
-        }
-        this.isRunning = true;
-      }
-      finally {}
-      sendMessage(obtainMessage(1));
-    }
-  }
-  
-  public void stop()
-  {
-    this.isRunning = false;
-    removeMessages(1);
-    this.mListeners.clear();
   }
 }
 

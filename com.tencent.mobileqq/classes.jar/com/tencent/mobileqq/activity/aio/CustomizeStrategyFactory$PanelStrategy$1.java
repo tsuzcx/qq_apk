@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afrs;
-import afrt;
-import aktz;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService;
 import com.tencent.qphone.base.util.QLog;
 
-public class CustomizeStrategyFactory$PanelStrategy$1
+class CustomizeStrategyFactory$PanelStrategy$1
   implements Runnable
 {
-  public CustomizeStrategyFactory$PanelStrategy$1(afrs paramafrs, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  CustomizeStrategyFactory$PanelStrategy$1(CustomizeStrategyFactory.PanelStrategy paramPanelStrategy, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
@@ -19,14 +17,14 @@ public class CustomizeStrategyFactory$PanelStrategy$1
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy");
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.this$0.jdField_a_of_type_Aktz == null) || (TextUtils.isEmpty(this.a.templateId)))
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager == null) || (TextUtils.isEmpty(this.a.templateId)))
       {
         CustomizeStrategyFactory.a().a(this.a);
         return;
       }
-      String str = this.this$0.jdField_a_of_type_Aktz.a("redPackPanel", "https://i.gtimg.cn/channel/imglib/201803/", new String[] { "themeInfo", "prefix" });
+      String str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager.a("redPackPanel", "https://i.gtimg.cn/channel/imglib/201803/", new String[] { "themeInfo", "prefix" });
       str = str + this.a.templateId + ".png";
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.b(str, new afrt(this));
+      this.this$0.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService.getFilePath(str, new CustomizeStrategyFactory.PanelStrategy.1.1(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -37,7 +35,7 @@ public class CustomizeStrategyFactory$PanelStrategy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1
  * JD-Core Version:    0.7.0.1
  */

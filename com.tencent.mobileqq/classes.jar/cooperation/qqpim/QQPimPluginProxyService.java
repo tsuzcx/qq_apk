@@ -1,12 +1,11 @@
 package cooperation.qqpim;
 
 import android.content.Intent;
-import blvy;
-import blwh;
-import bmdk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 
 public class QQPimPluginProxyService
   extends PluginProxyService
@@ -18,20 +17,20 @@ public class QQPimPluginProxyService
     {
       return;
       Intent localIntent = new Intent(paramQQAppInterface.getApp(), QQPimPluginProxyService.class);
-      blwh localblwh = new blwh(1);
-      localblwh.b = "qqpim_plugin.apk";
-      localblwh.d = "QQ同步助手插件";
-      localblwh.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-      localblwh.e = bmdk.k;
-      localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
-      blvy.c(paramQQAppInterface.getApp(), localblwh);
+      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
+      localPluginParams.b = "qqpim_plugin.apk";
+      localPluginParams.e = "QQ同步助手插件";
+      localPluginParams.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+      localPluginParams.f = QQPimDefineList.k;
+      localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
+      IPluginManager.c(paramQQAppInterface.getApp(), localPluginParams);
     } while (!QLog.isColorLevel());
-    QLog.i(bmdk.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyService.preloadQQPimService() IPluginManager.SUPPORT_NETWORKING = true");
+    QLog.i(QQPimDefineList.jdField_a_of_type_JavaLangString, 2, "QQPimPluginProxyService.preloadQQPimService() IPluginManager.SUPPORT_NETWORKING = true");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqpim.QQPimPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

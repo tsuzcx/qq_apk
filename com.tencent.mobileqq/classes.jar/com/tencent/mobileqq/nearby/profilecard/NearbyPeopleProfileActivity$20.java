@@ -1,21 +1,32 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aqeh;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 class NearbyPeopleProfileActivity$20
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  NearbyPeopleProfileActivity$20(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, String paramString) {}
+  NearbyPeopleProfileActivity$20(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (NearbyPeopleProfileActivity.a(this.this$0) != null)
+    switch (paramInt)
     {
-      NearbyPeopleProfileActivity.a(this.this$0).a(this.a);
-      return;
     }
-    QLog.i("Q.nearby_people_card.", 1, "mDynamicAvatarDownloadManager is NULL!!!");
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+      return;
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null) {
+        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.size());
+      }
+      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i();
+      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+    }
   }
 }
 

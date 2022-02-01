@@ -3,15 +3,15 @@ package cooperation.qzone;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import avlg;
-import blwh;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
+import cooperation.plugin.IPluginManager.PluginParams;
 import mqq.os.MqqHandler;
 
 final class QzonePluginProxyActivity$4
   implements QZoneHelper.StartActivity
 {
-  QzonePluginProxyActivity$4(Intent paramIntent, String paramString, avlg paramavlg, int paramInt, boolean paramBoolean, Context paramContext, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  QzonePluginProxyActivity$4(Intent paramIntent, String paramString, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, int paramInt, boolean paramBoolean, Context paramContext, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
   public void onStart(boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -19,29 +19,29 @@ final class QzonePluginProxyActivity$4
     Class localClass = QzonePluginProxyActivity.PluginProxyActivityClassFactory.getPluginProxyActivityClass(str);
     this.val$intent.putExtra("userQqResources", 2);
     this.val$intent.putExtra("click_time", System.currentTimeMillis());
-    blwh localblwh = new blwh(0);
-    localblwh.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-    localblwh.jdField_d_of_type_JavaLangString = "QZone";
-    localblwh.jdField_a_of_type_JavaLangString = this.val$uin;
-    localblwh.jdField_a_of_type_Avlg = this.val$session;
-    localblwh.jdField_e_of_type_JavaLangString = str;
-    localblwh.jdField_a_of_type_JavaLangClass = localClass;
-    localblwh.jdField_a_of_type_AndroidContentIntent = this.val$intent;
-    localblwh.jdField_b_of_type_Int = this.val$requestCode;
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
+    localPluginParams.jdField_e_of_type_JavaLangString = "QZone";
+    localPluginParams.jdField_a_of_type_JavaLangString = this.val$uin;
+    localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = this.val$session;
+    localPluginParams.jdField_f_of_type_JavaLangString = str;
+    localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = this.val$intent;
+    localPluginParams.c = this.val$requestCode;
     if (this.val$disableActivityAnimation)
     {
-      localblwh.jdField_d_of_type_Int = 2130772106;
-      localblwh.jdField_e_of_type_Int = 2130772106;
+      localPluginParams.jdField_e_of_type_Int = 2130772121;
+      localPluginParams.jdField_f_of_type_Int = 2130772121;
     }
-    localblwh.c = 60000;
-    localblwh.f = null;
-    localblwh.jdField_b_of_type_Boolean = false;
-    ThreadManager.getUIHandler().post(new QzonePluginProxyActivity.4.1(this, str, paramBoolean1, paramBoolean2, localblwh));
+    localPluginParams.d = 60000;
+    localPluginParams.g = null;
+    localPluginParams.jdField_b_of_type_Boolean = false;
+    ThreadManager.getUIHandler().post(new QzonePluginProxyActivity.4.1(this, str, paramBoolean1, paramBoolean2, localPluginParams));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QzonePluginProxyActivity.4
  * JD-Core Version:    0.7.0.1
  */

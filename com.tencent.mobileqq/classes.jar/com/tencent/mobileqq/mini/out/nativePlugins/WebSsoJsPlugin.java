@@ -4,20 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import anvx;
-import bjqr;
-import bjqs;
-import bmqs;
-import bmqt;
+import com.tencent.gamecenter.wadl.api.IQQGameConfigService;
+import com.tencent.gamecenter.wadl.api.IQQGameNetService;
+import com.tencent.gamecenter.wadl.biz.entity.WadlCommConfig;
+import com.tencent.gamecenter.wadl.biz.listener.WadlCmdListener;
+import com.tencent.gamecenter.wadl.util.GameCenterUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WebSsoJsPlugin
-  implements bmqs, NativePlugin
+  implements WadlCmdListener, NativePlugin
 {
   public static final String EVENT_QUERY_WEBSSO = "requestWebSSO";
   public static final String KEY_CMD = "cmd";
@@ -25,12 +27,12 @@ public class WebSsoJsPlugin
   public static final String KEY_RSP = "rsp";
   public static final String KEY_SEQ = "mini_seq";
   private static final String TAG = "WebSsoJsPlugin";
-  SparseArray<NativePlugin.JSContext> callbackMap = new SparseArray();
-  private int seq;
+  SparseArray<JSContext> callbackMap = new SparseArray();
+  private int seq = 0;
   
   public WebSsoJsPlugin()
   {
-    bmqt.a().a(this);
+    ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).addListener(this);
   }
   
   private int genSeq()
@@ -50,11 +52,11 @@ public class WebSsoJsPlugin
   
   public HashSet<String> getFilterCmds()
   {
-    bjqr localbjqr = (bjqr)bjqs.a().a("comminfo");
-    if (localbjqr != null) {
-      return localbjqr.a();
+    WadlCommConfig localWadlCommConfig = (WadlCommConfig)((IQQGameConfigService)QRoute.api(IQQGameConfigService.class)).getConfig("comminfo");
+    if (localWadlCommConfig != null) {
+      return localWadlCommConfig.a();
     }
-    return bmqt.a;
+    return GameCenterUtil.a;
   }
   
   public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
@@ -68,13 +70,13 @@ public class WebSsoJsPlugin
       }
     }
     label26:
-    NativePlugin.JSContext localJSContext;
+    JSContext localJSContext;
     do
     {
       return;
       i = -1;
       break;
-      localJSContext = (NativePlugin.JSContext)this.callbackMap.get(i);
+      localJSContext = (JSContext)this.callbackMap.get(i);
       this.callbackMap.remove(i);
     } while (localJSContext == null);
     paramIntent = paramJSONObject;
@@ -107,7 +109,7 @@ public class WebSsoJsPlugin
   
   public void onDestroy() {}
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     if (paramJSContext != null)
     {
@@ -123,19 +125,19 @@ public class WebSsoJsPlugin
           Object localObject = getFilterCmds();
           if ((TextUtils.isEmpty(paramJSONObject)) || (localObject == null) || (!((HashSet)localObject).contains(paramJSONObject)))
           {
-            paramJSContext.evaluateCallback(false, new JSONObject(), anvx.a(2131716253));
+            paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131716719));
             return;
           }
           int i = genSeq();
           this.callbackMap.put(i, paramJSContext);
           localObject = new Bundle();
           ((Bundle)localObject).putInt("mini_seq", i);
-          bmqt.a().a(paramJSONObject, localJSONObject, (Bundle)localObject);
+          ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestWebSso(paramJSONObject, localJSONObject, (Bundle)localObject);
           return;
         }
         catch (Throwable paramJSONObject)
         {
-          paramJSContext.evaluateCallback(false, new JSONObject(), anvx.a(2131716252));
+          paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131716718));
           if (QLog.isColorLevel()) {
             QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
           }

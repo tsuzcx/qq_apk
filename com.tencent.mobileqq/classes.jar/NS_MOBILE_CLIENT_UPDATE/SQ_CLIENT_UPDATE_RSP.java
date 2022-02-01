@@ -14,13 +14,13 @@ public final class SQ_CLIENT_UPDATE_RSP
   static int cache_upType = 0;
   static ArrayList<UPDATE_INFO> cache_vModule;
   static ArrayList<UPDATE_INFO> cache_vPlugin;
-  public Map<String, String> extra_info;
+  public Map<String, String> extra_info = null;
   public String md5 = "";
   public String upMsg = "";
-  public int upType;
+  public int upType = 0;
   public String upUrl = "";
-  public ArrayList<UPDATE_INFO> vModule;
-  public ArrayList<UPDATE_INFO> vPlugin;
+  public ArrayList<UPDATE_INFO> vModule = null;
+  public ArrayList<UPDATE_INFO> vPlugin = null;
   public String version = "";
   
   static

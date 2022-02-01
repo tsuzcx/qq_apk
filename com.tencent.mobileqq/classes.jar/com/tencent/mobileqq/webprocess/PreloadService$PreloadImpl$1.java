@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.webprocess;
 
-import bicz;
 import com.tencent.common.app.AppInterface;
 
-public class PreloadService$PreloadImpl$1
+class PreloadService$PreloadImpl$1
   implements Runnable
 {
-  public PreloadService$PreloadImpl$1(bicz parambicz, AppInterface paramAppInterface) {}
+  PreloadService$PreloadImpl$1(PreloadService.PreloadImpl paramPreloadImpl, AppInterface paramAppInterface) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class PreloadService$PreloadImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl.1
  * JD-Core Version:    0.7.0.1
  */

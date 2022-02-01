@@ -3,15 +3,15 @@ package cooperation.qzone.birthdaynotice;
 import GIFT_MALL_PROTOCOL.DouFuInfo;
 import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
 import android.os.Bundle;
-import ayrb;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.observer.QZoneObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 class BirthDayNoticeManager$BirthDayNoticeObserver
-  extends ayrb
+  extends QZoneObserver
 {
   public WeakReference<QQAppInterface> mAppRef;
   
@@ -46,7 +46,7 @@ class BirthDayNoticeManager$BirthDayNoticeObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.birthdaynotice.BirthDayNoticeManager.BirthDayNoticeObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
-import qif;
 
-public class VideoArticleModule$5
+class VideoArticleModule$5
   implements Runnable
 {
-  public VideoArticleModule$5(qif paramqif, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo) {}
+  VideoArticleModule$5(VideoArticleModule paramVideoArticleModule, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class VideoArticleModule$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.VideoArticleModule.5
  * JD-Core Version:    0.7.0.1
  */

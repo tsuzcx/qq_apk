@@ -7,18 +7,18 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.IdUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import nqf;
-import nqq;
 
 public class AVGameSplitNumberView
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private List<Bitmap> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int b;
+  private int b = 0;
   
   public AVGameSplitNumberView(Context paramContext)
   {
@@ -40,7 +40,7 @@ public class AVGameSplitNumberView
     ImageView localImageView = new ImageView(getContext());
     localImageView.setImageBitmap((Bitmap)this.jdField_a_of_type_JavaUtilList.get(paramInt));
     localImageView.setClickable(false);
-    localImageView.setId(nqq.a());
+    localImageView.setId(IdUtils.a());
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     return localImageView;
   }
@@ -51,7 +51,7 @@ public class AVGameSplitNumberView
     int i = 0;
     while (i < 10)
     {
-      localArrayList.add(nqf.a(String.format(paramString, new Object[] { Integer.valueOf(i) })));
+      localArrayList.add(AVGameUtils.a(String.format(paramString, new Object[] { Integer.valueOf(i) })));
       i += 1;
     }
     return localArrayList;
@@ -100,7 +100,7 @@ public class AVGameSplitNumberView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameSplitNumberView
  * JD-Core Version:    0.7.0.1
  */

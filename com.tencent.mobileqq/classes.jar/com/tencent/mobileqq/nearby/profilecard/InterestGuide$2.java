@@ -2,22 +2,21 @@ package com.tencent.mobileqq.nearby.profilecard;
 
 import android.content.Context;
 import android.view.View;
-import axqc;
-import aydf;
-import bdla;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class InterestGuide$2
+class InterestGuide$2
   implements Runnable
 {
-  public InterestGuide$2(aydf paramaydf) {}
+  InterestGuide$2(InterestGuide paramInterestGuide) {}
   
   public void run()
   {
-    axqc.a(this.this$0.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.FALSE);
-    Context localContext = this.this$0.jdField_a_of_type_AndroidViewView.getContext();
+    NearbySPUtil.a(this.this$0.b, "interest_guide_key", Boolean.FALSE);
+    Context localContext = this.this$0.a.getContext();
     if ((localContext instanceof BaseActivity)) {
-      bdla.b(((BaseActivity)localContext).app, "dc00898", "", "", "0X8006991", "0X8006991", 0, 0, "", "", "", "");
+      ReportController.b(((BaseActivity)localContext).app, "dc00898", "", "", "0X8006991", "0X8006991", 0, 0, "", "", "", "");
     }
   }
 }

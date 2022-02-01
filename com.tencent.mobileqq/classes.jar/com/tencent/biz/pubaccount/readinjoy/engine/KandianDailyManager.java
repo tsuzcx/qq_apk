@@ -3,52 +3,52 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anvx;
-import bcsa;
-import bdof;
-import bmhv;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJSPUtils;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.push.RIJMergeKanDianMessage;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.RefreshUserInfoCallBack;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo.DailyFloatingWindowData;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import mqq.manager.Manager;
 import org.json.JSONException;
 import org.json.JSONObject;
-import osg;
-import pkh;
-import prd;
-import prr;
-import pur;
-import qhl;
-import uuc;
 
 public class KandianDailyManager
   implements Manager
 {
   public static final String a;
   KandianDailyManager.DailySetTopInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianDailyManager$DailySetTopInfo;
+  ReadInJoyUserInfoModule.RefreshUserInfoCallBack jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule$RefreshUserInfoCallBack = new KandianDailyManager.2(this);
   KandianRedDotInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianRedDotInfo;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  qhl jdField_a_of_type_Qhl = new pur(this);
   
   static
   {
-    jdField_a_of_type_JavaLangString = anvx.a(2131705395);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705938);
   }
   
   public KandianDailyManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = prd.a(paramQQAppInterface, "readinjoy_daily_settop_info_key", true);
+    paramQQAppInterface = RIJSPUtils.a(paramQQAppInterface, "readinjoy_daily_settop_info_key", true);
     if ((paramQQAppInterface instanceof KandianDailyManager.DailySetTopInfo))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianDailyManager$DailySetTopInfo = ((KandianDailyManager.DailySetTopInfo)paramQQAppInterface);
@@ -59,9 +59,9 @@ public class KandianDailyManager
   
   private MessageRecord a(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4)
   {
-    MessageForStructing localMessageForStructing = (MessageForStructing)bcsa.a(-2011);
+    MessageForStructing localMessageForStructing = (MessageForStructing)MessageRecordFactory.a(-2011);
     localMessageForStructing.msgtype = -2011;
-    localMessageForStructing.structingMsg = bdof.a();
+    localMessageForStructing.structingMsg = StructMsgFactory.a();
     localMessageForStructing.structingMsg.mMsgServiceID = 142;
     localMessageForStructing.structingMsg.mMsgBrief = paramString2;
     localMessageForStructing.structingMsg.mOrangeWord = paramString1;
@@ -94,14 +94,14 @@ public class KandianDailyManager
   
   public static String a()
   {
-    MessageRecord localMessageRecord = ((QQAppInterface)pkh.a()).getMessageFacade().getLastMsgForMsgTab(AppConstants.KANDIAN_DAILY_UIN, 1008);
+    MessageRecord localMessageRecord = ((QQAppInterface)ReadInJoyUtils.a()).getMessageFacade().b(AppConstants.KANDIAN_DAILY_UIN, 1008);
     if ((localMessageRecord instanceof MessageForStructing)) {
       return a((MessageForStructing)localMessageRecord);
     }
     return jdField_a_of_type_JavaLangString;
   }
   
-  public static String a(QQMessageFacade.Message paramMessage)
+  public static String a(Message paramMessage)
   {
     if ((paramMessage == null) || (paramMessage.msgtype != -2011)) {
       return jdField_a_of_type_JavaLangString;
@@ -154,9 +154,9 @@ public class KandianDailyManager
   
   public static void a(Context paramContext, boolean paramBoolean, Bundle paramBundle, int paramInt)
   {
-    Object localObject1 = (QQAppInterface)pkh.a();
-    prr.a(AppConstants.KANDIAN_DAILY_UIN, (QQAppInterface)pkh.a());
-    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(((QQAppInterface)localObject1).getMessageFacade().getLastMsgForMsgTab(AppConstants.KANDIAN_DAILY_UIN, 1008), "kandian_daily_red_pnt");
+    Object localObject1 = (QQAppInterface)ReadInJoyUtils.a();
+    RIJMergeKanDianMessage.a(AppConstants.KANDIAN_DAILY_UIN, (QQAppInterface)ReadInJoyUtils.a());
+    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(((QQAppInterface)localObject1).getMessageFacade().b(AppConstants.KANDIAN_DAILY_UIN, 1008), "kandian_daily_red_pnt");
     localObject1 = paramBundle;
     if (localKandianRedDotInfo != null)
     {
@@ -225,18 +225,18 @@ public class KandianDailyManager
     }
     label254:
     QLog.d("KandianDailyManager", 1, "launch daily feeds by default mode ; bundle " + paramBundle);
-    osg.a(paramContext, paramInt, paramBundle, paramBoolean);
+    ReadInJoyActivityHelper.a(paramContext, paramInt, paramBundle, paramBoolean);
   }
   
   public KandianRedDotInfo a()
   {
-    return KandianRedDotInfo.createRedDotFromMessageRecord(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMsgForMsgTab(AppConstants.KANDIAN_DAILY_UIN, 1008), "kandian_daily_red_pnt");
+    return KandianRedDotInfo.createRedDotFromMessageRecord(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(AppConstants.KANDIAN_DAILY_UIN, 1008), "kandian_daily_red_pnt");
   }
   
   public MessageRecord a()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMsgForMsgTab(AppConstants.KANDIAN_DAILY_UIN, 1008);
-    if (pkh.a(localMessageRecord)) {
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(AppConstants.KANDIAN_DAILY_UIN, 1008);
+    if (ReadInJoyUtils.a(localMessageRecord)) {
       return localMessageRecord;
     }
     return null;
@@ -251,13 +251,13 @@ public class KandianDailyManager
   
   public void a(ArticleInfo paramArticleInfo)
   {
-    String str = uuc.a(paramArticleInfo, this.jdField_a_of_type_Qhl);
+    String str = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).createStructMsgBriefFromArticleInfo(paramArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule$RefreshUserInfoCallBack);
     if (paramArticleInfo.msgBoxBriefPreFixType == 2) {}
     for (paramArticleInfo = paramArticleInfo.msgBoxBriefPreFix;; paramArticleInfo = null)
     {
       paramArticleInfo = a("", str, a(), NetConnInfoCenter.getServerTime(), paramArticleInfo);
-      prr.a(AppConstants.KANDIAN_DAILY_UIN, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addMessage(paramArticleInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      RIJMergeKanDianMessage.a(AppConstants.KANDIAN_DAILY_UIN, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramArticleInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
       return;
     }
   }
@@ -304,15 +304,15 @@ public class KandianDailyManager
           String str = ((JSONObject)localObject2).optString("refreshMode", "");
           localObject2 = ((JSONObject)localObject2).optString("channelID", "");
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            bmhv.l((String)localObject1);
+            ReadInJoyHelper.l((String)localObject1);
           }
           if (!TextUtils.isEmpty(str)) {
-            bmhv.a("readinjoy_daily_mode_refresh_mode", str);
+            ReadInJoyHelper.a("readinjoy_daily_mode_refresh_mode", str);
           }
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
             QLog.d("KandianDailyManager", 1, "channelId: " + (String)localObject2);
-            bmhv.a("readinjoy_daily_mode_channel_id", Integer.valueOf((String)localObject2));
+            ReadInJoyHelper.a("readinjoy_daily_mode_channel_id", Integer.valueOf((String)localObject2));
           }
         }
       }
@@ -334,7 +334,7 @@ public class KandianDailyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager
  * JD-Core Version:    0.7.0.1
  */

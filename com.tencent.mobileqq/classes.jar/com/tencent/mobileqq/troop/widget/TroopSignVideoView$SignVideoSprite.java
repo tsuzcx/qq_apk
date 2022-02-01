@@ -2,9 +2,9 @@ package com.tencent.mobileqq.troop.widget;
 
 import android.content.Context;
 import android.opengl.GLES20;
-import bdzw;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.util.GLUtil;
 import java.io.File;
 
 class TroopSignVideoView$SignVideoSprite
@@ -27,7 +27,7 @@ class TroopSignVideoView$SignVideoSprite
   
   public String b()
   {
-    return bdzw.a(this.this$0.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideoForTroopSign.glsl");
+    return GLUtil.a(this.this$0.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideoForTroopSign.glsl");
   }
   
   public void b(int paramInt1, int paramInt2)

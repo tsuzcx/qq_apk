@@ -1,7 +1,7 @@
 package cooperation.qqcircle.report;
 
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import java.util.ArrayList;
 
 public class QCircleLpReportDc05494
@@ -66,7 +66,7 @@ public class QCircleLpReportDc05494
   public static void report(ArrayList<QCircleTaskReportInfo> paramArrayList)
   {
     if (paramArrayList == null) {
-      QLog.e("QCircleReportHelper_QCircleLpReportDc05494", 2, "taskReportInfos == null");
+      RFLog.e("QCircleReportHelper_QCircleLpReportDc05494", RFLog.CLR, "taskReportInfos == null");
     }
     for (;;)
     {
@@ -83,7 +83,7 @@ public class QCircleLpReportDc05494
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05494
  * JD-Core Version:    0.7.0.1
  */

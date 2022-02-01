@@ -10,10 +10,10 @@ public final class TMedalWallInfo
   extends JceStruct
   implements Cloneable
 {
-  public int iMedalCount;
-  public int iNewCount;
-  public int iOpenFlag;
-  public int iUpgradeCount;
+  public int iMedalCount = 0;
+  public int iNewCount = 0;
+  public int iOpenFlag = 0;
+  public int iUpgradeCount = 0;
   public String strPromptParams = "";
   
   static
@@ -179,7 +179,7 @@ public final class TMedalWallInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TMedalWallInfo
  * JD-Core Version:    0.7.0.1
  */

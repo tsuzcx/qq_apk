@@ -1,27 +1,23 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import aude;
-import audf;
-import audh;
-import audi;
-import auea;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public class FMSettings$5$1$1$3
+class FMSettings$5$1$1$3
   implements Runnable
 {
-  public FMSettings$5$1$1$3(audi paramaudi) {}
+  FMSettings$5$1$1$3(FMSettings.5.1.1 param1) {}
   
   public void run()
   {
-    audf.a(4, "-------onMovedOver-------");
-    audf.a(4, auea.a());
+    FMSettings.a(4, "-------onMovedOver-------");
+    FMSettings.a(4, FileManagerUtil.a());
     this.a.a.a.a.a();
     this.a.a.a.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3
  * JD-Core Version:    0.7.0.1
  */

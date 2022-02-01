@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pic;
 
-import azjx;
-import azke;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +17,7 @@ class PicPreDownloaderCore$2
     {
       int j;
       int i;
-      azke localazke;
+      PicReq localPicReq;
       synchronized (PicPreDownloaderCore.a(this.this$0))
       {
         Iterator localIterator = PicPreDownloaderCore.a(this.this$0).iterator();
@@ -28,27 +26,27 @@ class PicPreDownloaderCore$2
         if (!localIterator.hasNext()) {
           break label310;
         }
-        localazke = (azke)localIterator.next();
-        switch (localazke.f)
+        localPicReq = (PicReq)localIterator.next();
+        switch (localPicReq.f)
         {
         case 4: 
           k += 1;
-          localazke.e = localazke.f;
-          this.this$0.a.put(localazke.a.g, Integer.valueOf(localazke.e));
-          PicPreDownloaderCore.d(this.this$0).add(0, localazke);
-          localazke.e = localazke.f;
-          this.this$0.a.put(localazke.a.g, Integer.valueOf(localazke.e));
+          localPicReq.e = localPicReq.f;
+          this.this$0.a.put(localPicReq.a.g, Integer.valueOf(localPicReq.e));
+          PicPreDownloaderCore.d(this.this$0).add(0, localPicReq);
+          localPicReq.e = localPicReq.f;
+          this.this$0.a.put(localPicReq.a.g, Integer.valueOf(localPicReq.e));
         }
       }
       i += 1;
-      localazke.e = localazke.f;
-      this.this$0.a.put(localazke.a.g, Integer.valueOf(localazke.e));
-      PicPreDownloaderCore.b(this.this$0).add(0, localazke);
+      localPicReq.e = localPicReq.f;
+      this.this$0.a.put(localPicReq.a.g, Integer.valueOf(localPicReq.e));
+      PicPreDownloaderCore.b(this.this$0).add(0, localPicReq);
       continue;
       j += 1;
-      localazke.e = localazke.f;
-      this.this$0.a.put(localazke.a.g, Integer.valueOf(localazke.e));
-      PicPreDownloaderCore.c(this.this$0).add(0, localazke);
+      localPicReq.e = localPicReq.f;
+      this.this$0.a.put(localPicReq.a.g, Integer.valueOf(localPicReq.e));
+      PicPreDownloaderCore.c(this.this$0).add(0, localPicReq);
       continue;
       label310:
       PicPreDownloaderCore.a(this.this$0).clear();

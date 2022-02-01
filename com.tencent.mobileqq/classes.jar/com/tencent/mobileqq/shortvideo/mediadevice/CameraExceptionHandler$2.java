@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import bdbd;
-import bdbe;
-
-public class CameraExceptionHandler$2
+class CameraExceptionHandler$2
   implements Runnable
 {
   public void run()

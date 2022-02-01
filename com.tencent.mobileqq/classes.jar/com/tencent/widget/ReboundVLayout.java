@@ -45,12 +45,32 @@ public class ReboundVLayout
     setOrientation(1);
   }
   
+  private boolean isHiddenLeft(View paramView, int paramInt)
+  {
+    return (paramInt > 0) && (getScrollY() < 1000) && (!ViewCompat.canScrollVertically(paramView, -1));
+  }
+  
+  private boolean isHiddenRight(View paramView, int paramInt)
+  {
+    return (paramInt < 0) && (getScrollY() > 1000) && (!ViewCompat.canScrollVertically(paramView, 1));
+  }
+  
+  private boolean isShowLeft(View paramView, int paramInt)
+  {
+    return (paramInt < 0) && (!ViewCompat.canScrollVertically(paramView, -1));
+  }
+  
+  private boolean isShowRight(View paramView, int paramInt)
+  {
+    return (paramInt > 0) && (!ViewCompat.canScrollVertically(paramView, 1));
+  }
+  
   public int getNestedScrollAxes()
   {
     return 0;
   }
   
-  protected void onFinishInflate()
+  public void onFinishInflate()
   {
     super.onFinishInflate();
     this.mChildView = getChildAt(0);
@@ -62,7 +82,7 @@ public class ReboundVLayout
     scrollBy(0, 1000);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.mChildView.getLayoutParams().height = getHeight();
@@ -81,48 +101,20 @@ public class ReboundVLayout
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
     getParent().requestDisallowInterceptTouchEvent(true);
-    int i;
-    label49:
-    int j;
-    if ((paramInt2 > 0) && (getScrollY() < 1000) && (!ViewCompat.canScrollVertically(paramView, -1)))
+    boolean bool1 = isHiddenLeft(paramView, paramInt2);
+    boolean bool2 = isShowLeft(paramView, paramInt2);
+    boolean bool3 = isHiddenRight(paramView, paramInt2);
+    boolean bool4 = isShowRight(paramView, paramInt2);
+    if ((bool1) || (bool2) || (bool3) || (bool4))
     {
-      paramInt1 = 1;
-      if ((paramInt2 >= 0) || (ViewCompat.canScrollVertically(paramView, -1))) {
-        break label190;
-      }
-      i = 1;
-      if ((paramInt2 >= 0) || (getScrollY() <= 1000) || (ViewCompat.canScrollVertically(paramView, 1))) {
-        break label196;
-      }
-      j = 1;
-      label74:
-      if ((paramInt2 <= 0) || (ViewCompat.canScrollVertically(paramView, 1))) {
-        break label202;
-      }
+      scrollBy(0, paramInt2 / this.mDrag);
+      paramArrayOfInt[1] = paramInt2;
     }
-    label190:
-    label196:
-    label202:
-    for (int k = 1;; k = 0)
-    {
-      if ((paramInt1 != 0) || (i != 0) || (j != 0) || (k != 0))
-      {
-        scrollBy(0, paramInt2 / this.mDrag);
-        paramArrayOfInt[1] = paramInt2;
-      }
-      if ((paramInt2 > 0) && (getScrollY() > 1000) && (!ViewCompat.canScrollVertically(paramView, -1))) {
-        scrollTo(0, 1000);
-      }
-      if ((paramInt2 < 0) && (getScrollY() < -1000) && (!ViewCompat.canScrollVertically(paramView, 1))) {
-        scrollTo(0, -1000);
-      }
-      return;
-      paramInt1 = 0;
-      break;
-      i = 0;
-      break label49;
-      j = 0;
-      break label74;
+    if ((paramInt2 > 0) && (getScrollY() > 1000) && (!ViewCompat.canScrollVertically(paramView, -1))) {
+      scrollTo(0, 1000);
+    }
+    if ((paramInt2 < 0) && (getScrollY() < -1000) && (!ViewCompat.canScrollVertically(paramView, 1))) {
+      scrollTo(0, -1000);
     }
   }
   
@@ -159,7 +151,7 @@ public class ReboundVLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.ReboundVLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.intimate.view;
 
-import agll;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
@@ -11,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.intimate.BaseIntimateView;
 import com.tencent.mobileqq.data.IntimateInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -21,13 +21,13 @@ public abstract class IntimateContentItemBaseView
 {
   protected int a;
   private long a;
-  public agll a;
-  public Context a;
+  protected Context a;
+  protected BaseIntimateView a;
   protected IntimateInfo a;
   protected boolean a;
   protected int b;
   protected boolean b;
-  protected boolean c;
+  protected boolean c = false;
   
   public IntimateContentItemBaseView(Context paramContext)
   {
@@ -42,6 +42,8 @@ public abstract class IntimateContentItemBaseView
   public IntimateContentItemBaseView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -169,14 +171,14 @@ public abstract class IntimateContentItemBaseView
     this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void setIntimateInterface(agll paramagll)
+  public void setIntimateInterface(BaseIntimateView paramBaseIntimateView)
   {
-    this.jdField_a_of_type_Agll = paramagll;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView = paramBaseIntimateView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemBaseView
  * JD-Core Version:    0.7.0.1
  */

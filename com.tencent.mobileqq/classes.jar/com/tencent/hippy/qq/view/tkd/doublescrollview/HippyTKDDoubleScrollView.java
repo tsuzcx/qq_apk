@@ -22,13 +22,13 @@ public class HippyTKDDoubleScrollView
   private static final int IS_UNKONW_EVENT = 0;
   private static final String TAG = "HippyQBDoubleScrollView";
   private int deadLine;
-  private int dx;
-  private int dy;
+  private int dx = 0;
+  private int dy = 0;
   private FlingController flingController;
-  private int isChildViewEvent;
-  private boolean isHidden;
-  private int lastX;
-  private int lastY;
+  private int isChildViewEvent = 0;
+  private boolean isHidden = false;
+  private int lastX = 0;
+  private int lastY = 0;
   private boolean mEnableDoubleScroll = true;
   private IDoubleScroll mNestDoubleScrollView;
   private HippyTKDDoubleScrollView.OnScrollEvent mOnScrollEvent;
@@ -253,7 +253,7 @@ public class HippyTKDDoubleScrollView
     return false;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -284,7 +284,7 @@ public class HippyTKDDoubleScrollView
     }
   }
   
-  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     HippyMap localHippyMap1 = new HippyMap();
@@ -461,7 +461,7 @@ public class HippyTKDDoubleScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.doublescrollview.HippyTKDDoubleScrollView
  * JD-Core Version:    0.7.0.1
  */

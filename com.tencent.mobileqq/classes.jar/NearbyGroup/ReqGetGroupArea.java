@@ -10,10 +10,10 @@ public final class ReqGetGroupArea
   extends JceStruct
   implements Cloneable
 {
-  public long dwGroupStartIdx;
-  public int iCount;
-  public int iLat;
-  public int iLon;
+  public long dwGroupStartIdx = 0L;
+  public int iCount = 0;
+  public int iLat = 0;
+  public int iLon = 0;
   public String strAreaName = "";
   
   static

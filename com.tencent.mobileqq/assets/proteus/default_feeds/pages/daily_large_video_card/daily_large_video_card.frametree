@@ -55,7 +55,7 @@
                                 "mute": "true",
                                 "video-url": "{{video_url}}",
                                 "auto-play-percent": "0.5",
-                                "icon-url": "http://qqpublic.qpic.cn/qq_public/0/0-2652434506-F059E11DBA4D14791005FEBF4164D972/0",
+                                "icon-url": "https://qqpublic.qpic.cn/qq_public/0/0-2652434506-F059E11DBA4D14791005FEBF4164D972/0",
                                 "icon-size": "40 40",
                                 "cover-url": "{{cover_image_url}}",
                                 "play-mode": "{{$needPlay}}"

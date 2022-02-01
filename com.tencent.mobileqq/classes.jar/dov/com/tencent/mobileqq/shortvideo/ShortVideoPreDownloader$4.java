@@ -1,13 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bpqy;
-import bpqz;
-import bprd;
-import bprf;
 import java.util.Iterator;
 import java.util.concurrent.PriorityBlockingQueue;
 
-public class ShortVideoPreDownloader$4
+class ShortVideoPreDownloader$4
   implements Runnable
 {
   public void run()
@@ -15,10 +11,10 @@ public class ShortVideoPreDownloader$4
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
     while (localIterator.hasNext())
     {
-      bprf localbprf = (bprf)localIterator.next();
-      bpqy.a(localbprf, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localbprf.a != null) {
-        bprd.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localbprf.a.a);
+      ShortVideoReq localShortVideoReq = (ShortVideoReq)localIterator.next();
+      ShortVideoBusiManager.a(localShortVideoReq, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (localShortVideoReq.a != null) {
+        ShortVideoPreDownloader.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localShortVideoReq.a.a);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();
@@ -26,7 +22,7 @@ public class ShortVideoPreDownloader$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader.4
  * JD-Core Version:    0.7.0.1
  */

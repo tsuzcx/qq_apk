@@ -9,8 +9,8 @@ public final class GetPicContInfoReq
   extends JceStruct
 {
   static ArrayList<String> cache_pic_url = new ArrayList();
-  public ArrayList<String> pic_url;
-  public long uin;
+  public ArrayList<String> pic_url = null;
+  public long uin = 0L;
   
   static
   {

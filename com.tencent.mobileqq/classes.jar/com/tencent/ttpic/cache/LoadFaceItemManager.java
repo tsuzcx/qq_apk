@@ -8,7 +8,7 @@ import android.os.AsyncTask.Status;
 import android.text.TextUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.model.FaceItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.io.File;
 import java.util.ArrayList;
@@ -83,13 +83,13 @@ public class LoadFaceItemManager
   
   public Bitmap loadImage(int paramInt)
   {
-    String str = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + paramInt + ".png";
+    String str = VideoMaterial.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + paramInt + ".png";
     return (Bitmap)this.mCache.get(str);
   }
   
   public Bitmap loadImage(String paramString)
   {
-    paramString = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + paramString;
+    paramString = VideoMaterial.getMaterialId(this.dataPath) + File.separator + paramString;
     return (Bitmap)this.mCache.get(paramString);
   }
   
@@ -124,7 +124,7 @@ public class LoadFaceItemManager
         if (this.item.blendMode == 14) {
           localArrayList.add(this.item.irisImage);
         }
-        this.mFaceImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
+        this.mFaceImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath, VideoMaterial.getMaterialId(this.dataPath), this.sampleSize);
         this.mFaceImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
         return;
       }
@@ -133,7 +133,7 @@ public class LoadFaceItemManager
         localArrayList.add(this.item.id + "_" + i + ".png");
         i += 1;
       }
-      this.mImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath + File.separator + this.item.id, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
+      this.mImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath + File.separator + this.item.id, VideoMaterial.getMaterialId(this.dataPath), this.sampleSize);
       this.mImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
       return;
     }
@@ -147,7 +147,7 @@ public class LoadFaceItemManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadFaceItemManager
  * JD-Core Version:    0.7.0.1
  */

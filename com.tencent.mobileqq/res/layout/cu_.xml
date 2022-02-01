@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/o60" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/o5y" android:layout_width="13.0dip" android:layout_height="13.0dip" android:src="@drawable/i3b" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/aow" android:id="@id/o5z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/xy2" android:shadowColor="@color/aoz" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" android:layout_toRightOf="@id/o5y" android:layout_centerVertical="true" />
+    <View android:id="@id/mwv" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="@dimen/bdg" android:layout_height="@dimen/b66" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/o5j" android:layout_width="@dimen/bdh" android:layout_height="@dimen/bdh" android:layout_marginLeft="@dimen/bdi" android:scaleType="fitCenter" android:layout_toRightOf="@id/mwv" android:layout_alignTop="@id/mwv" />
+    <ImageView android:id="@id/mm5" android:background="@drawable/hzs" android:visibility="invisible" android:layout_width="@dimen/bdp" android:layout_height="@dimen/bdn" android:layout_marginLeft="@dimen/bdo" android:layout_alignLeft="@id/o5j" android:layout_alignTop="@id/mwv" />
+    <ImageView android:id="@id/o5m" android:layout_width="@dimen/bdm" android:layout_height="@dimen/bdm" android:layout_marginTop="@dimen/bdj" android:layout_marginRight="@dimen/bdl" android:layout_alignRight="@id/mm5" />
+    <View android:id="@id/mwu" android:background="@drawable/hzs" android:visibility="invisible" android:layout_width="@dimen/bdp" android:layout_height="@dimen/bdn" android:layout_marginTop="@dimen/bdk" android:layout_alignTop="@id/o5m" android:layout_alignRight="@id/mm5" />
 </RelativeLayout>

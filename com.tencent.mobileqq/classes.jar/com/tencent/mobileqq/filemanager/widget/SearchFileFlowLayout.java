@@ -51,7 +51,7 @@ public class SearchFileFlowLayout
     return new ViewGroup.MarginLayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_JavaUtilList.clear();
@@ -175,7 +175,7 @@ public class SearchFileFlowLayout
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     int i5 = View.MeasureSpec.getSize(paramInt1);
     int i8 = View.MeasureSpec.getMode(paramInt1);
@@ -279,7 +279,7 @@ public class SearchFileFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SearchFileFlowLayout
  * JD-Core Version:    0.7.0.1
  */

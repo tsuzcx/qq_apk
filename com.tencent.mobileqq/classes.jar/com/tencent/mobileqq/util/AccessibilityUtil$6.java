@@ -2,7 +2,7 @@ package com.tencent.mobileqq.util;
 
 import android.view.View;
 
-public final class AccessibilityUtil$6
+final class AccessibilityUtil$6
   implements Runnable
 {
   public void run()

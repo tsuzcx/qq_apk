@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.app.Activity;
-import anvx;
-import atxa;
-import auaa;
-import auag;
-import aubg;
-import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public class VideoFilePresenter$8
+class VideoFilePresenter$8
   implements Runnable
 {
   public void run()
   {
     if ((this.jdField_a_of_type_Int != -6101) && (this.jdField_a_of_type_Int != -7003) && (this.jdField_a_of_type_Int != 201)) {
-      this.this$0.jdField_a_of_type_Aubg.a(this.this$0.jdField_a_of_type_Atxa.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692653));
+      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692791));
     }
     label301:
     for (;;)
@@ -26,15 +24,15 @@ public class VideoFilePresenter$8
       Object localObject;
       if ((this.jdField_a_of_type_Int == -6101) || (this.jdField_a_of_type_Int == -7003))
       {
-        localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692622);
-        this.this$0.jdField_a_of_type_Atxa.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692760);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
         if (BaseActivity.sTopActivity == null) {
           break label301;
         }
-        localObject = bhdj.a(BaseActivity.sTopActivity, 230, "", (CharSequence)localObject, null, anvx.a(2131715627), new auag(this), null);
+        localObject = DialogUtil.a(BaseActivity.sTopActivity, 230, "", (CharSequence)localObject, null, HardCodeUtil.a(2131716093), new VideoFilePresenter.8.1(this), null);
         if (((QQCustomDialog)localObject).isShowing()) {
           break;
         }
@@ -42,15 +40,15 @@ public class VideoFilePresenter$8
         return;
         if (this.jdField_a_of_type_Int == 201)
         {
-          if (!this.this$0.jdField_a_of_type_Atxa.g()) {
-            localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692654);
+          if (!this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.g()) {
+            localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692792);
           } else {
-            this.this$0.jdField_a_of_type_Aubg.a(this.this$0.jdField_a_of_type_Atxa.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692653));
+            this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692791));
           }
         }
         else
         {
-          String str = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692653);
+          String str = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692791);
           localObject = str;
           if (QLog.isColorLevel())
           {
@@ -64,7 +62,7 @@ public class VideoFilePresenter$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ import org.xmlpull.v1.XmlPullParserException;
 public class MimeTypesTools
 {
   public static final String TAG = "MimeTypesTools";
-  private static boolean hasLoadMimeType;
+  private static boolean hasLoadMimeType = false;
   private static MimeTypes mMimeTypes;
   
   public static Bitmap drawableToBitmap(Drawable paramDrawable)
@@ -57,7 +57,7 @@ public class MimeTypesTools
     if ((paramString != null) && (paramString.size() > 0)) {
       return ((ResolveInfo)paramString.get(0)).loadIcon(localPackageManager);
     }
-    return paramContext.getResources().getDrawable(2130850812);
+    return paramContext.getResources().getDrawable(2130851241);
   }
   
   public static String getMimeType(Context paramContext, String paramString)
@@ -97,7 +97,7 @@ public class MimeTypesTools
     if (!hasLoadMimeType)
     {
       localMimeTypeParser = new MimeTypeParser();
-      paramContext = paramContext.getResources().getXml(2131886084);
+      paramContext = paramContext.getResources().getXml(2131886086);
     }
     try
     {

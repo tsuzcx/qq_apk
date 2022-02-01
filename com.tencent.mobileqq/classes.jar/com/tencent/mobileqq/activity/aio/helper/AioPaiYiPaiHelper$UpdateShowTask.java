@@ -19,12 +19,12 @@ class AioPaiYiPaiHelper$UpdateShowTask
   
   public void run()
   {
-    AioPaiYiPaiHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAioPaiYiPaiHelper).getApp().getMessageFacade().updateMsgFieldByUniseq(this.jdField_a_of_type_ComTencentMobileqqGraytipMessageForUniteGrayTip.frienduin, this.jdField_a_of_type_ComTencentMobileqqGraytipMessageForUniteGrayTip.istroop, this.jdField_a_of_type_ComTencentMobileqqGraytipMessageForUniteGrayTip.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqGraytipMessageForUniteGrayTip.extStr);
+    AioPaiYiPaiHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAioPaiYiPaiHelper).a().getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqGraytipMessageForUniteGrayTip.frienduin, this.jdField_a_of_type_ComTencentMobileqqGraytipMessageForUniteGrayTip.istroop, this.jdField_a_of_type_ComTencentMobileqqGraytipMessageForUniteGrayTip.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqGraytipMessageForUniteGrayTip.extStr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AioPaiYiPaiHelper.UpdateShowTask
  * JD-Core Version:    0.7.0.1
  */

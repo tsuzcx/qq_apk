@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class profileItem
   extends JceStruct
 {
-  public int itemid;
+  public int itemid = 0;
   
   public profileItem() {}
   

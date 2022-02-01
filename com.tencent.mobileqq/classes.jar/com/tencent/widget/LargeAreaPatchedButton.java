@@ -17,10 +17,10 @@ public class LargeAreaPatchedButton
   private int c = -1;
   private int d = -1;
   private final int e = 0;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  private int f = 0;
+  private int g = 0;
+  private int h = 0;
+  private int i = 0;
   private int j;
   
   public LargeAreaPatchedButton(Context paramContext)
@@ -57,7 +57,7 @@ public class LargeAreaPatchedButton
     paramContext.recycle();
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != this.a) || (paramInt2 != this.d) || (paramInt3 != this.b) || (paramInt4 != this.c))
@@ -85,7 +85,7 @@ public class LargeAreaPatchedButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.LargeAreaPatchedButton
  * JD-Core Version:    0.7.0.1
  */

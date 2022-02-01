@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.intervideo.yiqikan;
 
-import avxc;
-import avxo;
-
-public class TogetherBusinessForWebPlugin$1
+class TogetherBusinessForWebPlugin$1
   implements Runnable
 {
-  public TogetherBusinessForWebPlugin$1(avxc paramavxc) {}
+  TogetherBusinessForWebPlugin$1(TogetherBusinessForWebPlugin paramTogetherBusinessForWebPlugin) {}
   
   public void run()
   {
-    avxo.a().a();
+    WatchFloatingWindowController.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessForWebPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,17 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ylw;
-
-public class EditPicSave$4
+class EditPicSave$4
   implements Runnable
 {
-  public EditPicSave$4(ylw paramylw) {}
+  EditPicSave$4(EditPicSave paramEditPicSave) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    ylw localylw = this.this$0;
-    localylw.jdField_a_of_type_Int += this.this$0.b;
+    EditPicSave localEditPicSave = this.this$0;
+    localEditPicSave.jdField_a_of_type_Int += this.this$0.b;
     if (this.this$0.jdField_a_of_type_Int > 99)
     {
       this.this$0.jdField_a_of_type_Int = 99;
@@ -26,7 +24,7 @@ public class EditPicSave$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditPicSave.4
  * JD-Core Version:    0.7.0.1
  */

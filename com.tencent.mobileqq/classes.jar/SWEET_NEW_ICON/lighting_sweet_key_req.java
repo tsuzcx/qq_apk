@@ -9,8 +9,8 @@ public final class lighting_sweet_key_req
   extends JceStruct
 {
   static sweet_req_comm cache_req_comm = new sweet_req_comm();
-  public boolean is_reset_data;
-  public sweet_req_comm req_comm;
+  public boolean is_reset_data = false;
+  public sweet_req_comm req_comm = null;
   
   public lighting_sweet_key_req() {}
   

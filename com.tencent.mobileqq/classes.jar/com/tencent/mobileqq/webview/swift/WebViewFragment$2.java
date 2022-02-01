@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import biio;
+import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
 
 class WebViewFragment$2
   implements Runnable
@@ -9,12 +9,12 @@ class WebViewFragment$2
   
   public void run()
   {
-    biio.a(this.this$0.getUrlFromIntent());
+    SwiftOfflineDataUtils.a(this.this$0.getUrlFromIntent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.2
  * JD-Core Version:    0.7.0.1
  */

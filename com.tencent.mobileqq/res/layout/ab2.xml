@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/o6i" android:layout_width="@dimen/bav" android:layout_height="105.0dip" android:layout_marginLeft="-10.0dip" android:layout_marginRight="-10.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mmn" android:layout_width="@dimen/bax" android:layout_height="@dimen/bax" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" app:qqArMapGuideRadius="3">
-        <com.tencent.image.URLImageView android:id="@id/e16" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="@dimen/bax" android:minHeight="@dimen/bax" />
-        <ImageView android:id="@id/npn" android:background="@drawable/f3b" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f29" android:scaleType="centerCrop" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eld" android:background="@drawable/f3b" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ImageView android:layout_width="23.5dip" android:layout_height="23.5dip" android:layout_marginTop="16.899994dip" android:src="@drawable/hke" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0999756dip" android:text="@string/q5j" />
-        </LinearLayout>
-        <ImageView android:layout_gravity="right" android:id="@id/mpu" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f37" />
-        <ImageView android:layout_gravity="right" android:id="@id/mpt" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f34" />
-        <ImageView android:layout_gravity="right" android:id="@id/ef9" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f37" />
-        <ImageView android:layout_gravity="right" android:id="@id/n77" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f38" />
-        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
-    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
-</RelativeLayout>
+<FrameLayout android:id="@id/npd" android:background="#ff252525" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.pull2refresh.RecyclerViewCompat android:id="@id/np8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_width="fill_parent" android:layout_height="72.0dip" android:src="@drawable/b4s" android:rotation="180.0" />
+    <FrameLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <FrameLayout android:layout_gravity="center|left" android:id="@id/np_" android:layout_width="52.0dip" android:layout_height="52.0dip">
+            <ImageView android:layout_gravity="center" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/h40" />
+        </FrameLayout>
+        <com.tencent.mobileqq.widget.NumberCheckBox android:layout_gravity="center|right" android:id="@id/npa" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="96.0dip" style="@style/z8" />
+        <Button android:textSize="14.0dip" android:textColor="@color/gg" android:layout_gravity="center|right" android:id="@id/npb" android:background="@drawable/f9e" android:layout_width="64.0dip" android:layout_height="32.0dip" android:layout_marginRight="12.0dip" android:text="@string/vyf" />
+    </FrameLayout>
+</FrameLayout>

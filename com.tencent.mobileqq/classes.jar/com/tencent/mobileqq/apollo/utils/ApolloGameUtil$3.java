@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
 import android.util.SparseArray;
-import com.tencent.mobileqq.apollo.data.ApolloGameRedDot;
+import com.tencent.mobileqq.apollo.api.model.ApolloGameRedDot;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -80,7 +80,7 @@ final class ApolloGameUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.3
  * JD-Core Version:    0.7.0.1
  */

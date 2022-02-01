@@ -11,8 +11,8 @@ public final class Content
   static ArrayList<PhotoCell> cache_vecPhotoCell = new ArrayList();
   public String contentMainTitle = "";
   public String contentSmallTitle = "";
-  public int mediaType;
-  public ArrayList<PhotoCell> vecPhotoCell;
+  public int mediaType = 0;
+  public ArrayList<PhotoCell> vecPhotoCell = null;
   
   static
   {

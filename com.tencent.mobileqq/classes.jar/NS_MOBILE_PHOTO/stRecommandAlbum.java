@@ -10,9 +10,9 @@ public final class stRecommandAlbum
 {
   static ArrayList<Album> cache_recommandAlbumVec = new ArrayList();
   static ArrayList<stRecommandAlbumEx> cache_recommandAlbumVecEx;
-  public boolean hasMore;
-  public ArrayList<Album> recommandAlbumVec;
-  public ArrayList<stRecommandAlbumEx> recommandAlbumVecEx;
+  public boolean hasMore = false;
+  public ArrayList<Album> recommandAlbumVec = null;
+  public ArrayList<stRecommandAlbumEx> recommandAlbumVecEx = null;
   public String summary = "";
   
   static

@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class PluginInfo
   extends JceStruct
 {
-  public long Count;
-  public boolean Flag;
-  public long Id;
+  public long Count = 0L;
+  public boolean Flag = false;
+  public long Id = 0L;
   public String PicUrl = "";
-  public boolean RedPoint;
+  public boolean RedPoint = false;
   public boolean Tab = true;
   public String Text = "";
   

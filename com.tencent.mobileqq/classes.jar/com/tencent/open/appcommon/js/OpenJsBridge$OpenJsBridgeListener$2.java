@@ -1,17 +1,16 @@
 package com.tencent.open.appcommon.js;
 
-import bjin;
-import bjko;
+import com.tencent.open.base.LogUtility;
 import com.tencent.smtt.sdk.WebView;
 
-public class OpenJsBridge$OpenJsBridgeListener$2
+class OpenJsBridge$OpenJsBridgeListener$2
   implements Runnable
 {
-  public OpenJsBridge$OpenJsBridgeListener$2(bjin parambjin, String paramString, WebView paramWebView) {}
+  OpenJsBridge$OpenJsBridgeListener$2(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString, WebView paramWebView) {}
   
   public void run()
   {
-    bjko.b("OpenJsBridge", "[onNoMatchMethod]AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':-2,'data':'no such method'});");
+    LogUtility.b("OpenJsBridge", "[onNoMatchMethod]AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':-2,'data':'no such method'});");
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':-2,'data':'no such method'});");
@@ -22,7 +21,7 @@ public class OpenJsBridge$OpenJsBridgeListener$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.2
  * JD-Core Version:    0.7.0.1
  */

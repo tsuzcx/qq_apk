@@ -1,11 +1,9 @@
 package com.tencent.av.app;
 
-import lee;
-
-public class GAudioUIObserver$1
+class GAudioUIObserver$1
   implements Runnable
 {
-  public GAudioUIObserver$1(lee paramlee, Object paramObject) {}
+  GAudioUIObserver$1(GAudioUIObserver paramGAudioUIObserver, Object paramObject) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class GAudioUIObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.app.GAudioUIObserver.1
  * JD-Core Version:    0.7.0.1
  */

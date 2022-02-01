@@ -14,7 +14,7 @@ public class MiniCrashHandler
 {
   public static final String FOLDER = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/mini/";
   private static final String TAG = "MiniCrashHandler";
-  public Thread.UncaughtExceptionHandler defaultHandler;
+  public Thread.UncaughtExceptionHandler defaultHandler = null;
   private MiniAppConfig miniAppConfig;
   
   public MiniCrashHandler()

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class UniBusiUsingUid
   extends JceStruct
 {
-  public int locationtype;
-  public long uid;
+  public int locationtype = 0;
+  public long uid = 0L;
   
   public UniBusiUsingUid() {}
   

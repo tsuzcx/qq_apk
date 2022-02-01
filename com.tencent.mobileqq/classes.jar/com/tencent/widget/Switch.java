@@ -20,9 +20,7 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
-import blaa;
-import blga;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class Switch
   extends CompoundButton
@@ -44,7 +42,7 @@ public class Switch
   private int mSwitchPadding;
   private int mSwitchRight;
   private int mSwitchTop;
-  private blga mSwitchTransformationMethod;
+  private TransformationMethod2 mSwitchTransformationMethod;
   private int mSwitchWidth;
   private final Rect mTempRect = new Rect();
   private ColorStateList mTextColors;
@@ -69,7 +67,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035080);
+    this(paramContext, paramAttributeSet, 2131035073);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -77,21 +75,21 @@ public class Switch
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = getResources();
     this.mTextPaint.density = localResources.getDisplayMetrics().density;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755966);
-    this.mThumbDrawable = paramAttributeSet.getDrawable(5);
-    this.mTrackDrawable = paramAttributeSet.getDrawable(7);
-    this.mTextOn = paramAttributeSet.getText(4);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aP, paramInt, 2131755980);
+    this.mThumbDrawable = paramAttributeSet.getDrawable(R.styleable.Y);
+    this.mTrackDrawable = paramAttributeSet.getDrawable(R.styleable.aa);
+    this.mTextOn = paramAttributeSet.getText(R.styleable.X);
     if (this.mTextOn == null) {
       this.mTextOn = "";
     }
-    this.mTextOff = paramAttributeSet.getText(3);
+    this.mTextOff = paramAttributeSet.getText(R.styleable.W);
     if (this.mTextOff == null) {
       this.mTextOff = "";
     }
-    this.mThumbTextPadding = paramAttributeSet.getDimensionPixelSize(6, 0);
-    this.mSwitchMinWidth = paramAttributeSet.getDimensionPixelSize(0, 0);
-    this.mSwitchPadding = paramAttributeSet.getDimensionPixelSize(1, 0);
-    paramInt = paramAttributeSet.getResourceId(2, 0);
+    this.mThumbTextPadding = paramAttributeSet.getDimensionPixelSize(R.styleable.Z, 0);
+    this.mSwitchMinWidth = paramAttributeSet.getDimensionPixelSize(R.styleable.T, 0);
+    this.mSwitchPadding = paramAttributeSet.getDimensionPixelSize(R.styleable.U, 0);
+    paramInt = paramAttributeSet.getResourceId(R.styleable.V, 0);
     if (paramInt != 0) {
       setSwitchTextAppearance(paramContext, paramInt);
     }
@@ -222,7 +220,7 @@ public class Switch
     animateThumbToCheckedState(isChecked());
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
@@ -280,7 +278,7 @@ public class Switch
     return this.mTrackDrawable;
   }
   
-  protected int[] onCreateDrawableState(int paramInt)
+  public int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
     if (isChecked()) {
@@ -289,7 +287,7 @@ public class Switch
     return arrayOfInt;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int k = this.mSwitchLeft;
@@ -329,7 +327,7 @@ public class Switch
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     setThumbPosition(isChecked());
@@ -457,23 +455,23 @@ public class Switch
   
   public void setSwitchTextAppearance(Context paramContext, int paramInt)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramInt, R.styleable.TextAppearanceSwitch);
-    ColorStateList localColorStateList = paramContext.getColorStateList(1);
+    paramContext = paramContext.obtainStyledAttributes(paramInt, R.styleable.aU);
+    ColorStateList localColorStateList = paramContext.getColorStateList(R.styleable.ac);
     if (localColorStateList != null)
     {
       this.mTextColors = localColorStateList;
-      paramInt = paramContext.getDimensionPixelSize(5, 0);
+      paramInt = paramContext.getDimensionPixelSize(R.styleable.ad, 0);
       if ((paramInt != 0) && (paramInt != this.mTextPaint.getTextSize()))
       {
         this.mTextPaint.setTextSize(paramInt);
         requestLayout();
       }
-      setSwitchTypefaceByIndex(paramContext.getInt(7, -1), paramContext.getInt(6, -1));
-      if (!paramContext.getBoolean(0, false)) {
-        break label129;
+      setSwitchTypefaceByIndex(paramContext.getInt(R.styleable.af, -1), paramContext.getInt(R.styleable.ae, -1));
+      if (!paramContext.getBoolean(R.styleable.ab, false)) {
+        break label137;
       }
-      this.mSwitchTransformationMethod = new blaa(getContext());
-      this.mSwitchTransformationMethod.a(true);
+      this.mSwitchTransformationMethod = new AllCapsTransformationMethod(getContext());
+      this.mSwitchTransformationMethod.setLengthChangesAllowed(true);
     }
     for (;;)
     {
@@ -481,7 +479,7 @@ public class Switch
       return;
       this.mTextColors = getTextColors();
       break;
-      label129:
+      label137:
       this.mSwitchTransformationMethod = null;
     }
   }
@@ -579,7 +577,7 @@ public class Switch
     setTrackDrawable(getContext().getResources().getDrawable(paramInt));
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean verifyDrawable(Drawable paramDrawable)
   {
     return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.mThumbDrawable) || (paramDrawable == this.mTrackDrawable);
   }

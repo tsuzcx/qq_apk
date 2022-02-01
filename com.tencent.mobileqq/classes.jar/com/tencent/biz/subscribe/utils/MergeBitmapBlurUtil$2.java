@@ -3,10 +3,10 @@ package com.tencent.biz.subscribe.utils;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-public final class MergeBitmapBlurUtil$2
+final class MergeBitmapBlurUtil$2
   implements Runnable
 {
-  public MergeBitmapBlurUtil$2(Bitmap paramBitmap, ImageView paramImageView) {}
+  MergeBitmapBlurUtil$2(Bitmap paramBitmap, ImageView paramImageView) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public final class MergeBitmapBlurUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.2
  * JD-Core Version:    0.7.0.1
  */

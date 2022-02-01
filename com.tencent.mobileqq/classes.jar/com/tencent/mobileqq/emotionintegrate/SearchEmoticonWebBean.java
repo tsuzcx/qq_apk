@@ -3,12 +3,11 @@ package com.tencent.mobileqq.emotionintegrate;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import asla;
 
 public class SearchEmoticonWebBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<SearchEmoticonWebBean> CREATOR = new asla();
+  public static final Parcelable.Creator<SearchEmoticonWebBean> CREATOR = new SearchEmoticonWebBean.1();
   public int a;
   public String a;
   public int b;
@@ -28,14 +27,22 @@ public class SearchEmoticonWebBean
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
     this.jdField_d_of_type_JavaLangString = "";
   }
   
-  public SearchEmoticonWebBean(Parcel paramParcel)
+  protected SearchEmoticonWebBean(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
     this.jdField_d_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
@@ -74,7 +81,7 @@ public class SearchEmoticonWebBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.studymode;
 
-import ajzy;
-import bduo;
+import com.tencent.mobileqq.leba.ILebaHelperService;
 
-public class KidModeAdvanceSettingFragment$5$1
+class KidModeAdvanceSettingFragment$5$1
   implements Runnable
 {
-  public KidModeAdvanceSettingFragment$5$1(bduo parambduo) {}
+  KidModeAdvanceSettingFragment$5$1(KidModeAdvanceSettingFragment.5 param5) {}
   
   public void run()
   {
-    ajzy.a().a(this.a.a.getActivity(), KidModeAdvanceSettingFragment.a(this.a.a));
+    ILebaHelperService localILebaHelperService = KidModeAdvanceSettingFragment.a(this.a.a);
+    if (localILebaHelperService != null) {
+      localILebaHelperService.reloadLebaItems(KidModeAdvanceSettingFragment.a(this.a.a));
+    }
     KidModeAdvanceSettingFragment.b(this.a.a);
   }
 }

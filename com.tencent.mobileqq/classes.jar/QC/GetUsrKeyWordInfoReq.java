@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetUsrKeyWordInfoReq
   extends JceStruct
 {
-  public long uGroupNum;
+  public long uGroupNum = 0L;
   
   public GetUsrKeyWordInfoReq() {}
   

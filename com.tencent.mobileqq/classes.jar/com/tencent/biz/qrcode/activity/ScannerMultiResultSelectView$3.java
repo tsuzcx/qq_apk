@@ -42,8 +42,8 @@ class ScannerMultiResultSelectView$3
           }
           localObject = (FrameLayout.LayoutParams)localView.getLayoutParams();
           Rect localRect = ScannerMultiResultSelectView.a(this.this$0, localRectF);
-          ((FrameLayout.LayoutParams)localObject).topMargin = (localRect.centerY() - ViewUtils.dip2px(27.0F));
-          ((FrameLayout.LayoutParams)localObject).leftMargin = (localRect.centerX() - ViewUtils.dip2px(27.0F));
+          ((FrameLayout.LayoutParams)localObject).topMargin = (localRect.centerY() - ViewUtils.a(27.0F));
+          ((FrameLayout.LayoutParams)localObject).leftMargin = (localRect.centerX() - ViewUtils.a(27.0F));
           if (QLog.isColorLevel()) {
             QLog.i("ScannerMultiResultSelectView", 2, "mUpdatePointPositionRunnable location：" + localRectF + " locInView:" + localRect);
           }
@@ -61,7 +61,7 @@ class ScannerMultiResultSelectView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.ScannerMultiResultSelectView.3
  * JD-Core Version:    0.7.0.1
  */

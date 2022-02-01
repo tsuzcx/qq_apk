@@ -13,6 +13,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.av.opengl.glrenderer.GLCanvas;
+import com.tencent.av.opengl.glrenderer.GLES20Canvas;
+import com.tencent.av.opengl.program.TextureProgramFactory;
+import com.tencent.av.opengl.texture.BasicTexture;
+import com.tencent.av.opengl.texture.UploadedTexture;
+import com.tencent.av.opengl.utils.Utils;
 import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,38 +28,28 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
-import lqo;
-import lqp;
-import lrn;
-import lrr;
-import lrx;
-import lsb;
-import lsc;
-import lsf;
-import lsq;
-import mat;
 import mqq.os.MqqHandler;
 
 public class GLRootView
   extends GLSurfaceView
   implements GLSurfaceView.Renderer
 {
-  private static int jdField_c_of_type_Int;
+  private static int jdField_c_of_type_Int = 0;
   final int jdField_a_of_type_Int = 20;
   final long jdField_a_of_type_Long = AudioHelper.b();
+  private GLCanvas jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas;
+  public GLView a;
   private Runnable jdField_a_of_type_JavaLangRunnable = new GLRootView.1(this);
-  private final String jdField_a_of_type_JavaLangString = "GLRootView_" + this.jdField_a_of_type_Long;
+  protected final String a;
   private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private lqo jdField_a_of_type_Lqo;
-  public lsc a;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   long jdField_b_of_type_Long = 0L;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private boolean jdField_c_of_type_Boolean;
+  private volatile boolean jdField_b_of_type_Boolean = false;
+  private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int = 2;
   private boolean jdField_d_of_type_Boolean = true;
-  private boolean e;
+  private boolean e = false;
   
   public GLRootView(Context paramContext)
   {
@@ -63,16 +59,17 @@ public class GLRootView
   public GLRootView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_JavaLangString = ("GLRootView_" + this.jdField_a_of_type_Long);
     if (QLog.isDevelopLevel()) {
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "GLRootView, 构造");
     }
     boolean bool1 = bool2;
     if (!Build.MODEL.equalsIgnoreCase("MI 9")) {
       if (!Build.MODEL.equalsIgnoreCase("MI 9 Transparent Edition")) {
-        break label157;
+        break label172;
       }
     }
-    label157:
+    label172:
     for (bool1 = bool2;; bool1 = false)
     {
       this.e = bool1;
@@ -107,7 +104,7 @@ public class GLRootView
     {
       paramAttributeSet.recycle();
     }
-    setEGLContextClientVersion(lsq.a(paramContext));
+    setEGLContextClientVersion(Utils.a(paramContext));
     if (this.jdField_a_of_type_Boolean)
     {
       setEGLConfigChooser(8, 8, 8, 8, 16, 0);
@@ -117,7 +114,7 @@ public class GLRootView
     {
       setRenderer(this);
       return;
-      if (lsq.jdField_b_of_type_Boolean)
+      if (Utils.jdField_b_of_type_Boolean)
       {
         setEGLConfigChooser(8, 8, 8, 0, 0, 0);
         getHolder().setFormat(3);
@@ -135,14 +132,9 @@ public class GLRootView
     this.jdField_d_of_type_Int &= 0xFFFFFFFD;
     int i = getWidth();
     int j = getHeight();
-    if ((this.jdField_a_of_type_Lsc != null) && (i != 0) && (j != 0)) {
-      this.jdField_a_of_type_Lsc.b(0, 0, i, j);
+    if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) && (i != 0) && (j != 0)) {
+      this.jdField_a_of_type_ComTencentAvOpenglUiGLView.b(0, 0, i, j);
     }
-  }
-  
-  public mat a()
-  {
-    return null;
   }
   
   public void a()
@@ -150,7 +142,7 @@ public class GLRootView
     this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
     try
     {
-      if (this.jdField_a_of_type_Lsc != null)
+      if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null)
       {
         i = this.jdField_d_of_type_Int;
         if ((i & 0x2) == 0) {}
@@ -175,28 +167,28 @@ public class GLRootView
   
   protected void a(GL10 paramGL10)
   {
-    this.jdField_a_of_type_Lqo.d();
-    lrx.g();
+    this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas.d();
+    UploadedTexture.f();
     this.jdField_b_of_type_Boolean = false;
     if ((this.jdField_d_of_type_Int & 0x2) != 0) {
       b();
     }
-    if (this.jdField_a_of_type_Lsc != null) {
-      this.jdField_a_of_type_Lsc.a(this.jdField_a_of_type_Lqo);
+    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) {
+      this.jdField_a_of_type_ComTencentAvOpenglUiGLView.a(this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas);
     }
     for (;;)
     {
-      if (lrx.e()) {
+      if (UploadedTexture.e()) {
         requestRender();
       }
       return;
-      this.jdField_a_of_type_Lqo.a();
+      this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas.a();
     }
   }
   
   public boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Lsc != null) && ((this.jdField_a_of_type_Lsc instanceof VideoLayerUI)) && (((VideoLayerUI)this.jdField_a_of_type_Lsc).c(paramMotionEvent))) {
+    if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) && ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView instanceof VideoLayerUI)) && (((VideoLayerUI)this.jdField_a_of_type_ComTencentAvOpenglUiGLView).c(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -207,12 +199,12 @@ public class GLRootView
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 240	com/tencent/av/opengl/ui/GLRootView:isEnabled	()Z
+    //   1: invokevirtual 244	com/tencent/av/opengl/ui/GLRootView:isEnabled	()Z
     //   4: ifne +5 -> 9
     //   7: iconst_0
     //   8: ireturn
     //   9: aload_1
-    //   10: invokevirtual 245	android/view/MotionEvent:getAction	()I
+    //   10: invokevirtual 249	android/view/MotionEvent:getAction	()I
     //   13: istore_2
     //   14: iload_2
     //   15: iconst_3
@@ -222,22 +214,22 @@ public class GLRootView
     //   21: if_icmpne +68 -> 89
     //   24: aload_0
     //   25: iconst_0
-    //   26: putfield 247	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
+    //   26: putfield 52	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
     //   29: aload_0
-    //   30: getfield 37	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   33: ldc2_w 248
-    //   36: getstatic 255	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   39: invokevirtual 259	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
+    //   30: getfield 40	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   33: ldc2_w 250
+    //   36: getstatic 257	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   39: invokevirtual 261	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
     //   42: istore_3
     //   43: iload_3
     //   44: ifeq +88 -> 132
     //   47: aload_0
-    //   48: getfield 191	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_Lsc	Llsc;
+    //   48: getfield 197	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_ComTencentAvOpenglUiGLView	Lcom/tencent/av/opengl/ui/GLView;
     //   51: ifnull +51 -> 102
     //   54: aload_0
-    //   55: getfield 191	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_Lsc	Llsc;
+    //   55: getfield 197	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_ComTencentAvOpenglUiGLView	Lcom/tencent/av/opengl/ui/GLView;
     //   58: aload_1
-    //   59: invokevirtual 261	lsc:b	(Landroid/view/MotionEvent;)Z
+    //   59: invokevirtual 263	com/tencent/av/opengl/ui/GLView:b	(Landroid/view/MotionEvent;)Z
     //   62: ifeq +40 -> 102
     //   65: iconst_1
     //   66: istore_3
@@ -247,14 +239,14 @@ public class GLRootView
     //   72: ifeq +8 -> 80
     //   75: aload_0
     //   76: iconst_1
-    //   77: putfield 247	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
+    //   77: putfield 52	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
     //   80: aload_0
-    //   81: getfield 37	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   84: invokevirtual 203	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   81: getfield 40	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   84: invokevirtual 208	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   87: iload_3
     //   88: ireturn
     //   89: aload_0
-    //   90: getfield 247	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
+    //   90: getfield 52	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
     //   93: ifne -64 -> 29
     //   96: iload_2
     //   97: ifeq -68 -> 29
@@ -265,24 +257,24 @@ public class GLRootView
     //   104: goto -37 -> 67
     //   107: astore_1
     //   108: aload_0
-    //   109: getfield 37	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   112: invokevirtual 203	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   109: getfield 40	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   112: invokevirtual 208	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   115: aload_1
     //   116: athrow
     //   117: astore_1
     //   118: aload_0
-    //   119: getfield 79	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   119: getfield 88	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   122: iconst_1
-    //   123: ldc_w 263
+    //   123: ldc_w 265
     //   126: aload_1
-    //   127: invokestatic 266	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   127: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   130: iconst_0
     //   131: ireturn
     //   132: aload_0
-    //   133: getfield 79	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   133: getfield 88	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   136: iconst_1
-    //   137: ldc_w 263
-    //   140: invokestatic 177	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   137: ldc_w 265
+    //   140: invokestatic 184	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   143: iconst_0
     //   144: ireturn
     // Local variable table:
@@ -305,24 +297,24 @@ public class GLRootView
   protected void finalize()
   {
     // Byte code:
-    //   0: invokestatic 270	lrn:a	()V
+    //   0: invokestatic 272	com/tencent/av/opengl/program/TextureProgramFactory:a	()V
     //   3: aload_0
-    //   4: invokespecial 272	android/opengl/GLSurfaceView:finalize	()V
-    //   7: invokestatic 85	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   4: invokespecial 274	android/opengl/GLSurfaceView:finalize	()V
+    //   7: invokestatic 94	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   10: ifeq +14 -> 24
     //   13: aload_0
-    //   14: getfield 79	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   14: getfield 88	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   17: iconst_1
-    //   18: ldc_w 274
-    //   21: invokestatic 91	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   18: ldc_w 276
+    //   21: invokestatic 100	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   24: return
     //   25: astore_1
     //   26: aload_0
-    //   27: invokespecial 272	android/opengl/GLSurfaceView:finalize	()V
+    //   27: invokespecial 274	android/opengl/GLSurfaceView:finalize	()V
     //   30: goto -23 -> 7
     //   33: astore_1
     //   34: aload_0
-    //   35: invokespecial 272	android/opengl/GLSurfaceView:finalize	()V
+    //   35: invokespecial 274	android/opengl/GLSurfaceView:finalize	()V
     //   38: aload_1
     //   39: athrow
     // Local variable table:
@@ -336,7 +328,7 @@ public class GLRootView
     //   0	3	33	finally
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }
@@ -357,7 +349,7 @@ public class GLRootView
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
     }
     SystemClock.elapsedRealtime();
-    lsb.a();
+    AnimationTime.a();
     if (this.jdField_a_of_type_Boolean) {}
     for (float f = 0.0F;; f = 1.0F)
     {
@@ -400,17 +392,17 @@ public class GLRootView
       {
         this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
       }
-      if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Lsc != null))
+      if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null))
       {
         this.jdField_d_of_type_Boolean = false;
-        this.jdField_a_of_type_Lsc.e();
+        this.jdField_a_of_type_ComTencentAvOpenglUiGLView.e();
       }
       this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
       return;
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramBoolean) {
       a();
@@ -422,7 +414,7 @@ public class GLRootView
     if (QLog.isColorLevel()) {
       QLog.i(this.jdField_a_of_type_JavaLangString, 2, "onPause");
     }
-    if ((this.jdField_a_of_type_Lsc instanceof lsf)) {
+    if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView instanceof GLViewGroup)) {
       queueEvent(new GLRootView.2(this));
     }
     super.onPause();
@@ -442,11 +434,11 @@ public class GLRootView
     if ((paramInt1 == 0) || (paramInt2 == 0)) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceChanged: error system callback - width or height is Zero value");
     }
-    if ((this.jdField_a_of_type_Lsc != null) && ((this.jdField_a_of_type_Lsc instanceof lsf))) {
-      ((lsf)this.jdField_a_of_type_Lsc).b(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) && ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView instanceof GLViewGroup))) {
+      ((GLViewGroup)this.jdField_a_of_type_ComTencentAvOpenglUiGLView).b(paramInt1, paramInt2);
     }
     Process.setThreadPriority(-4);
-    this.jdField_a_of_type_Lqo.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas.a(paramInt1, paramInt2);
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
@@ -455,13 +447,13 @@ public class GLRootView
     this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
     try
     {
-      this.jdField_a_of_type_Lqo = new lqp();
-      lrr.d();
-      if ((this.jdField_a_of_type_Lsc != null) && ((this.jdField_a_of_type_Lsc instanceof lsf))) {
-        ((lsf)this.jdField_a_of_type_Lsc).j();
+      this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas = new GLES20Canvas();
+      BasicTexture.d();
+      if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) && ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView instanceof GLViewGroup))) {
+        ((GLViewGroup)this.jdField_a_of_type_ComTencentAvOpenglUiGLView).j();
       }
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      lrn.a();
+      TextureProgramFactory.a();
       setRenderMode(0);
       return;
     }
@@ -495,28 +487,28 @@ public class GLRootView
     ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void setContentPane(lsc paramlsc)
+  public void setContentPane(GLView paramGLView)
   {
-    if (this.jdField_a_of_type_Lsc == paramlsc) {}
+    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView == paramGLView) {}
     do
     {
       return;
-      if (this.jdField_a_of_type_Lsc != null)
+      if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null)
       {
         if (this.jdField_c_of_type_Boolean)
         {
           long l = SystemClock.uptimeMillis();
           MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-          this.jdField_a_of_type_Lsc.b(localMotionEvent);
+          this.jdField_a_of_type_ComTencentAvOpenglUiGLView.b(localMotionEvent);
           localMotionEvent.recycle();
           this.jdField_c_of_type_Boolean = false;
         }
-        this.jdField_a_of_type_Lsc.a();
-        lrr.c();
+        this.jdField_a_of_type_ComTencentAvOpenglUiGLView.a();
+        BasicTexture.c();
       }
-      this.jdField_a_of_type_Lsc = paramlsc;
-    } while (paramlsc == null);
-    paramlsc.a(this);
+      this.jdField_a_of_type_ComTencentAvOpenglUiGLView = paramGLView;
+    } while (paramGLView == null);
+    paramGLView.a(this);
     a();
   }
   
@@ -545,7 +537,7 @@ public class GLRootView
       jdField_c_of_type_Int -= 1;
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
     }
-    if ((this.jdField_a_of_type_Lsc instanceof lsf)) {
+    if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView instanceof GLViewGroup)) {
       queueEvent(new GLRootView.3(this));
     }
     QLog.i(this.jdField_a_of_type_JavaLangString, 1, "STest. surfaceDestroyed. sCreatedSurfaceCnt = " + jdField_c_of_type_Int);
@@ -554,7 +546,7 @@ public class GLRootView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.opengl.ui.GLRootView
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,8 @@ public final class stGetCommentReplyListRsp
   public String attach_info = "";
   public boolean isFinished = true;
   public boolean isRFinished = true;
-  public ArrayList<stMetaReply> reply_list;
-  public int total_reply_num;
+  public ArrayList<stMetaReply> reply_list = null;
+  public int total_reply_num = 0;
   
   static
   {

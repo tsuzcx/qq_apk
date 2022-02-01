@@ -10,7 +10,7 @@ public final class tGetMusicInfoRsp
   extends JceStruct
 {
   static Map<String, MusicInfo> cache_mapMusic = new HashMap();
-  public Map<String, MusicInfo> mapMusic;
+  public Map<String, MusicInfo> mapMusic = null;
   
   static
   {

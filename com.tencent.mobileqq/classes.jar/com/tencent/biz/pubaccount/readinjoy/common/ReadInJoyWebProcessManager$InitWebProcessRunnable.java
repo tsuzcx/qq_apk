@@ -1,14 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJWebSearchUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
+import com.tencent.mobileqq.webview.api.IWebProcessPreload;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import prm;
 
 class ReadInJoyWebProcessManager$InitWebProcessRunnable
   implements Runnable
@@ -26,10 +27,10 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.getSystemTotalMemory()));
-      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.getSystemAvaialbeMemory()));
-      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.getCpuNumber()));
-      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.getCpuFrequency()));
+      localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.a()));
+      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.e()));
+      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
+      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.b()));
       localHashMap.put("param_preloadLevel", String.valueOf(paramInt));
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ReadInJoyWebProcessManager", 2, "preloadToolProcessReport:" + localHashMap.toString());
@@ -46,26 +47,26 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
   
   public void run()
   {
-    if ((WebProcessManager.c()) || (this.a == null)) {}
+    if ((((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist()) || (this.a == null)) {}
     for (;;)
     {
       return;
-      WebProcessManager localWebProcessManager = (WebProcessManager)this.a.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
-      if (localWebProcessManager != null)
+      IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)this.a.getRuntimeService(IWebProcessManagerService.class, "");
+      if (localIWebProcessManagerService != null)
       {
-        int i = prm.a();
-        if (prm.a()) {
+        int i = RIJWebSearchUtils.a();
+        if (RIJWebSearchUtils.a()) {
           a(i);
         }
         if (i == 1) {
-          localWebProcessManager.a(200);
+          localIWebProcessManagerService.startWebProcess(200, null);
         }
         while (QLog.isColorLevel())
         {
           QLog.d("Q.readinjoy.ReadInJoyWebProcessManager", 2, "enter folder preload web process");
           return;
           if (i == 2) {
-            localWebProcessManager.a(201);
+            localIWebProcessManagerService.startWebProcess(201, null);
           }
         }
       }
@@ -74,7 +75,7 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyWebProcessManager.InitWebProcessRunnable
  * JD-Core Version:    0.7.0.1
  */

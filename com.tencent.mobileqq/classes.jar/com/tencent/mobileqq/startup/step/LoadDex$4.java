@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdjn;
-import bdmg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.backgroundcpu.BatteryStats;
 
 class LoadDex$4
   implements Runnable
@@ -15,7 +14,7 @@ class LoadDex$4
     try
     {
       QQAppInterface.getBatteryStats().a();
-      bdjn.b(30, this.this$0.mDirector, null).step();
+      Step.AmStepFactory.b(29, this.this$0.mDirector, null).step();
       return;
     }
     catch (Throwable localThrowable)

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/guy" />
-    <item android:state_pressed="true" android:drawable="@drawable/guy" />
-    <item android:drawable="@drawable/qfav_category_file" />
-</selector>
+    <corners android:radius="5.0dip" />
+    <gradient android:startColor="@color/aou" android:endColor="@color/ajr" android:angle="90.0" />
+</shape>

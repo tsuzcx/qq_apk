@@ -1,12 +1,12 @@
 package cooperation.qzone.api;
 
-import aeov;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.IViewCreator;
 
 class QZoneApiProxy$SchoolExtendListCreator
-  implements aeov
+  implements PublicFragmentActivity.IViewCreator
 {
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,7 +18,7 @@ class QZoneApiProxy$SchoolExtendListCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.api.QZoneApiProxy.SchoolExtendListCreator
  * JD-Core Version:    0.7.0.1
  */

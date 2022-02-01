@@ -3,7 +3,9 @@ package io.flutter.embedding.engine.plugins.shim;
 import android.app.Activity;
 import android.content.Context;
 import androidx.annotation.NonNull;
+import io.flutter.FlutterInjector;
 import io.flutter.Log;
+import io.flutter.embedding.engine.loader.FlutterLoader;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -16,7 +18,6 @@ import io.flutter.plugin.common.PluginRegistry.RequestPermissionsResultListener;
 import io.flutter.plugin.common.PluginRegistry.UserLeaveHintListener;
 import io.flutter.plugin.common.PluginRegistry.ViewDestroyListener;
 import io.flutter.plugin.platform.PlatformViewRegistry;
-import io.flutter.view.FlutterMain;
 import io.flutter.view.FlutterView;
 import io.flutter.view.TextureRegistry;
 import java.util.HashSet;
@@ -142,12 +143,12 @@ class ShimRegistrar
   
   public String lookupKeyForAsset(String paramString)
   {
-    return FlutterMain.getLookupKeyForAsset(paramString);
+    return FlutterInjector.instance().flutterLoader().getLookupKeyForAsset(paramString);
   }
   
   public String lookupKeyForAsset(String paramString1, String paramString2)
   {
-    return FlutterMain.getLookupKeyForAsset(paramString1, paramString2);
+    return FlutterInjector.instance().flutterLoader().getLookupKeyForAsset(paramString1, paramString2);
   }
   
   public BinaryMessenger messenger()
@@ -230,7 +231,7 @@ class ShimRegistrar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.shim.ShimRegistrar
  * JD-Core Version:    0.7.0.1
  */

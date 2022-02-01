@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
-import bcut;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -29,6 +28,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.service.qzone.QzoneMapUtil;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
@@ -60,7 +60,7 @@ public class WXShareFromQZHelper
   public static final String WX_DEBUG_APPID_EXPERIMENTAL = "wxc577faa50460d9e5";
   public static final String WX_RELEASE_APPID = "wx34b037fdb0f655ee";
   private static byte[] lock = new byte[0];
-  private static WXShareFromQZHelper sWXShareHelper;
+  private static WXShareFromQZHelper sWXShareHelper = null;
   private IWXAPI api = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wx34b037fdb0f655ee", true);
   private CopyOnWriteArrayList<WXShareFromQZHelper.WXShareListener> mObserverList = new CopyOnWriteArrayList();
   WeakReference<Activity> wxEntryActivityRef = null;
@@ -83,29 +83,29 @@ public class WXShareFromQZHelper
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 127	java/io/FileInputStream
+    //   2: new 129	java/io/FileInputStream
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 130	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   10: invokevirtual 134	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   7: invokespecial 132	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   10: invokevirtual 136	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   13: astore_2
-    //   14: new 136	java/io/FileOutputStream
+    //   14: new 138	java/io/FileOutputStream
     //   17: dup
     //   18: aload_1
-    //   19: invokespecial 137	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   22: invokevirtual 138	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   19: invokespecial 139	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   22: invokevirtual 140	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   25: astore_1
     //   26: aload_1
     //   27: aload_2
     //   28: lconst_0
     //   29: aload_2
-    //   30: invokevirtual 144	java/nio/channels/FileChannel:size	()J
-    //   33: invokevirtual 148	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
+    //   30: invokevirtual 146	java/nio/channels/FileChannel:size	()J
+    //   33: invokevirtual 150	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
     //   36: pop2
     //   37: aload_2
-    //   38: invokevirtual 151	java/nio/channels/FileChannel:close	()V
+    //   38: invokevirtual 153	java/nio/channels/FileChannel:close	()V
     //   41: aload_1
-    //   42: invokevirtual 151	java/nio/channels/FileChannel:close	()V
+    //   42: invokevirtual 153	java/nio/channels/FileChannel:close	()V
     //   45: return
     //   46: astore_0
     //   47: aconst_null
@@ -113,9 +113,9 @@ public class WXShareFromQZHelper
     //   49: aload_3
     //   50: astore_2
     //   51: aload_2
-    //   52: invokevirtual 151	java/nio/channels/FileChannel:close	()V
+    //   52: invokevirtual 153	java/nio/channels/FileChannel:close	()V
     //   55: aload_1
-    //   56: invokevirtual 151	java/nio/channels/FileChannel:close	()V
+    //   56: invokevirtual 153	java/nio/channels/FileChannel:close	()V
     //   59: aload_0
     //   60: athrow
     //   61: astore_0
@@ -147,7 +147,7 @@ public class WXShareFromQZHelper
         try
         {
           localObject2 = ((ShowMessageFromWX.Req)paramBaseReq).message.messageExt;
-          paramBaseReq = bcut.b((String)localObject2);
+          paramBaseReq = QzoneMapUtil.b((String)localObject2);
           if ((paramBaseReq.get("actiontype") != null) && (((String)paramBaseReq.get("actiontype")).equals("schema")) && (paramBaseReq.get("schema") != null))
           {
             localObject1 = Uri.decode((String)paramBaseReq.get("schema"));
@@ -520,7 +520,7 @@ public class WXShareFromQZHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.share.WXShareFromQZHelper
  * JD-Core Version:    0.7.0.1
  */

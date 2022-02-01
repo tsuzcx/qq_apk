@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/ik9" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:id="@id/np1" android:clickable="true" layout="@layout/b1x" />
-        <include android:id="@id/np2" android:visibility="gone" android:clickable="true" layout="@layout/cs9" />
-    </LinearLayout>
-    <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/ndv" android:layout_width="fill_parent" android:layout_height="3.0dip" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.ui.TouchWebView android:id="@id/o6l" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <View android:id="@id/o64" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/ee7" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/myn" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.biz.qcircleshadow.local.widgets.QCircleAvatarView android:id="@id/du3" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="18.0dip" />
+            <LinearLayout android:orientation="vertical" android:paddingLeft="10.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip">
+                    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/mdg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:lines="1" android:layout_weight="1.0" />
+                    <TextView android:textSize="15.0dip" android:textColor="#ff7a7a8d" android:id="@id/oew" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/xbm" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ned" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="4.0dip" />
+            </LinearLayout>
+        </LinearLayout>
     </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mym" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <View android:background="#ffefefef" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView android:textSize="16.0dip" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/mco" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="39.5dip" app:qcircle_follow_res="@drawable/trans" app:qcircle_follow_text_color="@color/by" app:qcircle_un_follow_res="@drawable/trans" app:qcircle_un_follow_text_color="@color/bp" />
+    </LinearLayout>
 </LinearLayout>

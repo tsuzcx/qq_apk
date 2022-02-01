@@ -13,12 +13,12 @@ public final class SvcReqDelLoginInfo
 {
   static ArrayList<DeviceItemDes> cache_vecDeviceItemDes;
   static byte[] cache_vecGuid;
-  public long iAppId;
-  public long iDelMe;
+  public long iAppId = 0L;
+  public long iDelMe = 0L;
   public long iDelType = 1L;
   public String strAppName = "";
-  public ArrayList<DeviceItemDes> vecDeviceItemDes;
-  public byte[] vecGuid;
+  public ArrayList<DeviceItemDes> vecDeviceItemDes = null;
+  public byte[] vecGuid = null;
   
   static
   {

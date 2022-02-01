@@ -10,13 +10,13 @@ class QQCustomDialogWtihEmoticonInput$9
   
   public void run()
   {
-    if (QQCustomDialogWtihEmoticonInput.access$200(this.this$0)) {}
-    while (this.this$0.mIsWindowAdded) {
+    if (QQCustomDialogWtihEmoticonInput.a(this.this$0)) {}
+    while (this.this$0.c) {
       return;
     }
-    this.this$0.mWindowManager.addView(this.val$emotionView, this.this$0.mWindowParams);
-    this.this$0.mIsWindowAdded = true;
-    this.val$emotionView.post(new QQCustomDialogWtihEmoticonInput.9.1(this));
+    this.this$0.jdField_a_of_type_AndroidViewWindowManager.addView(this.a, this.this$0.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    this.this$0.c = true;
+    this.a.post(new QQCustomDialogWtihEmoticonInput.9.1(this));
   }
 }
 

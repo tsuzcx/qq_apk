@@ -11,10 +11,10 @@ public final class DiscussMemberInfo
 {
   static Map<Integer, MemberAttrInfo> cache_Attr;
   static InteRemarkInfo cache_StInteRemark;
-  public Map<Integer, MemberAttrInfo> Attr;
-  public byte Flag;
-  public InteRemarkInfo StInteRemark;
-  public long Uin;
+  public Map<Integer, MemberAttrInfo> Attr = null;
+  public byte Flag = 0;
+  public InteRemarkInfo StInteRemark = null;
+  public long Uin = 0L;
   
   public DiscussMemberInfo() {}
   

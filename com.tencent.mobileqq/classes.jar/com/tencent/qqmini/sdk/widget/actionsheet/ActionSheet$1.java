@@ -30,13 +30,13 @@ class ActionSheet$1
       ActionSheet.access$202(this.this$0, i);
     }
     if (ActionSheet.access$500(this.this$0) != null) {
-      ActionSheet.access$500(this.this$0).OnClick(paramView, i);
+      ActionSheet.access$500(this.this$0).onClick(paramView, i);
     }
     if (ActionSheet.access$600(this.this$0) != null)
     {
       localObject = (TextView)paramView.findViewById(R.id.action_sheet_button);
       if ((localObject != null) && ((localObject instanceof TextView))) {
-        ActionSheet.access$600(this.this$0).OnClick(paramView, i, ((TextView)localObject).getText().toString());
+        ActionSheet.access$600(this.this$0).onClick(paramView, i, ((TextView)localObject).getText().toString());
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -44,7 +44,7 @@ class ActionSheet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.actionsheet.ActionSheet.1
  * JD-Core Version:    0.7.0.1
  */

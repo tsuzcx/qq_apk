@@ -11,9 +11,9 @@ public final class SvcMsgPush
   extends JceStruct
 {
   static ArrayList<SvcMsgInfo> cache_vecMsgInfos;
-  public byte cMore;
-  public int iUnread;
-  public ArrayList<SvcMsgInfo> vecMsgInfos;
+  public byte cMore = 0;
+  public int iUnread = 0;
+  public ArrayList<SvcMsgInfo> vecMsgInfos = null;
   
   static
   {
@@ -91,7 +91,7 @@ public final class SvcMsgPush
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.sc.qzonepush.QQService.SvcMsgPush
  * JD-Core Version:    0.7.0.1
  */

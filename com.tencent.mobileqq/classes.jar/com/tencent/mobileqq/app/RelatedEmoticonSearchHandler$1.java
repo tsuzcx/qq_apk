@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import aocr;
 import com.tencent.mobileqq.data.ChatMessage;
 
-public class RelatedEmoticonSearchHandler$1
+class RelatedEmoticonSearchHandler$1
   implements Runnable
 {
-  public RelatedEmoticonSearchHandler$1(aocr paramaocr, ChatMessage paramChatMessage, int paramInt) {}
+  RelatedEmoticonSearchHandler$1(RelatedEmoticonSearchHandler paramRelatedEmoticonSearchHandler, ChatMessage paramChatMessage, int paramInt) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class RelatedEmoticonSearchHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RelatedEmoticonSearchHandler.1
  * JD-Core Version:    0.7.0.1
  */

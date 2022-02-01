@@ -10,7 +10,7 @@ public final class comm_qzone_report_req
   extends JceStruct
 {
   static Map<Integer, byte[]> cache_mapQzoneReportReq = new HashMap();
-  public Map<Integer, byte[]> mapQzoneReportReq;
+  public Map<Integer, byte[]> mapQzoneReportReq = null;
   
   static
   {

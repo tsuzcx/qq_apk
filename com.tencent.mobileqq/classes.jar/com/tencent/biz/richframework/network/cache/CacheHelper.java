@@ -1,15 +1,16 @@
 package com.tencent.biz.richframework.network.cache;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.biz.richframework.delegate.impl.RFApplication;
+import com.tencent.biz.richframework.delegate.impl.RFLog;
 import java.io.File;
-import ykq;
 
 public class CacheHelper
 {
   private static final String TAG = CacheHelper.class.getName();
-  private static String mAppCacheDir;
-  private static volatile Cache mFileCache;
-  private static String mPackgeName;
+  private static String mAppCacheDir = null;
+  private static volatile Cache mFileCache = null;
+  private static String mPackgeName = null;
   
   public static Cache fileCache()
   {
@@ -19,14 +20,14 @@ public class CacheHelper
       if (mFileCache == null)
       {
         if (mPackgeName == null) {
-          mPackgeName = BaseApplicationImpl.getApplication().getPackageName();
+          mPackgeName = RFApplication.getApplication().getPackageName();
         }
         if (mAppCacheDir == null) {
-          mAppCacheDir = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
+          mAppCacheDir = RFApplication.getApplication().getCacheDir().getAbsolutePath();
         }
         mFileCache = new DiskCache(mPackgeName, mAppCacheDir);
       }
-      ykq.b(TAG, "init FileCache");
+      RFLog.d(TAG, RFLog.DEV, "init FileCache");
       return mFileCache;
     }
     finally {}
@@ -34,7 +35,7 @@ public class CacheHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.cache.CacheHelper
  * JD-Core Version:    0.7.0.1
  */

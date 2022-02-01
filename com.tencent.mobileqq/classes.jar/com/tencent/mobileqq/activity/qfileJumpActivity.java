@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bhex;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.utils.JumpForwardPkgManager;
+import com.tencent.mobileqq.utils.JumpForwardPkgUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -39,6 +42,11 @@ public class qfileJumpActivity
     return 0;
   }
   
+  private void d()
+  {
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new qfileJumpActivity.1(this), 10L);
+  }
+  
   protected void a()
   {
     Intent localIntent = getIntent();
@@ -49,12 +57,12 @@ public class qfileJumpActivity
     }
     if (!this.app.isLogin())
     {
-      localObject2 = new Intent(this, LoginActivity.class);
+      localObject2 = new Intent();
       ((Intent)localObject2).setAction(localIntent.getAction());
       ((Intent)localObject2).putExtra("isActionSend", true);
       ((Intent)localObject2).putExtras((Bundle)localObject1);
       ((Intent)localObject2).putExtras(localIntent);
-      startActivityForResult((Intent)localObject2, 8);
+      RouteUtils.a(this, (Intent)localObject2, "/base/login", 8);
       return;
     }
     if ((GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) && (!GesturePWDUtils.getAppForground(this)))
@@ -68,17 +76,22 @@ public class qfileJumpActivity
       startActivityForResult((Intent)localObject2, 8);
       return;
     }
+    if (QFileAssistantUtils.a(this.app))
+    {
+      d();
+      return;
+    }
     b();
   }
   
   protected void b()
   {
-    new Handler().postDelayed(new qfileJumpActivity.1(this), 10L);
+    new Handler().postDelayed(new qfileJumpActivity.2(this), 10L);
   }
   
   protected void c()
   {
-    new Handler().postDelayed(new qfileJumpActivity.2(this), 10L);
+    new Handler().postDelayed(new qfileJumpActivity.3(this), 10L);
   }
   
   @Override
@@ -116,7 +129,7 @@ public class qfileJumpActivity
     try
     {
       super.doOnCreate(paramBundle);
-      if (!bhex.a(this, true))
+      if (!JumpForwardPkgUtil.a(this, true))
       {
         super.finish();
         return false;
@@ -147,10 +160,9 @@ public class qfileJumpActivity
           if (!this.app.isLogin())
           {
             localIntent = new Intent();
-            localIntent.setClass(this, LoginActivity.class);
             localIntent.addFlags(67371008);
             localIntent.putExtras(paramBundle.getExtras());
-            startActivityForResult(localIntent, 9);
+            RouteUtils.a(this, localIntent, "/base/login", 9);
           }
           else if ((GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) && (!GesturePWDUtils.getAppForground(this)))
           {
@@ -188,7 +200,7 @@ public class qfileJumpActivity
   {
     try
     {
-      boolean bool = bhex.a(this);
+      boolean bool = JumpForwardPkgManager.a(this);
       if (bool) {
         return true;
       }

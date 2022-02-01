@@ -2,21 +2,26 @@ package com.tencent.avcore.jni.mav;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import com.tencent.avcore.data.AVCoreSystemInfo;
+import com.tencent.avcore.engine.mav.IMavAdapter;
+import com.tencent.avcore.engine.mav.IMavEngine;
+import com.tencent.avcore.engine.mav.IMavEventListener;
 import com.tencent.avcore.jni.data.SDKConfigInfo;
-import nbp;
-import nca;
-import ncb;
-import ncc;
-import nci;
+import com.tencent.avcore.netchannel.IMavNetChannel;
 
 public class MavEngineProxy
-  implements ncb
+  implements IMavEngine
 {
   private MavEngineJni mMavEngineJni;
   
   public int accept(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     return this.mMavEngineJni.accept(paramInt1, paramLong, paramInt2, paramInt3, paramInt4, paramInt5);
+  }
+  
+  public void checkScreenShareAvaliable()
+  {
+    this.mMavEngineJni.checkScreenShareAvaliable();
   }
   
   public int commonRequest(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString, int paramInt7, byte[] paramArrayOfByte, int paramInt8)
@@ -119,14 +124,14 @@ public class MavEngineProxy
     return this.mMavEngineJni.ignore(paramInt1, paramLong, paramInt2);
   }
   
-  public void init(Context paramContext, long paramLong, int paramInt, String paramString, SDKConfigInfo paramSDKConfigInfo)
+  public void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3)
   {
-    this.mMavEngineJni.init(paramContext, paramLong, paramInt, paramString, paramSDKConfigInfo);
+    this.mMavEngineJni.init(paramContext, paramLong, paramInt, paramString1, paramSDKConfigInfo, paramString2, paramString3);
   }
   
-  protected void initEngine(nbp paramnbp, nca paramnca, String paramString)
+  protected void initEngine(AVCoreSystemInfo paramAVCoreSystemInfo, IMavAdapter paramIMavAdapter, String paramString)
   {
-    this.mMavEngineJni = new MavEngineJni(paramnbp, paramnca);
+    this.mMavEngineJni = new MavEngineJni(paramAVCoreSystemInfo, paramIMavAdapter);
     MavEngineJni.regCallbacks();
     setAndroidPath(paramString);
   }
@@ -181,9 +186,9 @@ public class MavEngineProxy
     return this.mMavEngineJni.registerTRAE(paramInt);
   }
   
-  public int request(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public int request(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    return this.mMavEngineJni.request(paramInt1, paramLong, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    return this.mMavEngineJni.request(paramInt1, paramLong, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
   }
   
   public int requestCamera(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4)
@@ -261,9 +266,9 @@ public class MavEngineProxy
     return this.mMavEngineJni.setAudioOutputMode(paramInt);
   }
   
-  public void setEventListener(ncc paramncc)
+  public void setEventListener(IMavEventListener paramIMavEventListener)
   {
-    this.mMavEngineJni.setEventListener(paramncc);
+    this.mMavEngineJni.setEventListener(paramIMavEventListener);
   }
   
   public int setHowlingDetectEnable(boolean paramBoolean)
@@ -281,9 +286,9 @@ public class MavEngineProxy
     return this.mMavEngineJni.setMicMode(paramInt);
   }
   
-  public void setNetChannel(nci paramnci)
+  public void setNetChannel(IMavNetChannel paramIMavNetChannel)
   {
-    this.mMavEngineJni.setNetChannel(paramnci);
+    this.mMavEngineJni.setNetChannel(paramIMavNetChannel);
   }
   
   public int setOutputFormat(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -408,7 +413,7 @@ public class MavEngineProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avcore.jni.mav.MavEngineProxy
  * JD-Core Version:    0.7.0.1
  */

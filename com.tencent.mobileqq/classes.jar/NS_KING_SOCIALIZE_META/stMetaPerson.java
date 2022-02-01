@@ -8,10 +8,10 @@ public final class stMetaPerson
   extends JceStruct
 {
   public String address = "";
-  public int age;
+  public int age = 0;
   public String avatar = "";
   public String chatlist_id = "";
-  public int createtime;
+  public int createtime = 0;
   public String feedlist_hot_id = "";
   public String feedlist_time_id = "";
   public String followerlist_id = "";
@@ -19,9 +19,9 @@ public final class stMetaPerson
   public String interesterlist_id = "";
   public String nick = "";
   public String related_feedlist_id = "";
-  public int rich_flag;
-  public int sex;
-  public int type;
+  public int rich_flag = 0;
+  public int sex = 0;
+  public int type = 0;
   public String uid = "";
   
   public stMetaPerson() {}

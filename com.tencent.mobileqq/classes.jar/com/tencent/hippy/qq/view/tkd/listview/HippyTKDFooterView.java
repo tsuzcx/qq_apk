@@ -34,7 +34,7 @@ public class HippyTKDFooterView
     this.mContentContainer.addView(this.mLeftImage, (ViewGroup.LayoutParams)localObject);
     this.mRightText = new TextView(paramContext);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
-    paramContext.leftMargin = ImmersiveUtils.a(8.0F);
+    paramContext.leftMargin = ImmersiveUtils.dpToPx(8.0F);
     this.mContentContainer.addView(this.mRightText, paramContext);
   }
   
@@ -99,7 +99,7 @@ public class HippyTKDFooterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDFooterView
  * JD-Core Version:    0.7.0.1
  */

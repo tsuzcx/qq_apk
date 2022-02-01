@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby;
 
-import Override;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -18,10 +17,10 @@ public class NearbyTitleBarActivity
   extends IphoneTitleBarActivity
 {
   public NearbyAppInterface a;
-  public boolean d;
-  public boolean e;
-  public long o = System.currentTimeMillis();
-  public long p;
+  public boolean d = false;
+  public boolean e = false;
+  public long p = System.currentTimeMillis();
+  public long q;
   
   public static void a(AppInterface paramAppInterface, String paramString)
   {
@@ -125,15 +124,15 @@ public class NearbyTitleBarActivity
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.p == 0L)
+    if (this.q == 0L)
     {
-      this.p = System.currentTimeMillis();
+      this.q = System.currentTimeMillis();
       if (this.a.c == 2) {}
     }
     try
     {
       long l = getIntent().getLongExtra("ENTER_TIME", 0L);
-      a(this.a, l, this.o, this.p);
+      a(this.a, l, this.p, this.q);
       return;
     }
     catch (Throwable localThrowable)

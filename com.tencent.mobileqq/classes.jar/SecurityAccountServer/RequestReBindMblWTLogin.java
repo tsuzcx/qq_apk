@@ -8,7 +8,7 @@ public final class RequestReBindMblWTLogin
   extends JceStruct
 {
   static byte[] cache_encryptBuffer;
-  public byte[] encryptBuffer;
+  public byte[] encryptBuffer = null;
   
   public RequestReBindMblWTLogin() {}
   

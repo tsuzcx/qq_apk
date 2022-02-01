@@ -1,6 +1,7 @@
 package com.tencent.hippy.qq.utils.tkd;
 
 import com.tencent.hippy.qq.module.tkd.TKDBiuModule.ParamsFetcher;
+import com.tencent.mtt.hippy.common.HippyMap;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -78,10 +79,16 @@ public final class TKDCommentDispatcher$getHippyCommetnProxyImpl$1
   {
     TKDCommentDispatcher.HippyCommentEvent.DefaultImpls.openComment(this);
   }
+  
+  public void refreshNewAndHotData(@NotNull HippyMap paramHippyMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHippyMap, "propsMap");
+    TKDCommentDispatcher.HippyCommentEvent.DefaultImpls.refreshNewAndHotData(this, paramHippyMap);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.tkd.TKDCommentDispatcher.getHippyCommetnProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

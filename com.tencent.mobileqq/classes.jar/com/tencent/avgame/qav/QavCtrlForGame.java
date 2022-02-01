@@ -1,0 +1,29 @@
+package com.tencent.avgame.qav;
+
+import android.content.Context;
+import com.tencent.qav.controller.QavCtrl;
+
+public class QavCtrlForGame
+  extends QavCtrl
+{
+  public QavCtrlForGame(Context paramContext, MultiOperatorImplForGame paramMultiOperatorImplForGame)
+  {
+    super(paramContext, paramMultiOperatorImplForGame);
+  }
+  
+  public MultiOperatorImplForGame a()
+  {
+    return (MultiOperatorImplForGame)super.a();
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.avgame.qav.QavCtrlForGame
+ * JD-Core Version:    0.7.0.1
+ */

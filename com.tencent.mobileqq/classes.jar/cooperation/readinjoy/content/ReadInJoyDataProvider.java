@@ -5,7 +5,6 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import bmid;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppContentProvider;
 import mqq.app.AppRuntime;
@@ -21,7 +20,7 @@ public class ReadInJoyDataProvider
   public static final Uri d = Uri.parse(jdField_a_of_type_JavaLangString + "recent_data");
   public static final Uri e = Uri.parse(jdField_a_of_type_JavaLangString + "common_records");
   private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
-  private bmid jdField_a_of_type_Bmid;
+  private ReadInJoyDataProvider.ReadInJoyDBHelper jdField_a_of_type_CooperationReadinjoyContentReadInJoyDataProvider$ReadInJoyDBHelper;
   
   static
   {
@@ -57,15 +56,15 @@ public class ReadInJoyDataProvider
     } while (!QLog.isColorLevel());
     QLog.d("ReadInJoyDataProvider", 2, "getDBHelper, uin not equal, uri=" + paramUri.getPath() + ", current account=" + localAppRuntime.getAccount());
     return null;
-    if ((this.jdField_a_of_type_Bmid == null) || (!this.jdField_a_of_type_Bmid.jdField_a_of_type_JavaLangString.equals(str2)))
+    if ((this.jdField_a_of_type_CooperationReadinjoyContentReadInJoyDataProvider$ReadInJoyDBHelper == null) || (!this.jdField_a_of_type_CooperationReadinjoyContentReadInJoyDataProvider$ReadInJoyDBHelper.jdField_a_of_type_JavaLangString.equals(str2)))
     {
-      this.jdField_a_of_type_Bmid = new bmid(this, localAppRuntime.getApplication().getApplicationContext(), str1);
-      this.jdField_a_of_type_Bmid.jdField_a_of_type_JavaLangString = str2;
+      this.jdField_a_of_type_CooperationReadinjoyContentReadInJoyDataProvider$ReadInJoyDBHelper = new ReadInJoyDataProvider.ReadInJoyDBHelper(this, localAppRuntime.getApplication().getApplicationContext(), str1);
+      this.jdField_a_of_type_CooperationReadinjoyContentReadInJoyDataProvider$ReadInJoyDBHelper.jdField_a_of_type_JavaLangString = str2;
     }
     if (paramBoolean) {
-      return this.jdField_a_of_type_Bmid.getReadableDatabase();
+      return this.jdField_a_of_type_CooperationReadinjoyContentReadInJoyDataProvider$ReadInJoyDBHelper.getReadableDatabase();
     }
-    return this.jdField_a_of_type_Bmid.getWritableDatabase();
+    return this.jdField_a_of_type_CooperationReadinjoyContentReadInJoyDataProvider$ReadInJoyDBHelper.getWritableDatabase();
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)

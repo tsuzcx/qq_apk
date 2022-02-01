@@ -19,7 +19,7 @@ public class ConfessFadeIconImageView
     super(paramContext, paramAttributeSet);
   }
   
-  protected void drawableStateChanged()
+  public void drawableStateChanged()
   {
     super.drawableStateChanged();
     Drawable localDrawable = getDrawable();

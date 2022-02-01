@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.pushdialog;
 
-import bain;
-import baio;
 import java.util.List;
 
-public class AIOPushDialogHelper$1$1
+class AIOPushDialogHelper$1$1
   implements Runnable
 {
-  public AIOPushDialogHelper$1$1(baio parambaio, List paramList) {}
+  AIOPushDialogHelper$1$1(AIOPushDialogHelper.1 param1, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Baio.a.a(this.jdField_a_of_type_JavaUtilList, 100, 103);
+    this.jdField_a_of_type_ComTencentMobileqqPushdialogAIOPushDialogHelper$1.a.a(this.jdField_a_of_type_JavaUtilList, 100, 103);
   }
 }
 

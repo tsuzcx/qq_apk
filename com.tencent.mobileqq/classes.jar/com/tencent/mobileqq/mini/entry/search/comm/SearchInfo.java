@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StUserInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StoreAppInfo;
 import NS_STORE_APP_SEARCH.MiniAppSearch.SearchExtInfo;
-import anvx;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -59,12 +59,12 @@ public class SearchInfo
   public String getUseNumberDesc()
   {
     if (this.userNum < 10000) {
-      return this.userNum + anvx.a(2131694005);
+      return this.userNum + HardCodeUtil.a(2131694207);
     }
     if (this.userNum >= 100000000) {
-      return this.userNum / 100000000 + anvx.a(2131694004);
+      return this.userNum / 100000000 + HardCodeUtil.a(2131694206);
     }
-    return this.userNum / 10000 + anvx.a(2131694006);
+    return this.userNum / 10000 + HardCodeUtil.a(2131694208);
   }
   
   public void setPosition(int paramInt)

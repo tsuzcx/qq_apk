@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import bmkt;
+import cooperation.vip.VipReporterManager;
 import java.lang.ref.WeakReference;
 
 class MsgPhotoView$WeakVipResourcesListener$1
@@ -26,14 +26,14 @@ class MsgPhotoView$WeakVipResourcesListener$1
     label68:
     for (int i = 11;; i = 10)
     {
-      bmkt.a(i, 1);
+      VipReporterManager.a(i, 1);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1
  * JD-Core Version:    0.7.0.1
  */

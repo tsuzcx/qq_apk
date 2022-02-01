@@ -4,7 +4,7 @@ public class TitleInfo
   implements ItemInfo
 {
   public String mTitle;
-  public boolean showRefreshButton;
+  public boolean showRefreshButton = false;
   
   public TitleInfo(String paramString)
   {

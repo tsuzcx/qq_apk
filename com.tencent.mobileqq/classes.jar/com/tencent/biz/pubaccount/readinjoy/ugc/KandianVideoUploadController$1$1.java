@@ -1,23 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 import com.tencent.qphone.base.util.QLog;
-import rta;
-import rtb;
 
-public class KandianVideoUploadController$1$1
+class KandianVideoUploadController$1$1
   implements Runnable
 {
-  public KandianVideoUploadController$1$1(rtb paramrtb) {}
+  KandianVideoUploadController$1$1(KandianVideoUploadController.1 param1) {}
   
   public void run()
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d()))
+    IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)this.a.a.a.getRuntimeService(IWebProcessManagerService.class, "");
+    if ((localIWebProcessManagerService != null) && (localIWebProcessManagerService.isNeedPreloadWebProcess()))
     {
-      localWebProcessManager.a(-1, null);
+      localIWebProcessManagerService.startWebProcess(-1, null);
       if (QLog.isColorLevel()) {
         QLog.d("allentest", 2, "sbbbb");
       }
@@ -26,7 +23,7 @@ public class KandianVideoUploadController$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadController.1.1
  * JD-Core Version:    0.7.0.1
  */

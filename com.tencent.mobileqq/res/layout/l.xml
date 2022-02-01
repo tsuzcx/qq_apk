@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dq8" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="56.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:focusable="false" android:clickable="false" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/a2" />
-        <TextView android:textSize="18.0dip" android:textColor="@color/skin_blue" android:layout_gravity="center_vertical" android:id="@id/new_account" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/de" android:singleLine="true" android:contentDescription="@string/de" />
-    </LinearLayout>
-</RelativeLayout>
+<com.tencent.mobileqq.widget.FormItemRelativeLayout android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="@dimen/b8z" formItem:bgType="abp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/lox" android:focusable="false" android:clickable="false" android:layout_width="@dimen/b_d" android:layout_height="@dimen/b_d" android:layout_marginLeft="@dimen/b90" android:src="@drawable/a2" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/b69" android:textColor="@color/skin_blue" android:id="@id/new_account" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b94" android:text="@string/de" android:singleLine="true" android:layout_toRightOf="@id/lox" android:layout_centerVertical="true" android:contentDescription="@string/de" />
+</com.tencent.mobileqq.widget.FormItemRelativeLayout>

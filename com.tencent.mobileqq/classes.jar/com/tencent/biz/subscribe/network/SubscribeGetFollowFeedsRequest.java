@@ -4,6 +4,7 @@ import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowFeedsReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowFeedsRsp;
 import NS_COMM.COMM.StCommonExt;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 
@@ -30,7 +31,15 @@ public class SubscribeGetFollowFeedsRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountRead.StGetFollowFeedsRsp localStGetFollowFeedsRsp = new CertifiedAccountRead.StGetFollowFeedsRsp();
-    localStGetFollowFeedsRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetFollowFeedsRsp.mergeFrom(paramArrayOfByte);
+      return localStGetFollowFeedsRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetFollowFeedsRsp;
   }
   
@@ -46,7 +55,7 @@ public class SubscribeGetFollowFeedsRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.SubscribeGetFollowFeedsRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ public final class QzoneData
   extends JceStruct
 {
   static byte[] cache_vcByte = (byte[])new byte[1];
-  public int iType;
-  public byte[] vcByte;
+  public int iType = 0;
+  public byte[] vcByte = null;
   
   static
   {

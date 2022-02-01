@@ -13,10 +13,10 @@ public final class ProfUsrFullInfoRes
   static Map<Long, String> cache_sRemarkInfo;
   static ArrayList<TagInfo> cache_sTagInfo;
   static ProfSmpInfoRes cache_strPfileSmpInfoRes;
-  public Map<Long, String> sRemarkInfo;
+  public Map<Long, String> sRemarkInfo = null;
   public String sSigInfo = "";
-  public ArrayList<TagInfo> sTagInfo;
-  public ProfSmpInfoRes strPfileSmpInfoRes;
+  public ArrayList<TagInfo> sTagInfo = null;
+  public ProfSmpInfoRes strPfileSmpInfoRes = null;
   
   public ProfUsrFullInfoRes() {}
   

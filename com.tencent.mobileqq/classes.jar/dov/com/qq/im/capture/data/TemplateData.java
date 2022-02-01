@@ -4,11 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bohs;
-import boih;
-import bokf;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.part.QIMTemplateItem;
+import dov.com.qq.im.capture.paster.VotePasterQuestion;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -17,7 +15,7 @@ import org.json.JSONObject;
 public class TemplateData
   implements Parcelable
 {
-  public static final Parcelable.Creator<TemplateData> CREATOR = new boih();
+  public static final Parcelable.Creator<TemplateData> CREATOR = new TemplateData.1();
   public int a;
   public String a;
   public List<QIMTemplateItem> a;
@@ -27,9 +25,9 @@ public class TemplateData
   public List<String> b;
   public boolean b;
   public String c;
-  public List<bokf> c;
+  public List<VotePasterQuestion> c;
   
-  public TemplateData(Parcel paramParcel)
+  protected TemplateData(Parcel paramParcel)
   {
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Int = paramParcel.readInt();
@@ -72,7 +70,7 @@ public class TemplateData
         localQIMTemplateItem.h = localJSONObject.optString("video_url");
         localQIMTemplateItem.i = localJSONObject.optString("video_md5");
         localQIMTemplateItem.jdField_a_of_type_Boolean = localJSONObject.optBoolean("segments_twinkle");
-        localQIMTemplateItem.j = (bohs.jdField_b_of_type_JavaLangString + localQIMTemplateItem.jdField_b_of_type_JavaLangString + ".mp4");
+        localQIMTemplateItem.j = (CaptureTemplateManager.jdField_b_of_type_JavaLangString + localQIMTemplateItem.jdField_b_of_type_JavaLangString + ".mp4");
         JSONArray localJSONArray = localJSONObject.optJSONArray("filters");
         if (localJSONArray != null)
         {
@@ -171,7 +169,7 @@ public class TemplateData
         str1 = ((JSONArray)localObject1).get(0).toString();
         localObject1 = ((JSONArray)localObject1).get(1).toString();
         if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-          localArrayList.add(new bokf(str2, str1, (String)localObject1));
+          localArrayList.add(new VotePasterQuestion(str2, str1, (String)localObject1));
         }
       }
       catch (Exception localException1)
@@ -210,7 +208,7 @@ public class TemplateData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.data.TemplateData
  * JD-Core Version:    0.7.0.1
  */

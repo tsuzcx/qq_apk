@@ -11,12 +11,12 @@ class VasApngIPCModule$1
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.this$0.load(this.val$urlDrawableHandler, false);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasApngIPCModule.a(this.jdField_a_of_type_ComTencentImageURLDrawableHandler, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasApngIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

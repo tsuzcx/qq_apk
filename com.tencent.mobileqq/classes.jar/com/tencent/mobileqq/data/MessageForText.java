@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
-import aatn;
-import acnh;
-import admo;
 import android.text.TextUtils;
-import bgcz;
-import bhca;
-import bhmb;
-import biyt;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.eqq.CrmIvrText;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
+import com.tencent.biz.widgets.PubAccountQQText;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.MsgProxyUtils;
+import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 import com.tencent.mobileqq.activity.MultiForwardActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
@@ -18,19 +17,21 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import com.tencent.mobileqq.utils.ActionMsgUtil;
+import com.tencent.mobileqq.vas.ColorNickManager;
+import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
-import nws;
-import nwu;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import uuc;
 
 public class MessageForText
   extends RecommendCommonMessage
@@ -53,7 +54,7 @@ public class MessageForText
   public CharSequence sb;
   public CharSequence sb2;
   
-  public static ArrayList<MessageForText.AtTroopMemberInfo> getTroopMemberInfoFromExtrJson(String paramString)
+  public static ArrayList<AtTroopMemberInfo> getTroopMemberInfoFromExtrJson(String paramString)
   {
     String str = paramString;
     if (paramString.startsWith("{")) {}
@@ -80,7 +81,7 @@ public class MessageForText
         int i = 0;
         while (i < ((JSONArray)localObject1).length())
         {
-          localObject2 = MessageForText.AtTroopMemberInfo.setFromJson(((JSONArray)localObject1).getJSONObject(i));
+          localObject2 = AtTroopMemberInfo.setFromJson(((JSONArray)localObject1).getJSONObject(i));
           if (localObject2 != null) {
             paramString.add(localObject2);
           }
@@ -103,7 +104,7 @@ public class MessageForText
   private void parseStickerMsg()
   {
     Object localObject;
-    if ((EmojiStickerManager.a(this)) && ((this.extLong & 0x4) > 0) && (EmojiStickerManager.e))
+    if ((EmojiStickerManager.a(this)) && ((this.extLong & 0x4) > 0) && (EmojiStickerManager.f))
     {
       System.currentTimeMillis();
       localObject = getExtInfoFromExtStr("sticker_info");
@@ -116,7 +117,7 @@ public class MessageForText
         if (localObject != null)
         {
           ((EmojiStickerManager.StickerInfo)localObject).isDisplayed = this.isread;
-          this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject);
+          this.stickerInfo = localObject;
         }
       }
     }
@@ -134,7 +135,7 @@ public class MessageForText
       localObject = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject);
     } while (localObject == null);
     ((EmojiStickerManager.StickerInfo)localObject).isDisplayed = this.isread;
-    this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject);
+    this.stickerInfo = localObject;
   }
   
   protected void doParse()
@@ -186,7 +187,7 @@ public class MessageForText
       }
       localObject = new CopyOnWriteArrayList();
       ((List)localObject).add(this);
-      biyt.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
+      MQPSensitiveMsgUtil.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
       return;
     }
   }
@@ -198,7 +199,7 @@ public class MessageForText
     Object localObject1 = localObject2;
     if (this.msgtype == -1003)
     {
-      localObject1 = bhca.a((String)localObject2);
+      localObject1 = ActionMsgUtil.a((String)localObject2);
       this.action = ((MsgBody)localObject1).action;
       localObject1 = ((MsgBody)localObject1).msg;
     }
@@ -208,10 +209,10 @@ public class MessageForText
     }
     if (this.istroop == 1008)
     {
-      this.sb = new aatn((CharSequence)localObject2, 13);
-      ((aatn)this.sb).a = this.selfuin;
-      ((aatn)this.sb).b = this.frienduin;
-      ((aatn)this.sb).setBizSrc(uuc.b(this.frienduin));
+      this.sb = new PubAccountQQText((CharSequence)localObject2, 13);
+      ((PubAccountQQText)this.sb).a = this.selfuin;
+      ((PubAccountQQText)this.sb).b = this.frienduin;
+      ((PubAccountQQText)this.sb).setBizSrc(((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(this.frienduin));
     }
     for (;;)
     {
@@ -232,7 +233,7 @@ public class MessageForText
               continue;
             }
             localObject1 = localAppRuntime;
-            boolean bool = nwu.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
+            boolean bool = CrmUtils.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
             paramBoolean = bool;
           }
           catch (AccountNotMatchException localAccountNotMatchException)
@@ -251,7 +252,7 @@ public class MessageForText
           if (!paramBoolean) {
             continue;
           }
-          this.sb = new nws((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
+          this.sb = new CrmIvrText((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
           ((QQText)this.sb).setBizSrc("biz_src_jc_aio");
           break;
           localObject1 = localAppRuntime;
@@ -273,7 +274,7 @@ public class MessageForText
       }
       else
       {
-        this.sb = bhmb.a((String)localObject2, this, ChatTextSizeSettingActivity.a(), 13);
+        this.sb = ColorNickManager.a((String)localObject2, this, ChatTextSizeSettingActivity.a(), 13);
         localObject1 = getExtInfoFromExtStr("disc_at_info_list");
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
@@ -282,10 +283,10 @@ public class MessageForText
           {
             localObject3 = BaseApplicationImpl.sApplication.getRuntime();
             if (!QQAppInterface.class.isInstance(localObject3)) {
-              break label583;
+              break label593;
             }
-            this.msg2 = bgcz.a((QQAppInterface)localObject3, (StringBuilder)localObject2, (String)localObject1, this.frienduin, isSend()).toString();
-            this.sb2 = bhmb.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
+            this.msg2 = AtTroopMemberSpan.a((QQAppInterface)localObject3, (StringBuilder)localObject2, (String)localObject1, this.frienduin, isSend()).toString();
+            this.sb2 = ColorNickManager.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
             if (!(this.sb2 instanceof QQText)) {
               continue;
             }
@@ -296,7 +297,7 @@ public class MessageForText
             QLog.e("MessageForText", 1, "replaceAtMsgByMarkName", localException);
           }
           continue;
-          label583:
+          label593:
           if (QLog.isColorLevel()) {
             QLog.d("MessageForText", 2, "We get error AppRuntime");
           }
@@ -315,7 +316,7 @@ public class MessageForText
   
   public boolean isSupportFTS()
   {
-    return acnh.x(this.istroop);
+    return MsgProxyUtils.m(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -340,23 +341,23 @@ public class MessageForText
     this.msgData = str1.getBytes();
   }
   
-  public void setSendMsgParams(admo paramadmo)
+  public void setSendMsgParams(ChatActivityFacade.SendMsgParams paramSendMsgParams)
   {
-    this.mMsgSignalSum = paramadmo.jdField_a_of_type_Int;
-    this.mMsgSignalCount = paramadmo.b;
-    this.mIsMsgSignalOpen = paramadmo.jdField_c_of_type_Boolean;
-    this.mMsgSignalNetType = paramadmo.jdField_c_of_type_Int;
-    this.mMsgSendTime = paramadmo.jdField_a_of_type_Long;
-    this.mPasswdRedBagFlag = paramadmo.f;
-    this.mPasswdRedBagSender = paramadmo.d;
+    this.mMsgSignalSum = paramSendMsgParams.jdField_a_of_type_Int;
+    this.mMsgSignalCount = paramSendMsgParams.b;
+    this.mIsMsgSignalOpen = paramSendMsgParams.jdField_c_of_type_Boolean;
+    this.mMsgSignalNetType = paramSendMsgParams.jdField_c_of_type_Int;
+    this.mMsgSendTime = paramSendMsgParams.jdField_a_of_type_Long;
+    this.mPasswdRedBagFlag = paramSendMsgParams.f;
+    this.mPasswdRedBagSender = paramSendMsgParams.d;
     if ((this instanceof MessageForFoldMsg)) {
-      ((MessageForFoldMsg)this).foldFlagTemp = paramadmo.e;
+      ((MessageForFoldMsg)this).foldFlagTemp = paramSendMsgParams.e;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForText
  * JD-Core Version:    0.7.0.1
  */

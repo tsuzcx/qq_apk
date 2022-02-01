@@ -5,14 +5,13 @@ import android.media.MediaScannerConnection;
 import android.os.Environment;
 import android.os.Message;
 import android.text.TextUtils;
-import anfk;
-import bheg;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import mqq.os.MqqHandler;
-import zeb;
 
 class ApolloStoreActivity$3
   implements Runnable
@@ -51,8 +50,8 @@ class ApolloStoreActivity$3
           {
             try
             {
-              bheg.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject);
-              if ((!TextUtils.isEmpty(str)) && (zeb.c(str))) {
+              ImageUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject);
+              if ((!TextUtils.isEmpty(str)) && (FileUtils.c(str))) {
                 break label275;
               }
               if (!QLog.isColorLevel()) {
@@ -94,7 +93,7 @@ class ApolloStoreActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.3
  * JD-Core Version:    0.7.0.1
  */

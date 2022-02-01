@@ -11,7 +11,7 @@ public final class s_profile_timeline
   extends JceStruct
 {
   static Map<Integer, ArrayList<s_profile_calendar>> cache_map_timeline = new HashMap();
-  public Map<Integer, ArrayList<s_profile_calendar>> map_timeline;
+  public Map<Integer, ArrayList<s_profile_calendar>> map_timeline = null;
   
   static
   {

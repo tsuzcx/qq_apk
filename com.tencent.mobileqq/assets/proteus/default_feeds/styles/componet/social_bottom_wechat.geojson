@@ -1,0 +1,273 @@
+{
+  "view_type": "container",
+  "direction": "vertical",
+  "height": {
+    "type": "wrap_content"
+  },
+  "width": {
+    "type": "relative",
+    "value": "375"
+  },
+  "subviews": [
+    {
+      "view_type": "UIView",
+      "view_id": "id_social_bottom_style_a",
+      "event_type": "cmd_social_bottom_click",
+      "direction": "horizontal",
+      "layout_type":"layout_relative",
+      "height": {
+        "type": "absolutely",
+        "value": "40"
+      },
+      "width": {
+        "type": "relative",
+        "value": "375"
+      },
+      
+      "subviews": [
+          {
+              "view_type": "UIView",
+              "view_id": "id_watch_later_view",
+              "align_parent_center_vertical": "YES",
+              "visible_depend_on_children":"YES",
+              "layout_type":"layout_relative",
+              "height": {
+                "type": "relative",
+                "value": "20"
+              },
+              "width": {
+                "type": "wrap_content"
+              },
+              "margin_left":"12",
+              "attributes": {
+                  "setCornerRadiusString:":"10",
+                  "setBackgroundColorString:":"#F3F3F3"
+              },
+              "subviews": [
+                {
+                  "view_type": "UIButton",
+                  "align_parent_center_vertical": "YES",
+                  "event_type": "cmd_watch_later_click",
+                  "view_id": "id_watch_later_button_wechat",
+                  "default_visible":"YES",
+                  "height": {
+                    "type": "match_parent"
+                  },
+                  "width": {
+                    "type": "relative",
+                    "value": "70"
+                  },
+                  "attributes": {
+                    "setScaleType:":"3",
+                    "setTitle:": "$watch_later_text",
+                    "setSelectedString:": "$watch_later_selected",
+                    "setImages:colors:direction:forStates:": [
+                      [
+                        "watch_later",
+                        "watch_later_active"
+                      ],
+                      [
+                        "#444444",
+                        "#444444"
+                      ],
+                      [
+                        "0",
+                        "0"
+                      ],
+                      [
+                        "0",
+                        "4"
+                      ]
+                    ],
+                    "setFontSizeString:": "12",
+                    "setInnerMargin:": "-2"
+                  }
+                }
+              ]
+          },
+          {
+              "view_type": "UIView",
+              "layout_type": "layout_relative",
+              "view_id": "id_bottom_dislike_button_style_a",
+              "default_visible": "YES",
+              "align_parent_right": "YES",
+              "align_parent_center_vertical": "YES",
+              "event_type": "cmd_dislike_click",
+              "height": {
+                  "type": "relative",
+                  "value": "30"
+              },
+              "width": {
+                  "type": "relative",
+                  "value": "40"
+              },
+              "subviews": [
+                  {
+                      "view_type": "UIImageView",
+                      "view_id": "id_dislike_img",
+                      "default_visible": "YES",
+                      "align_parent_center": "YES",
+                      "height": {
+                          "type": "relative",
+                          "value": "12"
+                      },
+                      "width": {
+                          "type": "relative",
+                          "value": "12"
+                      },
+                      "attributes": {
+                          "loadImageWithPath:": "feeds_dislike"
+                      }
+                  }
+              ]
+          },
+          {
+            "view_type": "UIButton",
+            "align_parent_center_vertical": "YES",
+            "left_of_view":"id_bottom_dislike_button_style_a",
+            "event_type": "cmd_biu_click",
+            "view_id": "id_biu_button_style_a",
+            "height": {
+              "type": "relative",
+              "value": "24"
+            },
+            "width": {
+              "type": "relative",
+              "value": "80"
+            },
+            "margin_right":"2",
+            "attributes": {
+              "setScaleType:":"3",
+              "setTitle:": "$biu_count_style_a",
+              "setImages:forStates:": [
+                [
+                  "biu_comment_icon"
+                ],
+                [
+                  "0"
+                ]
+              ],
+              "setTitleColors:forStates:":[["#262626"],["0"]],
+              "setInnerMargin:": "2",
+              "setFontSizeString:": "12",
+              "setAlphaString:":"1",
+              "setEnableString:":"1"
+              
+            }
+          },
+          {
+              "view_type": "UIButton",
+              "align_parent_center_vertical": "YES",
+              "left_of_view":"id_bottom_dislike_button_style_a",
+              "event_type": "cmd_share_click",
+              "view_id": "id_share_button_style_a",
+              "height": {
+                "type": "relative",
+                "value": "24"
+              },
+              "width": {
+                "type": "relative",
+                "value": "80"
+              },
+              "margin_right":"2",
+              "attributes": {
+                "setScaleType:":"3",
+                "setTitle:": "$share_count_style_a",
+                "setImages:forStates:": [
+                  [
+                    "share_bottom_icon"
+                  ],
+                  [
+                    "0"
+                  ]
+                ],
+                "setTitleColors:forStates:":[["#262626"],["0"]],
+                "setInnerMargin:": "2",
+                "setFontSizeString:": "12",
+                "setAlphaString:":"1",
+                "setEnableString:":"1"
+
+              }
+            },
+          {
+            "view_type": "ReadInJoyLikeButton",
+            "view_id": "id_like_button_style_a",
+            "align_parent_center_vertical": "YES",
+            "align_parent_right":"YES",
+            "left_of_view":"id_bottom_dislike_button_style_a",
+            "margin_right":"124",
+            "event_type": "cmd_like_click",
+            "height": {
+              "type": "relative",
+              "value": "24"
+            },
+            "width": {
+              "type": "relative",
+              "value": "80"
+            },
+            "attributes": {
+              "setScaleType:":"3",
+              "setInnerMargin:": "2",
+              "setTitle:": "$like_text",
+              "setSelectedString:": "$like_selected_state",
+              "setImages:colors:direction:forStates:": [
+                [
+                  "social_bottom_style_a_like",
+                  "social_bottom_style_a_like_active"
+                ],
+                [
+                  "#262626",
+                  "#262626"
+                ],
+                [
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "4"
+                ]
+              ],
+              "setFontSizeString:": "12"
+              
+            }
+          },
+          {
+            "view_type": "UIButton",
+            "event_type": "cmd_comment_click",
+            "view_id": "id_comment_button_style_a",
+            "align_parent_center_vertical": "YES",
+            "left_of_view":"id_like_button_style_a",
+            "height": {
+              "type": "relative",
+              "value": "24"
+            },
+            "width": {
+              "type": "relative",
+              "value": "80"
+            },
+            "margin_right":"2",
+            "attributes": {
+              "setScaleType:":"3",
+              "setEnableString:":"$comment_enable",
+              "setTitle:": "$comment_text",
+              "setAlphaString:":"$comment_alpha",
+              "setTitleColors:forStates:":[["#262626"],["0"]],
+              "setImages:forStates:": [
+                [
+                  "social_bottom_style_a_comment"
+                ],
+                [
+                  "0"
+                ]
+              ],
+              "setInnerMargin:": "2",
+              "setFontSizeString:": "12"
+              
+            }
+          }
+        
+      ]
+    }
+  ]
+}

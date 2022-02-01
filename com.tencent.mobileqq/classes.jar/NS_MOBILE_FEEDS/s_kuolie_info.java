@@ -8,13 +8,13 @@ public final class s_kuolie_info
   extends JceStruct
 {
   static s_campus_info cache_vecCampusInfo = new s_campus_info();
-  public int iDays;
-  public int iFrdFlag;
-  public int iFrdsCnt;
-  public int iLastNuanTime;
-  public int iState;
+  public int iDays = 0;
+  public int iFrdFlag = 0;
+  public int iFrdsCnt = 0;
+  public int iLastNuanTime = 0;
+  public int iState = 0;
   public String strKuolieCampusAIOKey = "";
-  public s_campus_info vecCampusInfo;
+  public s_campus_info vecCampusInfo = null;
   
   public s_kuolie_info() {}
   

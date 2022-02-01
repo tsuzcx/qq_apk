@@ -25,10 +25,10 @@ class SearchRecommendAdapter$PlayingViewHolder
   public SearchRecommendAdapter$PlayingViewHolder(View paramView)
   {
     super(paramView);
-    this.icon = ((ImageView)paramView.findViewById(2131371320));
-    this.ranking = ((ImageView)paramView.findViewById(2131371322));
-    this.name = ((TextView)paramView.findViewById(2131371324));
-    this.category = ((TextView)paramView.findViewById(2131371325));
+    this.icon = ((ImageView)paramView.findViewById(2131371600));
+    this.ranking = ((ImageView)paramView.findViewById(2131371602));
+    this.name = ((TextView)paramView.findViewById(2131371604));
+    this.category = ((TextView)paramView.findViewById(2131371605));
   }
   
   public void update(SearchInfo paramSearchInfo, Activity paramActivity, int paramInt)
@@ -54,11 +54,11 @@ class SearchRecommendAdapter$PlayingViewHolder
       return;
       this.ranking.setVisibility(0);
       if (paramInt == 0) {
-        this.ranking.setImageResource(2130841053);
+        this.ranking.setImageResource(2130841186);
       } else if (paramInt == 1) {
-        this.ranking.setImageResource(2130841054);
+        this.ranking.setImageResource(2130841187);
       } else if (paramInt == 2) {
-        this.ranking.setImageResource(2130841055);
+        this.ranking.setImageResource(2130841188);
       }
     }
   }

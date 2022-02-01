@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import awam;
-import bisl;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class ShareMsgImpl$2$1
   implements Runnable

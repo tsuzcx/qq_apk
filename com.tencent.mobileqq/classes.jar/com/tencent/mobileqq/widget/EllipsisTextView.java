@@ -33,7 +33,7 @@ public class EllipsisTextView
     setEllipsize(TextUtils.TruncateAt.END);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     Layout localLayout = getLayout();
@@ -47,7 +47,7 @@ public class EllipsisTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.widget.EllipsisTextView
  * JD-Core Version:    0.7.0.1
  */

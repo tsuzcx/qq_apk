@@ -2,11 +2,10 @@ package cooperation.comic.webbundle;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import aqxe;
-import arem;
-import blsu;
 import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.config.business.QQComicConfBean;
+import com.tencent.mobileqq.config.business.QQComicConfBean.WebBundleConfig;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.smtt.sdk.WebBackForwardList;
 import com.tencent.smtt.sdk.WebHistoryItem;
@@ -40,7 +39,7 @@ public class WebBundleWebView
       if (localObject != null)
       {
         localObject = ((WebHistoryItem)localObject).getUrl();
-        QQComicConfBean localQQComicConfBean = (QQComicConfBean)aqxe.a().a(534);
+        QQComicConfBean localQQComicConfBean = (QQComicConfBean)QConfigManager.a().a(534);
         if ((localQQComicConfBean != null) && (localQQComicConfBean.a.a.equals(localObject))) {
           return super.canGoBackOrForward(-2);
         }
@@ -61,12 +60,12 @@ public class WebBundleWebView
   
   public void setOnPageFinishedListener(@NotNull IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener)
   {
-    setWebViewClient(new blsu(this, paramOnPageFinishedListener));
+    setWebViewClient(new WebBundleWebView.1(this, paramOnPageFinishedListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.comic.webbundle.WebBundleWebView
  * JD-Core Version:    0.7.0.1
  */

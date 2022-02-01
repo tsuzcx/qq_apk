@@ -11,12 +11,12 @@ public final class ReqHead
   implements Cloneable
 {
   static byte[] cache_vCookies;
-  public byte bReqType;
-  public byte bTriggered;
-  public int iSeq;
-  public long lUIN;
-  public short shVersion;
-  public byte[] vCookies;
+  public byte bReqType = 0;
+  public byte bTriggered = 0;
+  public int iSeq = 0;
+  public long lUIN = 0L;
+  public short shVersion = 0;
+  public byte[] vCookies = null;
   
   static
   {

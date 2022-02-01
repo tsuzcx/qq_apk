@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.apollo.process.ui.framework;
 
-import amti;
-import amwn;
-import amyo;
-import amyx;
 import android.app.Activity;
 import android.content.Context;
 import android.widget.RelativeLayout;
-import bkys;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.game.OnGameMenuListener;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.mobileqq.apollo.process.data.CmGameManager;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import mqq.util.WeakReference;
 
 public abstract class FrameworkView
   extends RelativeLayout
 {
-  public amti a;
-  public amyo a;
-  protected bkys a;
-  public CmGameStartChecker.StartCheckParam a;
-  public WeakReference<Activity> a;
+  protected CmGameStartChecker.StartCheckParam a;
+  protected OnGameMenuListener a;
+  protected CmGameLauncher a;
+  protected WeakReferenceHandler a;
+  protected WeakReference<Activity> a;
   
   public FrameworkView(Context paramContext)
   {
@@ -37,37 +37,37 @@ public abstract class FrameworkView
   
   public void a() {}
   
-  public void a(amyo paramamyo, bkys parambkys, amti paramamti, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public void a(CmGameLauncher paramCmGameLauncher, WeakReferenceHandler paramWeakReferenceHandler, OnGameMenuListener paramOnGameMenuListener, CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    this.jdField_a_of_type_Amyo = paramamyo;
-    this.jdField_a_of_type_Bkys = parambkys;
-    this.jdField_a_of_type_Amti = paramamti;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher = paramCmGameLauncher;
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = paramWeakReferenceHandler;
+    this.jdField_a_of_type_ComTencentMobileqqApolloGameOnGameMenuListener = paramOnGameMenuListener;
     this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam = paramStartCheckParam;
   }
   
   public boolean b()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId == 3112) || (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId == 4698)) {}
-    amyx localamyx;
+    CmGameManager localCmGameManager;
     do
     {
       do
       {
         return false;
-        if ((this.jdField_a_of_type_Amyo != null) && (this.jdField_a_of_type_Amyo.d())) {
+        if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.d())) {
           break;
         }
       } while (!QLog.isColorLevel());
       QLog.i("cmframe_FrameworkView", 2, "isShowExitGuide current game start not success:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
       return false;
-      localamyx = amwn.a();
-    } while ((localamyx == null) || (!localamyx.a()));
+      localCmGameManager = CmGameUtil.a();
+    } while ((localCmGameManager == null) || (!localCmGameManager.a()));
     return true;
   }
   
   public abstract void d();
   
-  public void f()
+  protected void f()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.disableMinGame)) {
       if ((this.jdField_a_of_type_MqqUtilWeakReference.get() != null) && ((this.jdField_a_of_type_MqqUtilWeakReference.get() instanceof ApolloGameActivity))) {
@@ -80,9 +80,9 @@ public abstract class FrameworkView
       {
         return;
         QLog.i("cmframe_FrameworkView", 1, "[onBackEvent]");
-      } while ((this.jdField_a_of_type_Amyo == null) || (!this.jdField_a_of_type_Amyo.a()));
+      } while ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a()));
       QLog.d("cmframe_FrameworkView", 1, "[onBackEvent] apollo game is running");
-      this.jdField_a_of_type_Amyo.h();
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.h();
     } while (this.jdField_a_of_type_MqqUtilWeakReference.get() == null);
     ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).overridePendingTransition(0, 0);
   }
@@ -93,7 +93,7 @@ public abstract class FrameworkView
     {
       if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null))
       {
-        RelativeLayout localRelativeLayout = (RelativeLayout)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).findViewById(2131376956);
+        RelativeLayout localRelativeLayout = (RelativeLayout)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).findViewById(2131377365);
         if (localRelativeLayout != null) {
           localRelativeLayout.removeView(this);
         }
@@ -108,7 +108,7 @@ public abstract class FrameworkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.ui.framework.FrameworkView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.apollo.player.manager;
 
-import amvq;
-import amvr;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -10,24 +8,24 @@ import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$CMSActionContext;", "invoke"}, k=3, mv={1, 1, 16})
-public final class CMSBornPlayer$recordAction$actionContext$1
+final class CMSBornPlayer$recordAction$actionContext$1
   extends Lambda
-  implements Function1<amvr, Unit>
+  implements Function1<CMSBornPlayer.CMSActionContext, Unit>
 {
-  public CMSBornPlayer$recordAction$actionContext$1(amvq paramamvq)
+  CMSBornPlayer$recordAction$actionContext$1(CMSBornPlayer paramCMSBornPlayer)
   {
     super(1);
   }
   
-  public final void invoke(@NotNull amvr paramamvr)
+  public final void invoke(@NotNull CMSBornPlayer.CMSActionContext paramCMSActionContext)
   {
-    Intrinsics.checkParameterIsNotNull(paramamvr, "it");
-    amvq.a(this.this$0, paramamvr, true);
+    Intrinsics.checkParameterIsNotNull(paramCMSActionContext, "it");
+    CMSBornPlayer.a(this.this$0, paramCMSActionContext, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.manager.CMSBornPlayer.recordAction.actionContext.1
  * JD-Core Version:    0.7.0.1
  */

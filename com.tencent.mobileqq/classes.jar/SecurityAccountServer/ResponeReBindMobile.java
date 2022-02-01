@@ -8,7 +8,7 @@ public final class ResponeReBindMobile
   extends JceStruct
 {
   static byte[] cache_sessionSid;
-  public byte[] sessionSid;
+  public byte[] sessionSid = null;
   
   public ResponeReBindMobile() {}
   

@@ -2,99 +2,99 @@ package com.tencent.qqlive.module.videoreport.inject.fragment;
 
 import android.view.View;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.page.ViewContainerBinder;
 import com.tencent.qqlive.module.videoreport.utils.UIUtils;
-import d;
 
 public class AndroidXFragmentCollector
 {
   private static final String TAG = "AndroidXFragmentCollect";
   
-  public static FragmentCompat fragmentToFragmentCompat(d paramd)
+  public static FragmentCompat fragmentToFragmentCompat(Fragment paramFragment)
   {
     FragmentCompat localFragmentCompat = new FragmentCompat();
-    localFragmentCompat.setActivity(paramd.getActivity());
-    localFragmentCompat.setView(paramd.getView());
+    localFragmentCompat.setActivity(paramFragment.getActivity());
+    localFragmentCompat.setView(paramFragment.getView());
     return localFragmentCompat;
   }
   
-  public static void onAndroidXFragmentViewCreated(d paramd, View paramView)
+  public static void onAndroidXFragmentViewCreated(Fragment paramFragment, View paramView)
   {
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AndroidXFragmentCollect", "onFragmentViewCreated: fragment = " + paramd.getClass().getName() + ", view = " + UIUtils.getViewInfo(paramView));
+      Log.i("AndroidXFragmentCollect", "onFragmentViewCreated: fragment = " + paramFragment.getClass().getName() + ", view = " + UIUtils.getViewInfo(paramView));
     }
-    ViewContainerBinder.getInstance().bind(paramView, paramd);
+    ViewContainerBinder.getInstance().bind(paramView, paramFragment);
   }
   
-  public static void onDestroyView(d paramd)
+  public static void onDestroyView(Fragment paramFragment)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AndroidXFragmentCollect", "onDestroyView: fragment = " + paramd.getClass().getName());
+      Log.i("AndroidXFragmentCollect", "onDestroyView: fragment = " + paramFragment.getClass().getName());
     }
-    if ((paramd instanceof DialogFragment)) {
+    if ((paramFragment instanceof DialogFragment)) {
       return;
     }
-    EventCollector.getInstance().onFragmentDestroyView(fragmentToFragmentCompat(paramd));
+    EventCollector.getInstance().onFragmentDestroyView(fragmentToFragmentCompat(paramFragment));
   }
   
-  public static void onHiddenChanged(d paramd, boolean paramBoolean)
+  public static void onHiddenChanged(Fragment paramFragment, boolean paramBoolean)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AndroidXFragmentCollect", "onHiddenChanged: fragment = " + paramd.getClass().getName() + ", hidden = " + paramBoolean);
+      Log.i("AndroidXFragmentCollect", "onHiddenChanged: fragment = " + paramFragment.getClass().getName() + ", hidden = " + paramBoolean);
     }
-    if ((paramd instanceof DialogFragment)) {
+    if ((paramFragment instanceof DialogFragment)) {
       return;
     }
     if (paramBoolean)
     {
-      EventCollector.getInstance().onFragmentPaused(fragmentToFragmentCompat(paramd));
+      EventCollector.getInstance().onFragmentPaused(fragmentToFragmentCompat(paramFragment));
       return;
     }
-    EventCollector.getInstance().onFragmentResumed(fragmentToFragmentCompat(paramd));
+    EventCollector.getInstance().onFragmentResumed(fragmentToFragmentCompat(paramFragment));
   }
   
-  public static void onPause(d paramd)
+  public static void onPause(Fragment paramFragment)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AndroidXFragmentCollect", "onPause: fragment = " + paramd.getClass().getName());
+      Log.i("AndroidXFragmentCollect", "onPause: fragment = " + paramFragment.getClass().getName());
     }
-    if ((paramd instanceof DialogFragment)) {
+    if ((paramFragment instanceof DialogFragment)) {
       return;
     }
-    EventCollector.getInstance().onFragmentPaused(fragmentToFragmentCompat(paramd));
+    EventCollector.getInstance().onFragmentPaused(fragmentToFragmentCompat(paramFragment));
   }
   
-  public static void onResume(d paramd)
+  public static void onResume(Fragment paramFragment)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AndroidXFragmentCollect", "onResume: fragment = " + paramd.getClass().getName());
+      Log.i("AndroidXFragmentCollect", "onResume: fragment = " + paramFragment.getClass().getName());
     }
-    if ((paramd instanceof DialogFragment)) {
+    if ((paramFragment instanceof DialogFragment)) {
       return;
     }
-    EventCollector.getInstance().onFragmentResumed(fragmentToFragmentCompat(paramd));
+    EventCollector.getInstance().onFragmentResumed(fragmentToFragmentCompat(paramFragment));
   }
   
-  public static void setUserVisibleHint(d paramd, boolean paramBoolean)
+  public static void setUserVisibleHint(Fragment paramFragment, boolean paramBoolean)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AndroidXFragmentCollect", "setUserVisibleHint: fragment = " + paramd.getClass().getName() + ", isVisible = " + paramBoolean);
+      Log.i("AndroidXFragmentCollect", "setUserVisibleHint: fragment = " + paramFragment.getClass().getName() + ", isVisible = " + paramBoolean);
     }
-    if ((paramd instanceof DialogFragment)) {
+    if ((paramFragment instanceof DialogFragment)) {
       return;
     }
     if (paramBoolean)
     {
-      EventCollector.getInstance().onFragmentResumed(fragmentToFragmentCompat(paramd));
+      EventCollector.getInstance().onFragmentResumed(fragmentToFragmentCompat(paramFragment));
       return;
     }
-    EventCollector.getInstance().onFragmentPaused(fragmentToFragmentCompat(paramd));
+    EventCollector.getInstance().onFragmentPaused(fragmentToFragmentCompat(paramFragment));
   }
 }
 

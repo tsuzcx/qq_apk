@@ -6,7 +6,6 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AuthDialog$1
   implements CompoundButton.OnCheckedChangeListener
@@ -38,14 +37,11 @@ class AuthDialog$1
       {
         AuthDialog.access$600(this.this$0).setEnabled(true);
         AuthDialog.access$600(this.this$0).setTextColor(-1);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
         return;
-        AuthDialog.access$600(this.this$0).setEnabled(false);
-        AuthDialog.access$600(this.this$0).setTextColor(Color.parseColor("#8e909d"));
       }
+      AuthDialog.access$600(this.this$0).setEnabled(false);
+      AuthDialog.access$600(this.this$0).setTextColor(Color.parseColor("#8e909d"));
+      return;
     }
   }
 }

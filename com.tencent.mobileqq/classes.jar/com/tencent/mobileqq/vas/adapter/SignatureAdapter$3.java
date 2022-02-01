@@ -2,16 +2,15 @@ package com.tencent.mobileqq.vas.adapter;
 
 import android.os.Bundle;
 import android.os.Handler;
-import bhoh;
-import bhpo;
-import bhqf;
-import bhyq;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig;
+import com.tencent.mobileqq.vas.VasResEngine.VasResController;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import java.io.File;
 
-public class SignatureAdapter$3
+class SignatureAdapter$3
   implements Runnable
 {
-  public SignatureAdapter$3(bhqf parambhqf, Bundle paramBundle) {}
+  SignatureAdapter$3(SignatureAdapter paramSignatureAdapter, Bundle paramBundle) {}
   
   public void run()
   {
@@ -27,18 +26,18 @@ public class SignatureAdapter$3
       if (localObject != null)
       {
         localObject = new File((String)localObject);
-        if (bhyq.a(new File(bhoh.a(str1, str2)), (File)localObject, true)) {
-          bhqf.a(this.this$0).a().sendEmptyMessage(10003);
+        if (DownloaderFactory.a(new File(SignatureTemplateConfig.a(str1, str2)), (File)localObject, true)) {
+          SignatureAdapter.a(this.this$0).a().sendEmptyMessage(10003);
         }
       }
       return;
-      localObject = bhoh.a(str1, "dynamic_aio");
+      localObject = SignatureTemplateConfig.a(str1, "dynamic_aio");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter.3
  * JD-Core Version:    0.7.0.1
  */

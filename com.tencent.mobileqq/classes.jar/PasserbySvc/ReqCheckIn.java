@@ -10,8 +10,8 @@ public final class ReqCheckIn
 {
   static ReqHeader cache_stHeader;
   static ReqUserInfo cache_stUserInfo;
-  public ReqHeader stHeader;
-  public ReqUserInfo stUserInfo;
+  public ReqHeader stHeader = null;
+  public ReqUserInfo stUserInfo = null;
   
   public ReqCheckIn() {}
   

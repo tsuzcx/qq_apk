@@ -12,11 +12,11 @@ public final class PfaFriendRsp
   static ArrayList<PfaFriend> cache_vecRec = new ArrayList();
   static ArrayList<PfaFriend> cache_vecSpfaRec;
   public String pfa_msg_edition = "";
-  public int ret;
-  public int use_default;
-  public ArrayList<String> vecPfaMsg;
-  public ArrayList<PfaFriend> vecRec;
-  public ArrayList<PfaFriend> vecSpfaRec;
+  public int ret = 0;
+  public int use_default = 0;
+  public ArrayList<String> vecPfaMsg = null;
+  public ArrayList<PfaFriend> vecRec = null;
+  public ArrayList<PfaFriend> vecSpfaRec = null;
   
   static
   {

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.R.styleable;
 
 public class Settings
 {
-  private float jdField_a_of_type_Float;
+  private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 300L;
   private Settings.Bounds jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Bounds = Settings.Bounds.NORMAL;
@@ -16,7 +16,7 @@ public class Settings
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 2.0F;
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   private float jdField_c_of_type_Float = -1.0F;
   private int jdField_c_of_type_Int;
   private boolean jdField_c_of_type_Boolean = true;
@@ -28,9 +28,9 @@ public class Settings
   private boolean jdField_e_of_type_Boolean = true;
   private float jdField_f_of_type_Float;
   private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean = false;
   private int jdField_g_of_type_Int = 17;
-  private boolean jdField_g_of_type_Boolean;
+  private boolean jdField_g_of_type_Boolean = false;
   private int jdField_h_of_type_Int;
   private boolean jdField_h_of_type_Boolean = true;
   private int i;

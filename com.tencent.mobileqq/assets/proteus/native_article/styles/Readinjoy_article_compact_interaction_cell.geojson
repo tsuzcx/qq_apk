@@ -45,7 +45,18 @@
               "setInnerMargin:": "4",
               "setImages:colors:direction:forStates:":[["$like_normalstate_image","NativeArticleLikeEnable"],["#737373","#737373"],["0","0"],["0","1"]],
               "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
-              "setFontSizeString:":"12"
+              "setFontSizeString:":"12",
+              "setDTElementID:withParams:": [
+                  "like_button",
+                  {
+                      "rowkey": "$dt_rowkey",
+                      "content_type": "5",
+                      "dt_pgid": "1",
+                      "eid":"like_button",
+                      "actionid":"$dt_actionid",
+                      "click_type": "single"
+                  }
+              ]
             }
           },
           {
@@ -69,7 +80,18 @@
               "setInnerMargin:": "4",
               "setImages:colors:direction:forStates:":[["NativeArticleDislike_gray"],["#737373"],["0"],["0"]],
               "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
-              "setFontSizeString:":"12"
+              "setFontSizeString:":"12",
+              "setDTElementID:withParams:": [
+                  "feedback_button",
+                  {
+                      "rowkey": "$dt_rowkey",
+                      "content_type": "5",
+                      "dt_pgid": "1",
+                      "eid":"feedback_button",
+                      "actionid":"click_feedback",
+                      "click_type": "single"
+                  }
+              ]
             }
           },
           {
@@ -91,11 +113,22 @@
             },
             "attributes": {
               "setInnerMargin:": "4",
-              "setTitle:":"分享",
+              "setTitle:":"$interaction_share_count",
               "setScaleType:":"3",
               "setImages:colors:direction:forStates:":[["NativeArticleShare_gray"],["#737373"],["0"],["0"]],
               "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
-              "setFontSizeString:":"12"
+              "setFontSizeString:":"12",
+              "setDTElementID:withParams:": [
+                  "share_button",
+                  {
+                      "rowkey": "$dt_rowkey",
+                      "content_type": "5",
+                      "dt_pgid": "1",
+                      "eid":"share_button",
+                      "actionid":"click_share",
+                      "click_type": "single"
+                  }
+              ]
             }
           }
         ]

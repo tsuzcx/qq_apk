@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import anrz;
-import anvk;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
@@ -14,27 +14,27 @@ class AddContactsView$10
   
   public void run()
   {
-    int i = this.this$0.jdField_a_of_type_Anrz.d();
+    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.d();
     if (QLog.isColorLevel()) {
       QLog.d("AddContactsView", 2, "fillSearchConditions | sexIndex = " + i);
     }
-    if ((i != 0) && (i < anrz.jdField_a_of_type_ArrayOfJavaLangString.length)) {
-      this.a.append(anrz.jdField_a_of_type_ArrayOfJavaLangString[i]).append("、");
+    if ((i != 0) && (i < ConditionSearchManager.jdField_a_of_type_ArrayOfJavaLangString.length)) {
+      this.a.append(ConditionSearchManager.jdField_a_of_type_ArrayOfJavaLangString[i]).append("、");
     }
-    Object localObject = this.this$0.jdField_a_of_type_Anrz.a();
-    localObject = this.this$0.jdField_a_of_type_Anrz.a(localObject[0], localObject[1]);
-    if (!anrz.b[0].equals(localObject)) {
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a();
+    localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(localObject[0], localObject[1]);
+    if (!ConditionSearchManager.b[0].equals(localObject)) {
       this.a.append((String)localObject).append("、");
     }
-    i = this.this$0.jdField_a_of_type_Anrz.b();
-    if ((i != 0) && (i != anrz.d.length - 1)) {
-      this.a.append(anrz.e[i]).append("、");
+    i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b();
+    if ((i != 0) && (i != ConditionSearchManager.d.length - 1)) {
+      this.a.append(ConditionSearchManager.e[i]).append("、");
     }
     if (this.this$0.c) {
       if ((this.this$0.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.this$0.d)) {
         if ("-1".equals(this.this$0.jdField_a_of_type_ArrayOfJavaLangString[0]))
         {
-          localObject = ((anvk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          localObject = ((FriendsManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
           if (localObject == null) {}
         }
       }
@@ -53,21 +53,21 @@ class AddContactsView$10
         try
         {
           this.this$0.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
-          localObject = this.this$0.jdField_a_of_type_Anrz.b(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
-          this.this$0.jdField_a_of_type_Anrz.b(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
-          this.this$0.jdField_a_of_type_Anrz.a(0, (String)localObject);
+          localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
+          this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
+          this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(0, (String)localObject);
           if (!"0".equals(this.this$0.jdField_a_of_type_ArrayOfJavaLangString[0])) {
-            this.a.append(this.this$0.jdField_a_of_type_Anrz.b((String)localObject)).append("、");
+            this.a.append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b((String)localObject)).append("、");
           }
-          localObject = this.this$0.jdField_a_of_type_Anrz.a(1);
+          localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(1);
           if (!((String)localObject).startsWith("不限")) {
-            this.a.append(this.this$0.jdField_a_of_type_Anrz.b((String)localObject)).append("、");
+            this.a.append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b((String)localObject)).append("、");
           }
-          i = this.this$0.jdField_a_of_type_Anrz.c();
+          i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c();
           if (i != 0) {
-            this.a.append(anrz.c[i]).append("、");
+            this.a.append(ConditionSearchManager.c[i]).append("、");
           }
-          this.this$0.jdField_a_of_type_Anrz.b();
+          this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b();
           this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new AddContactsView.10.1(this));
           return;
           localException1 = localException1;
@@ -86,16 +86,16 @@ class AddContactsView$10
           continue;
         }
       }
-      String str = this.this$0.jdField_a_of_type_Anrz.a(0);
+      String str = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(0);
       if (!str.startsWith("不限")) {
-        this.a.append(this.this$0.jdField_a_of_type_Anrz.b(str)).append("、");
+        this.a.append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(str)).append("、");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.10
  * JD-Core Version:    0.7.0.1
  */

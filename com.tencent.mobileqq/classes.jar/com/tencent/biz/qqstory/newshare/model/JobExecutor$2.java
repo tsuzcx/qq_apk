@@ -1,12 +1,9 @@
 package com.tencent.biz.qqstory.newshare.model;
 
-import wxz;
-import wyb;
-
-public class JobExecutor$2
+class JobExecutor$2
   implements Runnable
 {
-  public JobExecutor$2(wyb paramwyb, wxz paramwxz) {}
+  JobExecutor$2(JobExecutor paramJobExecutor, Job paramJob) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class JobExecutor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor.2
  * JD-Core Version:    0.7.0.1
  */

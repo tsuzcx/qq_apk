@@ -12,12 +12,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbwz;
-import bgls;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
@@ -28,7 +27,7 @@ public class RobotChatTipLayout
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WeakReference<bbwz> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<RobotChatTipLayout.RobotChatTipLayoutListener> jdField_a_of_type_JavaLangRefWeakReference;
   
   public RobotChatTipLayout(Context paramContext)
   {
@@ -41,13 +40,13 @@ public class RobotChatTipLayout
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
   }
   
-  public void a(bbwz parambbwz)
+  public void a(RobotChatTipLayout.RobotChatTipLayoutListener paramRobotChatTipLayoutListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbwz);
-    LayoutInflater.from(getContext()).inflate(2131561570, this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramRobotChatTipLayoutListener);
+    LayoutInflater.from(getContext()).inflate(2131561687, this);
     setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380198));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369356));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380639));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369611));
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     }
@@ -60,7 +59,7 @@ public class RobotChatTipLayout
       setVisibility(8);
       return;
       setBackgroundColor(-5066062);
-      findViewById(2131369384).setBackgroundColor(-10197916);
+      findViewById(2131369642).setBackgroundColor(-10197916);
     }
   }
   
@@ -68,9 +67,9 @@ public class RobotChatTipLayout
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bbwz localbbwz = (bbwz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbbwz != null) {
-        localbbwz.a(this);
+      RobotChatTipLayout.RobotChatTipLayoutListener localRobotChatTipLayoutListener = (RobotChatTipLayout.RobotChatTipLayoutListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localRobotChatTipLayoutListener != null) {
+        localRobotChatTipLayoutListener.a(this);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -80,13 +79,13 @@ public class RobotChatTipLayout
   {
     String str1 = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str1 = getResources().getString(2131718136);
+      str1 = getResources().getString(2131718640);
     }
     paramString = BaseApplicationImpl.getApplication().getRuntime();
     String str2;
     if ((paramString != null) && ((paramString instanceof QQAppInterface)))
     {
-      str2 = ((bgls)((QQAppInterface)paramString).getManager(QQManagerFactory.TROOP_ROBOT_MANAGER)).a();
+      str2 = ((TroopRobotManager)((QQAppInterface)paramString).getManager(QQManagerFactory.TROOP_ROBOT_MANAGER)).a();
       paramString = str2;
       if (TextUtils.isEmpty(str2)) {}
     }
@@ -100,7 +99,7 @@ public class RobotChatTipLayout
           paramString = str2.replace("[name]", "%1$s");
           str2 = paramString;
           if (TextUtils.isEmpty(paramString)) {
-            str2 = getResources().getString(2131718134);
+            str2 = getResources().getString(2131718638);
           }
           paramString = String.format(str2, new Object[] { str1 });
           if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(paramString))) {
@@ -126,7 +125,7 @@ public class RobotChatTipLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatTipLayout
  * JD-Core Version:    0.7.0.1
  */

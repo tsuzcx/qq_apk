@@ -2,38 +2,38 @@ package com.tencent.biz.qqstory.base.videoupload;
 
 public class VideoCompositeHelper$RetCode
 {
-  int code;
-  String message;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
   public VideoCompositeHelper$RetCode(int paramInt, String paramString)
   {
-    this.code = paramInt;
-    this.message = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public int getCode()
+  public int a()
   {
-    return this.code;
+    return this.jdField_a_of_type_Int;
   }
   
-  public String getMessage()
+  public String a()
   {
-    return this.message;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void setCode(int paramInt)
+  public void a(int paramInt)
   {
-    this.code = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setMessage(String paramString)
+  public void a(String paramString)
   {
-    this.message = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.RetCode
  * JD-Core Version:    0.7.0.1
  */

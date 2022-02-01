@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.guide;
 
 import android.os.Bundle;
-import axqt;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 class NearbyGuideActivity$7
   implements Runnable
 {
-  NearbyGuideActivity$7(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, axqt paramaxqt, Bundle paramBundle) {}
+  NearbyGuideActivity$7(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ class NearbyGuideActivity$7
         localArrayList.add(localPicInfo);
       }
     }
-    this.jdField_a_of_type_Axqt.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true, false);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true, false);
   }
 }
 

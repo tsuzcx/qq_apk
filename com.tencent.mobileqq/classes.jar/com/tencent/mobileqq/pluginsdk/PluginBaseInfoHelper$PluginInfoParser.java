@@ -22,6 +22,7 @@ public class PluginBaseInfoHelper$PluginInfoParser
   private static final String TAG_PLUGIN_INFO = "PluginInfo";
   private static final String TAG_PROCESSES = "Processes";
   private static final String TAG_STATE = "State";
+  private static final String TAG_SUB_TYPE = "SubType";
   private static final String TAG_TYPE = "Type";
   private static final String TAG_UPDATE_TYPE = "UpdateType";
   private static final String TAG_URL = "URL";
@@ -58,6 +59,9 @@ public class PluginBaseInfoHelper$PluginInfoParser
     localXmlSerializer.startTag("", "Type");
     localXmlSerializer.text(String.valueOf(paramPluginBaseInfo.mType));
     localXmlSerializer.endTag("", "Type");
+    localXmlSerializer.startTag("", "SubType");
+    localXmlSerializer.text(String.valueOf(paramPluginBaseInfo.mSubType));
+    localXmlSerializer.endTag("", "SubType");
     localXmlSerializer.startTag("", "PackageName");
     localXmlSerializer.text(paramPluginBaseInfo.mPackageName);
     localXmlSerializer.endTag("", "PackageName");
@@ -156,6 +160,11 @@ public class PluginBaseInfoHelper$PluginInfoParser
       if ("Type".equals(paramString2))
       {
         this.mResult.mType = Integer.valueOf(paramString1).intValue();
+        return;
+      }
+      if ("SubType".equals(paramString2))
+      {
+        this.mResult.mSubType = Integer.valueOf(paramString1).intValue();
         return;
       }
       if ("PackageName".equals(paramString2))

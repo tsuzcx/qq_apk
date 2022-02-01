@@ -2,19 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo.RedPoint;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qez;
-import rrx;
-import tto;
 
-public class ChannelCoverInfoModule$9
+class ChannelCoverInfoModule$9
   implements Runnable
 {
-  public ChannelCoverInfoModule$9(qez paramqez, List paramList1, List paramList2) {}
+  ChannelCoverInfoModule$9(ChannelCoverInfoModule paramChannelCoverInfoModule, List paramList1, List paramList2) {}
   
   public void run()
   {
@@ -50,11 +49,11 @@ public class ChannelCoverInfoModule$9
         localTabChannelCoverInfo.redPointJson = localJSONObject.toString();
         label211:
         if ((localTabChannelCoverInfo.mChannelCoverId == 70) && (!TextUtils.isEmpty(localTabChannelCoverInfo.mChannelJumpUrl))) {
-          tto.a(localTabChannelCoverInfo.mChannelJumpUrl);
+          ViolaAccessHelper.a(localTabChannelCoverInfo.mChannelJumpUrl);
         }
         this.this$0.a(localTabChannelCoverInfo);
         continue;
-        localObject = qez.a(this.this$0);
+        localObject = ChannelCoverInfoModule.a(this.this$0);
         if (localObject != null)
         {
           QLog.i("ChannelCoverInfoModule", 1, "now channels in db are:\n");
@@ -75,7 +74,7 @@ public class ChannelCoverInfoModule$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.9
  * JD-Core Version:    0.7.0.1
  */

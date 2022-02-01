@@ -11,8 +11,8 @@ import com.tencent.ttpic.glmodel.Sphere;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.io.File;
 
 public class ThreeDimFilter
@@ -30,7 +30,7 @@ public class ThreeDimFilter
     this.item = paramStickerItem;
     this.mSphere = new Sphere(3, 1.0F);
     this.dataPath = paramString;
-    this.materialId = VideoMaterialUtil.getMaterialId(paramString);
+    this.materialId = VideoMaterial.getMaterialId(paramString);
     initParams();
   }
   
@@ -83,7 +83,7 @@ public class ThreeDimFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.ThreeDimFilter
  * JD-Core Version:    0.7.0.1
  */

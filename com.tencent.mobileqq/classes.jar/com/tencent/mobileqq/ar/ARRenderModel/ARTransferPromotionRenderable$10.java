@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apem;
-import apeo;
-import bdla;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class ARTransferPromotionRenderable$10
+class ARTransferPromotionRenderable$10
   implements Runnable
 {
-  public ARTransferPromotionRenderable$10(apem paramapem) {}
+  ARTransferPromotionRenderable$10(ARTransferPromotionRenderable paramARTransferPromotionRenderable) {}
   
   public void run()
   {
-    bdla.b(null, "dc00898", "", "", "0X80098CD", "0X80098CD", 0, 0, apem.a(this.this$0).a, "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X80098CD", "0X80098CD", 0, 0, ARTransferPromotionRenderable.a(this.this$0).a, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.10
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,12 @@ package com.tencent.mobileqq.troop.utils;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.MQLruCache;
-import bght;
-import bghv;
 import java.util.LinkedList;
 
-public class RollangleImageView$ImageCache$1
+class RollangleImageView$ImageCache$1
   implements Runnable
 {
-  public RollangleImageView$ImageCache$1(bght parambght) {}
+  RollangleImageView$ImageCache$1(RollangleImageView.ImageCache paramImageCache) {}
   
   public void run()
   {
@@ -26,25 +24,25 @@ public class RollangleImageView$ImageCache$1
         label19:
         synchronized (this.this$0)
         {
-          if (bght.a(this.this$0) == null) {
+          if (RollangleImageView.ImageCache.a(this.this$0) == null) {
             return;
           }
         }
         if (localObject2 != null) {
-          bght.a(this.this$0).poll();
+          RollangleImageView.ImageCache.a(this.this$0).poll();
         }
-        if (bght.a(this.this$0).isEmpty()) {
+        if (RollangleImageView.ImageCache.a(this.this$0).isEmpty()) {
           return;
         }
-        bghv localbghv = (bghv)bght.a(this.this$0).peek();
-        ??? = RollangleImageView.a(localbghv.jdField_a_of_type_JavaLangString);
-        Object localObject3 = localbghv;
+        RollangleImageView.ImageCache.QueueItem localQueueItem = (RollangleImageView.ImageCache.QueueItem)RollangleImageView.ImageCache.a(this.this$0).peek();
+        ??? = RollangleImageView.a(localQueueItem.jdField_a_of_type_JavaLangString);
+        Object localObject3 = localQueueItem;
         if (??? == null) {
           continue;
         }
-        RollangleImageView.a.put("troopfileimage://" + localbghv.jdField_a_of_type_JavaLangString, ???);
-        bght.a(this.this$0).obtainMessage(0, new Object[] { localbghv.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localbghv.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
-        localObject3 = localbghv;
+        RollangleImageView.a.put("troopfileimage://" + localQueueItem.jdField_a_of_type_JavaLangString, ???);
+        RollangleImageView.ImageCache.a(this.this$0).obtainMessage(0, new Object[] { localQueueItem.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localQueueItem.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
+        localObject3 = localQueueItem;
       }
       catch (InterruptedException localInterruptedException)
       {

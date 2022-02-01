@@ -9,10 +9,10 @@ public final class ReqSearch
   extends JceStruct
 {
   static ArrayList<byte[]> cache_vvReqServices;
-  public int shVersion;
+  public int shVersion = 0;
   public String strCountryCode = "";
   public String strKeyword = "";
-  public ArrayList<byte[]> vvReqServices;
+  public ArrayList<byte[]> vvReqServices = null;
   
   public ReqSearch() {}
   
@@ -51,7 +51,7 @@ public final class ReqSearch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.ReqSearch
  * JD-Core Version:    0.7.0.1
  */

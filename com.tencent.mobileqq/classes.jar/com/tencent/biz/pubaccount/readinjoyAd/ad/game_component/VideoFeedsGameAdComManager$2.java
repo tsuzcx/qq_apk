@@ -2,34 +2,33 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.game_component;
 
 import android.graphics.Color;
 import android.widget.TextView;
-import anvx;
-import swu;
-import ugq;
-import ukr;
+import com.tencent.biz.pubaccount.readinjoy.video.videofeeds.VideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdSwitchUtil;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class VideoFeedsGameAdComManager$2
+class VideoFeedsGameAdComManager$2
   implements Runnable
 {
-  public VideoFeedsGameAdComManager$2(ugq paramugq) {}
+  VideoFeedsGameAdComManager$2(VideoFeedsGameAdComManager paramVideoFeedsGameAdComManager) {}
   
   public void run()
   {
-    if ((ugq.a(this.this$0) != null) && (ugq.a(this.this$0).C != null))
+    if ((VideoFeedsGameAdComManager.a(this.this$0) != null) && (VideoFeedsGameAdComManager.a(this.this$0).C != null))
     {
-      ugq.a(this.this$0).C.setTextColor(Color.parseColor("#262626"));
-      if (ukr.a()) {
-        ugq.a(this.this$0).C.setTextColor(Color.parseColor("#80000000"));
+      VideoFeedsGameAdComManager.a(VideoFeedsGameAdComManager.a(this.this$0).C, Color.parseColor("#262626"));
+      if (ReadInJoyAdSwitchUtil.a()) {
+        VideoFeedsGameAdComManager.a(VideoFeedsGameAdComManager.a(this.this$0).C, Color.parseColor("#80000000"));
       }
-      ugq.a(this.this$0).C.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      ugq.a(this.this$0).C.setText(anvx.a(2131715577));
-      ugq.a(this.this$0).C.setClickable(false);
-      ugq.a(this.this$0).C.setClickable(false);
+      VideoFeedsGameAdComManager.a(VideoFeedsGameAdComManager.a(this.this$0).C, null, null, null, null);
+      VideoFeedsGameAdComManager.a(VideoFeedsGameAdComManager.a(this.this$0).C, HardCodeUtil.a(2131716043));
+      VideoFeedsGameAdComManager.a(this.this$0).C.setClickable(false);
+      VideoFeedsGameAdComManager.a(this.this$0).C.setClickable(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import auyp;
-import biso;
 import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -20,15 +19,16 @@ public class BaseFragment
 {
   protected int a;
   protected View a;
-  public auyp a;
-  protected biso a;
-  public IphoneTitleBarActivity a;
+  protected IphoneTitleBarActivity a;
+  protected TitlebarStatus a;
+  protected QQProgressNotifier a;
   protected boolean a;
-  protected boolean b;
-  protected boolean c;
+  protected boolean b = false;
+  protected boolean c = false;
   
   public BaseFragment()
   {
+    this.jdField_a_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
       QLog.i("Fragment", 2, "new BaseFragment:" + getClass().getSimpleName() + " " + hashCode());
     }
@@ -41,7 +41,7 @@ public class BaseFragment
     return false;
   }
   
-  public void aC_()
+  public void aE_()
   {
     c();
     onHiddenChanged(false);
@@ -53,7 +53,7 @@ public class BaseFragment
   public void c()
   {
     if ((getActivity() instanceof NearbyActivity)) {
-      ((NearbyActivity)getActivity()).a(this.jdField_a_of_type_Auyp);
+      ((NearbyActivity)getActivity()).a(this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus);
     }
   }
   
@@ -79,8 +79,8 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onAttach() " + getClass().getSimpleName() + " " + hashCode());
     }
-    if (this.jdField_a_of_type_Auyp == null) {
-      this.jdField_a_of_type_Auyp = new auyp(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus == null) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus = new TitlebarStatus(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity = ((IphoneTitleBarActivity)getActivity());
     this.jdField_a_of_type_Boolean = true;
@@ -119,8 +119,8 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onDestroyView() " + getClass().getSimpleName() + " " + hashCode());
     }
-    if (this.jdField_a_of_type_Biso != null) {
-      this.jdField_a_of_type_Biso.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
     }
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
@@ -190,7 +190,7 @@ public class BaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.BaseFragment
  * JD-Core Version:    0.7.0.1
  */

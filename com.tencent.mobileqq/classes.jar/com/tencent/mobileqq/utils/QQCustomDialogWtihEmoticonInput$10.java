@@ -13,31 +13,31 @@ class QQCustomDialogWtihEmoticonInput$10
   
   public void onClick(View paramView)
   {
-    this.this$0.hideSoftInputFromWindow();
-    if (this.val$pl != null)
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.hideSoftInputFromWindow();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
     {
-      this.val$pl.onClick(this.this$0, 0);
-      if (this.this$0.mIsWindowAdded)
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput, 0);
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.c)
       {
-        if (!this.this$0.useAIOStyle) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_Boolean) {
           break label100;
         }
-        this.this$0.mWindowManager.removeView(this.this$0.mViewEmoSpace);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
       }
     }
     for (;;)
     {
-      this.this$0.mIsWindowAdded = false;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.c = false;
       try
       {
-        if (this.this$0.isShowing()) {
-          this.this$0.dismiss();
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.isShowing()) {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.dismiss();
         }
         label92:
         EventCollector.getInstance().onViewClicked(paramView);
         return;
         label100:
-        this.this$0.mWindowManager.removeView(this.this$0.mOldViewEmoSpace);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
       }
       catch (Exception localException)
       {

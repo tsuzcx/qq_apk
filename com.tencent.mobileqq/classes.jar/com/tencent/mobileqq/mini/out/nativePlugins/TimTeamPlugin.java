@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -19,7 +19,7 @@ public class TimTeamPlugin
   
   public void onDestroy() {}
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     if (paramJSContext != null) {}
     try
@@ -30,10 +30,9 @@ public class TimTeamPlugin
       }
       if (TextUtils.equals(paramJSONObject, "showCoopSpaceProfile"))
       {
-        paramJSONObject = paramJSContext.getActivity();
-        paramJSContext = new Intent(paramJSONObject, AccountDetailActivity.class);
-        paramJSContext.putExtra("uin", AppConstants.TIM_TEAM_UIN);
-        paramJSONObject.startActivity(paramJSContext);
+        paramJSONObject = new ActivityURIRequest(paramJSContext.getActivity(), "/pubaccount/detail");
+        paramJSONObject.extra().putString("uin", AppConstants.TIM_TEAM_UIN);
+        QRoute.startUri(paramJSONObject, null);
       }
       return;
     }

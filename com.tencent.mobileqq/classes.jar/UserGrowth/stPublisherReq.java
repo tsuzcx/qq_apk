@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stPublisherReq
   extends JceStruct
 {
-  public int nothing;
+  public int nothing = 0;
   
   public stPublisherReq() {}
   

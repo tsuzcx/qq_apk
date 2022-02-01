@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class RecentItemChatMsgData$2
   implements Runnable
@@ -9,12 +10,12 @@ class RecentItemChatMsgData$2
   
   public void run()
   {
-    this.a.reportClickEvent("CliOper", "0X80085A3");
+    ReportController.b(this.a, "CliOper", "", "", "0X80085A3", "0X80085A3", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,17 +2,16 @@ package com.tencent.mobileqq.managers;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import awtz;
-import bhhs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SharedPreferencesHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
-public class TroopAssistantManager$1
+class TroopAssistantManager$1
   implements Runnable
 {
-  public TroopAssistantManager$1(awtz paramawtz, QQAppInterface paramQQAppInterface) {}
+  TroopAssistantManager$1(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -43,7 +42,7 @@ public class TroopAssistantManager$1
     }
     finally {}
     if (localObject1 != null) {
-      bhhs.a(this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
+      SharedPreferencesHandler.a(this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
     }
   }
 }

@@ -1,15 +1,12 @@
 package com.tencent.device.file;
 
-import abgm;
-import abia;
-import abib;
-import abkw;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Base64;
-import auea;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.device.msg.data.DeviceMsgHandle;
 import com.tencent.litetransfersdk.ActionInfo;
 import com.tencent.litetransfersdk.FTNInfo;
 import com.tencent.litetransfersdk.FTNNotify;
@@ -26,6 +23,7 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.RouterHandler;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -33,10 +31,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -51,10 +49,10 @@ import java.util.Set;
 
 public class DeviceFileHandler
   extends RouterHandler
-  implements INetEngine.INetEngineListener
+  implements INetEngineListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new abia(this, Looper.getMainLooper());
-  private DeviceFileHandler.DeviceNotifyReceiver jdField_a_of_type_ComTencentDeviceFileDeviceFileHandler$DeviceNotifyReceiver;
+  Handler jdField_a_of_type_AndroidOsHandler = new DeviceFileHandler.1(this, Looper.getMainLooper());
+  private DeviceFileHandler.DeviceNotifyReceiver jdField_a_of_type_ComTencentDeviceFileDeviceFileHandler$DeviceNotifyReceiver = null;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   protected HashMap<Long, HttpNetReq> a;
   protected HashSet<Long> a;
@@ -159,6 +157,8 @@ public class DeviceFileHandler
     }
   }
   
+  public void OnSessionConnected(long paramLong, int paramInt1, int paramInt2) {}
+  
   public void OnSessionNew(Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo)
   {
     if (paramSession.actionInfo.strServiceName.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
@@ -188,7 +188,7 @@ public class DeviceFileHandler
         }
         this.e.put(Long.valueOf(paramSession.uSessionID), paramSession);
       } while (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(paramSession.uSessionID)));
-      if ((!paramSession.bSend) && ((abkw.d.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (abkw.h.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (abkw.b.equalsIgnoreCase(paramSession.actionInfo.strServiceName))))
+      if ((!paramSession.bSend) && ((DeviceMsgHandle.d.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (DeviceMsgHandle.h.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (DeviceMsgHandle.b.equalsIgnoreCase(paramSession.actionInfo.strServiceName))))
       {
         super.a(paramSession, paramNFCInfo, paramFTNInfo, false);
         super.b(paramSession);
@@ -198,7 +198,7 @@ public class DeviceFileHandler
     QLog.d("Device.file", 1, "OnSessionNew uSessionID=" + paramSession.uSessionID + " bussiness=" + paramSession.actionInfo.strServiceName);
   }
   
-  public void OnSessionProgress(long paramLong1, long paramLong2, long paramLong3)
+  public void OnSessionProgress(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Device.file", 2, "OnSessionProgress uSessionID=" + paramLong1 + "=====" + (float)((float)paramLong2 * 1.0D / paramLong3));
@@ -230,6 +230,8 @@ public class DeviceFileHandler
     super.notifyUI(101, true, localSession);
   }
   
+  public void OnSessionStartRun(long paramLong) {}
+  
   public void OnSessionUpdate(int paramInt, long paramLong, String paramString) {}
   
   public int a(long paramLong)
@@ -247,7 +249,7 @@ public class DeviceFileHandler
   {
     long l = 0L;
     if (paramInt1 == 3) {
-      l = ((abgm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString, paramInt2);
+      l = ((SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString, paramInt2);
     }
     return l;
   }
@@ -270,39 +272,41 @@ public class DeviceFileHandler
         l = this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.generateSessionID(0);
         paramString2 = MD5Utils.toMD5(paramString1) + paramString1.substring(paramString1.lastIndexOf("."));
         paramString2 = AppConstants.SDCARD_PATH + "smartdevice/" + paramString2;
-        if (FileUtils.fileExistsAndNotEmpty(paramString2))
+        if (FileUtils.b(paramString2))
         {
           paramQQAppInterface = new Message();
           paramQQAppInterface.what = 0;
           paramString1 = new Session();
           paramString1.uSessionID = l;
-          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramString1, abkw.g, null);
+          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramString1, DeviceMsgHandle.g, null);
           paramString1.strFilePathSrc = paramString2;
-          paramString1.uFileSizeSrc = FileUtils.getFileSizes(paramString2);
+          paramString1.uFileSizeSrc = FileUtils.a(paramString2);
           paramQQAppInterface.obj = paramString1;
           this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramQQAppInterface, 100L);
-          return l;
         }
-        Object localObject = new Session();
-        ((Session)localObject).uSessionID = l;
-        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, abkw.g, null);
-        this.e.put(Long.valueOf(l), localObject);
-        notifyUI(101, true, localObject);
-        localObject = new HttpNetReq();
-        ((HttpNetReq)localObject).mCallback = this;
-        ((HttpNetReq)localObject).mReqUrl = paramString1;
-        ((HttpNetReq)localObject).mHttpMethod = 0;
-        ((HttpNetReq)localObject).mOutPath = paramString2;
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), localObject);
-        paramQQAppInterface.getNetEngine(0).sendReq((NetReq)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-        return l;
+        for (;;)
+        {
+          return l;
+          Object localObject = new Session();
+          ((Session)localObject).uSessionID = l;
+          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, DeviceMsgHandle.g, null);
+          this.e.put(Long.valueOf(l), localObject);
+          notifyUI(101, true, localObject);
+          localObject = new HttpNetReq();
+          ((HttpNetReq)localObject).mCallback = this;
+          ((HttpNetReq)localObject).mReqUrl = paramString1;
+          ((HttpNetReq)localObject).mHttpMethod = 0;
+          ((HttpNetReq)localObject).mOutPath = paramString2;
+          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), localObject);
+          ((IHttpEngineService)paramQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+        }
       }
     } while (paramInt1 != 3);
-    l = ((abgm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString1, paramString2, paramInt2);
+    l = ((SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString1, paramString2, paramInt2);
     paramQQAppInterface = new Session();
     paramQQAppInterface.uSessionID = l;
-    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramQQAppInterface, abkw.g, null);
+    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramQQAppInterface, DeviceMsgHandle.g, null);
     this.e.put(Long.valueOf(l), paramQQAppInterface);
     notifyUI(101, true, paramQQAppInterface);
     this.jdField_b_of_type_JavaUtilHashSet.add(Long.valueOf(l));
@@ -336,7 +340,7 @@ public class DeviceFileHandler
     localSession.emFileType = paramSession.emFileType;
     localSession.strFileNameSrc = paramSession.strFileNameSrc;
     localSession.uFileSizeSrc = paramSession.uFileSizeSrc;
-    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, abkw.c, null);
+    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, DeviceMsgHandle.c, null);
     this.e.put(Long.valueOf(localSession.uSessionID), localSession);
     return localSession;
   }
@@ -356,17 +360,17 @@ public class DeviceFileHandler
       return null;
     }
     int i;
-    if (paramString2.equalsIgnoreCase(abkw.c))
+    if (paramString2.equalsIgnoreCase(DeviceMsgHandle.c))
     {
       i = 2251;
-      switch (auea.a(paramString1))
+      switch (FileManagerUtil.a(paramString1))
       {
       default: 
         localSession.uSessionID = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, 3, i);
         localSession.emFileType = i;
-        localSession.strFileNameSrc = auea.a(paramString1);
-        localSession.uFileSizeSrc = FileUtils.getFileSizes(paramString1);
-        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, abkw.c, null);
+        localSession.strFileNameSrc = FileManagerUtil.a(paramString1);
+        localSession.uFileSizeSrc = FileUtils.a(paramString1);
+        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, DeviceMsgHandle.c, null);
         this.e.put(Long.valueOf(localSession.uSessionID), localSession);
         notifyUI(101, true, localSession);
       }
@@ -408,7 +412,7 @@ public class DeviceFileHandler
           localObject = (Map.Entry)localIterator.next();
           if ((((Long)((Map.Entry)localObject).getKey()).longValue() != paramLong) && (((HttpNetReq)((Map.Entry)localObject).getValue()).mReqUrl.equals(((HttpNetReq)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).mReqUrl)))
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).cancelReq((NetReq)((Map.Entry)localObject).getValue());
+            ((IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).cancelReq((NetReq)((Map.Entry)localObject).getValue());
             localObject = (Session)this.e.get(((Map.Entry)localObject).getKey());
             if (localObject != null) {
               break;
@@ -427,7 +431,7 @@ public class DeviceFileHandler
         super.notifyUI(103, false, localObject);
         localIterator.remove();
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).cancelReq((NetReq)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
+      ((IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).cancelReq((NetReq)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
       this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
       return;
     }
@@ -462,7 +466,7 @@ public class DeviceFileHandler
   
   public Class<? extends BusinessObserver> observerClass()
   {
-    return abib.class;
+    return DeviceFileObserver.class;
   }
   
   public void onDestroy()
@@ -546,7 +550,7 @@ public class DeviceFileHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.file.DeviceFileHandler
  * JD-Core Version:    0.7.0.1
  */

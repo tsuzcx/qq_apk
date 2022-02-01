@@ -12,10 +12,10 @@ class QQCustomArkDialog$3
   
   public void run()
   {
-    if (QQCustomArkDialog.access$400(this.this$0) != null) {}
-    for (Activity localActivity = (Activity)QQCustomArkDialog.access$400(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    if (QQCustomArkDialog.a(this.this$0) != null) {}
+    for (Activity localActivity = (Activity)QQCustomArkDialog.a(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
     {
-      QQCustomArkDialog.access$500(this.this$0, this.val$bundle);
+      QQCustomArkDialog.a(this.this$0, this.a);
       return;
     }
     QLog.e("QQCustomArkDialog", 1, "init bundle activity is null or finished");

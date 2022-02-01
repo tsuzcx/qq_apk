@@ -19,8 +19,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgxc;
-import bhfn;
+import com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -28,13 +27,13 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.MalformedURLException;
 import java.net.URL;
-import oil;
 import org.json.JSONObject;
-import unn;
 
 public class ReadInJoyAdVideoGuide
   extends RelativeLayout
@@ -46,29 +45,32 @@ public class ReadInJoyAdVideoGuide
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ReadInJoyAdStarBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar;
+  private ReadInJoyAdVideoGuide.AdGuideClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private String jdField_a_of_type_JavaLangString;
-  private unn jdField_a_of_type_Unn;
   public boolean a;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean = false;
   
   public ReadInJoyAdVideoGuide(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
     a(paramContext);
   }
   
   public ReadInJoyAdVideoGuide(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     a(paramContext);
   }
   
   public ReadInJoyAdVideoGuide(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Boolean = false;
     a(paramContext);
   }
   
@@ -82,10 +84,10 @@ public class ReadInJoyAdVideoGuide
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (bhfn.a(getContext(), this.jdField_a_of_type_JavaLangString)) {
+      if (PackageUtil.a(getContext(), this.jdField_a_of_type_JavaLangString)) {
         return 3;
       }
-      if (oil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString)) {
+      if (ADBaseAppDownloadManager.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString)) {
         return 5;
       }
       return 2;
@@ -100,15 +102,15 @@ public class ReadInJoyAdVideoGuide
     default: 
       return "";
     case 4: 
-      return getResources().getText(2131717753).toString();
+      return getResources().getText(2131718255).toString();
     case 2: 
-      return getResources().getText(2131717750).toString();
+      return getResources().getText(2131718252).toString();
     case 3: 
-      return getResources().getText(2131717751).toString();
+      return getResources().getText(2131718253).toString();
     case 5: 
       return "立即安装";
     }
-    return getResources().getText(2131717801).toString();
+    return getResources().getText(2131718304).toString();
   }
   
   private void a(float paramFloat)
@@ -127,7 +129,7 @@ public class ReadInJoyAdVideoGuide
   
   private void a(Context paramContext)
   {
-    inflate(paramContext, 2131560106, this);
+    inflate(paramContext, 2131560185, this);
     setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     d();
   }
@@ -140,14 +142,14 @@ public class ReadInJoyAdVideoGuide
     {
       localResources = getResources();
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = AIOUtils.dp2px(60.0F, localResources);
-      localURLDrawableOptions.mRequestHeight = AIOUtils.dp2px(60.0F, localResources);
+      localURLDrawableOptions.mRequestWidth = AIOUtils.a(60.0F, localResources);
+      localURLDrawableOptions.mRequestHeight = AIOUtils.a(60.0F, localResources);
     }
     try
     {
       paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
-      paramString.setTag(bgxc.b(AIOUtils.dp2px(60.0F, localResources), AIOUtils.dp2px(60.0F, localResources), AIOUtils.dp2px(12.0F, localResources)));
-      paramString.setDecodeHandler(bgxc.j);
+      paramString.setTag(URLDrawableDecodeHandler.b(AIOUtils.a(60.0F, localResources), AIOUtils.a(60.0F, localResources), AIOUtils.a(12.0F, localResources)));
+      paramString.setDecodeHandler(URLDrawableDecodeHandler.j);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
       return;
     }
@@ -177,13 +179,13 @@ public class ReadInJoyAdVideoGuide
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376955));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365119));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362846));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362858));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363887));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362108);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar = ((ReadInJoyAdStarBar)findViewById(2131362115));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377364));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365255));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362887));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362899));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363985));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362129);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdStarBar = ((ReadInJoyAdStarBar)findViewById(2131362135));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -195,20 +197,20 @@ public class ReadInJoyAdVideoGuide
   private void e()
   {
     Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = AIOUtils.dp2px(48.0F, getContext().getResources());
-    ((LinearLayout.LayoutParams)localObject).height = AIOUtils.dp2px(48.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).width = AIOUtils.a(48.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).height = AIOUtils.a(48.0F, getContext().getResources());
     this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.dp2px(4.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.a(4.0F, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = AIOUtils.dp2px(62.0F, getContext().getResources());
-    ((LinearLayout.LayoutParams)localObject).height = AIOUtils.dp2px(22.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).width = AIOUtils.a(62.0F, getContext().getResources());
+    ((LinearLayout.LayoutParams)localObject).height = AIOUtils.a(22.0F, getContext().getResources());
     this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(11.0F);
     localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setColor(Color.parseColor("#00CAFC"));
-    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.dp2px(12.0F, getContext().getResources()));
+    ((GradientDrawable)localObject).setCornerRadius(AIOUtils.a(12.0F, getContext().getResources()));
     this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
   }
   
@@ -217,7 +219,7 @@ public class ReadInJoyAdVideoGuide
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.dp2px(130.0F, getContext().getResources());
+    ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.a(130.0F, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setGradientType(0);
@@ -265,8 +267,8 @@ public class ReadInJoyAdVideoGuide
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Unn != null) {
-        this.jdField_a_of_type_Unn.a(paramView, i);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener.a(paramView, i);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyAdVideoGuide", 2, "onClick:" + i);
@@ -310,7 +312,7 @@ public class ReadInJoyAdVideoGuide
     }
   }
   
-  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyAdVideoGuide", 2, "onVisibilityChanged:" + paramInt);
@@ -319,9 +321,9 @@ public class ReadInJoyAdVideoGuide
     c();
   }
   
-  public void setAdGuideClickListener(unn paramunn)
+  public void setAdGuideClickListener(ReadInJoyAdVideoGuide.AdGuideClickListener paramAdGuideClickListener)
   {
-    this.jdField_a_of_type_Unn = paramunn;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdVideoGuide$AdGuideClickListener = paramAdGuideClickListener;
   }
   
   public void setAppInfo(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -383,7 +385,7 @@ public class ReadInJoyAdVideoGuide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide
  * JD-Core Version:    0.7.0.1
  */

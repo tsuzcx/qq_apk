@@ -9,11 +9,11 @@ public final class CSUploadStreamMsg
 {
   static StreamData cache_stStreamData;
   static StreamInfo cache_stStreamInfo;
-  public int iSeq;
-  public int shMsgSeq;
-  public short shVersion;
-  public StreamData stStreamData;
-  public StreamInfo stStreamInfo;
+  public int iSeq = 0;
+  public int shMsgSeq = 0;
+  public short shVersion = 0;
+  public StreamData stStreamData = null;
+  public StreamInfo stStreamInfo = null;
   
   public CSUploadStreamMsg() {}
   

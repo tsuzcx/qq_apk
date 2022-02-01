@@ -1,14 +1,14 @@
 package com.tencent.av.wtogether.adapter;
 
-import amjz;
-import amkd;
-import amkh;
-import aoxz;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.CommonlyUsedTroopCompator;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItemWithMask;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.data.troop.CommonlyUsedTroop;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
@@ -20,8 +20,8 @@ import java.util.List;
 class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
   implements Runnable
 {
-  aoxz jdField_a_of_type_Aoxz;
   TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  RecentUserProxy jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
   ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList;
   List<DiscussionInfo> jdField_a_of_type_JavaUtilList;
   
@@ -54,7 +54,7 @@ class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
       if (localObject1 == null) {
         break label327;
       }
-      Collections.sort((List)localObject1, new amkd());
+      Collections.sort((List)localObject1, new TroopListAdapter2.CommonlyUsedTroopCompator());
       localObject1 = ((List)localObject1).iterator();
     }
     Object localObject3;
@@ -67,7 +67,7 @@ class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
       localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(((CommonlyUsedTroop)localObject2).troopUin);
       if (localObject3 != null)
       {
-        this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_Aoxz);
+        this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy);
         this.this$0.b.add(localObject3);
         continue;
         i = 0;
@@ -85,53 +85,53 @@ class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (TroopInfo)((Iterator)localObject2).next();
-      this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_Aoxz);
-      int j = amjz.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(((TroopInfo)localObject3).troopuin));
+      this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy);
+      int j = TroopListAdapter2.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(((TroopInfo)localObject3).troopuin));
       if (((TroopInfo)localObject3).isQidianPrivateTroop())
       {
-        this.this$0.g.add(new amkh(j, (Entity)localObject3));
+        this.this$0.g.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
       }
       else
       {
         if (((((TroopInfo)localObject3).dwAdditionalFlag & 1L) == 1L) || ((((TroopInfo)localObject3).troopowneruin != null) && (((TroopInfo)localObject3).troopowneruin.equals(localObject1)))) {
-          this.this$0.c.add(new amkh(j, (Entity)localObject3));
+          this.this$0.c.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
         }
         for (;;)
         {
           if (((TroopInfo)localObject3).hasSetTroopName()) {
             break label602;
           }
-          this.this$0.f.add(new amkh(j, (Entity)localObject3));
+          this.this$0.f.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
           break;
           if ((((TroopInfo)localObject3).dwCmdUinUinFlag & 1L) == 1L) {
-            this.this$0.d.add(new amkh(j, (Entity)localObject3));
+            this.this$0.d.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
           } else {
-            this.this$0.e.add(new amkh(j, (Entity)localObject3));
+            this.this$0.e.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
           }
         }
       }
     }
     localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    label791:
+    label790:
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (DiscussionInfo)((Iterator)localObject1).next();
-      localObject3 = (RecentUser)this.jdField_a_of_type_Aoxz.findRecentUserByUin(((DiscussionInfo)localObject2).uin, 3000);
+      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy.a(((DiscussionInfo)localObject2).uin, 3000);
       ((DiscussionInfo)localObject2).lastMsgTime = ((RecentUser)localObject3).lastmsgtime;
       if (((RecentUser)localObject3).showUpTime != 0L) {
         this.this$0.b.add(localObject2);
       }
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(((DiscussionInfo)localObject2).ownerUin)) {
-        this.this$0.c.add(new amkh(1, (Entity)localObject2));
+        this.this$0.c.add(new TroopListAdapter2.TroopListItemWithMask(1, (Entity)localObject2));
       }
       for (;;)
       {
         if (((DiscussionInfo)localObject2).hasRenamed()) {
-          break label791;
+          break label790;
         }
-        this.this$0.f.add(new amkh(1, (Entity)localObject2));
+        this.this$0.f.add(new TroopListAdapter2.TroopListItemWithMask(1, (Entity)localObject2));
         break;
-        this.this$0.e.add(new amkh(1, (Entity)localObject2));
+        this.this$0.e.add(new TroopListAdapter2.TroopListItemWithMask(1, (Entity)localObject2));
       }
     }
     if (QLog.isColorLevel()) {
@@ -142,7 +142,7 @@ class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.QGroupExpandableListAdapter.UpdateAfterLoadDataUIRunnable
  * JD-Core Version:    0.7.0.1
  */

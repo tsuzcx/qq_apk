@@ -7,12 +7,12 @@ public class ReaderAppSetting
 {
   public static String buildNum()
   {
-    return "4875";
+    return "5105";
   }
   
   public static boolean enableTalkBack()
   {
-    return AppSetting.c;
+    return AppSetting.d;
   }
   
   public static String getQUA()
@@ -27,12 +27,12 @@ public class ReaderAppSetting
   
   public static String subVersion()
   {
-    return "8.4.10";
+    return "8.5.5";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.ReaderAppSetting
  * JD-Core Version:    0.7.0.1
  */

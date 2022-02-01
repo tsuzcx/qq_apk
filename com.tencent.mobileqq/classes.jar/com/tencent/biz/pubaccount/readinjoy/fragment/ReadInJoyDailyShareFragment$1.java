@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyShareView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import quf;
 
 class ReadInJoyDailyShareFragment$1
   implements Runnable
@@ -11,13 +11,13 @@ class ReadInJoyDailyShareFragment$1
   public void run()
   {
     ReadInJoyDailyShareFragment.a(this.this$0);
-    ((quf)this.a).a(ReadInJoyDailyShareFragment.a(this.this$0));
-    ((quf)this.a).a(ReadInJoyDailyShareFragment.a(this.this$0));
+    ((ReadInJoyShareView)this.a).a(ReadInJoyDailyShareFragment.a(this.this$0));
+    ((ReadInJoyShareView)this.a).a(ReadInJoyDailyShareFragment.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyShareFragment.1
  * JD-Core Version:    0.7.0.1
  */

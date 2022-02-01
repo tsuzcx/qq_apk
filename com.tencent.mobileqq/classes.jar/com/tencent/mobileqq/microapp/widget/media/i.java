@@ -15,7 +15,7 @@ final class i
   public void a(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (StringUtil.isEmpty(paramContext)) {}
+    if (StringUtil.a(paramContext)) {}
     do
     {
       do

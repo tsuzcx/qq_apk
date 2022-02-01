@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bfmz;
 import java.util.HashSet;
 
-public class TroopFileDownloadMgr$11
+class TroopFileDownloadMgr$11
   implements Runnable
 {
-  public TroopFileDownloadMgr$11(bfmz parambfmz) {}
+  TroopFileDownloadMgr$11(TroopFileDownloadMgr paramTroopFileDownloadMgr) {}
   
   public void run()
   {
     HashSet localHashSet = new HashSet();
     this.this$0.a(1, localHashSet);
-    bfmz.a(this.this$0, 1, new Object[] { localHashSet });
+    TroopFileDownloadMgr.a(this.this$0, 1, new Object[] { localHashSet });
   }
 }
 

@@ -27,14 +27,14 @@ class TPSystemMediaPlayer$HookCallback
     {
       for (;;)
       {
-        TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "mediaPlayerExceptionHook, HookCallback, " + Log.getStackTraceString(paramMessage));
+        TPLogUtil.e("TPSystemMediaPlayer", "mediaPlayerExceptionHook, HookCallback, " + Log.getStackTraceString(paramMessage));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemMediaPlayer.HookCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajqp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,45 +10,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import anvx;
-import apac;
-import bisl;
-import bkyc;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessageRoamHandler;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class ChatHistoryAuthDevForRoamMsgFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  Handler.Callback a;
-  public bisl a;
-  
-  public ChatHistoryAuthDevForRoamMsgFragment()
-  {
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new ajqp(this);
-  }
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ChatHistoryAuthDevForRoamMsgFragment.1(this);
+  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   
   private void a()
   {
-    apac localapac = (apac)getActivity().app.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
-    if (localapac != null)
+    MessageRoamHandler localMessageRoamHandler = (MessageRoamHandler)getActivity().app.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
+    if (localMessageRoamHandler != null)
     {
-      localapac.a((short)1);
+      localMessageRoamHandler.a((short)1);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryAuthDevForRoamMsgFragment", 2, "set_roam_message_auth_mode: 1");
       }
-      this.jdField_a_of_type_Bisl = new bisl(getActivity(), getActivity().getTitleBarHeight());
-      this.jdField_a_of_type_Bisl.setCancelable(false);
-      this.jdField_a_of_type_Bisl.a(anvx.a(2131701136));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getActivity().getTitleBarHeight());
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131701711));
       if (!getActivity().isFinishing()) {
-        this.jdField_a_of_type_Bisl.show();
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
     }
   }
@@ -62,17 +56,17 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getString(2131696094));
-    this.mContentView.findViewById(2131380577).setOnClickListener(this);
-    this.mContentView.findViewById(2131380580).setOnClickListener(this);
-    paramLayoutInflater = new bkyc(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    setTitle(getString(2131696343));
+    this.mContentView.findViewById(2131381023).setOnClickListener(this);
+    this.mContentView.findViewById(2131381026).setOnClickListener(this);
+    paramLayoutInflater = new MqqWeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
     getActivity().app.setHandler(getClass(), paramLayoutInflater);
     VipUtils.a(getActivity().app, "chat_history", "LockSet", "switch_devlock", 1, 0, new String[0]);
   }
   
   public int getContentLayoutId()
   {
-    return 2131561899;
+    return 2131562032;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -102,15 +96,15 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   {
     getActivity().setResult(0);
     boolean bool = super.onBackEvent();
-    getActivity().overridePendingTransition(2130771977, 2130771978);
+    getActivity().overridePendingTransition(2130771979, 2130771980);
     return bool;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131380577)
+    if (paramView.getId() == 2131381023)
     {
-      this.mContentView.findViewById(2131380577).setEnabled(false);
+      this.mContentView.findViewById(2131381023).setEnabled(false);
       Intent localIntent = new Intent(getActivity(), QQBrowserActivity.class);
       localIntent.putExtra("url", "https://mapp.3g.qq.com/touch/psw/verify.jsp?_wv=5123&type=history&from=[from]".replace("[from]", "switch_devlock"));
       VipUtils.a(getActivity().app, "chat_history", "LockSet", "Clk_usedevlock", 1, 0, new String[0]);
@@ -120,7 +114,7 @@ public class ChatHistoryAuthDevForRoamMsgFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView.getId() == 2131380580)
+      if (paramView.getId() == 2131381026)
       {
         VipUtils.a(getActivity().app, "chat_history", "LockSet", "Clk_PswUse", 2, 0, new String[0]);
         getActivity().setResult(0);
@@ -132,12 +126,12 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   public void onFinish()
   {
     super.onFinish();
-    getActivity().overridePendingTransition(2130771977, 2130771978);
+    getActivity().overridePendingTransition(2130771979, 2130771980);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment
  * JD-Core Version:    0.7.0.1
  */

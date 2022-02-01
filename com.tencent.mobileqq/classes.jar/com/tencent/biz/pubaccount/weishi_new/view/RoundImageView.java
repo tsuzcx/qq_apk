@@ -13,19 +13,18 @@ import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ImageView.ScaleType;
 import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import vsn;
-import vso;
-import vsp;
-import vsq;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class RoundImageView
   extends ResizeURLImageView
+  implements Handler.Callback
 {
   private static final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
   private static final ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.CENTER_CROP;
@@ -36,6 +35,7 @@ public class RoundImageView
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 0;
@@ -78,14 +78,17 @@ public class RoundImageView
     }
     try
     {
-      if ((paramDrawable instanceof ColorDrawable)) {
-        return Bitmap.createBitmap(1, 1, jdField_a_of_type_AndroidGraphicsBitmap$Config);
+      if ((paramDrawable instanceof ColorDrawable)) {}
+      for (Bitmap localBitmap = Bitmap.createBitmap(1, 1, jdField_a_of_type_AndroidGraphicsBitmap$Config);; localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), jdField_a_of_type_AndroidGraphicsBitmap$Config))
+      {
+        Canvas localCanvas = new Canvas(localBitmap);
+        paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+        paramDrawable.draw(localCanvas);
+        return localBitmap;
       }
-      paramDrawable = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), jdField_a_of_type_AndroidGraphicsBitmap$Config);
-      return paramDrawable;
+      return null;
     }
     catch (OutOfMemoryError paramDrawable) {}
-    return null;
   }
   
   private void a()
@@ -115,7 +118,7 @@ public class RoundImageView
   
   private void a(Drawable paramDrawable)
   {
-    Observable.just(paramDrawable).map(new vsq(this)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map(new vsp(this, paramDrawable)).subscribe(new vsn(this), new vso(this));
+    ThreadManager.post(new RoundImageView.1(this, paramDrawable), 8, null, true);
   }
   
   private void b()
@@ -148,6 +151,17 @@ public class RoundImageView
     return jdField_a_of_type_AndroidWidgetImageView$ScaleType;
   }
   
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    while ((paramMessage.what != 101) || (!(paramMessage.obj instanceof Bitmap))) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)paramMessage.obj);
+    a();
+    return false;
+  }
+  
   public void onDraw(Canvas paramCanvas)
   {
     if (getDrawable() == null) {
@@ -157,7 +171,7 @@ public class RoundImageView
     paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     a();
@@ -219,7 +233,7 @@ public class RoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

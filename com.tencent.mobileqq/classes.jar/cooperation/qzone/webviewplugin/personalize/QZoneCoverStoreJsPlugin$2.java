@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin.personalize;
 
-import bhdj;
-import bifw;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import mqq.app.QQPermissionCallback;
 
 class QZoneCoverStoreJsPlugin$2
@@ -11,7 +11,7 @@ class QZoneCoverStoreJsPlugin$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bhdj.a(this.this$0.mRuntime.a());
+    DialogUtil.a(this.this$0.mRuntime.a());
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -21,7 +21,7 @@ class QZoneCoverStoreJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

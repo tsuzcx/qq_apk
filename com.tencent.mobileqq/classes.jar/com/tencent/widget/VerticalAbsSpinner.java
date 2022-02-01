@@ -25,7 +25,7 @@ public abstract class VerticalAbsSpinner
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
+  public ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new ViewGroup.LayoutParams(-1, -2);
   }
@@ -80,7 +80,7 @@ public abstract class VerticalAbsSpinner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.VerticalAbsSpinner
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
-import bhfg;
+import com.tencent.mobileqq.utils.MessageProgressController;
 import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
+import com.tencent.mobileqq.widget.RefreshProgressRunnable;
 
 public class VideoProgressView
   extends MessageProgressView
 {
   private boolean a = true;
-  private float g;
+  private float g = 0.0F;
   
   public VideoProgressView(Context paramContext)
   {
@@ -75,27 +75,27 @@ public class VideoProgressView
     {
       this.g = paramFloat;
       if (this.g >= 1.0F) {
-        break label82;
+        break label86;
       }
     }
-    MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
-    label82:
+    RefreshProgressRunnable localRefreshProgressRunnable;
+    label86:
     for (boolean bool = true;; bool = false)
     {
       this.a = bool;
       if (this.d == 1)
       {
-        localRefreshProgressRunnable = bhfg.a().a(paramString);
+        localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
         if (localRefreshProgressRunnable != null) {
           break;
         }
-        localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString);
-        bhfg.a().a(paramString, localRefreshProgressRunnable);
+        localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString, this.e);
+        MessageProgressController.a().a(paramString, localRefreshProgressRunnable);
         ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       }
       return;
     }
-    localRefreshProgressRunnable.a(this);
+    localRefreshProgressRunnable.a(this, this.e);
   }
   
   public void setVideoCompressStatus(boolean paramBoolean)
@@ -105,7 +105,7 @@ public class VideoProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.VideoProgressView
  * JD-Core Version:    0.7.0.1
  */

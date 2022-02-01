@@ -3,13 +3,12 @@ package com.tencent.avgame.videorecord;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.view.View;
-import nky;
-import nrk;
+import com.tencent.avgame.gameroom.stage.IStagePresenter;
 
-public class ShowAndGuessGameVideoRecordCtrl$6
+class ShowAndGuessGameVideoRecordCtrl$6
   implements Runnable
 {
-  public ShowAndGuessGameVideoRecordCtrl$6(nrk paramnrk, int paramInt, View paramView) {}
+  ShowAndGuessGameVideoRecordCtrl$6(ShowAndGuessGameVideoRecordCtrl paramShowAndGuessGameVideoRecordCtrl, int paramInt, View paramView) {}
   
   public void run()
   {
@@ -38,9 +37,9 @@ public class ShowAndGuessGameVideoRecordCtrl$6
         int m = this.jdField_a_of_type_AndroidViewView.getTop();
         int j = k;
         int i = m;
-        if (nrk.a(this.this$0) != null)
+        if (ShowAndGuessGameVideoRecordCtrl.a(this.this$0) != null)
         {
-          RectF localRectF = nrk.a(this.this$0).a();
+          RectF localRectF = ShowAndGuessGameVideoRecordCtrl.a(this.this$0).a();
           j = k;
           i = m;
           if (localRectF != null)
@@ -63,7 +62,7 @@ public class ShowAndGuessGameVideoRecordCtrl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.videorecord.ShowAndGuessGameVideoRecordCtrl.6
  * JD-Core Version:    0.7.0.1
  */

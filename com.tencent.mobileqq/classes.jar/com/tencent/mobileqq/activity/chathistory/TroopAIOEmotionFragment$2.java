@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import asku;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emotionintegrate.EmotionPreviewData;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +22,7 @@ class TroopAIOEmotionFragment$2
     ArrayList localArrayList = new ArrayList();
     Object localObject = TroopAIOEmotionFragment.a(this.this$0).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add((ChatMessage)((asku)((Iterator)localObject).next()).a);
+      localArrayList.add((ChatMessage)((EmotionPreviewData)((Iterator)localObject).next()).a);
     }
     localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface)) {}
@@ -33,7 +33,7 @@ class TroopAIOEmotionFragment$2
         if (localArrayList.size() != 1) {
           break label122;
         }
-        ((QQAppInterface)localObject).getMessageFacade().removeMsgByMessageRecord((MessageRecord)localArrayList.get(0), false);
+        ((QQAppInterface)localObject).getMessageFacade().a((MessageRecord)localArrayList.get(0), false);
       }
       for (;;)
       {
@@ -41,7 +41,7 @@ class TroopAIOEmotionFragment$2
         return;
         label122:
         if (localArrayList.size() > 1) {
-          ((QQAppInterface)localObject).getMessageFacade().removeMultiMsgByMessageRecord(localArrayList, false);
+          ((QQAppInterface)localObject).getMessageFacade().a(localArrayList, false);
         }
       }
     }
@@ -49,7 +49,7 @@ class TroopAIOEmotionFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment.2
  * JD-Core Version:    0.7.0.1
  */

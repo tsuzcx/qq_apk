@@ -1,13 +1,13 @@
 package com.tencent.biz.richframework.network.cache;
 
+import com.tencent.biz.richframework.network.util.Encrypt;
 import java.io.InputStream;
 import java.util.ArrayList;
-import url;
 
 public abstract class Cache
 {
   protected static ArrayList<String[]> jobs = new ArrayList();
-  protected static int threadCount;
+  protected static int threadCount = 0;
   
   public abstract boolean cacheExists(String paramString);
   
@@ -17,7 +17,7 @@ public abstract class Cache
   
   public String getCacheName(String paramString)
   {
-    return url.c(paramString);
+    return Encrypt.md5(paramString);
   }
   
   public abstract Cache.CacheInputStream getStream(String paramString);
@@ -73,7 +73,7 @@ public abstract class Cache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.cache.Cache
  * JD-Core Version:    0.7.0.1
  */

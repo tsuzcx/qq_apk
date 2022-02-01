@@ -12,7 +12,7 @@ public final class KotlinVersion
 {
   @JvmField
   @NotNull
-  public static final KotlinVersion CURRENT = new KotlinVersion(1, 3, 70);
+  public static final KotlinVersion CURRENT = new KotlinVersion(1, 3, 72);
   public static final KotlinVersion.Companion Companion = new KotlinVersion.Companion(null);
   public static final int MAX_COMPONENT_VALUE = 255;
   private final int major;
@@ -119,7 +119,7 @@ public final class KotlinVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     kotlin.KotlinVersion
  * JD-Core Version:    0.7.0.1
  */

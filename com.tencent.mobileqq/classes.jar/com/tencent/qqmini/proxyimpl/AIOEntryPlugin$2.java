@@ -1,6 +1,5 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkma;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -8,23 +7,23 @@ import com.tencent.qqmini.sdk.launcher.core.IPage;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class AIOEntryPlugin$2
+class AIOEntryPlugin$2
   implements Runnable
 {
-  public AIOEntryPlugin$2(bkma parambkma, RequestEvent paramRequestEvent) {}
+  AIOEntryPlugin$2(AIOEntryPlugin paramAIOEntryPlugin, RequestEvent paramRequestEvent) {}
   
   public void run()
   {
-    if ((bkma.g(this.this$0).getAttachedActivity() instanceof GameActivity1)) {
-      ((GameActivity1)bkma.h(this.this$0).getAttachedActivity()).hideMiniAIOEntrance();
+    if ((AIOEntryPlugin.g(this.this$0).getAttachedActivity() instanceof GameActivity1)) {
+      ((GameActivity1)AIOEntryPlugin.h(this.this$0).getAttachedActivity()).hideMiniAIOEntrance();
     }
     for (;;)
     {
       this.a.ok();
       return;
-      if ((bkma.i(this.this$0).getMiniAppInfo() != null) && (bkma.j(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((bkma.k(this.this$0) instanceof BaseRuntime)))
+      if ((AIOEntryPlugin.i(this.this$0).getMiniAppInfo() != null) && (AIOEntryPlugin.j(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((AIOEntryPlugin.k(this.this$0) instanceof BaseRuntime)))
       {
-        IPage localIPage = ((BaseRuntime)bkma.l(this.this$0)).getPage();
+        IPage localIPage = ((BaseRuntime)AIOEntryPlugin.l(this.this$0)).getPage();
         if (localIPage != null) {
           localIPage.setMiniAIOEntranceVisible(false, null);
         }

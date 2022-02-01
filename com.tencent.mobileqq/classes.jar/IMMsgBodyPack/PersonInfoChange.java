@@ -9,8 +9,8 @@ public final class PersonInfoChange
   extends JceStruct
 {
   static ArrayList<PersonInfoField> cache_vChgField;
-  public byte cType;
-  public ArrayList<PersonInfoField> vChgField;
+  public byte cType = 0;
+  public ArrayList<PersonInfoField> vChgField = null;
   
   public PersonInfoChange() {}
   

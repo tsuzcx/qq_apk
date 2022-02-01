@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import aftr;
-import ahpt;
-import ahvi;
+import com.tencent.biz.AuthorizeConfig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.BaseApplication;
-import nro;
 
 public class MusicShareAppInfo
   extends PlusPanelAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839212;
+    return 2130839281;
   }
   
   public int getAppID()
@@ -29,18 +29,18 @@ public class MusicShareAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131694193);
+    return BaseApplicationImpl.getContext().getString(2131694397);
   }
   
-  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((paramBaseChatPie == null) || (paramBaseChatPie.getActivity() == null)) {
+    if ((paramBaseChatPie == null) || (paramBaseChatPie.a() == null)) {
       return;
     }
-    paramahvi = nro.a().a("aio_qqMusicShare", "");
-    aftr.a(paramBaseChatPie.app, paramBaseChatPie.getActivity(), paramSessionInfo, paramahvi);
-    paramBaseChatPie.getActivity().setCanLock(false);
-    ahpt.a(paramBaseChatPie.app, "0X8004083", paramSessionInfo.curType);
+    paramPlusPanelViewModel = AuthorizeConfig.a().a("aio_qqMusicShare", "");
+    PlusPanelUtils.a(paramBaseChatPie.a, paramBaseChatPie.a(), paramSessionInfo, paramPlusPanelViewModel);
+    paramBaseChatPie.a().setCanLock(false);
+    AIOPanelUtiles.a(paramBaseChatPie.a, "0X8004083", paramSessionInfo.a);
   }
 }
 

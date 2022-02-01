@@ -9,11 +9,12 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.util.StringBuilderPrinter;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.c.f;
-import com.tencent.mobileqq.msf.core.c.f.a;
+import com.tencent.mobileqq.msf.core.c.e;
+import com.tencent.mobileqq.msf.core.c.e.a;
+import com.tencent.mobileqq.msf.core.p;
+import com.tencent.mobileqq.msf.sdk.b.c;
 import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
 import com.tencent.mobileqq.msf.sdk.handler.IMsfProxy;
-import com.tencent.mobileqq.msf.sdk.report.c;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.IMsfServiceCallbacker;
 import com.tencent.qphone.base.remote.MsfServiceBindInfo;
@@ -59,7 +60,7 @@ public class q
         NetConnInfoCenter.GUID = (byte[])paramFromServiceMsg.getAttribute("_attr_deviceGUID");
         NetConnInfoCenter.sAppTimeoutConfig = ((Integer)paramFromServiceMsg.getAttribute("_attr_app_timeout")).intValue();
         if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-          f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 17);
+          e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 17);
         }
       }
     }
@@ -76,7 +77,7 @@ public class q
             return;
           }
           if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-            f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 16);
+            e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 16);
           }
         } while (!QLog.isColorLevel());
         QLog.d("MSF.D.ProxyNew", 2, " close msfServiceConn. push msg is droped." + paramFromServiceMsg);
@@ -88,7 +89,7 @@ public class q
       QLog.d("MSF.D.ProxyNew", 2, "receive service ipc test push, length = " + paramFromServiceMsg.getWupBuffer().length);
       return;
     } while ((paramFromServiceMsg == null) || (paramFromServiceMsg.getServiceCmd() == null) || (!paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c")));
-    f.a().a(f.a.c, paramFromServiceMsg.getWupBuffer(), 15);
+    e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 15);
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -207,6 +208,11 @@ public class q
   
   void a()
   {
+    if (!p.a())
+    {
+      QLog.d("MSF.D.ProxyNew", 1, "startBaseService no allow");
+      return;
+    }
     try
     {
       ComponentName localComponentName = new ComponentName(BaseApplication.getContext().getPackageName(), this.r.msfServiceName);
@@ -234,6 +240,11 @@ public class q
   boolean b()
   {
     boolean bool1 = false;
+    if (!p.a())
+    {
+      QLog.d("MSF.D.ProxyNew", 1, "bindBaseService no allow");
+      return false;
+    }
     c.a().onBindStart();
     for (;;)
     {

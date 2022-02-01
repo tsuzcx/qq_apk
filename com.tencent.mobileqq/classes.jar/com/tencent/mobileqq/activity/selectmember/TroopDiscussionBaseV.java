@@ -11,10 +11,10 @@ public abstract class TroopDiscussionBaseV
   extends FrameLayout
 {
   protected Context a;
-  public LayoutInflater a;
-  public InnerFrameManager a;
-  public SelectMemberActivity a;
-  public QQAppInterface a;
+  protected LayoutInflater a;
+  protected InnerFrameManager a;
+  protected SelectMemberActivity a;
+  protected QQAppInterface a;
   
   public TroopDiscussionBaseV(SelectMemberActivity paramSelectMemberActivity)
   {
@@ -23,7 +23,7 @@ public abstract class TroopDiscussionBaseV
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity = paramSelectMemberActivity;
     this.jdField_a_of_type_AndroidContentContext = paramSelectMemberActivity;
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramSelectMemberActivity.getLayoutInflater();
-    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = paramSelectMemberActivity.mInnerFrameManager;
+    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = paramSelectMemberActivity.jdField_a_of_type_ComTencentCommonAppInnerFrameManager;
   }
   
   protected void a() {}
@@ -45,7 +45,7 @@ public abstract class TroopDiscussionBaseV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopDiscussionBaseV
  * JD-Core Version:    0.7.0.1
  */

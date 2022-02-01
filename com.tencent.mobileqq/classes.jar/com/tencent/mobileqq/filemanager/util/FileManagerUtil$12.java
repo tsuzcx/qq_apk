@@ -1,146 +1,73 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.media.MediaMetadataRetriever;
-import android.os.Build.VERSION;
-import auea;
-import auem;
+import com.dataline.util.file.MediaStoreUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-public final class FileManagerUtil$12
-  implements Runnable
+final class FileManagerUtil$12
+  implements FileManagerUtil.IGetVideoCallback
 {
-  public FileManagerUtil$12(String paramString, int paramInt1, boolean paramBoolean, auem paramauem, int paramInt2, int paramInt3) {}
+  FileManagerUtil$12(FileManagerUtil.IThumbResult paramIThumbResult, String paramString1, String paramString2) {}
   
-  public void run()
+  public void a(Bitmap paramBitmap)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever;
-    if (Build.VERSION.SDK_INT >= 10) {
-      localMediaMetadataRetriever = new MediaMetadataRetriever();
+    if (paramBitmap == null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult.a(null);
+      }
     }
-    for (;;)
+    do
     {
-      try
+      for (;;)
       {
-        localMediaMetadataRetriever.setDataSource(this.jdField_a_of_type_JavaLangString);
-        long l = this.jdField_a_of_type_Int;
-        if (this.jdField_a_of_type_Int <= 0) {
-          l = 5000000L;
-        }
-        localBitmap1 = localMediaMetadataRetriever.getFrameAtTime(l, 2);
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        Bitmap localBitmap1;
-        localIllegalArgumentException = localIllegalArgumentException;
+        return;
         try
         {
-          localException5.release();
-          localObject1 = null;
-        }
-        catch (Exception localException1)
-        {
-          localObject2 = null;
-        }
-        continue;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        localRuntimeException = localRuntimeException;
-        try
-        {
-          localException5.release();
-          localObject3 = null;
-        }
-        catch (Exception localException2)
-        {
-          localObject4 = null;
-        }
-        continue;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError = localOutOfMemoryError;
-        try
-        {
-          localException5.release();
-          localObject5 = null;
-        }
-        catch (Exception localException3)
-        {
-          localObject6 = null;
-        }
-        continue;
-      }
-      finally {}
-      try
-      {
-        localMediaMetadataRetriever.release();
-        if (localBitmap1 == null) {
-          return;
-        }
-      }
-      catch (Exception localException5)
-      {
-        continue;
-      }
-      try
-      {
-        Object localObject1;
-        Object localObject2;
-        Object localObject3;
-        Object localObject4;
-        Object localObject5;
-        Object localObject6;
-        localException5.release();
-        label138:
-        throw localBitmap2;
-        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Auem != null))
-        {
-          this.jdField_a_of_type_Auem.a(localBitmap2);
-          return;
-        }
-        float f;
-        label193:
-        Matrix localMatrix;
-        if (localBitmap2.getWidth() < localBitmap2.getHeight())
-        {
-          f = this.b / localBitmap2.getWidth();
-          localMatrix = new Matrix();
-          localMatrix.setScale(f, f);
-        }
-        for (;;)
-        {
-          try
+          FileUtil.a(paramBitmap, this.jdField_a_of_type_JavaLangString);
+          paramBitmap.recycle();
+          int i = MediaStoreUtil.a(this.b);
+          MediaStoreUtil.a(this.jdField_a_of_type_JavaLangString, i);
+          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult != null)
           {
-            localBitmap3 = auea.a(localMatrix, localBitmap2, this.b, this.c);
-            if (this.jdField_a_of_type_Auem == null) {
-              break;
-            }
-            this.jdField_a_of_type_Auem.a(localBitmap3);
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult.a(this.jdField_a_of_type_JavaLangString);
             return;
           }
-          catch (Exception localException4)
+        }
+        catch (FileNotFoundException paramBitmap)
+        {
+          paramBitmap.printStackTrace();
+          QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
+          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult != null)
           {
-            Bitmap localBitmap3;
-            QLog.e("FileManagerUtil<FileAssistant>", 1, "transfrom bitmap fail, Exception:" + localException4.toString());
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult.a(null);
+            return;
           }
-          f = this.c / localBitmap3.getHeight();
-          break label193;
-          Object localObject7 = null;
+        }
+        catch (IOException paramBitmap)
+        {
+          paramBitmap.printStackTrace();
+          QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
+          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult != null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult.a(null);
+            return;
+          }
+        }
+        catch (OutOfMemoryError paramBitmap)
+        {
+          paramBitmap.printStackTrace();
+          QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
         }
       }
-      catch (Exception localException6)
-      {
-        break label138;
-      }
-    }
+    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult == null);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IThumbResult.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.12
  * JD-Core Version:    0.7.0.1
  */

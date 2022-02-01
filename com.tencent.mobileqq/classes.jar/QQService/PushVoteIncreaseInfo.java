@@ -9,9 +9,9 @@ public final class PushVoteIncreaseInfo
   extends JceStruct
 {
   static ArrayList<Visitor> cache_vVoterList;
-  public int iIncrement;
-  public int lTime;
-  public ArrayList<Visitor> vVoterList;
+  public int iIncrement = 0;
+  public int lTime = 0;
+  public ArrayList<Visitor> vVoterList = null;
   
   public PushVoteIncreaseInfo() {}
   

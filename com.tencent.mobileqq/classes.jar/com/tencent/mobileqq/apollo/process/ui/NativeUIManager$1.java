@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.apollo.process.ui;
 
-import amwn;
-import anah;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.api.IApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 
-public class NativeUIManager$1
+class NativeUIManager$1
   extends IApolloRunnableTask
 {
-  public NativeUIManager$1(anah paramanah, ApolloSurfaceView paramApolloSurfaceView, String paramString1, String paramString2) {}
+  NativeUIManager$1(NativeUIManager paramNativeUIManager, ApolloSurfaceView paramApolloSurfaceView, String paramString1, String paramString2) {}
   
   public String a()
   {
@@ -20,16 +19,16 @@ public class NativeUIManager$1
   {
     if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
     {
-      ApolloCmdChannel localApolloCmdChannel = amwn.a();
-      if (localApolloCmdChannel != null) {
-        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRuntimeState(), 0, this.jdField_a_of_type_JavaLangString, this.b);
+      IApolloCmdChannel localIApolloCmdChannel = CmGameUtil.a();
+      if (localIApolloCmdChannel != null) {
+        localIApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRuntimeState(), 0, this.jdField_a_of_type_JavaLangString, this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.ui.NativeUIManager.1
  * JD-Core Version:    0.7.0.1
  */

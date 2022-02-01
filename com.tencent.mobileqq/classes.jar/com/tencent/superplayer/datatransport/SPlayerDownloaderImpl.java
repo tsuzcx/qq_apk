@@ -4,8 +4,8 @@ import android.content.Context;
 import com.tencent.superplayer.api.ISPlayerDownloader;
 import com.tencent.superplayer.api.ISPlayerDownloader.Listener;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import com.tencent.superplayer.utils.CommonUtil;
 import com.tencent.superplayer.utils.LogUtil;
-import com.tencent.superplayer.utils.Utils;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy;
 import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager;
@@ -21,8 +21,8 @@ public class SPlayerDownloaderImpl
   
   public SPlayerDownloaderImpl(Context paramContext, int paramInt)
   {
-    Utils.initDataTransportDataFolder(Utils.getDownloadProxyServiceType(paramInt));
-    paramContext = TPProxyGlobalManager.getInstance().getPlayerProxy(Utils.getDownloadProxyServiceType(paramInt));
+    CommonUtil.a(CommonUtil.a(paramInt));
+    paramContext = TPProxyGlobalManager.getInstance().getPlayerProxy(CommonUtil.a(paramInt));
     if ((paramContext != null) && (paramContext.getDownloadProxy() != null)) {
       this.mTPDownloadProxy = paramContext.getDownloadProxy();
     }
@@ -64,13 +64,13 @@ public class SPlayerDownloaderImpl
     TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
     localTPDownloadParamData.setUrl(paramSuperPlayerVideoInfo.getPlayUrl());
     localTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
-    localTPDownloadParamData.setDownloadFileID(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo));
+    localTPDownloadParamData.setDownloadFileID(CommonUtil.a(paramSuperPlayerVideoInfo));
     localTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
     localTPDownloadParamData.setDlType(getDlTypeForDownloadParam(paramSuperPlayerVideoInfo.getFormat()));
     if (paramSuperPlayerVideoInfo.getCookie() != null) {
       localTPDownloadParamData.setUrlCookieList(paramSuperPlayerVideoInfo.getCookie());
     }
-    int i = this.mTPDownloadProxy.startOfflineDownload(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo), TPProxyUtils.convertProxyDownloadParams(null, localTPDownloadParamData), null);
+    int i = this.mTPDownloadProxy.startOfflineDownload(CommonUtil.a(paramSuperPlayerVideoInfo), TPProxyUtils.convertProxyDownloadParams(null, localTPDownloadParamData), null);
     TPListenerManager.getInstance().setOfflineDownloadListener(i, new SPlayerDownloaderImpl.1(this, paramListener, i));
     this.mTPDownloadProxy.startTask(i);
     return i;
@@ -85,7 +85,7 @@ public class SPlayerDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.datatransport.SPlayerDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

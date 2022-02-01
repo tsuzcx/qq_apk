@@ -7,8 +7,9 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.c.a;
-import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.mobileqq.msf.core.d;
+import com.tencent.mobileqq.msf.core.net.b.k;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -97,7 +98,7 @@ public class n
       i1 += 1;
     }
     this.C = new AtomicInteger(0);
-    this.g = new com.tencent.mobileqq.msf.core.net.b.k(paramMsfCore);
+    this.g = new k(paramMsfCore);
     this.A = paramHandler;
   }
   
@@ -262,7 +263,7 @@ public class n
     }
     try
     {
-      this.f.getSsoListManager().a(this.f.sender.k(), this.f.sender.j(), 60000L, NetConnInfoCenter.isWifiConn(), localStringBuffer.toString(), paramBoolean);
+      this.f.getSsoListManager().a(this.f.sender.m(), this.f.sender.l(), 60000L, NetConnInfoCenter.isWifiConn(), localStringBuffer.toString(), paramBoolean);
       return;
     }
     catch (Exception localException)
@@ -474,7 +475,7 @@ public class n
         if ((k()) && (paramCopyOnWriteArrayList1 != null) && (paramCopyOnWriteArrayList1.size() > 0))
         {
           l1 = SystemClock.elapsedRealtime();
-          n = com.tencent.mobileqq.msf.core.c.k.a(false, K, l1);
+          n = com.tencent.mobileqq.msf.core.c.j.a(false, K, l1);
           i2 = a(paramCopyOnWriteArrayList1, paramArrayList, paramInt, true);
           if (i2 != 0) {
             break label560;
@@ -486,7 +487,7 @@ public class n
           break label542;
         }
         l1 = SystemClock.elapsedRealtime();
-        n = com.tencent.mobileqq.msf.core.c.k.a(false, K, l1);
+        n = com.tencent.mobileqq.msf.core.c.j.a(false, K, l1);
         if (r() != null)
         {
           localObject1 = new CopyOnWriteArrayList();

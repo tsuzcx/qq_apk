@@ -1,30 +1,33 @@
 package com.tencent.biz.qcircleshadow.lib;
 
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.wxapi.api.IWXShareHelper;
+
 public class QCircleHostConstants$_SendMessageToWX$Req
 {
   public static int WXSceneFavorite()
   {
-    return 2;
+    return ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).WXSceneFavorite();
   }
   
   public static int WXSceneSession()
   {
-    return 0;
+    return ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).WXSceneSession();
   }
   
   public static int WXSceneSpecifiedContact()
   {
-    return 3;
+    return ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).WXSceneSpecifiedContact();
   }
   
   public static int WXSceneTimeline()
   {
-    return 1;
+    return ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).WXSceneTimeline();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostConstants._SendMessageToWX.Req
  * JD-Core Version:    0.7.0.1
  */

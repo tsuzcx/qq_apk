@@ -1,11 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import aluc;
-import alud;
-import alug;
-import alui;
-import aluj;
-import aluk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -21,14 +15,14 @@ import com.tencent.mobileqq.utils.ViewUtils;
 
 public class VideoFrameSelectBar
   extends View
-  implements aluc, alug, aluj
+  implements FrameParent, FramesProcessor.OnMoveListener, RangeProcessor.OnRangeChangeListener
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.dip2px(13.0F);
+  private static final int jdField_a_of_type_Int = ViewUtils.a(13.0F);
   private float jdField_a_of_type_Float;
-  private alud jdField_a_of_type_Alud;
-  private alui jdField_a_of_type_Alui;
-  private aluk jdField_a_of_type_Aluk;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private FramesProcessor jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor;
+  private RangeProcessor jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor;
+  private VideoFrameSelectBar.OnFramesClipChangeListener jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -38,10 +32,10 @@ public class VideoFrameSelectBar
   private int jdField_c_of_type_Int = 3000;
   private boolean jdField_c_of_type_Boolean;
   private float jdField_d_of_type_Float;
-  private boolean jdField_d_of_type_Boolean;
-  private float e;
-  private float f;
-  private float g;
+  private boolean jdField_d_of_type_Boolean = false;
+  private float e = 0.0F;
+  private float f = 0.0F;
+  private float g = 0.0F;
   private float h;
   
   public VideoFrameSelectBar(Context paramContext, AttributeSet paramAttributeSet)
@@ -59,12 +53,12 @@ public class VideoFrameSelectBar
   private final void a(MotionEvent paramMotionEvent)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Alui.a(paramMotionEvent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(paramMotionEvent);
     }
     while (!this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Alud.a(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.a(paramMotionEvent);
   }
   
   private void e()
@@ -78,8 +72,8 @@ public class VideoFrameSelectBar
   {
     this.jdField_a_of_type_JavaLangString = String.format("%.1f''", new Object[] { Float.valueOf(this.g / 1000.0F) });
     this.h = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Aluk != null) {
-      this.jdField_a_of_type_Aluk.a(this.g);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener.a(this.g);
     }
   }
   
@@ -95,14 +89,14 @@ public class VideoFrameSelectBar
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.f = a((int)(paramFloat1 - this.jdField_a_of_type_Alui.b()));
+    this.f = a((int)(paramFloat1 - this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.b()));
     this.g = a(paramFloat2 - paramFloat1);
     f();
-    this.jdField_a_of_type_Alud.a((int)paramFloat1);
-    this.jdField_a_of_type_Alud.b((int)paramFloat2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.a((int)paramFloat1);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.b((int)paramFloat2);
     invalidate();
-    if (this.jdField_a_of_type_Aluk != null) {
-      this.jdField_a_of_type_Aluk.a((int)a(), (int)b());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener.a((int)a(), (int)b());
     }
   }
   
@@ -110,11 +104,11 @@ public class VideoFrameSelectBar
   {
     this.e = a(paramFloat1);
     f();
-    if (this.jdField_a_of_type_Alui != null) {
-      this.jdField_a_of_type_Alui.a(paramFloat2, paramFloat3);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(paramFloat2, paramFloat3);
     }
-    if (this.jdField_a_of_type_Aluk != null) {
-      this.jdField_a_of_type_Aluk.a((int)a(), (int)b());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener.a((int)a(), (int)b());
     }
   }
   
@@ -129,12 +123,12 @@ public class VideoFrameSelectBar
       float f1 = j * 0.925F / 6.0F;
       this.jdField_d_of_type_Float = f1;
       this.jdField_c_of_type_Float = f1;
-      this.jdField_a_of_type_Alui = new alui(this, this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, i, this.jdField_c_of_type_Int, j, paramInt);
-      this.jdField_a_of_type_Alui.a(this);
-      this.g = a(this.jdField_a_of_type_Alui.c());
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor = new RangeProcessor(this, this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, i, this.jdField_c_of_type_Int, j, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(this);
+      this.g = a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.c());
       f();
-      this.jdField_a_of_type_Alud = new alud(this, paramString, paramInt, i, this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, j, this.jdField_a_of_type_Alui.b(), this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Alud.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor = new FramesProcessor(this, paramString, paramInt, i, this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, j, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.b(), this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.a(this);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_d_of_type_Boolean = true;
       return;
@@ -164,11 +158,11 @@ public class VideoFrameSelectBar
   
   public void c()
   {
-    if (this.jdField_a_of_type_Alui != null) {
-      this.jdField_a_of_type_Alui.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a();
     }
-    if (this.jdField_a_of_type_Alud != null) {
-      this.jdField_a_of_type_Alud.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.b();
     }
     this.jdField_d_of_type_Boolean = false;
     this.e = 0.0F;
@@ -178,8 +172,8 @@ public class VideoFrameSelectBar
   
   public boolean c()
   {
-    if ((this.jdField_a_of_type_Alud == null) || (this.jdField_a_of_type_Alui == null)) {}
-    while ((!this.jdField_a_of_type_Alud.a()) && (!this.jdField_a_of_type_Alui.a())) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor == null)) {}
+    while ((!this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.a()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a())) {
       return false;
     }
     return true;
@@ -187,11 +181,11 @@ public class VideoFrameSelectBar
   
   public void d()
   {
-    if (this.jdField_a_of_type_Alui != null) {
-      this.jdField_a_of_type_Alui.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.b();
     }
-    if (this.jdField_a_of_type_Alud != null) {
-      this.jdField_a_of_type_Alud.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.b();
     }
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_d_of_type_Boolean = false;
@@ -200,31 +194,31 @@ public class VideoFrameSelectBar
     this.g = 0.0F;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Alui == null) || (this.jdField_a_of_type_Alud == null)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor == null)) {
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(40.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     paramCanvas.translate(0.0F, jdField_a_of_type_Int + 50);
-    if (this.jdField_a_of_type_Alud != null) {
-      this.jdField_a_of_type_Alud.a(paramCanvas);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.a(paramCanvas);
     }
-    if (this.jdField_a_of_type_Alui != null) {
-      this.jdField_a_of_type_Alui.a(paramCanvas);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(paramCanvas);
     }
     paramCanvas.translate(0.0F, -jdField_a_of_type_Int - 50);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Alui == null) || (this.jdField_a_of_type_Alud == null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor == null))
     {
       setMeasuredDimension(0, 0);
       return;
     }
-    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)(50.0F + this.jdField_a_of_type_Alui.a() + jdField_a_of_type_Int));
+    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)(50.0F + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a() + jdField_a_of_type_Int));
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -233,7 +227,7 @@ public class VideoFrameSelectBar
     for (;;)
     {
       return false;
-      if ((this.jdField_a_of_type_Alui != null) && (this.jdField_a_of_type_Alud != null))
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor != null))
       {
         switch (paramMotionEvent.getAction() & 0xFF)
         {
@@ -243,7 +237,7 @@ public class VideoFrameSelectBar
           return true;
           this.jdField_a_of_type_Float = paramMotionEvent.getX();
           this.jdField_b_of_type_Float = paramMotionEvent.getY();
-          this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Alui.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - 50.0F);
+          this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - 50.0F);
           this.jdField_b_of_type_Boolean = false;
           if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
             return super.onTouchEvent(paramMotionEvent);
@@ -298,14 +292,14 @@ public class VideoFrameSelectBar
     super.postInvalidate();
   }
   
-  public void setOnFramesClipChangeListener(aluk paramaluk)
+  public void setOnFramesClipChangeListener(VideoFrameSelectBar.OnFramesClipChangeListener paramOnFramesClipChangeListener)
   {
-    this.jdField_a_of_type_Aluk = paramaluk;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener = paramOnFramesClipChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar
  * JD-Core Version:    0.7.0.1
  */

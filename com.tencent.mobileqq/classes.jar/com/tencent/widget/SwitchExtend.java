@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 public class SwitchExtend
   extends Switch
 {
-  private SwitchExtend.OnSwitchListener mOnSwitchListener;
+  private SwitchExtend.OnSwitchListener a;
   
   public SwitchExtend(Context paramContext)
   {
@@ -15,7 +15,7 @@ public class SwitchExtend
   
   public SwitchExtend(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet, 2131035080);
+    super(paramContext, paramAttributeSet, 2131035073);
   }
   
   public SwitchExtend(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -25,7 +25,7 @@ public class SwitchExtend
   
   public boolean performClick()
   {
-    if ((this.mOnSwitchListener == null) || (this.mOnSwitchListener.prePerformClick(this))) {
+    if ((this.a == null) || (this.a.a(this))) {
       return super.performClick();
     }
     return false;
@@ -33,7 +33,7 @@ public class SwitchExtend
   
   public void setOnSwitchListener(SwitchExtend.OnSwitchListener paramOnSwitchListener)
   {
-    this.mOnSwitchListener = paramOnSwitchListener;
+    this.a = paramOnSwitchListener;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.device.file;
 
-import abkw;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.device.msg.data.DeviceMsgHandle;
 import com.tencent.litetransfersdk.ActionInfo;
 import com.tencent.litetransfersdk.Session;
 import com.tencent.mobileqq.app.AppConstants;
@@ -81,7 +81,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                       {
                         paramContext = str.substring(str.lastIndexOf("."));
                         paramContext = AppConstants.SDCARD_PATH + "/smart_device/" + System.currentTimeMillis() + paramContext;
-                        FileUtils.moveFile(str, paramContext);
+                        FileUtils.b(str, paramContext);
                         paramIntent.strFilePathSrc = paramContext;
                         this.a.b.remove(Long.valueOf(l1));
                       }
@@ -103,7 +103,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                     return;
                     paramContext = ".amr";
                     break;
-                    if (!paramIntent.actionInfo.strServiceName.equalsIgnoreCase(abkw.c)) {
+                    if (!paramIntent.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.c)) {
                       break label301;
                     }
                     paramIntent.vFileMD5Src = str.getBytes();
@@ -166,7 +166,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.device.file.DeviceFileHandler.DeviceNotifyReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import adty;
-import vwj;
+import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
+import com.tencent.mobileqq.qcircle.api.IQCircleService;
 
-public class ConversationQbossBannerTitleEntranceCtrl$1
+class ConversationQbossBannerTitleEntranceCtrl$1
   implements Runnable
 {
-  public ConversationQbossBannerTitleEntranceCtrl$1(adty paramadty) {}
+  ConversationQbossBannerTitleEntranceCtrl$1(ConversationQbossBannerTitleEntranceCtrl paramConversationQbossBannerTitleEntranceCtrl) {}
   
   public void run()
   {
-    vwj.a().a();
+    QCircleUtils.a().sendGetRainBowRequest();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl.1
  * JD-Core Version:    0.7.0.1
  */

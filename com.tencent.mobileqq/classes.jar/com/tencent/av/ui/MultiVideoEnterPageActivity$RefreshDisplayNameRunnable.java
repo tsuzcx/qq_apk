@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.widget.TextView;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import mhh;
 
 class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   implements Runnable
@@ -13,13 +12,13 @@ class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695116);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695359);
     if (this.this$0.jdField_c_of_type_Int == 2) {
-      localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(3000, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
+      localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3000, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_Mhh.a.setText((CharSequence)localObject);
+      this.this$0.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity$MainUI.a.setText((CharSequence)localObject);
       localObject = this.this$0;
       ((MultiVideoEnterPageActivity)localObject).g += 1;
       if (this.this$0.jdField_c_of_type_JavaLangRunnable != null)
@@ -31,7 +30,7 @@ class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
       }
       return;
       if (this.this$0.jdField_c_of_type_Int == 1) {
-        localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(1, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
+        localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
       }
     }
     this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.this$0.jdField_c_of_type_JavaLangRunnable);
@@ -39,7 +38,7 @@ class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.RefreshDisplayNameRunnable
  * JD-Core Version:    0.7.0.1
  */

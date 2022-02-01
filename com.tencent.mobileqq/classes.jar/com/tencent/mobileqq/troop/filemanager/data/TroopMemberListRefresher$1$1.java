@@ -6,21 +6,19 @@ import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bfmt;
-import bfmu;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopMemberListRefresher$1$1
+class TroopMemberListRefresher$1$1
   implements Runnable
 {
-  public TroopMemberListRefresher$1$1(bfmu parambfmu) {}
+  TroopMemberListRefresher$1$1(TroopMemberListRefresher.1 param1) {}
   
   public void run()
   {
     try
     {
       QLog.e("RefreshMemberList", 4, "onUpdateTroopGetMemberList - success");
-      String str = bfmt.a(this.a.a, this.a.a.jdField_a_of_type_JavaLangString);
+      String str = TroopMemberListRefresher.a(this.a.a, this.a.a.jdField_a_of_type_JavaLangString);
       if (TextUtils.isEmpty(str)) {
         return;
       }

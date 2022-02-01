@@ -12,24 +12,21 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.Scroller;
 import androidx.annotation.RequiresApi;
-import boen;
-import boeo;
-import boep;
-import boer;
+import dov.com.qq.im.aeeditor.view.timebar.scale.ScaleAdapter;
 
 public class ScaleView
   extends View
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new boen(this);
+  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new ScaleView.1(this);
   private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private boeo jdField_a_of_type_Boeo;
-  private boep jdField_a_of_type_Boep;
-  public boer a;
   private ScaleView.MotionModel jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
+  private ScaleView.OnBarMoveListener jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$OnBarMoveListener;
+  private ScaleView.onMoveByUserListener jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$onMoveByUserListener;
+  protected ScaleAdapter a;
   private int b;
   private int c;
   
@@ -69,15 +66,15 @@ public class ScaleView
   
   private int a(long paramLong)
   {
-    return (int)(this.jdField_a_of_type_Boer.a() * this.jdField_a_of_type_Boer.a(paramLong));
+    return (int)(this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a() * this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(paramLong));
   }
   
   private long a()
   {
     if (a() == getScrollX()) {
-      return this.jdField_a_of_type_Boer.b();
+      return this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.b();
     }
-    return this.jdField_a_of_type_Boer.c();
+    return this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.c();
   }
   
   private void a()
@@ -103,11 +100,11 @@ public class ScaleView
     do
     {
       return;
-      if (this.jdField_a_of_type_Boer != null) {
-        this.jdField_a_of_type_Boer.a();
+      if (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter != null) {
+        this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a();
       }
-    } while (this.jdField_a_of_type_Boeo == null);
-    this.jdField_a_of_type_Boeo.b(getScrollX());
+    } while (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$OnBarMoveListener == null);
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$OnBarMoveListener.b(getScrollX());
   }
   
   private void a(MotionEvent paramMotionEvent)
@@ -135,8 +132,8 @@ public class ScaleView
   
   private void c()
   {
-    if (this.jdField_a_of_type_Boep != null) {
-      this.jdField_a_of_type_Boep.a();
+    if (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$onMoveByUserListener != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$onMoveByUserListener.a();
     }
     this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
     int i = getScrollX();
@@ -171,12 +168,12 @@ public class ScaleView
   
   public int a()
   {
-    return this.jdField_a_of_type_Boer.a(this.jdField_a_of_type_Boer.b());
+    return this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.b());
   }
   
   public void a(long paramLong)
   {
-    int i = this.jdField_a_of_type_Boer.a(paramLong);
+    int i = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(paramLong);
     int j = getScrollX();
     int k = getScrollY();
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(j, k, i - j, -k, 0);
@@ -186,16 +183,16 @@ public class ScaleView
   @RequiresApi(api=16)
   public void a(long paramLong, int paramInt)
   {
-    int i = this.jdField_a_of_type_Boer.a(paramLong);
+    int i = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(paramLong);
     int j = getScrollX();
     int k = getScrollY();
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(j, k, i - j, -k, paramInt);
     postInvalidateOnAnimation();
   }
   
-  public void a(boer paramboer)
+  public void a(ScaleAdapter paramScaleAdapter)
   {
-    setScaleAdapter(paramboer, a());
+    setScaleAdapter(paramScaleAdapter, a());
   }
   
   public void computeScroll()
@@ -210,25 +207,25 @@ public class ScaleView
     {
       do
       {
-        while (this.jdField_a_of_type_Boer == null)
+        while (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter == null)
         {
           return;
           if ((this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.ComputeScroll) || (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.FlingScroll)) {
             this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel = ScaleView.MotionModel.None;
           }
         }
-        this.jdField_a_of_type_Boer.a();
-      } while (this.jdField_a_of_type_Boeo == null);
+        this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a();
+      } while (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$OnBarMoveListener == null);
       if (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel == ScaleView.MotionModel.None)
       {
-        this.jdField_a_of_type_Boeo.b(getScrollX());
+        this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$OnBarMoveListener.b(getScrollX());
         return;
       }
     } while ((this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel != ScaleView.MotionModel.Move) && (this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$MotionModel != ScaleView.MotionModel.FlingScroll));
-    this.jdField_a_of_type_Boeo.a(getScrollX());
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$OnBarMoveListener.a(getScrollX());
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
@@ -274,44 +271,44 @@ public class ScaleView
   
   public void setCurrTime(long paramLong)
   {
-    if (paramLong < this.jdField_a_of_type_Boer.a()) {}
-    while (paramLong > this.jdField_a_of_type_Boer.b()) {
+    if (paramLong < this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a()) {}
+    while (paramLong > this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.b()) {
       return;
     }
     this.jdField_a_of_type_Long = paramLong;
     d();
-    this.jdField_a_of_type_Boer.a();
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a();
     postInvalidate();
   }
   
-  public void setMoveByUserListener(boep paramboep)
+  public void setMoveByUserListener(ScaleView.onMoveByUserListener paramonMoveByUserListener)
   {
-    this.jdField_a_of_type_Boep = paramboep;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$onMoveByUserListener = paramonMoveByUserListener;
   }
   
-  public void setOnBarMoveListener(boeo paramboeo)
+  public void setOnBarMoveListener(ScaleView.OnBarMoveListener paramOnBarMoveListener)
   {
-    this.jdField_a_of_type_Boeo = paramboeo;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleView$OnBarMoveListener = paramOnBarMoveListener;
   }
   
-  public void setScaleAdapter(boer paramboer)
+  public void setScaleAdapter(ScaleAdapter paramScaleAdapter)
   {
-    this.jdField_a_of_type_Boer = paramboer;
-    this.jdField_a_of_type_Boer.a(this);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_Boer.a();
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter = paramScaleAdapter;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(this);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a();
   }
   
-  public void setScaleAdapter(boer paramboer, long paramLong)
+  public void setScaleAdapter(ScaleAdapter paramScaleAdapter, long paramLong)
   {
-    this.jdField_a_of_type_Boer = paramboer;
-    this.jdField_a_of_type_Boer.a(this);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_Boer.a();
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter = paramScaleAdapter;
+    this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a(this);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_DovComQqImAeeditorViewTimebarScaleScaleAdapter.a();
     setCurrTime(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.timebar.ScaleView
  * JD-Core Version:    0.7.0.1
  */

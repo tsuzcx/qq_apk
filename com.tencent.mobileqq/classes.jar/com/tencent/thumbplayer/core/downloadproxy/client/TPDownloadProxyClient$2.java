@@ -15,6 +15,11 @@ class TPDownloadProxyClient$2
     return this.val$playListener.getAdvRemainTime();
   }
   
+  public String getContentType(int paramInt, String paramString)
+  {
+    return null;
+  }
+  
   public int getCurrentPlayClipNo()
   {
     return this.val$playListener.getCurrentPlayClipNo();
@@ -23,6 +28,16 @@ class TPDownloadProxyClient$2
   public long getCurrentPosition()
   {
     return this.val$playListener.getCurrentPosition();
+  }
+  
+  public String getDataFilePath(int paramInt, String paramString)
+  {
+    return null;
+  }
+  
+  public long getDataTotalSize(int paramInt, String paramString)
+  {
+    return 0L;
   }
   
   public String getPlayInfo(String paramString)
@@ -118,10 +133,30 @@ class TPDownloadProxyClient$2
     }
     return ((Integer)localObject).intValue();
   }
+  
+  public void onQuicDownloadStatusUpdate(String paramString)
+  {
+    this.val$playListener.onQuicDownloadStatusUpdate(paramString);
+  }
+  
+  public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
+  public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return 0;
+  }
+  
+  public int onStopReadData(int paramInt1, String paramString, int paramInt2)
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.client.TPDownloadProxyClient.2
  * JD-Core Version:    0.7.0.1
  */

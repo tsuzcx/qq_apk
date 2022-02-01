@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import akfg;
 import com.tencent.widget.XEditTextEx;
 
-public class MiniPie$12
+class MiniPie$12
   implements Runnable
 {
-  public MiniPie$12(akfg paramakfg) {}
+  MiniPie$12(MiniPie paramMiniPie) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class MiniPie$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.12
  * JD-Core Version:    0.7.0.1
  */

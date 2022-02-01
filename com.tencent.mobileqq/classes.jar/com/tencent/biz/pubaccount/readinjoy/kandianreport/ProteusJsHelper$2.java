@@ -17,7 +17,7 @@ final class ProteusJsHelper$2
       if (!((File)localObject).exists()) {
         return;
       }
-      localObject = FileUtils.readFileToString((File)localObject);
+      localObject = FileUtils.b((File)localObject);
       if (KandianReportSoLoader.isSoFiledLoad())
       {
         ProteusJsHelper.access$000((String)localObject, this.val$bid);
@@ -41,7 +41,7 @@ final class ProteusJsHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.ProteusJsHelper.2
  * JD-Core Version:    0.7.0.1
  */

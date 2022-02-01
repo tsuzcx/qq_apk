@@ -10,10 +10,10 @@ public final class BigDataIpList
 {
   static ArrayList<NetSegConf> cache_netSegConfs;
   static ArrayList<BigDataIpInfo> cache_vIplist;
-  public ArrayList<NetSegConf> netSegConfs;
-  public long uService_type;
-  public long ufragment_size;
-  public ArrayList<BigDataIpInfo> vIplist;
+  public ArrayList<NetSegConf> netSegConfs = null;
+  public long uService_type = 0L;
+  public long ufragment_size = 0L;
+  public ArrayList<BigDataIpInfo> vIplist = null;
   
   public BigDataIpList() {}
   

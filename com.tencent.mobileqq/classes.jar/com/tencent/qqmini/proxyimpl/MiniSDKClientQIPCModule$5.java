@@ -1,18 +1,16 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkpq;
-import bkpw;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 
-public class MiniSDKClientQIPCModule$5
+class MiniSDKClientQIPCModule$5
   implements Runnable
 {
-  public MiniSDKClientQIPCModule$5(bkpq parambkpq, BaseRuntime paramBaseRuntime, String paramString) {}
+  MiniSDKClientQIPCModule$5(MiniSDKClientQIPCModule paramMiniSDKClientQIPCModule, BaseRuntime paramBaseRuntime, String paramString) {}
   
   public void run()
   {
-    MiniProgramLpReportDC04239.reportApiInvoke(bkpw.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime.getMiniAppInfo()), this.jdField_a_of_type_JavaLangString);
+    MiniProgramLpReportDC04239.reportApiInvoke(MiniSdkUtil.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime.getMiniAppInfo()), this.jdField_a_of_type_JavaLangString);
   }
 }
 

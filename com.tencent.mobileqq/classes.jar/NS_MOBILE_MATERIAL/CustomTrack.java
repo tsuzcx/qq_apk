@@ -9,7 +9,7 @@ public final class CustomTrack
   extends JceStruct
 {
   static ArrayList<CustomTrackAction> cache_Actions = new ArrayList();
-  public ArrayList<CustomTrackAction> Actions;
+  public ArrayList<CustomTrackAction> Actions = null;
   
   static
   {

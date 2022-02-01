@@ -9,8 +9,8 @@ public final class CheckUpdateReq
   extends JceStruct
 {
   static ArrayList<ReqItem> cache_vecReqPkg;
-  public boolean isSupportSubPack;
-  public ArrayList<ReqItem> vecReqPkg;
+  public boolean isSupportSubPack = false;
+  public ArrayList<ReqItem> vecReqPkg = null;
   
   public CheckUpdateReq() {}
   

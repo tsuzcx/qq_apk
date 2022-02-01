@@ -14,7 +14,7 @@ public class WebViewProgressBar
 {
   private static final String LOG_TAG = "WebViewProgressBar";
   private Drawable mBackgroundDrawable;
-  private Drawable mContrastDrawable;
+  private Drawable mContrastDrawable = null;
   private WebViewProgressBarController mController;
   private boolean mEnableAlpha = true;
   private Drawable mProgressDrawable;
@@ -68,12 +68,12 @@ public class WebViewProgressBar
       return;
       label164:
       if (this.mBackgroundDrawable == null) {
-        this.mBackgroundDrawable = getContext().getResources().getDrawable(2130850086);
+        this.mBackgroundDrawable = getContext().getResources().getDrawable(2130850484);
       }
       this.mBackgroundDrawable.setBounds(0, 0, getWidth(), getHeight());
       this.mBackgroundDrawable.draw(paramCanvas);
       if (this.mProgressDrawable == null) {
-        this.mProgressDrawable = getContext().getResources().getDrawable(2130850087);
+        this.mProgressDrawable = getContext().getResources().getDrawable(2130850485);
       }
       j = (int)this.mController.getCurrWidth();
       if (this.mEnableAlpha) {
@@ -96,7 +96,7 @@ public class WebViewProgressBar
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mController != null) {

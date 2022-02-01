@@ -9,7 +9,7 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.Arrays;
@@ -57,7 +57,7 @@ public class FaceOffNoseOcclusionFilter
     Object localObject = null;
     try
     {
-      paramList = VideoMaterialUtil.copyList(paramList);
+      paramList = VideoMaterial.copyList(paramList);
       if (paramList != null) {
         setPositions(FaceOffUtil.initFaceNoseLastPositions(FaceOffUtil.getFullCoordsForNoseAndOutline(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
       }
@@ -121,7 +121,7 @@ public class FaceOffNoseOcclusionFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceOffNoseOcclusionFilter
  * JD-Core Version:    0.7.0.1
  */

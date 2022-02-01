@@ -1,25 +1,30 @@
 package com.tencent.gdtad.views.canvas.components.video;
 
-import acho;
-import aciz;
-import ackd;
-import ackf;
 import com.tencent.ad.tangram.canvas.views.AdViewStatus;
 import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentView;
 import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasPageView;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.gdtad.views.video.GdtVideoCommonView.LoadListener;
+import com.tencent.gdtad.views.video.GdtVideoCommonView.VideoFullScreenListener;
 import java.lang.ref.WeakReference;
 
 public class GdtCanvasVideoComponentView
   extends AdCanvasComponentView
-  implements ackd, ackf
+  implements GdtVideoCommonView.LoadListener, GdtVideoCommonView.VideoFullScreenListener
 {
   public static int a;
-  private aciz jdField_a_of_type_Aciz;
+  private static int b = 0;
   private AdCanvasPageView jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView;
+  private GdtCanvasMutiVideoManager jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasMutiVideoManager;
   private GdtCanvasVideoComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasVideoComponentData;
   private GdtVideoCommonView jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
-  private int b;
+  private int c;
+  
+  static
+  {
+    jdField_a_of_type_Int = 0;
+  }
   
   private void c()
   {
@@ -66,7 +71,7 @@ public class GdtCanvasVideoComponentView
     if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) && (!this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b()))
     {
       c();
-      this.b = this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView.getScrollY();
+      this.c = this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView.getScrollY();
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setisFullScreen(true, 8);
     }
   }
@@ -101,8 +106,8 @@ public class GdtCanvasVideoComponentView
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b();
-      this.jdField_a_of_type_Aciz.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
-      acho.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasMutiVideoManager.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
+      GdtLog.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
   
@@ -112,13 +117,13 @@ public class GdtCanvasVideoComponentView
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a();
-      acho.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      GdtLog.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentView
  * JD-Core Version:    0.7.0.1
  */

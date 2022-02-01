@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asiu;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
 
 class EmotionNeedDownloadAdapter$2
-  extends asiu
+  extends EmoticonPackageDownloadListener
 {
   EmotionNeedDownloadAdapter$2(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
   
@@ -30,7 +30,7 @@ class EmotionNeedDownloadAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter.2
  * JD-Core Version:    0.7.0.1
  */

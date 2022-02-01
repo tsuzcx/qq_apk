@@ -1,9 +1,5 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import xim;
-import xio;
-import xit;
-
 class VideoViewVideoHolder$VideoPrepareSegment$2$1$1
   implements Runnable
 {
@@ -11,12 +7,12 @@ class VideoViewVideoHolder$VideoPrepareSegment$2$1$1
   
   public void run()
   {
-    VideoViewVideoHolder.a(this.a.jdField_a_of_type_Xio.a.a).a(this.a.jdField_a_of_type_Xio.a.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_JavaIoFile, true);
+    VideoViewVideoHolder.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a).a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_JavaIoFile, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment.2.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -282,39 +282,47 @@ public class VPageSliderView
         ViolaLogUtils.e("VSliderViewPager", "onInterceptTouchEvent IllegalArgumentException error:" + paramMotionEvent.getMessage());
         return false;
       }
-      if (localViewParent != null) {
-        localViewParent.requestDisallowInterceptTouchEvent(true);
-      }
-      this.mPreX = paramMotionEvent.getX();
-      this.mCurrentPosition = getCurrentItem();
-      this.mStartRawY = paramMotionEvent.getRawY();
-      this.mStartRawX = paramMotionEvent.getRawX();
-      continue;
-      float f2 = paramMotionEvent.getRawY();
-      float f1 = paramMotionEvent.getRawX() - this.mStartRawX;
-      f2 -= this.mStartRawY;
-      if (Math.abs(f2) > this.mTouchSlop)
+      if ((localViewParent == null) || ((this.mInterruptEnable) && (getCurrentItem() == 0)))
       {
-        if ((Math.abs(f1) / Math.abs(f2) < 0.5F) && (localViewParent != null))
-        {
-          localViewParent.requestDisallowInterceptTouchEvent(false);
-          continue;
-        }
-        if (Math.abs(f1) / Math.abs(f2) > 0.75F) {
-          return true;
-        }
-        if (localViewParent != null)
-        {
-          localViewParent.requestDisallowInterceptTouchEvent(false);
-          continue;
-        }
+        this.mPreX = paramMotionEvent.getX();
+        this.mCurrentPosition = getCurrentItem();
+        this.mStartRawY = paramMotionEvent.getRawY();
+        this.mStartRawX = paramMotionEvent.getRawX();
       }
-      if (localViewParent != null)
+      else
       {
         localViewParent.requestDisallowInterceptTouchEvent(true);
         continue;
-        if (localViewParent != null) {
+        float f2 = paramMotionEvent.getRawY();
+        float f1 = paramMotionEvent.getRawX() - this.mStartRawX;
+        f2 -= this.mStartRawY;
+        if (Math.abs(f2) > this.mTouchSlop)
+        {
+          if ((Math.abs(f1) / Math.abs(f2) < 0.5F) && (localViewParent != null))
+          {
+            localViewParent.requestDisallowInterceptTouchEvent(false);
+            continue;
+          }
+          if (Math.abs(f1) / Math.abs(f2) > 0.75F) {
+            return true;
+          }
+          if (localViewParent != null)
+          {
+            localViewParent.requestDisallowInterceptTouchEvent(false);
+            continue;
+          }
+        }
+        if ((this.mInterruptEnable) && (getCurrentItem() == 0) && (f1 > 0.0F) && (Math.abs(f2) / Math.abs(f1) < 0.5F) && (localViewParent != null))
+        {
           localViewParent.requestDisallowInterceptTouchEvent(false);
+        }
+        else if (localViewParent != null)
+        {
+          localViewParent.requestDisallowInterceptTouchEvent(true);
+          continue;
+          if (localViewParent != null) {
+            localViewParent.requestDisallowInterceptTouchEvent(false);
+          }
         }
       }
     }
@@ -332,7 +340,7 @@ public class VPageSliderView
         if (shouldOptimizingExperience())
         {
           if (getAdapter() == null) {
-            break label955;
+            break label1016;
           }
           if ((getCurrentItem() >= 0) || (getCurrentItem() < getAdapter().getCount()))
           {
@@ -390,11 +398,14 @@ public class VPageSliderView
       }
       onTouchActionUp();
       continue;
-      float f3 = (int)paramMotionEvent.getRawY();
-      float f1 = (int)paramMotionEvent.getRawX();
-      float f2 = this.mStartRawX;
-      f3 -= this.mStartRawY;
-      if ((Math.abs(f3) > this.mTouchSlop) && (Math.abs(f1 - f2) / Math.abs(f3) < 0.5F) && (this.mHandleDefault) && (localViewParent != null))
+      float f2 = (int)paramMotionEvent.getRawY();
+      float f1 = (int)paramMotionEvent.getRawX() - this.mStartRawX;
+      f2 -= this.mStartRawY;
+      if ((Math.abs(f2) > this.mTouchSlop) && (Math.abs(f1) / Math.abs(f2) < 0.5F) && (this.mHandleDefault) && (localViewParent != null))
+      {
+        localViewParent.requestDisallowInterceptTouchEvent(false);
+      }
+      else if ((this.mInterruptEnable) && (getCurrentItem() == 0) && (f1 > 0.0F) && (Math.abs(f2) / Math.abs(f1) < 0.5F) && (localViewParent != null))
       {
         localViewParent.requestDisallowInterceptTouchEvent(false);
       }
@@ -411,7 +422,7 @@ public class VPageSliderView
           if (f2 > 10.0F)
           {
             whetherConditionIsRight(f2);
-            label563:
+            label607:
             fireOverScrollEvent(getLeft() + f2 * 0.5F);
           }
         }
@@ -421,13 +432,13 @@ public class VPageSliderView
           if (f2 < -10.0F)
           {
             whetherConditionIsRight(f2);
-            break label563;
+            break label607;
           }
           if ((this.mHandleDefault) || (getLeft() + (int)(f2 * 0.5F) == this.mRect.left)) {
-            break label563;
+            break label607;
           }
           layout(getLeft() + (int)(f2 * 0.5F), getTop(), getRight() + (int)(f2 * 0.5F), getBottom());
-          break label563;
+          break label607;
           if ((this.mCurrentPosition == 0) || (this.mCurrentPosition == getAdapter().getCount() - 1))
           {
             f1 = paramMotionEvent.getX();
@@ -468,13 +479,15 @@ public class VPageSliderView
             this.mHandleDefault = true;
           }
         }
-        if (localViewParent != null) {
+        if ((localViewParent == null) || ((this.mInterruptEnable) && (getCurrentItem() == 0))) {}
+        for (;;)
+        {
+          this.mStartRawY = ((int)paramMotionEvent.getRawY());
+          this.mStartRawX = ((int)paramMotionEvent.getRawX());
+          break;
           localViewParent.requestDisallowInterceptTouchEvent(true);
         }
-        this.mStartRawY = ((int)paramMotionEvent.getRawY());
-        this.mStartRawX = ((int)paramMotionEvent.getRawX());
-        continue;
-        label955:
+        label1016:
         return false;
         break;
       }
@@ -557,7 +570,7 @@ public class VPageSliderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.viola.ui.view.VPageSliderView
  * JD-Core Version:    0.7.0.1
  */

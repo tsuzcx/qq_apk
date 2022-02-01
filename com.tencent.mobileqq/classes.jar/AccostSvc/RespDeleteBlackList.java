@@ -8,7 +8,7 @@ public final class RespDeleteBlackList
   extends JceStruct
 {
   static RespHeader cache_stHeader;
-  public RespHeader stHeader;
+  public RespHeader stHeader = null;
   
   public RespDeleteBlackList() {}
   

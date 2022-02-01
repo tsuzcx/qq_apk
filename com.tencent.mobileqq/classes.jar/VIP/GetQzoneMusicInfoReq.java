@@ -10,9 +10,9 @@ public final class GetQzoneMusicInfoReq
 {
   static SourceInfo cache_stSource = new SourceInfo();
   static ArrayList<String> cache_vSongIdList = new ArrayList();
-  public long iUin;
-  public SourceInfo stSource;
-  public ArrayList<String> vSongIdList;
+  public long iUin = 0L;
+  public SourceInfo stSource = null;
+  public ArrayList<String> vSongIdList = null;
   
   static
   {

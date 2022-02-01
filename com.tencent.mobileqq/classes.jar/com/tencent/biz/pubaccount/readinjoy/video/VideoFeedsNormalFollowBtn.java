@@ -5,14 +5,12 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import anvx;
 import com.tencent.biz.pubaccount.VideoInfo;
-import sfb;
-import sma;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class VideoFeedsNormalFollowBtn
   extends TextView
-  implements sfb
+  implements IVideoFeedsFollowButton
 {
   public VideoFeedsNormalFollowBtn(Context paramContext)
   {
@@ -43,18 +41,18 @@ public class VideoFeedsNormalFollowBtn
   {
     if (paramBoolean)
     {
-      setText(anvx.a(2131715568));
-      setBackgroundDrawable(sma.a(getContext(), 2130843205));
+      setText(HardCodeUtil.a(2131716034));
+      setBackgroundDrawable(VideoFeedsResourceLoader.a(getContext(), 2130843358));
       setCompoundDrawables(null, null, null, null);
       return;
     }
-    setText(anvx.a(2131715590));
-    setBackgroundDrawable(sma.a(getContext(), 2130843040));
+    setText(HardCodeUtil.a(2131716056));
+    setBackgroundDrawable(VideoFeedsResourceLoader.a(getContext(), 2130843196));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsNormalFollowBtn
  * JD-Core Version:    0.7.0.1
  */

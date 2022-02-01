@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.qcall;
 
-import acnh;
 import android.text.TextUtils;
-import anvk;
-import awyz;
-import bapo;
-import bapr;
-import bhbx;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.imcore.message.UinTypeUtil;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.data.QCallRecent;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.util.Utils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 
-public class QCallProxy$5
+class QCallProxy$5
   implements Runnable
 {
-  public QCallProxy$5(bapo parambapo, bapr parambapr) {}
+  QCallProxy$5(QCallProxy paramQCallProxy, QCallProxy.QueryRecentCallsListener paramQueryRecentCallsListener) {}
   
   public void run()
   {
@@ -37,14 +35,14 @@ public class QCallProxy$5
     for (;;)
     {
       Object localObject11;
-      synchronized (bapo.a(this.this$0))
+      synchronized (QCallProxy.a(this.this$0))
       {
         Object localObject1 = new ArrayList();
         localObject8 = new ArrayList();
         localObject7 = new ArrayList();
         localObject6 = new ArrayList();
-        localObject5 = (awyz)bapo.a(this.this$0).getManager(QQManagerFactory.CONTACT_MANAGER);
-        localObject4 = (anvk)bapo.b(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
+        localObject5 = (PhoneContactManager)QCallProxy.a(this.this$0).getManager(QQManagerFactory.CONTACT_MANAGER);
+        localObject4 = (FriendsManager)QCallProxy.b(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
         k = 0;
         i = 0;
         j = k;
@@ -52,14 +50,14 @@ public class QCallProxy$5
           break label1090;
         }
         j = k;
-        if (!((awyz)localObject5).d()) {
+        if (!((PhoneContactManager)localObject5).d()) {
           break label1090;
         }
         j = k;
         if (localObject4 == null) {
           break label1090;
         }
-        localObject9 = bapo.a(this.this$0).iterator();
+        localObject9 = QCallProxy.a(this.this$0).iterator();
         if (((Iterator)localObject9).hasNext())
         {
           localObject10 = (QCallRecent)((Iterator)localObject9).next();
@@ -77,8 +75,8 @@ public class QCallProxy$5
           }
           if (((QCallRecent)localObject10).type == 1006)
           {
-            localObject11 = ((awyz)localObject5).c(((QCallRecent)localObject10).uin);
-            if ((localObject11 == null) || (!((anvk)localObject4).b(((PhoneContact)localObject11).uin))) {
+            localObject11 = ((PhoneContactManager)localObject5).c(((QCallRecent)localObject10).uin);
+            if ((localObject11 == null) || (!((FriendsManager)localObject4).b(((PhoneContact)localObject11).uin))) {
               break label1234;
             }
             j = 1;
@@ -103,8 +101,8 @@ public class QCallProxy$5
           if (((QCallRecent)localObject10).type != 56938) {
             break label1229;
           }
-          localObject11 = ((awyz)localObject5).b(((QCallRecent)localObject10).uin);
-          if ((localObject11 == null) || (!((anvk)localObject4).b(((PhoneContact)localObject11).uin))) {
+          localObject11 = ((PhoneContactManager)localObject5).b(((QCallRecent)localObject10).uin);
+          if ((localObject11 == null) || (!((FriendsManager)localObject4).b(((PhoneContact)localObject11).uin))) {
             break label1244;
           }
           j = 1;
@@ -134,13 +132,13 @@ public class QCallProxy$5
         localObject4 = (QCallRecent)((Iterator)localObject9).next();
         localObject10 = ((QCallRecent)localObject4).uin;
         this.this$0.a((QCallRecent)localObject4);
-        localObject1 = ((awyz)localObject5).c((String)localObject10);
+        localObject1 = ((PhoneContactManager)localObject5).c((String)localObject10);
         if (localObject1 == null) {
           continue;
         }
         this.this$0.a((QCallRecent)localObject4);
         localObject11 = ((PhoneContact)localObject1).uin;
-        int[] arrayOfInt = acnh.q;
+        int[] arrayOfInt = UinTypeUtil.c;
         k = arrayOfInt.length;
         localObject1 = null;
         j = 0;
@@ -190,13 +188,13 @@ public class QCallProxy$5
     while (((Iterator)localObject7).hasNext())
     {
       localObject4 = (QCallRecent)((Iterator)localObject7).next();
-      localObject3 = ((awyz)localObject5).b(((QCallRecent)localObject4).uin);
+      localObject3 = ((PhoneContactManager)localObject5).b(((QCallRecent)localObject4).uin);
       if (localObject3 != null)
       {
         this.this$0.a((QCallRecent)localObject4);
         localObject8 = ((PhoneContact)localObject3).mobileCode;
         localObject9 = ((PhoneContact)localObject3).uin;
-        localObject10 = acnh.q;
+        localObject10 = UinTypeUtil.c;
         k = localObject10.length;
         localObject3 = null;
         j = 0;
@@ -244,7 +242,7 @@ public class QCallProxy$5
           }
           localObject4 = (QCallRecent)((Iterator)localObject3).next();
           localObject6 = ((QCallRecent)localObject4).uin;
-          localObject7 = ((awyz)localObject5).b((String)localObject6);
+          localObject7 = ((PhoneContactManager)localObject5).b((String)localObject6);
           if (localObject7 != null)
           {
             this.this$0.a((QCallRecent)localObject4);
@@ -259,12 +257,12 @@ public class QCallProxy$5
         if ((j != 0) && (this.a != null))
         {
           localObject3 = new ArrayList();
-          localObject4 = bapo.a(this.this$0).iterator();
+          localObject4 = QCallProxy.a(this.this$0).iterator();
           while (((Iterator)localObject4).hasNext())
           {
             localObject5 = (QCallRecent)((Iterator)localObject4).next();
             if ((localObject5 == null) || (((QCallRecent)localObject5).uin == null) || (((QCallRecent)localObject5).uin.length() < 2)) {
-              bhbx.a("QCallProxy");
+              Utils.a("QCallProxy");
             }
             if ((localObject5 != null) && (((QCallRecent)localObject5).uin != null) && (((QCallRecent)localObject5).uin.length() >= 2)) {
               ((List)localObject3).add(localObject5);

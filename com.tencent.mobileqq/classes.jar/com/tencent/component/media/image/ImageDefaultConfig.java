@@ -10,7 +10,7 @@ import com.tencent.component.media.ImageManagerEnv;
 public class ImageDefaultConfig
 {
   public static final int[][] BYTE_ARRAY = { { 6, 25000 }, { 6, 200000 } };
-  public static final int[][] BYTE_ARRAY_LOCAL = { { 6, 25000 }, { 6, 200000 }, { 6, 1000000 }, { 8, 6000000 } };
+  public static final int[][] BYTE_ARRAY_LOCAL;
   static final int[] PIC_WEIGHT;
   private static final String TAG = "ImageDefaultConfig";
   static int[] bmpCount4Picture = { 40, 2 };
@@ -19,11 +19,17 @@ public class ImageDefaultConfig
   static int[] bmpSize4Qzone;
   private static String sProcessName;
   private static int screenHeight = -1;
-  private static int screenWidth = -1;
-  private static boolean smallScreem = false;
+  private static int screenWidth;
+  private static boolean smallScreem;
   
   static
   {
+    int[] arrayOfInt1 = { 6, 25000 };
+    int[] arrayOfInt2 = { 6, 1000000 };
+    int[] arrayOfInt3 = { 8, 6000000 };
+    BYTE_ARRAY_LOCAL = new int[][] { arrayOfInt1, { 6, 200000 }, arrayOfInt2, arrayOfInt3 };
+    screenWidth = -1;
+    smallScreem = false;
     bmpCount4Qzone = new int[] { 2, 1, 1 };
     PIC_WEIGHT = new int[] { 1, 2, 2 };
     bmpSize4Qzone = new int[] { 1000, 16000, 32000 };
@@ -332,7 +338,7 @@ public class ImageDefaultConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.component.media.image.ImageDefaultConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -3,26 +3,24 @@ package com.tencent.av.utils;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mtf;
-import mtj;
 
-public class PhoneStatusMonitor$2
+class PhoneStatusMonitor$2
   implements Runnable
 {
-  public PhoneStatusMonitor$2(mtf parammtf) {}
+  PhoneStatusMonitor$2(PhoneStatusMonitor paramPhoneStatusMonitor) {}
   
   public void run()
   {
-    boolean bool = mtj.e(mtf.a(this.this$0));
+    boolean bool = PhoneStatusTools.e(PhoneStatusMonitor.a(this.this$0));
     if (QLog.isColorLevel()) {
-      QLog.d("PhoneStatusMonitor", 2, "checkCalling, end, pre[" + mtf.a(this.this$0) + "], cur[" + bool + "]");
+      QLog.d("PhoneStatusMonitor", 2, "checkCalling, end, pre[" + PhoneStatusMonitor.a(this.this$0) + "], cur[" + bool + "]");
     }
-    mtf.a(this.this$0, bool);
-    Handler localHandler = mtf.a(this.this$0);
-    if ((localHandler != null) && (mtf.a(this.this$0).get())) {
-      localHandler.postDelayed(mtf.a(this.this$0), 10000L);
+    PhoneStatusMonitor.a(this.this$0, bool);
+    Handler localHandler = PhoneStatusMonitor.a(this.this$0);
+    if ((localHandler != null) && (PhoneStatusMonitor.a(this.this$0).get())) {
+      localHandler.postDelayed(PhoneStatusMonitor.a(this.this$0), 10000L);
     }
-    mtf.b(this.this$0).set(false);
+    PhoneStatusMonitor.b(this.this$0).set(false);
   }
 }
 

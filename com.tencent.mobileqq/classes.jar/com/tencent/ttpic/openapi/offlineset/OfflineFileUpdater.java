@@ -143,16 +143,16 @@ public class OfflineFileUpdater
       Object localObject2 = (FilterSettingJsonBean)GsonUtils.json2Obj((String)localObject1, new OfflineFileUpdater.4().getType());
       if ((localObject2 != null) && (((FilterSettingJsonBean)localObject2).gaussSetting != null))
       {
-        OfflineConfig.sGauSuperPhoneYear = ((FilterSettingJsonBean)localObject2).gaussSetting.gaussSuperPhone;
-        OfflineConfig.sGauMidderPhoneYear = ((FilterSettingJsonBean)localObject2).gaussSetting.gaussMidderPhone;
-        OfflineConfig.sGauSuperMaxSzie = ((FilterSettingJsonBean)localObject2).gaussSetting.superMaxSize;
-        OfflineConfig.sGauMidMaxSize = ((FilterSettingJsonBean)localObject2).gaussSetting.midMaxSize;
-        OfflineConfig.sGauLowMaxSize = ((FilterSettingJsonBean)localObject2).gaussSetting.lowMaxSize;
-        if (OfflineConfig.sGauSuperMaxSzie > 10.0F)
+        AEOfflineConfig.sGauSuperPhoneYear = ((FilterSettingJsonBean)localObject2).gaussSetting.gaussSuperPhone;
+        AEOfflineConfig.sGauMidderPhoneYear = ((FilterSettingJsonBean)localObject2).gaussSetting.gaussMidderPhone;
+        AEOfflineConfig.sGauSuperMaxSzie = ((FilterSettingJsonBean)localObject2).gaussSetting.superMaxSize;
+        AEOfflineConfig.sGauMidMaxSize = ((FilterSettingJsonBean)localObject2).gaussSetting.midMaxSize;
+        AEOfflineConfig.sGauLowMaxSize = ((FilterSettingJsonBean)localObject2).gaussSetting.lowMaxSize;
+        if (AEOfflineConfig.sGauSuperMaxSzie > 10.0F)
         {
           localObject1 = ScaleMode.USE_MAX_SIZE;
-          OfflineConfig.sGauScaleMode = (ScaleMode)localObject1;
-          OfflineConfig.sUpdateGaussSetting = true;
+          AEOfflineConfig.sGauScaleMode = (ScaleMode)localObject1;
+          AEOfflineConfig.sUpdateGaussSetting = true;
           localObject1 = ((FilterSettingJsonBean)localObject2).gaussSetting.phoneGassSet;
           if (localObject1 != null) {
             localObject1 = ((List)localObject1).iterator();
@@ -187,14 +187,14 @@ public class OfflineFileUpdater
   
   private static void updateGausSetting(FilterSettingJsonBean.GassResizeSet paramGassResizeSet)
   {
-    OfflineConfig.sIsGaussResize = paramGassResizeSet.needResize;
-    OfflineConfig.sGaussMaxSize = paramGassResizeSet.maxSize;
-    OfflineConfig.sGaussScale = paramGassResizeSet.scale;
+    AEOfflineConfig.sIsGaussResize = paramGassResizeSet.needResize;
+    AEOfflineConfig.sGaussMaxSize = paramGassResizeSet.maxSize;
+    AEOfflineConfig.sGaussScale = paramGassResizeSet.scale;
     if (paramGassResizeSet.maxSize > 10) {
-      OfflineConfig.sGauScaleMode = ScaleMode.USE_MAX_SIZE;
+      AEOfflineConfig.sGauScaleMode = ScaleMode.USE_MAX_SIZE;
     }
     if ((paramGassResizeSet.scale > 0.0F) && (paramGassResizeSet.scale < 1.0F)) {
-      OfflineConfig.sGauScaleMode = ScaleMode.USE_SCALE_VALE;
+      AEOfflineConfig.sGauScaleMode = ScaleMode.USE_SCALE_VALE;
     }
   }
   
@@ -228,7 +228,7 @@ public class OfflineFileUpdater
               break label226;
             }
             bool1 = true;
-            OfflineConfig.setHardEncodeEnable(bool1);
+            AEOfflineConfig.setHardEncodeEnable(bool1);
           }
         }
       }
@@ -247,7 +247,7 @@ public class OfflineFileUpdater
             if (((MediaSettingJsonBean.HardDecodeDevice)localObject2).decodetype == 0) {}
             for (bool1 = bool2;; bool1 = false)
             {
-              OfflineConfig.setHardDecodeEnable(bool1);
+              AEOfflineConfig.setHardDecodeEnable(bool1);
               return;
               label226:
               bool1 = false;
@@ -259,7 +259,7 @@ public class OfflineFileUpdater
               if (localHardEncodeDevice.encodetype == 0) {}
               for (bool1 = true;; bool1 = false)
               {
-                OfflineConfig.setHardEncodeEnable(bool1);
+                AEOfflineConfig.setHardEncodeEnable(bool1);
                 break;
               }
             }
@@ -275,7 +275,7 @@ public class OfflineFileUpdater
     label299:
     for (boolean bool1 = true;; bool1 = false)
     {
-      OfflineConfig.setHardDecodeEnable(bool1);
+      AEOfflineConfig.setHardDecodeEnable(bool1);
       break label167;
       break;
     }
@@ -299,7 +299,7 @@ public class OfflineFileUpdater
           {
             PagCutoutSettingJsonBean.PagCutoutSetting localPagCutoutSetting = (PagCutoutSettingJsonBean.PagCutoutSetting)((Iterator)localObject).next();
             if (DeviceInstance.getInstance().getDeviceName().equals(localPagCutoutSetting.deviceName)) {
-              OfflineConfig.useCutoutVersion = localPagCutoutSetting.useVersion;
+              AEOfflineConfig.useCutoutVersion = localPagCutoutSetting.useVersion;
             }
           }
         }
@@ -309,11 +309,11 @@ public class OfflineFileUpdater
   
   private static void updatePagDeviceSetting(PagSettingJsonBean.PagDeviceSetting paramPagDeviceSetting)
   {
-    OfflineConfig.sPagNeedScaleStatus = paramPagDeviceSetting.needLowScale;
-    OfflineConfig.sPagScaleVaue = paramPagDeviceSetting.scale;
-    OfflineConfig.sNotSupportRealTimePag = paramPagDeviceSetting.notRealTime;
-    OfflineConfig.sIsPagEncodeBgStaus = paramPagDeviceSetting.encodeBackgroud;
-    OfflineConfig.sNeedSoftDecoder = paramPagDeviceSetting.needSoftDecode;
+    AEOfflineConfig.sPagNeedScaleStatus = paramPagDeviceSetting.needLowScale;
+    AEOfflineConfig.sPagScaleVaue = paramPagDeviceSetting.scale;
+    AEOfflineConfig.sNotSupportRealTimePag = paramPagDeviceSetting.notRealTime;
+    AEOfflineConfig.sIsPagEncodeBgStaus = paramPagDeviceSetting.encodeBackgroud;
+    AEOfflineConfig.sNeedSoftDecoder = paramPagDeviceSetting.needSoftDecode;
   }
   
   protected static void updatePagSetting()
@@ -326,8 +326,8 @@ public class OfflineFileUpdater
       localObject = (PagSettingJsonBean)GsonUtils.json2Obj((String)localObject, new OfflineFileUpdater.5().getType());
       if (localObject != null)
       {
-        OfflineConfig.sLowDevYearPag = ((PagSettingJsonBean)localObject).lowDeviceYear;
-        OfflineConfig.sPagScaleVaue = ((PagSettingJsonBean)localObject).lowScale;
+        AEOfflineConfig.sLowDevYearPag = ((PagSettingJsonBean)localObject).lowDeviceYear;
+        AEOfflineConfig.sPagScaleVaue = ((PagSettingJsonBean)localObject).lowScale;
         localObject = ((PagSettingJsonBean)localObject).phoneSetting;
         if (localObject != null)
         {
@@ -354,7 +354,7 @@ public class OfflineFileUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.offlineset.OfflineFileUpdater
  * JD-Core Version:    0.7.0.1
  */

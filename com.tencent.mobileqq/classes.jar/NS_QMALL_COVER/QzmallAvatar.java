@@ -9,7 +9,7 @@ public final class QzmallAvatar
   extends JceStruct
 {
   static AvatarItem cache_stAvatarItem = new AvatarItem();
-  public AvatarItem stAvatarItem;
+  public AvatarItem stAvatarItem = null;
   
   public QzmallAvatar() {}
   

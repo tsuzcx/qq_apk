@@ -1,19 +1,21 @@
 package com.tencent.mobileqq.qassistant.core;
 
 import android.app.Instrumentation;
-import bakz;
 import com.tencent.qphone.base.util.QLog;
 
-public class VoiceMainPresenter$2
+class VoiceMainPresenter$2
   implements Runnable
 {
-  public VoiceMainPresenter$2(bakz parambakz) {}
+  VoiceMainPresenter$2(VoiceMainPresenter paramVoiceMainPresenter) {}
   
   public void run()
   {
     try
     {
-      new Instrumentation().sendKeyDownUpSync(4);
+      if (VoiceMainPresenter.a(this.this$0) == null) {
+        VoiceMainPresenter.a(this.this$0, new Instrumentation());
+      }
+      VoiceMainPresenter.a(this.this$0).sendKeyDownUpSync(4);
       return;
     }
     catch (Exception localException)

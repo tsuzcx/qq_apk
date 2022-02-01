@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class SelCardReq
   extends JceStruct
 {
-  public long m_LastOthMsg;
-  public long m_LastPic;
+  public long m_LastOthMsg = 0L;
+  public long m_LastPic = 0L;
   
   public SelCardReq() {}
   

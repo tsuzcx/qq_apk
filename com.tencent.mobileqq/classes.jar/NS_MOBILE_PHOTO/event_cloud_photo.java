@@ -13,10 +13,10 @@ public final class event_cloud_photo
   static Map<Integer, s_picurl> cache_specUrls = new HashMap();
   public String albumid = "";
   public String lloc = "";
-  public long owner;
-  public Map<Integer, s_picurl> specUrls;
-  public int type;
-  public long uploadTime;
+  public long owner = 0L;
+  public Map<Integer, s_picurl> specUrls = null;
+  public int type = 0;
+  public long uploadTime = 0L;
   
   static
   {

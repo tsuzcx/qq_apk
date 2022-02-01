@@ -1,14 +1,13 @@
 package com.tencent.open.filedownload;
 
 import android.widget.TextView;
-import bjoz;
 import com.tencent.open.filedownload.ui.NormalDownloadButton;
 import com.tencent.open.filedownload.ui.SafeDownloadButton;
 
-public class ApkFileDownloadFragment$3$1
+class ApkFileDownloadFragment$3$1
   implements Runnable
 {
-  public ApkFileDownloadFragment$3$1(bjoz parambjoz) {}
+  ApkFileDownloadFragment$3$1(ApkFileDownloadFragment.3 param3) {}
   
   public void run()
   {
@@ -19,7 +18,7 @@ public class ApkFileDownloadFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.filedownload.ApkFileDownloadFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

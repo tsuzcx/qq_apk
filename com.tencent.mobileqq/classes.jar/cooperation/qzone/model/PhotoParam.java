@@ -27,25 +27,25 @@ public class PhotoParam
   public String feedId = "";
   public long feedUin;
   public int getPhotoExType = 0;
-  public boolean isFriendPhotoBizFeed;
-  public boolean isLike;
-  public boolean isOnePictureFeed;
-  public boolean isOnlyPreView;
-  public boolean isShareAlbum;
-  public boolean isSharedFeeds;
+  public boolean isFriendPhotoBizFeed = false;
+  public boolean isLike = false;
+  public boolean isOnePictureFeed = false;
+  public boolean isOnlyPreView = false;
+  public boolean isShareAlbum = false;
+  public boolean isSharedFeeds = false;
   public boolean isTihFeed;
   public boolean isVideoPicMix;
   public int likeNum;
   public String loginNickName = "";
   public long loginUin;
-  public boolean mFromRecent;
+  public boolean mFromRecent = false;
   public String oneFeedPictruePath = "";
   public String orgKey = "";
   public long ownerUin;
   public String qunid;
-  public long qzoneUserType;
+  public long qzoneUserType = 0L;
   public long realOwnerUin;
-  public long sharer;
+  public long sharer = 0L;
   public int sortType;
   public int subid = -1;
   public String ugcKey = "";
@@ -226,7 +226,7 @@ public class PhotoParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.PhotoParam
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.gamecenter.data;
 
-import abud;
-import abuf;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,35 +9,35 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
-import avby;
-import avbz;
-import avca;
-import avcb;
-import aveq;
-import bhfn;
-import bizw;
-import bjgt;
-import bjqr;
-import bjqs;
-import bmqs;
-import bmqt;
-import bmqu;
-import bmqw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gamecenter.activities.GameCenterActivity;
-import com.tencent.gamecenter.appointment.GameCenterReceiver;
+import com.tencent.gamecenter.wadl.api.IQQGameConfigService;
+import com.tencent.gamecenter.wadl.api.IQQGameNetService;
+import com.tencent.gamecenter.wadl.api.IQQGameTrpcService;
+import com.tencent.gamecenter.wadl.biz.entity.WadlCommConfig;
+import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
+import com.tencent.gamecenter.wadl.biz.entity.WadlReportBuilder;
+import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
+import com.tencent.gamecenter.wadl.biz.listener.GameCenterListener;
+import com.tencent.gamecenter.wadl.biz.listener.WadlCmdListener;
+import com.tencent.gamecenter.wadl.biz.receiver.GameCenterReceiver;
+import com.tencent.gamecenter.wadl.util.GameCenterSpUtils;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.banner.TipsBar;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.PackageUtil;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.agent.datamodel.ImageLoader;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
+import cooperation.wadl.ipc.WadlProxyServiceUtil;
+import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,12 +47,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class GameNoticeCenter
   extends CopyOnWriteArrayList<GameNoticeInfo>
-  implements abud, Handler.Callback, bmqs
+  implements Handler.Callback, GameCenterListener, WadlCmdListener
 {
   public static final long HOUR_3 = 10800000L;
   public static final long HOUR_8 = 28800000L;
@@ -67,7 +65,7 @@ public class GameNoticeCenter
   public static final long TWO_DAY = 172800000L;
   public static final int WHAT_CLICK_BANNER = 2;
   public static final int WHAT_CLOSE_BANNER = 1;
-  private static final Comparator<GameNoticeInfo> a = new avby();
+  private static final Comparator<GameNoticeInfo> a = new GameNoticeCenter.1();
   static HashSet<String> cmdMap = new HashSet();
   private final int arkTypeCare = 2;
   private final int arkTypeNormal = 0;
@@ -97,7 +95,7 @@ public class GameNoticeCenter
     }
     GameCenterReceiver.a();
     GameCenterReceiver.a(this);
-    bmqt.a().a(this);
+    ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).addListener(this);
   }
   
   private GameNoticeInfo a(String paramString)
@@ -123,113 +121,43 @@ public class GameNoticeCenter
   
   private void a()
   {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("GameNoticeCenter", 2, "checkBanner now=" + l1 + ",mLastRefreshTime=" + this.mLastRefreshTime + ",size=" + size());
-    }
-    if (l1 - this.mLastRefreshTime < 60000L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("GameNoticeCenter", 2, "checkBanner time limit!");
-      }
-      return;
-    }
-    this.mLastRefreshTime = l1;
-    if (!this.mInit.getAndSet(true)) {
-      b();
-    }
-    label113:
-    GameNoticeInfo localGameNoticeInfo2;
     for (;;)
     {
+      GameNoticeInfo localGameNoticeInfo;
       try
       {
-        Iterator localIterator = iterator();
-        if (!localIterator.hasNext()) {
-          break label490;
+        ArrayList localArrayList = (ArrayList)this.mEntityManager.query(GameNoticeInfo.class);
+        if (localArrayList == null) {
+          break label98;
         }
-        localGameNoticeInfo2 = (GameNoticeInfo)localIterator.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("GameNoticeCenter", 1, "checkBanner info=" + localGameNoticeInfo2);
-        }
-        if (localGameNoticeInfo2.isValid()) {
-          break label206;
-        }
-        remove(localGameNoticeInfo2);
-        continue;
-        if (!QLog.isColorLevel()) {
+        localObject = localArrayList.iterator();
+        if (!((Iterator)localObject).hasNext()) {
           break;
         }
-      }
-      catch (Throwable localThrowable) {}
-      QLog.e("GameNoticeCenter", 2, "checkBanner exception!", localThrowable);
-      return;
-      label206:
-      if (localGameNoticeInfo2.bannerType == 1)
-      {
-        long l2 = new File(localGameNoticeInfo2.filePath).lastModified();
-        a(l2, l1, localGameNoticeInfo2);
-        b(l2, l1, localGameNoticeInfo2);
-      }
-      if (l1 >= localGameNoticeInfo2.startTime) {
-        break label293;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("GameNoticeCenter", 1, "checkBanner  is not time, info=" + localGameNoticeInfo2);
-      }
-    }
-    label293:
-    GameNoticeInfo localGameNoticeInfo1;
-    if (localGameNoticeInfo2.bannerType == 1) {
-      localGameNoticeInfo1 = localGameNoticeInfo2;
-    }
-    for (;;)
-    {
-      if (localGameNoticeInfo1 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GameNoticeCenter", 2, "getting no banner to show");
-        }
-        hideBanner();
-        return;
-        if (localGameNoticeInfo2.bannerType != 2) {
-          break label113;
-        }
-        if (a(localGameNoticeInfo2))
+        localGameNoticeInfo = (GameNoticeInfo)((Iterator)localObject).next();
+        if (!localGameNoticeInfo.isValid())
         {
-          if (!QLog.isColorLevel()) {
-            break label490;
-          }
-          QLog.d("GameNoticeCenter", 1, "request register info, break! ");
-          localGameNoticeInfo1 = null;
+          ((Iterator)localObject).remove();
           continue;
         }
-        if (!TextUtils.isEmpty(localGameNoticeInfo2.title))
-        {
-          localGameNoticeInfo1 = localGameNoticeInfo2;
-          if (!TextUtils.isEmpty(localGameNoticeInfo2.jumpUrl)) {
-            continue;
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("GameNoticeCenter", 2, "title or jumpUrl is empty, break! ");
-        }
-        remove(localGameNoticeInfo2);
-        break label113;
+        MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
       }
-      if (localGameNoticeInfo1.equals(this.mCurrentBanner))
+      catch (Throwable localThrowable)
       {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.w("GameNoticeCenter", 2, "mCurrentBanner not changed, mCurrentBanner=" + this.mCurrentBanner);
+        QLog.e("GameNoticeCenter", 1, "loadGameNoticeInfos exception", localThrowable);
         return;
       }
-      this.mCurrentBanner = ((GameNoticeInfo)localGameNoticeInfo1.clone());
-      a(this.mCurrentBanner);
+      localGameNoticeInfo.setTipsInfo(MobileQQ.getContext());
+    }
+    addAll(localThrowable);
+    b();
+    label98:
+    Object localObject = new StringBuilder().append("loadGameNoticeInfos size=");
+    if (localThrowable != null) {}
+    for (int i = localThrowable.size();; i = 0)
+    {
+      QLog.d("GameNoticeCenter", 1, i + ", cache size=" + size());
       return;
-      label490:
-      localGameNoticeInfo1 = null;
     }
   }
   
@@ -273,7 +201,7 @@ public class GameNoticeCenter
   
   private void a(long paramLong1, long paramLong2, GameNoticeInfo paramGameNoticeInfo)
   {
-    long l = abuf.a("KEY_RED_POINT_TIME_" + paramGameNoticeInfo.appId);
+    long l = GameCenterSpUtils.a("KEY_RED_POINT_TIME_" + paramGameNoticeInfo.appId);
     if ((paramLong2 - l > 604800000L) || (l > paramLong2)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -288,9 +216,9 @@ public class GameNoticeCenter
         }
         if ((paramLong1 > 86400000L) && (paramLong1 < 172800000L))
         {
-          abuf.a("KEY_RED_POINT_TIME_" + paramGameNoticeInfo.appId, paramLong2);
-          if (!bhfn.a(BaseApplicationImpl.getApplication(), paramGameNoticeInfo.packageName)) {
-            bmqt.a().a(9);
+          GameCenterSpUtils.a("KEY_RED_POINT_TIME_" + paramGameNoticeInfo.appId, paramLong2);
+          if (!PackageUtil.a(MobileQQ.sMobileQQ, paramGameNoticeInfo.packageName)) {
+            ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestRedPoint(9);
           }
         }
       }
@@ -320,18 +248,18 @@ public class GameNoticeCenter
       localBundle.putString("appid", paramGameNoticeInfo.appId);
       str = paramGameNoticeInfo.title;
       if (paramGameNoticeInfo.bannerType != 1) {
-        break label469;
+        break label479;
       }
-      localObject = (bjqr)bjqs.a().a("comminfo");
+      localObject = (WadlCommConfig)((IQQGameConfigService)QRoute.api(IQQGameConfigService.class)).getConfig("comminfo");
       if (localObject != null) {
-        localObject = ((bjqr)localObject).a(paramGameNoticeInfo.downloadType);
+        localObject = ((WadlCommConfig)localObject).a(paramGameNoticeInfo.downloadType);
       }
     }
     for (;;)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      label393:
-      label469:
+      label406:
+      label479:
       for (localObject = (String)localObject + str;; localObject = str)
       {
         localBundle.putString("tips", (String)localObject);
@@ -343,26 +271,26 @@ public class GameNoticeCenter
         for (;;)
         {
           if (paramGameNoticeInfo.bannerType != 1) {
-            break label393;
+            break label406;
           }
-          localObject = new bmqu();
-          ((bmqu)localObject).a("dc00087").b(paramGameNoticeInfo.appId).d("81706").c("205431").a(4, "8").a(35, paramGameNoticeInfo.apkChannel).a(10, paramGameNoticeInfo.getReportType());
+          localObject = new WadlReportBuilder();
+          ((WadlReportBuilder)localObject).a("dc00087").b(paramGameNoticeInfo.appId).g("81706").c("205431").a(4, "8").a(35, paramGameNoticeInfo.apkChannel).a(10, paramGameNoticeInfo.getReportType());
           if (paramGameNoticeInfo.isGray)
           {
-            ((bmqu)localObject).e(paramGameNoticeInfo.expeKey);
-            bmqw.a().a("59", paramGameNoticeInfo.expeKey, "", "205431", "1000", "1000", "0", "0");
+            ((WadlReportBuilder)localObject).h(paramGameNoticeInfo.expeKey);
+            ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).reportTianJi("59", paramGameNoticeInfo.expeKey, "", "205431", "1000", "1000", "0", "0");
           }
-          bmqt.a().a((bmqu)localObject);
+          ((WadlReportBuilder)localObject).a();
           return;
           if (paramGameNoticeInfo.downloadType == 1)
           {
-            localObject = bizw.a().a().getString(2131694327);
+            localObject = CommonDataAdapter.a().a().getString(2131694532);
             break;
           }
           if (paramGameNoticeInfo.downloadType != 3) {
-            break label474;
+            break label484;
           }
-          localObject = bizw.a().a().getString(2131694328);
+          localObject = CommonDataAdapter.a().a().getString(2131694533);
           break;
           if (QLog.isColorLevel()) {
             QLog.w("GameNoticeCenter", 2, "showBanner Conversation handler is null");
@@ -371,12 +299,12 @@ public class GameNoticeCenter
         if (paramGameNoticeInfo.bannerType != 2) {
           break;
         }
-        localObject = new bmqu();
-        ((bmqu)localObject).a("dc00087").b(paramGameNoticeInfo.appId).d("81707").c("205433").a(4, "8").a(35, paramGameNoticeInfo.apkChannel).a(10, paramGameNoticeInfo.getReportType());
-        bmqt.a().a((bmqu)localObject);
+        localObject = new WadlReportBuilder();
+        ((WadlReportBuilder)localObject).a("dc00087").b(paramGameNoticeInfo.appId).g("81707").c("205433").a(4, "8").a(35, paramGameNoticeInfo.apkChannel).a(10, paramGameNoticeInfo.getReportType());
+        ((WadlReportBuilder)localObject).a();
         return;
       }
-      label474:
+      label484:
       localObject = null;
     }
   }
@@ -389,33 +317,137 @@ public class GameNoticeCenter
     if (paramContext == null) {
       return;
     }
-    Intent localIntent = new Intent(BaseApplication.getContext(), GameCenterActivity.class);
-    localIntent.putExtra("url", paramString);
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("big_brother_source_key", "biz_src_zf_games");
-    paramContext.startActivity(localIntent);
+    Object localObject = MobileQQ.sMobileQQ;
+    localObject = new Intent(MobileQQ.getContext(), GameCenterActivity.class);
+    ((Intent)localObject).putExtra("url", paramString);
+    ((Intent)localObject).addFlags(268435456);
+    ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+    ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_zf_games");
+    paramContext.startActivity((Intent)localObject);
   }
   
-  private final boolean a(GameNoticeInfo paramGameNoticeInfo)
+  private void a(boolean paramBoolean)
   {
-    if (!paramGameNoticeInfo.infoRequested)
-    {
-      paramGameNoticeInfo.infoRequested = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("GameNoticeCenter", 2, "requestGameRegisterInfo appId=" + paramGameNoticeInfo.appId);
-      }
-      bmqt.a().b(paramGameNoticeInfo.appId);
-      return true;
+    long l1 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("GameNoticeCenter", 2, "checkBanner checkFreq = " + paramBoolean + ",now=" + l1 + ",mLastRefreshTime=" + this.mLastRefreshTime + ",size=" + size());
     }
-    return false;
+    if (!this.mInit.getAndSet(true)) {
+      a();
+    }
+    if ((paramBoolean) && (l1 - this.mLastRefreshTime < 60000L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("GameNoticeCenter", 2, "checkBanner time limit!");
+      }
+      if ((this.mCurrentBanner != null) && (!this.mCurrentBanner.isValid()))
+      {
+        hideBanner();
+        remove(this.mCurrentBanner);
+      }
+      return;
+    }
+    this.mLastRefreshTime = l1;
+    label161:
+    GameNoticeInfo localGameNoticeInfo2;
+    for (;;)
+    {
+      try
+      {
+        Iterator localIterator = iterator();
+        if (!localIterator.hasNext()) {
+          break label541;
+        }
+        localGameNoticeInfo2 = (GameNoticeInfo)localIterator.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("GameNoticeCenter", 1, "checkBanner info=" + localGameNoticeInfo2);
+        }
+        if (localGameNoticeInfo2.isValid()) {
+          break label254;
+        }
+        remove(localGameNoticeInfo2);
+        continue;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+      }
+      catch (Throwable localThrowable) {}
+      QLog.e("GameNoticeCenter", 2, "checkBanner exception!", localThrowable);
+      return;
+      label254:
+      if (localGameNoticeInfo2.bannerType == 1)
+      {
+        long l2 = new File(localGameNoticeInfo2.filePath).lastModified();
+        a(l2, l1, localGameNoticeInfo2);
+        b(l2, l1, localGameNoticeInfo2);
+      }
+      if (l1 >= localGameNoticeInfo2.startTime) {
+        break label344;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("GameNoticeCenter", 1, "checkBanner  is not time, info=" + localGameNoticeInfo2);
+      }
+    }
+    label344:
+    GameNoticeInfo localGameNoticeInfo1;
+    if (localGameNoticeInfo2.bannerType == 1) {
+      localGameNoticeInfo1 = localGameNoticeInfo2;
+    }
+    for (;;)
+    {
+      if (localGameNoticeInfo1 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GameNoticeCenter", 2, "getting no banner to show");
+        }
+        hideBanner();
+        return;
+        if (localGameNoticeInfo2.bannerType != 2) {
+          break label161;
+        }
+        if (a(localGameNoticeInfo2))
+        {
+          if (!QLog.isColorLevel()) {
+            break label541;
+          }
+          QLog.d("GameNoticeCenter", 1, "request register info, break! ");
+          localGameNoticeInfo1 = null;
+          continue;
+        }
+        if (!TextUtils.isEmpty(localGameNoticeInfo2.title))
+        {
+          localGameNoticeInfo1 = localGameNoticeInfo2;
+          if (!TextUtils.isEmpty(localGameNoticeInfo2.jumpUrl)) {
+            continue;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("GameNoticeCenter", 2, "title or jumpUrl is empty, break! ");
+        }
+        remove(localGameNoticeInfo2);
+        break label161;
+      }
+      if (localGameNoticeInfo1.equals(this.mCurrentBanner))
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.w("GameNoticeCenter", 2, "mCurrentBanner not changed, mCurrentBanner=" + this.mCurrentBanner);
+        return;
+      }
+      this.mCurrentBanner = ((GameNoticeInfo)localGameNoticeInfo1.clone());
+      a(this.mCurrentBanner);
+      return;
+      label541:
+      localGameNoticeInfo1 = null;
+    }
   }
   
   private boolean a(WadlResult paramWadlResult)
   {
-    GameNoticeInfo localGameNoticeInfo = a(paramWadlResult.a.a);
+    Object localObject = a(paramWadlResult.a.a);
     if (QLog.isColorLevel()) {
-      QLog.d("GameNoticeCenter", 2, "processTaskInfo find info=" + localGameNoticeInfo + ",taskInfo=" + paramWadlResult);
+      QLog.d("GameNoticeCenter", 2, "processTaskInfo find info=" + localObject + ",taskInfo=" + paramWadlResult);
     }
     int i;
     switch (paramWadlResult.b)
@@ -426,9 +458,9 @@ public class GameNoticeCenter
       i = 0;
     }
     while (i == 0) {
-      if (localGameNoticeInfo != null)
+      if (localObject != null)
       {
-        remove(localGameNoticeInfo);
+        remove(localObject);
         return true;
         i = GameNoticeInfo.convertToBannerType(paramWadlResult);
       }
@@ -437,19 +469,20 @@ public class GameNoticeCenter
         return false;
       }
     }
-    if ((localGameNoticeInfo != null) && ((localGameNoticeInfo.bannerType != i) || (localGameNoticeInfo.createTime != paramWadlResult.c)))
+    if ((localObject != null) && ((((GameNoticeInfo)localObject).bannerType != i) || (((GameNoticeInfo)localObject).createTime != paramWadlResult.c)))
     {
-      remove(localGameNoticeInfo);
+      remove(localObject);
       if (QLog.isColorLevel()) {
-        QLog.d("GameNoticeCenter", 1, new Object[] { "processTaskInfo: remove GameNoticeInfo: ", localGameNoticeInfo });
+        QLog.d("GameNoticeCenter", 1, new Object[] { "processTaskInfo: remove GameNoticeInfo: ", localObject });
       }
-      localGameNoticeInfo = null;
+      localObject = null;
     }
     for (boolean bool = true;; bool = false)
     {
-      if (localGameNoticeInfo == null)
+      if (localObject == null)
       {
-        paramWadlResult = new GameNoticeInfo(paramWadlResult, BaseApplication.getContext());
+        localObject = MobileQQ.sMobileQQ;
+        paramWadlResult = new GameNoticeInfo(paramWadlResult, MobileQQ.getContext());
         if (paramWadlResult.isValid())
         {
           add(paramWadlResult);
@@ -470,89 +503,21 @@ public class GameNoticeCenter
     }
   }
   
+  private final boolean a(GameNoticeInfo paramGameNoticeInfo)
+  {
+    if (!paramGameNoticeInfo.infoRequested)
+    {
+      paramGameNoticeInfo.infoRequested = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("GameNoticeCenter", 2, "requestGameRegisterInfo appId=" + paramGameNoticeInfo.appId);
+      }
+      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).getGameRegisterInfo(paramGameNoticeInfo.appId);
+      return true;
+    }
+    return false;
+  }
+  
   private void b()
-  {
-    for (;;)
-    {
-      try
-      {
-        ArrayList localArrayList = (ArrayList)this.mEntityManager.query(GameNoticeInfo.class);
-        if (localArrayList == null) {
-          break label94;
-        }
-        localObject = localArrayList.iterator();
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        GameNoticeInfo localGameNoticeInfo = (GameNoticeInfo)((Iterator)localObject).next();
-        if (!localGameNoticeInfo.isValid()) {
-          ((Iterator)localObject).remove();
-        } else {
-          localGameNoticeInfo.setTipsInfo(BaseApplication.getContext());
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("GameNoticeCenter", 1, "loadGameNoticeInfos exception", localThrowable);
-        return;
-      }
-    }
-    addAll(localThrowable);
-    c();
-    label94:
-    Object localObject = new StringBuilder().append("loadGameNoticeInfos size=");
-    if (localThrowable != null) {}
-    for (int i = localThrowable.size();; i = 0)
-    {
-      QLog.d("GameNoticeCenter", 1, i + ", cache size=" + size());
-      return;
-    }
-  }
-  
-  private void b(long paramLong1, long paramLong2, GameNoticeInfo paramGameNoticeInfo)
-  {
-    long l = abuf.a("REQUEST_ARK_TIME_" + paramGameNoticeInfo.appId);
-    boolean bool;
-    int i;
-    if ((paramLong2 - l > 86400000L) || (l > paramLong2))
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("GameNoticeCenter", 1, "lastRequestArkTime=" + l + ",now=" + paramLong2 + ",fileLastModifiedTime=" + paramLong1 + ",bRequestArk=" + bool);
-      }
-      if (bool)
-      {
-        paramLong1 = paramLong2 - paramLong1;
-        i = -1;
-        if ((paramLong1 <= 300000L) || (paramLong1 > 10800000L)) {
-          break label242;
-        }
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameNoticeCenter", 1, "requestPushArkIfNeed lostTime=" + paramLong1 + ",arkType=" + i);
-      }
-      if (i > -1)
-      {
-        bmqt.a().a(paramGameNoticeInfo.appId, i);
-        abuf.a("REQUEST_ARK_TIME_" + paramGameNoticeInfo.appId, paramLong2);
-      }
-      return;
-      bool = false;
-      break;
-      label242:
-      if ((paramLong1 > 10800000L) && (paramLong1 <= 86400000L)) {
-        i = 1;
-      } else if (paramLong1 > 86400000L) {
-        i = 2;
-      }
-    }
-  }
-  
-  private void c()
   {
     try
     {
@@ -568,16 +533,48 @@ public class GameNoticeCenter
     }
   }
   
-  public static TipsBar createBanner(Activity paramActivity)
+  private void b(long paramLong1, long paramLong2, GameNoticeInfo paramGameNoticeInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameNoticeCenter", 2, "createBanner baseActivity=" + paramActivity);
+    long l = GameCenterSpUtils.a("REQUEST_ARK_TIME_" + paramGameNoticeInfo.appId);
+    boolean bool;
+    int i;
+    if ((paramLong2 - l > 86400000L) || (l > paramLong2))
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("GameNoticeCenter", 1, "lastRequestArkTime=" + l + ",now=" + paramLong2 + ",fileLastModifiedTime=" + paramLong1 + ",bRequestArk=" + bool);
+      }
+      if (bool)
+      {
+        paramLong1 = paramLong2 - paramLong1;
+        if ((paramLong1 <= 300000L) || (paramLong1 > 10800000L)) {
+          break label246;
+        }
+        i = 0;
+      }
     }
-    TipsBar localTipsBar = new TipsBar(paramActivity);
-    localTipsBar.setTipsIcon(paramActivity.getResources().getDrawable(2130838394));
-    localTipsBar.setVisibility(8);
-    localTipsBar.a(true);
-    return localTipsBar;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GameNoticeCenter", 1, "requestPushArkIfNeed lostTime=" + paramLong1 + ",arkType=" + i);
+      }
+      if (i > -1)
+      {
+        ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestArk(paramGameNoticeInfo.appId, i);
+        GameCenterSpUtils.a("REQUEST_ARK_TIME_" + paramGameNoticeInfo.appId, paramLong2);
+      }
+      return;
+      bool = false;
+      break;
+      label246:
+      if ((paramLong1 > 10800000L) && (paramLong1 <= 86400000L)) {
+        i = 1;
+      } else if (paramLong1 > 86400000L) {
+        i = 2;
+      } else {
+        i = -1;
+      }
+    }
   }
   
   public boolean add(GameNoticeInfo paramGameNoticeInfo)
@@ -597,18 +594,29 @@ public class GameNoticeCenter
     if (QLog.isColorLevel()) {
       QLog.d("GameNoticeCenter", 2, "checkBannerFromResume mCheckBannerPosted=" + this.mCheckBannerPosted);
     }
-    if (!this.mCheckBannerPosted.getAndSet(true)) {
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label73;
-      }
-    }
-    label73:
-    for (int i = 1; i != 0; i = 0)
+    int i;
+    if (!this.mCheckBannerPosted.getAndSet(true))
     {
+      if (Looper.getMainLooper() != Looper.myLooper()) {
+        break label80;
+      }
+      i = 1;
+      if (i == 0) {
+        break label85;
+      }
       ThreadManagerV2.excute(this.mCheckBanner, 16, null, true);
-      return;
     }
-    this.mCheckBanner.run();
+    for (;;)
+    {
+      QQGameHelper.b = true;
+      QQGameHelper.d();
+      return;
+      label80:
+      i = 0;
+      break;
+      label85:
+      this.mCheckBanner.run();
+    }
   }
   
   public HashSet<String> getFilterCmds()
@@ -637,18 +645,18 @@ public class GameNoticeCenter
           Object localObject;
           if (paramMessage.bannerType == 1)
           {
-            localObject = new bmqu();
-            ((bmqu)localObject).a("dc00087").b(paramMessage.appId).d("81706").c("205435").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
+            localObject = new WadlReportBuilder();
+            ((WadlReportBuilder)localObject).a("dc00087").b(paramMessage.appId).g("81706").c("205435").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
             if (paramMessage.isGray) {
-              ((bmqu)localObject).e(paramMessage.expeKey);
+              ((WadlReportBuilder)localObject).h(paramMessage.expeKey);
             }
-            bmqt.a().a((bmqu)localObject);
+            ((WadlReportBuilder)localObject).a();
           }
           else if (paramMessage.bannerType == 2)
           {
-            localObject = new bmqu();
-            ((bmqu)localObject).a("dc00087").b(paramMessage.appId).d("81707").c("205436").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
-            bmqt.a().a((bmqu)localObject);
+            localObject = new WadlReportBuilder();
+            ((WadlReportBuilder)localObject).a("dc00087").b(paramMessage.appId).g("81707").c("205436").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
+            ((WadlReportBuilder)localObject).a();
             continue;
             hideBanner();
             if ((paramMessage.obj instanceof String))
@@ -662,30 +670,34 @@ public class GameNoticeCenter
                 {
                   if (paramMessage.isGray)
                   {
-                    bmqw.a().a("59", paramMessage.expeKey, "", "205432", "1000", "1000", "0", "0");
+                    ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).reportTianJi("59", paramMessage.expeKey, "", "205432", "1000", "1000", "0", "0");
                     localObject = new WadlParams((String)localObject, paramMessage.packageName);
                     ((WadlParams)localObject).p = "biz_src_zf_games";
                     ((WadlParams)localObject).c(1);
-                    aveq.a((WadlParams)localObject);
+                    WadlProxyServiceUtil.a().c((WadlParams)localObject);
                   }
                   for (;;)
                   {
-                    localObject = new bmqu();
-                    ((bmqu)localObject).a("dc00087").b(paramMessage.appId).d("81706").c("205432").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
+                    localObject = new WadlReportBuilder();
+                    ((WadlReportBuilder)localObject).a("dc00087").b(paramMessage.appId).g("81706").c("205432").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
                     if (paramMessage.isGray) {
-                      ((bmqu)localObject).e(paramMessage.expeKey);
+                      ((WadlReportBuilder)localObject).h(paramMessage.expeKey);
                     }
-                    bmqt.a().a((bmqu)localObject);
+                    ((WadlReportBuilder)localObject).a();
                     break;
-                    a(paramMessage.jumpUrl, BaseApplication.getContext());
+                    localObject = paramMessage.jumpUrl;
+                    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+                    a((String)localObject, MobileQQ.getContext());
                   }
                 }
                 if (paramMessage.bannerType == 2)
                 {
-                  localObject = new bmqu();
-                  ((bmqu)localObject).a("dc00087").b(paramMessage.appId).d("81707").c("205434").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
-                  bmqt.a().a((bmqu)localObject);
-                  a(paramMessage.jumpUrl, BaseApplication.getContext());
+                  localObject = new WadlReportBuilder();
+                  ((WadlReportBuilder)localObject).a("dc00087").b(paramMessage.appId).g("81707").c("205434").a(4, "20").a(35, paramMessage.apkChannel).a(10, paramMessage.getReportType());
+                  ((WadlReportBuilder)localObject).a();
+                  paramMessage = paramMessage.jumpUrl;
+                  localObject = MobileQQ.sMobileQQ;
+                  a(paramMessage, MobileQQ.getContext());
                 }
               }
             }
@@ -734,13 +746,13 @@ public class GameNoticeCenter
       }
       paramString = a(paramIntent);
       if (paramString == null) {
-        break label177;
+        break label178;
       }
       if (paramJSONObject.optInt("registered", 0) != 1) {
-        break label134;
+        break label135;
       }
       if (i == 0) {
-        break label140;
+        break label141;
       }
       remove(paramString);
     }
@@ -749,18 +761,18 @@ public class GameNoticeCenter
       if (QLog.isColorLevel()) {
         QLog.d("GameNoticeCenter", 2, "parseGameRegisterInfo info=" + paramString);
       }
-      a();
+      a(false);
       return;
-      label134:
+      label135:
       i = 0;
       break;
-      label140:
+      label141:
       paramLong = paramJSONObject.optLong("bar_delay");
       long l = paramJSONObject.optLong("bar_interval");
-      abuf.a("MILLISECONDS_DELAY", paramLong);
-      abuf.a("MILLISECONDS_INTERVAL", l);
+      GameCenterSpUtils.a("MILLISECONDS_DELAY", paramLong);
+      GameCenterSpUtils.a("MILLISECONDS_INTERVAL", l);
     }
-    label177:
+    label178:
     QLog.e("GameNoticeCenter", 1, new Object[] { "parseGameRegisterInfo, GameNoticeInfo for ", paramIntent, " not found!" });
   }
   
@@ -773,7 +785,7 @@ public class GameNoticeCenter
       remove(this.mCurrentBanner);
     }
     GameCenterReceiver.b(this);
-    bmqt.a().b(this);
+    ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).removeListener(this);
     hideBanner();
     this.mInit.set(false);
   }
@@ -784,7 +796,7 @@ public class GameNoticeCenter
       QLog.d("GameNoticeCenter", 1, "onTaskComplete wadlResult=" + paramWadlResult);
     }
     if (a(paramWadlResult)) {
-      c();
+      b();
     }
   }
   
@@ -802,7 +814,7 @@ public class GameNoticeCenter
       QLog.d("GameNoticeCenter", 1, "onTaskInstall wadlResult=" + paramWadlResult);
     }
     if (a(paramWadlResult)) {
-      c();
+      b();
     }
   }
   
@@ -864,7 +876,7 @@ public class GameNoticeCenter
           paramView.setVisibility(8);
           return;
         }
-        paramView.setTipsIcon(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838394));
+        paramView.setTipsIcon(MobileQQ.sMobileQQ.getResources().getDrawable(2130838463));
         paramView.setTipsText("");
         paramView.setVisibility(0);
       } while (!(paramMessage.obj instanceof Bundle));
@@ -875,18 +887,18 @@ public class GameNoticeCenter
       if (QLog.isColorLevel()) {
         QLog.d("GameNoticeCenter", 2, "updateGameCenterBar  appid=" + paramMessage + ",tips= " + str + ",iconURL= " + (String)localObject);
       }
-      paramView.setOnClickListener(new avbz(this, paramMessage));
-      paramView.setCloseListener(new avca(this, paramMessage));
+      paramView.setOnClickListener(new GameNoticeCenter.3(this, paramMessage));
+      paramView.setCloseListener(new GameNoticeCenter.4(this, paramMessage));
       if (!TextUtils.isEmpty(str)) {
         paramView.setTipsText(str);
       }
     } while (TextUtils.isEmpty((CharSequence)localObject));
-    bjgt.a().a((String)localObject, new avcb(this, paramView));
+    ImageLoader.a().a((String)localObject, new GameNoticeCenter.5(this, paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameNoticeCenter
  * JD-Core Version:    0.7.0.1
  */

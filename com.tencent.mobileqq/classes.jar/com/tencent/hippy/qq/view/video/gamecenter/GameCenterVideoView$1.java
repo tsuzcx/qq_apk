@@ -1,11 +1,11 @@
 package com.tencent.hippy.qq.view.video.gamecenter;
 
-import avdp;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController.VideoStatusChangeListener;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.qphone.base.util.QLog;
 
 class GameCenterVideoView$1
-  implements avdp
+  implements GameCenterVideoViewController.VideoStatusChangeListener
 {
   GameCenterVideoView$1(GameCenterVideoView paramGameCenterVideoView) {}
   
@@ -25,7 +25,7 @@ class GameCenterVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView.1
  * JD-Core Version:    0.7.0.1
  */

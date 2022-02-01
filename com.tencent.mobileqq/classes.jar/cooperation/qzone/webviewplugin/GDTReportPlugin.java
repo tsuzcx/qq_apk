@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.QZoneClickReport;
 import cooperation.qzone.QZoneClickReport.ReportInfo;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
@@ -30,7 +30,7 @@ public class GDTReportPlugin
   public static final String PLUGIN_NAMESPACE = "gdtReportPlugin";
   static final int REPORT_FINISH = 4;
   private Map<Integer, String> feedDataCookie;
-  private int loadClickCgiState;
+  private int loadClickCgiState = 0;
   private long loadFinishTime;
   private long loadStartTime;
   private int state = 0;
@@ -116,6 +116,14 @@ public class GDTReportPlugin
   {
     Log.i("gdtReportPlugin", "129\t" + getLoadTime());
     RemoteHandleManager.getInstance().getSender().gdtAdvReportFromWebViewPlug(this.feedDataCookie, 2005, 0, getStayTime(), 0L);
+  }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    if ("gdtReportPlugin".equals(paramString)) {
+      return 2L;
+    }
+    return super.getWebViewEventByNameSpace(paramString);
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -214,7 +222,7 @@ public class GDTReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.GDTReportPlugin
  * JD-Core Version:    0.7.0.1
  */

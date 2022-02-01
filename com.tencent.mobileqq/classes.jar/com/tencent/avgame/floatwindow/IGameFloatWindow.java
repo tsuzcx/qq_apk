@@ -1,0 +1,9 @@
+package com.tencent.avgame.floatwindow;
+
+public abstract interface IGameFloatWindow {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.avgame.floatwindow.IGameFloatWindow
+ * JD-Core Version:    0.7.0.1
+ */

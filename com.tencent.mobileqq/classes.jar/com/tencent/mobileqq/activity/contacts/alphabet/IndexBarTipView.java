@@ -81,7 +81,7 @@ public class IndexBarTipView
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     this.c = paramContext.getResources().getColor(17170444);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297202);
+    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297227);
     if (paramAttributeSet != null)
     {
       paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.IndexBar);
@@ -142,7 +142,7 @@ public class IndexBarTipView
     return null;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
@@ -154,7 +154,7 @@ public class IndexBarTipView
     paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, this.d, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_a_of_type_Int != getWidth())
@@ -185,7 +185,7 @@ public class IndexBarTipView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.IndexBarTipView
  * JD-Core Version:    0.7.0.1
  */

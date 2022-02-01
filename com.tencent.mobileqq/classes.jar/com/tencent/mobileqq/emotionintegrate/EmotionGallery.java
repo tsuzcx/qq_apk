@@ -7,14 +7,13 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import askt;
-import bptp;
 import com.tencent.mobileqq.activity.photo.DragGallery;
+import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class EmotionGallery
   extends DragGallery
 {
-  private askt a;
+  private EmotionGallery.OnScaleChangeListener a;
   
   public EmotionGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,47 +34,47 @@ public class EmotionGallery
     if (paramInt > paramFloat) {}
     for (paramFloat /= paramInt;; paramFloat = Math.min(1.5F, paramFloat / paramInt))
     {
-      setMaxScale((float)bptp.a / paramInt);
+      setMaxScale((float)ScreenUtil.a / paramInt);
       return paramFloat;
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Askt != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener != null)
     {
       float f = a();
-      this.jdField_a_of_type_Askt.c(f);
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener.b(f);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Askt != null) {
-      this.jdField_a_of_type_Askt.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener.b();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Askt != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener != null)
     {
       float f = a();
-      this.jdField_a_of_type_Askt.b(f);
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener.a(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
   }
   
-  public void setOnScaleChangeListener(askt paramaskt)
+  public void setOnScaleChangeListener(EmotionGallery.OnScaleChangeListener paramOnScaleChangeListener)
   {
-    this.jdField_a_of_type_Askt = paramaskt;
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery$OnScaleChangeListener = paramOnScaleChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionGallery
  * JD-Core Version:    0.7.0.1
  */

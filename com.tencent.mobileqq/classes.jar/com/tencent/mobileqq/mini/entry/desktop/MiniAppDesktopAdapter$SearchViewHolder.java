@@ -2,15 +2,15 @@ package com.tencent.mobileqq.mini.entry.desktop;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import anvx;
-import bdfk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
@@ -20,7 +20,9 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopSearchInfo;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
@@ -34,8 +36,8 @@ class MiniAppDesktopAdapter$SearchViewHolder
   public MiniAppDesktopAdapter$SearchViewHolder(WeakReference<Activity> paramWeakReference, View paramView)
   {
     super(paramView);
-    this.keywordTv = ((TextView)paramView.findViewById(2131371311));
-    this.container = paramView.findViewById(2131371304);
+    this.keywordTv = ((TextView)paramView.findViewById(2131371591));
+    this.container = paramView.findViewById(2131371584);
     this.container.setPadding(0, 0, 0, 0);
     paramView.setOnClickListener(new MiniAppDesktopAdapter.SearchViewHolder.1(this, paramWeakReference));
   }
@@ -45,36 +47,69 @@ class MiniAppDesktopAdapter$SearchViewHolder
     Object localObject2 = MiniAppUtils.getAppInterface();
     if (localObject2 != null)
     {
-      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (bdfk.b(ThemeUtil.getCurrentThemeId())))
+      int i = 2130850768;
+      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (QQTheme.c(ThemeUtil.getCurrentThemeId()))) {
+        i = 2130841174;
+      }
+      int j = i;
+      if (paramDesktopSearchInfo != null)
       {
-        this.container.setBackgroundResource(2130841041);
-        localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(2130850363);
-        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getMinimumWidth(), ((Drawable)localObject1).getMinimumHeight());
-        this.keywordTv.setCompoundDrawables((Drawable)localObject1, null, null, null);
-        this.keywordTv.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131167123));
+        j = i;
+        if (paramDesktopSearchInfo.isSpringFestivalMode)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("MiniAppDesktopAdapter", 2, "updateSearchBar, ContainerBg");
+          }
+          j = 2130850770;
+        }
       }
+      this.container.setBackgroundResource(j);
+      j = 2130850763;
+      i = j;
+      if (paramDesktopSearchInfo != null)
+      {
+        i = j;
+        if (paramDesktopSearchInfo.isSpringFestivalMode)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("MiniAppDesktopAdapter", 2, "updateSearchBar, SearchIconBg");
+          }
+          i = 2130850766;
+        }
+      }
+      localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(i);
+      ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getMinimumWidth(), ((Drawable)localObject1).getMinimumHeight());
+      this.keywordTv.setCompoundDrawables((Drawable)localObject1, null, null, null);
+      j = BaseApplicationImpl.getContext().getResources().getColor(2131167130);
+      i = j;
+      if (paramDesktopSearchInfo != null)
+      {
+        i = j;
+        if (paramDesktopSearchInfo.isSpringFestivalMode)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("MiniAppDesktopAdapter", 2, "updateSearchBar, textColor:#FFFFFF");
+          }
+          i = Color.parseColor("#FFFFFF");
+        }
+      }
+      this.keywordTv.setTextColor(i);
     }
-    else
+    this.container.setPadding(0, 0, 0, 0);
+    this.searchInfo = paramDesktopSearchInfo;
+    if ((paramDesktopSearchInfo != null) && (paramDesktopSearchInfo.keyword != null) && (paramDesktopSearchInfo.keyword.size() > 0))
     {
-      this.container.setPadding(0, 0, 0, 0);
-      this.searchInfo = paramDesktopSearchInfo;
-      if ((paramDesktopSearchInfo == null) || (paramDesktopSearchInfo.keyword == null) || (paramDesktopSearchInfo.keyword.size() <= 0)) {
-        break label304;
-      }
       localObject1 = (String)paramDesktopSearchInfo.keyword.get(0);
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label289;
-      }
-      this.keywordTv.setText((CharSequence)localObject1);
-      label167:
-      if (this.keywordTv.getText() == null) {
-        break label319;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        this.keywordTv.setText((CharSequence)localObject1);
+        if (this.keywordTv.getText() == null) {
+          break label432;
+        }
       }
     }
-    label289:
-    label304:
-    label319:
-    for (Object localObject1 = this.keywordTv.getText().toString();; localObject1 = anvx.a(2131706270))
+    label432:
+    for (Object localObject1 = this.keywordTv.getText().toString();; localObject1 = HardCodeUtil.a(2131706810))
     {
       if (localObject2 != null)
       {
@@ -87,12 +122,10 @@ class MiniAppDesktopAdapter$SearchViewHolder
         }
       }
       return;
-      this.container.setBackgroundResource(2130850367);
+      this.keywordTv.setText(HardCodeUtil.a(2131706802));
       break;
-      this.keywordTv.setText(anvx.a(2131706262));
-      break label167;
-      this.keywordTv.setText(anvx.a(2131706265));
-      break label167;
+      this.keywordTv.setText(HardCodeUtil.a(2131706805));
+      break;
     }
   }
 }

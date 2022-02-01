@@ -5,77 +5,56 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 class DesktopDataManager$20
   implements Runnable
 {
-  DesktopDataManager$20(DesktopDataManager paramDesktopDataManager, List paramList) {}
+  DesktopDataManager$20(DesktopDataManager paramDesktopDataManager, DesktopItemInfo paramDesktopItemInfo) {}
   
   public void run()
   {
-    Object localObject1 = MiniAppUtils.getAppInterface();
-    if (localObject1 == null) {
+    Object localObject = MiniAppUtils.getAppInterface();
+    if (localObject == null) {
       QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
     }
     EntityManager localEntityManager;
     do
     {
       return;
-      localEntityManager = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+      localEntityManager = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
     } while (localEntityManager == null);
-    EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
-    localEntityTransaction.begin();
     for (;;)
     {
       try
       {
-        localStringBuilder = new StringBuilder();
-        Iterator localIterator = this.val$appInfoList.iterator();
-        if (!localIterator.hasNext()) {
-          continue;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = null;
+        if (!(this.val$data instanceof DesktopAppInfo)) {
+          break label148;
         }
-        localObject1 = (DesktopItemInfo)localIterator.next();
-        if (!(localObject1 instanceof DesktopAppInfo)) {
-          continue;
+        localObject = new DeskTopAppEntity(((DesktopAppInfo)this.val$data).mMiniAppInfo);
+        if (localObject != null)
+        {
+          ((DeskTopAppEntity)localObject).setStatus(1000);
+          DesktopDataManager.access$3100(this.this$0, localEntityManager, (Entity)localObject);
+          localStringBuilder.append(((DeskTopAppEntity)localObject).name).append(", ");
         }
-        localObject1 = new DeskTopAppEntity(((DesktopAppInfo)localObject1).mMiniAppInfo);
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder;
         if (!QLog.isColorLevel()) {
-          continue;
+          break;
         }
-        QLog.d("DesktopDataManager", 2, "insertEntityWithBatch exception: ", localException);
-        return;
-        if (!(localException instanceof DesktopSearchInfo)) {
-          break label231;
-        }
-        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)localException).mAppInfo);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntityWithBatch : ", localStringBuilder.toString() });
-        localEntityTransaction.commit();
+        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntity : ", localStringBuilder.toString() });
         return;
       }
-      finally
-      {
-        localEntityTransaction.end();
+      catch (Exception localException) {}
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      if (localObject1 != null)
-      {
-        ((DeskTopAppEntity)localObject1).setStatus(1000);
-        DesktopDataManager.access$3100(this.this$0, localEntityManager, (Entity)localObject1);
-        localStringBuilder.append(((DeskTopAppEntity)localObject1).name).append(", ");
-        continue;
-        label231:
-        Object localObject3 = null;
+      QLog.d("DesktopDataManager", 2, "insertEntity exception: ", localException);
+      return;
+      label148:
+      if ((this.val$data instanceof DesktopSearchInfo)) {
+        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)this.val$data).mAppInfo);
       }
     }
   }

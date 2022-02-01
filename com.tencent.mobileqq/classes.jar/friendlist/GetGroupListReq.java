@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class GetGroupListReq
   extends JceStruct
 {
-  public byte flush;
-  public byte getgroupCount;
-  public byte startIndex;
-  public long uin;
+  public byte flush = 0;
+  public byte getgroupCount = 0;
+  public byte startIndex = 0;
+  public long uin = 0L;
   
   public GetGroupListReq() {}
   
@@ -40,7 +40,7 @@ public final class GetGroupListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     friendlist.GetGroupListReq
  * JD-Core Version:    0.7.0.1
  */

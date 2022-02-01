@@ -19,11 +19,11 @@ class TkdCommentLinkView$Holder
   TkdCommentLinkView$Holder(TkdCommentLinkView paramTkdCommentLinkView, TkdCommentLinkData paramTkdCommentLinkData)
   {
     this.linkData = paramTkdCommentLinkData;
-    this.vRoot = View.inflate(paramTkdCommentLinkView.getContext(), 2131562956, null);
+    this.vRoot = View.inflate(paramTkdCommentLinkView.getContext(), 2131563105, null);
     paramTkdCommentLinkView.addView(this.vRoot, paramTkdCommentLinkView.getChildCount());
-    this.vDelete = this.vRoot.findViewById(2131365489);
-    this.vIcon = ((TkdQQUrlImageView)this.vRoot.findViewById(2131368381));
-    this.vDescription = ((TextView)this.vRoot.findViewById(2131365538));
+    this.vDelete = this.vRoot.findViewById(2131365650);
+    this.vIcon = ((TkdQQUrlImageView)this.vRoot.findViewById(2131368603));
+    this.vDescription = ((TextView)this.vRoot.findViewById(2131365699));
     this.vDelete.setOnClickListener(this);
     this.vDescription.setText(paramTkdCommentLinkData.wording);
     int i = 0;
@@ -35,11 +35,13 @@ class TkdCommentLinkView$Holder
       this.vIcon.setImageResource(i);
       this.vIcon.setUrl(paramTkdCommentLinkData.iconUrl, 100, 100);
       return;
-      i = 2130850669;
+      i = 2130851093;
       continue;
-      i = 2130850671;
+      i = 2130851095;
       continue;
-      i = 2130850673;
+      i = 2130851097;
+      continue;
+      i = 2130851099;
     }
   }
   
@@ -55,7 +57,7 @@ class TkdCommentLinkView$Holder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView.Holder
  * JD-Core Version:    0.7.0.1
  */

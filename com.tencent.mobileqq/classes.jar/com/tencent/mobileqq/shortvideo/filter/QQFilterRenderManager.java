@@ -5,52 +5,26 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.aekit.api.standard.ai.AEDetector;
-import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
-import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIAttr;
-import com.tencent.aekit.plugin.core.AIInput;
-import com.tencent.aekit.plugin.core.AIParam;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask.FaceDetectTaskResult;
-import com.tencent.mobileqq.shortvideo.facedancegame.IFaceDetectCallBack;
 import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
 import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
 import com.tencent.mobileqq.shortvideo.resource.GestureResource;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
 import com.tencent.mobileqq.sveffects.libsveffects.BuildConfig;
 import com.tencent.sveffects.SLog;
 import com.tencent.sveffects.SdkContext;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.facedetect.FaceStatus;
-import com.tencent.ttpic.openai.ttpicmodule.AEGenderDetector;
-import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
 import com.tencent.ttpic.openapi.PTFaceAttr;
-import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
-import com.tencent.ttpic.openapi.PTFaceDetector;
-import com.tencent.ttpic.openapi.PTGenderAttr;
-import com.tencent.ttpic.openapi.PTGenderAttr.GenderInfo;
-import com.tencent.ttpic.openapi.PTSegAttr;
-import com.tencent.ttpic.openapi.facedetect.FaceDetector.FaceDetectMode;
-import com.tencent.ttpic.openapi.facedetect.FaceInfo;
-import com.tencent.ttpic.openapi.filter.VideoFilterListExtension;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.model.StarParam;
-import com.tencent.ttpic.openapi.plugin.AICtrl;
-import com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector;
-import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager.DATA_TYPE;
-import com.tencent.ttpic.openapi.util.VideoFilterUtil;
-import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -59,14 +33,11 @@ public class QQFilterRenderManager
 {
   public static final float FACE_DET_SCALE = 0.25F;
   private static final String TAG = "QQFilterRenderManager";
-  private static final QQFilterCreator mDynamicCreator = new QQFilterCreator();
   private static final String sId_Prefix = "FRM_";
   private static final AtomicInteger sInstanceCount = new AtomicInteger(0);
-  private AEDetector aeDetector;
   private AIAttr aiAttr;
   public CameraInterFace cameraInterFace;
   private boolean enableGauss = true;
-  private FaceDetector.FaceDetectMode faceDetectMode = FaceDetector.FaceDetectMode.MULTIPLE;
   private boolean isAEDetectorInited = false;
   public boolean mBackCameraDetectEnable = false;
   private long mBeginTime = 0L;
@@ -78,7 +49,6 @@ public class QQFilterRenderManager
   private int mFaceDetectBuffer = 0;
   int mFaceDetectHeight = 0;
   int mFaceDetectWidth = 0;
-  PTFaceDetector mFaceDetector = null;
   private QQFilterRenderManager.FaceDetectParam mFaceParam = new QQFilterRenderManager.FaceDetectParam(null);
   int mFilterHeight;
   int mFilterWidth;
@@ -90,17 +60,11 @@ public class QQFilterRenderManager
   public boolean mNeedDoGestureDetect = false;
   public boolean mNeedDoYTGestureDetect = false;
   private final Map<String, String> mParamMap = new ConcurrentHashMap();
-  private PTSegAttr mSegAttr;
   private StarParam mStarParam;
   private int mSufaceHeight;
   private int mSufaceWidth;
   private boolean mSurfaceDestroyed = false;
   private double mUIAspectRatio;
-  private boolean needEmotionDetect = false;
-  private boolean needFaceDetect = true;
-  private boolean needGenderDetect = false;
-  private boolean needHandDetect = false;
-  private boolean needSegment = false;
   
   public QQFilterRenderManager()
   {
@@ -142,7 +106,6 @@ public class QQFilterRenderManager
   private void clear()
   {
     destroyGestureDetector();
-    this.mBusinessOpt.setPtvVideoFilter(null);
     this.mParamMap.clear();
   }
   
@@ -154,89 +117,7 @@ public class QQFilterRenderManager
     GestureMgrRecognize.getInstance().stop();
   }
   
-  private void doAIDetect(Frame paramFrame)
-  {
-    this.mBeginTime = SystemClock.elapsedRealtimeNanos();
-    AIParam localAIParam = new AIParam();
-    int i = VideoFilterUtil.get4DirectionAngle(this.aeDetector.getRotation());
-    localAIParam.update(paramFrame.width, paramFrame.height, i);
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "phoneRoll", Float.valueOf(90.0F));
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "starParam", this.mStarParam);
-    localAIParam.setModuleParam(AEDetectorType.HAND.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.HAND.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.EMOTION.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "scale", Float.valueOf((float)getWindowScale()));
-    if (this.aiAttr != null)
-    {
-      localObject2 = (PTFaceAttr)this.aiAttr.getFaceAttr();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = PTFaceAttr.EmptyFaceAttr;
-      }
-      localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "faceInfoList", localObject1);
-      localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "resetGender", Boolean.valueOf(false));
-    }
-    localAIParam.setSurfaceTime(System.currentTimeMillis() * 1000000L);
-    Object localObject1 = new AICtrl();
-    ((AICtrl)localObject1).switchModule(AEDetectorType.FACE.value, true);
-    ((AICtrl)localObject1).switchModule(AEDetectorType.EMOTION.value, this.needEmotionDetect);
-    ((AICtrl)localObject1).switchModule(AEDetectorType.HAND.value, this.needHandDetect);
-    ((AICtrl)localObject1).switchModule(AEDetectorType.SEGMENT.value, this.needSegment);
-    ((AICtrl)localObject1).switchModule(AEDetectorType.GENDER_DETECT.value, this.needGenderDetect);
-    Object localObject2 = new AIInput();
-    ((AIInput)localObject2).setInputTexture(paramFrame.getTextureId());
-    this.aiAttr = this.aeDetector.detectFrame((AIInput)localObject2, localAIParam, (AICtrl)localObject1);
-    this.aiAttr.getOutTexture();
-    this.mFaceAttr = ((PTFaceAttr)this.aiAttr.getFaceAttr());
-    if (this.mFaceAttr == null) {
-      this.mFaceAttr = PTFaceAttr.EmptyFaceAttr;
-    }
-    paramFrame = this.mFaceAttr.getFaceInfoList();
-    localObject1 = this.mFaceAttr.getFaceStatusList();
-    localObject2 = (PTGenderAttr)this.aiAttr.getAvailableData(AEDetectorType.GENDER_DETECT.value);
-    if (localObject2 != null)
-    {
-      localObject2 = ((PTGenderAttr)localObject2).getGenderInfos();
-      if ((paramFrame != null) && (localObject2 != null) && (paramFrame.size() == ((List)localObject2).size()))
-      {
-        i = 0;
-        if (i < paramFrame.size())
-        {
-          j = 0;
-          label507:
-          if (j >= ((List)localObject2).size()) {
-            break label739;
-          }
-          if (((FaceInfo)paramFrame.get(i)).faceId == ((PTGenderAttr.GenderInfo)((List)localObject2).get(j)).faceId)
-          {
-            ((FaceInfo)paramFrame.get(i)).gender = ((PTGenderAttr.GenderInfo)((List)localObject2).get(j)).gender;
-            ((FaceStatus)((List)localObject1).get(i)).gender = ((PTGenderAttr.GenderInfo)((List)localObject2).get(j)).gender;
-          }
-        }
-      }
-    }
-    label739:
-    for (int j = 1;; j = 0)
-    {
-      if (j == 0)
-      {
-        ((FaceInfo)paramFrame.get(i)).gender = 0;
-        ((FaceStatus)((List)localObject1).get(i)).gender = 0;
-      }
-      i += 1;
-      break;
-      j += 1;
-      break label507;
-      this.mDetectedFace = this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value));
-      this.mEndTime = SystemClock.elapsedRealtimeNanos();
-      long l = (this.mEndTime - this.mBeginTime) / 1000L;
-      if (SLog.isEnable()) {
-        SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doTrackProceses=" + l + "us]");
-      }
-      return;
-    }
-  }
+  private void doAIDetect(Frame paramFrame) {}
   
   private void initial()
   {
@@ -268,75 +149,11 @@ public class QQFilterRenderManager
   
   public void destroyAEDetecor()
   {
-    if (this.aeDetector != null)
-    {
-      this.aeDetector.clear();
-      this.aeDetector = null;
-    }
     this.isAEDetectorInited = false;
     this.mDetectedFace = false;
     this.mNeedDoFaceDetect = false;
-    this.needEmotionDetect = false;
-    this.needSegment = false;
-    this.needHandDetect = false;
     this.aiAttr = null;
     this.mFaceAttr = null;
-    this.mSegAttr = null;
-  }
-  
-  public boolean detectedHeadNod()
-  {
-    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.HEAD_NOD.value)));
-  }
-  
-  public boolean detectedOpenMouth()
-  {
-    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.MOUTH_OPEN.value)));
-  }
-  
-  public boolean detectedShakeHead()
-  {
-    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.HEAD_SHAKE.value)));
-  }
-  
-  public void doAEDetectWithCallBack(Frame paramFrame, int paramInt1, int paramInt2, IFaceDetectCallBack paramIFaceDetectCallBack)
-  {
-    long l = SystemClock.elapsedRealtimeNanos();
-    AIParam localAIParam = new AIParam();
-    localAIParam.update(paramFrame.width, paramFrame.height, 0);
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "phoneRoll", Integer.valueOf(90));
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "starParam", this.mStarParam);
-    AICtrl localAICtrl = new AICtrl();
-    localAICtrl.switchModule(AEDetectorType.FACE.value, true);
-    localAICtrl.switchModule(AEDetectorType.EMOTION.value, false);
-    localAICtrl.switchModule(AEDetectorType.HAND.value, false);
-    localAICtrl.switchModule(AEDetectorType.SEGMENT.value, false);
-    AIInput localAIInput = new AIInput();
-    localAIInput.setInputTexture(paramFrame.getTextureId());
-    this.aiAttr = this.aeDetector.detectFrame(localAIInput, localAIParam, localAICtrl);
-    this.aiAttr.getOutTexture();
-    this.mFaceAttr = ((PTFaceAttr)this.aiAttr.getFaceAttr());
-    FaceDanceDetectTask.logTimeInfo("doAEDetectWithCallBack", l, SystemClock.elapsedRealtimeNanos());
-    if (paramIFaceDetectCallBack != null)
-    {
-      paramFrame = new FaceDanceDetectTask.FaceDetectTaskResult();
-      if (this.mFaceAttr.getFaceCount() <= 0) {
-        break label300;
-      }
-    }
-    label300:
-    for (boolean bool = true;; bool = false)
-    {
-      paramFrame.vaild = bool;
-      if (paramFrame.vaild)
-      {
-        paramFrame.pointFs = ((List)this.mFaceAttr.getAllFacePoints().get(0));
-        paramFrame.angles = ((float[])this.mFaceAttr.getAllFaceAngles().get(0));
-      }
-      paramIFaceDetectCallBack.faceDetectEnd(paramFrame);
-      return;
-    }
   }
   
   public final int drawFrame(int paramInt)
@@ -439,14 +256,6 @@ public class QQFilterRenderManager
   public int getFaceDetectWidth()
   {
     return this.mFaceDetectWidth;
-  }
-  
-  public VideoPreviewFaceOutlineDetector getFaceDetector()
-  {
-    if ((this.aeDetector == null) || (this.aeDetector.getFaceDetector() == null)) {
-      return null;
-    }
-    return this.aeDetector.getFaceDetector().getFaceDetector();
   }
   
   public String getFilterCacheInfo()
@@ -557,37 +366,13 @@ public class QQFilterRenderManager
     if (!this.isAEDetectorInited)
     {
       FeatureManager.loadBasicFeatures();
-      if (!FeatureManager.isBasicFeaturesFunctionReady()) {
-        return;
-      }
-      this.aeDetector = new AEDetector();
-      int i = this.aeDetector.init();
-      this.aiAttr = null;
-      if (i != 0) {
-        break label154;
-      }
+      if (FeatureManager.isBasicFeaturesFunctionReady()) {}
     }
-    label154:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      this.isAEDetectorInited = bool;
-      String str1 = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
-      String str2 = SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
-      if (this.needHandDetect) {
-        AIManager.installDetector(AEHandDetector.class, str1, str1);
-      }
-      if (this.needSegment) {
-        AIManager.installDetector(PTHumanSegmenter.class, str2, str1);
-      }
-      if (this.needEmotionDetect) {
-        AIManager.installDetector(PTEmotionDetector.class, str1, str1);
-      }
-      if (!this.needGenderDetect) {
-        break;
-      }
-      AIManager.installDetector(AEGenderDetector.class, str1, str1);
       return;
     }
+    this.aiAttr = null;
   }
   
   public void initDetectFaceSDK(Frame paramFrame)
@@ -643,26 +428,6 @@ public class QQFilterRenderManager
   public boolean isFilterWork(int paramInt)
   {
     return this.mInternal.isFilterWork(paramInt);
-  }
-  
-  public boolean isNeedEmotionDetect()
-  {
-    return this.needEmotionDetect;
-  }
-  
-  public boolean isNeedFaceDetect()
-  {
-    return this.needFaceDetect;
-  }
-  
-  public boolean isNeedHandDetect()
-  {
-    return this.needHandDetect;
-  }
-  
-  public boolean isNeedSegment()
-  {
-    return this.needSegment;
   }
   
   public boolean isSurfaceDestroyed()
@@ -753,34 +518,9 @@ public class QQFilterRenderManager
     GestureMgrRecognize.getInstance().stop();
   }
   
-  public void setNeedEmotionDetect(boolean paramBoolean)
-  {
-    this.needEmotionDetect = paramBoolean;
-  }
-  
-  public void setNeedFaceDetect(boolean paramBoolean)
-  {
-    this.needFaceDetect = paramBoolean;
-  }
-  
   public void setNeedFlip(boolean paramBoolean)
   {
     this.mInternal.setNeedFaceDetectFlip(paramBoolean);
-  }
-  
-  public void setNeedGenderDetect(boolean paramBoolean)
-  {
-    this.needGenderDetect = paramBoolean;
-  }
-  
-  public void setNeedHandDetect(boolean paramBoolean)
-  {
-    this.needHandDetect = paramBoolean;
-  }
-  
-  public void setNeedSegment(boolean paramBoolean)
-  {
-    this.needSegment = paramBoolean;
   }
   
   public void setParam(String paramString1, String paramString2)
@@ -810,7 +550,6 @@ public class QQFilterRenderManager
     QQFilterLogManager.setLogStart("surfaceCreate");
     initial();
     updatePreviewSize(paramInt1, paramInt2, paramInt3, paramInt4);
-    VideoFilterListExtension.setCreateExternalFiltersListener(mDynamicCreator);
     QQFilterLogManager.setLogEnd("surfaceCreate");
   }
   

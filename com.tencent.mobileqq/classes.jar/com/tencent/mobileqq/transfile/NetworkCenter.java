@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class NetworkCenter
 {
   public static final String TAG = "NetworkCenter";
-  public static NetworkCenter sNC;
+  public static NetworkCenter sNC = null;
   
   public static NetworkCenter getInstance()
   {
@@ -38,7 +38,7 @@ public class NetworkCenter
   
   public int getNetType()
   {
-    return NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    return NetworkUtil.a(BaseApplication.getContext());
   }
 }
 

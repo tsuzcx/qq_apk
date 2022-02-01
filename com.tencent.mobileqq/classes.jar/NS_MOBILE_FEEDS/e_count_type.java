@@ -7,6 +7,8 @@ public final class e_count_type
 {
   public static final int _E_COUNT_LIKE = 1;
   public static final int _E_COUNT_MEMBER = 3;
+  public static final int _E_COUNT_VIDEOCIRCLE_LIKE = 5;
+  public static final int _E_COUNT_VIDEOCIRCLE_PUSH = 4;
   public static final int _E_COUNT_VIEW = 2;
 }
 

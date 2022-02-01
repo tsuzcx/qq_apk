@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agqv;
 import android.widget.ImageView;
 
-public class CommonHobbyForAIOShowItemBuilder$4
+class CommonHobbyForAIOShowItemBuilder$4
   implements Runnable
 {
-  public CommonHobbyForAIOShowItemBuilder$4(agqv paramagqv, ImageView paramImageView) {}
+  CommonHobbyForAIOShowItemBuilder$4(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder, ImageView paramImageView) {}
   
   public void run()
   {
-    this.a.setImageResource(2130845395);
+    this.a.setImageResource(2130845712);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
-import bhbx;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.util.MessageRecordUtil;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec.MsgExts;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ public class FTSMessage
   public int istroop;
   public CharSequence matchSecondTitle;
   public CharSequence matchTitle;
-  public long msgCounter;
+  public long msgCounter = 0L;
   public FTSMessageCodec.MsgExts msgExts;
   public int msgtype;
   public int searchStrategy = -1;
@@ -94,7 +94,7 @@ public class FTSMessage
   
   public String createInsertSQL()
   {
-    return String.format("FTSMessage Info [oId = %d, selfUin&istroop = %s, msgType = %s, senderUin = %s, msg|size = %s]", new Object[] { Long.valueOf(this.mOId), this.mExt1, this.mExt3, this.mExt2, bhbx.a(this.mContent) });
+    return String.format("FTSMessage Info [oId = %d, selfUin&istroop = %s, msgType = %s, senderUin = %s, msg|size = %s]", new Object[] { Long.valueOf(this.mOId), this.mExt1, this.mExt3, this.mExt2, MessageRecordUtil.a(this.mContent) });
   }
   
   public String createUpdateSQL()
@@ -186,7 +186,7 @@ public class FTSMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.FTSMessage
  * JD-Core Version:    0.7.0.1
  */

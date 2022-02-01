@@ -6,7 +6,7 @@ public class ResEntry
 {
   private static final int MAX_POOL_SIZE = 100;
   private static ResEntry sPool;
-  private static int sPoolSize;
+  private static int sPoolSize = 0;
   private static final Object sPoolSync = new Object();
   public String fileName;
   public String mPath;
@@ -65,7 +65,7 @@ public class ResEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.ResEntry
  * JD-Core Version:    0.7.0.1
  */

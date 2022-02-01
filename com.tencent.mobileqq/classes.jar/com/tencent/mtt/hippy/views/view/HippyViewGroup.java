@@ -52,7 +52,7 @@ public class HippyViewGroup
     setChildrenDrawingOrderEnabled(this.mDrawingOrderHelper.a());
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     String str;
     int i;
@@ -151,7 +151,7 @@ public class HippyViewGroup
     }
   }
   
-  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     return this.mDrawingOrderHelper.a(paramInt1, paramInt2);
   }
@@ -274,7 +274,7 @@ public class HippyViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.view.HippyViewGroup
  * JD-Core Version:    0.7.0.1
  */

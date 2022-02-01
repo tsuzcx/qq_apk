@@ -9,9 +9,9 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.f.a;
-import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.q;
+import com.tencent.mobileqq.msf.core.c.e.a;
+import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.i;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.qphone.base.BaseConstants;
@@ -117,7 +117,7 @@ class b
       }
       return;
     }
-    if (!q.a().b())
+    if (!i.a().b())
     {
       if (QLog.isColorLevel()) {
         QLog.d("MSF.S.AppProcessManager", 2, "transportToAppProcess, enableIPCDivideToTransport is false, so trans directly");
@@ -245,7 +245,7 @@ class b
             paramc.a = false;
             paramc.c = false;
             if ((!"LongConn.OffPicUp".equalsIgnoreCase(str)) && (!"ImgStore.GroupPicUp".equalsIgnoreCase(str))) {
-              break label1500;
+              break label1524;
             }
             localObject2 = new StringBuilder().append("dispatchMsg:").append(str).append(" resp:").append(localMsfMessagePair2.fromServiceMsg.getStringForLog()).append(" req:");
             if (localMsfMessagePair2.toServiceMsg == null) {
@@ -259,7 +259,9 @@ class b
       }
       label340:
       label472:
-      label1500:
+      label480:
+      label489:
+      label1524:
       for (boolean bool1 = true;; bool1 = true)
       {
         if (QLog.isColorLevel()) {
@@ -289,10 +291,8 @@ class b
             break label94;
             localObject1 = "null";
             break label251;
-            label480:
             n += 1;
             break label125;
-            label489:
             if ((paramc.c == true) && (localMsfMessagePair2.fromServiceMsg.getMsfCommand() != MsfCommand.setMsfConnStatus))
             {
               n = m;
@@ -328,8 +328,11 @@ class b
               paramc.a(localDeadObjectException, bool1);
               bool2 = true;
               bool1 = false;
-              paramc.a((IMsfServiceCallbacker)localObject1);
-              QLog.w("MSF.S.AppProcessManager", 1, "DeadObjectException process=" + paramString + " cost=" + (System.currentTimeMillis() - l1), localDeadObjectException);
+              bool4 = i.a().g();
+              if (!bool4) {
+                paramc.a((IMsfServiceCallbacker)localObject1);
+              }
+              QLog.w("MSF.S.AppProcessManager", 1, "DeadObjectException process=" + paramString + " cost=" + (System.currentTimeMillis() - l1) + ", isBinderConnectOptEnable = " + bool4, localDeadObjectException);
             }
             catch (Throwable localThrowable)
             {
@@ -377,7 +380,7 @@ class b
                   }
                   paramc.d = 0L;
                   if ((localMsfMessagePair2.fromServiceMsg != null) && (localMsfMessagePair2.fromServiceMsg.getServiceCmd() != null) && (localMsfMessagePair2.fromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-                    com.tencent.mobileqq.msf.core.c.f.a().a(f.a.c, localMsfMessagePair2.fromServiceMsg.getWupBuffer(), 14);
+                    com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, localMsfMessagePair2.fromServiceMsg.getWupBuffer(), 14);
                   }
                 }
                 return false;
@@ -429,7 +432,7 @@ class b
   
   private void b(MsfMessagePair paramMsfMessagePair)
   {
-    if ((!q.a().c()) || (a(paramMsfMessagePair.fromServiceMsg.getServiceCmd()))) {}
+    if ((!i.a().c()) || (a(paramMsfMessagePair.fromServiceMsg.getServiceCmd()))) {}
     do
     {
       return;

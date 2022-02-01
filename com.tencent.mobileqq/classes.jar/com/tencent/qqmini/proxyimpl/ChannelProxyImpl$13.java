@@ -3,16 +3,15 @@ package com.tencent.qqmini.proxyimpl;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bknl;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
-public class ChannelProxyImpl$13
+class ChannelProxyImpl$13
   implements Runnable
 {
-  public ChannelProxyImpl$13(bknl parambknl, Activity paramActivity, String paramString1, String paramString2) {}
+  ChannelProxyImpl$13(ChannelProxyImpl paramChannelProxyImpl, Activity paramActivity, String paramString1, String paramString2) {}
   
   public void run()
   {

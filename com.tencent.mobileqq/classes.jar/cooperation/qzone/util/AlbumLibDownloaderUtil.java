@@ -22,7 +22,7 @@ public class AlbumLibDownloaderUtil
   public static File mAlbumDir = BaseApplicationImpl.getContext().getDir("qzonealbum", 0);
   private static AlbumLibDownloaderUtil mInstance;
   private int BEAUTYSO_STATE = 2;
-  private int GIFSO_STATE;
+  private int GIFSO_STATE = 0;
   private String mBeautyDownloadUrl = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySo", "https://d3g.qq.com/sngapp/app/update/20180518104407_5319/libandroidndkbeauty.so");
   private long mBeautySoLength = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySoLength", 587284);
   private String mBeautySoMD5 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySoMD5", "C6787CBD4DBC4331E8C443A27EFEA03B");
@@ -240,7 +240,7 @@ public class AlbumLibDownloaderUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.util.AlbumLibDownloaderUtil
  * JD-Core Version:    0.7.0.1
  */

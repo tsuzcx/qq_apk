@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class PluginNum
   extends JceStruct
 {
-  public byte cFlag;
-  public long dwID;
-  public long dwNUm;
+  public byte cFlag = 0;
+  public long dwID = 0L;
+  public long dwNUm = 0L;
   
   public PluginNum() {}
   

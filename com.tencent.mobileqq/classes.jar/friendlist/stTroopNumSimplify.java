@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class stTroopNumSimplify
   extends JceStruct
 {
-  public long GroupCode;
-  public long dwGroupFlagExt;
-  public long dwGroupInfoExtSeq;
-  public long dwGroupInfoSeq;
-  public long dwGroupRankSeq;
+  public long GroupCode = 0L;
+  public long dwGroupFlagExt = 0L;
+  public long dwGroupInfoExtSeq = 0L;
+  public long dwGroupInfoSeq = 0L;
+  public long dwGroupRankSeq = 0L;
   
   public stTroopNumSimplify() {}
   
@@ -44,7 +44,7 @@ public final class stTroopNumSimplify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     friendlist.stTroopNumSimplify
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,27 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import android.app.Activity;
-import android.widget.PopupWindow;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.model.QueryCallback;
 
 class AIOEmotionFragment$3
-  implements Runnable
+  implements QueryCallback<EmoticonPackage>
 {
-  AIOEmotionFragment$3(AIOEmotionFragment paramAIOEmotionFragment, PopupWindow paramPopupWindow, TextView paramTextView) {}
+  AIOEmotionFragment$3(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (((this.this$0.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (!((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).isFinishing())) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.jdField_a_of_type_AndroidWidgetTextView, this.this$0.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() / 2, 0);
+    if (paramEmoticonPackage == null)
+    {
+      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 32);
+      return;
     }
+    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.3
  * JD-Core Version:    0.7.0.1
  */

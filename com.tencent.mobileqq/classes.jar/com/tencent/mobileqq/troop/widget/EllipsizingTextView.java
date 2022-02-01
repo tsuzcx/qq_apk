@@ -7,7 +7,6 @@ import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bgne;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.theme.ISkinIgnoreTypeface;
 
@@ -16,11 +15,11 @@ public class EllipsizingTextView
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 1;
-  private bgne jdField_a_of_type_Bgne;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private EllipsizingTextView.EllipsizingHelper jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView$EllipsizingHelper;
+  private boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = false;
   
   public EllipsizingTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,7 +27,6 @@ public class EllipsizingTextView
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.EllipsizingTextView);
-      int i = 0;
       int j = paramContext.getIndexCount();
       if (i < j)
       {
@@ -52,12 +50,12 @@ public class EllipsizingTextView
     setTypeface(null);
   }
   
-  private bgne a()
+  private EllipsizingTextView.EllipsizingHelper a()
   {
-    if (this.jdField_a_of_type_Bgne == null) {
-      this.jdField_a_of_type_Bgne = new bgne(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView$EllipsizingHelper == null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView$EllipsizingHelper = new EllipsizingTextView.EllipsizingHelper(this);
     }
-    return this.jdField_a_of_type_Bgne;
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView$EllipsizingHelper;
   }
   
   public void a()
@@ -70,21 +68,21 @@ public class EllipsizingTextView
     return a().a();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     Object localObject = getPaint();
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
     localObject = a();
-    ((bgne)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    ((EllipsizingTextView.EllipsizingHelper)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
     if (getEllipsize() == TextUtils.TruncateAt.END)
     {
-      ((bgne)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
+      ((EllipsizingTextView.EllipsizingHelper)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
       return;
     }
     if (getEllipsize() == TextUtils.TruncateAt.MIDDLE)
     {
-      ((bgne)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
+      ((EllipsizingTextView.EllipsizingHelper)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
       return;
     }
     super.onDraw(paramCanvas);

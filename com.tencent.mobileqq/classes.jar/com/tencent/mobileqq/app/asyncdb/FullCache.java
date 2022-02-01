@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.app.asyncdb;
 
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public abstract class FullCache
   extends BaseCache
 {
-  protected IMCoreAppRuntime app;
+  protected AppRuntime a;
   
-  public FullCache(IMCoreAppRuntime paramIMCoreAppRuntime, DBDelayManager paramDBDelayManager, Class<? extends Entity> paramClass)
+  public FullCache(AppRuntime paramAppRuntime, DBDelayManager paramDBDelayManager, Class<? extends Entity> paramClass)
   {
     super(paramDBDelayManager, paramClass);
-    this.app = paramIMCoreAppRuntime;
+    this.a = paramAppRuntime;
   }
   
   public void addCache(Entity paramEntity, int paramInt, ProxyListener paramProxyListener)
@@ -33,7 +34,7 @@ public abstract class FullCache
   
   protected void init()
   {
-    EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
     Object localObject = localEntityManager.query(this.clazz, false, null, null, null, null, null, null);
     if (localObject != null)
     {

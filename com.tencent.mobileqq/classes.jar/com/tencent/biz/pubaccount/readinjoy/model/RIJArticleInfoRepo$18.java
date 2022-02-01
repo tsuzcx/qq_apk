@@ -1,22 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import qep;
-import qga;
 
-public class RIJArticleInfoRepo$18
+class RIJArticleInfoRepo$18
   implements Runnable
 {
-  public RIJArticleInfoRepo$18(qga paramqga, ArticleInfo paramArticleInfo) {}
+  RIJArticleInfoRepo$18(RIJArticleInfoRepo paramRIJArticleInfoRepo, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
-    qga.a(this.this$0).a(this.a);
+    RIJArticleInfoRepo.a(this.this$0).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.RIJArticleInfoRepo.18
  * JD-Core Version:    0.7.0.1
  */

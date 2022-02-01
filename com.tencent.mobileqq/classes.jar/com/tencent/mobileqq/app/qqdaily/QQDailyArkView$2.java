@@ -1,0 +1,75 @@
+package com.tencent.mobileqq.app.qqdaily;
+
+import android.view.View;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+
+class QQDailyArkView$2
+  implements WrappedArkView.OnArkViewLoadListener
+{
+  QQDailyArkView$2(QQDailyArkView paramQQDailyArkView) {}
+  
+  public void a()
+  {
+    if (QQDailyArkView.a(this.a) == null) {}
+    View localView;
+    do
+    {
+      return;
+      QQDailyArkView.b(this.a);
+      QQDailyArkView.a(this.a).setVisibility(0);
+      localView = QQDailyArkView.a(this.a).findViewById(2131370723);
+      QQDailyArkView.a(this.a, QQDailyArkView.a(this.a), 0);
+      this.a.requestLayout();
+    } while (localView == null);
+    localView.setVisibility(0);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel)
+  {
+    if (QQDailyArkView.a(this.a) == null) {
+      return;
+    }
+    if ((paramArkViewModel != null) && (paramArkViewModel.GetAppScriptType() == 2) && (!ArkAppCenter.d()))
+    {
+      QLog.i("QQDailyArkView", 2, "onLoadFailed.ARKAPP_TYPE_RELOAD");
+      a();
+      return;
+    }
+    paramString = QQDailyArkView.a(this.a);
+    if (paramBoolean) {
+      paramString.setOnClickListener(new QQDailyArkView.2.1(this, paramArkViewModel));
+    }
+    for (;;)
+    {
+      QQDailyArkView.b(this.a);
+      paramString.setVisibility(0);
+      paramArkViewModel = paramString.findViewById(2131370723);
+      QQDailyArkView.a(this.a, paramString, 0);
+      this.a.requestLayout();
+      if (paramArkViewModel == null) {
+        break;
+      }
+      paramArkViewModel.setVisibility(4);
+      return;
+      paramString.setOnClickListener(null);
+    }
+  }
+  
+  public void b()
+  {
+    if (QQDailyArkView.a(this.a) == null) {
+      return;
+    }
+    QQDailyArkView.a(this.a).setVisibility(8);
+    QQDailyArkView.a(this.a, QQDailyArkView.a(this.a), 8);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.app.qqdaily.QQDailyArkView.2
+ * JD-Core Version:    0.7.0.1
+ */

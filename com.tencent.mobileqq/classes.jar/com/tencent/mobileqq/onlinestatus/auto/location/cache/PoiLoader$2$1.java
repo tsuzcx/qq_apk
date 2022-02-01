@@ -1,22 +1,19 @@
 package com.tencent.mobileqq.onlinestatus.auto.location.cache;
 
-import azea;
-import azeh;
-import azei;
 import com.tencent.qphone.base.util.QLog;
 
-public class PoiLoader$2$1
+class PoiLoader$2$1
   implements Runnable
 {
-  public PoiLoader$2$1(azei paramazei, PoiBean paramPoiBean) {}
+  PoiLoader$2$1(PoiLoader.2 param2, PoiBean paramPoiBean) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PoiLoader", 2, "[status][poiLoader][" + azeh.a(this.jdField_a_of_type_Azei.jdField_a_of_type_Azeh) + "] persist. latLng: " + this.jdField_a_of_type_Azei.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poiBean: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
+      QLog.d("PoiLoader", 2, "[status][poiLoader][" + PoiLoader.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$2.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader) + "] persist. latLng: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$2.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poiBean: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean != null) {
-      azeh.a(this.jdField_a_of_type_Azei.jdField_a_of_type_Azeh).a(this.jdField_a_of_type_Azei.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, azeh.a(this.jdField_a_of_type_Azei.jdField_a_of_type_Azeh), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
+      PoiLoader.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$2.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader).a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$2.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, PoiLoader.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$2.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean);
     }
   }
 }

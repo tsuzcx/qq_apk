@@ -6,7 +6,7 @@ public abstract interface HttpHelper$HttpRequestListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.HttpHelper.HttpHelper.HttpRequestListener
  * JD-Core Version:    0.7.0.1
  */

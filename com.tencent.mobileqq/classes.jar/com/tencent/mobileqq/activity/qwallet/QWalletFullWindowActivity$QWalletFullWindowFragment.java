@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akrb;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -10,7 +9,7 @@ import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentB
 public class QWalletFullWindowActivity$QWalletFullWindowFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
 {
-  BroadcastReceiver a = new akrb(this);
+  BroadcastReceiver a = new QWalletFullWindowActivity.QWalletFullWindowFragment.1(this);
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
@@ -38,7 +37,7 @@ public class QWalletFullWindowActivity$QWalletFullWindowFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment
  * JD-Core Version:    0.7.0.1
  */

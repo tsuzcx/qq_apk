@@ -1,9 +1,5 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import aaby;
-import aabz;
-import aaca;
-import aanb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -15,14 +11,20 @@ import android.widget.RadioGroup;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
-import com.tencent.biz.richframework.part.block.BlockContainer;
-import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
 import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment.BottomData;
 import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomDraftsFragment;
 import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.biz.subscribe.part.block.BlockContainer;
+import com.tencent.biz.subscribe.part.block.BlockMerger;
+import com.tencent.biz.subscribe.part.block.BlockMerger.ShareData;
+import com.tencent.biz.subscribe.part.block.MultiViewBlock;
+import com.tencent.biz.subscribe.part.block.base.NestScrollRecyclerView;
+import com.tencent.biz.subscribe.utils.SubscribeDraftManager;
+import com.tencent.biz.videostory.support.VSReporter;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,26 +32,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import zoo;
-import zos;
-import zou;
-import zwv;
-import zzf;
 
 public class RelativePersonalBottomView
-  extends BaseWidgetView<zos>
+  extends BaseWidgetView<BlockMerger.ShareData>
   implements SimpleEventReceiver
 {
-  private aaca jdField_a_of_type_Aaca;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
   private SubscribePersonalBottomDraftsFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment;
   private SubscribePersonalBottomOpusFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment;
+  private BlockMerger.ShareData jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData;
+  private MultiViewBlock jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock;
+  private RelativePersonalBottomView.RelativePersonalBottomAdapter jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView$RelativePersonalBottomAdapter;
   private String jdField_a_of_type_JavaLangString;
   private List<SubscribeBaseBottomPersonalFragment> jdField_a_of_type_JavaUtilList;
-  private zos jdField_a_of_type_Zos;
-  private zou jdField_a_of_type_Zou;
   private RadioButton b;
   
   public RelativePersonalBottomView(@NonNull Context paramContext)
@@ -57,11 +54,11 @@ public class RelativePersonalBottomView
     super(paramContext);
   }
   
-  public RelativePersonalBottomView(Context paramContext, zou paramzou)
+  public RelativePersonalBottomView(Context paramContext, MultiViewBlock paramMultiViewBlock)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Zou = paramzou;
+    this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock = paramMultiViewBlock;
     SimpleEventBus.getInstance().registerReceiver(this);
   }
   
@@ -75,57 +72,57 @@ public class RelativePersonalBottomView
     }
   }
   
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new aaby(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aabz(this));
-  }
-  
   private void c()
   {
-    if (zzf.a().a(this.jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new RelativePersonalBottomView.1(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new RelativePersonalBottomView.2(this));
+  }
+  
+  private void d()
+  {
+    if (SubscribeDraftManager.a().a(this.jdField_a_of_type_JavaLangString))
     {
       if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment == null)
       {
         this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment = new SubscribePersonalBottomDraftsFragment();
-        if ((this.jdField_a_of_type_Zos != null) && ((this.jdField_a_of_type_Zos.a instanceof zwv)))
+        if ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData != null) && ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a instanceof SubscribeBaseBottomPersonalFragment.BottomData)))
         {
-          zwv localzwv = (zwv)this.jdField_a_of_type_Zos.a;
-          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localzwv.jdField_a_of_type_JavaLangString, localzwv);
+          SubscribeBaseBottomPersonalFragment.BottomData localBottomData = (SubscribeBaseBottomPersonalFragment.BottomData)this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a;
+          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localBottomData.jdField_a_of_type_JavaLangString, localBottomData);
         }
       }
       if (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
-        aanb.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
+        VSReporter.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(0);
-        this.jdField_a_of_type_Aaca.notifyDataSetChanged();
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView$RelativePersonalBottomAdapter.notifyDataSetChanged();
       }
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130839020));
+      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130839088));
     }
     for (;;)
     {
-      d();
+      e();
       return;
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
       if (this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(8);
-        this.jdField_a_of_type_Aaca.notifyDataSetChanged();
+        this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView$RelativePersonalBottomAdapter.notifyDataSetChanged();
         this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(null);
       }
     }
   }
   
-  private void d()
+  private void e()
   {
-    if ((this.jdField_a_of_type_Zos != null) && ((this.jdField_a_of_type_Zos.a instanceof zwv)))
+    if ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData != null) && ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a instanceof SubscribeBaseBottomPersonalFragment.BottomData)))
     {
-      Object localObject = (zwv)this.jdField_a_of_type_Zos.a;
-      if (((((zwv)localObject).jdField_a_of_type_JavaUtilList == null) || (((zwv)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Zou != null))
+      Object localObject = (SubscribeBaseBottomPersonalFragment.BottomData)this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData.a;
+      if (((((SubscribeBaseBottomPersonalFragment.BottomData)localObject).jdField_a_of_type_JavaUtilList == null) || (((SubscribeBaseBottomPersonalFragment.BottomData)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock != null))
       {
-        localObject = this.jdField_a_of_type_Zou.a().a().a().getChildAt(0);
+        localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock.a().a().a().getChildAt(0);
         ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
       }
     }
@@ -137,41 +134,41 @@ public class RelativePersonalBottomView
   
   public int a()
   {
-    return 2131558812;
+    return 2131558852;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376643));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372307));
-    this.b = ((RadioButton)paramView.findViewById(2131365875));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131377038));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372614));
+    this.b = ((RadioButton)paramView.findViewById(2131366042));
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131372577));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131372890));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
-    this.jdField_a_of_type_Aaca = new aaca(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView$RelativePersonalBottomAdapter = new RelativePersonalBottomView.RelativePersonalBottomAdapter(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
     a();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Aaca);
-    b();
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView$RelativePersonalBottomAdapter);
+    c();
   }
   
-  public void a(zos paramzos)
+  public void a(BlockMerger.ShareData paramShareData)
   {
-    if ((paramzos != null) && ((paramzos.a instanceof zwv)))
+    if ((paramShareData != null) && ((paramShareData.a instanceof SubscribeBaseBottomPersonalFragment.BottomData)))
     {
-      this.jdField_a_of_type_Zos = paramzos;
-      paramzos = (zwv)paramzos.a;
+      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData = paramShareData;
+      paramShareData = (SubscribeBaseBottomPersonalFragment.BottomData)paramShareData.a;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramzos.jdField_a_of_type_JavaLangString, paramzos);
+        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramShareData.jdField_a_of_type_JavaLangString, paramShareData);
       }
-      d();
-      if (paramzos.b) {
-        c();
+      e();
+      if (paramShareData.b) {
+        d();
       }
     }
   }
   
-  public int b()
+  public int c()
   {
     if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
       return this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem();
@@ -187,7 +184,7 @@ public class RelativePersonalBottomView
     return localArrayList;
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     SimpleEventBus.getInstance().registerReceiver(this);
@@ -206,7 +203,7 @@ public class RelativePersonalBottomView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView
  * JD-Core Version:    0.7.0.1
  */

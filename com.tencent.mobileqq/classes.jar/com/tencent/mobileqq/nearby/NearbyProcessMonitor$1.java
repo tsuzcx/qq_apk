@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.nearby;
 
-import axpo;
-import axqc;
-
-public final class NearbyProcessMonitor$1
+final class NearbyProcessMonitor$1
   implements Runnable
 {
-  public NearbyProcessMonitor$1(String paramString) {}
+  NearbyProcessMonitor$1(String paramString) {}
   
   public void run()
   {
-    axpo.b(this.a);
-    axpo.a(this.a);
-    axpo.a += 1;
-    axqc.b(this.a);
-    axpo.a();
+    NearbyProcessMonitor.b(this.a);
+    NearbyProcessMonitor.a(this.a);
+    NearbyProcessMonitor.a += 1;
+    NearbySPUtil.b(this.a);
+    NearbyProcessMonitor.a();
   }
 }
 

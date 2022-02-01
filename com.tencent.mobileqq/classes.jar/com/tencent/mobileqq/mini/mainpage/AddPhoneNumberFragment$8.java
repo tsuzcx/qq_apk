@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.mini.servlet.MiniAppSendSmsCodeServlet;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AddPhoneNumberFragment$8
   implements View.OnClickListener
@@ -16,7 +15,6 @@ class AddPhoneNumberFragment$8
     if (!TextUtils.isEmpty(AddPhoneNumberFragment.access$1000(this.this$0))) {
       MiniAppSendSmsCodeServlet.sendVerifySmsCodeRequest(AddPhoneNumberFragment.access$1000(this.this$0), AddPhoneNumberFragment.access$000(this.this$0), "+86", new AddPhoneNumberFragment.8.1(this));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

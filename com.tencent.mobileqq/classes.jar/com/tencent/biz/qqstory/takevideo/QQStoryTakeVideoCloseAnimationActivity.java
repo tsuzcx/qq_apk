@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import Override;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,18 +15,16 @@ import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import anvx;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Dispatcher;
-import wad;
-import yew;
-import ykq;
-import ypt;
-import ypu;
 
 public class QQStoryTakeVideoCloseAnimationActivity
   extends QQStoryBaseActivity
@@ -37,7 +34,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   public static boolean a;
   private float a;
   protected ImageView a;
-  protected ypu a;
+  protected QQStoryTakeVideoCloseAnimationActivity.FakeFeedUpdateCompletedReceiver a;
   private float jdField_b_of_type_Float;
   private Handler jdField_b_of_type_AndroidOsHandler;
   private float c;
@@ -46,15 +43,16 @@ public class QQStoryTakeVideoCloseAnimationActivity
   static
   {
     jdField_a_of_type_JavaLangString = AppConstants.SDCARD_FILE_SAVE_TMP_PATH + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_Boolean = false;
   }
   
   @TargetApi(14)
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    yew.b("Q.qqstory.home:FeedSegment_animation", new Object[] { anvx.a(2131710511), Float.valueOf(paramFloat1), ",bottom:", Float.valueOf(paramFloat4) });
+    InfoPrinter.b("Q.qqstory.home:FeedSegment_animation", new Object[] { HardCodeUtil.a(2131711027), Float.valueOf(paramFloat1), ",bottom:", Float.valueOf(paramFloat4) });
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(1);
-    float f3 = UIUtils.getWindowScreenHeight(this);
-    float f4 = UIUtils.getWindowScreenWidth(this);
+    float f3 = UIUtils.d(this);
+    float f4 = UIUtils.a(this);
     float f1 = (paramFloat4 - paramFloat1) / f3;
     float f2 = (paramFloat3 - paramFloat2) / f4;
     paramFloat3 = (paramFloat3 - paramFloat2) / 2.0F;
@@ -62,7 +60,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
     paramFloat4 = (paramFloat4 - paramFloat1) / 2.0F;
     f3 /= 2.0F;
     ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidWidgetImageView.animate().setDuration(250L).scaleXBy(1.0F).scaleX(f2).scaleYBy(1.0F).scaleY(f1).x(paramFloat3 + paramFloat2 - f4).y(paramFloat4 + paramFloat1 - f3);
-    localViewPropertyAnimator.setListener(new ypt(this));
+    localViewPropertyAnimator.setListener(new QQStoryTakeVideoCloseAnimationActivity.1(this));
     localViewPropertyAnimator.start();
   }
   
@@ -91,10 +89,10 @@ public class QQStoryTakeVideoCloseAnimationActivity
     this.jdField_b_of_type_Float = paramBundle.getIntExtra("target_right", 0);
     this.c = paramBundle.getIntExtra("target_left", 0);
     this.d = paramBundle.getIntExtra("target_bottom", 0);
-    ykq.b("Q.qqstory.home:FeedSegment_animation", "动画activity终于 OnCreate 了！！！");
+    SLog.b("Q.qqstory.home:FeedSegment_animation", "动画activity终于 OnCreate 了！！！");
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_Ypu = new ypu(this);
-    wad.a().registerSubscriber(this.jdField_a_of_type_Ypu);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoQQStoryTakeVideoCloseAnimationActivity$FakeFeedUpdateCompletedReceiver = new QQStoryTakeVideoCloseAnimationActivity.FakeFeedUpdateCompletedReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoQQStoryTakeVideoCloseAnimationActivity$FakeFeedUpdateCompletedReceiver);
     try
     {
       paramBundle = BitmapFactory.decodeFile(str);
@@ -126,8 +124,8 @@ public class QQStoryTakeVideoCloseAnimationActivity
   {
     super.doOnDestroy();
     jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Ypu != null) {
-      wad.a().unRegisterSubscriber(this.jdField_a_of_type_Ypu);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoQQStoryTakeVideoCloseAnimationActivity$FakeFeedUpdateCompletedReceiver != null) {
+      StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoQQStoryTakeVideoCloseAnimationActivity$FakeFeedUpdateCompletedReceiver);
     }
   }
   
@@ -160,7 +158,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
     for (;;)
     {
       return true;
-      ykq.b("Q.qqstory:QQStoryTakeVideoCloseAnimationActivity", "动画等超时了");
+      SLog.b("Q.qqstory:QQStoryTakeVideoCloseAnimationActivity", "动画等超时了");
       a(0.0F, 0.0F, 0.0F, 0.0F);
     }
   }
@@ -179,7 +177,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity
  * JD-Core Version:    0.7.0.1
  */

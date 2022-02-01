@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.ar;
 
-import apbf;
-
-public class ARGlobalConfigManager$2
+class ARGlobalConfigManager$2
   implements Runnable
 {
-  public ARGlobalConfigManager$2(apbf paramapbf) {}
+  ARGlobalConfigManager$2(ARGlobalConfigManager paramARGlobalConfigManager) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ARGlobalConfigManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARGlobalConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,12 +19,12 @@ public class DialogFromBottom
 {
   private static final int mAnimationDuration = 200;
   private View mContentView;
-  private boolean mIsAnimating;
+  private boolean mIsAnimating = false;
   private DialogFromBottom.OnBottomSheetShowListener mOnBottomSheetShowListener;
   
   public DialogFromBottom(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755055);
+    super(paramContext, 2131755057);
   }
   
   public DialogFromBottom(@NonNull Context paramContext, int paramInt)

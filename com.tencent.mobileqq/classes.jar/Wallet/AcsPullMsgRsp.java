@@ -11,8 +11,8 @@ public final class AcsPullMsgRsp
   static ArrayList<AcsMsg> cache_msgs = new ArrayList();
   public String all_url = "";
   public String err_str = "";
-  public ArrayList<AcsMsg> msgs;
-  public int ret_code;
+  public ArrayList<AcsMsg> msgs = null;
+  public int ret_code = 0;
   public String sub_url = "";
   
   static

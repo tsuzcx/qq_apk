@@ -13,9 +13,8 @@ import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import arbw;
-import com.tencent.biz.richframework.network.servlet.GetMineStoryFeedListServlet;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
@@ -28,7 +27,9 @@ import com.tencent.mobileqq.mini.servlet.CMShowSetPetStatusServlet;
 import com.tencent.mobileqq.mini.servlet.CheckBindingStateServlet;
 import com.tencent.mobileqq.mini.servlet.CloudStorageServlet;
 import com.tencent.mobileqq.mini.servlet.CreateUpdatableMsgServlet;
+import com.tencent.mobileqq.mini.servlet.DoGameRaffleServlet;
 import com.tencent.mobileqq.mini.servlet.GetCMShowInfoServlet;
+import com.tencent.mobileqq.mini.servlet.GetGameRaffleMaterialServlet;
 import com.tencent.mobileqq.mini.servlet.GetPotentialFriendListServlet;
 import com.tencent.mobileqq.mini.servlet.GetReactiveFriendListServlet;
 import com.tencent.mobileqq.mini.servlet.GetUserInteractiveStorageServlet;
@@ -294,7 +295,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arbw.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -351,23 +352,24 @@ public class MiniAppCmdUtil
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
-  public void createUpdatableMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, byte[] paramArrayOfByte, MiniAppCmdInterface paramMiniAppCmdInterface)
+  public void createUpdatableMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, int paramInt4, byte[] paramArrayOfByte, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), CreateUpdatableMsgServlet.class, paramMiniAppCmdInterface, "createUpdatableMsg");
     paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
     paramMiniAppCmdInterface.putExtra("key_template_id", paramString2);
     paramMiniAppCmdInterface.putExtra("key_from", paramInt1);
     paramMiniAppCmdInterface.putExtra("key_scene", paramInt2);
+    paramMiniAppCmdInterface.putExtra("key_sub_scene", paramInt3);
     paramMiniAppCmdInterface.putExtra("key_uin", paramString3);
-    paramMiniAppCmdInterface.putExtra("key_service_type", paramInt3);
+    paramMiniAppCmdInterface.putExtra("key_service_type", paramInt4);
     paramMiniAppCmdInterface.putExtra("key_sig", paramArrayOfByte);
     paramMiniAppCmdInterface.setObserver(this.cmdObserver);
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
-  public void createUpdatableMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
+  public void createUpdatableMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    createUpdatableMsg(paramString1, paramString2, paramInt1, paramInt2, paramString3, 0, null, paramMiniAppCmdInterface);
+    createUpdatableMsg(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramString3, 0, null, paramMiniAppCmdInterface);
   }
   
   public void delPhoneNumber(String paramString1, String paramString2, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -397,6 +399,15 @@ public class MiniAppCmdUtil
     delUserApp(paramString, paramInt1, paramInt2, paramInt3, paramStCommonExt, 0, paramMiniAppCmdInterface);
   }
   
+  public void doGameRaffle(String paramString1, String paramString2, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), DoGameRaffleServlet.class, paramMiniAppCmdInterface, "doGameRaffle");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_uin", paramString2);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
   public void getAppInfoById(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     getAppInfoById(paramStCommonExt, paramString1, paramString2, paramString3, null, paramMiniAppCmdInterface);
@@ -407,7 +418,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arbw.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -439,7 +450,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arbw.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -466,7 +477,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arbw.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -498,7 +509,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arbw.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -619,6 +630,15 @@ public class MiniAppCmdUtil
     sendCloudRequest(paramString, paramArrayOfString, paramMiniAppCmdInterface, "get_friend_cloud_storage");
   }
   
+  public void getGameRaffleMaterial(String paramString1, String paramString2, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), GetGameRaffleMaterialServlet.class, paramMiniAppCmdInterface, "getGameRaffleMaterial");
+    paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
+    paramMiniAppCmdInterface.putExtra("key_uin", paramString2);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
   public void getGroupCloudStorage(String paramString1, String paramString2, String[] paramArrayOfString, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), CloudStorageServlet.class, paramMiniAppCmdInterface, "getGroupCloudStorage");
@@ -675,7 +695,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arbw.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (MiniAppConfProcessor.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -794,6 +814,9 @@ public class MiniAppCmdUtil
   
   public void getRewardedVideoADInfo(MiniAppAd.StGetAdReq paramStGetAdReq, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
+    if (paramStGetAdReq == null) {
+      return;
+    }
     COMM.StCommonExt localStCommonExt = (COMM.StCommonExt)paramStGetAdReq.extInfo.get();
     MiniAppAd.UserInfo localUserInfo = (MiniAppAd.UserInfo)paramStGetAdReq.user_info.get();
     if (paramStGetAdReq.position_info.get() != null) {}
@@ -845,15 +868,6 @@ public class MiniAppCmdUtil
     if (paramStAdaptShareInfoReq != null) {
       paramMiniAppCmdInterface.putExtra("key_data", paramStAdaptShareInfoReq.toByteArray());
     }
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
-  }
-  
-  public void getStoryInfo(String paramString, int paramInt, long paramLong, MiniAppCmdInterface paramMiniAppCmdInterface)
-  {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), GetMineStoryFeedListServlet.class, paramMiniAppCmdInterface, "getStoryInfo");
-    paramMiniAppCmdInterface.putExtra("key_list_tyep", paramInt);
-    paramMiniAppCmdInterface.putExtra("key_newest_time", paramLong);
-    paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(paramString));
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
@@ -1239,7 +1253,7 @@ public class MiniAppCmdUtil
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
-    if (arbw.c()) {}
+    if (MiniAppConfProcessor.c()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       paramMiniAppCmdInterface.putExtra("key_from_new_download", paramInt1);

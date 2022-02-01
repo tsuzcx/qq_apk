@@ -9,11 +9,11 @@ public final class UserFacadeInfo
 {
   static UserFacadeElementDetail cache_detail = new UserFacadeElementDetail();
   public String checksum = "";
-  public int code;
-  public UserFacadeElementDetail detail;
+  public int code = 0;
+  public UserFacadeElementDetail detail = null;
   public String id = "";
   public String layout = "";
-  public int switchStatus;
+  public int switchStatus = 0;
   
   public UserFacadeInfo() {}
   

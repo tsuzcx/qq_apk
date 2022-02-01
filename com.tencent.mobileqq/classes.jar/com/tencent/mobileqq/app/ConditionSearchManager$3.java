@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import anrz;
-import ansd;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class ConditionSearchManager$3
+class ConditionSearchManager$3
   implements Runnable
 {
-  public ConditionSearchManager$3(anrz paramanrz, boolean paramBoolean) {}
+  ConditionSearchManager$3(ConditionSearchManager paramConditionSearchManager, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +17,7 @@ public class ConditionSearchManager$3
       ((LinkedList)localObject).addAll(this.this$0.a);
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((ansd)((Iterator)localObject).next()).a(1, this.a);
+        ((ConditionSearchManager.IConfigListener)((Iterator)localObject).next()).a(1, this.a);
       }
     }
     if ((this.a) && (this.this$0.c)) {
@@ -29,7 +27,7 @@ public class ConditionSearchManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.3
  * JD-Core Version:    0.7.0.1
  */

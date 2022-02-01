@@ -1,32 +1,29 @@
 package com.tencent.mobileqq.activity;
 
-import ador;
-import ados;
-import adpc;
 import android.view.View;
 import android.widget.Toast;
 
-public class ChatHistory$ChatHistoryAdapter$2$1
+class ChatHistory$ChatHistoryAdapter$2$1
   implements Runnable
 {
-  public ChatHistory$ChatHistoryAdapter$2$1(ados paramados, Object paramObject, View paramView) {}
+  ChatHistory$ChatHistoryAdapter$2$1(ChatHistory.ChatHistoryAdapter.2 param2, Object paramObject, View paramView) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ados.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
     {
-      Toast.makeText(this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131718350), 0).show();
+      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131718869), 0).show();
       return;
     }
-    if (this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
-      this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new adpc(this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
     }
-    this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Ados.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$2.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ public final class GetResourceRespInfoV2
   implements Cloneable
 {
   public byte cCanChangeState = 1;
-  public byte cDefaultState;
-  public byte cPush;
-  public byte cStatus;
+  public byte cDefaultState = 0;
+  public byte cPush = 0;
+  public byte cStatus = 0;
   public int iPluginType = 64;
-  public short sLanType;
-  public short sPriority;
-  public short sResSubType;
+  public short sLanType = 0;
+  public short sPriority = 0;
+  public short sResSubType = 0;
   public String strNewPluginDesc = "";
   public String strNewPluginURL = "";
   public String strPkgName = "";
@@ -26,8 +26,8 @@ public final class GetResourceRespInfoV2
   public String strResName = "";
   public String strResURL_big = "";
   public String strResURL_small = "";
-  public long uiNewVer;
-  public long uiResId;
+  public long uiNewVer = 0L;
+  public long uiResId = 0L;
   
   static
   {
@@ -389,7 +389,7 @@ public final class GetResourceRespInfoV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceRespInfoV2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import albw;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.utils.FileUtils;
+import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.Serializable;
@@ -41,7 +41,7 @@ public class ApkgConfigHolder
     String str = getConfigPath(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (ApkgConfigHolder)albw.a(str);
+      paramQQAppInterface = (ApkgConfigHolder)QWalletTools.a(str);
       Object localObject = paramQQAppInterface;
       if (paramQQAppInterface == null) {
         localObject = new ApkgConfigHolder();
@@ -70,7 +70,7 @@ public class ApkgConfigHolder
   {
     if (paramMiniAppInfo != null)
     {
-      PreloadManager.a(paramMiniAppInfo.downloadUrl, false, 0);
+      PreloadStaticApi.a(paramMiniAppInfo.downloadUrl, false, 0);
       FileUtils.delete(ApkgManager.getApkgFolderPath(paramMiniAppInfo), false);
     }
   }

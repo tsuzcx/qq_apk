@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class LabelInfo
   implements Serializable, Comparable
 {
-  public boolean hasSelected;
+  public boolean hasSelected = false;
   public String id;
   public String name;
   public String rank;
@@ -61,7 +61,7 @@ public class LabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.model.LabelInfo
  * JD-Core Version:    0.7.0.1
  */

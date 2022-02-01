@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import aerf;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 
-public class QQMapActivity$9$1
+class QQMapActivity$9$1
   implements Runnable
 {
-  public QQMapActivity$9$1(aerf paramaerf) {}
+  QQMapActivity$9$1(QQMapActivity.9 param9) {}
   
   public void run()
   {
-    LbsManagerService.removeListener(this.a.a.a);
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

@@ -44,6 +44,9 @@ public class BuiltInServlet
   extends MSFServlet
   implements Constants.Action
 {
+  public static final String KEY_TLV_543_IN_TLV_119 = "tlv543In119";
+  public static final String MSF_KEY_SIG_INFO = "sigInfo";
+  public static final String MSF_KEY_USER_SIG_INFO = "userSigInfo";
   private boolean isRegist;
   
   private void addOpenSdkExtra(Intent paramIntent, ToServiceMsg paramToServiceMsg)
@@ -107,6 +110,35 @@ public class BuiltInServlet
       paramFromServiceMsg = paramFromServiceMsg.get_data();
     } while (paramFromServiceMsg == null);
     paramBundle.putByteArray("tlverror", paramFromServiceMsg);
+  }
+  
+  private void bundlePutTlv543In119(FromServiceMsg paramFromServiceMsg, Bundle paramBundle)
+  {
+    if ((paramFromServiceMsg == null) || (paramBundle == null)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          WUserSigInfo localWUserSigInfo1;
+          do
+          {
+            return;
+            WUserSigInfo localWUserSigInfo2 = (WUserSigInfo)paramFromServiceMsg.getAttribute("userSigInfo");
+            localWUserSigInfo1 = localWUserSigInfo2;
+            if (localWUserSigInfo2 != null) {
+              break;
+            }
+            localWUserSigInfo1 = (WUserSigInfo)paramFromServiceMsg.getAttribute("sigInfo");
+          } while (localWUserSigInfo1 == null);
+          paramFromServiceMsg = localWUserSigInfo1.loginResultTLVMap;
+        } while (paramFromServiceMsg == null);
+        paramFromServiceMsg = (tlv_t)paramFromServiceMsg.get(Integer.valueOf(1676611));
+      } while (paramFromServiceMsg == null);
+      paramFromServiceMsg = paramFromServiceMsg.get_data();
+    } while (paramFromServiceMsg == null);
+    paramBundle.putByteArray("tlv543In119", paramFromServiceMsg);
   }
   
   private boolean dispatchOnReceiveForRegister(int paramInt, Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -452,24 +484,40 @@ public class BuiltInServlet
           localBundle.putString("title", ((ErrMsg)localObject2).getTitle());
         }
       }
-      catch (Exception localException2)
+      catch (Exception localException3)
       {
-        for (;;)
+        try
         {
-          QLog.e("mqq", 1, "getAttribute error:" + localException2.getMessage());
-          continue;
+          for (;;)
+          {
+            bundlePutTlv543In119(paramFromServiceMsg, localBundle);
+            getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+            notifyObserver(paramIntent, 1001, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
+            if (QLog.isColorLevel()) {
+              QLog.d("BuiltInServlet", 2, "login in back from msf build servlets end");
+            }
+            return;
+            localException3 = localException3;
+            QLog.e("mqq", 1, "getAttribute error:" + localException3.getMessage());
+          }
           getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), str);
           continue;
-          MsfSdkUtils.updateSimpleAccountNotCreate(paramFromServiceMsg.getUin(), false);
-          try
-          {
-            bundlePutTlv543(paramFromServiceMsg, localBundle);
-          }
-          catch (Exception localException1)
-          {
-            QLog.e("ACTION_LOGIN", 1, "getAttribute userSignInfo error:" + localException1.getMessage());
-          }
         }
+        catch (Exception localException1)
+        {
+          QLog.e("ACTION_LOGIN", 1, "getAttribute userSignInfo error:" + localException1.getMessage());
+          continue;
+        }
+        MsfSdkUtils.updateSimpleAccountNotCreate(paramFromServiceMsg.getUin(), false);
+        try
+        {
+          bundlePutTlv543(paramFromServiceMsg, localBundle);
+        }
+        catch (Exception localException2)
+        {
+          QLog.e("ACTION_LOGIN", 1, "getAttribute userSignInfo error:" + localException2.getMessage());
+        }
+        continue;
       }
       localBundle.putString("errorurl", str);
       localBundle.putInt("loginret", i);
@@ -481,18 +529,10 @@ public class BuiltInServlet
         str = paramIntent.getStringExtra("account");
         if (!TextUtils.isEmpty(str))
         {
-          if (paramIntent.getByteArrayExtra("to_login_uin_encrypt") != null) {
-            getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), paramFromServiceMsg.getUin());
+          if (paramIntent.getByteArrayExtra("to_login_uin_encrypt") == null) {
+            continue;
           }
-        }
-        else
-        {
-          getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-          notifyObserver(paramIntent, 1001, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
-          if (QLog.isColorLevel()) {
-            QLog.d("BuiltInServlet", 2, "login in back from msf build servlets end");
-          }
-          return;
+          getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), paramFromServiceMsg.getUin());
         }
       }
     }
@@ -1240,7 +1280,7 @@ public class BuiltInServlet
   private void serviceForActionChangeToken(Intent paramIntent)
   {
     HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("mapSt");
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getChangeTokenAfterLoginMsg(getAppRuntime().getAccount(), 9, localHashMap));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getChangeTokenAfterLoginMsg(getAppRuntime().getAccount(), 9, localHashMap));
   }
   
   private void serviceForActionCheckQuickRegistAccont(Intent paramIntent)
@@ -1248,7 +1288,7 @@ public class BuiltInServlet
     String str = paramIntent.getStringExtra("account");
     int i = paramIntent.getIntExtra("appid", 0);
     Object localObject = paramIntent.getStringExtra("appVersion");
-    localObject = getAppRuntime().getService().msfSub.checkQuickRegisterAccount(str, i, (byte)2, (String)localObject);
+    localObject = getAppRuntime().getRuntimeService().msfSub.checkQuickRegisterAccount(str, i, (byte)2, (String)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("Login_Optimize_", 2, "builtInServlet: curAccount=" + str);
     }
@@ -1259,7 +1299,7 @@ public class BuiltInServlet
   {
     String str1 = paramIntent.getStringExtra("uin");
     String str2 = paramIntent.getStringExtra("alias");
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getDelLoginedAccount(getAppRuntime().getAccount(), str1, str2));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getDelLoginedAccount(getAppRuntime().getAccount(), str1, str2));
   }
   
   private void serviceForActionGetAlterTickets(Intent paramIntent)
@@ -1275,12 +1315,12 @@ public class BuiltInServlet
   
   private void serviceForActionGetKey(Intent paramIntent)
   {
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getKeyMsg(getAppRuntime().getAccount()));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getKeyMsg(getAppRuntime().getAccount()));
   }
   
   private void serviceForActionGetPluginConfig(Intent paramIntent)
   {
-    ToServiceMsg localToServiceMsg = getAppRuntime().getService().msfSub.getPluginConfigMsg(getAppRuntime().getAccount());
+    ToServiceMsg localToServiceMsg = getAppRuntime().getRuntimeService().msfSub.getPluginConfigMsg(getAppRuntime().getAccount());
     localToServiceMsg.putWupBuffer(paramIntent.getByteArrayExtra("buffer"));
     localToServiceMsg.setTimeout(10000L);
     sendToMSF(paramIntent, localToServiceMsg);
@@ -1293,7 +1333,7 @@ public class BuiltInServlet
     String str2 = paramIntent.getStringExtra("nick");
     int i = paramIntent.getIntExtra("appid", 0);
     String str3 = paramIntent.getStringExtra("appVersion");
-    localObject = getAppRuntime().getService().msfSub.getQuickRegisterAccount(str1, (String)localObject, str2, i, (byte)2, str3);
+    localObject = getAppRuntime().getRuntimeService().msfSub.getQuickRegisterAccount(str1, (String)localObject, str2, i, (byte)2, str3);
     if (QLog.isColorLevel()) {
       QLog.d("Login_Optimize_", 2, "builtInServlet: curAccount=" + str1 + ",nick=" + str2);
     }
@@ -1305,7 +1345,7 @@ public class BuiltInServlet
     String str1 = paramIntent.getStringExtra("process");
     Object localObject = paramIntent.getStringExtra("ssoAccount");
     String str2 = paramIntent.getStringExtra("from_where");
-    localObject = getAppRuntime().getService().msfSub.getLoginWithoutPasswdMsg((String)localObject);
+    localObject = getAppRuntime().getRuntimeService().msfSub.getLoginWithoutPasswdMsg((String)localObject);
     ((ToServiceMsg)localObject).addAttribute("targetTicket", Integer.valueOf(paramIntent.getIntExtra("targetTicket", 4096)));
     ((ToServiceMsg)localObject).addAttribute("process", str1);
     if ((str2 != null) && (str2.length() > 0))
@@ -1325,7 +1365,7 @@ public class BuiltInServlet
     Object localObject = paramIntent.getStringExtra("account");
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("password");
     if (isQQUin((String)localObject)) {}
-    for (localObject = getAppRuntime().getService().msfSub.getLoginMsg((String)localObject, arrayOfByte);; localObject = getAppRuntime().getService().msfSub.getChangeUinAndLoginMsg((String)localObject, arrayOfByte))
+    for (localObject = getAppRuntime().getRuntimeService().msfSub.getLoginMsg((String)localObject, arrayOfByte);; localObject = getAppRuntime().getRuntimeService().msfSub.getChangeUinAndLoginMsg((String)localObject, arrayOfByte))
     {
       arrayOfByte = paramIntent.getByteArrayExtra("resp_register_supersig");
       ((ToServiceMsg)localObject).setIsSupportRetry(true);
@@ -1334,6 +1374,14 @@ public class BuiltInServlet
       arrayOfByte = paramIntent.getByteArrayExtra("to_login_uin_encrypt");
       if (arrayOfByte != null) {
         ((ToServiceMsg)localObject).addAttribute("to_login_uin_encrypt", arrayOfByte);
+      }
+      arrayOfByte = paramIntent.getByteArrayExtra("sigSession");
+      if (arrayOfByte != null) {
+        ((ToServiceMsg)localObject).addAttribute("sigSession", arrayOfByte);
+      }
+      int i = paramIntent.getIntExtra("businessType", 0);
+      if (i != 0) {
+        ((ToServiceMsg)localObject).addAttribute("businessType", Integer.valueOf(i));
       }
       sendToMSF(paramIntent, (ToServiceMsg)localObject);
       return;
@@ -1371,7 +1419,7 @@ public class BuiltInServlet
   private void serviceForActionNotifyRefreshWebviewTicket(Intent paramIntent)
   {
     String str = paramIntent.getStringExtra("uin");
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRefreshTicketsMsg(str));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getRefreshTicketsMsg(str));
   }
   
   private void serviceForActionOpenPCActive(Intent paramIntent)
@@ -1389,7 +1437,7 @@ public class BuiltInServlet
   
   private void serviceForActionQuerySMSState(Intent paramIntent)
   {
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRegisterQueryUpSmsStatMsg());
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getRegisterQueryUpSmsStatMsg());
   }
   
   private void serviceForActionRefreshDA2(Intent paramIntent)
@@ -1415,7 +1463,7 @@ public class BuiltInServlet
       i += 1;
     }
     localCommandCallbackerInfo.cmds = localArrayList;
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRegisterCmdCallMsg(localCommandCallbackerInfo));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getRegisterCmdCallMsg(localCommandCallbackerInfo));
   }
   
   private void serviceForActionRegistMessagePush(Intent paramIntent)
@@ -1454,7 +1502,7 @@ public class BuiltInServlet
       if (localStatus != AppRuntime.Status.offline) {
         break label433;
       }
-      localObject = getAppRuntime().getService().msfSub.getUnRegisterPushMsg(localPushRegisterInfo);
+      localObject = getAppRuntime().getRuntimeService().msfSub.getUnRegisterPushMsg(localPushRegisterInfo);
       label269:
       if (QLog.isColorLevel()) {
         QLog.d("Q.contacts.", 2, "BuiltInServlet.ACTION_REGIST_MESSAGE_PUSH " + localStatus + ", " + localPushRegisterInfo.timeStamp + ", " + localPushRegisterInfo.iLargeSeq + ", isUserSet: " + bool);
@@ -1476,7 +1524,7 @@ public class BuiltInServlet
       b = 0;
       break;
       label433:
-      localObject = getAppRuntime().getService().msfSub.getRegisterPushMsg(localPushRegisterInfo);
+      localObject = getAppRuntime().getRuntimeService().msfSub.getRegisterPushMsg(localPushRegisterInfo);
       break label269;
       label453:
       ((ToServiceMsg)localObject).getAttributes().put("regPushReason", RegPushReason.appRegister);
@@ -1521,7 +1569,8 @@ public class BuiltInServlet
     Object localObject2 = paramIntent.getStringExtra("os_language");
     int i = paramIntent.getIntExtra("qq_language", 0);
     str1 = paramIntent.getStringExtra("gps_location");
-    localObject3 = getAppRuntime().getService().msfSub.getRegisterCommitMobileMsg((String)localObject3, (byte)0, b, (byte)0, "", str3, str2, Long.valueOf(l));
+    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("mapSt");
+    localObject3 = getAppRuntime().getRuntimeService().msfSub.getRegisterCommitMobileMsg((String)localObject3, (byte)0, b, (byte)0, "", str3, str2, Long.valueOf(l), localHashMap);
     if (!TextUtils.isEmpty((CharSequence)localObject4)) {
       ((ToServiceMsg)localObject3).getAttributes().put("To_register_Invitation_code", localObject4);
     }
@@ -1532,19 +1581,19 @@ public class BuiltInServlet
       ((HashMap)localObject4).put("wifi_mac", localObject1);
       localObject4 = ((ToServiceMsg)localObject3).getAttributes();
       if (localObject2 != null) {
-        break label289;
+        break label303;
       }
       localObject1 = "";
-      label224:
+      label238:
       ((HashMap)localObject4).put("os_language", localObject1);
       ((ToServiceMsg)localObject3).getAttributes().put("qq_language", Integer.valueOf(i));
       localObject2 = ((ToServiceMsg)localObject3).getAttributes();
       if (str1 != null) {
-        break label296;
+        break label310;
       }
     }
-    label289:
-    label296:
+    label303:
+    label310:
     for (localObject1 = "";; localObject1 = str1)
     {
       ((HashMap)localObject2).put("gps_location", localObject1);
@@ -1552,14 +1601,14 @@ public class BuiltInServlet
       return;
       break;
       localObject1 = localObject2;
-      break label224;
+      break label238;
     }
   }
   
   private void serviceForActionRegistNewAccountCommitSMS(Intent paramIntent)
   {
     String str = paramIntent.getStringExtra("code");
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRegisterCommitSmsCodeMsg(str));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getRegisterCommitSmsCodeMsg(str));
   }
   
   private void serviceForActionRegistNewAccountQueryMobile(Intent paramIntent)
@@ -1567,7 +1616,7 @@ public class BuiltInServlet
     String str1 = paramIntent.getStringExtra("countryCode");
     String str2 = paramIntent.getStringExtra("phoneNumber");
     str1 = str1 + "-" + str2;
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRegQueryAccountMsg(str1));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getRegQueryAccountMsg(str1));
     if (QLog.isColorLevel()) {
       QLog.d("queryMobile", 2, "BuiltInServlet.startQueryAccount");
     }
@@ -1575,7 +1624,7 @@ public class BuiltInServlet
   
   private void serviceForActionRegistNewAccountRefetchSMS(Intent paramIntent)
   {
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRegisterSendReSendSmsMsg());
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getRegisterSendReSendSmsMsg());
   }
   
   private void serviceForActionRegistNewAccountSendPassword(Intent paramIntent)
@@ -1590,14 +1639,15 @@ public class BuiltInServlet
     String str4 = paramIntent.getStringExtra("lhuin");
     String str5 = paramIntent.getStringExtra("unBindlhUin");
     String str6 = paramIntent.getStringExtra("appVersion");
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRegisterCommitPassMsg(str3, str1, str2, bool, str4, str5, str6));
+    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("mapSt");
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getRegisterCommitPassMsg(str3, str1, str2, bool, str4, str5, str6, localHashMap));
   }
   
   private void serviceForActionReport(Intent paramIntent)
   {
     byte b = paramIntent.getByteExtra("type", (byte)0);
     String str = paramIntent.getStringExtra("content");
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getReportMsg(b, str));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getReportMsg(b, str));
   }
   
   private void serviceForActionSSOGetA1WithA1(Intent paramIntent)
@@ -1609,7 +1659,7 @@ public class BuiltInServlet
     long l3 = paramIntent.getLongExtra("dwSubDstAppid", 0L);
     byte[] arrayOfByte1 = paramIntent.getByteArrayExtra("dstAppVer");
     byte[] arrayOfByte2 = paramIntent.getByteArrayExtra("dstAppSign");
-    localObject2 = getAppRuntime().getService().msfSub.getA1WithA1((String)localObject2);
+    localObject2 = getAppRuntime().getRuntimeService().msfSub.getA1WithA1((String)localObject2);
     ((ToServiceMsg)localObject2).addAttribute("dstAppName", localObject1);
     ((ToServiceMsg)localObject2).addAttribute("dwDstSsoVer", Long.valueOf(l1));
     ((ToServiceMsg)localObject2).addAttribute("dwDstAppid", Long.valueOf(l2));
@@ -1632,7 +1682,7 @@ public class BuiltInServlet
     Object localObject = paramIntent.getStringExtra("ssoAccount");
     String str2 = paramIntent.getStringExtra("ssoPassword");
     if (isQQUin((String)localObject)) {}
-    for (localObject = getAppRuntime().getService().msfSub.getLoginMsg((String)localObject, MD5.toMD5Byte(str2));; localObject = getAppRuntime().getService().msfSub.getChangeUinAndLoginMsg((String)localObject, MD5.toMD5Byte(str2)))
+    for (localObject = getAppRuntime().getRuntimeService().msfSub.getLoginMsg((String)localObject, MD5.toMD5Byte(str2));; localObject = getAppRuntime().getRuntimeService().msfSub.getChangeUinAndLoginMsg((String)localObject, MD5.toMD5Byte(str2)))
     {
       ((ToServiceMsg)localObject).setIsSupportRetry(true);
       ((ToServiceMsg)localObject).setTimeout(40000L);
@@ -1672,7 +1722,7 @@ public class BuiltInServlet
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("busBuf");
     int i = paramIntent.getIntExtra("timeout", 30000);
     long l = paramIntent.getLongExtra("wtsdkseq", -1L);
-    sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getSendWtPkgMsg(str1, l, str2, arrayOfByte, i));
+    sendToMSF(paramIntent, getAppRuntime().getRuntimeService().msfSub.getSendWtPkgMsg(str1, l, str2, arrayOfByte, i));
   }
   
   private void serviceForActionSendWirelessMeiBaoReq(Intent paramIntent)
@@ -1736,7 +1786,7 @@ public class BuiltInServlet
   {
     Object localObject = paramIntent.getStringExtra("subaccountuin");
     String str = paramIntent.getStringExtra("mainaccount");
-    localObject = getAppRuntime().getService().msfSub.getKeyMsg((String)localObject);
+    localObject = getAppRuntime().getRuntimeService().msfSub.getKeyMsg((String)localObject);
     ((ToServiceMsg)localObject).setTimeout(10000L);
     ((ToServiceMsg)localObject).addAttribute("from_where", "subaccount");
     ((ToServiceMsg)localObject).addAttribute("mainaccount", str);
@@ -1749,7 +1799,7 @@ public class BuiltInServlet
     String str2 = paramIntent.getStringExtra("subpassword");
     String str1 = paramIntent.getStringExtra("mainaccount");
     if (isQQUin((String)localObject)) {}
-    for (localObject = getAppRuntime().getService().msfSub.getLoginMsg((String)localObject, MD5.toMD5Byte(str2));; localObject = getAppRuntime().getService().msfSub.getChangeUinAndLoginMsg((String)localObject, MD5.toMD5Byte(str2)))
+    for (localObject = getAppRuntime().getRuntimeService().msfSub.getLoginMsg((String)localObject, MD5.toMD5Byte(str2));; localObject = getAppRuntime().getRuntimeService().msfSub.getChangeUinAndLoginMsg((String)localObject, MD5.toMD5Byte(str2)))
     {
       ((ToServiceMsg)localObject).setIsSupportRetry(true);
       ((ToServiceMsg)localObject).addAttribute("from_where", "subaccount");
@@ -1762,7 +1812,7 @@ public class BuiltInServlet
   
   private void serviceForActionTransFileCheckMSFConerro(Intent paramIntent)
   {
-    ToServiceMsg localToServiceMsg = getAppRuntime().getService().msfSub.getCheckMsfConErroMsg();
+    ToServiceMsg localToServiceMsg = getAppRuntime().getRuntimeService().msfSub.getCheckMsfConErroMsg();
     localToServiceMsg.setTimeout(10000L);
     sendToMSF(paramIntent, localToServiceMsg);
   }
@@ -1788,7 +1838,7 @@ public class BuiltInServlet
   {
     Object localObject = paramIntent.getStringExtra("account");
     String str = paramIntent.getStringExtra("password");
-    localObject = getAppRuntime().getService().msfSub.getVerifyPasswdMsg((String)localObject, MD5.toMD5Byte(str));
+    localObject = getAppRuntime().getRuntimeService().msfSub.getVerifyPasswdMsg((String)localObject, MD5.toMD5Byte(str));
     ((ToServiceMsg)localObject).setTimeout(40000L);
     ((ToServiceMsg)localObject).setIsSupportRetry(true);
     sendToMSF(paramIntent, (ToServiceMsg)localObject);
@@ -1797,7 +1847,7 @@ public class BuiltInServlet
   private void serviceForActionVerifyPassWDRefreshImageCode(Intent paramIntent)
   {
     Object localObject = paramIntent.getStringExtra("account");
-    localObject = getAppRuntime().getService().msfSub.getVerifyPasswdRefreshImageMsg((String)localObject);
+    localObject = getAppRuntime().getRuntimeService().msfSub.getVerifyPasswdRefreshImageMsg((String)localObject);
     ((ToServiceMsg)localObject).setTimeout(40000L);
     sendToMSF(paramIntent, (ToServiceMsg)localObject);
   }
@@ -1806,7 +1856,7 @@ public class BuiltInServlet
   {
     Object localObject = paramIntent.getStringExtra("account");
     String str = paramIntent.getStringExtra("verifyCode");
-    localObject = getAppRuntime().getService().msfSub.getVerifyPasswdImageMsg((String)localObject, str);
+    localObject = getAppRuntime().getRuntimeService().msfSub.getVerifyPasswdImageMsg((String)localObject, str);
     ((ToServiceMsg)localObject).setTimeout(40000L);
     sendToMSF(paramIntent, (ToServiceMsg)localObject);
   }

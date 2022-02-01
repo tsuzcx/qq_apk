@@ -7,17 +7,17 @@ public class ThemeUtil$ThemeInfo
   implements Serializable
 {
   public String downloadUrl = "";
-  public long downsize;
-  public int fileNum;
-  public boolean isVoiceTheme;
+  public long downsize = 0L;
+  public int fileNum = 0;
+  public boolean isVoiceTheme = false;
   public String seriesID;
-  public long size;
+  public long size = 0L;
   public long startTime;
   public String status = "1";
   public JSONArray themeArray;
   public String themeId = "";
   public String version = "200";
-  public int zipVer;
+  public int zipVer = 0;
   
   public String toString()
   {

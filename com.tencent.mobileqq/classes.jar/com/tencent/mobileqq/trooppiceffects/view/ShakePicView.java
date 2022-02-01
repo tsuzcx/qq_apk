@@ -14,15 +14,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgtv;
-import bgtx;
 import com.tencent.mobileqq.util.DisplayUtil;
 
 public class ShakePicView
   extends FrameLayout
-  implements bgtv
+  implements IPicView
 {
-  public Handler a;
+  protected Handler a;
   protected ImageView a;
   protected boolean a;
   protected ImageView b;
@@ -68,8 +66,8 @@ public class ShakePicView
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    Object localObject1 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_X, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, -DisplayUtil.dip2px(getContext(), 2.5F)), Keyframe.ofFloat(0.285F, -DisplayUtil.dip2px(getContext(), 7.5F)), Keyframe.ofFloat(0.426F, -DisplayUtil.dip2px(getContext(), 2.5F)), Keyframe.ofFloat(0.568F, -DisplayUtil.dip2px(getContext(), 2.5F)), Keyframe.ofFloat(0.71F, -DisplayUtil.dip2px(getContext(), 7.5F)), Keyframe.ofFloat(0.852F, -DisplayUtil.dip2px(getContext(), 2.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
-    Object localObject2 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, 0.0F), Keyframe.ofFloat(0.285F, -DisplayUtil.dip2px(getContext(), 3.5F)), Keyframe.ofFloat(0.426F, -DisplayUtil.dip2px(getContext(), 13.5F)), Keyframe.ofFloat(0.568F, 0.0F), Keyframe.ofFloat(0.71F, -DisplayUtil.dip2px(getContext(), 3.5F)), Keyframe.ofFloat(0.852F, -DisplayUtil.dip2px(getContext(), 13.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
+    Object localObject1 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_X, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, -DisplayUtil.a(getContext(), 2.5F)), Keyframe.ofFloat(0.285F, -DisplayUtil.a(getContext(), 7.5F)), Keyframe.ofFloat(0.426F, -DisplayUtil.a(getContext(), 2.5F)), Keyframe.ofFloat(0.568F, -DisplayUtil.a(getContext(), 2.5F)), Keyframe.ofFloat(0.71F, -DisplayUtil.a(getContext(), 7.5F)), Keyframe.ofFloat(0.852F, -DisplayUtil.a(getContext(), 2.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
+    Object localObject2 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, 0.0F), Keyframe.ofFloat(0.285F, -DisplayUtil.a(getContext(), 3.5F)), Keyframe.ofFloat(0.426F, -DisplayUtil.a(getContext(), 13.5F)), Keyframe.ofFloat(0.568F, 0.0F), Keyframe.ofFloat(0.71F, -DisplayUtil.a(getContext(), 3.5F)), Keyframe.ofFloat(0.852F, -DisplayUtil.a(getContext(), 13.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
     localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.b, new PropertyValuesHolder[] { localObject1 }).setDuration(280L);
     localObject2 = ObjectAnimator.ofPropertyValuesHolder(this.b, new PropertyValuesHolder[] { localObject2 }).setDuration(280L);
     Object localObject3 = new AnimatorSet();
@@ -89,7 +87,7 @@ public class ShakePicView
     localAnimatorSet.play((Animator)localObject2).with((Animator)localObject3).with((Animator)localObject1);
     localAnimatorSet.start();
     this.c.setTag(localAnimatorSet);
-    localAnimatorSet.addListener(new bgtx(this));
+    localAnimatorSet.addListener(new ShakePicView.1(this));
   }
   
   public void setBitmap(Bitmap paramBitmap)

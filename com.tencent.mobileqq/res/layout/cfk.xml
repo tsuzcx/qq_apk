@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ee7" android:background="@drawable/bj7" android:layout_width="65.0dip" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o1e" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="0.5x" />
-    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o0i" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="0.75x" />
-    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o0l" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="1.0x" />
-    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o01" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="1.5x" />
-    <View android:background="#ffebecee" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/ayl" android:textStyle="normal" android:textColor="@color/bp" android:gravity="center" android:id="@id/o1d" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="2.0x" />
+<LinearLayout android:orientation="vertical" android:id="@id/neh" android:paddingTop="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_gravity="center" android:id="@id/nyw" android:layout_width="@dimen/bbm" android:layout_height="@dimen/bbm" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" app:qqArMapGuideRadius="8">
+        <View android:background="#ffebebf0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/na4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <FrameLayout android:id="@id/myq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center" android:id="@id/muj" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" app:dinifly_loop="true" />
+            <ImageView android:layout_gravity="center" android:id="@id/na5" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" />
+            <ImageView android:layout_gravity="center" android:id="@id/na6" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/wx" />
+        </FrameLayout>
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+    <TextView android:textSize="11.0sp" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/ods" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" />
 </LinearLayout>

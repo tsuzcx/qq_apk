@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.intimate.view;
 
-import agll;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import bbcv;
-import bbcz;
+import com.tencent.mobileqq.activity.aio.intimate.BaseIntimateView;
 import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.mobileqq.relationx.friendclue.FriendClueConfigHelper;
+import com.tencent.mobileqq.relationx.friendclue.FriendClueReporter;
 
 public class IntimateContentItemClueView
   extends IntimateContentItemBaseView
 {
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bbcv jdField_a_of_type_Bbcv;
+  FriendClueConfigHelper jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper;
   private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   
   public IntimateContentItemClueView(Context paramContext)
@@ -35,7 +35,7 @@ public class IntimateContentItemClueView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559312, this, true).findViewById(2131367353));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559377, this, true).findViewById(2131367540));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
@@ -47,20 +47,20 @@ public class IntimateContentItemClueView
     do
     {
       return;
-    } while (this.jdField_a_of_type_Bbcv == null);
-    this.jdField_a_of_type_Bbcv.a(this.jdField_a_of_type_Agll.a(), this.jdField_a_of_type_Agll.a());
-    bbcz.b(1);
+    } while (this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper == null);
+    this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
+    FriendClueReporter.b(1);
   }
   
   protected void a(IntimateInfo paramIntimateInfo, int paramInt) {}
   
   protected boolean a()
   {
-    if (this.jdField_a_of_type_Bbcv == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper == null)
     {
-      this.jdField_a_of_type_Bbcv = new bbcv(this.jdField_a_of_type_Agll.a());
-      bbcv localbbcv = this.jdField_a_of_type_Bbcv;
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bbcv.a());
+      this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper = new FriendClueConfigHelper(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
+      FriendClueConfigHelper localFriendClueConfigHelper = this.jdField_a_of_type_ComTencentMobileqqRelationxFriendclueFriendClueConfigHelper;
+      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(FriendClueConfigHelper.a());
     }
     return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
   }
@@ -69,13 +69,13 @@ public class IntimateContentItemClueView
   {
     super.b();
     if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-      bbcz.a(1);
+      FriendClueReporter.a(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemClueView
  * JD-Core Version:    0.7.0.1
  */

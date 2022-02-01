@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/o1s" android:background="@color/by" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="46.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/o1t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/n3f" android:layout_width="fill_parent" android:layout_height="240.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.5dip" android:layout_marginRight="15.0dip" android:scaleType="fitXY" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/n3g" android:layout_width="19.5dip" android:layout_height="19.5dip" android:layout_marginTop="32.5dip" android:layout_marginRight="15.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/e85" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:text="@string/yb_" android:singleLine="true" android:layout_alignParentLeft="true" android:lineSpacingMultiplier="1.0" />
+    <ImageView android:id="@id/ija" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/gyo" android:layout_alignParentRight="true" />
 </RelativeLayout>

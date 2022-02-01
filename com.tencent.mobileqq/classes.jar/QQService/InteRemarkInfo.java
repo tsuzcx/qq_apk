@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class InteRemarkInfo
   extends JceStruct
 {
-  public long Source;
+  public long Source = 0L;
   public String StrValue = "";
   
   public InteRemarkInfo() {}

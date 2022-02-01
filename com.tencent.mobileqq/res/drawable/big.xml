@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#66ebecf2" android:endColor="#66dee0e8" android:angle="-45.0" android:type="linear" />
-</shape>
+    <item android:gravity="center" android:id="@id/kua" android:drawable="@drawable/bik" />
+</layer-list>

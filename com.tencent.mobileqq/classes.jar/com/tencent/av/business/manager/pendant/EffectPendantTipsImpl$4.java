@@ -1,18 +1,17 @@
 package com.tencent.av.business.manager.pendant;
 
-import lic;
-import mbf;
+import com.tencent.av.tips.TipsUtil;
 
-public class EffectPendantTipsImpl$4
+class EffectPendantTipsImpl$4
   implements Runnable
 {
-  public EffectPendantTipsImpl$4(lic paramlic) {}
+  EffectPendantTipsImpl$4(EffectPendantTipsImpl paramEffectPendantTipsImpl) {}
   
   public void run()
   {
     try
     {
-      mbf.a(lic.a(this.this$0), 1016);
+      TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016);
       return;
     }
     catch (Exception localException)
@@ -23,7 +22,7 @@ public class EffectPendantTipsImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.4
  * JD-Core Version:    0.7.0.1
  */

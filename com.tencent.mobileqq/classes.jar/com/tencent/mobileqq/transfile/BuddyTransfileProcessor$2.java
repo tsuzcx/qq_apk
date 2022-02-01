@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
-import bdnl;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.streamtransfile.StreamDataManager;
 
 class BuddyTransfileProcessor$2
   implements Runnable
@@ -14,7 +13,7 @@ class BuddyTransfileProcessor$2
   public void run()
   {
     FileMsg localFileMsg;
-    if ((bdnl.b(this.this$0.file.filePath) != 0) && (!this.this$0.setPttRecordFinishTime))
+    if ((StreamDataManager.b(this.this$0.file.filePath) != 0) && (!this.this$0.setPttRecordFinishTime))
     {
       localFileMsg = this.this$0.file;
       BuddyTransfileProcessor localBuddyTransfileProcessor = this.this$0;
@@ -24,11 +23,10 @@ class BuddyTransfileProcessor$2
       this.this$0.setPttRecordFinishTime = true;
     }
     this.this$0.app.getMsgHandler().a(this.val$selfUin, BuddyTransfileProcessor.access$100(this.this$0), this.this$0.file.filePath, this.val$shPackSeq, BuddyTransfileProcessor.access$200(this.this$0), BuddyTransfileProcessor.access$300(this.this$0), this.this$0.voiceType, this.this$0.voiceLength, this.val$subBubbleId, this.val$params);
-    this.this$0.app.sendAppDataIncerment(this.this$0.app.getAccount(), true, NetworkUtil.getNetworkType(this.this$0.app.getApp()), 2, 0, bdnl.a(this.this$0.file.filePath, this.val$shPackSeq));
     if (!this.val$isresend)
     {
       localFileMsg = this.this$0.file;
-      localFileMsg.transferedSize += bdnl.a(this.this$0.file.filePath, this.val$shPackSeq);
+      localFileMsg.transferedSize += StreamDataManager.a(this.this$0.file.filePath, this.val$shPackSeq);
     }
   }
 }

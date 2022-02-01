@@ -1,15 +1,14 @@
 package cooperation.vip.manager;
 
 import android.content.Intent;
-import bmnh;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 
-public class CommonRequestManager$1
+class CommonRequestManager$1
   implements Runnable
 {
-  public CommonRequestManager$1(bmnh parambmnh, Intent paramIntent) {}
+  CommonRequestManager$1(CommonRequestManager paramCommonRequestManager, Intent paramIntent) {}
   
   public void run()
   {
@@ -21,7 +20,7 @@ public class CommonRequestManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.vip.manager.CommonRequestManager.1
  * JD-Core Version:    0.7.0.1
  */

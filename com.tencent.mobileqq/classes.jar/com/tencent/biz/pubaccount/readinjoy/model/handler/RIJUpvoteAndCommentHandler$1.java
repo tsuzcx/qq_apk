@@ -1,7 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model.handler;
 
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -14,20 +19,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import pkh;
-import qep;
-import qjf;
-import qxp;
-import rsh;
-import rsj;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ControlParam;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqBody;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqMsgInfo;
 
-public class RIJUpvoteAndCommentHandler$1
+class RIJUpvoteAndCommentHandler$1
   implements Runnable
 {
-  public RIJUpvoteAndCommentHandler$1(qjf paramqjf, String paramString, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  RIJUpvoteAndCommentHandler$1(RIJUpvoteAndCommentHandler paramRIJUpvoteAndCommentHandler, String paramString, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
@@ -57,7 +56,7 @@ public class RIJUpvoteAndCommentHandler$1
       }
       localObject1 = new ConcurrentHashMap();
       Object localObject2 = new oidb_cmd0x8c8.ReqBody();
-      ((oidb_cmd0x8c8.ReqBody)localObject2).uint64_uin.set(Long.valueOf(pkh.a()).longValue());
+      ((oidb_cmd0x8c8.ReqBody)localObject2).uint64_uin.set(Long.valueOf(ReadInJoyUtils.a()).longValue());
       ((oidb_cmd0x8c8.ReqBody)localObject2).uint32_version.set(1);
       ArrayList localArrayList = new ArrayList();
       localObject3 = ((List)localObject3).iterator();
@@ -79,8 +78,8 @@ public class RIJUpvoteAndCommentHandler$1
           Iterator localIterator = localArticleInfo.mTopicRecommendFeedsInfo.a.iterator();
           while (localIterator.hasNext())
           {
-            rsj localrsj = (rsj)localIterator.next();
-            localReqMsgInfo.rpt_topic_id.add(Integer.valueOf(localrsj.jdField_a_of_type_Int));
+            TopicRecommendFeedsInfo.TopicRecommendInfo localTopicRecommendInfo = (TopicRecommendFeedsInfo.TopicRecommendInfo)localIterator.next();
+            localReqMsgInfo.rpt_topic_id.add(Integer.valueOf(localTopicRecommendInfo.jdField_a_of_type_Int));
           }
         }
         localArrayList.add(localReqMsgInfo);
@@ -89,18 +88,18 @@ public class RIJUpvoteAndCommentHandler$1
       ((oidb_cmd0x8c8.ReqBody)localObject2).rpt_msg_info_list.set(localArrayList);
       ((oidb_cmd0x8c8.ReqBody)localObject2).control_req_param.set(new oidb_cmd0x8c8.ControlParam());
       ((oidb_cmd0x8c8.ReqBody)localObject2).control_req_param.uint32_need_follow_status.set(1);
-      localObject2 = qxp.a("OidbSvc.0x8c8", 2248, 0, ((oidb_cmd0x8c8.ReqBody)localObject2).toByteArray());
+      localObject2 = ReadInJoyOidbHelper.a("OidbSvc.0x8c8", 2248, 0, ((oidb_cmd0x8c8.ReqBody)localObject2).toByteArray());
       ((ToServiceMsg)localObject2).addAttribute("0x8c8_retry_times", Integer.valueOf(0));
       ((ToServiceMsg)localObject2).addAttribute("0x8c8_articleMap", localObject1);
       ((ToServiceMsg)localObject2).addAttribute("isUpdateByAccount", Boolean.valueOf(this.jdField_a_of_type_Boolean));
-      this.this$0.jdField_a_of_type_Qep.a((ToServiceMsg)localObject2);
+      this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a((ToServiceMsg)localObject2);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.handler.RIJUpvoteAndCommentHandler.1
  * JD-Core Version:    0.7.0.1
  */

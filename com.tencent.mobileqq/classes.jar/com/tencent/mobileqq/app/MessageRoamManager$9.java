@@ -2,51 +2,49 @@ package com.tencent.mobileqq.app;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import anzb;
-import anzc;
-import bhyo;
-import bhyq;
-import bhyt;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class MessageRoamManager$9
+class MessageRoamManager$9
   implements Runnable
 {
-  public MessageRoamManager$9(anzc paramanzc) {}
+  MessageRoamManager$9(MessageRoamManager paramMessageRoamManager) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg start...");
     }
-    bhyt localbhyt = ((bhyq)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
-    if ((localbhyt != null) && (localbhyt.a(anzb.a) == null))
+    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    if ((localDownloaderInterface != null) && (localDownloaderInterface.a(MessageRoamConstants.a) == null))
     {
-      Object localObject = new File(anzb.b);
-      bhyo localbhyo = new bhyo(anzb.a, (File)localObject);
+      Object localObject = new File(MessageRoamConstants.b);
+      DownloadTask localDownloadTask = new DownloadTask(MessageRoamConstants.a, (File)localObject);
       if (((File)localObject).exists())
       {
         localObject = Long.valueOf(((File)localObject).lastModified());
-        localbhyo.i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
-        if (((Long)localObject).longValue() != localbhyo.i)
+        localDownloadTask.i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
+        if (((Long)localObject).longValue() != localDownloadTask.i)
         {
-          localbhyo.m = true;
+          localDownloadTask.m = true;
           if (QLog.isColorLevel()) {
-            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localbhyo.i);
+            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localDownloadTask.i);
           }
         }
       }
-      localbhyo.j = true;
-      localbhyo.p = false;
+      localDownloadTask.j = true;
+      localDownloadTask.p = false;
       localObject = new Bundle();
-      localbhyt.a(localbhyo, this.this$0.jdField_a_of_type_Bhyn, (Bundle)localObject);
+      localDownloaderInterface.a(localDownloadTask, this.this$0.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, (Bundle)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.9
  * JD-Core Version:    0.7.0.1
  */

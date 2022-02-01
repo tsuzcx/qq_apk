@@ -19,12 +19,12 @@ import com.tencent.ttpic.model.MeshDistortionType;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.DistortionItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.VideoMaterial.DISTORTION_ITEM_FILED;
+import com.tencent.ttpic.openapi.model.VideoMaterial.FIELD;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.DISTORTION_ITEM_FILED;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.FIELD;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.GsonUtils;
 import com.tencent.ttpic.util.TransformUtil;
@@ -44,8 +44,8 @@ public class TransformFilter
   private static final int YCOORD_NUM = 66;
   private static final List<Integer> chinFacePoints = Arrays.asList(new Integer[] { Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10), Integer.valueOf(11), Integer.valueOf(12), Integer.valueOf(13), Integer.valueOf(14) });
   private static final List<Integer> leftFacePoints;
-  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterialUtil.genFullScreenVertices(52, 68, -1.04F, 1.04F, -1.030303F, 1.030303F);
-  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterialUtil.genFullScreenVertices(52, 68, -0.02F, 1.02F, -0.01515152F, 1.015152F);
+  private static List<PointF> mFullscreenVerticesPortrait = VideoMaterial.genFullScreenVertices(52, 68, -1.04F, 1.04F, -1.030303F, 1.030303F);
+  private static List<PointF> mInitTextureCoordinatesPortrait = VideoMaterial.genFullScreenVertices(52, 68, -0.02F, 1.02F, -0.01515152F, 1.015152F);
   private static final List<Integer> rightFacePoints;
   float anotherStrength = 1.0F;
   private String dataPath;
@@ -114,7 +114,7 @@ public class TransformFilter
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
-          localObject = GsonUtils.optJsonArray(GsonUtils.json2JsonObject((String)localObject), VideoMaterialUtil.FIELD.DISTORTION_LIST.value);
+          localObject = GsonUtils.optJsonArray(GsonUtils.json2JsonObject((String)localObject), VideoMaterial.FIELD.DISTORTION_LIST.value);
           if (localObject != null)
           {
             int i = Math.min(60, ((JsonArray)localObject).size());
@@ -123,13 +123,13 @@ public class TransformFilter
             {
               DistortionItem localDistortionItem = new DistortionItem();
               JsonObject localJsonObject = ((JsonArray)localObject).get(paramInt).getAsJsonObject();
-              localDistortionItem.position = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.POSITION.value);
-              localDistortionItem.distortion = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.DISTORTION.value);
-              localDistortionItem.direction = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.DIRECTION.value);
-              localDistortionItem.radius = ((float)GsonUtils.optDouble(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.RADIUS.value));
-              localDistortionItem.strength = ((float)GsonUtils.optDouble(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.STRENGH.value));
-              localDistortionItem.x = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.X.value);
-              localDistortionItem.y = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.DISTORTION_ITEM_FILED.Y.value);
+              localDistortionItem.position = GsonUtils.optInt(localJsonObject, VideoMaterial.DISTORTION_ITEM_FILED.POSITION.value);
+              localDistortionItem.distortion = GsonUtils.optInt(localJsonObject, VideoMaterial.DISTORTION_ITEM_FILED.DISTORTION.value);
+              localDistortionItem.direction = GsonUtils.optInt(localJsonObject, VideoMaterial.DISTORTION_ITEM_FILED.DIRECTION.value);
+              localDistortionItem.radius = ((float)GsonUtils.optDouble(localJsonObject, VideoMaterial.DISTORTION_ITEM_FILED.RADIUS.value));
+              localDistortionItem.strength = ((float)GsonUtils.optDouble(localJsonObject, VideoMaterial.DISTORTION_ITEM_FILED.STRENGH.value));
+              localDistortionItem.x = GsonUtils.optInt(localJsonObject, VideoMaterial.DISTORTION_ITEM_FILED.X.value);
+              localDistortionItem.y = GsonUtils.optInt(localJsonObject, VideoMaterial.DISTORTION_ITEM_FILED.Y.value);
               localArrayList.add(localDistortionItem);
               paramInt += 1;
             }
@@ -219,8 +219,8 @@ public class TransformFilter
   
   public void initAttribParams()
   {
-    setPositions(VideoMaterialUtil.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
-    setTexCords(VideoMaterialUtil.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
+    setPositions(VideoMaterial.toFlatArray((PointF[])mFullscreenVerticesPortrait.toArray(new PointF[0])), false);
+    setTexCords(VideoMaterial.toFlatArray((PointF[])mInitTextureCoordinatesPortrait.toArray(new PointF[0])), false);
     setCoordNum(7125);
   }
   
@@ -635,7 +635,7 @@ public class TransformFilter
   public void updateParams(List<PointF> paramList, Set<Integer> paramSet, double paramDouble, float[] paramArrayOfFloat)
   {
     Arrays.fill(this.flatMesh, -1.0F);
-    Object localObject = VideoMaterialUtil.copyList(paramList);
+    Object localObject = VideoMaterial.copyList(paramList);
     if ((localObject == null) || (((List)localObject).size() < 90) || (CollectionUtils.isEmpty(this.items)) || (!VideoFilterUtil.actionTriggered(paramList, this.stickerItems, paramSet)))
     {
       addParam(new UniformParam.Float4sParam("item", this.flatMesh));
@@ -828,7 +828,7 @@ public class TransformFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TransformFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -72,16 +72,15 @@ public class PluginManageHandler
   
   public void setPluginManagerProvider(PluginManageHandler.IPluginManagerProvider paramIPluginManagerProvider, boolean paramBoolean)
   {
-    this.mManagerProvider = paramIPluginManagerProvider;
-    if (this.mManagerProvider == null)
+    if (this.mManagerProvider != paramIPluginManagerProvider)
     {
       this.mWrapper = null;
       this.mPluginManager = null;
+      this.mManagerProvider = paramIPluginManagerProvider;
     }
-    while (!paramBoolean) {
-      return;
+    if ((this.mManagerProvider != null) && (paramBoolean)) {
+      ensureManagerReady();
     }
-    ensureManagerReady();
   }
 }
 

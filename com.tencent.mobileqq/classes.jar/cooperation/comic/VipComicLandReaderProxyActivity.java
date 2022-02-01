@@ -1,6 +1,5 @@
 package cooperation.comic;
 
-import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -32,7 +31,7 @@ public class VipComicLandReaderProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.comic.VipComicLandReaderProxyActivity
  * JD-Core Version:    0.7.0.1
  */

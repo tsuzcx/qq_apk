@@ -4,11 +4,10 @@ import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
 import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicReq;
 import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
-import bjls;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBDoubleField;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -16,6 +15,8 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
+import com.tencent.open.business.base.MobileInfoUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -26,7 +27,7 @@ public class SmartMusicMatchRequest
   private static final long serialVersionUID = 6159666206339855822L;
   private final CLIENT.StSmartMatchMusicReq req = new CLIENT.StSmartMatchMusicReq();
   
-  public SmartMusicMatchRequest(ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, SosoInterface.SosoLocation paramSosoLocation, boolean paramBoolean, int paramInt, LocalMediaInfo paramLocalMediaInfo)
+  public SmartMusicMatchRequest(ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, SosoLocation paramSosoLocation, boolean paramBoolean, int paramInt, LocalMediaInfo paramLocalMediaInfo)
   {
     if (paramSosoLocation != null)
     {
@@ -57,14 +58,22 @@ public class SmartMusicMatchRequest
     }
     paramArrayList = new COMM.Entry();
     paramArrayList.key.set("wifi_mac");
-    paramArrayList.value.set(bjls.a());
+    paramArrayList.value.set(MobileInfoUtil.a());
     this.req.extInfo.mapInfo.add(paramArrayList);
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CLIENT.StSmartMatchMusicRsp localStSmartMatchMusicRsp = new CLIENT.StSmartMatchMusicRsp();
-    localStSmartMatchMusicRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStSmartMatchMusicRsp.mergeFrom(paramArrayOfByte);
+      return localStSmartMatchMusicRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStSmartMatchMusicRsp;
   }
   
@@ -80,7 +89,7 @@ public class SmartMusicMatchRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.SmartMusicMatchRequest
  * JD-Core Version:    0.7.0.1
  */

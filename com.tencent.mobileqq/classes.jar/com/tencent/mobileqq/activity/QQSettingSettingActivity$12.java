@@ -1,22 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import anvk;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.observer.ProfileCardObserver;
 
 class QQSettingSettingActivity$12
-  implements Runnable
+  extends ProfileCardObserver
 {
-  QQSettingSettingActivity$12(QQSettingSettingActivity paramQQSettingSettingActivity, anvk paramanvk, String paramString) {}
+  QQSettingSettingActivity$12(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void run()
+  public void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
-    Card localCard = this.jdField_a_of_type_Anvk.b(this.jdField_a_of_type_JavaLangString);
-    this.this$0.runOnUiThread(new QQSettingSettingActivity.12.1(this, localCard));
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
+      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.12
  * JD-Core Version:    0.7.0.1
  */

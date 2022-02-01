@@ -291,6 +291,49 @@ public class GdtJsonPbUtil
     return (paramClass == PBRepeatField.class) || (paramClass == PBRepeatMessageField.class);
   }
   
+  private static void parsePbMsgField(MessageMicro paramMessageMicro, JSONObject paramJSONObject, Field paramField)
+  {
+    if (!Modifier.isPublic(paramField.getModifiers())) {}
+    String str;
+    do
+    {
+      for (;;)
+      {
+        return;
+        boolean bool = paramField.isAccessible();
+        paramField.setAccessible(true);
+        str = paramField.getName();
+        try
+        {
+          paramMessageMicro = paramField.get(paramMessageMicro);
+          paramField.setAccessible(bool);
+          if (((!Modifier.isStatic(paramField.getModifiers())) && (!Modifier.isFinal(paramField.getModifiers()))) || (paramMessageMicro == null) || ((paramMessageMicro.getClass() != Integer.TYPE) && (paramMessageMicro.getClass() != Integer.class))) {
+            if (!(paramMessageMicro instanceof PBField))
+            {
+              QMLog.e("GdtJsonPbUtil", "pbMessagebToJson error");
+              return;
+            }
+          }
+        }
+        catch (IllegalAccessException paramMessageMicro)
+        {
+          QMLog.e("GdtJsonPbUtil", "pbMessagebToJson", paramMessageMicro);
+          return;
+        }
+      }
+      paramMessageMicro = pbToJson((PBField)PBField.class.cast(paramMessageMicro));
+    } while ((paramMessageMicro == null) || (paramMessageMicro == JSONObject.NULL));
+    try
+    {
+      paramJSONObject.put(str, paramMessageMicro);
+      return;
+    }
+    catch (JSONException paramMessageMicro)
+    {
+      QMLog.e("GdtJsonPbUtil", "pbMessagebToJson", paramMessageMicro);
+    }
+  }
+  
   public static PBField pbFromJson(PBField paramPBField, Object paramObject)
   {
     if ((paramPBField == null) || (paramPBField.getClass() == PBBytesField.class) || (paramObject == null) || (paramObject == JSONObject.NULL))
@@ -319,15 +362,15 @@ public class GdtJsonPbUtil
     //   1: ifnull +24 -> 25
     //   4: aload_0
     //   5: invokevirtual 57	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   8: invokestatic 278	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:isPBMessage	(Ljava/lang/Class;)Z
+    //   8: invokestatic 317	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:isPBMessage	(Ljava/lang/Class;)Z
     //   11: ifeq +14 -> 25
     //   14: aload_1
     //   15: ifnull +10 -> 25
     //   18: aload_1
-    //   19: getstatic 261	org/json/JSONObject:NULL	Ljava/lang/Object;
+    //   19: getstatic 292	org/json/JSONObject:NULL	Ljava/lang/Object;
     //   22: if_acmpne +13 -> 35
     //   25: ldc 8
-    //   27: ldc_w 288
+    //   27: ldc_w 325
     //   30: invokestatic 25	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aconst_null
     //   34: areturn
@@ -336,46 +379,46 @@ public class GdtJsonPbUtil
     //   39: invokevirtual 105	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   42: astore_0
     //   43: aload_1
-    //   44: invokevirtual 292	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   44: invokevirtual 329	org/json/JSONObject:keys	()Ljava/util/Iterator;
     //   47: astore_3
     //   48: aload_3
-    //   49: invokeinterface 297 1 0
+    //   49: invokeinterface 334 1 0
     //   54: ifeq +238 -> 292
     //   57: ldc 217
     //   59: aload_3
-    //   60: invokeinterface 300 1 0
+    //   60: invokeinterface 337 1 0
     //   65: invokevirtual 96	java/lang/Class:cast	(Ljava/lang/Object;)Ljava/lang/Object;
     //   68: checkcast 217	java/lang/String
     //   71: astore 5
     //   73: aload 5
-    //   75: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   75: invokestatic 343	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   78: ifeq +38 -> 116
     //   81: ldc 8
-    //   83: ldc_w 308
+    //   83: ldc_w 345
     //   86: invokestatic 25	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   89: goto -41 -> 48
     //   92: astore_0
     //   93: ldc 8
-    //   95: ldc_w 309
+    //   95: ldc_w 346
     //   98: aload_0
     //   99: invokestatic 41	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   102: aconst_null
     //   103: areturn
     //   104: astore_0
     //   105: ldc 8
-    //   107: ldc_w 309
+    //   107: ldc_w 346
     //   110: aload_0
     //   111: invokestatic 41	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   114: aconst_null
     //   115: areturn
     //   116: aload_1
     //   117: aload 5
-    //   119: invokevirtual 312	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   119: invokevirtual 349	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
     //   122: astore 4
     //   124: aload 4
     //   126: ifnull -78 -> 48
     //   129: aload 4
-    //   131: getstatic 261	org/json/JSONObject:NULL	Ljava/lang/Object;
+    //   131: getstatic 292	org/json/JSONObject:NULL	Ljava/lang/Object;
     //   134: if_acmpeq -86 -> 48
     //   137: aload_0
     //   138: invokevirtual 57	java/lang/Object:getClass	()Ljava/lang/Class;
@@ -399,24 +442,24 @@ public class GdtJsonPbUtil
     //   176: instanceof 93
     //   179: ifne +59 -> 238
     //   182: ldc 8
-    //   184: ldc_w 308
+    //   184: ldc_w 345
     //   187: invokestatic 25	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   190: goto -142 -> 48
     //   193: astore 4
     //   195: ldc 8
-    //   197: ldc_w 309
+    //   197: ldc_w 346
     //   200: aload 4
     //   202: invokestatic 41	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   205: goto -157 -> 48
     //   208: astore 4
     //   210: ldc 8
-    //   212: ldc_w 309
+    //   212: ldc_w 346
     //   215: aload 4
     //   217: invokestatic 41	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   220: goto -172 -> 48
     //   223: astore 4
     //   225: ldc 8
-    //   227: ldc_w 309
+    //   227: ldc_w 346
     //   230: aload 4
     //   232: invokestatic 41	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   235: goto -187 -> 48
@@ -425,21 +468,21 @@ public class GdtJsonPbUtil
     //   242: invokevirtual 96	java/lang/Class:cast	(Ljava/lang/Object;)Ljava/lang/Object;
     //   245: checkcast 93	com/tencent/mobileqq/pb/PBField
     //   248: aload 4
-    //   250: invokestatic 314	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:pbFromJson	(Lcom/tencent/mobileqq/pb/PBField;Ljava/lang/Object;)Lcom/tencent/mobileqq/pb/PBField;
+    //   250: invokestatic 351	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:pbFromJson	(Lcom/tencent/mobileqq/pb/PBField;Ljava/lang/Object;)Lcom/tencent/mobileqq/pb/PBField;
     //   253: astore 4
     //   255: aload 4
     //   257: ifnonnull +14 -> 271
     //   260: ldc 8
-    //   262: ldc_w 308
+    //   262: ldc_w 345
     //   265: invokestatic 25	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   268: goto -220 -> 48
     //   271: aload 5
     //   273: aload 4
-    //   275: invokestatic 316	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:getOfPB	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   275: invokestatic 353	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:getOfPB	(Ljava/lang/Object;)Ljava/lang/Object;
     //   278: aload 5
     //   280: invokevirtual 57	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   283: invokestatic 318	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:getValueClassOfPBField	(Ljava/lang/Class;)Ljava/lang/Class;
-    //   286: invokestatic 322	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:setOfPB	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Class;)V
+    //   283: invokestatic 355	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:getValueClassOfPBField	(Ljava/lang/Class;)Ljava/lang/Class;
+    //   286: invokestatic 359	com/tencent/qqmini/sdk/utils/GdtJsonPbUtil:setOfPB	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Class;)V
     //   289: goto -241 -> 48
     //   292: aload_0
     //   293: instanceof 33
@@ -450,7 +493,7 @@ public class GdtJsonPbUtil
     //   305: checkcast 33	com/tencent/mobileqq/pb/MessageMicro
     //   308: areturn
     //   309: ldc 8
-    //   311: ldc_w 308
+    //   311: ldc_w 345
     //   314: invokestatic 25	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   317: aconst_null
     //   318: areturn
@@ -478,60 +521,26 @@ public class GdtJsonPbUtil
   
   private static JSONObject pbMessageToJson(MessageMicro paramMessageMicro)
   {
+    Object localObject = null;
     if (paramMessageMicro == null) {}
     Field[] arrayOfField;
     do
     {
-      return null;
+      return localObject;
       arrayOfField = paramMessageMicro.getClass().getDeclaredFields();
     } while (arrayOfField == null);
     JSONObject localJSONObject = new JSONObject();
     int j = arrayOfField.length;
     int i = 0;
-    if (i < j)
+    for (;;)
     {
-      Object localObject1 = arrayOfField[i];
-      if (!Modifier.isPublic(((Field)localObject1).getModifiers())) {}
-      for (;;)
-      {
-        i += 1;
+      localObject = localJSONObject;
+      if (i >= j) {
         break;
-        boolean bool = ((Field)localObject1).isAccessible();
-        ((Field)localObject1).setAccessible(true);
-        String str = ((Field)localObject1).getName();
-        Object localObject2;
-        try
-        {
-          localObject2 = ((Field)localObject1).get(paramMessageMicro);
-          ((Field)localObject1).setAccessible(bool);
-          if (((Modifier.isStatic(((Field)localObject1).getModifiers())) || (Modifier.isFinal(((Field)localObject1).getModifiers()))) && (localObject2 != null) && ((localObject2.getClass() == Integer.TYPE) || (localObject2.getClass() == Integer.class))) {
-            continue;
-          }
-          if ((localObject2 instanceof PBField)) {
-            break label179;
-          }
-          QMLog.e("GdtJsonPbUtil", "pbMessagebToJson error");
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          QMLog.e("GdtJsonPbUtil", "pbMessagebToJson", localIllegalAccessException);
-        }
-        continue;
-        label179:
-        localObject1 = pbToJson((PBField)PBField.class.cast(localObject2));
-        if ((localObject1 != null) && (localObject1 != JSONObject.NULL)) {
-          try
-          {
-            localJSONObject.put(localIllegalAccessException, localObject1);
-          }
-          catch (JSONException localJSONException)
-          {
-            QMLog.e("GdtJsonPbUtil", "pbMessagebToJson", localJSONException);
-          }
-        }
       }
+      parsePbMsgField(paramMessageMicro, localJSONObject, arrayOfField[i]);
+      i += 1;
     }
-    return localJSONObject;
   }
   
   private static Object pbPrimitiveFieldToJson(PBPrimitiveField<?> paramPBPrimitiveField)
@@ -747,7 +756,7 @@ public class GdtJsonPbUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.GdtJsonPbUtil
  * JD-Core Version:    0.7.0.1
  */

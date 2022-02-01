@@ -10,7 +10,7 @@ public final class BroadcastUrl
   extends JceStruct
 {
   static Map<Byte, String> cache_mapBroadcastUrl = new HashMap();
-  public Map<Byte, String> mapBroadcastUrl;
+  public Map<Byte, String> mapBroadcastUrl = null;
   
   static
   {

@@ -19,31 +19,31 @@ public final class ReqSummaryCard
   static byte[] cache_vSecureSig;
   static byte[] cache_vSeed = (byte[])new byte[1];
   static ArrayList<byte[]> cache_vvReqServices;
-  public byte bIsFriend;
-  public byte bReqCommLabel;
-  public byte bReqExtendCard;
-  public byte bReqMedalWallInfo;
-  public byte bReqNearbyGodInfo;
-  public int eAddFriendSource;
+  public byte bIsFriend = 0;
+  public byte bReqCommLabel = 0;
+  public byte bReqExtendCard = 0;
+  public byte bReqMedalWallInfo = 0;
+  public byte bReqNearbyGodInfo = 0;
+  public int eAddFriendSource = 0;
   public int eComeFrom = 65535;
-  public long lGetControl;
-  public long lGroupCode;
-  public long lGroupUin;
-  public long lTinyId;
-  public long lUIN;
-  public UserLocaleInfo stLocaleInfo;
+  public long lGetControl = 0L;
+  public long lGroupCode = 0L;
+  public long lGroupUin = 0L;
+  public long lTinyId = 0L;
+  public long lUIN = 0L;
+  public UserLocaleInfo stLocaleInfo = null;
   public String strSearchName = "";
-  public long uLikeSource;
-  public long uQzoneFeedTimestamp;
-  public long uRichCardNameVer;
-  public ArrayList<Integer> vReq0x5ebFieldId;
-  public byte[] vReqKandianInfo;
-  public byte[] vReqLastGameInfo;
-  public byte[] vReqStarInfo;
-  public byte[] vReqTemplateInfo;
-  public byte[] vSecureSig;
-  public byte[] vSeed;
-  public ArrayList<byte[]> vvReqServices;
+  public long uLikeSource = 0L;
+  public long uQzoneFeedTimestamp = 0L;
+  public long uRichCardNameVer = 0L;
+  public ArrayList<Integer> vReq0x5ebFieldId = null;
+  public byte[] vReqKandianInfo = null;
+  public byte[] vReqLastGameInfo = null;
+  public byte[] vReqStarInfo = null;
+  public byte[] vReqTemplateInfo = null;
+  public byte[] vSecureSig = null;
+  public byte[] vSeed = null;
+  public ArrayList<byte[]> vvReqServices = null;
   
   static
   {
@@ -179,7 +179,7 @@ public final class ReqSummaryCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.ReqSummaryCard
  * JD-Core Version:    0.7.0.1
  */

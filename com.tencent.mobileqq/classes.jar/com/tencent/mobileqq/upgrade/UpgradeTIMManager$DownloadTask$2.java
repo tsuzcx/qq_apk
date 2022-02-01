@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.upgrade;
 
-import nvq;
+import com.tencent.biz.common.offline.util.OfflineDownloader;
 
 class UpgradeTIMManager$DownloadTask$2
   implements Runnable

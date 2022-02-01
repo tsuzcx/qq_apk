@@ -42,7 +42,7 @@ class MiniGameAdBannerPopup$BottomCornerURLImageView
     this.allRadius = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f };
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     int i = paramCanvas.save();
     if (this.clippedPath != null)

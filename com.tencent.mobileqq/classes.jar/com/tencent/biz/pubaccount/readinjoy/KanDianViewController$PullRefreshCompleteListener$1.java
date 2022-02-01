@@ -1,30 +1,27 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
 import java.io.File;
-import oqo;
-import oqr;
-import oqs;
-import rns;
 
-public class KanDianViewController$PullRefreshCompleteListener$1
+class KanDianViewController$PullRefreshCompleteListener$1
   implements Runnable
 {
-  public KanDianViewController$PullRefreshCompleteListener$1(oqr paramoqr) {}
+  KanDianViewController$PullRefreshCompleteListener$1(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
   
   public void run()
   {
-    String str = rns.f();
+    String str = RefreshRes.f();
     if ((str != null) && (new File(str).exists()))
     {
-      oqo.a(this.a.a, str);
-      oqo.a(this.a.a).removeMessages(3);
-      oqo.a(this.a.a).sendEmptyMessage(2);
+      KanDianViewController.a(this.a.a, str);
+      KanDianViewController.a(this.a.a).removeMessages(3);
+      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.1
  * JD-Core Version:    0.7.0.1
  */

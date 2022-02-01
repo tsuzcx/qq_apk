@@ -125,12 +125,12 @@ public class VideoPreviewPresent
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject = paramViewGroup.getContext();
-    paramView = ((LayoutInflater)((Context)localObject).getSystemService("layout_inflater")).inflate(2131561341, null);
+    paramView = ((LayoutInflater)((Context)localObject).getSystemService("layout_inflater")).inflate(2131561447, null);
     paramView.setTag(2131296400, Boolean.valueOf(true));
     paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
-    this.mCover = ((ImageView)paramView.findViewById(2131373142));
-    this.mCenterPlayBtn = ((ImageView)paramView.findViewById(2131373141));
-    this.mVideoLayout = ((FrameLayout)paramView.findViewById(2131373144));
+    this.mCover = ((ImageView)paramView.findViewById(2131373468));
+    this.mCenterPlayBtn = ((ImageView)paramView.findViewById(2131373467));
+    this.mVideoLayout = ((FrameLayout)paramView.findViewById(2131373470));
     initVideoView((Context)localObject);
     localObject = this.mBean.getMediaInfo();
     int i = paramViewGroup.getWidth();
@@ -212,12 +212,11 @@ public class VideoPreviewPresent
     if (QLog.isColorLevel()) {
       QLog.d("VideoPreviewPresent", 2, "onStateChange , state = " + paramInt);
     }
-    if (paramInt == 4) {}
-    while (paramInt != 8) {
-      return;
+    if (paramInt == 8)
+    {
+      updatePlayStateView(false);
+      this.mCover.post(new VideoPreviewPresent.2(this));
     }
-    updatePlayStateView(false);
-    this.mCover.post(new VideoPreviewPresent.2(this));
   }
   
   public void onViewDetached()
@@ -227,7 +226,7 @@ public class VideoPreviewPresent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.VideoPreviewPresent
  * JD-Core Version:    0.7.0.1
  */

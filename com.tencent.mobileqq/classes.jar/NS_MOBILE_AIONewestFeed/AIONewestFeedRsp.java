@@ -12,11 +12,11 @@ public final class AIONewestFeedRsp
 {
   static Map<String, String> cache_mapEx;
   static ArrayList<NewestFeedInfo> cache_uFeedInfos = new ArrayList();
-  public Map<String, String> mapEx;
-  public ArrayList<NewestFeedInfo> uFeedInfos;
-  public long uOpFlag;
-  public long uOpuin;
-  public long uTime;
+  public Map<String, String> mapEx = null;
+  public ArrayList<NewestFeedInfo> uFeedInfos = null;
+  public long uOpFlag = 0L;
+  public long uOpuin = 0L;
+  public long uTime = 0L;
   
   static
   {

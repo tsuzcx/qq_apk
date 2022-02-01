@@ -1,47 +1,44 @@
 package com.tencent.avgame.gameroom.stage;
 
 import android.os.Build.VERSION;
+import com.tencent.av.audioprocess.AudioProcess;
 import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.ITopic;
+import com.tencent.avgame.gamelogic.data.EngineData;
+import com.tencent.avgame.gameroom.IGameRoomPresenter;
 import com.tencent.qphone.base.util.QLog;
-import lfm;
-import nfc;
-import nfh;
-import nfv;
-import nio;
-import nkz;
-import nla;
-import nlb;
 
-public class StagePresenterImp$1
+class StagePresenterImp$1
   implements Runnable
 {
-  public StagePresenterImp$1(nlb paramnlb) {}
+  StagePresenterImp$1(StagePresenterImp paramStagePresenterImp) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("StagePresenterImp", 2, "realStartRunnale");
     }
-    nfv localnfv = nfc.a().a();
-    if (!localnfv.a()) {}
+    EngineData localEngineData = GameEngine.a().a();
+    if (!localEngineData.a()) {}
     do
     {
       return;
-      nlb.a(this.this$0, localnfv);
-      if (localnfv.d(nfc.a().a().getAccount()))
+      StagePresenterImp.a(this.this$0, localEngineData);
+      if (localEngineData.d(GameEngine.a().a().getAccount()))
       {
-        this.this$0.jdField_a_of_type_Nio.a().a();
-        this.this$0.jdField_a_of_type_Nio.a().b(this.this$0.jdField_a_of_type_Nla.a());
+        this.this$0.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a();
+        this.this$0.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.a());
       }
-      this.this$0.jdField_a_of_type_Nio.a().f();
-      localnfv.a().a();
+      this.this$0.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().f();
+      localEngineData.a().b();
     } while (Build.VERSION.SDK_INT < 16);
-    lfm.a().a(localnfv.a().a());
+    AudioProcess.a().a(localEngineData.a().b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.StagePresenterImp.1
  * JD-Core Version:    0.7.0.1
  */

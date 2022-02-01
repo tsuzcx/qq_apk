@@ -2,18 +2,18 @@ package com.tencent.mobileqq.teamwork;
 
 import android.os.Bundle;
 import android.os.Process;
-import avhz;
-import avia;
-import bcrg;
-import bdla;
-import becr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipParam;
+import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.AppRuntime;
 
-public final class TeamWorkUtils$2
+final class TeamWorkUtils$2
   implements Runnable
 {
-  public TeamWorkUtils$2(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface, String paramString4, String paramString5, int paramInt, String paramString6) {}
+  TeamWorkUtils$2(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface, String paramString4, String paramString5, int paramInt, String paramString6) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public final class TeamWorkUtils$2
     if (this.jdField_a_of_type_JavaLangString.equals(this.b))
     {
       localObject1 = this.c;
-      localObject2 = new avhz((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.d, 0, -5020, 3276804, bcrg.a());
+      localObject2 = new UniteGrayTipParam((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.d, 0, -5020, 3276804, MessageCache.a());
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_action", 42);
       localBundle.putString("key_a_action_DATA", this.e);
@@ -32,11 +32,11 @@ public final class TeamWorkUtils$2
       }
       localObject1 = this.c;
       label104:
-      localBundle.putString("key_action_DATA", becr.a(localQQAppInterface, (String)localObject1, 0));
-      ((avhz)localObject2).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.f.length(), localBundle);
+      localBundle.putString("key_action_DATA", TeamWorkUtils.a(localQQAppInterface, (String)localObject1, 0));
+      ((UniteGrayTipParam)localObject2).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.f.length(), localBundle);
       localObject1 = new MessageForUniteGrayTip();
-      ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (avhz)localObject2);
-      avia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
+      ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (UniteGrayTipParam)localObject2);
+      UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       if (!this.jdField_a_of_type_JavaLangString.equals(this.b)) {
         break label228;
@@ -46,7 +46,7 @@ public final class TeamWorkUtils$2
     label228:
     for (Object localObject1 = this.c;; localObject1 = this.b)
     {
-      bdla.b((QQAppInterface)localObject2, "dc00898", "", (String)localObject1, "0X8009FD0", "0X8009FD0", 0, 0, "", "", "", "");
+      ReportController.b((AppRuntime)localObject2, "dc00898", "", (String)localObject1, "0X8009FD0", "0X8009FD0", 0, 0, "", "", "", "");
       return;
       localObject1 = this.b;
       break;

@@ -69,7 +69,7 @@
 								"value": "3"
 							},
 							"attributes": {
-								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+								"setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
 							}
 						},
 						{
@@ -90,7 +90,20 @@
 								"setText:": "-1",
 								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
-								"setAttatchInfo:": "-1"
+								"setAttatchInfo:": "-1",
+								"setDTElementID:withParams:": [
+									"search_word_button",
+									{
+										"rowkey": "$dt_rowkey",
+										"content_type": "5",
+										"dt_pgid": "1",
+										"eid":"search_word_button",
+										"area":"relevant_search",
+										"search_word":"$dt_id_item1_result1",
+										"actionid":"click_search_word",
+										"click_type": "single"
+									}
+								]
 							}
 						},
 						{
@@ -124,7 +137,7 @@
 								"value": "3"
 							},
 							"attributes": {
-								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+								"setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
 							}
 						},
 						{
@@ -145,7 +158,20 @@
 								"setText:": "-1",
 								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
-								"setAttatchInfo:": "-1"
+								"setAttatchInfo:": "-1",
+								"setDTElementID:withParams:": [
+									"search_word_button",
+									{
+										"rowkey": "$dt_rowkey",
+										"content_type": "5",
+										"dt_pgid": "1",
+										"eid":"search_word_button",
+										"area":"relevant_search",
+										"search_word":"$dt_id_item1_result2",
+										"actionid":"click_search_word",
+										"click_type": "single"
+									}
+								]
 							}
 						}
 					]
@@ -179,7 +205,7 @@
 								"value": "3"
 							},
 							"attributes": {
-								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+								"setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
 							}
 						},
 						{
@@ -200,7 +226,20 @@
 								"setText:": "-1",
 								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
-								"setAttatchInfo:": "-1"
+								"setAttatchInfo:": "-1",
+								"setDTElementID:withParams:": [
+									"search_word_button",
+									{
+										"rowkey": "$dt_rowkey",
+										"content_type": "5",
+										"dt_pgid": "1",
+										"eid":"search_word_button",
+										"area":"relevant_search",
+                                        "search_word":"$dt_id_item2_result1",
+										"actionid":"click_search_word",
+										"click_type": "single"
+									}
+								]
 							}
 						},
 						{
@@ -234,7 +273,7 @@
 								"value": "3"
 							},
 							"attributes": {
-								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+								"setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
 							}
 						},
 						{
@@ -255,7 +294,20 @@
 								"setText:": "-1",
 								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
-								"setAttatchInfo:": "-1"
+								"setAttatchInfo:": "-1",
+								"setDTElementID:withParams:": [
+									"search_word_button",
+									{
+										"rowkey": "$dt_rowkey",
+										"content_type": "5",
+										"dt_pgid": "1",
+										"eid":"search_word_button",
+										"area":"relevant_search",
+                                        "search_word":"$dt_id_item2_result2",
+										"actionid":"click_search_word",
+										"click_type": "single"
+									}
+								]
 							}
 						}
 					]
@@ -289,7 +341,7 @@
 								"value": "3"
 							},
 							"attributes": {
-								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+								"setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
 							}
 						},
 						{
@@ -310,7 +362,20 @@
 								"setText:": "-1",
 								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
-								"setAttatchInfo:": "-1"
+								"setAttatchInfo:": "-1",
+								"setDTElementID:withParams:": [
+									"search_word_button",
+									{
+										"rowkey": "$dt_rowkey",
+										"content_type": "5",
+										"dt_pgid": "1",
+										"eid":"search_word_button",
+										"area":"relevant_search",
+                                        "search_word":"$dt_id_item3_result1",
+										"actionid":"click_search_word",
+										"click_type": "single"
+									}
+								]
 							}
 						},
 						{
@@ -344,7 +409,7 @@
 								"value": "3"
 							},
 							"attributes": {
-								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+								"setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
 							}
 						},
 						{
@@ -365,7 +430,20 @@
 								"setText:": "-1",
 								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
-								"setAttatchInfo:": "-1"
+								"setAttatchInfo:": "-1",
+								"setDTElementID:withParams:": [
+									"search_word_button",
+									{
+										"rowkey": "$dt_rowkey",
+										"content_type": "5",
+										"dt_pgid": "1",
+										"eid":"search_word_button",
+										"area":"relevant_search",
+                                        "search_word":"$dt_id_item3_result2",
+										"actionid":"click_search_word",
+										"click_type": "single"
+									}
+								]
 							}
 						}
 					]

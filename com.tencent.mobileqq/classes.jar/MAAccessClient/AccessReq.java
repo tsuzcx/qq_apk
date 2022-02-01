@@ -8,8 +8,8 @@ public final class AccessReq
   extends JceStruct
 {
   static byte[] cache_body = (byte[])new byte[1];
-  public byte[] body;
-  public int gray;
+  public byte[] body = null;
+  public int gray = 0;
   public String imei = "";
   public String manufacture = "";
   public String mode = "";

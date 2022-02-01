@@ -595,7 +595,7 @@ public class MttLoader
     if (i != 0)
     {
       localObject = ",encoded=1";
-      localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=").append("TBS").append(",packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=").append("4.3.0.57").append((String)localObject);
+      localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=").append("TBS").append(",packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=").append("4.3.0.73").append((String)localObject);
       return loadUrl(paramContext, localStringBuilder.toString(), paramHashMap, paramWebView);
     }
   }
@@ -969,7 +969,7 @@ public class MttLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.MttLoader
  * JD-Core Version:    0.7.0.1
  */

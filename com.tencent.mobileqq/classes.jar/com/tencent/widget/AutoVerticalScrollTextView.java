@@ -13,20 +13,19 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import blag;
 
 public class AutoVerticalScrollTextView
   extends TextSwitcher
   implements Handler.Callback, ViewSwitcher.ViewFactory
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 1000L;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private blag jdField_a_of_type_Blag;
+  private AutoVerticalScrollTextView.Rotate3dAnimation jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private blag jdField_b_of_type_Blag;
+  private AutoVerticalScrollTextView.Rotate3dAnimation jdField_b_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation;
   
   public AutoVerticalScrollTextView(Context paramContext)
   {
@@ -40,32 +39,32 @@ public class AutoVerticalScrollTextView
     c();
   }
   
-  private blag a(boolean paramBoolean1, boolean paramBoolean2)
+  private AutoVerticalScrollTextView.Rotate3dAnimation a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    blag localblag = new blag(this, paramBoolean1, paramBoolean2);
-    localblag.setDuration(this.jdField_b_of_type_Long);
-    localblag.setFillAfter(false);
-    localblag.setInterpolator(new AccelerateInterpolator());
-    return localblag;
+    AutoVerticalScrollTextView.Rotate3dAnimation localRotate3dAnimation = new AutoVerticalScrollTextView.Rotate3dAnimation(this, paramBoolean1, paramBoolean2);
+    localRotate3dAnimation.setDuration(this.jdField_b_of_type_Long);
+    localRotate3dAnimation.setFillAfter(false);
+    localRotate3dAnimation.setInterpolator(new AccelerateInterpolator());
+    return localRotate3dAnimation;
   }
   
   private void c()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Blag = a(true, true);
-    this.jdField_b_of_type_Blag = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Blag);
-    setOutAnimation(this.jdField_b_of_type_Blag);
+    this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation = a(true, true);
+    this.jdField_b_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation = a(false, true);
+    setInAnimation(this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation);
+    setOutAnimation(this.jdField_b_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Blag) {
-      setInAnimation(this.jdField_a_of_type_Blag);
+    if (getInAnimation() != this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation) {
+      setInAnimation(this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Blag) {
-      setOutAnimation(this.jdField_b_of_type_Blag);
+    if (getOutAnimation() != this.jdField_b_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation) {
+      setOutAnimation(this.jdField_b_of_type_ComTencentWidgetAutoVerticalScrollTextView$Rotate3dAnimation);
     }
   }
   
@@ -135,7 +134,7 @@ public class AutoVerticalScrollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.widget.AutoVerticalScrollTextView
  * JD-Core Version:    0.7.0.1
  */

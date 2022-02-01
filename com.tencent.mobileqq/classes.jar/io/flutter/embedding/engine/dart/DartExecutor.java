@@ -93,6 +93,13 @@ public class DartExecutor
     return this.isApplicationRunning;
   }
   
+  public void notifyLowMemoryWarning()
+  {
+    if (this.flutterJNI.isAttached()) {
+      this.flutterJNI.notifyLowMemoryWarning();
+    }
+  }
+  
   public void onAttachedToJNI()
   {
     Log.v("DartExecutor", "Attached to JNI. Registering the platform message handler for this Dart execution context.");
@@ -136,7 +143,7 @@ public class DartExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartExecutor
  * JD-Core Version:    0.7.0.1
  */

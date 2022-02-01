@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bkzi;
+import com.tencent.widget.ActionSheet;
 
 class TroopAvatarWallPreviewActivity$7$1
   implements Runnable
@@ -9,8 +9,8 @@ class TroopAvatarWallPreviewActivity$7$1
   
   public void run()
   {
-    this.a.a.b(2131693157);
-    this.a.a.b();
+    this.a.a.addButton(2131693306);
+    this.a.a.updateAllButton();
   }
 }
 

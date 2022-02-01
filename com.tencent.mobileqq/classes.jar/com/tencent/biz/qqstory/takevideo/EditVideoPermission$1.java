@@ -1,27 +1,25 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ykq;
-import ynw;
-import yoe;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-public class EditVideoPermission$1
+class EditVideoPermission$1
   implements Runnable
 {
-  public EditVideoPermission$1(yoe paramyoe) {}
+  EditVideoPermission$1(EditVideoPermission paramEditVideoPermission) {}
   
   public void run()
   {
-    if (yoe.a(this.this$0))
+    if (EditVideoPermission.a(this.this$0))
     {
-      ykq.b("Q.qqstory.publish.edit.EditVideoPermission", "PermissionSettingActivity launch failed, change state to IDLE");
+      SLog.b("Q.qqstory.publish.edit.EditVideoPermission", "PermissionSettingActivity launch failed, change state to IDLE");
       this.this$0.a.a(0);
-      yoe.a(this.this$0, false);
+      EditVideoPermission.a(this.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoPermission.1
  * JD-Core Version:    0.7.0.1
  */

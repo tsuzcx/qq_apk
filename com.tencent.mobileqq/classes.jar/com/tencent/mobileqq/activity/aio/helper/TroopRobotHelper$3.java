@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agld;
-
-public class TroopRobotHelper$3
+class TroopRobotHelper$3
   implements Runnable
 {
-  public TroopRobotHelper$3(agld paramagld, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7) {}
+  TroopRobotHelper$3(TroopRobotHelper paramTroopRobotHelper, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class TroopRobotHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.3
  * JD-Core Version:    0.7.0.1
  */

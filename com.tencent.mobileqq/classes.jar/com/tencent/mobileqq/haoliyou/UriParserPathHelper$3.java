@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.haoliyou;
 
 import android.net.Uri;
-import avit;
 import java.io.InputStream;
 
-public class UriParserPathHelper$3
+class UriParserPathHelper$3
   implements Runnable
 {
-  public UriParserPathHelper$3(avit paramavit, String paramString, InputStream paramInputStream, long paramLong, Uri paramUri) {}
+  UriParserPathHelper$3(UriParserPathHelper paramUriParserPathHelper, String paramString, InputStream paramInputStream, long paramLong, Uri paramUri) {}
   
   /* Error */
   public void run()
@@ -29,13 +28,13 @@ public class UriParserPathHelper$3
     //   23: astore 13
     //   25: aload 13
     //   27: invokevirtual 41	java/io/File:exists	()Z
-    //   30: ifne +54 -> 84
+    //   30: ifne +57 -> 87
     //   33: aload 13
     //   35: invokevirtual 44	java/io/File:createNewFile	()Z
-    //   38: ifne +46 -> 84
+    //   38: ifne +49 -> 87
     //   41: aload_0
-    //   42: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   45: invokestatic 49	avit:a	(Lavit;)Lmqq/os/MqqHandler;
+    //   42: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   45: invokestatic 49	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lmqq/os/MqqHandler;
     //   48: iconst_1
     //   49: invokevirtual 55	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   52: pop
@@ -45,435 +44,439 @@ public class UriParserPathHelper$3
     //   60: aconst_null
     //   61: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   64: aload_0
-    //   65: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   68: iconst_0
-    //   69: putfield 68	avit:jdField_a_of_type_Boolean	Z
-    //   72: aload_0
-    //   73: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   76: invokestatic 74	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   79: aconst_null
-    //   80: invokestatic 77	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   83: return
-    //   84: new 79	java/io/FileOutputStream
-    //   87: dup
-    //   88: aload_0
-    //   89: getfield 19	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   92: invokespecial 80	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   95: astore 11
-    //   97: aload 12
-    //   99: astore 10
-    //   101: aload 11
-    //   103: astore 9
-    //   105: invokestatic 61	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   108: sipush 8192
-    //   111: invokevirtual 84	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
-    //   114: astore 12
-    //   116: lconst_0
-    //   117: lstore 6
+    //   65: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   68: invokestatic 68	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Ljava/util/concurrent/atomic/AtomicInteger;
+    //   71: invokevirtual 74	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
+    //   74: pop
+    //   75: aload_0
+    //   76: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   79: invokestatic 80	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   82: aconst_null
+    //   83: invokestatic 83	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   86: return
+    //   87: new 85	java/io/FileOutputStream
+    //   90: dup
+    //   91: aload_0
+    //   92: getfield 19	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   95: invokespecial 86	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   98: astore 11
+    //   100: aload 12
+    //   102: astore 10
+    //   104: aload 11
+    //   106: astore 9
+    //   108: invokestatic 61	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   111: sipush 8192
+    //   114: invokevirtual 90	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   117: astore 12
     //   119: lconst_0
-    //   120: lstore_2
-    //   121: aload 12
-    //   123: astore 10
-    //   125: aload 12
-    //   127: astore 8
-    //   129: aload 11
-    //   131: astore 9
-    //   133: aload_0
-    //   134: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   137: aload 12
-    //   139: invokevirtual 90	java/io/InputStream:read	([B)I
-    //   142: istore_1
-    //   143: iload_1
-    //   144: iconst_m1
-    //   145: if_icmpeq +145 -> 290
-    //   148: aload 12
-    //   150: astore 10
-    //   152: aload 12
-    //   154: astore 8
-    //   156: aload 11
-    //   158: astore 9
-    //   160: aload_0
-    //   161: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   164: getfield 68	avit:jdField_a_of_type_Boolean	Z
-    //   167: ifeq +123 -> 290
-    //   170: lload_2
-    //   171: iload_1
-    //   172: i2l
-    //   173: ladd
-    //   174: lstore 4
-    //   176: aload 12
-    //   178: astore 10
-    //   180: aload 12
-    //   182: astore 8
-    //   184: aload 11
-    //   186: astore 9
-    //   188: aload 11
-    //   190: aload 12
-    //   192: iconst_0
-    //   193: iload_1
-    //   194: invokevirtual 94	java/io/FileOutputStream:write	([BII)V
-    //   197: lload 4
-    //   199: lstore_2
-    //   200: aload 12
-    //   202: astore 10
-    //   204: aload 12
-    //   206: astore 8
-    //   208: aload 11
-    //   210: astore 9
-    //   212: lload 4
-    //   214: lload 6
-    //   216: lsub
-    //   217: l2d
-    //   218: aload_0
-    //   219: getfield 23	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_Long	J
-    //   222: l2d
-    //   223: ddiv
-    //   224: ldc2_w 95
-    //   227: dcmpl
-    //   228: ifle -107 -> 121
-    //   231: aload 12
-    //   233: astore 10
-    //   235: aload 12
-    //   237: astore 8
-    //   239: aload 11
-    //   241: astore 9
-    //   243: aload_0
-    //   244: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   247: invokestatic 49	avit:a	(Lavit;)Lmqq/os/MqqHandler;
-    //   250: aload_0
-    //   251: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   254: invokestatic 49	avit:a	(Lavit;)Lmqq/os/MqqHandler;
-    //   257: iconst_3
-    //   258: lload 4
-    //   260: l2d
-    //   261: aload_0
-    //   262: getfield 23	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_Long	J
-    //   265: l2d
-    //   266: ddiv
-    //   267: ldc2_w 97
-    //   270: dmul
-    //   271: d2i
-    //   272: iconst_0
-    //   273: invokevirtual 102	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
-    //   276: invokevirtual 106	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   279: pop
-    //   280: lload 4
-    //   282: lstore 6
-    //   284: lload 4
-    //   286: lstore_2
-    //   287: goto -166 -> 121
-    //   290: lload_2
-    //   291: lconst_0
-    //   292: lcmp
-    //   293: ifne +81 -> 374
-    //   296: aload 12
-    //   298: astore 10
-    //   300: aload 12
-    //   302: astore 8
-    //   304: aload 11
-    //   306: astore 9
-    //   308: aload_0
-    //   309: getfield 25	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   312: invokevirtual 112	android/net/Uri:toString	()Ljava/lang/String;
-    //   315: ldc 114
-    //   317: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   320: ifeq +283 -> 603
-    //   323: aload 12
-    //   325: astore 10
-    //   327: aload 12
-    //   329: astore 8
-    //   331: aload 11
-    //   333: astore 9
-    //   335: aload_0
-    //   336: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   339: getfield 123	avit:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   342: ldc 124
-    //   344: invokevirtual 130	android/content/Context:getString	(I)Ljava/lang/String;
-    //   347: putstatic 131	avit:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   350: aload 12
-    //   352: astore 10
-    //   354: aload 12
-    //   356: astore 8
-    //   358: aload 11
-    //   360: astore 9
-    //   362: aload_0
-    //   363: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   366: invokestatic 49	avit:a	(Lavit;)Lmqq/os/MqqHandler;
-    //   369: iconst_1
-    //   370: invokevirtual 55	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
-    //   373: pop
-    //   374: aload 12
-    //   376: astore 10
-    //   378: aload 12
-    //   380: astore 8
-    //   382: aload 11
-    //   384: astore 9
-    //   386: aload_0
-    //   387: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   390: getfield 68	avit:jdField_a_of_type_Boolean	Z
-    //   393: ifeq +314 -> 707
-    //   396: aload 12
-    //   398: astore 10
-    //   400: aload 12
-    //   402: astore 8
-    //   404: aload 11
-    //   406: astore 9
-    //   408: aload_0
-    //   409: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   412: invokestatic 134	avit:a	(Lavit;)Laviz;
-    //   415: ifnull +59 -> 474
-    //   418: aload 12
-    //   420: astore 10
-    //   422: aload 12
-    //   424: astore 8
-    //   426: aload 11
-    //   428: astore 9
-    //   430: aload_0
-    //   431: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   434: invokestatic 134	avit:a	(Lavit;)Laviz;
-    //   437: aload 13
-    //   439: invokevirtual 137	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   442: aload 13
-    //   444: invokevirtual 140	java/io/File:getName	()Ljava/lang/String;
-    //   447: lload_2
-    //   448: invokeinterface 145 5 0
-    //   453: aload 12
-    //   455: astore 10
-    //   457: aload 12
-    //   459: astore 8
-    //   461: aload 11
-    //   463: astore 9
-    //   465: aload_0
-    //   466: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   469: aconst_null
-    //   470: invokestatic 148	avit:a	(Lavit;Laviz;)Laviz;
-    //   473: pop
-    //   474: aload 12
-    //   476: astore 10
-    //   478: aload 12
-    //   480: astore 8
-    //   482: aload 11
-    //   484: astore 9
-    //   486: invokestatic 151	avit:a	()Ljava/util/concurrent/ConcurrentHashMap;
-    //   489: aload_0
-    //   490: getfield 25	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   493: invokevirtual 112	android/net/Uri:toString	()Ljava/lang/String;
-    //   496: aload 13
-    //   498: invokevirtual 137	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   501: invokevirtual 157	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   504: pop
-    //   505: aload 12
-    //   507: astore 10
-    //   509: aload 12
-    //   511: astore 8
-    //   513: aload 11
-    //   515: astore 9
-    //   517: aload_0
-    //   518: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   521: invokestatic 49	avit:a	(Lavit;)Lmqq/os/MqqHandler;
-    //   524: aload_0
-    //   525: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   528: invokestatic 49	avit:a	(Lavit;)Lmqq/os/MqqHandler;
-    //   531: iconst_3
-    //   532: bipush 100
-    //   534: iconst_0
-    //   535: invokevirtual 102	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
-    //   538: invokevirtual 106	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
-    //   541: pop
-    //   542: aload 12
-    //   544: astore 10
-    //   546: aload 12
-    //   548: astore 8
-    //   550: aload 11
-    //   552: astore 9
-    //   554: aload_0
-    //   555: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   558: invokestatic 49	avit:a	(Lavit;)Lmqq/os/MqqHandler;
-    //   561: iconst_2
-    //   562: ldc2_w 158
-    //   565: invokevirtual 163	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
-    //   568: pop
-    //   569: aload 12
-    //   571: ifnull +11 -> 582
-    //   574: invokestatic 61	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   577: aload 12
-    //   579: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   582: aload_0
-    //   583: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   586: iconst_0
-    //   587: putfield 68	avit:jdField_a_of_type_Boolean	Z
-    //   590: aload_0
-    //   591: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   594: invokestatic 74	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   597: aload 11
-    //   599: invokestatic 77	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   602: return
-    //   603: aload 12
-    //   605: astore 10
-    //   607: aload 12
-    //   609: astore 8
-    //   611: aload 11
-    //   613: astore 9
-    //   615: aload_0
-    //   616: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   619: getfield 123	avit:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   622: ldc 164
-    //   624: invokevirtual 130	android/content/Context:getString	(I)Ljava/lang/String;
-    //   627: putstatic 131	avit:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   630: goto -280 -> 350
-    //   633: astore 12
-    //   635: aload 10
-    //   637: astore 8
-    //   639: aload 11
-    //   641: astore 9
-    //   643: ldc 166
-    //   645: iconst_1
-    //   646: ldc 168
-    //   648: aload 12
-    //   650: invokestatic 174	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   653: aload 10
-    //   655: astore 8
-    //   657: aload 11
-    //   659: astore 9
-    //   661: aload_0
-    //   662: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   665: invokestatic 49	avit:a	(Lavit;)Lmqq/os/MqqHandler;
-    //   668: iconst_1
-    //   669: invokevirtual 55	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
-    //   672: pop
-    //   673: aload 10
-    //   675: ifnull +11 -> 686
-    //   678: invokestatic 61	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   681: aload 10
-    //   683: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   686: aload_0
-    //   687: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   690: iconst_0
-    //   691: putfield 68	avit:jdField_a_of_type_Boolean	Z
-    //   694: aload_0
-    //   695: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   698: invokestatic 74	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   701: aload 11
-    //   703: invokestatic 77	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   706: return
-    //   707: aload 12
-    //   709: astore 10
-    //   711: aload 12
-    //   713: astore 8
-    //   715: aload 11
-    //   717: astore 9
-    //   719: aload 11
-    //   721: invokestatic 77	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   724: aload 12
-    //   726: astore 10
-    //   728: aload 12
-    //   730: astore 8
-    //   732: aload 11
-    //   734: astore 9
-    //   736: aload 13
-    //   738: invokevirtual 177	java/io/File:delete	()Z
-    //   741: pop
-    //   742: goto -173 -> 569
-    //   745: astore 11
-    //   747: aload 9
-    //   749: astore 10
-    //   751: aload 8
-    //   753: astore 9
-    //   755: aload 11
-    //   757: astore 8
-    //   759: aload 9
-    //   761: ifnull +11 -> 772
-    //   764: invokestatic 61	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   767: aload 9
-    //   769: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   772: aload_0
-    //   773: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lavit;
-    //   776: iconst_0
-    //   777: putfield 68	avit:jdField_a_of_type_Boolean	Z
-    //   780: aload_0
-    //   781: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   784: invokestatic 74	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   787: aload 10
-    //   789: invokestatic 77	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
-    //   792: aload 8
-    //   794: athrow
-    //   795: astore 8
-    //   797: aconst_null
-    //   798: astore 10
-    //   800: goto -41 -> 759
-    //   803: astore 12
-    //   805: aconst_null
-    //   806: astore 11
-    //   808: goto -173 -> 635
+    //   120: lstore 6
+    //   122: lconst_0
+    //   123: lstore_2
+    //   124: aload 12
+    //   126: astore 10
+    //   128: aload 12
+    //   130: astore 8
+    //   132: aload 11
+    //   134: astore 9
+    //   136: aload_0
+    //   137: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   140: aload 12
+    //   142: invokevirtual 96	java/io/InputStream:read	([B)I
+    //   145: istore_1
+    //   146: iload_1
+    //   147: iconst_m1
+    //   148: if_icmpeq +145 -> 293
+    //   151: aload 12
+    //   153: astore 10
+    //   155: aload 12
+    //   157: astore 8
+    //   159: aload 11
+    //   161: astore 9
+    //   163: aload_0
+    //   164: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   167: invokevirtual 98	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	()Z
+    //   170: ifeq +123 -> 293
+    //   173: lload_2
+    //   174: iload_1
+    //   175: i2l
+    //   176: ladd
+    //   177: lstore 4
+    //   179: aload 12
+    //   181: astore 10
+    //   183: aload 12
+    //   185: astore 8
+    //   187: aload 11
+    //   189: astore 9
+    //   191: aload 11
+    //   193: aload 12
+    //   195: iconst_0
+    //   196: iload_1
+    //   197: invokevirtual 102	java/io/FileOutputStream:write	([BII)V
+    //   200: lload 4
+    //   202: lstore_2
+    //   203: aload 12
+    //   205: astore 10
+    //   207: aload 12
+    //   209: astore 8
+    //   211: aload 11
+    //   213: astore 9
+    //   215: lload 4
+    //   217: lload 6
+    //   219: lsub
+    //   220: l2d
+    //   221: aload_0
+    //   222: getfield 23	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_Long	J
+    //   225: l2d
+    //   226: ddiv
+    //   227: ldc2_w 103
+    //   230: dcmpl
+    //   231: ifle -107 -> 124
+    //   234: aload 12
+    //   236: astore 10
+    //   238: aload 12
+    //   240: astore 8
+    //   242: aload 11
+    //   244: astore 9
+    //   246: aload_0
+    //   247: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   250: invokestatic 49	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lmqq/os/MqqHandler;
+    //   253: aload_0
+    //   254: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   257: invokestatic 49	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lmqq/os/MqqHandler;
+    //   260: iconst_3
+    //   261: lload 4
+    //   263: l2d
+    //   264: aload_0
+    //   265: getfield 23	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_Long	J
+    //   268: l2d
+    //   269: ddiv
+    //   270: ldc2_w 105
+    //   273: dmul
+    //   274: d2i
+    //   275: iconst_0
+    //   276: invokevirtual 110	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
+    //   279: invokevirtual 114	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   282: pop
+    //   283: lload 4
+    //   285: lstore 6
+    //   287: lload 4
+    //   289: lstore_2
+    //   290: goto -166 -> 124
+    //   293: lload_2
+    //   294: lconst_0
+    //   295: lcmp
+    //   296: ifne +81 -> 377
+    //   299: aload 12
+    //   301: astore 10
+    //   303: aload 12
+    //   305: astore 8
+    //   307: aload 11
+    //   309: astore 9
+    //   311: aload_0
+    //   312: getfield 25	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   315: invokevirtual 120	android/net/Uri:toString	()Ljava/lang/String;
+    //   318: ldc 122
+    //   320: invokevirtual 128	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   323: ifeq +286 -> 609
+    //   326: aload 12
+    //   328: astore 10
+    //   330: aload 12
+    //   332: astore 8
+    //   334: aload 11
+    //   336: astore 9
+    //   338: aload_0
+    //   339: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   342: getfield 131	com/tencent/mobileqq/haoliyou/UriParserPathHelper:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   345: ldc 132
+    //   347: invokevirtual 138	android/content/Context:getString	(I)Ljava/lang/String;
+    //   350: putstatic 139	com/tencent/mobileqq/haoliyou/UriParserPathHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   353: aload 12
+    //   355: astore 10
+    //   357: aload 12
+    //   359: astore 8
+    //   361: aload 11
+    //   363: astore 9
+    //   365: aload_0
+    //   366: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   369: invokestatic 49	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lmqq/os/MqqHandler;
+    //   372: iconst_1
+    //   373: invokevirtual 55	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   376: pop
+    //   377: aload 12
+    //   379: astore 10
+    //   381: aload 12
+    //   383: astore 8
+    //   385: aload 11
+    //   387: astore 9
+    //   389: aload_0
+    //   390: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   393: invokevirtual 98	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	()Z
+    //   396: ifeq +320 -> 716
+    //   399: aload 12
+    //   401: astore 10
+    //   403: aload 12
+    //   405: astore 8
+    //   407: aload 11
+    //   409: astore 9
+    //   411: aload_0
+    //   412: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   415: invokestatic 142	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper$IOnFileCopyFinishListener;
+    //   418: ifnull +59 -> 477
+    //   421: aload 12
+    //   423: astore 10
+    //   425: aload 12
+    //   427: astore 8
+    //   429: aload 11
+    //   431: astore 9
+    //   433: aload_0
+    //   434: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   437: invokestatic 142	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper$IOnFileCopyFinishListener;
+    //   440: aload 13
+    //   442: invokevirtual 145	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   445: aload 13
+    //   447: invokevirtual 148	java/io/File:getName	()Ljava/lang/String;
+    //   450: lload_2
+    //   451: invokeinterface 153 5 0
+    //   456: aload 12
+    //   458: astore 10
+    //   460: aload 12
+    //   462: astore 8
+    //   464: aload 11
+    //   466: astore 9
+    //   468: aload_0
+    //   469: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   472: aconst_null
+    //   473: invokestatic 156	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper$IOnFileCopyFinishListener;)Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper$IOnFileCopyFinishListener;
+    //   476: pop
+    //   477: aload 12
+    //   479: astore 10
+    //   481: aload 12
+    //   483: astore 8
+    //   485: aload 11
+    //   487: astore 9
+    //   489: invokestatic 159	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	()Ljava/util/concurrent/ConcurrentHashMap;
+    //   492: aload_0
+    //   493: getfield 25	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   496: invokevirtual 120	android/net/Uri:toString	()Ljava/lang/String;
+    //   499: aload 13
+    //   501: invokevirtual 145	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   504: invokevirtual 165	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   507: pop
+    //   508: aload 12
+    //   510: astore 10
+    //   512: aload 12
+    //   514: astore 8
+    //   516: aload 11
+    //   518: astore 9
+    //   520: aload_0
+    //   521: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   524: invokestatic 49	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lmqq/os/MqqHandler;
+    //   527: aload_0
+    //   528: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   531: invokestatic 49	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lmqq/os/MqqHandler;
+    //   534: iconst_3
+    //   535: bipush 100
+    //   537: iconst_0
+    //   538: invokevirtual 110	mqq/os/MqqHandler:obtainMessage	(III)Landroid/os/Message;
+    //   541: invokevirtual 114	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   544: pop
+    //   545: aload 12
+    //   547: astore 10
+    //   549: aload 12
+    //   551: astore 8
+    //   553: aload 11
+    //   555: astore 9
+    //   557: aload_0
+    //   558: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   561: invokestatic 49	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lmqq/os/MqqHandler;
+    //   564: iconst_2
+    //   565: ldc2_w 166
+    //   568: invokevirtual 171	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
+    //   571: pop
+    //   572: aload 12
+    //   574: ifnull +11 -> 585
+    //   577: invokestatic 61	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   580: aload 12
+    //   582: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   585: aload_0
+    //   586: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   589: invokestatic 68	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Ljava/util/concurrent/atomic/AtomicInteger;
+    //   592: invokevirtual 74	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
+    //   595: pop
+    //   596: aload_0
+    //   597: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   600: invokestatic 80	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   603: aload 11
+    //   605: invokestatic 83	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   608: return
+    //   609: aload 12
+    //   611: astore 10
+    //   613: aload 12
+    //   615: astore 8
+    //   617: aload 11
+    //   619: astore 9
+    //   621: aload_0
+    //   622: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   625: getfield 131	com/tencent/mobileqq/haoliyou/UriParserPathHelper:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   628: ldc 172
+    //   630: invokevirtual 138	android/content/Context:getString	(I)Ljava/lang/String;
+    //   633: putstatic 139	com/tencent/mobileqq/haoliyou/UriParserPathHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   636: goto -283 -> 353
+    //   639: astore 12
+    //   641: aload 10
+    //   643: astore 8
+    //   645: aload 11
+    //   647: astore 9
+    //   649: ldc 174
+    //   651: iconst_1
+    //   652: ldc 176
+    //   654: aload 12
+    //   656: invokestatic 182	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   659: aload 10
+    //   661: astore 8
+    //   663: aload 11
+    //   665: astore 9
+    //   667: aload_0
+    //   668: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   671: invokestatic 49	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Lmqq/os/MqqHandler;
+    //   674: iconst_1
+    //   675: invokevirtual 55	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   678: pop
+    //   679: aload 10
+    //   681: ifnull +11 -> 692
+    //   684: invokestatic 61	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   687: aload 10
+    //   689: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   692: aload_0
+    //   693: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   696: invokestatic 68	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Ljava/util/concurrent/atomic/AtomicInteger;
+    //   699: invokevirtual 74	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
+    //   702: pop
+    //   703: aload_0
+    //   704: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   707: invokestatic 80	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   710: aload 11
+    //   712: invokestatic 83	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   715: return
+    //   716: aload 12
+    //   718: astore 10
+    //   720: aload 12
+    //   722: astore 8
+    //   724: aload 11
+    //   726: astore 9
+    //   728: aload 11
+    //   730: invokestatic 83	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   733: aload 12
+    //   735: astore 10
+    //   737: aload 12
+    //   739: astore 8
+    //   741: aload 11
+    //   743: astore 9
+    //   745: aload 13
+    //   747: invokevirtual 185	java/io/File:delete	()Z
+    //   750: pop
+    //   751: goto -179 -> 572
+    //   754: astore 11
+    //   756: aload 9
+    //   758: astore 10
+    //   760: aload 8
+    //   762: astore 9
+    //   764: aload 11
+    //   766: astore 8
+    //   768: aload 9
+    //   770: ifnull +11 -> 781
+    //   773: invokestatic 61	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   776: aload 9
+    //   778: invokevirtual 65	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   781: aload_0
+    //   782: getfield 17	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:this$0	Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;
+    //   785: invokestatic 68	com/tencent/mobileqq/haoliyou/UriParserPathHelper:a	(Lcom/tencent/mobileqq/haoliyou/UriParserPathHelper;)Ljava/util/concurrent/atomic/AtomicInteger;
+    //   788: invokevirtual 74	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
+    //   791: pop
+    //   792: aload_0
+    //   793: getfield 21	com/tencent/mobileqq/haoliyou/UriParserPathHelper$3:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   796: invokestatic 80	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   799: aload 10
+    //   801: invokestatic 83	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/OutputStream;)V
+    //   804: aload 8
+    //   806: athrow
+    //   807: astore 8
+    //   809: aconst_null
+    //   810: astore 10
+    //   812: goto -44 -> 768
+    //   815: astore 12
+    //   817: aconst_null
+    //   818: astore 11
+    //   820: goto -179 -> 641
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	811	0	this	3
-    //   142	52	1	i	int
-    //   120	328	2	l1	long
-    //   174	111	4	l2	long
-    //   117	166	6	l3	long
-    //   4	789	8	localObject1	Object
-    //   795	1	8	localObject2	Object
-    //   7	761	9	localObject3	Object
-    //   1	798	10	localObject4	Object
-    //   95	638	11	localFileOutputStream	java.io.FileOutputStream
-    //   745	11	11	localObject5	Object
-    //   806	1	11	localObject6	Object
-    //   10	598	12	arrayOfByte	byte[]
-    //   633	96	12	localException1	java.lang.Exception
-    //   803	1	12	localException2	java.lang.Exception
-    //   23	714	13	localFile	java.io.File
+    //   0	823	0	this	3
+    //   145	52	1	i	int
+    //   123	328	2	l1	long
+    //   177	111	4	l2	long
+    //   120	166	6	l3	long
+    //   4	801	8	localObject1	Object
+    //   807	1	8	localObject2	Object
+    //   7	770	9	localObject3	Object
+    //   1	810	10	localObject4	Object
+    //   98	644	11	localFileOutputStream	java.io.FileOutputStream
+    //   754	11	11	localObject5	Object
+    //   818	1	11	localObject6	Object
+    //   10	604	12	arrayOfByte	byte[]
+    //   639	99	12	localException1	java.lang.Exception
+    //   815	1	12	localException2	java.lang.Exception
+    //   23	723	13	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   105	116	633	java/lang/Exception
-    //   133	143	633	java/lang/Exception
-    //   160	170	633	java/lang/Exception
-    //   188	197	633	java/lang/Exception
-    //   212	231	633	java/lang/Exception
-    //   243	280	633	java/lang/Exception
-    //   308	323	633	java/lang/Exception
-    //   335	350	633	java/lang/Exception
-    //   362	374	633	java/lang/Exception
-    //   386	396	633	java/lang/Exception
-    //   408	418	633	java/lang/Exception
-    //   430	453	633	java/lang/Exception
-    //   465	474	633	java/lang/Exception
-    //   486	505	633	java/lang/Exception
-    //   517	542	633	java/lang/Exception
-    //   554	569	633	java/lang/Exception
-    //   615	630	633	java/lang/Exception
-    //   719	724	633	java/lang/Exception
-    //   736	742	633	java/lang/Exception
-    //   105	116	745	finally
-    //   133	143	745	finally
-    //   160	170	745	finally
-    //   188	197	745	finally
-    //   212	231	745	finally
-    //   243	280	745	finally
-    //   308	323	745	finally
-    //   335	350	745	finally
-    //   362	374	745	finally
-    //   386	396	745	finally
-    //   408	418	745	finally
-    //   430	453	745	finally
-    //   465	474	745	finally
-    //   486	505	745	finally
-    //   517	542	745	finally
-    //   554	569	745	finally
-    //   615	630	745	finally
-    //   643	653	745	finally
-    //   661	673	745	finally
-    //   719	724	745	finally
-    //   736	742	745	finally
-    //   12	53	795	finally
-    //   84	97	795	finally
-    //   12	53	803	java/lang/Exception
-    //   84	97	803	java/lang/Exception
+    //   108	119	639	java/lang/Exception
+    //   136	146	639	java/lang/Exception
+    //   163	173	639	java/lang/Exception
+    //   191	200	639	java/lang/Exception
+    //   215	234	639	java/lang/Exception
+    //   246	283	639	java/lang/Exception
+    //   311	326	639	java/lang/Exception
+    //   338	353	639	java/lang/Exception
+    //   365	377	639	java/lang/Exception
+    //   389	399	639	java/lang/Exception
+    //   411	421	639	java/lang/Exception
+    //   433	456	639	java/lang/Exception
+    //   468	477	639	java/lang/Exception
+    //   489	508	639	java/lang/Exception
+    //   520	545	639	java/lang/Exception
+    //   557	572	639	java/lang/Exception
+    //   621	636	639	java/lang/Exception
+    //   728	733	639	java/lang/Exception
+    //   745	751	639	java/lang/Exception
+    //   108	119	754	finally
+    //   136	146	754	finally
+    //   163	173	754	finally
+    //   191	200	754	finally
+    //   215	234	754	finally
+    //   246	283	754	finally
+    //   311	326	754	finally
+    //   338	353	754	finally
+    //   365	377	754	finally
+    //   389	399	754	finally
+    //   411	421	754	finally
+    //   433	456	754	finally
+    //   468	477	754	finally
+    //   489	508	754	finally
+    //   520	545	754	finally
+    //   557	572	754	finally
+    //   621	636	754	finally
+    //   649	659	754	finally
+    //   667	679	754	finally
+    //   728	733	754	finally
+    //   745	751	754	finally
+    //   12	53	807	finally
+    //   87	100	807	finally
+    //   12	53	815	java/lang/Exception
+    //   87	100	815	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.UriParserPathHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ import android.widget.Button;
 public class GdtMvButtonHighLight
   extends Button
 {
-  private int jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = 0;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public GdtMvButtonHighLight(Context paramContext)
   {
@@ -27,7 +27,7 @@ public class GdtMvButtonHighLight
   public GdtMvButtonHighLight(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130840289);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130840393);
     this.jdField_a_of_type_AndroidGraphicsPaint = getPaint();
   }
   
@@ -50,7 +50,7 @@ public class GdtMvButtonHighLight
     }
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -60,7 +60,7 @@ public class GdtMvButtonHighLight
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvButtonHighLight
  * JD-Core Version:    0.7.0.1
  */

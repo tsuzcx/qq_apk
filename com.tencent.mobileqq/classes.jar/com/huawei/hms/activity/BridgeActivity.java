@@ -1,6 +1,5 @@
 package com.huawei.hms.activity;
 
-import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -300,7 +299,7 @@ public class BridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.huawei.hms.activity.BridgeActivity
  * JD-Core Version:    0.7.0.1
  */

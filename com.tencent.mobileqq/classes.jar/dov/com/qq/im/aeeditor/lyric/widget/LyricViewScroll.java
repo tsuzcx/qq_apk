@@ -9,27 +9,25 @@ import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ScrollView;
 import android.widget.Scroller;
-import bnuh;
-import bnui;
-import bnuj;
 
 public class LyricViewScroll
   extends ScrollView
 {
-  public volatile int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bnuh(this);
+  protected volatile int a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new LyricViewScroll.1(this);
   protected Scroller a;
-  private bnui jdField_a_of_type_Bnui;
-  private bnuj jdField_a_of_type_Bnuj;
+  private LyricViewScroll.LyicViewScrollSeekListener jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyicViewScrollSeekListener;
+  private LyricViewScroll.LyricViewScrollListener jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyricViewScrollListener;
   protected boolean a;
-  public int b;
-  public volatile boolean b;
+  protected int b;
+  protected volatile boolean b;
   private volatile boolean c = true;
   private volatile boolean d;
   
   public LyricViewScroll(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_Int = 150;
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
@@ -42,8 +40,8 @@ public class LyricViewScroll
       paramInt -= this.jdField_a_of_type_Int;
       if (paramInt != 0)
       {
-        if ((Math.abs(paramInt) > 300) && (this.jdField_a_of_type_Bnui != null)) {
-          this.jdField_a_of_type_Bnui.a();
+        if ((Math.abs(paramInt) > 300) && (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyicViewScrollSeekListener != null)) {
+          this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyicViewScrollSeekListener.a();
         }
         this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_AndroidWidgetScroller.getFinalX(), this.jdField_a_of_type_Int, 0, paramInt, 600);
         this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetScroller.getFinalY();
@@ -79,17 +77,17 @@ public class LyricViewScroll
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       continue;
       this.d = true;
-      if (this.jdField_a_of_type_Bnuj != null)
+      if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyricViewScrollListener != null)
       {
-        this.jdField_a_of_type_Bnuj.a(getScrollY());
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyricViewScrollListener.a(getScrollY());
         continue;
         Log.v("LyricViewScroll", "onTouchEvent -> ACTION_UP");
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
         continue;
         Log.v("LyricViewScroll", "onTouchEvent -> ACTION_CANCEL");
         this.jdField_a_of_type_Int = getScrollY();
-        if (this.jdField_a_of_type_Bnuj != null) {
-          this.jdField_a_of_type_Bnuj.b(this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyricViewScrollListener != null) {
+          this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyricViewScrollListener.b(this.jdField_a_of_type_Int);
         }
         this.d = false;
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
@@ -115,8 +113,8 @@ public class LyricViewScroll
     {
       smoothScrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
       postInvalidate();
-      if ((this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && (this.jdField_a_of_type_Bnui != null)) {
-        this.jdField_a_of_type_Bnui.b();
+      if ((this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyicViewScrollSeekListener != null)) {
+        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyicViewScrollSeekListener.b();
       }
     }
   }
@@ -144,14 +142,14 @@ public class LyricViewScroll
     this.c = paramBoolean;
   }
   
-  public void setScrollListener(bnuj parambnuj)
+  public void setScrollListener(LyricViewScroll.LyricViewScrollListener paramLyricViewScrollListener)
   {
-    this.jdField_a_of_type_Bnuj = parambnuj;
+    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll$LyricViewScrollListener = paramLyricViewScrollListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll
  * JD-Core Version:    0.7.0.1
  */

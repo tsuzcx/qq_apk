@@ -146,6 +146,85 @@ public class SystemInfoPlugin
     }
   }
   
+  /* Error */
+  @JsEvent({"detectAbnormalLog"})
+  public void detectAbnormalLog(RequestEvent paramRequestEvent)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload_0
+    //   4: getfield 41	com/tencent/qqmini/miniapp/plugin/SystemInfoPlugin:mContext	Landroid/content/Context;
+    //   7: ifnonnull +20 -> 27
+    //   10: ldc 9
+    //   12: ldc_w 273
+    //   15: invokestatic 276	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: aload_1
+    //   19: ldc_w 273
+    //   22: invokevirtual 281	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Ljava/lang/String;)Ljava/lang/String;
+    //   25: pop
+    //   26: return
+    //   27: new 283	org/json/JSONObject
+    //   30: dup
+    //   31: aload_1
+    //   32: getfield 286	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
+    //   35: invokespecial 289	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   38: astore_3
+    //   39: aload_3
+    //   40: ldc_w 291
+    //   43: aconst_null
+    //   44: invokevirtual 295	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   47: astore_2
+    //   48: aload_3
+    //   49: ldc_w 297
+    //   52: aconst_null
+    //   53: invokevirtual 295	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   56: astore_3
+    //   57: aload_2
+    //   58: ifnonnull +30 -> 88
+    //   61: aload_1
+    //   62: ldc_w 299
+    //   65: invokevirtual 281	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Ljava/lang/String;)Ljava/lang/String;
+    //   68: pop
+    //   69: return
+    //   70: astore_3
+    //   71: aconst_null
+    //   72: astore_2
+    //   73: ldc 9
+    //   75: ldc_w 301
+    //   78: aload_3
+    //   79: invokestatic 304	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   82: aload 4
+    //   84: astore_3
+    //   85: goto -28 -> 57
+    //   88: aload_2
+    //   89: ldc_w 306
+    //   92: aload_3
+    //   93: new 308	com/tencent/qqmini/miniapp/plugin/SystemInfoPlugin$1
+    //   96: dup
+    //   97: aload_0
+    //   98: aload_1
+    //   99: invokespecial 311	com/tencent/qqmini/miniapp/plugin/SystemInfoPlugin$1:<init>	(Lcom/tencent/qqmini/miniapp/plugin/SystemInfoPlugin;Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;)V
+    //   102: invokestatic 317	com/tencent/qqmini/miniapp/util/logmonitor/LogBeanUtil:loadLogBeanList	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/qqmini/miniapp/util/logmonitor/ILoadLogListener;)V
+    //   105: return
+    //   106: astore_3
+    //   107: goto -34 -> 73
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	110	0	this	SystemInfoPlugin
+    //   0	110	1	paramRequestEvent	RequestEvent
+    //   47	42	2	str	String
+    //   38	19	3	localObject1	Object
+    //   70	9	3	localJSONException1	JSONException
+    //   84	9	3	localObject2	Object
+    //   106	1	3	localJSONException2	JSONException
+    //   1	82	4	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   27	48	70	org/json/JSONException
+    //   48	57	106	org/json/JSONException
+  }
+  
   @JsEvent({"getSystemInfo", "getSystemInfoSync"})
   public String handleGetSystemInfo(RequestEvent paramRequestEvent)
   {
@@ -194,7 +273,7 @@ public class SystemInfoPlugin
         ((JSONObject)localObject2).put("SDKVersion", this.mMiniAppContext.getBaseLibVersion());
         ((JSONObject)localObject2).put("AppPlatform", this.mMiniAppProxy.getAppName());
         ((JSONObject)localObject2).put("safeArea", localObject1);
-        ((JSONObject)localObject2).put("runtimeVersion", "1.9.0.0");
+        ((JSONObject)localObject2).put("runtimeVersion", "1.12.1.0");
         if (this.mApkgInfo.getAppConfigInfo().darkmode) {
           ((JSONObject)localObject2).put("theme", ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserTheme());
         }
@@ -222,7 +301,7 @@ public class SystemInfoPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.SystemInfoPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bhfd;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.MediaFileFilter;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.LogTag;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.net.URL;
@@ -40,10 +40,22 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     this.mAlbumListAdapterCallBack = this;
   }
   
+  private URL generateDrawableUrl(int paramInt, AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo)
+  {
+    if (paramAlbumListAdapter.getItemViewType(paramInt) == 1)
+    {
+      if (paramQQAlbumInfo.mCoverInfo.isSystemMeidaStore) {
+        return QAlbumUtil.generateAlbumThumbURL(paramQQAlbumInfo.mCoverInfo, "VIDEO");
+      }
+      return QAlbumUtil.generateAlbumThumbURL(paramQQAlbumInfo.mCoverInfo, "APP_VIDEO");
+    }
+    return QAlbumUtil.generateAlbumThumbURL(paramQQAlbumInfo.mCoverInfo);
+  }
+  
   private QQAlbumInfo getLocalVideoAlbumInfo(QQAlbumInfo paramQQAlbumInfo)
   {
     paramQQAlbumInfo = getAlbumListAdapter().queryRecentMediaBucket(this.mFragment, paramQQAlbumInfo, false, true);
-    bhfd.a("PEAK", "compact.LocalVideoAlbumInfo");
+    LogTag.a("PEAK", "compact.LocalVideoAlbumInfo");
     return paramQQAlbumInfo;
   }
   
@@ -57,12 +69,12 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     boolean bool1;
     if ((localMediaFileFilter != null) && (localMediaFileFilter.showImage()))
     {
-      bhfd.a();
+      LogTag.a();
       localList = ((AlbumListAdapter)localObject).queryImageBuckets(this.mActivity, paramInt);
       if ((paramInt != -1) && (localList != null) && (localList.size() == paramInt))
       {
         bool1 = true;
-        bhfd.a("PEAK", "queryImageBuckets");
+        LogTag.a("PEAK", "queryImageBuckets");
       }
     }
     for (;;)
@@ -70,7 +82,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
       boolean bool2;
       if ((localMediaFileFilter != null) && (localMediaFileFilter.showVideo()))
       {
-        bhfd.a();
+        LogTag.a();
         localObject = ((AlbumListAdapter)localObject).queryVideoBuckets(this.mActivity, paramInt, localMediaFileFilter);
         bool2 = bool1;
         if (paramInt != -1)
@@ -84,11 +96,11 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
             }
           }
         }
-        bhfd.a("PEAK", "queryVideoBuckets");
+        LogTag.a("PEAK", "queryVideoBuckets");
       }
       for (;;)
       {
-        bhfd.a();
+        LogTag.a();
         localList = this.mAlbumListAdapterCallBack.compact(localList, (List)localObject, paramInt);
         if (localList != null)
         {
@@ -98,12 +110,12 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
             i += ((QQAlbumInfo)localList.get(paramInt)).mMediaFileCount;
             paramInt += 1;
           }
-          bhfd.a("PEAK", "compact(" + (localList.size() - 1) + "," + i + ")");
+          LogTag.a("PEAK", "compact(" + (localList.size() - 1) + "," + i + ")");
         }
         for (;;)
         {
           return new Pair(Boolean.valueOf(bool2), localList);
-          bhfd.a("PEAK", "compact: medias ==null");
+          LogTag.a("PEAK", "compact: medias ==null");
         }
         localObject = null;
         bool2 = bool1;
@@ -115,13 +127,66 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     }
   }
   
+  private List<QQAlbumInfo> realCompactImagesAndVideos(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2)
+  {
+    paramList2 = paramList2.iterator();
+    label180:
+    label185:
+    for (;;)
+    {
+      QQAlbumInfo localQQAlbumInfo1;
+      Iterator localIterator;
+      QQAlbumInfo localQQAlbumInfo2;
+      if (paramList2.hasNext())
+      {
+        localQQAlbumInfo1 = (QQAlbumInfo)paramList2.next();
+        localIterator = paramList1.iterator();
+        while (localIterator.hasNext())
+        {
+          localQQAlbumInfo2 = (QQAlbumInfo)localIterator.next();
+          if (localQQAlbumInfo2.id.equals(localQQAlbumInfo1.id)) {
+            localQQAlbumInfo2.mMediaFileCount += localQQAlbumInfo1.mMediaFileCount;
+          }
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label185;
+        }
+        localIterator = paramList1.iterator();
+        i = 0;
+        label105:
+        if (localIterator.hasNext())
+        {
+          localQQAlbumInfo2 = (QQAlbumInfo)localIterator.next();
+          if (localQQAlbumInfo1.coverDate > localQQAlbumInfo2.coverDate) {
+            paramList1.add(i, localQQAlbumInfo1);
+          }
+        }
+        for (i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label180;
+          }
+          paramList1.add(localQQAlbumInfo1);
+          break;
+          i += 1;
+          break label105;
+          return paramList1;
+        }
+        break;
+      }
+    }
+  }
+  
   private Pair<Boolean, List<QQAlbumInfo>> updateCommonAndDefaultAlbumList(int paramInt)
   {
     AlbumListAdapter localAlbumListAdapter = getAlbumListAdapter();
-    bhfd.a();
+    LogTag.a();
     Pair localPair = queryCommonAlbumList(paramInt);
     List localList = (List)localPair.second;
-    bhfd.a("PEAK", "queryAllAlbumList");
+    LogTag.a("PEAK", "queryAllAlbumList");
     localAlbumListAdapter.updateCommonAlbums(localList);
     localAlbumListAdapter.postData();
     return localPair;
@@ -144,7 +209,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     return ((StringBuffer)localObject).toString();
   }
   
-  protected boolean checkAlbumChange(Intent paramIntent, QQAlbumInfo paramQQAlbumInfo)
+  boolean checkAlbumChange(Intent paramIntent, QQAlbumInfo paramQQAlbumInfo)
   {
     String str1 = paramIntent.getStringExtra("ALBUM_NAME");
     String str2 = paramIntent.getStringExtra("ALBUM_ID");
@@ -171,80 +236,23 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     {
       int i = paramList1.size();
       paramInt = 0;
-      for (;;)
+      while (paramInt < i)
       {
-        if (paramInt < i)
+        paramList2 = (QQAlbumInfo)paramList1.get(paramInt);
+        if ((paramInt != 0) && (AlbumListAdapter.isCameraDir(paramList2.name)))
         {
-          paramList2 = (QQAlbumInfo)paramList1.get(paramInt);
-          if ((paramInt != 0) && (AlbumListAdapter.isCameraDir(paramList2.name)))
-          {
-            paramList1.remove(paramList2);
-            paramList1.add(0, paramList2);
-          }
-          paramInt += 1;
-          continue;
-          if (paramList1 == null)
-          {
-            paramList1 = paramList2;
-            break;
-          }
-          if (paramList2 == null) {
-            break;
-          }
-          paramList2 = paramList2.iterator();
+          paramList1.remove(paramList2);
+          paramList1.add(0, paramList2);
         }
+        paramInt += 1;
+      }
+      if (paramList1 == null) {
+        paramList1 = paramList2;
+      } else if (paramList2 != null) {
+        paramList1 = realCompactImagesAndVideos(paramList1, paramList2);
       }
     }
-    label129:
-    label305:
-    label310:
-    for (;;)
-    {
-      QQAlbumInfo localQQAlbumInfo1;
-      Iterator localIterator;
-      QQAlbumInfo localQQAlbumInfo2;
-      if (paramList2.hasNext())
-      {
-        localQQAlbumInfo1 = (QQAlbumInfo)paramList2.next();
-        localIterator = paramList1.iterator();
-        while (localIterator.hasNext())
-        {
-          localQQAlbumInfo2 = (QQAlbumInfo)localIterator.next();
-          if (localQQAlbumInfo2._id.equals(localQQAlbumInfo1._id)) {
-            localQQAlbumInfo2.mMediaFileCount += localQQAlbumInfo1.mMediaFileCount;
-          }
-        }
-      }
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if (paramInt != 0) {
-          break label310;
-        }
-        localIterator = paramList1.iterator();
-        paramInt = 0;
-        label227:
-        if (localIterator.hasNext())
-        {
-          localQQAlbumInfo2 = (QQAlbumInfo)localIterator.next();
-          if (localQQAlbumInfo1.coverDate > localQQAlbumInfo2.coverDate) {
-            paramList1.add(paramInt, localQQAlbumInfo1);
-          }
-        }
-        for (paramInt = 1;; paramInt = 0)
-        {
-          if (paramInt != 0) {
-            break label305;
-          }
-          paramList1.add(localQQAlbumInfo1);
-          break label129;
-          paramInt += 1;
-          break label227;
-          break;
-          return paramList1;
-        }
-        break label129;
-      }
-    }
+    return paramList1;
   }
   
   protected AlbumListAdapter generateAlbumListAdapter()
@@ -262,71 +270,58 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     Resources localResources = this.mFragment.getResources();
     AlbumListAdapter localAlbumListAdapter = getAlbumListAdapter();
     View localView;
-    TextView localTextView;
     QQAlbumInfo localQQAlbumInfo;
-    label197:
+    URL localURL;
     Object localObject;
     if (paramView == null)
     {
-      localView = this.mActivity.getLayoutInflater().inflate(2131561008, null);
-      localTextView = (TextView)localView;
+      localView = this.mActivity.getLayoutInflater().inflate(2131561095, null);
+      paramViewGroup = (TextView)localView;
       localQQAlbumInfo = localAlbumListAdapter.getItem(paramInt);
       localView.setContentDescription(localQQAlbumInfo.name + "，" + localQQAlbumInfo.mMediaFileCount + "张照片");
       paramView = localQQAlbumInfo.name;
       if (localQQAlbumInfo.mMediaFileCount > 0) {
         paramView = localQQAlbumInfo.name + String.format(" (%d)", new Object[] { Integer.valueOf(localQQAlbumInfo.mMediaFileCount) });
       }
-      localTextView.setText(paramView);
-      paramViewGroup = localTextView.getCompoundDrawables()[0];
-      if (localAlbumListAdapter.getItemViewType(paramInt) != 1) {
-        break label390;
-      }
-      if (!localQQAlbumInfo.mCoverInfo.isSystemMeidaStore) {
-        break label375;
-      }
-      paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo, "VIDEO");
+      paramViewGroup.setText(paramView);
+      paramView = paramViewGroup.getCompoundDrawables()[0];
+      localURL = generateDrawableUrl(paramInt, localAlbumListAdapter, localQQAlbumInfo);
       localObject = localQQAlbumInfo.mCoverInfo;
       localQQAlbumInfo.mCoverInfo.thumbHeight = 200;
       ((LocalMediaInfo)localObject).thumbWidth = 200;
-      if ((paramViewGroup == null) || (!URLDrawable.class.isInstance(paramViewGroup))) {
-        break label407;
+      if ((paramView == null) || (!URLDrawable.class.isInstance(paramView))) {
+        break label355;
       }
-      paramViewGroup = (URLDrawable)paramViewGroup;
-      if (!paramView.equals(paramViewGroup.getURL())) {
-        break label407;
+      paramView = (URLDrawable)paramView;
+      if (!localURL.equals(paramView.getURL())) {
+        break label355;
       }
     }
     for (;;)
     {
-      localObject = paramViewGroup;
-      if (paramViewGroup == null)
+      localObject = paramView;
+      if (paramView == null)
       {
-        localObject = URLDrawableHelper.getDrawable(paramView, AlbumListAdapter.COLOR_DRAWABLE, AlbumListAdapter.COLOR_DRAWABLE);
+        localObject = URLDrawableHelper.getDrawable(localURL, AlbumListAdapter.COLOR_DRAWABLE, AlbumListAdapter.COLOR_DRAWABLE);
         ((URLDrawable)localObject).setTag(localQQAlbumInfo.mCoverInfo);
         ((URLDrawable)localObject).setBounds(0, 0, localAlbumListAdapter.mCoverWidth, localAlbumListAdapter.mCoverHeight);
       }
-      if ((localQQAlbumInfo._id != null) && (localQQAlbumInfo._id.equals(this.mPhotoCommonData.albumId)))
+      if ((localQQAlbumInfo.id != null) && (localQQAlbumInfo.id.equals(this.mPhotoCommonData.albumId)))
       {
         paramView = localAlbumListAdapter.mRightArrow.newDrawable(localResources);
         paramView.setBounds(0, 0, paramView.getIntrinsicWidth(), paramView.getIntrinsicHeight());
       }
       for (;;)
       {
-        localTextView.setCompoundDrawables((Drawable)localObject, null, paramView, null);
+        paramViewGroup.setCompoundDrawables((Drawable)localObject, null, paramView, null);
         return localView;
-        localTextView = (TextView)paramView;
+        paramViewGroup = (TextView)paramView;
         localView = paramView;
         break;
-        label375:
-        paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo, "APP_VIDEO");
-        break label197;
-        label390:
-        paramView = QAlbumUtil.generateAlbumThumbURL(localQQAlbumInfo.mCoverInfo);
-        break label197;
         paramView = null;
       }
-      label407:
-      paramViewGroup = null;
+      label355:
+      paramView = null;
     }
   }
   
@@ -352,7 +347,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     }
   }
   
-  protected boolean needUpdateAlbum(boolean paramBoolean, QQAlbumInfo paramQQAlbumInfo)
+  boolean needUpdateAlbum(boolean paramBoolean, QQAlbumInfo paramQQAlbumInfo)
   {
     return paramBoolean;
   }
@@ -360,7 +355,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
   protected boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
   {
     paramInt = 0;
-    paramIntent.putExtra("ALBUM_ID", paramQQAlbumInfo._id);
+    paramIntent.putExtra("ALBUM_ID", paramQQAlbumInfo.id);
     paramIntent.putExtra("ALBUM_NAME", paramQQAlbumInfo.name);
     paramIntent.putExtra("album_enter_directly", false);
     XListView localXListView = this.mFragment.mListView;
@@ -378,13 +373,13 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     }
   }
   
-  protected void postInitUI() {}
+  void postInitUI() {}
   
   public void queryAlbumList(int paramInt)
   {
     AlbumListAdapter localAlbumListAdapter = getAlbumListAdapter();
     QQAlbumInfo localQQAlbumInfo = new QQAlbumInfo();
-    localQQAlbumInfo._id = "$RecentAlbumId";
+    localQQAlbumInfo.id = "$RecentAlbumId";
     localQQAlbumInfo.name = QAlbumCustomAlbumConstants.RECENT_ALBUM_NAME;
     localQQAlbumInfo.mMediaFileCount = this.mPhotoCommonData.recentCount;
     if (this.mPhotoCommonData.firstRecentInfo != null)
@@ -394,7 +389,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     }
     localAlbumListAdapter.updateRecentAlbum(localQQAlbumInfo);
     localQQAlbumInfo = new QQAlbumInfo();
-    localQQAlbumInfo._id = "$VideoAlbumId";
+    localQQAlbumInfo.id = "$VideoAlbumId";
     localQQAlbumInfo.name = QAlbumCustomAlbumConstants.VIDEO_ALBUM_NAME;
     localAlbumListAdapter.updateVideoAlbum(localQQAlbumInfo);
     if (paramInt != -1) {
@@ -417,7 +412,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AlbumListLogicBase
  * JD-Core Version:    0.7.0.1
  */

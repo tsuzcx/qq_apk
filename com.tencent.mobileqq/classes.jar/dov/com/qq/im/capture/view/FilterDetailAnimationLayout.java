@@ -25,7 +25,7 @@ public class FilterDetailAnimationLayout
     super(paramContext, paramAttributeSet);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if (this.a != -1) {
       paramCanvas.clipRect(0, 0, this.a, getHeight());
@@ -55,7 +55,7 @@ public class FilterDetailAnimationLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     dov.com.qq.im.capture.view.FilterDetailAnimationLayout
  * JD-Core Version:    0.7.0.1
  */

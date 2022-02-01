@@ -8,13 +8,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.avgame.gamelogic.data.GameItem;
+import com.tencent.avgame.util.AVGameUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.math.BigDecimal;
-import nga;
-import nir;
-import nqf;
 
 public class GameGridItemView
   extends RelativeLayout
@@ -23,8 +22,8 @@ public class GameGridItemView
   protected int a;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected nga a;
-  protected nir a;
+  protected GameItem a;
+  protected GameGridItemView.GameGridClickListener a;
   protected boolean a;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -44,17 +43,17 @@ public class GameGridItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(nga paramnga, boolean paramBoolean, int paramInt1, int paramInt2, URLDrawable paramURLDrawable1, URLDrawable paramURLDrawable2)
+  public void a(GameItem paramGameItem, boolean paramBoolean, int paramInt1, int paramInt2, URLDrawable paramURLDrawable1, URLDrawable paramURLDrawable2)
   {
-    this.jdField_a_of_type_Nga = paramnga;
+    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameItem = paramGameItem;
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_a_of_type_Boolean = paramBoolean;
     float f;
-    if (paramnga.a >= 100000000L)
+    if (paramGameItem.a >= 100000000L)
     {
-      f = new BigDecimal((float)paramnga.a / 1.0E+008F).setScale(1, 1).floatValue();
-      paramnga = f + getContext().getResources().getString(2131690415);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131690303), new Object[] { paramnga }));
+      f = new BigDecimal((float)paramGameItem.a / 1.0E+008F).setScale(1, 1).floatValue();
+      paramGameItem = f + getContext().getResources().getString(2131690507);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131690370), new Object[] { paramGameItem }));
       if (paramURLDrawable1 == null) {
         break label291;
       }
@@ -73,18 +72,18 @@ public class GameGridItemView
         break label310;
       }
       setAlpha(1.0F);
-      paramnga = nqf.a("avgame_game_select@2x.png");
-      if (paramnga != null) {
-        this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(paramnga));
+      paramGameItem = AVGameUtils.a("avgame_game_select@2x.png");
+      if (paramGameItem != null) {
+        this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(paramGameItem));
       }
       return;
-      if (paramnga.a >= 100000L)
+      if (paramGameItem.a >= 100000L)
       {
-        f = new BigDecimal((float)paramnga.a / 10000.0F).setScale(1, 1).floatValue();
-        paramnga = f + getContext().getResources().getString(2131690414);
+        f = new BigDecimal((float)paramGameItem.a / 10000.0F).setScale(1, 1).floatValue();
+        paramGameItem = f + getContext().getResources().getString(2131690506);
         break;
       }
-      paramnga = paramnga.a + "";
+      paramGameItem = paramGameItem.a + "";
       break;
       label291:
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
@@ -97,13 +96,13 @@ public class GameGridItemView
     this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
   }
   
-  public void a(nir paramnir)
+  public void a(GameGridItemView.GameGridClickListener paramGameGridClickListener)
   {
-    this.jdField_a_of_type_Nir = paramnir;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371803));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372942));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367501);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131377283);
+    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener = paramGameGridClickListener;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372115));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373265));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367688);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131377704);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     setOnClickListener(this);
   }
@@ -112,7 +111,7 @@ public class GameGridItemView
   {
     Object localObject = paramView.getTag();
     int i;
-    if (((localObject instanceof Integer)) && (this.jdField_a_of_type_Nir != null))
+    if (((localObject instanceof Integer)) && (this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener != null))
     {
       i = ((Integer)localObject).intValue();
       if (!(paramView instanceof GameGridItemView)) {
@@ -121,7 +120,7 @@ public class GameGridItemView
       if (QLog.isColorLevel()) {
         QLog.i("GameGridItemView", 2, "itemGridClick " + i);
       }
-      this.jdField_a_of_type_Nir.b(i);
+      this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener.b(i);
     }
     for (;;)
     {
@@ -132,15 +131,15 @@ public class GameGridItemView
       {
       default: 
         break;
-      case 2131367501: 
-        this.jdField_a_of_type_Nir.a(i);
+      case 2131367688: 
+        this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameGridItemView$GameGridClickListener.a(i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.avgame.gameroom.gamelist.GameGridItemView
  * JD-Core Version:    0.7.0.1
  */

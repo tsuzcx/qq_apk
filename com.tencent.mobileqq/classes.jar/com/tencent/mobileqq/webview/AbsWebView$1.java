@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.webview;
 
 import android.os.SystemClock;
-import bidf;
 import com.tencent.qphone.base.util.QLog;
 
-public class AbsWebView$1
+class AbsWebView$1
   implements Runnable
 {
-  public AbsWebView$1(bidf parambidf) {}
+  AbsWebView$1(AbsWebView paramAbsWebView) {}
   
   public void run()
   {
@@ -26,7 +25,7 @@ public class AbsWebView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.webview.AbsWebView.1
  * JD-Core Version:    0.7.0.1
  */

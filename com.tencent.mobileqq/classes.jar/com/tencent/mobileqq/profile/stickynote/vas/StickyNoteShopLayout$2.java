@@ -13,7 +13,7 @@ class StickyNoteShopLayout$2
   
   public void run()
   {
-    byte[] arrayOfByte = FileUtils.readFile(StickyNoteShopLayout.a + '_' + StickyNoteShopLayout.a(this.this$0));
+    byte[] arrayOfByte = FileUtils.a(StickyNoteShopLayout.a + '_' + StickyNoteShopLayout.a(this.this$0));
     if (arrayOfByte != null)
     {
       GetSuixintieSigFontRsp localGetSuixintieSigFontRsp = new GetSuixintieSigFontRsp();

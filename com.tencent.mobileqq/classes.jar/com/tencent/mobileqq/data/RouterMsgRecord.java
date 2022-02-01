@@ -33,10 +33,10 @@ public class RouterMsgRecord
   public String filename;
   public int oppositestatus = 1;
   public long peerDin;
-  public double progress;
-  public String sTableName;
+  public double progress = 0.0D;
+  public String sTableName = null;
   public int status = 1;
-  public long uSessionID;
+  public long uSessionID = 0L;
   
   public RouterMsgRecord()
   {
@@ -88,7 +88,7 @@ public class RouterMsgRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RouterMsgRecord
  * JD-Core Version:    0.7.0.1
  */

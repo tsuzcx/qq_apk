@@ -4,13 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.RemoteException;
-import com.tencent.shadow.proguard.h;
 
 public class FailedException
   extends Exception
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new h();
+  public static final Parcelable.Creator<FailedException> CREATOR = new FailedException.1();
   public static final int ERROR_CODE_FILE_NOT_FOUND_EXCEPTION = 3;
   public static final int ERROR_CODE_RELOAD_LOADER_EXCEPTION = 8;
   public static final int ERROR_CODE_RELOAD_RUNTIME_EXCEPTION = 7;
@@ -28,7 +27,7 @@ public class FailedException
     this.errorMessage = paramString;
   }
   
-  public FailedException(Parcel paramParcel)
+  protected FailedException(Parcel paramParcel)
   {
     this.errorCode = paramParcel.readInt();
     this.errorMessage = paramParcel.readString();
@@ -59,7 +58,7 @@ public class FailedException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.FailedException
  * JD-Core Version:    0.7.0.1
  */

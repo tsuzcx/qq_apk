@@ -13,10 +13,10 @@ public final class CLIENT_REPORT_REQ
   static Map<String, String> cache_extra_info;
   static ArrayList<Map<String, String>> cache_info = new ArrayList();
   static ArrayList<REPORT_INFO> cache_multi_info;
-  public Map<String, String> extra_info;
-  public ArrayList<Map<String, String>> info;
-  public ArrayList<REPORT_INFO> multi_info;
-  public long type;
+  public Map<String, String> extra_info = null;
+  public ArrayList<Map<String, String>> info = null;
+  public ArrayList<REPORT_INFO> multi_info = null;
+  public long type = 0L;
   
   static
   {

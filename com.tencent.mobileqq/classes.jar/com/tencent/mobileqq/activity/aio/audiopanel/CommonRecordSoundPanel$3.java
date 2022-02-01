@@ -10,14 +10,14 @@ class CommonRecordSoundPanel$3
   public void run()
   {
     int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.this$0.c(i);
+    this.this$0.b(i);
     CommonRecordSoundPanel.a(this.this$0).setText(AudioPanel.a(this.jdField_a_of_type_Double));
     this.this$0.jdField_a_of_type_Double = this.jdField_a_of_type_Double;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel.3
  * JD-Core Version:    0.7.0.1
  */

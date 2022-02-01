@@ -1,6 +1,5 @@
 package com.tencent.biz.qcircleshadow.local.activity;
 
-import Override;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -39,7 +38,7 @@ public class QCircleBaseBackActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.activity.QCircleBaseBackActivity
  * JD-Core Version:    0.7.0.1
  */

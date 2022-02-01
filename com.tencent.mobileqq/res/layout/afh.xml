@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fg0" android:paddingTop="20.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fg0" android:paddingTop="10.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/afg" />
-    <Button android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/lyj" android:background="@drawable/hhd" android:layout_width="168.0dip" android:layout_height="40.0dip" android:layout_marginTop="27.0dip" />
+    <Button android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/lyj" android:background="@drawable/hhd" android:layout_width="168.0dip" android:layout_height="40.0dip" android:layout_marginTop="27.0dip" />
     <TextView android:textSize="16.0sp" android:textColor="#ffe8a741" android:gravity="center_horizontal" android:id="@id/caq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
     <Button android:id="@id/f_x" android:visibility="gone" android:layout_marginLeft="75.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="75.0dip" android:text="@string/ebb" style="@style/sv" />
     <TextView android:textSize="16.0dip" android:textColor="@color/u2" android:layout_gravity="center_horizontal" android:id="@id/kkq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/efh" android:includeFontPadding="false" />
     <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ffz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="50.0dip">
         <TextView android:textSize="14.0sp" android:textColor="@color/u2" android:layout_gravity="center_horizontal" android:id="@id/cly" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e6s" android:includeFontPadding="false" />
         <View android:id="@id/kkr" android:background="@color/wb" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/u2" android:layout_gravity="center_horizontal" android:id="@id/o70" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x23" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/u2" android:layout_gravity="center_horizontal" android:id="@id/ome" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x98" android:includeFontPadding="false" />
     </LinearLayout>
 </LinearLayout>

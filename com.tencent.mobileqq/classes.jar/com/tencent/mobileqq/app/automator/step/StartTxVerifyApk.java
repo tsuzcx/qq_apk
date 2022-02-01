@@ -11,7 +11,7 @@ public class StartTxVerifyApk
 {
   public int a()
   {
-    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new QPTxVerifyApkTimerTask(this.a.app, false), 180000L);
+    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new QPTxVerifyApkTimerTask(this.a.a, false), 180000L);
     return 7;
   }
 }

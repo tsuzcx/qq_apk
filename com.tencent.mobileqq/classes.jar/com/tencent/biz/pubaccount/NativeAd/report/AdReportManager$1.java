@@ -1,33 +1,31 @@
 package com.tencent.biz.pubaccount.NativeAd.report;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.NativeAd.report.bean.CommonReportObj;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ActionEntity;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
+import com.tencent.biz.pubaccount.NativeAd.report.util.AdReportUtil;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import ohu;
-import ohv;
-import ohw;
-import oie;
-import oik;
-import ufw;
 
-public class AdReportManager$1
+class AdReportManager$1
   implements Runnable
 {
-  public AdReportManager$1(ohu paramohu, ufw paramufw, String paramString) {}
+  AdReportManager$1(AdReportManager paramAdReportManager, AdReportData paramAdReportData) {}
   
-  private void a(ReportAction paramReportAction, String paramString, Map<String, ohv> paramMap)
+  private void a(ReportAction paramReportAction, String paramString, Map<String, IReportObj> paramMap)
   {
     try
     {
-      oie localoie = (oie)paramMap.get("common");
-      if (localoie == null) {
+      CommonReportObj localCommonReportObj = (CommonReportObj)paramMap.get("common");
+      if (localCommonReportObj == null) {
         return;
       }
-      localoie.a(ActionEntity.Default);
-      paramMap = oik.a(paramMap);
-      ohu.a(this.this$0, paramString, paramMap, paramReportAction);
+      localCommonReportObj.a(ActionEntity.Default);
+      paramMap = AdReportUtil.a(paramMap);
+      AdReportManager.a(this.this$0, paramString, paramMap, paramReportAction);
       return;
     }
     catch (Throwable paramReportAction)
@@ -39,16 +37,20 @@ public class AdReportManager$1
   public void run()
   {
     String str;
+    Map localMap;
     try
     {
-      if (ohu.a(this.jdField_a_of_type_Ufw, this.jdField_a_of_type_JavaLangString)) {
-        return;
-      }
-      ReportAction localReportAction = oik.a(this.jdField_a_of_type_Ufw);
-      str = oik.a(this.jdField_a_of_type_Ufw);
+      ReportAction localReportAction = AdReportUtil.a(this.a);
+      str = AdReportUtil.a(this.a);
       if (TextUtils.isEmpty(str))
       {
-        ohu.a(this.this$0, "action:" + localReportAction.getValue() + ",report fail:", "reportUrl is empty");
+        AdReportManager.a(this.this$0, "action:" + localReportAction.getValue() + ",report fail:", "reportUrl is empty");
+        return;
+      }
+      localMap = AdReportUtil.a(this.a);
+      if ((localMap == null) || (localMap.size() == 0))
+      {
+        AdReportManager.a(this.this$0, "action:" + localReportAction.getValue() + ",report fail:", "reportObjs is empty");
         return;
       }
     }
@@ -57,32 +59,29 @@ public class AdReportManager$1
       QLog.d("AdReportManager", 4, localThrowable, new Object[0]);
       return;
     }
-    Map localMap = oik.a(this.jdField_a_of_type_Ufw);
-    if ((localMap == null) || (localMap.size() == 0))
+    ReportData localReportData = AdReportUtil.a(localMap);
+    if (localReportData.a())
     {
-      ohu.a(this.this$0, "action:" + localThrowable.getValue() + ",report fail:", "reportObjs is empty");
+      AdReportManager.a(this.this$0, "action:" + localThrowable.getValue() + ",report fail:", "reportData is empty");
       return;
     }
-    ohw localohw = oik.a(localMap);
-    if (localohw.a())
+    if (AdReportManager.b(this.a))
     {
-      ohu.a(this.this$0, "action:" + localThrowable.getValue() + ",report fail:", "reportData is empty");
+      AdReportManager.a(this.this$0, "action:" + localThrowable.getValue() + ",report fail:", "judgeAndRecordExpose");
       return;
     }
-    if (ohu.a(this.jdField_a_of_type_Ufw)) {
-      ohu.a(this.this$0, str, localohw, this.jdField_a_of_type_JavaLangString, localThrowable);
-    }
-    while ((localThrowable == ReportAction.EXPOSE) && (this.jdField_a_of_type_Ufw.a() == ExposeMode.STRICT) && (oik.a(this.jdField_a_of_type_Ufw) == ActionEntity.OutSuperMask))
+    AdReportManager.a(this.this$0, str, localReportData, localThrowable);
+    if ((localThrowable == ReportAction.EXPOSE) && (this.a.a().intValue() == 2) && (AdReportUtil.a(this.a) == ActionEntity.OutSuperMask))
     {
+      this.a.a(ActionEntity.Default);
       a(localThrowable, str, localMap);
-      return;
-      ohu.a(this.this$0, str, localohw, localThrowable);
+      NativeAdUtils.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.AdReportManager.1
  * JD-Core Version:    0.7.0.1
  */

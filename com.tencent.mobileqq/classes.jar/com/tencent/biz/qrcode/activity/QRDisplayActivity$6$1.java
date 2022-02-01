@@ -2,9 +2,9 @@ package com.tencent.biz.qrcode.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import antl;
-import bheg;
+import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 class QRDisplayActivity$6$1
   implements Runnable
@@ -20,29 +20,29 @@ class QRDisplayActivity$6$1
       QRDisplayActivity localQRDisplayActivity = this.a.this$0;
       if (this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap == null)
       {
-        localObject = bheg.a(true);
+        localObject = ImageUtil.a(true);
         localQRDisplayActivity.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
       }
     }
     for (;;)
     {
       if (this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bheg.a();
+        this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.c();
       }
       return;
-      localObject = bheg.a(this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
+      localObject = ImageUtil.a(this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
       break;
       if (this.a.this$0.jdField_c_of_type_Int == 2)
       {
         this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.a.this$0.app.getTroopFaceBitmap(this.a.this$0.jdField_c_of_type_JavaLangString, (byte)3, false, false);
         if (this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bheg.f();
+          this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
         }
-        this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bheg.a(this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
+        this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
       }
       else
       {
-        localObject = this.a.this$0.jdField_a_of_type_Antl.a(this.a.this$0.jdField_c_of_type_JavaLangString, true);
+        localObject = this.a.this$0.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.this$0.jdField_c_of_type_JavaLangString, true);
         if ((localObject instanceof BitmapDrawable)) {
           this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localObject).getBitmap();
         }
@@ -52,7 +52,7 @@ class QRDisplayActivity$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

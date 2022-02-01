@@ -2,10 +2,10 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bjgx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -76,7 +76,7 @@ public class ForwardSdkShareProcessor$UrlExchangeStep
     for (String str = "1";; str = "0")
     {
       localBundle.putString("intext_1", str);
-      bjgx.a().a(localBundle, "" + ForwardSdkShareProcessor.access$400(this.this$0), this.this$0.app.getCurrentUin(), false, this.this$0.isSdkShare());
+      ReportCenter.a().a(localBundle, "" + ForwardSdkShareProcessor.access$400(this.this$0), this.this$0.app.getCurrentUin(), false, this.this$0.isSdkShare());
       if ((!ForwardSdkShareProcessor.access$900(this.this$0).get()) && (HttpUtil.isValidUrl(this.this$0.mRemoteImgUrl))) {
         this.this$0.mUrlMap.put("imageUrl", this.this$0.mRemoteImgUrl);
       }
@@ -88,7 +88,7 @@ public class ForwardSdkShareProcessor$UrlExchangeStep
       doNextStep();
       return;
     }
-    ThreadManager.post(buildJob(), 8, null, true);
+    ThreadManager.excute(buildJob(), 128, null, true);
   }
   
   protected void qlog(String paramString)

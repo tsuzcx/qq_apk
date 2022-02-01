@@ -3,13 +3,13 @@ package com.tencent.mobileqq.troop.activity;
 import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.widget.TextView;
-import anvx;
-import bdla;
-import bhhr;
 import com.tencent.biz.qqstory.view.widget.TipsView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.tribe.view.TEditText;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 class TroopBarPublishActivity$11
   implements Runnable
@@ -20,13 +20,13 @@ class TroopBarPublishActivity$11
   {
     TroopBarPublishActivity localTroopBarPublishActivity = this.this$0;
     TEditText localTEditText = this.this$0.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText;
-    String str = anvx.a(2131714579);
-    int j = DisplayUtil.dip2px(this.this$0, 71.0F);
+    String str = HardCodeUtil.a(2131715074);
+    int j = DisplayUtil.a(this.this$0, 71.0F);
     if (Build.VERSION.SDK_INT < 19)
     {
-      i = DisplayUtil.dip2px(this.this$0, 20.0F);
-      TipsView.a(localTroopBarPublishActivity, localTEditText, str, 1, 1, j, i, DisplayUtil.dip2px(this.this$0, 20.0F), 5000, Color.argb(204, 0, 0, 0));
-      bhhr.b(this.this$0, this.this$0.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
+      i = DisplayUtil.a(this.this$0, 20.0F);
+      TipsView.a(localTroopBarPublishActivity, localTEditText, str, 1, 1, j, i, DisplayUtil.a(this.this$0, 20.0F), 5000, Color.argb(204, 0, 0, 0));
+      SharedPreUtils.b(this.this$0, this.this$0.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
       if ((this.this$0.jdField_b_of_type_AndroidWidgetTextView == null) || (this.this$0.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
         break label157;
       }
@@ -34,7 +34,7 @@ class TroopBarPublishActivity$11
     label157:
     for (int i = 2;; i = 1)
     {
-      bdla.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
+      ReportController.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
       return;
       i = 0;
       break;

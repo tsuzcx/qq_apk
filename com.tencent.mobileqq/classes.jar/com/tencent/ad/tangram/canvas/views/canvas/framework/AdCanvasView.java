@@ -35,6 +35,7 @@ import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDown
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.d;
 import com.tencent.ad.tangram.dialog.AdProgressDialog;
+import com.tencent.ad.tangram.dialog.AdProgressDialog.Params;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.protocol.landing_page_collect_data.LandingPageCollectData;
 import com.tencent.ad.tangram.statistics.a.a;
@@ -119,13 +120,16 @@ public class AdCanvasView
       paramString = new JSONObject(paramString).getString("action");
       if ("show".equals(paramString))
       {
-        if ((getContext() != null) && (getResources() != null)) {
-          AdProgressDialog.show(getContext(), AdUIUtils.dp2px(60.0F, getResources()));
+        if ((getContext() != null) && (getResources() != null))
+        {
+          paramString = new AdProgressDialog.Params();
+          paramString.yOffset = AdUIUtils.dp2px(60.0F, getResources());
+          AdProgressDialog.INSTANCE.show(getContext(), paramString);
         }
       }
       else if ("hide".equals(paramString))
       {
-        AdProgressDialog.dismiss();
+        AdProgressDialog.INSTANCE.dismiss();
         return;
       }
     }
@@ -786,7 +790,7 @@ public class AdCanvasView
     if (this.mAppDownloadManager != null) {
       this.mAppDownloadManager.onDestroy();
     }
-    AdProgressDialog.dismiss();
+    AdProgressDialog.INSTANCE.dismiss();
     AdArkView.setNotify(null);
     AdCanvasDownloadListener.removeDownloadListener(this.mAppDownloadManager);
     reportStayTimeForAction();
@@ -972,7 +976,7 @@ public class AdCanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView
  * JD-Core Version:    0.7.0.1
  */

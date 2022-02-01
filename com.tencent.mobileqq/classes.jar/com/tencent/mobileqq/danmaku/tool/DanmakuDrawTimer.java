@@ -1,0 +1,45 @@
+package com.tencent.mobileqq.danmaku.tool;
+
+import android.os.SystemClock;
+
+public class DanmakuDrawTimer
+{
+  private long a;
+  private long b;
+  private long c;
+  
+  public long a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a = 0L;
+    this.b = 0L;
+  }
+  
+  public long b()
+  {
+    this.b = (SystemClock.uptimeMillis() - this.c);
+    this.a += this.b;
+    b();
+    return this.b;
+  }
+  
+  public void b()
+  {
+    this.c = SystemClock.uptimeMillis();
+  }
+  
+  public long c()
+  {
+    return this.b;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.danmaku.tool.DanmakuDrawTimer
+ * JD-Core Version:    0.7.0.1
+ */

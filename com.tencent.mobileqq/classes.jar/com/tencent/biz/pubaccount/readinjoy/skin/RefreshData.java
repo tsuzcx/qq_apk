@@ -12,15 +12,14 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rnr;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
 
 public class RefreshData
   extends SkinData
 {
-  public List<rnr> adClickReports;
-  public List<rnr> adExposureReports;
+  public List<RefreshData.AdReport> adClickReports;
+  public List<RefreshData.AdReport> adExposureReports;
   public Long adId;
   public boolean isAD;
   public boolean isShown = true;
@@ -53,9 +52,9 @@ public class RefreshData
         localObject2 = ((JSONArray)localObject1).optJSONObject(i);
         if (localObject2 != null)
         {
-          rnr localrnr = new rnr();
-          localrnr.a = ((JSONObject)localObject2).optString("reportUrl", "");
-          this.adClickReports.add(localrnr);
+          RefreshData.AdReport localAdReport = new RefreshData.AdReport();
+          localAdReport.a = ((JSONObject)localObject2).optString("reportUrl", "");
+          this.adClickReports.add(localAdReport);
         }
         i += 1;
       }
@@ -70,8 +69,8 @@ public class RefreshData
         localObject1 = paramJSONObject.optJSONObject(i);
         if (localObject1 != null)
         {
-          localObject2 = new rnr();
-          ((rnr)localObject2).a = ((JSONObject)localObject1).optString("reportUrl", "");
+          localObject2 = new RefreshData.AdReport();
+          ((RefreshData.AdReport)localObject2).a = ((JSONObject)localObject1).optString("reportUrl", "");
           this.adExposureReports.add(localObject2);
         }
         i += 1;
@@ -102,7 +101,7 @@ public class RefreshData
       while (((Iterator)localObject).hasNext())
       {
         oidb_0x5bd.AdReport localAdReport = (oidb_0x5bd.AdReport)((Iterator)localObject).next();
-        this.adClickReports.add(rnr.a(localAdReport));
+        this.adClickReports.add(RefreshData.AdReport.a(localAdReport));
       }
       bool = false;
     }
@@ -114,12 +113,12 @@ public class RefreshData
       while (paramRefreshInfo.hasNext())
       {
         localObject = (oidb_0x5bd.AdReport)paramRefreshInfo.next();
-        this.adExposureReports.add(rnr.a((oidb_0x5bd.AdReport)localObject));
+        this.adExposureReports.add(RefreshData.AdReport.a((oidb_0x5bd.AdReport)localObject));
       }
     }
   }
   
-  public List<String> getUrls(List<rnr> paramList)
+  public List<String> getUrls(List<RefreshData.AdReport> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return null;
@@ -127,7 +126,7 @@ public class RefreshData
     ArrayList localArrayList = new ArrayList(paramList.size());
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localArrayList.add(((rnr)paramList.next()).a);
+      localArrayList.add(((RefreshData.AdReport)paramList.next()).a);
     }
     return localArrayList;
   }
@@ -170,7 +169,7 @@ public class RefreshData
       while ((this.adClickReports != null) && (i < this.adClickReports.size()))
       {
         localJSONObject2 = new JSONObject();
-        localJSONObject2.put("reportUrl", ((rnr)this.adClickReports.get(i)).a);
+        localJSONObject2.put("reportUrl", ((RefreshData.AdReport)this.adClickReports.get(i)).a);
         localJSONArray.put(localJSONObject2);
         i += 1;
       }
@@ -180,7 +179,7 @@ public class RefreshData
       while ((this.adExposureReports != null) && (i < this.adExposureReports.size()))
       {
         localJSONObject2 = new JSONObject();
-        localJSONObject2.put("reportUrl", ((rnr)this.adExposureReports.get(i)).a);
+        localJSONObject2.put("reportUrl", ((RefreshData.AdReport)this.adExposureReports.get(i)).a);
         localJSONArray.put(localJSONObject2);
         i += 1;
       }
@@ -213,7 +212,7 @@ public class RefreshData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.skin.RefreshData
  * JD-Core Version:    0.7.0.1
  */

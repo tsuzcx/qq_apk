@@ -96,7 +96,7 @@ public class SplashMiniGameUtil
       localEditor.remove("priority_" + localSplashMiniGameData.appId);
       localEditor.remove("request_DomainList_" + localSplashMiniGameData.appId);
       localEditor.remove("downloadFile_DomainList_" + localSplashMiniGameData.appId);
-      FileUtils.deleteDirectory(getFilePath(localSplashMiniGameData.appId));
+      FileUtils.a(getFilePath(localSplashMiniGameData.appId));
     }
     localEditor.commit();
   }
@@ -279,7 +279,7 @@ public class SplashMiniGameUtil
           break;
         }
         BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().clear().commit();
-        FileUtils.deleteDirectory("/data/data/com.tencent.mobileqq/files/minigame/splash/");
+        FileUtils.a("/data/data/com.tencent.mobileqq/files/minigame/splash/");
         return;
         i = 0;
         while (i < paramString.length())
@@ -376,7 +376,7 @@ public class SplashMiniGameUtil
           deleteConfig(paramString);
         }
       }
-      BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().putString("appVersion", "8.4.10.4875").commit();
+      BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().putString("appVersion", "8.5.5.5105").commit();
       SplashMiniGameStarter.refresh();
     }
   }

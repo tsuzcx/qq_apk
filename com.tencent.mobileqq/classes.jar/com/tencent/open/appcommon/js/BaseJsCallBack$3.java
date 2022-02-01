@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.os.Bundle;
-import bjnn;
+import com.tencent.open.downloadnew.MyAppApi;
 
 class BaseJsCallBack$3
   implements Runnable
@@ -10,12 +10,12 @@ class BaseJsCallBack$3
   
   public void run()
   {
-    bjnn.a().a(this.this$0.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
+    MyAppApi.a().a(this.this$0.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseJsCallBack.3
  * JD-Core Version:    0.7.0.1
  */

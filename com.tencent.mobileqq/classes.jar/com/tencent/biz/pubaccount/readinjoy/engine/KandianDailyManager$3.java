@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import acme;
-import bcrg;
+import com.tencent.imcore.message.BaseMessageProcessor;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -11,6 +10,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.service.message.MessageCache;
 import msf.msgsvc.msg_svc.PbC2CReadedReportReq;
 import msf.msgsvc.msg_svc.PbC2CReadedReportReq.UinPairReadInfo;
 import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
@@ -38,7 +38,7 @@ class KandianDailyManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager.3
  * JD-Core Version:    0.7.0.1
  */

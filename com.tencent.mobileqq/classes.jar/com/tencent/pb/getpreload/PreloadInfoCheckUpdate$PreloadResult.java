@@ -20,7 +20,7 @@ public final class PreloadInfoCheckUpdate$PreloadResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.pb.getpreload.PreloadInfoCheckUpdate.PreloadResult
  * JD-Core Version:    0.7.0.1
  */

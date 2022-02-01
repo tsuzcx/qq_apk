@@ -9,7 +9,7 @@ public final class stDCReportReq
   extends JceStruct
 {
   static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
-  public ArrayList<stMetaReportDataItem> data;
+  public ArrayList<stMetaReportDataItem> data = null;
   public String dcid = "";
   
   static

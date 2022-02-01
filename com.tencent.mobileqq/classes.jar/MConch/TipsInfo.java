@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class TipsInfo
   extends JceStruct
 {
-  public int askType;
-  public int bgColor;
-  public int iconType;
+  public int askType = 0;
+  public int bgColor = 0;
+  public int iconType = 0;
   public String msg = "";
   public String title = "";
-  public int type;
+  public int type = 0;
   
   public JceStruct newInit()
   {

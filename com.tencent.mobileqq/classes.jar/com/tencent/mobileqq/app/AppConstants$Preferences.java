@@ -330,7 +330,6 @@ public abstract interface AppConstants$Preferences
   public static final String KANDIAN_INTERESTED_PUSH_CONFIG = "readinjoy_interested_push_config";
   public static final String KEYBOARD_LAST_PHONE = "keyboard_last_phone";
   public static final String KEYWORD_AND_REMARK_VERSION_CODE = "keyword_and_remark_version_code";
-  public static final String KEY_ALIVE_SECOND = "key_alive_second";
   public static final String KEY_BIRTHDAY_NOTICE_TIMES = "key_birthday_notice_times";
   public static final String KEY_CLOUD_FILE_FIRST_GUIDE_ADD = "key_cloud_file_first_guide_add";
   public static final String KEY_CLOUD_FILE_GUIDE_BANNER = "key_cloud_file_guide_banner";
@@ -351,7 +350,6 @@ public abstract interface AppConstants$Preferences
   public static final String KEY_LAST_OPEN_WEATHER_PAGE = "key_last_open_weather_page";
   public static final String KEY_LAST_PRELOAD_WEB_PRECESS = "key_last_preload_web_process";
   public static final String KEY_LAST_PRELOAD_WEB_RESULT = "key_last_preload_web_result";
-  public static final String KEY_LOCATION_IS_REPORTING = "key_location_is_reporting";
   public static final String KEY_MINI_APP_DESKTOP_POSITION_INFO = "key_mini_app_desktop_position_info";
   public static final String KEY_MINI_APP_GET_RECOMMEND_TIME = "key_mini_app_recommend_time";
   public static final String KEY_MINI_APP_LAST_USE_TIME = "key_mini_app_last_use_time";
@@ -392,6 +390,8 @@ public abstract interface AppConstants$Preferences
   public static final String LEBA_CONFIG_VERSION = "leba_config_version";
   public static final String LIMIT_CHAT_BGPIC_MD5 = "limit_chat_bg_pic_md5";
   public static final String LIMIT_CHAT_VIDEO_MD5 = "limit_chat_video_md5";
+  public static final String LOCAL_QR_LOGIN_CONFIG = "local_qr_login_config";
+  public static final String LOCAL_QR_LOGIN_VERSION = "local_qr_login_version";
   public static final String LOCAL_SET_TOP_TROOP_UPLOADED = "local_set_top_troop_uploaded";
   public static final String LOCAL_SET_TOP_TROOP_UPLOADED_IGNORE = "local_set_top_troop_uploaded_ignore";
   public static final String LOCAL_SET_TOP_TROOP_UPLOADED_REPEAT_COUNT = "local_set_top_troop_uploaded_repeat_count";
@@ -869,6 +869,7 @@ public abstract interface AppConstants$Preferences
   public static final String SPLASH_EFFECTIVE_TIME = "splash_effectivetime";
   public static final String SPLASH_MD5VALUE = "splash_md5value";
   public static final String SPLASH_VERSION_CODE = "splash_version_code";
+  public static final String SP_HAD_OVERLOAD_EXTENSION_ERROR = "sp_had_overload_extension_error";
   public static final String SP_NEW_LOGIN_AUTO = "sp_login_auto";
   public static final String SP_PERSONAL_DRESSUP_PRELOAD = "sp_personal_dressup_preload";
   public static final String STATISTICS_TIME = "Statistics_time";

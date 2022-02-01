@@ -24,12 +24,14 @@ class TAVCutImageSession$3
     paramMediaBuilderOutput = new WSImageRender();
     CompositionUtils.removeTAVAspectEffect(paramVideoRenderChainManager.getComposition());
     paramMediaBuilderOutput.init(paramVideoRenderChainManager.getComposition(), paramVideoRenderChainManager.getComposition().getRenderSize());
+    paramMediaBuilderOutput.setMineIndex(this.val$index);
+    paramMediaBuilderOutput.setCurrent(this.this$0.getCurrentIndex());
     TAVCutImageSession.access$300(this.this$0).put(this.val$index, paramMediaBuilderOutput);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.3
  * JD-Core Version:    0.7.0.1
  */

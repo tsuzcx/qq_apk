@@ -1,6 +1,5 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkma;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -9,21 +8,21 @@ import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONObject;
 
-public class AIOEntryPlugin$1
+class AIOEntryPlugin$1
   implements Runnable
 {
-  public AIOEntryPlugin$1(bkma parambkma, JSONObject paramJSONObject, RequestEvent paramRequestEvent) {}
+  AIOEntryPlugin$1(AIOEntryPlugin paramAIOEntryPlugin, JSONObject paramJSONObject, RequestEvent paramRequestEvent) {}
   
   public void run()
   {
-    if ((bkma.a(this.this$0).getAttachedActivity() instanceof GameActivity1)) {}
-    for (boolean bool = ((GameActivity1)bkma.b(this.this$0).getAttachedActivity()).showMiniAIOEntrance(this.jdField_a_of_type_OrgJsonJSONObject); bool; bool = false)
+    if ((AIOEntryPlugin.a(this.this$0).getAttachedActivity() instanceof GameActivity1)) {}
+    for (boolean bool = ((GameActivity1)AIOEntryPlugin.b(this.this$0).getAttachedActivity()).showMiniAIOEntrance(this.jdField_a_of_type_OrgJsonJSONObject); bool; bool = false)
     {
       this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
       return;
-      if ((bkma.c(this.this$0).getMiniAppInfo() != null) && (bkma.d(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((bkma.e(this.this$0) instanceof BaseRuntime)))
+      if ((AIOEntryPlugin.c(this.this$0).getMiniAppInfo() != null) && (AIOEntryPlugin.d(this.this$0).getMiniAppInfo().isEngineTypeMiniApp()) && ((AIOEntryPlugin.e(this.this$0) instanceof BaseRuntime)))
       {
-        IPage localIPage = ((BaseRuntime)bkma.f(this.this$0)).getPage();
+        IPage localIPage = ((BaseRuntime)AIOEntryPlugin.f(this.this$0)).getPage();
         if (localIPage != null) {
           localIPage.setMiniAIOEntranceVisible(true, this.jdField_a_of_type_OrgJsonJSONObject);
         }

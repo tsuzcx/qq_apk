@@ -8,8 +8,8 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 public class DesktopMostCommonlyUsedInfo
   extends DesktopItemInfo
 {
-  public MiniAppInfo appInfo;
-  public INTERFACE.StModuleInfo moduleInfo;
+  public MiniAppInfo appInfo = null;
+  public INTERFACE.StModuleInfo moduleInfo = null;
   
   public DesktopMostCommonlyUsedInfo(int paramInt, INTERFACE.StModuleInfo paramStModuleInfo)
   {

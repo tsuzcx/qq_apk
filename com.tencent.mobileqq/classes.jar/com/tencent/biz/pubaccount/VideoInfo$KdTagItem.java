@@ -3,23 +3,24 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import omk;
 
 public class VideoInfo$KdTagItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<KdTagItem> CREATOR = new omk();
+  public static final Parcelable.Creator<KdTagItem> CREATOR = new VideoInfo.KdTagItem.1();
   public long a;
   public String a;
   
   public VideoInfo$KdTagItem()
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public VideoInfo$KdTagItem(Parcel paramParcel)
+  protected VideoInfo$KdTagItem(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Long = paramParcel.readLong();
   }
@@ -37,7 +38,7 @@ public class VideoInfo$KdTagItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.KdTagItem
  * JD-Core Version:    0.7.0.1
  */

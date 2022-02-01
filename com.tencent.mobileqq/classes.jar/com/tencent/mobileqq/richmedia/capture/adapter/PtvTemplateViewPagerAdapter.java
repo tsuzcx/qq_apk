@@ -7,17 +7,16 @@ import android.support.v4.view.PagerAdapter;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import bbfz;
-import bbgg;
-import bbgy;
-import bbje;
-import bdck;
-import bdee;
 import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.richmedia.capture.data.TemplateGroupItem;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView.ProviderViewListener;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureRecognitionUtils;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
@@ -29,43 +28,43 @@ public class PtvTemplateViewPagerAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  bbje jdField_a_of_type_Bbje;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  ProviderView.ProviderViewListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener;
   public HashMap<Integer, GridView> a;
-  private List<bbgy> jdField_a_of_type_JavaUtilList;
+  private List<TemplateGroupItem> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean;
   
-  public bbgy a(bbgy parambbgy)
+  public TemplateGroupItem a(TemplateGroupItem paramTemplateGroupItem)
   {
-    if (parambbgy == null) {
-      return parambbgy;
+    if (paramTemplateGroupItem == null) {
+      return paramTemplateGroupItem;
     }
     int i;
     label17:
     int j;
     label25:
-    bbgy localbbgy;
+    TemplateGroupItem localTemplateGroupItem;
     if (!AIManager.isDetectorReady(AEDetectorType.SEGMENT))
     {
       i = 1;
-      if (bdee.f()) {
+      if (PtvFilterSoLoad.f()) {
         break label205;
       }
       j = 1;
       if ((j == 0) && (i == 0)) {
         break label208;
       }
-      localbbgy = new bbgy();
-      localbbgy.jdField_a_of_type_Int = parambbgy.jdField_a_of_type_Int;
-      localbbgy.jdField_a_of_type_JavaLangString = parambbgy.jdField_a_of_type_JavaLangString;
-      localbbgy.jdField_a_of_type_Boolean = parambbgy.jdField_a_of_type_Boolean;
-      localbbgy.jdField_b_of_type_Int = parambbgy.jdField_b_of_type_Int;
-      localbbgy.jdField_b_of_type_JavaLangString = parambbgy.jdField_b_of_type_JavaLangString;
-      localbbgy.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if ((parambbgy.jdField_a_of_type_JavaUtilList == null) || (parambbgy.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      localTemplateGroupItem = new TemplateGroupItem();
+      localTemplateGroupItem.jdField_a_of_type_Int = paramTemplateGroupItem.jdField_a_of_type_Int;
+      localTemplateGroupItem.jdField_a_of_type_JavaLangString = paramTemplateGroupItem.jdField_a_of_type_JavaLangString;
+      localTemplateGroupItem.jdField_a_of_type_Boolean = paramTemplateGroupItem.jdField_a_of_type_Boolean;
+      localTemplateGroupItem.jdField_b_of_type_Int = paramTemplateGroupItem.jdField_b_of_type_Int;
+      localTemplateGroupItem.jdField_b_of_type_JavaLangString = paramTemplateGroupItem.jdField_b_of_type_JavaLangString;
+      localTemplateGroupItem.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if ((paramTemplateGroupItem.jdField_a_of_type_JavaUtilList == null) || (paramTemplateGroupItem.jdField_a_of_type_JavaUtilList.size() <= 0)) {
         break label216;
       }
-      parambbgy = parambbgy.jdField_a_of_type_JavaUtilList.iterator();
+      paramTemplateGroupItem = paramTemplateGroupItem.jdField_a_of_type_JavaUtilList.iterator();
     }
     label128:
     label205:
@@ -73,17 +72,17 @@ public class PtvTemplateViewPagerAdapter
     label214:
     for (;;)
     {
-      if (!parambbgy.hasNext()) {
+      if (!paramTemplateGroupItem.hasNext()) {
         break label216;
       }
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)parambbgy.next();
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramTemplateGroupItem.next();
       if (((i != 0) && (localPtvTemplateInfo.kind == 7)) || ((j != 0) && (localPtvTemplateInfo.kind == 9))) {}
       for (int k = 1;; k = 0)
       {
         if (k != 0) {
           break label214;
         }
-        localbbgy.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
+        localTemplateGroupItem.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
         break label128;
         i = 0;
         break label17;
@@ -93,10 +92,10 @@ public class PtvTemplateViewPagerAdapter
       }
     }
     label216:
-    return localbbgy;
+    return localTemplateGroupItem;
   }
   
-  public void a(List<bbgy> paramList)
+  public void a(List<TemplateGroupItem> paramList)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.addAll(paramList);
@@ -123,10 +122,10 @@ public class PtvTemplateViewPagerAdapter
     {
       localGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
       localGridView.setNumColumns(-1);
-      int m = AIOUtils.dp2px(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int m = AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       localGridView.setColumnWidth(m);
-      int i = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int j = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int i = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int j = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       int n = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - j * 2;
       int k = n / m;
       m = n - m * k;
@@ -135,20 +134,20 @@ public class PtvTemplateViewPagerAdapter
         localGridView.setHorizontalSpacing(m / (k - 1));
         localGridView.setVerticalSpacing(i);
         localGridView.setVerticalScrollBarEnabled(false);
-        localGridView.setPadding(j, j, j, AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 4);
+        localGridView.setPadding(j, j, j, AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 4);
         localGridView.setClipToPadding(false);
         localGridView.setSelector(new ColorDrawable(0));
         if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
         {
-          Object localObject = a(bdck.a((bbgy)this.jdField_a_of_type_JavaUtilList.get(paramInt)));
-          bbfz localbbfz = new bbfz(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, localGridView, this.jdField_a_of_type_Bbje, (bbgy)localObject, this.jdField_a_of_type_Boolean);
-          localGridView.setAdapter(localbbfz);
-          localbbfz.a(((bbgy)localObject).jdField_a_of_type_JavaUtilList, 0);
-          localObject = bbgg.a();
-          ((bbgg)localObject).a(localbbfz, 112);
-          ((bbgg)localObject).a(localbbfz, 113);
+          Object localObject = a(GestureRecognitionUtils.a((TemplateGroupItem)this.jdField_a_of_type_JavaUtilList.get(paramInt)));
+          PtvTemplateAdapter localPtvTemplateAdapter = new PtvTemplateAdapter(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, localGridView, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener, (TemplateGroupItem)localObject, this.jdField_a_of_type_Boolean);
+          localGridView.setAdapter(localPtvTemplateAdapter);
+          localPtvTemplateAdapter.a(((TemplateGroupItem)localObject).jdField_a_of_type_JavaUtilList, 0);
+          localObject = CapturePtvTemplateManager.a();
+          ((CapturePtvTemplateManager)localObject).a(localPtvTemplateAdapter, 112);
+          ((CapturePtvTemplateManager)localObject).a(localPtvTemplateAdapter, 113);
           if (paramInt == 0) {
-            ((bbgg)localObject).a(localbbfz, 111);
+            ((CapturePtvTemplateManager)localObject).a(localPtvTemplateAdapter, 111);
           }
         }
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localGridView);
@@ -170,7 +169,7 @@ public class PtvTemplateViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

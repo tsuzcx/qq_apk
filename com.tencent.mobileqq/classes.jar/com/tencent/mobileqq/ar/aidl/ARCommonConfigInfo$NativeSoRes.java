@@ -3,12 +3,11 @@ package com.tencent.mobileqq.ar.aidl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aphv;
 
 public class ARCommonConfigInfo$NativeSoRes
   implements Parcelable
 {
-  public static final Parcelable.Creator<NativeSoRes> CREATOR = new aphv();
+  public static final Parcelable.Creator<NativeSoRes> CREATOR = new ARCommonConfigInfo.NativeSoRes.1();
   public long a;
   public String a;
   public String b = "";
@@ -18,11 +17,13 @@ public class ARCommonConfigInfo$NativeSoRes
   public ARCommonConfigInfo$NativeSoRes()
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
   }
   
   public ARCommonConfigInfo$NativeSoRes(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();

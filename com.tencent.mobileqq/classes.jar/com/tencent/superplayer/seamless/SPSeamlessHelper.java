@@ -251,7 +251,14 @@ public class SPSeamlessHelper
       LogUtil.e("SPSeamlessHelper", "exitScene failed for videoView is null.");
       return;
     }
-    if (TextUtils.equals(paramString1, paramString2))
+    boolean bool = TextUtils.equals(paramString1, paramString2);
+    if (!paramSPSeamlessParam.doAnimation)
+    {
+      attachVideoView(this.mJumpParentViewGroup, paramSeamlessCallback, paramSPSeamlessParam.layoutParams, paramSPSeamlessParam.viewIndex);
+      onSeamlessExitEnd();
+      return;
+    }
+    if (bool)
     {
       attachThenDoAnimation(paramSeamlessCallback, this.mJumpParentViewGroup, paramSPSeamlessParam, SPSeamlessHelper.SceneTransformType.Exit);
       return;
@@ -280,15 +287,10 @@ public class SPSeamlessHelper
       }
     }
   }
-  
-  public void releaseWhenExitScene()
-  {
-    clearEnterTokenCallback();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.superplayer.seamless.SPSeamlessHelper
  * JD-Core Version:    0.7.0.1
  */

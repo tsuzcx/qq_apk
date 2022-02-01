@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.magicface.view;
 
-import awsw;
-
-public class MagicfaceViewController$2
+class MagicfaceViewController$2
   implements Runnable
 {
-  public MagicfaceViewController$2(awsw paramawsw) {}
+  MagicfaceViewController$2(MagicfaceViewController paramMagicfaceViewController) {}
   
   public void run()
   {

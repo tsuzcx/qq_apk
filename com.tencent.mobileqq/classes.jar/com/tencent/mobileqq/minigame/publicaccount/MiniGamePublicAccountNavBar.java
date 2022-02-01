@@ -28,7 +28,7 @@ public class MiniGamePublicAccountNavBar
   public TextView getTitleTextView()
   {
     if (this.mTitleTv == null) {
-      this.mTitleTv = ((TextView)findViewById(2131369278));
+      this.mTitleTv = ((TextView)findViewById(2131369534));
     }
     if (this.mTitleTv == null) {
       this.mTitleTv = new TextView(getContext());
@@ -36,9 +36,9 @@ public class MiniGamePublicAccountNavBar
     return this.mTitleTv;
   }
   
-  public void setTitleBackground()
+  public void setTitleBarTransparent()
   {
-    setBackgroundResource(2131167296);
+    setBackgroundResource(2131167305);
   }
 }
 

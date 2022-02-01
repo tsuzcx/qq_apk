@@ -2,13 +2,13 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import ascz;
-import asdd;
-import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import java.util.Map;
@@ -43,7 +43,7 @@ public class VipFunctionJsPlugin
     localBundle.putInt("fromeType", paramInt1);
     localBundle.putInt("result", paramInt2);
     localBundle.putStringArray("reserves", paramArrayOfString);
-    sendRemoteReq(asdd.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(DataFactory.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   private void reportToClientTo644(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String[] paramArrayOfString)
@@ -263,7 +263,7 @@ public class VipFunctionJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipFunctionJsPlugin
  * JD-Core Version:    0.7.0.1
  */

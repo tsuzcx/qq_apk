@@ -1,8 +1,8 @@
 package cooperation.qzone.report;
 
-import bdfk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.simpleui.SimpleQZoneUIUtil;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
@@ -23,7 +23,7 @@ class QzoneOnlineTimeCollectRptService$1
       this.this$0.mUin = Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount());
       QzoneOnlineTimeCollectRptService.access$102(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
       this.this$0.beginRecord();
-      if (!bdfk.c())
+      if (!SimpleQZoneUIUtil.a())
       {
         QzoneOnlineTimeCollectRptService.access$200(this.this$0);
         QzoneOnlineTimeCollectRptService.access$002(this.this$0, true);
@@ -47,7 +47,7 @@ class QzoneOnlineTimeCollectRptService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.report.QzoneOnlineTimeCollectRptService.1
  * JD-Core Version:    0.7.0.1
  */

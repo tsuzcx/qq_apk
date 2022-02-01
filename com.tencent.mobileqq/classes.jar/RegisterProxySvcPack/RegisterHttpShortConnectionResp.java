@@ -11,11 +11,11 @@ public final class RegisterHttpShortConnectionResp
   static ArrayList<RegisterHttpShortConnectionBusiPack> cache_vBusiPacks;
   static byte[] cache_vCookies;
   static byte[] cache_vSig;
-  public byte bReloadSvrlist;
-  public long uInterval;
-  public ArrayList<RegisterHttpShortConnectionBusiPack> vBusiPacks;
-  public byte[] vCookies;
-  public byte[] vSig;
+  public byte bReloadSvrlist = 0;
+  public long uInterval = 0L;
+  public ArrayList<RegisterHttpShortConnectionBusiPack> vBusiPacks = null;
+  public byte[] vCookies = null;
+  public byte[] vSig = null;
   
   public RegisterHttpShortConnectionResp() {}
   

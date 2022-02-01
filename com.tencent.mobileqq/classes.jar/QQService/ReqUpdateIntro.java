@@ -9,8 +9,8 @@ public final class ReqUpdateIntro
 {
   static ReqHead cache_stHeader;
   static Intro cache_stIntro;
-  public ReqHead stHeader;
-  public Intro stIntro;
+  public ReqHead stHeader = null;
+  public Intro stIntro = null;
   
   public ReqUpdateIntro() {}
   

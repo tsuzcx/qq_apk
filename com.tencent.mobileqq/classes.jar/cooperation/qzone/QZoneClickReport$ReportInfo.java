@@ -17,9 +17,9 @@ public class QZoneClickReport$ReportInfo
   public String domain_type = "2";
   public String extraInfo = "";
   public String info = "";
-  public boolean isTemp;
+  public boolean isTemp = false;
   private Map<String, String> mapReportInfo;
-  public int mergenum;
+  public int mergenum = 0;
   public int networkType = NetworkState.getNetworkType();
   public String pushstatkey = "";
   public String readSource = "0";
@@ -31,10 +31,10 @@ public class QZoneClickReport$ReportInfo
   public String sourceTo = "";
   public String sourceType = "";
   public String subactionType = "";
-  public int tabletype;
-  public long time = System.currentTimeMillis();
-  public long toUin;
-  private boolean useMapMode;
+  public int tabletype = 0;
+  public long time = 0L;
+  public long toUin = 0L;
+  private boolean useMapMode = false;
   
   public QZoneClickReport$ReportInfo() {}
   
@@ -224,7 +224,7 @@ public class QZoneClickReport$ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.QZoneClickReport.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

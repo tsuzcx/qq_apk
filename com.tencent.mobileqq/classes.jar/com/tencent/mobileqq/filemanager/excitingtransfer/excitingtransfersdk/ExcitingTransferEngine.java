@@ -10,8 +10,8 @@ public class ExcitingTransferEngine
   implements IExcitingTransferEngineCallback
 {
   static String TAG = "ExcitingTransferEngine";
-  private static ExcitingTransferEngine s_instance;
-  private boolean mInited;
+  private static ExcitingTransferEngine s_instance = null;
+  private boolean mInited = false;
   private HashMap<Long, ExcitingTransferEngine.ExcitingRecvJobContent> mRecvJobs = new LinkedHashMap();
   private HashMap<Long, ExcitingTransferEngine.ExcitingSendJobContent> mSendJobs = new LinkedHashMap();
   
@@ -136,16 +136,6 @@ public class ExcitingTransferEngine
     return this.mInited;
   }
   
-  public void OnOneSlotComplete(long paramLong, int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
-  {
-    ThreadManager.getUIHandler().post(new ExcitingTransferEngine.8(this, paramLong, paramInt, paramExcitingTransferOneSlotComplete));
-  }
-  
-  public void OnSpeed(long paramLong, ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo)
-  {
-    ThreadManager.getUIHandler().post(new ExcitingTransferEngine.9(this, paramLong, paramExcitingTransferDownloadSpeedInfo));
-  }
-  
   public void cancelRecvFile(long paramLong)
   {
     delRecvJobContent(paramLong);
@@ -194,6 +184,11 @@ public class ExcitingTransferEngine
     return ExcitingTransferNative.isXTFDownloadEnable();
   }
   
+  public void onOneSlotComplete(long paramLong, int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  {
+    ThreadManager.getUIHandler().post(new ExcitingTransferEngine.8(this, paramLong, paramInt, paramExcitingTransferOneSlotComplete));
+  }
+  
   public void onRecvComplete(long paramLong, int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
     ThreadManager.getUIHandler().post(new ExcitingTransferEngine.6(this, paramLong, paramInt, paramExcitingTransferDownloadCompletedInfo));
@@ -217,8 +212,8 @@ public class ExcitingTransferEngine
     }
     if ((localExcitingSendJobContent.mExcSendInfo.mBusInfo.bUseMediaPlatform) && (paramInt == 0))
     {
-      paramExcitingTransferUploadResultRp.m_strFileIdCrc = ExcitingTransferNative.getMediaFileIdCrc(paramLong);
-      QLog.i(TAG, 1, "excitingID[" + paramLong + "] onSendComplete success, bUseMediaPlatform:true, m_strFileIdCrc:" + paramExcitingTransferUploadResultRp.m_strFileIdCrc);
+      paramExcitingTransferUploadResultRp.mstrFileIdCrc = ExcitingTransferNative.getMediaFileIdCrc(paramLong);
+      QLog.i(TAG, 1, "excitingID[" + paramLong + "] onSendComplete success, bUseMediaPlatform:true, m_strFileIdCrc:" + paramExcitingTransferUploadResultRp.mstrFileIdCrc);
     }
     ThreadManager.getUIHandler().post(new ExcitingTransferEngine.2(this, paramLong, paramInt, paramExcitingTransferUploadResultRp));
   }
@@ -231,6 +226,11 @@ public class ExcitingTransferEngine
   public void onSendStart(long paramLong)
   {
     ThreadManager.getUIHandler().post(new ExcitingTransferEngine.1(this, paramLong));
+  }
+  
+  public void onSpeed(long paramLong, ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo)
+  {
+    ThreadManager.getUIHandler().post(new ExcitingTransferEngine.9(this, paramLong, paramExcitingTransferDownloadSpeedInfo));
   }
   
   public void onSubSenderResult(long paramLong, int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp)
@@ -301,7 +301,7 @@ public class ExcitingTransferEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
 package com.tencent.open.appstore.report;
 
 import android.text.TextUtils;
-import bjjo;
-import bjkf;
-import bjko;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.appstore.db.DownloadInfoDB;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.replacemonitor.replace.st.InstallStartLog;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class AppCenterReporter$4
+final class AppCenterReporter$4
   implements Runnable
 {
-  public AppCenterReporter$4(DownloadInfo paramDownloadInfo) {}
+  AppCenterReporter$4(DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -23,18 +22,18 @@ public final class AppCenterReporter$4
     do
     {
       return;
-      localObject = bjjo.a().a(this.a.jdField_b_of_type_JavaLangString);
+      localObject = DownloadInfoDB.a().a(this.a.jdField_b_of_type_JavaLangString);
       if (localObject != null)
       {
-        bjko.b("AppCenterReporter", ">reportInstallStart " + ((DownloadInfo)localObject).w + "|" + this.a.w);
+        LogUtility.b("AppCenterReporter", ">reportInstallStart " + ((DownloadInfo)localObject).w + "|" + this.a.w);
         this.a.w = ((DownloadInfo)localObject).w;
       }
       localObject = BaseApplicationImpl.getApplication().getQQProcessName();
       bool = TextUtils.equals((CharSequence)localObject, this.a.w);
-      bjko.b("AppCenterReporter", ">reportInstallStart " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
+      LogUtility.b("AppCenterReporter", ">reportInstallStart " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
     } while (!bool);
-    bjko.b("AppCenterReporter", "[reportInstallStart]");
-    bjkf.a(3007, bjkf.a(this.a) + "|" + bjkf.b(this.a) + "|" + new File(this.a.l).length());
+    LogUtility.b("AppCenterReporter", "[reportInstallStart]");
+    AppCenterReporter.a(3007, AppCenterReporter.a(this.a) + "|" + AppCenterReporter.b(this.a) + "|" + new File(this.a.l).length());
     Object localObject = new InstallStartLog();
     ((InstallStartLog)localObject).packageName = this.a.e;
     ((InstallStartLog)localObject).versionCode = this.a.jdField_b_of_type_Int;
@@ -59,7 +58,7 @@ public final class AppCenterReporter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter.4
  * JD-Core Version:    0.7.0.1
  */

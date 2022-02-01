@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
-import ual;
-
 class ViolaVideoView$2
   implements Runnable
 {
-  ViolaVideoView$2(ViolaVideoView paramViolaVideoView, ual paramual) {}
+  ViolaVideoView$2(ViolaVideoView paramViolaVideoView, VideoPlayManager.VideoPlayParam paramVideoPlayParam) {}
   
   public void run()
   {
@@ -16,7 +14,7 @@ class ViolaVideoView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView.2
  * JD-Core Version:    0.7.0.1
  */

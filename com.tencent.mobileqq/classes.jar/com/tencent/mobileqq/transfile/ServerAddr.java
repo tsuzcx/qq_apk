@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 public class ServerAddr
 {
-  public boolean isDomain;
+  public boolean isDomain = false;
   public boolean isIpv6;
   public String mIp;
   public int port = 80;

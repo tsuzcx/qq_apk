@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import bhdj;
-import bifw;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import mqq.app.QQPermissionCallback;
 
 class QzonePhotoWallPlugin$1
@@ -12,7 +12,7 @@ class QzonePhotoWallPlugin$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bhdj.a(this.this$0.parentPlugin.mRuntime.a());
+    DialogUtil.a(this.this$0.parentPlugin.mRuntime.a());
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -22,7 +22,7 @@ class QzonePhotoWallPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzonePhotoWallPlugin.1
  * JD-Core Version:    0.7.0.1
  */

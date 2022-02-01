@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.entry;
 
 public abstract class MiniAppExposureManager$BaseExposureReport
 {
-  private volatile boolean hasReport;
+  private volatile boolean hasReport = false;
   
   public void handleReport()
   {

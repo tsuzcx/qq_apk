@@ -1,18 +1,16 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bksh;
-import bksi;
 import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
 
-public class WebSocketProxyImpl$1
+class WebSocketProxyImpl$1
   implements Runnable
 {
-  public WebSocketProxyImpl$1(bksh parambksh, bksi parambksi, int paramInt1, int paramInt2, String paramString) {}
+  WebSocketProxyImpl$1(WebSocketProxyImpl paramWebSocketProxyImpl, WebSocketProxyImpl.WebSocketTask paramWebSocketTask, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Bksi.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bksi.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    if (!this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentQqminiProxyimplWebSocketProxyImpl$WebSocketTask.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

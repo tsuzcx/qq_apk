@@ -7,14 +7,13 @@ import kotlin.jvm.internal.FunctionReference;
 import kotlin.reflect.KDeclarationContainer;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tza;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "p1", "Lorg/json/JSONObject;", "Lkotlin/ParameterName;", "name", "param", "p2", "", "callbackId", "invoke"}, k=3, mv={1, 1, 16})
-public final class PublicAccountNewBridgeInvokeHandler$register$2
+final class PublicAccountNewBridgeInvokeHandler$register$2
   extends FunctionReference
   implements Function2<JSONObject, String, Unit>
 {
-  public PublicAccountNewBridgeInvokeHandler$register$2(tza arg1) {}
+  PublicAccountNewBridgeInvokeHandler$register$2(PublicAccountNewBridgeInvokeHandler arg1) {}
   
   public final String getName() {}
   
@@ -26,7 +25,7 @@ public final class PublicAccountNewBridgeInvokeHandler$register$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.PublicAccountNewBridgeInvokeHandler.register.2
  * JD-Core Version:    0.7.0.1
  */

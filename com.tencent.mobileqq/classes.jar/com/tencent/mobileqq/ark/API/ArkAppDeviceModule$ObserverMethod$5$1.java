@@ -1,20 +1,14 @@
 package com.tencent.mobileqq.ark.API;
 
-import apqy;
-import aprb;
-import aprh;
-import apri;
-import apsb;
-
-public class ArkAppDeviceModule$ObserverMethod$5$1
+class ArkAppDeviceModule$ObserverMethod$5$1
   implements Runnable
 {
-  public ArkAppDeviceModule$ObserverMethod$5$1(aprh paramaprh) {}
+  ArkAppDeviceModule$ObserverMethod$5$1(ArkAppDeviceModule.ObserverMethod.5 param5) {}
   
   public void run()
   {
-    apri localapri = new apri(this);
-    this.a.jdField_a_of_type_Aprb.a.a.a(localapri, this.a.jdField_a_of_type_Long);
+    ArkAppDeviceModule.ObserverMethod.5.1.1 local1 = new ArkAppDeviceModule.ObserverMethod.5.1.1(this);
+    this.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppDeviceModule$ObserverMethod.a.a.a(local1, this.a.jdField_a_of_type_Long);
   }
 }
 

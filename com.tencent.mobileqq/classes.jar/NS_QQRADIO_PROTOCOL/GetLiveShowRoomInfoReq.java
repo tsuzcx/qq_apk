@@ -8,10 +8,10 @@ public final class GetLiveShowRoomInfoReq
   extends JceStruct
 {
   static CommonInfo cache_commonInfo = new CommonInfo();
-  public CommonInfo commonInfo;
-  public int infoType;
-  public int isHlsUrlSign;
-  public int pageType;
+  public CommonInfo commonInfo = null;
+  public int infoType = 0;
+  public int isHlsUrlSign = 0;
+  public int pageType = 0;
   public String roomID = "";
   public String uid = "";
   

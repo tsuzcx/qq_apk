@@ -10,7 +10,7 @@ public class AchillesParams
   private int debounceIntervalMinutes = 60;
   private int downloadDelayMs;
   private String downloadUrl = "";
-  private boolean enable;
+  private boolean enable = false;
   private boolean installIfJump;
   private int maxDownloadCount = 1;
   private String md5 = "";
@@ -19,7 +19,7 @@ public class AchillesParams
   private String pushTitle = "";
   private String sceneId;
   private boolean useFragmentDownload;
-  private int versionCode;
+  private int versionCode = 0;
   private String versionName = "";
   
   public boolean equals(Object paramObject)
@@ -246,7 +246,7 @@ public class AchillesParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams
  * JD-Core Version:    0.7.0.1
  */

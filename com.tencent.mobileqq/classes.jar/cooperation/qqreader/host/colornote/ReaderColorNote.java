@@ -1,8 +1,8 @@
 package cooperation.qqreader.host.colornote;
 
-import aqnq;
-import aqoi;
+import com.tencent.mobileqq.colornote.ColorNoteConstants;
 import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.data.ColorNote.Builder;
 
 public class ReaderColorNote
 {
@@ -10,17 +10,17 @@ public class ReaderColorNote
   
   public ReaderColorNote(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.mColorNote = new aqoi().d(paramString1).b(paramString2).c(paramString3).a(16908289).a(paramString4).a();
+    this.mColorNote = new ColorNote.Builder().d(paramString1).b(paramString2).c(paramString3).a(16908289).a(paramString4).a();
   }
   
   public int getReportType()
   {
-    return aqnq.a(this.mColorNote.getServiceType());
+    return ColorNoteConstants.a(this.mColorNote.getServiceType());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qqreader.host.colornote.ReaderColorNote
  * JD-Core Version:    0.7.0.1
  */

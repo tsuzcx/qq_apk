@@ -9,18 +9,18 @@ public class EmojiStickerManager$StickerInfo
   implements Serializable
 {
   public static final long serialVersionUID = 1L;
-  public float height;
-  public long hostMsgSeq;
-  public long hostMsgTime;
-  public long hostMsgUid;
-  public boolean isDisplayed;
-  public boolean isShown;
+  public float height = 0.0F;
+  public long hostMsgSeq = 0L;
+  public long hostMsgTime = 0L;
+  public long hostMsgUid = 0L;
+  public boolean isDisplayed = false;
+  public boolean isShown = false;
   public String msg = "";
-  public int originMsgType;
-  public int rotate;
-  public float width;
-  public float x;
-  public float y;
+  public int originMsgType = 0;
+  public int rotate = 0;
+  public float width = 0.0F;
+  public float x = 0.0F;
+  public float y = 0.0F;
   
   public static StickerInfo transformFromJson(String paramString)
   {
@@ -85,7 +85,7 @@ public class EmojiStickerManager$StickerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,45 @@
+{
+    "readinjoy_native_tag": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type":"PTSRichTextView",
+                "view_id": "id_native_tag",
+                "margin_top": "8",
+                "margin_bottom": "8",
+                "margin_left": "16",
+                "margin_right": "16",
+                "height":{
+                    "type":"wrap_content"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"343"
+                },
+                "attributes":{
+                    "setBackgroundColorString:" :"#00000000",
+                    "setRichData:":[
+                        {
+                            "name":"div",
+                            "attrs":{
+                                "style":"font-size:18px;line-height:25px;width:351rpx;color:#242424;-webkit-line-clamp:2;"
+                            },
+                            "truncationAttrs":{
+                                "color":"#40A0FF"
+                            },
+                            "children":"$rich_text_info"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

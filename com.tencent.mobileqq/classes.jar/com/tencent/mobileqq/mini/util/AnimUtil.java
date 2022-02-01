@@ -14,14 +14,14 @@ public class AnimUtil
   public static void setCloseAnim(Activity paramActivity)
   {
     if (paramActivity != null) {
-      paramActivity.overridePendingTransition(2130771996, 2130772001);
+      paramActivity.overridePendingTransition(2130771998, 2130772003);
     }
   }
   
   public static void setOpenAnim(Activity paramActivity)
   {
     if ((paramActivity != null) && (!paramActivity.isFinishing())) {
-      paramActivity.overridePendingTransition(2130771997, 2130772000);
+      paramActivity.overridePendingTransition(2130771999, 2130772002);
     }
   }
 }

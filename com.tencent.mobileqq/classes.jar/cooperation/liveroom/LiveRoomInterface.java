@@ -4,6 +4,7 @@ import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 
 public class LiveRoomInterface
@@ -27,7 +28,7 @@ public class LiveRoomInterface
     {
       if (this.emFactoryQQ == null)
       {
-        localObject1 = new QQEntityManagerFactory((String)localObject1);
+        localObject1 = QQEntityManagerFactoryProxy.a((String)localObject1, super.getEntityManagerFactory());
         ((QQEntityManagerFactory)localObject1).verifyAuthentication();
         this.emFactoryQQ = ((EntityManagerFactory)localObject1);
       }
@@ -43,7 +44,7 @@ public class LiveRoomInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomInterface
  * JD-Core Version:    0.7.0.1
  */

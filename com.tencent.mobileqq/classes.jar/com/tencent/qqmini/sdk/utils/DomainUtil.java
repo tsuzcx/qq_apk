@@ -282,7 +282,7 @@ public class DomainUtil
     if (!TextUtils.isEmpty(paramString))
     {
       if (paramString.startsWith("https://")) {}
-      while ((paramString.startsWith("wss://")) || ((paramBoolean) && (paramString.startsWith("http://")))) {
+      while ((paramString.startsWith("wss://")) || ((paramBoolean) && ((paramString.startsWith("http://")) || (paramString.startsWith("ws://"))))) {
         return true;
       }
     }
@@ -317,7 +317,7 @@ public class DomainUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.DomainUtil
  * JD-Core Version:    0.7.0.1
  */

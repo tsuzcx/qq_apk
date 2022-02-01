@@ -2,10 +2,10 @@ package cooperation.qzone.webviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.WebEventListener;
@@ -18,14 +18,14 @@ public class QzoneDeviceTagJsPlugin
   public static final String NAMESPACE = "Qzone";
   private static final String TAG = QzoneBlogJsPlugin.class.getSimpleName();
   
-  private static void handleDeviceTag(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
+  private static void handleDeviceTag(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    parambifw.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.2());
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.2());
   }
   
-  private static void handleUserTail(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
+  private static void handleUserTail(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    parambifw.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -83,7 +83,7 @@ public class QzoneDeviceTagJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,167 +1,166 @@
 package com.tencent.mobileqq.teamwork;
 
-import bebl;
 import org.json.JSONObject;
 
-public class TeamWorkFileImportHandler$3
+class TeamWorkFileImportHandler$3
   implements Runnable
 {
-  public TeamWorkFileImportHandler$3(bebl parambebl, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, int paramInt) {}
+  TeamWorkFileImportHandler$3(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, int paramInt) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
-    //   4: getfield 37	bebl:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
+    //   4: invokestatic 36	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;)Lcom/tencent/mobileqq/app/QQAppInterface;
     //   7: ifnonnull +4 -> 11
     //   10: return
-    //   11: invokestatic 43	java/lang/System:currentTimeMillis	()J
+    //   11: invokestatic 42	java/lang/System:currentTimeMillis	()J
     //   14: lstore_3
     //   15: aload_0
     //   16: getfield 18	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
     //   19: ifnull +34 -> 53
     //   22: aload_0
     //   23: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   26: invokevirtual 49	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:b	()Z
+    //   26: invokevirtual 48	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:b	()Z
     //   29: ifeq +24 -> 53
     //   32: aload_0
     //   33: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   36: getfield 53	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:g	Z
+    //   36: getfield 52	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:g	Z
     //   39: ifne +14 -> 53
     //   42: aload_0
     //   43: getfield 18	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   46: ldc 55
+    //   46: ldc 54
     //   48: iconst_1
-    //   49: invokevirtual 61	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   49: invokevirtual 60	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   52: pop
     //   53: aload_0
     //   54: getfield 18	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
     //   57: aload_0
-    //   58: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
-    //   61: getfield 37	bebl:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   64: invokevirtual 67	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   67: invokestatic 72	bece:a	(Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
+    //   58: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
+    //   61: invokestatic 36	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   64: invokevirtual 66	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   67: invokestatic 71	com/tencent/mobileqq/teamwork/TeamWorkHttpUtils:a	(Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
     //   70: astore 10
-    //   72: invokestatic 43	java/lang/System:currentTimeMillis	()J
+    //   72: invokestatic 42	java/lang/System:currentTimeMillis	()J
     //   75: lstore 5
     //   77: aload_0
     //   78: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   81: getfield 75	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:jdField_k_of_type_Int	I
+    //   81: getfield 74	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:jdField_k_of_type_Int	I
     //   84: aload_0
     //   85: getfield 22	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_Int	I
     //   88: if_icmpeq +32 -> 120
-    //   91: ldc 77
+    //   91: ldc 76
     //   93: iconst_2
-    //   94: new 79	java/lang/StringBuilder
+    //   94: new 78	java/lang/StringBuilder
     //   97: dup
-    //   98: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   101: ldc 82
-    //   103: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   101: ldc 81
+    //   103: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: aload_0
     //   107: getfield 22	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_Int	I
-    //   110: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 98	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   110: invokevirtual 88	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   116: invokestatic 97	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   119: return
-    //   120: ldc 100
+    //   120: ldc 99
     //   122: astore 9
     //   124: aload 10
     //   126: ifnull +283 -> 409
     //   129: aload_0
-    //   130: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
+    //   130: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
     //   133: aload 10
     //   135: aload_0
     //   136: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   139: invokestatic 103	bebl:a	(Lbebl;Ljava/lang/String;Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;)Z
+    //   139: invokestatic 102	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;Ljava/lang/String;Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;)Z
     //   142: istore 7
-    //   144: new 57	org/json/JSONObject
+    //   144: new 56	org/json/JSONObject
     //   147: dup
     //   148: aload 10
-    //   150: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   153: ldc 108
-    //   155: invokevirtual 112	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   150: invokespecial 105	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   153: ldc 107
+    //   155: invokevirtual 111	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   158: astore 8
     //   160: aload 8
     //   162: astore 9
-    //   164: ldc 113
-    //   166: invokestatic 118	anvx:a	(I)Ljava/lang/String;
+    //   164: ldc 112
+    //   166: invokestatic 117	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   169: astore 8
     //   171: aload_0
     //   172: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   175: getfield 121	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:e	I
+    //   175: getfield 120	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:e	I
     //   178: iconst_3
     //   179: if_icmpne +252 -> 431
-    //   182: ldc 123
+    //   182: ldc 122
     //   184: astore 8
     //   186: lload 5
     //   188: lload_3
     //   189: lsub
     //   190: lstore_3
     //   191: aload_0
-    //   192: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
-    //   195: getfield 37	bebl:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   192: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
+    //   195: invokestatic 36	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;)Lcom/tencent/mobileqq/app/QQAppInterface;
     //   198: astore 11
     //   200: aload_0
     //   201: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   204: getfield 126	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:d	I
+    //   204: getfield 125	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:d	I
     //   207: istore_2
     //   208: iload 7
     //   210: ifeq +278 -> 488
     //   213: iconst_1
     //   214: istore_1
     //   215: aload 11
-    //   217: ldc 128
-    //   219: ldc 100
-    //   221: ldc 100
-    //   223: ldc 130
-    //   225: ldc 130
+    //   217: ldc 127
+    //   219: ldc 99
+    //   221: ldc 99
+    //   223: ldc 129
+    //   225: ldc 129
     //   227: iload_2
     //   228: iload_1
-    //   229: new 79	java/lang/StringBuilder
+    //   229: new 78	java/lang/StringBuilder
     //   232: dup
-    //   233: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   233: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   236: lload_3
-    //   237: invokevirtual 133	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   240: ldc 100
-    //   242: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   248: ldc 100
+    //   237: invokevirtual 132	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   240: ldc 99
+    //   242: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   248: ldc 99
     //   250: aload 8
     //   252: aload 9
-    //   254: invokestatic 138	bdla:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   257: ldc 77
-    //   259: ldc 140
+    //   254: invokestatic 137	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   257: ldc 76
+    //   259: ldc 139
     //   261: lload_3
-    //   262: invokestatic 146	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   262: invokestatic 145	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   265: aload_0
     //   266: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   269: getfield 149	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:jdField_k_of_type_JavaLangString	Ljava/lang/String;
-    //   272: invokestatic 154	beeg:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   269: getfield 148	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   272: invokestatic 153	com/tencent/mobileqq/teamwork/tencentdocreport/TenDocLogReportHelper:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   275: iload 7
     //   277: ifne -267 -> 10
     //   280: aload_0
     //   281: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   284: invokevirtual 49	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:b	()Z
+    //   284: invokevirtual 48	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:b	()Z
     //   287: ifne +224 -> 511
     //   290: aload_0
     //   291: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   294: getfield 157	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:c	Ljava/lang/String;
-    //   297: invokestatic 163	com/tencent/mobileqq/filemanager/util/FileUtil:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
+    //   294: getfield 156	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:c	Ljava/lang/String;
+    //   297: invokestatic 161	com/tencent/mobileqq/filemanager/util/FileUtil:b	(Ljava/lang/String;)Z
     //   300: ifeq +211 -> 511
-    //   303: ldc 77
-    //   305: ldc 165
-    //   307: ldc 167
+    //   303: ldc 76
+    //   305: ldc 163
+    //   307: ldc 165
     //   309: aload_0
     //   310: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   313: getfield 149	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:jdField_k_of_type_JavaLangString	Ljava/lang/String;
-    //   316: invokestatic 154	beeg:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   313: getfield 148	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   316: invokestatic 153	com/tencent/mobileqq/teamwork/tencentdocreport/TenDocLogReportHelper:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   319: aload_0
-    //   320: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
+    //   320: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
     //   323: aload_0
     //   324: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   327: invokevirtual 170	bebl:c	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;)V
+    //   327: invokevirtual 168	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:c	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;)V
     //   330: aload_0
     //   331: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
     //   334: astore 8
@@ -170,14 +169,14 @@ public class TeamWorkFileImportHandler$3
     //   338: iload_2
     //   339: istore_1
     //   340: aload 10
-    //   342: invokestatic 176	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   342: invokestatic 174	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   345: ifne +18 -> 363
-    //   348: new 57	org/json/JSONObject
+    //   348: new 56	org/json/JSONObject
     //   351: dup
     //   352: aload 10
-    //   354: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   357: ldc 178
-    //   359: invokevirtual 182	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   354: invokespecial 105	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   357: ldc 176
+    //   359: invokevirtual 180	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   362: istore_1
     //   363: iload_1
     //   364: sipush 20003
@@ -187,84 +186,84 @@ public class TeamWorkFileImportHandler$3
     //   374: if_icmpeq -364 -> 10
     //   377: aload 8
     //   379: iconst_0
-    //   380: putfield 184	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:a	Z
+    //   380: putfield 182	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:a	Z
     //   383: aload_0
-    //   384: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
+    //   384: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
     //   387: aload 8
-    //   389: invokevirtual 186	bebl:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;)V
+    //   389: invokevirtual 184	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;)V
     //   392: return
     //   393: astore 8
-    //   395: ldc 77
+    //   395: ldc 76
     //   397: iconst_1
     //   398: aload 8
-    //   400: invokevirtual 187	java/lang/Exception:toString	()Ljava/lang/String;
-    //   403: invokestatic 189	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   400: invokevirtual 185	java/lang/Exception:toString	()Ljava/lang/String;
+    //   403: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   406: goto -242 -> 164
-    //   409: ldc 77
-    //   411: ldc 165
-    //   413: ldc 191
+    //   409: ldc 76
+    //   411: ldc 163
+    //   413: ldc 189
     //   415: aload_0
     //   416: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   419: getfield 149	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:jdField_k_of_type_JavaLangString	Ljava/lang/String;
-    //   422: invokestatic 154	beeg:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   419: getfield 148	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   422: invokestatic 153	com/tencent/mobileqq/teamwork/tencentdocreport/TenDocLogReportHelper:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   425: iconst_0
     //   426: istore 7
     //   428: goto -264 -> 164
     //   431: aload_0
     //   432: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   435: getfield 121	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:e	I
+    //   435: getfield 120	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:e	I
     //   438: bipush 6
     //   440: if_icmpne +10 -> 450
-    //   443: ldc 193
+    //   443: ldc 191
     //   445: astore 8
     //   447: goto -261 -> 186
     //   450: aload_0
     //   451: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   454: getfield 121	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:e	I
+    //   454: getfield 120	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:e	I
     //   457: bipush 7
     //   459: if_icmpne +10 -> 469
-    //   462: ldc 195
+    //   462: ldc 193
     //   464: astore 8
     //   466: goto -280 -> 186
     //   469: aload_0
     //   470: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   473: getfield 121	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:e	I
+    //   473: getfield 120	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:e	I
     //   476: bipush 9
     //   478: if_icmpne -292 -> 186
-    //   481: ldc 197
+    //   481: ldc 195
     //   483: astore 8
     //   485: goto -299 -> 186
     //   488: iconst_2
     //   489: istore_1
     //   490: goto -275 -> 215
     //   493: astore 9
-    //   495: ldc 77
+    //   495: ldc 76
     //   497: iconst_1
     //   498: aload 9
-    //   500: invokevirtual 198	org/json/JSONException:toString	()Ljava/lang/String;
-    //   503: invokestatic 189	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   500: invokevirtual 196	org/json/JSONException:toString	()Ljava/lang/String;
+    //   503: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   506: iload_2
     //   507: istore_1
     //   508: goto -145 -> 363
     //   511: aload_0
-    //   512: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
-    //   515: invokestatic 201	bebl:a	(Lbebl;)Landroid/os/Handler;
+    //   512: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
+    //   515: invokestatic 199	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;)Landroid/os/Handler;
     //   518: ifnull -508 -> 10
     //   521: aload_0
-    //   522: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
-    //   525: invokestatic 201	bebl:a	(Lbebl;)Landroid/os/Handler;
+    //   522: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
+    //   525: invokestatic 199	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;)Landroid/os/Handler;
     //   528: sipush 8002
-    //   531: invokevirtual 207	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
+    //   531: invokevirtual 205	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
     //   534: astore 8
     //   536: aload 8
     //   538: aload_0
     //   539: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   542: putfield 213	android/os/Message:obj	Ljava/lang/Object;
+    //   542: putfield 211	android/os/Message:obj	Ljava/lang/Object;
     //   545: aload_0
-    //   546: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lbebl;
-    //   549: invokestatic 201	bebl:a	(Lbebl;)Landroid/os/Handler;
+    //   546: getfield 16	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler$3:this$0	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;
+    //   549: invokestatic 199	com/tencent/mobileqq/teamwork/TeamWorkFileImportHandler:a	(Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportHandler;)Landroid/os/Handler;
     //   552: aload 8
-    //   554: invokevirtual 217	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   554: invokevirtual 215	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   557: pop
     //   558: return
     //   559: astore 8

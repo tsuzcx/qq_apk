@@ -1,98 +1,52 @@
 package com.tencent.qqlive.tvkplayer.vinfo.common;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.ConnectException;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-import javax.net.ssl.SSLException;
-import org.xmlpull.v1.XmlPullParserException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class TVKVideoInfoErrorCodeUtil
 {
+  private static HashMap<String, Integer> sErrorCodeMap = new HashMap();
+  
+  static
+  {
+    sErrorCodeMap.put("ConnectException", Integer.valueOf(3));
+    sErrorCodeMap.put("FileNotFoundException", Integer.valueOf(8));
+    sErrorCodeMap.put("SSLException", Integer.valueOf(16));
+    sErrorCodeMap.put("SSLHandshakeException", Integer.valueOf(17));
+    sErrorCodeMap.put("SSLKeyException", Integer.valueOf(18));
+    sErrorCodeMap.put("SSLPeerUnverifiedException", Integer.valueOf(19));
+    sErrorCodeMap.put("SSLProtocolException", Integer.valueOf(20));
+    sErrorCodeMap.put("SocketException", Integer.valueOf(21));
+    sErrorCodeMap.put("SocketTimeoutException", Integer.valueOf(5));
+    sErrorCodeMap.put("XmlPullParserException", Integer.valueOf(15));
+    sErrorCodeMap.put("UnknownHostException", Integer.valueOf(2));
+    sErrorCodeMap.put("UnsupportedEncodingException", Integer.valueOf(15));
+  }
+  
   public static int getErrCodeByThrowable(Throwable paramThrowable)
   {
-    if (paramThrowable != null)
-    {
-      if ((paramThrowable instanceof SocketTimeoutException)) {}
-      do
-      {
-        return 5;
-        if ((paramThrowable instanceof UnknownHostException)) {
-          return 2;
-        }
-        if ((paramThrowable instanceof FileNotFoundException)) {
-          return 8;
-        }
-        if ((paramThrowable instanceof ConnectException))
-        {
-          if (paramThrowable.toString().contains("Network is unreachable")) {
-            return 22;
-          }
-          return 3;
-        }
-        if ((paramThrowable instanceof SSLException)) {
-          return 16;
-        }
-        if (paramThrowable.toString().contains("SSLHandshakeException")) {
-          return 17;
-        }
-        if (paramThrowable.toString().contains("SSLKeyException")) {
-          return 18;
-        }
-        if (paramThrowable.toString().contains("SSLPeerUnverifiedException")) {
-          return 19;
-        }
-        if (paramThrowable.toString().contains("SSLProtocolException")) {
-          return 20;
-        }
-        if ((paramThrowable instanceof SocketException)) {
-          return 21;
-        }
-        if (!(paramThrowable instanceof IOException)) {
-          break;
-        }
-        if (paramThrowable.toString().contains("UnknownHostException")) {
-          return 2;
-        }
-      } while (paramThrowable.toString().contains("SocketTimeoutException"));
-      if (paramThrowable.toString().contains("ConnectException")) {
-        return 3;
-      }
-      if (paramThrowable.toString().contains("SSLException")) {
-        return 16;
-      }
-      if (paramThrowable.toString().contains("SSLHandshakeException")) {
-        return 17;
-      }
-      if (paramThrowable.toString().contains("SSLKeyException")) {
-        return 18;
-      }
-      if (paramThrowable.toString().contains("SSLPeerUnverifiedException")) {
-        return 19;
-      }
-      if (paramThrowable.toString().contains("SSLProtocolException")) {
-        return 20;
-      }
-      if (paramThrowable.toString().contains("SocketException")) {
-        return 21;
-      }
-      return 6;
-      if ((paramThrowable instanceof XmlPullParserException)) {
-        return 15;
-      }
-      if ((paramThrowable instanceof UnsupportedEncodingException)) {
-        return 15;
-      }
+    if (paramThrowable == null) {
+      return 1;
     }
-    return 1;
+    Iterator localIterator = sErrorCodeMap.entrySet().iterator();
+    Map.Entry localEntry;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localEntry = (Map.Entry)localIterator.next();
+    } while (!paramThrowable.toString().contains((CharSequence)localEntry.getKey()));
+    for (int i = ((Integer)localEntry.getValue()).intValue();; i = 1) {
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoErrorCodeUtil
  * JD-Core Version:    0.7.0.1
  */

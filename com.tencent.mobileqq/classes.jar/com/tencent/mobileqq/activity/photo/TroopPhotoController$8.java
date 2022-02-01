@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopClipPic;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ class TroopPhotoController$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopPhotoController.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime;
 
 import android.content.Context;
-import bmhv;
 import com.tencent.commonsdk.cache.QQHashMap;
-import tmt;
-import tmw;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class RealTimeTemplateFactoryCache
-  extends QQHashMap<String, tmw>
+  extends QQHashMap<String, RealTimeTemplateFactory>
 {
   public RealTimeTemplateFactoryCache()
   {
@@ -30,16 +28,16 @@ public class RealTimeTemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bmhv.s()) {
+    if (!ReadInJoyHelper.t()) {
       clear();
     }
   }
   
-  public tmw get(String paramString)
+  public RealTimeTemplateFactory get(String paramString)
   {
     try
     {
-      paramString = (tmw)super.get(paramString);
+      paramString = (RealTimeTemplateFactory)super.get(paramString);
       return paramString;
     }
     finally
@@ -49,13 +47,13 @@ public class RealTimeTemplateFactoryCache
     }
   }
   
-  public tmw getAutoCreate(Context paramContext, String paramString)
+  public RealTimeTemplateFactory getAutoCreate(Context paramContext, String paramString)
   {
     paramContext = get(paramString);
     if (paramContext != null) {
       return paramContext;
     }
-    paramContext = tmt.a(paramString);
+    paramContext = RealTimeController.a(paramString);
     if (paramContext != null)
     {
       paramContext.b(paramString);
@@ -65,11 +63,11 @@ public class RealTimeTemplateFactoryCache
     return null;
   }
   
-  public tmw put(String paramString, tmw paramtmw)
+  public RealTimeTemplateFactory put(String paramString, RealTimeTemplateFactory paramRealTimeTemplateFactory)
   {
     try
     {
-      paramString = (tmw)super.put(paramString, paramtmw);
+      paramString = (RealTimeTemplateFactory)super.put(paramString, paramRealTimeTemplateFactory);
       return paramString;
     }
     finally
@@ -79,11 +77,11 @@ public class RealTimeTemplateFactoryCache
     }
   }
   
-  public tmw remove(String paramString)
+  public RealTimeTemplateFactory remove(String paramString)
   {
     try
     {
-      paramString = (tmw)super.remove(paramString);
+      paramString = (RealTimeTemplateFactory)super.remove(paramString);
       return paramString;
     }
     finally
@@ -95,7 +93,7 @@ public class RealTimeTemplateFactoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeTemplateFactoryCache
  * JD-Core Version:    0.7.0.1
  */

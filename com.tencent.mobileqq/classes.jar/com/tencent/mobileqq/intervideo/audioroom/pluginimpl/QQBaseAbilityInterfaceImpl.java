@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.audioroom.pluginimpl;
 
-import aady;
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
@@ -12,12 +12,12 @@ import java.util.concurrent.Future;
 public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface
 {
-  private final aady a;
+  private final TroopMemberApiClient a;
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("QQBaseAbilityInterface", 4, "init");
-    this.a = aady.a();
+    this.a = TroopMemberApiClient.a();
     this.a.a();
   }
   
@@ -90,7 +90,7 @@ public class QQBaseAbilityInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.pluginimpl.QQBaseAbilityInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

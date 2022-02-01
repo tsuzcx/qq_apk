@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SignatureReq
   extends JceStruct
 {
-  public long uin;
+  public long uin = 0L;
   
   public SignatureReq() {}
   

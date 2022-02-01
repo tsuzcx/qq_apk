@@ -1,0 +1,43 @@
+{
+    "ReadInjoy_follow_pack_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "ProteusCollectionView",
+                "view_id": "id_proteus_collection_view",
+                "height": {
+                     "type":"relative",
+                     "value":"161"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "$bgColor",
+                    "setCellArray:": "$datas",
+                    "setScrollTypeString:": "0",
+                    "setScrollIndicatorString:": "0",
+                    "setScrollBounceString:": "1",
+                    "setEdgeDragString:": "1",
+                    "setScrollJumpUrl:": "$jump_url",
+                    "setScrollInsetLeft:right:top:bottom:": [
+                        "12",
+                        "4",
+                        "0",
+                        "0"
+                    ]
+                }
+            }
+        ]
+    }
+}
+

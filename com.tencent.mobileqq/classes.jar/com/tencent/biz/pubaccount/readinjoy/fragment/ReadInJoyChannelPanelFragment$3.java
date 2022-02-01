@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.widget.SlideDownFrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
 
 class ReadInJoyChannelPanelFragment$3
-  implements Runnable
+  extends ReadInJoyObserver
 {
   ReadInJoyChannelPanelFragment$3(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
   
-  public void run()
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    ReadInJoyChannelPanelFragment.a(this.this$0).setAlpha(1.0F);
-    ReadInJoyChannelPanelFragment.a(this.this$0).setY(ReadInJoyChannelPanelFragment.a(this.this$0).getHeight());
-    ReadInJoyChannelPanelFragment.a(this.this$0).a();
+    if (paramTopBannerInfo.mChannelId == 2000000000) {
+      this.a.a(paramTopBannerInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment.3
  * JD-Core Version:    0.7.0.1
  */

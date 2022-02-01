@@ -18,7 +18,7 @@ public class OpenDataDomainUtil
   private static volatile OpenDataDomainUtil sInstance;
   private ConcurrentHashMap<Integer, ArrayList<DomainConfig>> mCachedDomainConfigMap = new ConcurrentHashMap();
   private String mCurWhiteListConfig;
-  private ArrayList<String> mDomainWhiteList;
+  private ArrayList<String> mDomainWhiteList = null;
   
   private boolean checkWnsConfig(String paramString, int paramInt, DomainConfig paramDomainConfig)
   {
